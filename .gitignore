@@ -1,4 +1,15 @@
+# macOS
 .DS_Store
+
+# Installed libraries
 node_modules/
+
+# Build output
 dist/
+
+# Storybook build output
 storybook-static/
+
+# Environment files (private settings)
+.env
+.env.*
