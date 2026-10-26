@@ -1,0 +1,29 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Introduction" />
+
+# Verity
+
+Verity is Erin Tozour’s personal design system. It powers her portfolio site, and this Storybook is its documentation.
+
+## Where things come from
+
+- **Design:** the [Verity Library in Figma](https://www.figma.com/design/3Da0PcmwQjC19SKRduBuQD/Verity-Design-System) is the source of truth. Its Guidelines pages (Naming, Spacing and rhythm, and Writing style) are the rules this code follows.
+- **Code:** components are built in React and TypeScript, styled with CSS Modules and design tokens. The source is on [GitHub](https://github.com/erinpantz/verity-design-system).
+
+## How it’s organized
+
+Components are grouped the same way as the Figma pages:
+
+- **Actions:** buttons and other controls
+- **Navigation:** moving between pages and sections
+- **Layout:** containers, stacks, and grids
+- **Text:** headings, body text, and prose
+- **Media:** images, logos, and icons
+- **Content blocks:** larger sections built from the pieces above
+
+## Principles
+
+- **Every value comes from a token.** Colors, sizes, spacing, radii, and fonts are never hard-coded.
+- **Components don’t add space outside themselves.** Parents space their children.
+- **Accessibility is built in.** Every interactive component has default, hover, focus, active, and disabled states, and each story is checked in the Accessibility panel.

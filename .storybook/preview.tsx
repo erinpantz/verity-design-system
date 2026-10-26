@@ -8,6 +8,12 @@ const preview: Preview = {
        date: /Date$/i,
       },
     },
+    options: {
+      // Sidebar order matches the Figma pages
+      storySort: {
+        order: ['Introduction', 'Actions', 'Navigation', 'Layout', 'Text', 'Media', 'Content blocks'],
+      },
+    },
   },
 };
 
