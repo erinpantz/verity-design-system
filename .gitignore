@@ -13,3 +13,9 @@ storybook-static/
 # Environment files (private settings)
 .env
 .env.*
+
+# Logs and local-only settings
+*.log
+*.local
+
+*storybook.log
