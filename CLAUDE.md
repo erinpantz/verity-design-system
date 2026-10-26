@@ -19,7 +19,12 @@ The Figma source of truth is the **Verity Library** file: https://www.figma.com/
 - **CSS Modules** plus CSS custom properties for styling. No Tailwind or CSS-in-JS: every value comes from a Verity token.
 - **Style Dictionary** turns token JSON (W3C Design Tokens format) into CSS custom properties
 
-Commands are added here as they're set up (for example, `npm run storybook`).
+Commands are added here as they're set up.
+
+- `npm run storybook`: start Storybook at http://localhost:6006
+- `npm run build-storybook`: build the static Storybook site into `storybook-static/`
+- `npm run build`: type-check with TypeScript (the library build comes later)
+- `npm run lint`: check code with oxlint
 
 ## Folder structure
 
