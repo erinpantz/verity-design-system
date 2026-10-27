@@ -382,5 +382,45 @@
         }
       }
     }
+  },
+  "icon": {
+    "size": {
+      "sm": {
+        "$type": "dimension",
+        "$value": "{size.20}",
+        "$description": "Small icons, 20px",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "WIDTH_HEIGHT"
+            ]
+          }
+        }
+      },
+      "md": {
+        "$type": "dimension",
+        "$value": "{size.24}",
+        "$description": "Default icon size, 24px",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "WIDTH_HEIGHT"
+            ]
+          }
+        }
+      },
+      "lg": {
+        "$type": "dimension",
+        "$value": "{size.32}",
+        "$description": "Large icons, 32px",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "WIDTH_HEIGHT"
+            ]
+          }
+        }
+      }
+    }
   }
 }

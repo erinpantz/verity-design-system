@@ -1263,6 +1263,28 @@
           ]
         }
       }
+    },
+    "20": {
+      "$type": "dimension",
+      "$value": "20px",
+      "$extensions": {
+        "com.figma": {
+          "scopes": [
+            "WIDTH_HEIGHT"
+          ]
+        }
+      }
+    },
+    "24": {
+      "$type": "dimension",
+      "$value": "24px",
+      "$extensions": {
+        "com.figma": {
+          "scopes": [
+            "WIDTH_HEIGHT"
+          ]
+        }
+      }
     }
   }
 }

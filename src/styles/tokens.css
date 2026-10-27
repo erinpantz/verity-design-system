@@ -157,6 +157,8 @@
   --verity-shadow-sm-y: 2px;
   --verity-shadow-sm-blur: 4px;
   --verity-shadow-sm-spread: 0px;
+  --verity-size-20: 20px;
+  --verity-size-24: 24px;
   --verity-size-32: 32px;
   --verity-size-40: 40px;
   --verity-size-44: 44px;
@@ -232,6 +234,9 @@
   --verity-border-width-md: var(--verity-border-width-2);
   --verity-border-width-xl: var(--verity-border-width-8);
   --verity-border-width-sm: var(--verity-border-width-1);
+  --verity-icon-size-sm: var(--verity-size-20); /** Small icons, 20px */
+  --verity-icon-size-md: var(--verity-size-24); /** Default icon size, 24px */
+  --verity-icon-size-lg: var(--verity-size-32); /** Large icons, 32px */
 }
 
 /* Typography Tier 2 */

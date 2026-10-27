@@ -7,7 +7,7 @@
       "modes": {
         "Mode 1": "core-tier-1.json"
       },
-      "tokens": 158
+      "tokens": 160
     },
     {
       "name": "Themes Tier 2",
@@ -46,7 +46,7 @@
       "modes": {
         "Mode 1": "styles-tier-2.json"
       },
-      "tokens": 64
+      "tokens": 67
     },
     {
       "name": "Typography Tier 2",
