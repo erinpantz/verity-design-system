@@ -104,8 +104,10 @@
   overflow-x: auto;
 }
 
+/* Fixed layout keeps value columns equal, so they line up from table to table */
 .table {
   inline-size: 100%;
+  table-layout: fixed;
   border-collapse: collapse;
   text-align: start;
   vertical-align: top;
@@ -128,8 +130,11 @@
   border-block-end-color: var(--verity-color-border-default);
 }
 
-.table tbody th {
+.table thead th:first-child {
   inline-size: var(--verity-grid-item-min-width-md);
+}
+
+.table tbody th {
   font-weight: inherit;
 }
 
@@ -191,6 +196,12 @@
 .sample {
   margin: 0;
   overflow-wrap: anywhere;
+}
+
+.bar {
+  block-size: var(--verity-spacing-xs);
+  border-radius: var(--verity-border-radius-xs);
+  background: var(--verity-color-background-brand-disabled);
 }
 
 .glyph,

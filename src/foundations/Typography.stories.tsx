@@ -39,12 +39,15 @@ function fontSizeOf(group: Group): number {
 }
 
 // Tier 1 groups in this order, then text styles from largest to smallest,
-// each "-mobile" version right after its desktop style
+// each "-mobile" version right after its desktop style. Responsive styles
+// (Typography Styles) come after the base styles they're built from.
 function groupOrder(): string[] {
   const textStyles = groupsFor('typography').filter(isTextStyle);
   const desktop = new Map(textStyles.map((g) => [g.name, fontSizeOf(g)]));
   const size = (g: Group) => desktop.get(g.name.replace(/-mobile$/, '')) ?? fontSizeOf(g);
-  const sorted = [...textStyles].sort((a, b) => size(b) - size(a) || Number(a.name.endsWith('-mobile')) - Number(b.name.endsWith('-mobile')));
+  const responsive = (g: Group) => Number(g.kind === 'breakpoint');
+  const mobile = (g: Group) => Number(g.name.endsWith('-mobile'));
+  const sorted = [...textStyles].sort((a, b) => responsive(a) - responsive(b) || size(b) - size(a) || mobile(a) - mobile(b));
   return [
     'typography.font-family',
     'typography.font-size',

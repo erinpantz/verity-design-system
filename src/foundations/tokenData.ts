@@ -258,7 +258,7 @@ function sortTokens(tokens: Token[]): Token[] {
 const KIND_ORDER: Kind[] = ['none', 'theme', 'breakpoint'];
 
 // Tokens for one page, grouped by collection and shared path. Sorted by tier,
-// then collection, then the group names in `order` (if given), then Figma's order.
+// then the group names in `order` (if given), then collection, then Figma's order.
 export function groupsFor(page: Page, order: string[] = []): Group[] {
   const rank = (g: Group) => (order.includes(g.name) ? order.indexOf(g.name) : order.length);
   const groups = new Map<string, Group>();
@@ -271,5 +271,5 @@ export function groupsFor(page: Page, order: string[] = []): Group[] {
   }
   return [...groups.values()]
     .map((g) => ({ ...g, tokens: sortTokens(g.tokens) }))
-    .sort((a, b) => a.tier - b.tier || KIND_ORDER.indexOf(a.kind) - KIND_ORDER.indexOf(b.kind) || rank(a) - rank(b));
+    .sort((a, b) => a.tier - b.tier || rank(a) - rank(b) || KIND_ORDER.indexOf(a.kind) - KIND_ORDER.indexOf(b.kind));
 }
