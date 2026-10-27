@@ -1,5 +1,6 @@
 import type { Preview } from '@storybook/react-vite'
 import '../src/styles/global.css'
+import { ThemedDocsContainer } from './ThemedDocsContainer'
 
 const preview: Preview = {
   parameters: {
@@ -8,6 +9,10 @@ const preview: Preview = {
        color: /(background|color)$/i,
        date: /Date$/i,
       },
+    },
+    // Docs pages follow the Theme menu too (stories use the decorator below)
+    docs: {
+      container: ThemedDocsContainer,
     },
     options: {
       // Sidebar order matches the Figma pages
