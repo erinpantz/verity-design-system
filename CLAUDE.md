@@ -21,6 +21,7 @@ The Figma source of truth is the **Verity Library** file: https://www.figma.com/
 
 Commands are added here as they're set up.
 
+- `npm run tokens`: build `src/styles/tokens.css` from `tokens/` (run after each Figma export)
 - `npm run storybook`: start Storybook at http://localhost:6006
 - `npm run build-storybook`: build the static Storybook site into `storybook-static/`
 - `npm run build`: type-check with TypeScript (the library build comes later)
