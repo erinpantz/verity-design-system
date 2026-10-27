@@ -1,0 +1,70 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import { VerityDocs } from '../foundations/VerityDocs';
+
+<Meta title="Guidelines/Naming" />
+
+<VerityDocs>
+
+# Naming
+
+## Principle
+
+Names in Figma match the names used in code, so designers and developers use the same words for the same thing. When in doubt, use the form the code uses. Pick the rule below and apply it everywhere, including in work-in-progress files that will become components.
+
+## Components
+
+| What | Rule | Examples |
+|---|---|---|
+| Components | PascalCase, matching the component’s name in code. | `Button`, `MediaBlock`, `StatCard` |
+| Variations | Use variant properties for size, state, and style, not separate component names. | `Button` with `Variant=secondary` and `Size=sm`, not `ButtonSecondarySmall` |
+| Internal components | Start with a period, then lowercase with dashes. Used to build documentation and other components; not published to the library. | `.section-header`, `.swatch-row` |
+| Icons | `icon/` followed by the icon name in lowercase with dashes. Modifiers go last. | `icon/email`, `icon/arrow-right`, `icon/bell-off` |
+| Navigation icons | `icon/nav/` followed by the destination name. | `icon/nav/portfolio`, `icon/nav/profile` |
+| Logos and marks | PascalCase, like other components. A mark is the short form of a logo, used where the full logo doesn’t fit. | `VerityLogo`, `VerityMark`, `ErinTozourMark` |
+| Favicon export frames | The brand in lowercase with dashes, then a slash and the exported file’s name. These are frames, not components. | `verity/favicon`, `erin-tozour/apple-touch-icon` |
+
+## Properties
+
+Property names are labels people read in Figma’s properties panel.
+
+| What | Rule | Examples |
+|---|---|---|
+| Property names | Sentence case: capitalize the first word only. Applies to every property type: variant, boolean, text, instance swap, and slot. | `Size`, `State`, `Media position`, `Border radius` |
+| Boolean properties | Describe what the property shows or toggles. | `Show caption`, `Has name`, `Icon start` |
+| Instance swap and slot properties | Name the content the property holds. | `Icon`, `Media swap`, `Body copy` |
+| Default names | Never leave Figma’s default “Property 1”. Give every property a real name. | `Property 1` → `Style` |
+
+## Values
+
+Variant values are what developers type in code, so they are written exactly as in code.
+
+| What | Rule | Examples |
+|---|---|---|
+| Variant values | Lowercase. Join multiple words with dashes. | `default`, `hover`, `full-bleed`, `body-default` |
+| Sizes | Use the shared size scale. | `xs`, `sm`, `md`, `lg`, `xl` |
+| Numbers and ratios | Write them as they are. | `16:9`, `60`, `2.1` |
+
+## Variables and styles
+
+| What | Rule | Examples |
+|---|---|---|
+| Variables | Lowercase, groups separated by slashes, words joined with dashes. | `color/content/default`, `viewport/min-width` |
+| Component tokens | Start with the component name, then the token. | `button/secondary/color/border/hover`, `nav-icon/color/default` |
+| Text styles | Same as variables: lowercase, slash-separated groups. | `body/default`, `title/lg`, `label/sm` |
+
+## In code
+
+The same names carry through to code, so a name in Figma tells you exactly what to type.
+
+| Figma | Code | Example |
+|---|---|---|
+| Component name | The same name, in PascalCase | `MediaBlock` → `<MediaBlock />` |
+| Property name | camelCase prop | `Show caption` → `showCaption`, `Media position` → `mediaPosition` |
+| Variant value | The same value, as a string | `Size=sm` → `size="sm"` |
+| Variable | CSS custom property starting with `--verity-`, slashes become dashes | `color/content/default` → `--verity-color-content-default` |
+
+## Keeping names consistent
+
+Run the `figma-naming-review` skill to check the Figma file. It audits every page, lists the renames it would make and anything that needs a human decision, and applies the renames only after you approve them. Renaming properties and values doesn’t detach instances; they keep their selected variant.
+
+</VerityDocs>

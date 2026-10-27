@@ -19,6 +19,8 @@ const preview: Preview = {
       storySort: {
         order: [
           'Introduction',
+          'Guidelines',
+          ['Naming', 'Spacing and rhythm', 'Writing style'],
           'Foundations',
           ['Color', 'Typography', 'Spacing and layout', 'Borders', 'Breakpoints', 'Motion and effects'],
           'Actions',

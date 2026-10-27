@@ -10,6 +10,10 @@
 }
 
 .page {
+  /* Docs only: Verity has no monospace font token yet, so inline code uses
+     this system stack. Not a Verity token; components don't use it. */
+  --docs-font-mono: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+
   color: var(--verity-color-content-default);
 }
 
@@ -77,6 +81,53 @@
 
 .prose li p {
   margin: 0;
+}
+
+/* Tables fill the page width, and text wraps inside cells */
+
+.prose table {
+  margin-block-start: var(--verity-viewport-typography-body-default-space-before);
+  inline-size: 100%;
+  border-collapse: collapse;
+  font-family: var(--verity-viewport-typography-body-sm-font-family);
+  font-size: var(--verity-viewport-typography-body-sm-font-size);
+  font-weight: var(--verity-viewport-typography-body-sm-font-weight);
+  line-height: var(--verity-viewport-typography-body-sm-line-height);
+  letter-spacing: var(--verity-viewport-typography-body-sm-letter-spacing);
+}
+
+.prose th,
+.prose td {
+  padding-block: var(--verity-padding-xs);
+  padding-inline: var(--verity-padding-sm);
+  border-block-end: var(--verity-border-width-sm) solid var(--verity-color-border-disabled);
+  text-align: start;
+  vertical-align: top;
+  overflow-wrap: break-word;
+}
+
+.prose thead th {
+  border-block-end-color: var(--verity-color-border-default);
+  background: var(--verity-color-background-subtle);
+  font-family: var(--verity-viewport-typography-label-sm-font-family);
+  font-size: var(--verity-viewport-typography-label-sm-font-size);
+  font-weight: var(--verity-viewport-typography-label-sm-font-weight);
+  line-height: var(--verity-viewport-typography-label-sm-line-height);
+  letter-spacing: var(--verity-viewport-typography-label-sm-letter-spacing);
+}
+
+/* Inline code. The color is set on purpose: Storybook styles code elements
+   even inside Unstyled, and its dark gray is unreadable on Verity's backgrounds. */
+
+.prose code {
+  padding-inline: var(--verity-spacing-xxs);
+  color: var(--verity-color-content-default);
+  border-radius: var(--verity-border-radius-sm);
+  background: var(--verity-color-background-subtle);
+  font-family: var(--docs-font-mono);
+  font-size: var(--verity-viewport-typography-body-sm-font-size);
+  overflow-wrap: anywhere;
+  box-decoration-break: clone;
 }
 
 /* Links */

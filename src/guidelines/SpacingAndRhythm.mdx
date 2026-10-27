@@ -1,0 +1,104 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import { VerityDocs } from '../foundations/VerityDocs';
+
+<Meta title="Guidelines/Spacing and rhythm" />
+
+<VerityDocs>
+
+# Spacing and rhythm
+
+## Principle
+
+Components never add space outside themselves. The space between things belongs to whatever holds them: a stack’s gap, a Section, or Main in the Shell. That way a component looks right wherever it’s placed, and spacing changes in one place instead of on every instance. The one exception is prose, where each block of text sets the space above itself.
+
+## Who owns the space
+
+Each level of a page owns one kind of space. When something looks too close or too far apart, change it at the level that owns it.
+
+| Level | Owns | Set with |
+|---|---|---|
+| Main (in Shell) | The space between Sections on a page. | Main gap → `main/spacing/section-gap` |
+| Section | The space between its heading and intro, between its header and content, and between the blocks in its Content slot. | Heading to intro → `spacing/sm`<br />Header to content → `spacing/md`<br />Between blocks → `spacing/lg` |
+| Stacks | The space between siblings when you compose a layout. | `VerticalStack` and `HorizontalStack` gap → `spacing/*` |
+| Inside a component | The space between a component’s own parts, and the padding inside anything with a background, border, or tap area. | Auto layout gap and padding → `spacing/*`, `padding/*`, `control/*`, or a Tier 3 token |
+| Prose | The space above each block of long-form text. | `ProseItem` space before → `viewport/typography/*/space-before` |
+
+## Rules
+
+| What | Rule | Examples |
+|---|---|---|
+| No outside space | A component’s root has no space before, margin, or padding that pushes other things away. Root padding is only for a visible background, a border, or a tap area. | `Grid`, `TextBlock`, and `MediaBlock` have no space before. `Hero` has padding because it has a background. |
+| Gaps, not spacers | Space between siblings comes from the parent’s gap. Don’t add empty frames or extra padding to push things apart. | `ProseItem`’s space before is the only spacer, because each type of text needs different space above it. |
+| Every value is a token | Gaps, padding, and control sizes are bound to variables. Never type a number. | `Hero` Actions gap → `spacing/xs`, not 8. |
+| Choose the right tier | Use Tier 2 tokens for general spacing. Use a Tier 3 token when the value belongs to one component. Never bind Core Tier 1 tokens directly. | `spacing/lg` between blocks. `nav-item/padding` inside `NavItem`. Not `spacing/8`. |
+| Gap or padding | `spacing/*` is the space between things. `padding/*` is the inset inside a container. | Section blocks → `spacing/lg`. `Hero` inset → `padding/lg`. |
+| Stack or frame | Use a stack when people compose the content, like a slot or a page layout. A fixed group inside a component can be an auto layout frame, as long as its gap is a token. | `VerticalStack` in a page layout. `Hero`’s Actions frame. |
+| Same size, same height | Controls take their height from `control/size/*`, not from their content plus padding, so different controls line up side by side. | An `lg` `Button` next to an `lg` `TextInput`. |
+
+## Spacing scale
+
+Responsive Tier 2. Each token has a value for every breakpoint, so spacing tightens on smaller screens without changing the design. The values at each breakpoint are on **Foundations › Spacing and layout**, generated from the tokens.
+
+| Token | Use for |
+|---|---|
+| `spacing/none` | Removing a gap on purpose |
+| `spacing/xxs` | Tight groups: comma and title, label pairs |
+| `spacing/xs` | Buttons side by side, small groups |
+| `spacing/sm` | Heading to body, list items |
+| `spacing/md` | Section header to content |
+| `spacing/lg` | Between blocks in a Section |
+| `padding/xs` | Small containers |
+| `padding/sm` | Cards |
+| `padding/md` | Larger panels |
+| `padding/lg` | `Hero` and other full-width bands |
+| `main/spacing/section-gap` | Between Sections in Main |
+
+## Prose rhythm
+
+Inside Prose, each `ProseItem` adds space above itself based on its type: more before headings, less between paragraphs. Prose itself has no gap. The first item in a block has no space before: in Figma, turn off Space before on it; in code, the prose styles do this automatically.
+
+| `ProseItem` type | Space before token |
+|---|---|
+| `heading-1` | `viewport/typography/heading-1/space-before` → `padding/lg` |
+| `heading-2`, `heading-3` | `viewport/typography/heading-2…3/space-before` → `padding/md` |
+| `body-lg`, `body-default`, `body-sm` | `viewport/typography/body-*/space-before` → `padding/sm` |
+| `blockquote` | `viewport/typography/blockquote/space-before` → `spacing/md` |
+
+## Controls
+
+Buttons, icon buttons, and inputs share one size scale, so controls of the same size are the same height side by side. The height is fixed by the token, and padding is only on the left and right. On Medium and Small, every size stays at 44 or more for touch. The values at each breakpoint are on **Foundations › Spacing and layout**.
+
+| Token | Use for |
+|---|---|
+| `control/size/sm`, `md`, `lg`, `xl` | Height (and width for square controls) |
+| `control/padding-x/sm`, `md`, `lg`, `xl` | Left and right padding |
+| `control/gap` | Icon to label |
+
+## Component tokens
+
+When a value belongs to one component, it gets a Responsive Tier 3 token named after that component, so it can change per breakpoint later without touching the component.
+
+| Group | Used for |
+|---|---|
+| `container/*` | Horizontal margins and max widths for `Container` and `Section` (constrained, wide, full-bleed). |
+| `grid/*` | Column count, gutter, and minimum item widths. |
+| `main-nav/*` | Link gap, group gap, and site title inset in `MainNav`. |
+| `nav-item/*` | `NavItem` padding (its tap area) and icon-to-label gap. |
+| `nav-container/*`, `nav-overlay/*` | Navigation thickness and padding. |
+
+## In code
+
+The same rules apply in code, written in CSS.
+
+| Rule | In code |
+|---|---|
+| No outside space | No `margin` on a component’s root element. |
+| Gaps, not spacers | The parent sets `gap` on a flex or grid layout. No spacer elements. |
+| Every value is a token | Use `--verity-` custom properties, e.g. `gap: var(--verity-spacing-lg)`. Never type a pixel value. |
+| Prose rhythm | Inside a `.prose` wrapper, each heading or paragraph gets `margin-block-start` from its space-before token, and `.prose > :first-child` has none. |
+
+## Keeping spacing consistent
+
+Ask Claude to audit spacing in the Figma file with the `figma-spacing-audit` skill. The audit lists gaps and padding without tokens, Core Tier 1 tokens used directly, plain frames that could be stacks, headings set as plain text, and any space outside a component. You review the list and approve the fixes.
+
+</VerityDocs>

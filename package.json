@@ -25,6 +25,7 @@
     "@types/react-dom": "^19.3.0",
     "@vitejs/plugin-react": "^6.1.2",
     "oxlint": "^1.88.0",
+    "remark-gfm": "^4.0.1",
     "storybook": "^10.6.4",
     "style-dictionary": "^5.7.1",
     "typescript": "~6.0.3",
