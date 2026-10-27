@@ -1,4 +1,5 @@
 import type { Preview } from '@storybook/react-vite'
+import '../src/styles/tokens.css'
 
 const preview: Preview = {
   parameters: {
@@ -11,10 +12,34 @@ const preview: Preview = {
     options: {
       // Sidebar order matches the Figma pages
       storySort: {
-        order: ['Introduction', 'Actions', 'Navigation', 'Layout', 'Text', 'Media', 'Content blocks'],
+        order: ['Introduction', 'Foundations', 'Actions', 'Navigation', 'Layout', 'Text', 'Media', 'Content blocks'],
       },
     },
   },
+  // Theme switch in the toolbar. Sets data-theme, which tokens.css uses to pick Blue or Red.
+  globalTypes: {
+    theme: {
+      description: 'Verity theme',
+      toolbar: {
+        title: 'Theme',
+        icon: 'paintbrush',
+        items: [
+          { value: 'blue', title: 'Blue' },
+          { value: 'red', title: 'Red' },
+        ],
+        dynamicTitle: true,
+      },
+    },
+  },
+  initialGlobals: {
+    theme: 'blue',
+  },
+  decorators: [
+    (Story, context) => {
+      document.documentElement.dataset.theme = context.globals.theme
+      return <Story />
+    },
+  ],
 };
 
 export default preview;
