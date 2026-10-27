@@ -188,6 +188,16 @@
 
 /* Previews */
 
+.sample {
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+
+.glyph,
+.word {
+  min-inline-size: var(--verity-control-size-xl);
+}
+
 .swatch {
   inline-size: var(--verity-control-size-xl);
   block-size: var(--verity-control-size-md);

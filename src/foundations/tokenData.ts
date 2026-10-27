@@ -236,11 +236,16 @@ export function cellFor(token: Token, column: string): Cell {
 }
 
 // Sort a group's tokens: numbers in order (100, 200…), sizes in order (xs, sm…),
-// otherwise single-value dimensions by size, otherwise Figma's order.
+// text style properties in reading order, otherwise single-value dimensions
+// by size, otherwise Figma's order.
 const SCALE = ['none', 'xxs', 'xs', 'sm', 'default', 'md', 'lg', 'x-lg', 'xl', 'xxl', 'round'];
+const TEXT_PROPERTIES = ['font-family', 'font-size', 'font-weight', 'line-height', 'letter-spacing', 'text-transform', 'space-before'];
 
 function sortTokens(tokens: Token[]): Token[] {
   const last = (t: Token) => t.path.split('.').at(-1)!;
+  if (tokens.every((t) => TEXT_PROPERTIES.includes(last(t)))) {
+    return [...tokens].sort((a, b) => TEXT_PROPERTIES.indexOf(last(a)) - TEXT_PROPERTIES.indexOf(last(b)));
+  }
   if (tokens.every((t) => /^\d+$/.test(last(t)))) return [...tokens].sort((a, b) => Number(last(a)) - Number(last(b)));
   if (tokens.every((t) => SCALE.includes(last(t)))) return [...tokens].sort((a, b) => SCALE.indexOf(last(a)) - SCALE.indexOf(last(b)));
   if (tokens.every((t) => t.type === 'dimension' && t.kind === 'none')) {
@@ -249,8 +254,13 @@ function sortTokens(tokens: Token[]): Token[] {
   return tokens;
 }
 
-// Tokens for one page, grouped by collection and shared path, in tier order
-export function groupsFor(page: Page): Group[] {
+// Within a tier, shared collections come first, then the ones that change by theme or breakpoint
+const KIND_ORDER: Kind[] = ['none', 'theme', 'breakpoint'];
+
+// Tokens for one page, grouped by collection and shared path. Sorted by tier,
+// then collection, then the group names in `order` (if given), then Figma's order.
+export function groupsFor(page: Page, order: string[] = []): Group[] {
+  const rank = (g: Group) => (order.includes(g.name) ? order.indexOf(g.name) : order.length);
   const groups = new Map<string, Group>();
   for (const token of TOKENS.filter((t) => pageOf(t) === page)) {
     const name = token.path.split('.').slice(0, -1).join('.') || token.path;
@@ -261,5 +271,5 @@ export function groupsFor(page: Page): Group[] {
   }
   return [...groups.values()]
     .map((g) => ({ ...g, tokens: sortTokens(g.tokens) }))
-    .sort((a, b) => a.tier - b.tier);
+    .sort((a, b) => a.tier - b.tier || KIND_ORDER.indexOf(a.kind) - KIND_ORDER.indexOf(b.kind) || rank(a) - rank(b));
 }

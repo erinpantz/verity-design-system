@@ -143,11 +143,7 @@ export function TokenTiers({
   // Group names to show first, in this order
   order?: string[];
 }) {
-  const groups = groupsFor(page);
-  if (order) {
-    const rank = (g: Group) => (order.includes(g.name) ? order.indexOf(g.name) : order.length);
-    groups.sort((a, b) => a.tier - b.tier || rank(a) - rank(b));
-  }
+  const groups = groupsFor(page, order);
   const tiers = [...new Set(groups.map((g) => g.tier))];
   return tiers.map((tier) => (
     <TierSection key={tier} tier={tier}>
