@@ -33,6 +33,7 @@ Commands are added here as they're set up.
 tokens/                    token source JSON, exported from Figma
 src/
   styles/                  generated token CSS and global styles
+  foundations/             Storybook pages documenting tokens (Colors, …)
   components/
     <Category>/<Component>/
       <Component>.tsx
