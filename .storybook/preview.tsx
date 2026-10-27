@@ -12,7 +12,17 @@ const preview: Preview = {
     options: {
       // Sidebar order matches the Figma pages
       storySort: {
-        order: ['Introduction', 'Foundations', 'Actions', 'Navigation', 'Layout', 'Text', 'Media', 'Content blocks'],
+        order: [
+          'Introduction',
+          'Foundations',
+          ['Color', 'Typography', 'Spacing and layout', 'Borders', 'Breakpoints', 'Motion and effects'],
+          'Actions',
+          'Navigation',
+          'Layout',
+          'Text',
+          'Media',
+          'Content blocks',
+        ],
       },
     },
   },
