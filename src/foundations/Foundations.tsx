@@ -65,8 +65,16 @@ export interface TableOptions {
   sample?: (group: Group, column: string) => ReactNode;
 }
 
+// The description every token in a group shares, if they all have the same one
+function sharedDescription(group: Group): string | undefined {
+  const first = group.tokens[0]?.description;
+  return first && group.tokens.every((t) => t.description === first) ? first : undefined;
+}
+
 export function TokenTable({ group, preview, sample }: { group: Group } & TableOptions) {
   const columns = columnsFor(group.kind);
+  // A shared description shows once, under the group heading, instead of on every row
+  const showRowDescriptions = !sharedDescription(group);
   return (
     <div className={styles.tableWrap}>
       <table className={styles.table}>
@@ -94,7 +102,10 @@ export function TokenTable({ group, preview, sample }: { group: Group } & TableO
           {group.tokens.map((token) => (
             <tr key={token.cssVar}>
               <th scope="row">
-                <CopyVar name={token.cssVar} />
+                <div className={styles.cellText}>
+                  <CopyVar name={token.cssVar} />
+                  {showRowDescriptions && token.description && <p className={styles.description}>{token.description}</p>}
+                </div>
               </th>
               {columns.map((column) => {
                 const cell = cellFor(token, column);
@@ -120,11 +131,13 @@ export function TokenTable({ group, preview, sample }: { group: Group } & TableO
 }
 
 export function TokenGroup({ group, ...options }: { group: Group } & TableOptions) {
+  const description = sharedDescription(group);
   return (
     <div className={styles.group}>
       <div>
         <h3 className={styles.groupTitle}>{group.name}</h3>
         <p className={styles.detail}>{group.collection}</p>
+        {description && <p className={styles.groupDescription}>{description}</p>}
       </div>
       <TokenTable group={group} {...options} />
     </div>

@@ -22,6 +22,8 @@ export interface Token {
   collection: string;
   tier: number;
   kind: Kind;
+  // The token's $description from Figma, if it has one
+  description?: string;
   // The exported value and $extensions for each mode
   modes: Record<string, { value: unknown; extensions?: Tree }>;
 }
@@ -117,6 +119,7 @@ function readTokens(): Token[] {
           modes: {},
         };
         token.modes[modeName] = { value: node.$value, extensions: node.$extensions as Tree | undefined };
+        if (typeof node.$description === 'string' && node.$description) token.description ??= node.$description;
         byKey.set(key, token);
       });
     }
