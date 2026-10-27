@@ -241,6 +241,43 @@
   background: var(--verity-color-background-brand-disabled);
 }
 
+.curve {
+  inline-size: var(--verity-control-size-xl);
+  block-size: var(--verity-control-size-xl);
+  overflow: visible;
+}
+
+.curveAxis,
+.curveLine {
+  fill: none;
+  vector-effect: non-scaling-stroke;
+}
+
+.curveAxis {
+  stroke: var(--verity-color-border-disabled);
+  stroke-width: var(--verity-border-width-sm);
+}
+
+.curveLine {
+  stroke: var(--verity-color-border-default);
+  stroke-width: var(--verity-border-width-md);
+}
+
+/* Shadows show on a light surface, where they're visible */
+.shadowStage {
+  display: inline-flex;
+  padding: var(--verity-padding-sm);
+  border-radius: var(--verity-border-radius-sm);
+  background: var(--verity-color-background-knockout);
+}
+
+.shadowExample {
+  inline-size: var(--verity-control-size-xl);
+  block-size: var(--verity-control-size-xl);
+  border-radius: var(--verity-border-radius-sm);
+  background: var(--verity-color-background-white);
+}
+
 .glyph,
 .word {
   min-inline-size: var(--verity-control-size-xl);
