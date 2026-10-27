@@ -1,0 +1,96 @@
+{
+  "source": "Figma file \"Verity Library\" (3Da0PcmwQjC19SKRduBuQD)",
+  "format": "W3C Design Tokens (DTCG); references use {group.token} paths",
+  "collections": [
+    {
+      "name": "Core Tier 1",
+      "modes": {
+        "Mode 1": "core-tier-1.json"
+      },
+      "tokens": 151
+    },
+    {
+      "name": "Themes Tier 2",
+      "modes": {
+        "Blue": "themes-tier-2/blue.json",
+        "Red": "themes-tier-2/red.json"
+      },
+      "tokens": 69
+    },
+    {
+      "name": "Blue Tier 1",
+      "modes": {
+        "Value": "blue-tier-1.json"
+      },
+      "tokens": 14
+    },
+    {
+      "name": "Themes Tier 3",
+      "modes": {
+        "Blue": "themes-tier-3/blue.json",
+        "Red": "themes-tier-3/red.json"
+      },
+      "tokens": 54
+    },
+    {
+      "name": "Typography Styles (Design Only)",
+      "modes": {
+        "Large": "typography-styles-design-only/large.json",
+        "Medium": "typography-styles-design-only/medium.json",
+        "Small": "typography-styles-design-only/small.json"
+      },
+      "tokens": 126
+    },
+    {
+      "name": "Styles Tier 2",
+      "modes": {
+        "Mode 1": "styles-tier-2.json"
+      },
+      "tokens": 64
+    },
+    {
+      "name": "Typography Tier 2",
+      "modes": {
+        "Mode 1": "typography-tier-2.json"
+      },
+      "tokens": 150
+    },
+    {
+      "name": "Responsive Tier 1",
+      "modes": {
+        "XL": "responsive-tier-1/xl.json",
+        "Large": "responsive-tier-1/large.json",
+        "Medium": "responsive-tier-1/medium.json",
+        "Small": "responsive-tier-1/small.json"
+      },
+      "tokens": 4
+    },
+    {
+      "name": "Responsive Tier 2",
+      "modes": {
+        "XL": "responsive-tier-2/xl.json",
+        "Large": "responsive-tier-2/large.json",
+        "Medium": "responsive-tier-2/medium.json",
+        "Small": "responsive-tier-2/small.json"
+      },
+      "tokens": 21
+    },
+    {
+      "name": "Responsive Tier 3",
+      "modes": {
+        "XL": "responsive-tier-3/xl.json",
+        "Large": "responsive-tier-3/large.json",
+        "Medium": "responsive-tier-3/medium.json",
+        "Small": "responsive-tier-3/small.json"
+      },
+      "tokens": 22
+    },
+    {
+      "name": "Red Tier 1",
+      "modes": {
+        "Mode 1": "red-tier-1.json"
+      },
+      "tokens": 14
+    }
+  ]
+}

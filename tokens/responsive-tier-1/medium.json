@@ -1,0 +1,27 @@
+{
+  "viewport": {
+    "default-width": {
+      "$type": "dimension",
+      "$value": "768px",
+      "$extensions": {
+        "com.figma": {
+          "scopes": [
+            "WIDTH_HEIGHT"
+          ]
+        }
+      }
+    },
+    "viewport": {
+      "$type": "string",
+      "$value": "medium"
+    },
+    "min-width": {
+      "$type": "dimension",
+      "$value": "560px"
+    },
+    "max-width": {
+      "$type": "dimension",
+      "$value": "960px"
+    }
+  }
+}

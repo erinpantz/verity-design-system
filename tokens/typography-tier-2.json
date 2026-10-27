@@ -1,0 +1,1854 @@
+{
+  "typography": {
+    "label-lg": {
+      "font-family": {
+        "$type": "fontFamily",
+        "$value": "{typography.font-family.plus-jakarta-sans}"
+      },
+      "text-transform": {
+        "$type": "string",
+        "$value": "{typography.text-transform.none}"
+      },
+      "font-weight": {
+        "$type": "fontWeight",
+        "$value": "{typography.font-weight.600}",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "FONT_WEIGHT",
+              "FONT_SIZE",
+              "LINE_HEIGHT",
+              "LETTER_SPACING",
+              "PARAGRAPH_SPACING",
+              "PARAGRAPH_INDENT"
+            ]
+          }
+        }
+      },
+      "font-size": {
+        "$type": "dimension",
+        "$value": "{typography.font-size.20}",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "FONT_WEIGHT",
+              "FONT_SIZE",
+              "LINE_HEIGHT",
+              "LETTER_SPACING",
+              "PARAGRAPH_SPACING",
+              "PARAGRAPH_INDENT"
+            ]
+          }
+        }
+      },
+      "line-height": {
+        "$type": "dimension",
+        "$value": "{typography.line-height.28}",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "FONT_WEIGHT",
+              "FONT_SIZE",
+              "LINE_HEIGHT",
+              "LETTER_SPACING",
+              "PARAGRAPH_SPACING",
+              "PARAGRAPH_INDENT"
+            ]
+          }
+        }
+      },
+      "letter-spacing": {
+        "$type": "dimension",
+        "$value": "{typography.letter-spacing.0}",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "FONT_WEIGHT",
+              "FONT_SIZE",
+              "LINE_HEIGHT",
+              "LETTER_SPACING",
+              "PARAGRAPH_SPACING",
+              "PARAGRAPH_INDENT"
+            ]
+          }
+        }
+      }
+    },
+    "title-sm": {
+      "letter-spacing": {
+        "$type": "dimension",
+        "$value": "{typography.letter-spacing.minus-half}",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "FONT_WEIGHT",
+              "FONT_SIZE",
+              "LINE_HEIGHT",
+              "LETTER_SPACING",
+              "PARAGRAPH_SPACING",
+              "PARAGRAPH_INDENT"
+            ]
+          }
+        }
+      },
+      "line-height": {
+        "$type": "dimension",
+        "$value": "{typography.line-height.32}",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "FONT_WEIGHT",
+              "FONT_SIZE",
+              "LINE_HEIGHT",
+              "LETTER_SPACING",
+              "PARAGRAPH_SPACING",
+              "PARAGRAPH_INDENT"
+            ]
+          }
+        }
+      },
+      "font-size": {
+        "$type": "dimension",
+        "$value": "{typography.font-size.24}",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "FONT_WEIGHT",
+              "FONT_SIZE",
+              "LINE_HEIGHT",
+              "LETTER_SPACING",
+              "PARAGRAPH_SPACING",
+              "PARAGRAPH_INDENT"
+            ]
+          }
+        }
+      },
+      "font-weight": {
+        "$type": "fontWeight",
+        "$value": "{typography.font-weight.700}",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "FONT_WEIGHT",
+              "FONT_SIZE",
+              "LINE_HEIGHT",
+              "LETTER_SPACING",
+              "PARAGRAPH_SPACING",
+              "PARAGRAPH_INDENT"
+            ]
+          }
+        }
+      },
+      "font-family": {
+        "$type": "fontFamily",
+        "$value": "{typography.font-family.schibsted-grotesk}"
+      },
+      "text-transform": {
+        "$type": "string",
+        "$value": "{typography.text-transform.none}"
+      }
+    },
+    "title-default": {
+      "text-transform": {
+        "$type": "string",
+        "$value": "{typography.text-transform.none}"
+      },
+      "line-height": {
+        "$type": "dimension",
+        "$value": "{typography.line-height.36}",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "FONT_WEIGHT",
+              "FONT_SIZE",
+              "LINE_HEIGHT",
+              "LETTER_SPACING",
+              "PARAGRAPH_SPACING",
+              "PARAGRAPH_INDENT"
+            ]
+          }
+        }
+      },
+      "font-weight": {
+        "$type": "fontWeight",
+        "$value": "{typography.font-weight.700}",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "FONT_WEIGHT",
+              "FONT_SIZE",
+              "LINE_HEIGHT",
+              "LETTER_SPACING",
+              "PARAGRAPH_SPACING",
+              "PARAGRAPH_INDENT"
+            ]
+          }
+        }
+      },
+      "letter-spacing": {
+        "$type": "dimension",
+        "$value": "{typography.letter-spacing.minus-half}",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "FONT_WEIGHT",
+              "FONT_SIZE",
+              "LINE_HEIGHT",
+              "LETTER_SPACING",
+              "PARAGRAPH_SPACING",
+              "PARAGRAPH_INDENT"
+            ]
+          }
+        }
+      },
+      "font-family": {
+        "$type": "fontFamily",
+        "$value": "{typography.font-family.schibsted-grotesk}"
+      },
+      "font-size": {
+        "$type": "dimension",
+        "$value": "{typography.font-size.28}",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "FONT_WEIGHT",
+              "FONT_SIZE",
+              "LINE_HEIGHT",
+              "LETTER_SPACING",
+              "PARAGRAPH_SPACING",
+              "PARAGRAPH_INDENT"
+            ]
+          }
+        }
+      }
+    },
+    "display-default-mobile": {
+      "font-weight": {
+        "$type": "fontWeight",
+        "$value": "{typography.font-weight.700}",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "FONT_WEIGHT",
+              "FONT_SIZE",
+              "LINE_HEIGHT",
+              "LETTER_SPACING",
+              "PARAGRAPH_SPACING",
+              "PARAGRAPH_INDENT"
+            ]
+          }
+        }
+      },
+      "font-family": {
+        "$type": "fontFamily",
+        "$value": "{typography.font-family.schibsted-grotesk}"
+      },
+      "text-transform": {
+        "$type": "string",
+        "$value": "{typography.display-default.text-transform}"
+      },
+      "font-size": {
+        "$type": "dimension",
+        "$value": "{typography.font-size.48}",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "FONT_WEIGHT",
+              "FONT_SIZE",
+              "LINE_HEIGHT",
+              "LETTER_SPACING",
+              "PARAGRAPH_SPACING",
+              "PARAGRAPH_INDENT"
+            ]
+          }
+        }
+      },
+      "letter-spacing": {
+        "$type": "dimension",
+        "$value": "{typography.letter-spacing.minus-1-half}",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "FONT_WEIGHT",
+              "FONT_SIZE",
+              "LINE_HEIGHT",
+              "LETTER_SPACING",
+              "PARAGRAPH_SPACING",
+              "PARAGRAPH_INDENT"
+            ]
+          }
+        }
+      },
+      "line-height": {
+        "$type": "dimension",
+        "$value": "{typography.line-height.56}",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "FONT_WEIGHT",
+              "FONT_SIZE",
+              "LINE_HEIGHT",
+              "LETTER_SPACING",
+              "PARAGRAPH_SPACING",
+              "PARAGRAPH_INDENT"
+            ]
+          }
+        }
+      }
+    },
+    "title-lg-mobile": {
+      "text-transform": {
+        "$type": "string",
+        "$value": "{typography.title-lg.text-transform}"
+      },
+      "letter-spacing": {
+        "$type": "dimension",
+        "$value": "{typography.letter-spacing.minus-half}",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "FONT_WEIGHT",
+              "FONT_SIZE",
+              "LINE_HEIGHT",
+              "LETTER_SPACING",
+              "PARAGRAPH_SPACING",
+              "PARAGRAPH_INDENT"
+            ]
+          }
+        }
+      },
+      "font-size": {
+        "$type": "dimension",
+        "$value": "{typography.font-size.28}",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "FONT_WEIGHT",
+              "FONT_SIZE",
+              "LINE_HEIGHT",
+              "LETTER_SPACING",
+              "PARAGRAPH_SPACING",
+              "PARAGRAPH_INDENT"
+            ]
+          }
+        }
+      },
+      "font-weight": {
+        "$type": "fontWeight",
+        "$value": "{typography.font-weight.700}",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "FONT_WEIGHT",
+              "FONT_SIZE",
+              "LINE_HEIGHT",
+              "LETTER_SPACING",
+              "PARAGRAPH_SPACING",
+              "PARAGRAPH_INDENT"
+            ]
+          }
+        }
+      },
+      "font-family": {
+        "$type": "fontFamily",
+        "$value": "{typography.font-family.schibsted-grotesk}"
+      },
+      "line-height": {
+        "$type": "dimension",
+        "$value": "{typography.line-height.36}",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "FONT_WEIGHT",
+              "FONT_SIZE",
+              "LINE_HEIGHT",
+              "LETTER_SPACING",
+              "PARAGRAPH_SPACING",
+              "PARAGRAPH_INDENT"
+            ]
+          }
+        }
+      }
+    },
+    "title-lg": {
+      "font-size": {
+        "$type": "dimension",
+        "$value": "{typography.font-size.32}",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "FONT_WEIGHT",
+              "FONT_SIZE",
+              "LINE_HEIGHT",
+              "LETTER_SPACING",
+              "PARAGRAPH_SPACING",
+              "PARAGRAPH_INDENT"
+            ]
+          }
+        }
+      },
+      "font-weight": {
+        "$type": "fontWeight",
+        "$value": "{typography.font-weight.700}",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "FONT_WEIGHT",
+              "FONT_SIZE",
+              "LINE_HEIGHT",
+              "LETTER_SPACING",
+              "PARAGRAPH_SPACING",
+              "PARAGRAPH_INDENT"
+            ]
+          }
+        }
+      },
+      "font-family": {
+        "$type": "fontFamily",
+        "$value": "{typography.font-family.schibsted-grotesk}"
+      },
+      "text-transform": {
+        "$type": "string",
+        "$value": "{typography.text-transform.none}"
+      },
+      "line-height": {
+        "$type": "dimension",
+        "$value": "{typography.line-height.40}",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "FONT_WEIGHT",
+              "FONT_SIZE",
+              "LINE_HEIGHT",
+              "LETTER_SPACING",
+              "PARAGRAPH_SPACING",
+              "PARAGRAPH_INDENT"
+            ]
+          }
+        }
+      },
+      "letter-spacing": {
+        "$type": "dimension",
+        "$value": "{typography.letter-spacing.minus-half}",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "FONT_WEIGHT",
+              "FONT_SIZE",
+              "LINE_HEIGHT",
+              "LETTER_SPACING",
+              "PARAGRAPH_SPACING",
+              "PARAGRAPH_INDENT"
+            ]
+          }
+        }
+      }
+    },
+    "heading-3-mobile": {
+      "letter-spacing": {
+        "$type": "dimension",
+        "$value": "{typography.letter-spacing.half}",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "FONT_WEIGHT",
+              "FONT_SIZE",
+              "LINE_HEIGHT",
+              "LETTER_SPACING",
+              "PARAGRAPH_SPACING",
+              "PARAGRAPH_INDENT"
+            ]
+          }
+        }
+      },
+      "font-size": {
+        "$type": "dimension",
+        "$value": "{typography.font-size.28}",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "FONT_WEIGHT",
+              "FONT_SIZE",
+              "LINE_HEIGHT",
+              "LETTER_SPACING",
+              "PARAGRAPH_SPACING",
+              "PARAGRAPH_INDENT"
+            ]
+          }
+        }
+      },
+      "text-transform": {
+        "$type": "string",
+        "$value": "{typography.heading-3.text-transform}"
+      },
+      "line-height": {
+        "$type": "dimension",
+        "$value": "{typography.line-height.36}",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "FONT_WEIGHT",
+              "FONT_SIZE",
+              "LINE_HEIGHT",
+              "LETTER_SPACING",
+              "PARAGRAPH_SPACING",
+              "PARAGRAPH_INDENT"
+            ]
+          }
+        }
+      },
+      "font-family": {
+        "$type": "fontFamily",
+        "$value": "{typography.font-family.schibsted-grotesk}"
+      },
+      "font-weight": {
+        "$type": "fontWeight",
+        "$value": "{typography.font-weight.700}",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "FONT_WEIGHT",
+              "FONT_SIZE",
+              "LINE_HEIGHT",
+              "LETTER_SPACING",
+              "PARAGRAPH_SPACING",
+              "PARAGRAPH_INDENT"
+            ]
+          }
+        }
+      }
+    },
+    "display-default": {
+      "line-height": {
+        "$type": "dimension",
+        "$value": "{typography.line-height.110}",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "FONT_WEIGHT",
+              "FONT_SIZE",
+              "LINE_HEIGHT",
+              "LETTER_SPACING",
+              "PARAGRAPH_SPACING",
+              "PARAGRAPH_INDENT"
+            ]
+          }
+        }
+      },
+      "text-transform": {
+        "$type": "string",
+        "$value": "{typography.text-transform.none}"
+      },
+      "font-size": {
+        "$type": "dimension",
+        "$value": "{typography.font-size.100}",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "FONT_WEIGHT",
+              "FONT_SIZE",
+              "LINE_HEIGHT",
+              "LETTER_SPACING",
+              "PARAGRAPH_SPACING",
+              "PARAGRAPH_INDENT"
+            ]
+          }
+        }
+      },
+      "font-weight": {
+        "$type": "fontWeight",
+        "$value": "{typography.font-weight.700}",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "FONT_WEIGHT",
+              "FONT_SIZE",
+              "LINE_HEIGHT",
+              "LETTER_SPACING",
+              "PARAGRAPH_SPACING",
+              "PARAGRAPH_INDENT"
+            ]
+          }
+        }
+      },
+      "font-family": {
+        "$type": "fontFamily",
+        "$value": "{typography.font-family.schibsted-grotesk}"
+      },
+      "letter-spacing": {
+        "$type": "dimension",
+        "$value": "{typography.letter-spacing.minus-2}",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "FONT_WEIGHT",
+              "FONT_SIZE",
+              "LINE_HEIGHT",
+              "LETTER_SPACING",
+              "PARAGRAPH_SPACING",
+              "PARAGRAPH_INDENT"
+            ]
+          }
+        }
+      }
+    },
+    "heading-3": {
+      "line-height": {
+        "$type": "dimension",
+        "$value": "{typography.line-height.40}",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "FONT_WEIGHT",
+              "FONT_SIZE",
+              "LINE_HEIGHT",
+              "LETTER_SPACING",
+              "PARAGRAPH_SPACING",
+              "PARAGRAPH_INDENT"
+            ]
+          }
+        }
+      },
+      "font-size": {
+        "$type": "dimension",
+        "$value": "{typography.font-size.32}",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "FONT_WEIGHT",
+              "FONT_SIZE",
+              "LINE_HEIGHT",
+              "LETTER_SPACING",
+              "PARAGRAPH_SPACING",
+              "PARAGRAPH_INDENT"
+            ]
+          }
+        }
+      },
+      "letter-spacing": {
+        "$type": "dimension",
+        "$value": "{typography.letter-spacing.half}",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "FONT_WEIGHT",
+              "FONT_SIZE",
+              "LINE_HEIGHT",
+              "LETTER_SPACING",
+              "PARAGRAPH_SPACING",
+              "PARAGRAPH_INDENT"
+            ]
+          }
+        }
+      },
+      "text-transform": {
+        "$type": "string",
+        "$value": "{typography.text-transform.none}"
+      },
+      "font-weight": {
+        "$type": "fontWeight",
+        "$value": "{typography.font-weight.700}",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "FONT_WEIGHT",
+              "FONT_SIZE",
+              "LINE_HEIGHT",
+              "LETTER_SPACING",
+              "PARAGRAPH_SPACING",
+              "PARAGRAPH_INDENT"
+            ]
+          }
+        }
+      },
+      "font-family": {
+        "$type": "fontFamily",
+        "$value": "{typography.font-family.schibsted-grotesk}"
+      }
+    },
+    "heading-2-mobile": {
+      "text-transform": {
+        "$type": "string",
+        "$value": "{typography.text-transform.none}"
+      },
+      "line-height": {
+        "$type": "dimension",
+        "$value": "{typography.line-height.40}",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "FONT_WEIGHT",
+              "FONT_SIZE",
+              "LINE_HEIGHT",
+              "LETTER_SPACING",
+              "PARAGRAPH_SPACING",
+              "PARAGRAPH_INDENT"
+            ]
+          }
+        }
+      },
+      "font-family": {
+        "$type": "fontFamily",
+        "$value": "{typography.font-family.schibsted-grotesk}"
+      },
+      "font-size": {
+        "$type": "dimension",
+        "$value": "{typography.font-size.32}",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "FONT_WEIGHT",
+              "FONT_SIZE",
+              "LINE_HEIGHT",
+              "LETTER_SPACING",
+              "PARAGRAPH_SPACING",
+              "PARAGRAPH_INDENT"
+            ]
+          }
+        }
+      },
+      "font-weight": {
+        "$type": "fontWeight",
+        "$value": "{typography.font-weight.700}",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "FONT_WEIGHT",
+              "FONT_SIZE",
+              "LINE_HEIGHT",
+              "LETTER_SPACING",
+              "PARAGRAPH_SPACING",
+              "PARAGRAPH_INDENT"
+            ]
+          }
+        }
+      },
+      "letter-spacing": {
+        "$type": "dimension",
+        "$value": "{typography.letter-spacing.half}",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "FONT_WEIGHT",
+              "FONT_SIZE",
+              "LINE_HEIGHT",
+              "LETTER_SPACING",
+              "PARAGRAPH_SPACING",
+              "PARAGRAPH_INDENT"
+            ]
+          }
+        }
+      }
+    },
+    "meta-default": {
+      "font-size": {
+        "$type": "dimension",
+        "$value": "{typography.font-size.14}",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "FONT_WEIGHT",
+              "FONT_SIZE",
+              "LINE_HEIGHT",
+              "LETTER_SPACING",
+              "PARAGRAPH_SPACING",
+              "PARAGRAPH_INDENT"
+            ]
+          }
+        }
+      },
+      "letter-spacing": {
+        "$type": "dimension",
+        "$value": "{typography.letter-spacing.2}",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "FONT_WEIGHT",
+              "FONT_SIZE",
+              "LINE_HEIGHT",
+              "LETTER_SPACING",
+              "PARAGRAPH_SPACING",
+              "PARAGRAPH_INDENT"
+            ]
+          }
+        }
+      },
+      "text-transform": {
+        "$type": "string",
+        "$value": "{typography.text-transform.uppercase}"
+      },
+      "font-family": {
+        "$type": "fontFamily",
+        "$value": "{typography.font-family.plus-jakarta-sans}"
+      },
+      "line-height": {
+        "$type": "dimension",
+        "$value": "{typography.line-height.20}",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "FONT_WEIGHT",
+              "FONT_SIZE",
+              "LINE_HEIGHT",
+              "LETTER_SPACING",
+              "PARAGRAPH_SPACING",
+              "PARAGRAPH_INDENT"
+            ]
+          }
+        }
+      },
+      "font-weight": {
+        "$type": "fontWeight",
+        "$value": "{typography.font-weight.700}",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "FONT_WEIGHT",
+              "FONT_SIZE",
+              "LINE_HEIGHT",
+              "LETTER_SPACING",
+              "PARAGRAPH_SPACING",
+              "PARAGRAPH_INDENT"
+            ]
+          }
+        }
+      }
+    },
+    "heading-2": {
+      "text-transform": {
+        "$type": "string",
+        "$value": "{typography.text-transform.none}"
+      },
+      "letter-spacing": {
+        "$type": "dimension",
+        "$value": "{typography.letter-spacing.half}",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "FONT_WEIGHT",
+              "FONT_SIZE",
+              "LINE_HEIGHT",
+              "LETTER_SPACING",
+              "PARAGRAPH_SPACING",
+              "PARAGRAPH_INDENT"
+            ]
+          }
+        }
+      },
+      "font-size": {
+        "$type": "dimension",
+        "$value": "{typography.font-size.40}",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "FONT_WEIGHT",
+              "FONT_SIZE",
+              "LINE_HEIGHT",
+              "LETTER_SPACING",
+              "PARAGRAPH_SPACING",
+              "PARAGRAPH_INDENT"
+            ]
+          }
+        }
+      },
+      "font-family": {
+        "$type": "fontFamily",
+        "$value": "{typography.font-family.schibsted-grotesk}"
+      },
+      "font-weight": {
+        "$type": "fontWeight",
+        "$value": "{typography.font-weight.700}",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "FONT_WEIGHT",
+              "FONT_SIZE",
+              "LINE_HEIGHT",
+              "LETTER_SPACING",
+              "PARAGRAPH_SPACING",
+              "PARAGRAPH_INDENT"
+            ]
+          }
+        }
+      },
+      "line-height": {
+        "$type": "dimension",
+        "$value": "{typography.line-height.48}",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "FONT_WEIGHT",
+              "FONT_SIZE",
+              "LINE_HEIGHT",
+              "LETTER_SPACING",
+              "PARAGRAPH_SPACING",
+              "PARAGRAPH_INDENT"
+            ]
+          }
+        }
+      }
+    },
+    "label-sm": {
+      "font-size": {
+        "$type": "dimension",
+        "$value": "{typography.font-size.14}",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "FONT_WEIGHT",
+              "FONT_SIZE",
+              "LINE_HEIGHT",
+              "LETTER_SPACING",
+              "PARAGRAPH_SPACING",
+              "PARAGRAPH_INDENT"
+            ]
+          }
+        }
+      },
+      "font-weight": {
+        "$type": "fontWeight",
+        "$value": "{typography.font-weight.600}",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "FONT_WEIGHT",
+              "FONT_SIZE",
+              "LINE_HEIGHT",
+              "LETTER_SPACING",
+              "PARAGRAPH_SPACING",
+              "PARAGRAPH_INDENT"
+            ]
+          }
+        }
+      },
+      "font-family": {
+        "$type": "fontFamily",
+        "$value": "{typography.font-family.plus-jakarta-sans}"
+      },
+      "line-height": {
+        "$type": "dimension",
+        "$value": "{typography.line-height.20}",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "FONT_WEIGHT",
+              "FONT_SIZE",
+              "LINE_HEIGHT",
+              "LETTER_SPACING",
+              "PARAGRAPH_SPACING",
+              "PARAGRAPH_INDENT"
+            ]
+          }
+        }
+      },
+      "text-transform": {
+        "$type": "string",
+        "$value": "{typography.text-transform.none}"
+      },
+      "letter-spacing": {
+        "$type": "dimension",
+        "$value": "{typography.letter-spacing.0}",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "FONT_WEIGHT",
+              "FONT_SIZE",
+              "LINE_HEIGHT",
+              "LETTER_SPACING",
+              "PARAGRAPH_SPACING",
+              "PARAGRAPH_INDENT"
+            ]
+          }
+        }
+      }
+    },
+    "body-sm": {
+      "text-transform": {
+        "$type": "string",
+        "$value": "{typography.text-transform.none}"
+      },
+      "line-height": {
+        "$type": "dimension",
+        "$value": "{typography.line-height.24}",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "FONT_WEIGHT",
+              "FONT_SIZE",
+              "LINE_HEIGHT",
+              "LETTER_SPACING",
+              "PARAGRAPH_SPACING",
+              "PARAGRAPH_INDENT"
+            ]
+          }
+        }
+      },
+      "font-size": {
+        "$type": "dimension",
+        "$value": "{typography.font-size.14}",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "FONT_WEIGHT",
+              "FONT_SIZE",
+              "LINE_HEIGHT",
+              "LETTER_SPACING",
+              "PARAGRAPH_SPACING",
+              "PARAGRAPH_INDENT"
+            ]
+          }
+        }
+      },
+      "font-weight": {
+        "$type": "fontWeight",
+        "$value": "{typography.font-weight.400}",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "FONT_WEIGHT",
+              "FONT_SIZE",
+              "LINE_HEIGHT",
+              "LETTER_SPACING",
+              "PARAGRAPH_SPACING",
+              "PARAGRAPH_INDENT"
+            ]
+          }
+        }
+      },
+      "letter-spacing": {
+        "$type": "dimension",
+        "$value": "{typography.letter-spacing.0}",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "FONT_WEIGHT",
+              "FONT_SIZE",
+              "LINE_HEIGHT",
+              "LETTER_SPACING",
+              "PARAGRAPH_SPACING",
+              "PARAGRAPH_INDENT"
+            ]
+          }
+        }
+      },
+      "font-family": {
+        "$type": "fontFamily",
+        "$value": "{typography.font-family.plus-jakarta-sans}"
+      }
+    },
+    "heading-1-mobile": {
+      "letter-spacing": {
+        "$type": "dimension",
+        "$value": "{typography.letter-spacing.half}",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "FONT_WEIGHT",
+              "FONT_SIZE",
+              "LINE_HEIGHT",
+              "LETTER_SPACING",
+              "PARAGRAPH_SPACING",
+              "PARAGRAPH_INDENT"
+            ]
+          }
+        }
+      },
+      "text-transform": {
+        "$type": "string",
+        "$value": "{typography.text-transform.none}"
+      },
+      "line-height": {
+        "$type": "dimension",
+        "$value": "{typography.line-height.48}",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "FONT_WEIGHT",
+              "FONT_SIZE",
+              "LINE_HEIGHT",
+              "LETTER_SPACING",
+              "PARAGRAPH_SPACING",
+              "PARAGRAPH_INDENT"
+            ]
+          }
+        }
+      },
+      "font-weight": {
+        "$type": "fontWeight",
+        "$value": "{typography.font-weight.700}",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "FONT_WEIGHT",
+              "FONT_SIZE",
+              "LINE_HEIGHT",
+              "LETTER_SPACING",
+              "PARAGRAPH_SPACING",
+              "PARAGRAPH_INDENT"
+            ]
+          }
+        }
+      },
+      "font-size": {
+        "$type": "dimension",
+        "$value": "{typography.font-size.40}",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "FONT_WEIGHT",
+              "FONT_SIZE",
+              "LINE_HEIGHT",
+              "LETTER_SPACING",
+              "PARAGRAPH_SPACING",
+              "PARAGRAPH_INDENT"
+            ]
+          }
+        }
+      },
+      "font-family": {
+        "$type": "fontFamily",
+        "$value": "{typography.font-family.schibsted-grotesk}"
+      }
+    },
+    "display-sm": {
+      "font-weight": {
+        "$type": "fontWeight",
+        "$value": "{typography.font-weight.700}",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "FONT_WEIGHT",
+              "FONT_SIZE",
+              "LINE_HEIGHT",
+              "LETTER_SPACING",
+              "PARAGRAPH_SPACING",
+              "PARAGRAPH_INDENT"
+            ]
+          }
+        }
+      },
+      "font-size": {
+        "$type": "dimension",
+        "$value": "{typography.font-size.40}",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "FONT_WEIGHT",
+              "FONT_SIZE",
+              "LINE_HEIGHT",
+              "LETTER_SPACING",
+              "PARAGRAPH_SPACING",
+              "PARAGRAPH_INDENT"
+            ]
+          }
+        }
+      },
+      "letter-spacing": {
+        "$type": "dimension",
+        "$value": "{typography.letter-spacing.minus-1-half}",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "FONT_WEIGHT",
+              "FONT_SIZE",
+              "LINE_HEIGHT",
+              "LETTER_SPACING",
+              "PARAGRAPH_SPACING",
+              "PARAGRAPH_INDENT"
+            ]
+          }
+        }
+      },
+      "text-transform": {
+        "$type": "string",
+        "$value": "{typography.text-transform.none}"
+      },
+      "font-family": {
+        "$type": "fontFamily",
+        "$value": "{typography.font-family.schibsted-grotesk}"
+      },
+      "line-height": {
+        "$type": "dimension",
+        "$value": "{typography.line-height.48}",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "FONT_WEIGHT",
+              "FONT_SIZE",
+              "LINE_HEIGHT",
+              "LETTER_SPACING",
+              "PARAGRAPH_SPACING",
+              "PARAGRAPH_INDENT"
+            ]
+          }
+        }
+      }
+    },
+    "heading-1": {
+      "line-height": {
+        "$type": "dimension",
+        "$value": "{typography.line-height.56}",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "FONT_WEIGHT",
+              "FONT_SIZE",
+              "LINE_HEIGHT",
+              "LETTER_SPACING",
+              "PARAGRAPH_SPACING",
+              "PARAGRAPH_INDENT"
+            ]
+          }
+        }
+      },
+      "font-weight": {
+        "$type": "fontWeight",
+        "$value": "{typography.font-weight.700}",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "FONT_WEIGHT",
+              "FONT_SIZE",
+              "LINE_HEIGHT",
+              "LETTER_SPACING",
+              "PARAGRAPH_SPACING",
+              "PARAGRAPH_INDENT"
+            ]
+          }
+        }
+      },
+      "font-family": {
+        "$type": "fontFamily",
+        "$value": "{typography.font-family.schibsted-grotesk}"
+      },
+      "letter-spacing": {
+        "$type": "dimension",
+        "$value": "{typography.letter-spacing.half}",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "FONT_WEIGHT",
+              "FONT_SIZE",
+              "LINE_HEIGHT",
+              "LETTER_SPACING",
+              "PARAGRAPH_SPACING",
+              "PARAGRAPH_INDENT"
+            ]
+          }
+        }
+      },
+      "font-size": {
+        "$type": "dimension",
+        "$value": "{typography.font-size.48}",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "FONT_WEIGHT",
+              "FONT_SIZE",
+              "LINE_HEIGHT",
+              "LETTER_SPACING",
+              "PARAGRAPH_SPACING",
+              "PARAGRAPH_INDENT"
+            ]
+          }
+        }
+      },
+      "text-transform": {
+        "$type": "string",
+        "$value": "{typography.text-transform.none}"
+      }
+    },
+    "body-lg": {
+      "letter-spacing": {
+        "$type": "dimension",
+        "$value": "{typography.letter-spacing.0}",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "FONT_WEIGHT",
+              "FONT_SIZE",
+              "LINE_HEIGHT",
+              "LETTER_SPACING",
+              "PARAGRAPH_SPACING",
+              "PARAGRAPH_INDENT"
+            ]
+          }
+        }
+      },
+      "font-family": {
+        "$type": "fontFamily",
+        "$value": "{typography.font-family.plus-jakarta-sans}"
+      },
+      "font-size": {
+        "$type": "dimension",
+        "$value": "{typography.font-size.20}",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "FONT_WEIGHT",
+              "FONT_SIZE",
+              "LINE_HEIGHT",
+              "LETTER_SPACING",
+              "PARAGRAPH_SPACING",
+              "PARAGRAPH_INDENT"
+            ]
+          }
+        }
+      },
+      "line-height": {
+        "$type": "dimension",
+        "$value": "{typography.line-height.32}",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "FONT_WEIGHT",
+              "FONT_SIZE",
+              "LINE_HEIGHT",
+              "LETTER_SPACING",
+              "PARAGRAPH_SPACING",
+              "PARAGRAPH_INDENT"
+            ]
+          }
+        }
+      },
+      "font-weight": {
+        "$type": "fontWeight",
+        "$value": "{typography.font-weight.400}",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "FONT_WEIGHT",
+              "FONT_SIZE",
+              "LINE_HEIGHT",
+              "LETTER_SPACING",
+              "PARAGRAPH_SPACING",
+              "PARAGRAPH_INDENT"
+            ]
+          }
+        }
+      },
+      "text-transform": {
+        "$type": "string",
+        "$value": "{typography.text-transform.none}"
+      }
+    },
+    "display-sm-mobile": {
+      "text-transform": {
+        "$type": "string",
+        "$value": "{typography.display-sm.text-transform}"
+      },
+      "letter-spacing": {
+        "$type": "dimension",
+        "$value": "{typography.letter-spacing.minus-1}",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "FONT_WEIGHT",
+              "FONT_SIZE",
+              "LINE_HEIGHT",
+              "LETTER_SPACING",
+              "PARAGRAPH_SPACING",
+              "PARAGRAPH_INDENT"
+            ]
+          }
+        }
+      },
+      "font-size": {
+        "$type": "dimension",
+        "$value": "{typography.font-size.32}",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "FONT_WEIGHT",
+              "FONT_SIZE",
+              "LINE_HEIGHT",
+              "LETTER_SPACING",
+              "PARAGRAPH_SPACING",
+              "PARAGRAPH_INDENT"
+            ]
+          }
+        }
+      },
+      "font-family": {
+        "$type": "fontFamily",
+        "$value": "{typography.font-family.schibsted-grotesk}"
+      },
+      "font-weight": {
+        "$type": "fontWeight",
+        "$value": "{typography.font-weight.700}",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "FONT_WEIGHT",
+              "FONT_SIZE",
+              "LINE_HEIGHT",
+              "LETTER_SPACING",
+              "PARAGRAPH_SPACING",
+              "PARAGRAPH_INDENT"
+            ]
+          }
+        }
+      },
+      "line-height": {
+        "$type": "dimension",
+        "$value": "{typography.line-height.40}",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "FONT_WEIGHT",
+              "FONT_SIZE",
+              "LINE_HEIGHT",
+              "LETTER_SPACING",
+              "PARAGRAPH_SPACING",
+              "PARAGRAPH_INDENT"
+            ]
+          }
+        }
+      }
+    },
+    "meta-sm": {
+      "letter-spacing": {
+        "$type": "dimension",
+        "$value": "{typography.letter-spacing.2}",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "FONT_WEIGHT",
+              "FONT_SIZE",
+              "LINE_HEIGHT",
+              "LETTER_SPACING",
+              "PARAGRAPH_SPACING",
+              "PARAGRAPH_INDENT"
+            ]
+          }
+        }
+      },
+      "line-height": {
+        "$type": "dimension",
+        "$value": "{typography.line-height.16}",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "FONT_WEIGHT",
+              "FONT_SIZE",
+              "LINE_HEIGHT",
+              "LETTER_SPACING",
+              "PARAGRAPH_SPACING",
+              "PARAGRAPH_INDENT"
+            ]
+          }
+        }
+      },
+      "font-weight": {
+        "$type": "fontWeight",
+        "$value": "{typography.font-weight.700}",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "FONT_WEIGHT",
+              "FONT_SIZE",
+              "LINE_HEIGHT",
+              "LETTER_SPACING",
+              "PARAGRAPH_SPACING",
+              "PARAGRAPH_INDENT"
+            ]
+          }
+        }
+      },
+      "font-family": {
+        "$type": "fontFamily",
+        "$value": "{typography.font-family.plus-jakarta-sans}"
+      },
+      "font-size": {
+        "$type": "dimension",
+        "$value": "{typography.font-size.12}",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "FONT_WEIGHT",
+              "FONT_SIZE",
+              "LINE_HEIGHT",
+              "LETTER_SPACING",
+              "PARAGRAPH_SPACING",
+              "PARAGRAPH_INDENT"
+            ]
+          }
+        }
+      },
+      "text-transform": {
+        "$type": "string",
+        "$value": "{typography.text-transform.uppercase}"
+      }
+    },
+    "body-default": {
+      "line-height": {
+        "$type": "dimension",
+        "$value": "{typography.line-height.32}",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "FONT_WEIGHT",
+              "FONT_SIZE",
+              "LINE_HEIGHT",
+              "LETTER_SPACING",
+              "PARAGRAPH_SPACING",
+              "PARAGRAPH_INDENT"
+            ]
+          }
+        }
+      },
+      "letter-spacing": {
+        "$type": "dimension",
+        "$value": "{typography.letter-spacing.0}",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "FONT_WEIGHT",
+              "FONT_SIZE",
+              "LINE_HEIGHT",
+              "LETTER_SPACING",
+              "PARAGRAPH_SPACING",
+              "PARAGRAPH_INDENT"
+            ]
+          }
+        }
+      },
+      "text-transform": {
+        "$type": "string",
+        "$value": "{typography.text-transform.none}"
+      },
+      "font-size": {
+        "$type": "dimension",
+        "$value": "{typography.font-size.18}",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "FONT_WEIGHT",
+              "FONT_SIZE",
+              "LINE_HEIGHT",
+              "LETTER_SPACING",
+              "PARAGRAPH_SPACING",
+              "PARAGRAPH_INDENT"
+            ]
+          }
+        }
+      },
+      "font-weight": {
+        "$type": "fontWeight",
+        "$value": "{typography.font-weight.400}",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "FONT_WEIGHT",
+              "FONT_SIZE",
+              "LINE_HEIGHT",
+              "LETTER_SPACING",
+              "PARAGRAPH_SPACING",
+              "PARAGRAPH_INDENT"
+            ]
+          }
+        }
+      },
+      "font-family": {
+        "$type": "fontFamily",
+        "$value": "{typography.font-family.plus-jakarta-sans}"
+      }
+    },
+    "label-default": {
+      "font-weight": {
+        "$type": "fontWeight",
+        "$value": "{typography.font-weight.600}",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "FONT_WEIGHT",
+              "FONT_SIZE",
+              "LINE_HEIGHT",
+              "LETTER_SPACING",
+              "PARAGRAPH_SPACING",
+              "PARAGRAPH_INDENT"
+            ]
+          }
+        }
+      },
+      "letter-spacing": {
+        "$type": "dimension",
+        "$value": "{typography.letter-spacing.0}",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "FONT_WEIGHT",
+              "FONT_SIZE",
+              "LINE_HEIGHT",
+              "LETTER_SPACING",
+              "PARAGRAPH_SPACING",
+              "PARAGRAPH_INDENT"
+            ]
+          }
+        }
+      },
+      "line-height": {
+        "$type": "dimension",
+        "$value": "{typography.line-height.24}",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "FONT_WEIGHT",
+              "FONT_SIZE",
+              "LINE_HEIGHT",
+              "LETTER_SPACING",
+              "PARAGRAPH_SPACING",
+              "PARAGRAPH_INDENT"
+            ]
+          }
+        }
+      },
+      "text-transform": {
+        "$type": "string",
+        "$value": "{typography.text-transform.none}"
+      },
+      "font-family": {
+        "$type": "fontFamily",
+        "$value": "{typography.font-family.plus-jakarta-sans}"
+      },
+      "font-size": {
+        "$type": "dimension",
+        "$value": "{typography.font-size.18}",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "FONT_WEIGHT",
+              "FONT_SIZE",
+              "LINE_HEIGHT",
+              "LETTER_SPACING",
+              "PARAGRAPH_SPACING",
+              "PARAGRAPH_INDENT"
+            ]
+          }
+        }
+      }
+    },
+    "body-xl": {
+      "font-family": {
+        "$type": "fontFamily",
+        "$value": "{typography.font-family.plus-jakarta-sans}"
+      },
+      "font-weight": {
+        "$type": "fontWeight",
+        "$value": "{typography.font-weight.400}",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "FONT_WEIGHT",
+              "FONT_SIZE",
+              "LINE_HEIGHT",
+              "LETTER_SPACING",
+              "PARAGRAPH_SPACING",
+              "PARAGRAPH_INDENT"
+            ]
+          }
+        }
+      },
+      "font-size": {
+        "$type": "dimension",
+        "$value": "{typography.font-size.32}",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "FONT_WEIGHT",
+              "FONT_SIZE",
+              "LINE_HEIGHT",
+              "LETTER_SPACING",
+              "PARAGRAPH_SPACING",
+              "PARAGRAPH_INDENT"
+            ]
+          }
+        }
+      },
+      "line-height": {
+        "$type": "dimension",
+        "$value": "{typography.line-height.40}",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "FONT_WEIGHT",
+              "FONT_SIZE",
+              "LINE_HEIGHT",
+              "LETTER_SPACING",
+              "PARAGRAPH_SPACING",
+              "PARAGRAPH_INDENT"
+            ]
+          }
+        }
+      },
+      "letter-spacing": {
+        "$type": "dimension",
+        "$value": "{typography.letter-spacing.0}",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "FONT_WEIGHT",
+              "FONT_SIZE",
+              "LINE_HEIGHT",
+              "LETTER_SPACING",
+              "PARAGRAPH_SPACING",
+              "PARAGRAPH_INDENT"
+            ]
+          }
+        }
+      },
+      "text-transform": {
+        "$type": "string",
+        "$value": "{typography.text-transform.none}"
+      }
+    },
+    "blockquote": {
+      "font-family": {
+        "$type": "fontFamily",
+        "$value": "{typography.font-family.schibsted-grotesk}"
+      },
+      "font-weight": {
+        "$type": "fontWeight",
+        "$value": "{typography.font-weight.600}",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "FONT_WEIGHT",
+              "FONT_SIZE",
+              "LINE_HEIGHT",
+              "LETTER_SPACING",
+              "PARAGRAPH_SPACING",
+              "PARAGRAPH_INDENT"
+            ]
+          }
+        }
+      },
+      "font-size": {
+        "$type": "dimension",
+        "$value": "{typography.font-size.32}",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "FONT_WEIGHT",
+              "FONT_SIZE",
+              "LINE_HEIGHT",
+              "LETTER_SPACING",
+              "PARAGRAPH_SPACING",
+              "PARAGRAPH_INDENT"
+            ]
+          }
+        }
+      },
+      "line-height": {
+        "$type": "dimension",
+        "$value": "{typography.line-height.40}",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "FONT_WEIGHT",
+              "FONT_SIZE",
+              "LINE_HEIGHT",
+              "LETTER_SPACING",
+              "PARAGRAPH_SPACING",
+              "PARAGRAPH_INDENT"
+            ]
+          }
+        }
+      },
+      "letter-spacing": {
+        "$type": "dimension",
+        "$value": "{typography.letter-spacing.0}",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "FONT_WEIGHT",
+              "FONT_SIZE",
+              "LINE_HEIGHT",
+              "LETTER_SPACING",
+              "PARAGRAPH_SPACING",
+              "PARAGRAPH_INDENT"
+            ]
+          }
+        }
+      },
+      "text-transform": {
+        "$type": "string",
+        "$value": "{typography.text-transform.none}"
+      }
+    },
+    "blockquote-mobile": {
+      "font-family": {
+        "$type": "fontFamily",
+        "$value": "{typography.font-family.schibsted-grotesk}"
+      },
+      "font-weight": {
+        "$type": "fontWeight",
+        "$value": "{typography.font-weight.600}",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "FONT_WEIGHT",
+              "FONT_SIZE",
+              "LINE_HEIGHT",
+              "LETTER_SPACING",
+              "PARAGRAPH_SPACING",
+              "PARAGRAPH_INDENT"
+            ]
+          }
+        }
+      },
+      "font-size": {
+        "$type": "dimension",
+        "$value": "{typography.font-size.20}",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "FONT_WEIGHT",
+              "FONT_SIZE",
+              "LINE_HEIGHT",
+              "LETTER_SPACING",
+              "PARAGRAPH_SPACING",
+              "PARAGRAPH_INDENT"
+            ]
+          }
+        }
+      },
+      "line-height": {
+        "$type": "dimension",
+        "$value": "{typography.line-height.32}",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "FONT_WEIGHT",
+              "FONT_SIZE",
+              "LINE_HEIGHT",
+              "LETTER_SPACING",
+              "PARAGRAPH_SPACING",
+              "PARAGRAPH_INDENT"
+            ]
+          }
+        }
+      },
+      "letter-spacing": {
+        "$type": "dimension",
+        "$value": "{typography.letter-spacing.0}",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "FONT_WEIGHT",
+              "FONT_SIZE",
+              "LINE_HEIGHT",
+              "LETTER_SPACING",
+              "PARAGRAPH_SPACING",
+              "PARAGRAPH_INDENT"
+            ]
+          }
+        }
+      },
+      "text-transform": {
+        "$type": "string",
+        "$value": "{typography.text-transform.none}"
+      }
+    }
+  }
+}

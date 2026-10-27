@@ -1,0 +1,500 @@
+{
+  "color": {
+    "background": {
+      "default": {
+        "$type": "color",
+        "$value": "{color.brand.neutral.900}",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "ALL_FILLS",
+              "EFFECT_COLOR"
+            ]
+          }
+        }
+      },
+      "default-hover": {
+        "$type": "color",
+        "$value": "{color.neutral.black}",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "ALL_FILLS",
+              "EFFECT_COLOR"
+            ]
+          }
+        }
+      },
+      "knockout": {
+        "$type": "color",
+        "$value": "{color.brand.neutral.100}",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "ALL_FILLS",
+              "EFFECT_COLOR"
+            ]
+          }
+        }
+      },
+      "brand-disabled": {
+        "$type": "color",
+        "$value": "{color.brand.blue.300}",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "ALL_FILLS",
+              "EFFECT_COLOR"
+            ]
+          }
+        }
+      },
+      "disabled": {
+        "$type": "color",
+        "$value": "{color.brand.neutral.500}",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "ALL_FILLS",
+              "EFFECT_COLOR"
+            ]
+          }
+        }
+      },
+      "transparent-light": {
+        "$type": "color",
+        "$value": "{color.brand.transparent.brand-25}",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "ALL_FILLS",
+              "EFFECT_COLOR"
+            ]
+          }
+        }
+      },
+      "transparent-strong": {
+        "$type": "color",
+        "$value": "{color.brand.transparent.brand-75}",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "ALL_FILLS",
+              "EFFECT_COLOR"
+            ]
+          }
+        }
+      },
+      "brand": {
+        "$type": "color",
+        "$value": "{color.brand.blue.700}",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "ALL_FILLS",
+              "EFFECT_COLOR"
+            ]
+          }
+        }
+      },
+      "brand-hover": {
+        "$type": "color",
+        "$value": "{color.brand.blue.600}",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "ALL_FILLS",
+              "EFFECT_COLOR"
+            ]
+          }
+        }
+      },
+      "accent-one": {
+        "$type": "color",
+        "$value": "{color.accent.yellow}",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "ALL_FILLS",
+              "EFFECT_COLOR"
+            ]
+          }
+        }
+      },
+      "accent-two": {
+        "$type": "color",
+        "$value": "{color.accent.red}",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "ALL_FILLS",
+              "EFFECT_COLOR"
+            ]
+          }
+        }
+      },
+      "accent-three": {
+        "$type": "color",
+        "$value": "{color.accent.violet}",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "ALL_FILLS",
+              "EFFECT_COLOR"
+            ]
+          }
+        }
+      },
+      "white": {
+        "$type": "color",
+        "$value": "{color.neutral.white}",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "ALL_FILLS",
+              "EFFECT_COLOR"
+            ]
+          }
+        }
+      },
+      "accent-four": {
+        "$type": "color",
+        "$value": "{color.accent.green}",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "ALL_FILLS",
+              "EFFECT_COLOR"
+            ]
+          }
+        }
+      },
+      "subtle": {
+        "$type": "color",
+        "$value": "{color.brand.neutral.800}"
+      },
+      "transparent-medium": {
+        "$type": "color",
+        "$value": "{color.brand.transparent.brand-25}",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "ALL_FILLS",
+              "EFFECT_COLOR"
+            ]
+          }
+        }
+      },
+      "accent-four-dark": {
+        "$type": "color",
+        "$value": "{color.accent.dark-green}"
+      },
+      "accent-three-dark": {
+        "$type": "color",
+        "$value": "{color.accent.dark-violet}"
+      },
+      "accent-two-dark": {
+        "$type": "color",
+        "$value": "{color.accent.dark-red}"
+      },
+      "accent-one-dark": {
+        "$type": "color",
+        "$value": "{color.accent.dark-yellow}"
+      },
+      "scrim": {
+        "$type": "color",
+        "$value": "{scrim}"
+      },
+      "error": {
+        "$type": "color",
+        "$value": "{color.brand.red.700}"
+      },
+      "success": {
+        "$type": "color",
+        "$value": "{color.brand.green.700}"
+      },
+      "warning": {
+        "$type": "color",
+        "$value": "{color.brand.yellow.700}"
+      },
+      "error-subtle": {
+        "$type": "color",
+        "$value": "{color.utility.transparent.error-25}"
+      },
+      "success-subtle": {
+        "$type": "color",
+        "$value": "{color.utility.transparent.success-25}"
+      },
+      "warning-subtle": {
+        "$type": "color",
+        "$value": "{color.utility.transparent.warning-25}"
+      }
+    },
+    "content": {
+      "default": {
+        "$type": "color",
+        "$value": "{color.brand.blue.100}"
+      },
+      "default-hover": {
+        "$type": "color",
+        "$value": "{color.neutral.white}"
+      },
+      "knockout": {
+        "$type": "color",
+        "$value": "{color.brand.neutral.900}"
+      },
+      "brand": {
+        "$type": "color",
+        "$value": "{color.brand.blue.700}"
+      },
+      "brand-hover": {
+        "$type": "color",
+        "$value": "{color.brand.blue.600}"
+      },
+      "disabled": {
+        "$type": "color",
+        "$value": "{color.brand.neutral.300}"
+      },
+      "accent-two": {
+        "$type": "color",
+        "$value": "{color.accent.red}"
+      },
+      "accent-one": {
+        "$type": "color",
+        "$value": "{color.accent.yellow}"
+      },
+      "accent-three": {
+        "$type": "color",
+        "$value": "{color.accent.violet}"
+      },
+      "accent-four": {
+        "$type": "color",
+        "$value": "{color.accent.green}"
+      },
+      "accent-one-dark": {
+        "$type": "color",
+        "$value": "{color.accent.dark-yellow}"
+      },
+      "accent-two-dark": {
+        "$type": "color",
+        "$value": "{color.accent.dark-red}"
+      },
+      "accent-three-dark": {
+        "$type": "color",
+        "$value": "{color.accent.dark-violet}"
+      },
+      "accent-four-dark": {
+        "$type": "color",
+        "$value": "{color.accent.dark-green}"
+      },
+      "subtle": {
+        "$type": "color",
+        "$value": "{color.brand.blue.300}"
+      },
+      "strong": {
+        "$type": "color",
+        "$value": "{color.neutral.white}"
+      },
+      "error": {
+        "$type": "color",
+        "$value": "{color.brand.red.400}"
+      },
+      "success": {
+        "$type": "color",
+        "$value": "{color.brand.green.400}"
+      },
+      "yellow": {
+        "$type": "color",
+        "$value": "{color.brand.yellow.400}"
+      }
+    },
+    "border": {
+      "default": {
+        "$type": "color",
+        "$value": "{color.brand.blue.100}",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "STROKE_COLOR"
+            ]
+          }
+        }
+      },
+      "default-hover": {
+        "$type": "color",
+        "$value": "{color.brand.blue.200}",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "STROKE_COLOR"
+            ]
+          }
+        }
+      },
+      "knockout": {
+        "$type": "color",
+        "$value": "{color.brand.neutral.900}",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "STROKE_COLOR"
+            ]
+          }
+        }
+      },
+      "brand": {
+        "$type": "color",
+        "$value": "{color.brand.blue.700}",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "STROKE_COLOR"
+            ]
+          }
+        }
+      },
+      "brand-hover": {
+        "$type": "color",
+        "$value": "{color.brand.blue.600}",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "STROKE_COLOR"
+            ]
+          }
+        }
+      },
+      "disabled": {
+        "$type": "color",
+        "$value": "{color.brand.neutral.300}",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "STROKE_COLOR"
+            ]
+          }
+        }
+      },
+      "accent-one": {
+        "$type": "color",
+        "$value": "{color.accent.yellow}",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "STROKE_COLOR"
+            ]
+          }
+        }
+      },
+      "accent-three": {
+        "$type": "color",
+        "$value": "{color.accent.violet}",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "STROKE_COLOR"
+            ]
+          }
+        }
+      },
+      "accent-four": {
+        "$type": "color",
+        "$value": "{color.accent.green}",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "STROKE_COLOR"
+            ]
+          }
+        }
+      },
+      "accent-two": {
+        "$type": "color",
+        "$value": "{color.accent.red}",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "STROKE_COLOR"
+            ]
+          }
+        }
+      },
+      "accent-four-dark": {
+        "$type": "color",
+        "$value": "{color.accent.dark-green}"
+      },
+      "accent-three-dark": {
+        "$type": "color",
+        "$value": "{color.accent.dark-violet}"
+      },
+      "accent-two-dark": {
+        "$type": "color",
+        "$value": "{color.accent.dark-red}"
+      },
+      "accent-one-dark": {
+        "$type": "color",
+        "$value": "{color.accent.dark-yellow}"
+      },
+      "error": {
+        "$type": "color",
+        "$value": "{color.brand.red.400}"
+      },
+      "success": {
+        "$type": "color",
+        "$value": "{color.brand.green.400}"
+      },
+      "warning": {
+        "$type": "color",
+        "$value": "{color.brand.yellow.400}"
+      },
+      "error-subtle": {
+        "$type": "color",
+        "$value": "{color.brand.red.700}"
+      },
+      "success-subtle": {
+        "$type": "color",
+        "$value": "{color.brand.green.700}"
+      },
+      "warning-subtle": {
+        "$type": "color",
+        "$value": "{color.brand.yellow.700}"
+      },
+      "focus": {
+        "$type": "color",
+        "$value": "{color.brand.blue.400}",
+        "$description": "Focus ring on the default (dark) background.",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "STROKE_COLOR"
+            ]
+          }
+        }
+      },
+      "focus-brand": {
+        "$type": "color",
+        "$value": "{color.brand.blue.100}",
+        "$description": "Focus ring on a brand background.",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "STROKE_COLOR"
+            ]
+          }
+        }
+      },
+      "focus-knockout": {
+        "$type": "color",
+        "$value": "{color.brand.blue.700}",
+        "$description": "Focus ring on a knockout (light) background.",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "STROKE_COLOR"
+            ]
+          }
+        }
+      }
+    }
+  }
+}

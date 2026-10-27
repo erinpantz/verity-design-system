@@ -1,0 +1,163 @@
+{
+  "main": {
+    "spacing": {
+      "section-gap": {
+        "$type": "dimension",
+        "$value": "{spacing.48}"
+      }
+    }
+  },
+  "padding": {
+    "lg": {
+      "$type": "dimension",
+      "$value": "48px"
+    },
+    "md": {
+      "$type": "dimension",
+      "$value": "24px"
+    },
+    "sm": {
+      "$type": "dimension",
+      "$value": "16px"
+    },
+    "none": {
+      "$type": "dimension",
+      "$value": "0px"
+    },
+    "xs": {
+      "$type": "dimension",
+      "$value": "8px"
+    }
+  },
+  "spacing": {
+    "sm": {
+      "$type": "dimension",
+      "$value": "16px"
+    },
+    "md": {
+      "$type": "dimension",
+      "$value": "24px"
+    },
+    "lg": {
+      "$type": "dimension",
+      "$value": "32px"
+    },
+    "none": {
+      "$type": "dimension",
+      "$value": "0px"
+    },
+    "xs": {
+      "$type": "dimension",
+      "$value": "8px"
+    },
+    "xxs": {
+      "$type": "dimension",
+      "$value": "4px"
+    }
+  },
+  "control": {
+    "size": {
+      "sm": {
+        "$type": "dimension",
+        "$value": "44px",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "WIDTH_HEIGHT"
+            ]
+          }
+        }
+      },
+      "md": {
+        "$type": "dimension",
+        "$value": "44px",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "WIDTH_HEIGHT"
+            ]
+          }
+        }
+      },
+      "lg": {
+        "$type": "dimension",
+        "$value": "48px",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "WIDTH_HEIGHT"
+            ]
+          }
+        }
+      },
+      "xl": {
+        "$type": "dimension",
+        "$value": "56px",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "WIDTH_HEIGHT"
+            ]
+          }
+        }
+      }
+    },
+    "padding-x": {
+      "sm": {
+        "$type": "dimension",
+        "$value": "{spacing.12}",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "GAP"
+            ]
+          }
+        }
+      },
+      "md": {
+        "$type": "dimension",
+        "$value": "{spacing.16}",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "GAP"
+            ]
+          }
+        }
+      },
+      "lg": {
+        "$type": "dimension",
+        "$value": "{spacing.24}",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "GAP"
+            ]
+          }
+        }
+      },
+      "xl": {
+        "$type": "dimension",
+        "$value": "{spacing.24}",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "GAP"
+            ]
+          }
+        }
+      }
+    },
+    "gap": {
+      "$type": "dimension",
+      "$value": "{spacing.8}",
+      "$extensions": {
+        "com.figma": {
+          "scopes": [
+            "GAP"
+          ]
+        }
+      }
+    }
+  }
+}

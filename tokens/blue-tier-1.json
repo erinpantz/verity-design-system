@@ -1,0 +1,66 @@
+{
+  "color": {
+    "brand": {
+      "neutral": {
+        "500": {
+          "$type": "color",
+          "$value": "#5e7dc4"
+        },
+        "300": {
+          "$type": "color",
+          "$value": "#a6b7db"
+        },
+        "200": {
+          "$type": "color",
+          "$value": "#c9d3e7"
+        },
+        "700": {
+          "$type": "color",
+          "$value": "#274493"
+        },
+        "600": {
+          "$type": "color",
+          "$value": "#3f5fb1"
+        },
+        "400": {
+          "$type": "color",
+          "$value": "#8098ce"
+        },
+        "900": {
+          "$type": "color",
+          "$value": "#081431"
+        },
+        "800": {
+          "$type": "color",
+          "$value": "#182e6b"
+        },
+        "100": {
+          "$type": "color",
+          "$value": "#ebeef5"
+        }
+      },
+      "transparent": {
+        "brand-90": {
+          "$type": "color",
+          "$value": "#0b00e4e6"
+        },
+        "brand-25": {
+          "$type": "color",
+          "$value": "#0b00e440"
+        },
+        "brand-50": {
+          "$type": "color",
+          "$value": "#0b00e480"
+        },
+        "brand-75": {
+          "$type": "color",
+          "$value": "#0b00e4bf"
+        }
+      }
+    }
+  },
+  "scrim": {
+    "$type": "color",
+    "$value": "#02006abf"
+  }
+}

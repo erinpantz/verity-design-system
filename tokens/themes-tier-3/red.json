@@ -1,0 +1,281 @@
+{
+  "button": {
+    "primary-brand": {
+      "color": {
+        "background": {
+          "default": {
+            "$type": "color",
+            "$value": "{color.brand.red.600}"
+          },
+          "hover": {
+            "$type": "color",
+            "$value": "{color.brand.red.500}"
+          },
+          "active": {
+            "$type": "color",
+            "$value": "{color.brand.red.500}"
+          },
+          "disabled": {
+            "$type": "color",
+            "$value": "{color.brand.red.300}"
+          }
+        },
+        "content": {
+          "default": {
+            "$type": "color",
+            "$value": "{color.brand.red.100}"
+          },
+          "hover": {
+            "$type": "color",
+            "$value": "{color.neutral.white}"
+          },
+          "active": {
+            "$type": "color",
+            "$value": "{color.neutral.white}"
+          },
+          "disabled": {
+            "$type": "color",
+            "$value": "{color.brand.red.400}"
+          }
+        }
+      }
+    },
+    "secondary": {
+      "color": {
+        "content": {
+          "default": {
+            "$type": "color",
+            "$value": "{color.brand.red.100}"
+          },
+          "hover": {
+            "$type": "color",
+            "$value": "{color.neutral.white}"
+          },
+          "active": {
+            "$type": "color",
+            "$value": "{color.neutral.white}"
+          },
+          "disabled": {
+            "$type": "color",
+            "$value": "{color.brand.red.400}"
+          }
+        },
+        "border": {
+          "default": {
+            "$type": "color",
+            "$value": "{color.brand.red.100}"
+          },
+          "hover": {
+            "$type": "color",
+            "$value": "{color.neutral.white}"
+          },
+          "active": {
+            "$type": "color",
+            "$value": "{color.neutral.white}"
+          },
+          "disabled": {
+            "$type": "color",
+            "$value": "{color.brand.red.400}"
+          }
+        }
+      },
+      "knockout": {
+        "color": {
+          "content": {
+            "default": {
+              "$type": "color",
+              "$value": "{color.brand.red.600}"
+            },
+            "hover": {
+              "$type": "color",
+              "$value": "{color.brand.red.500}"
+            },
+            "active": {
+              "$type": "color",
+              "$value": "{color.brand.red.500}"
+            },
+            "disabled": {
+              "$type": "color",
+              "$value": "{color.brand.red.400}"
+            }
+          },
+          "border": {
+            "default": {
+              "$type": "color",
+              "$value": "{color.brand.red.600}"
+            },
+            "hover": {
+              "$type": "color",
+              "$value": "{color.brand.red.500}"
+            },
+            "active": {
+              "$type": "color",
+              "$value": "{color.brand.red.500}"
+            },
+            "disabled": {
+              "$type": "color",
+              "$value": "{color.brand.red.400}"
+            }
+          }
+        }
+      }
+    },
+    "primary-light": {
+      "color": {
+        "background": {
+          "default": {
+            "$type": "color",
+            "$value": "{color.brand.red.100}"
+          },
+          "hover": {
+            "$type": "color",
+            "$value": "{color.brand.red.200}"
+          },
+          "active": {
+            "$type": "color",
+            "$value": "{color.brand.red.200}"
+          },
+          "disabled": {
+            "$type": "color",
+            "$value": "{color.transparent.white-25}"
+          }
+        },
+        "content": {
+          "default": {
+            "$type": "color",
+            "$value": "{color.brand.red.600}"
+          },
+          "hover": {
+            "$type": "color",
+            "$value": "{color.brand.red.500}"
+          },
+          "active": {
+            "$type": "color",
+            "$value": "{color.brand.red.500}"
+          },
+          "disabled": {
+            "$type": "color",
+            "$value": "{color.brand.red.300}"
+          }
+        }
+      }
+    }
+  },
+  "link": {
+    "color": {
+      "content": {
+        "default": {
+          "$type": "color",
+          "$value": "{color.brand.red.400}"
+        },
+        "hover": {
+          "$type": "color",
+          "$value": "{color.brand.red.300}"
+        },
+        "active": {
+          "$type": "color",
+          "$value": "{color.brand.red.300}"
+        },
+        "visited": {
+          "$type": "color",
+          "$value": "{color.brand.red.400}"
+        },
+        "disabled": {
+          "$type": "color",
+          "$value": "{color.content.disabled}",
+          "$description": "Link that can’t be followed yet, such as a “coming soon” page. Not underlined."
+        }
+      }
+    },
+    "brand": {
+      "color": {
+        "content": {
+          "default": {
+            "$type": "color",
+            "$value": "{color.brand.red.200}"
+          },
+          "hover": {
+            "$type": "color",
+            "$value": "{color.brand.red.100}"
+          },
+          "active": {
+            "$type": "color",
+            "$value": "{color.brand.red.100}"
+          },
+          "visited": {
+            "$type": "color",
+            "$value": "{color.brand.red.200}"
+          },
+          "disabled": {
+            "$type": "color",
+            "$value": "{color.content.disabled}",
+            "$description": "Disabled link on a brand background."
+          }
+        }
+      }
+    },
+    "knockout": {
+      "color": {
+        "content": {
+          "default": {
+            "$type": "color",
+            "$value": "{color.brand.red.600}"
+          },
+          "hover": {
+            "$type": "color",
+            "$value": "{color.brand.red.500}"
+          },
+          "active": {
+            "$type": "color",
+            "$value": "{color.brand.red.500}"
+          },
+          "visited": {
+            "$type": "color",
+            "$value": "{color.brand.red.600}"
+          },
+          "disabled": {
+            "$type": "color",
+            "$value": "{color.brand.neutral.600}",
+            "$description": "Disabled link on a knockout (light) background."
+          }
+        }
+      }
+    }
+  },
+  "nav-icon": {
+    "color": {
+      "accent-yellow": {
+        "$type": "color",
+        "$value": "{color.accent.yellow}"
+      },
+      "accent-brand": {
+        "$type": "color",
+        "$value": "{color.brand.red.500}"
+      },
+      "default": {
+        "$type": "color",
+        "$value": "{color.brand.red.100}"
+      },
+      "accent-three": {
+        "$type": "color",
+        "$value": "{color.brand.blue.500}"
+      },
+      "accent-four": {
+        "$type": "color",
+        "$value": "{color.brand.orange.400}"
+      }
+    }
+  },
+  "grid": {
+    "item-min-width": {
+      "sm": {
+        "$type": "dimension",
+        "$value": "200px"
+      },
+      "md": {
+        "$type": "dimension",
+        "$value": "300px"
+      }
+    }
+  }
+}

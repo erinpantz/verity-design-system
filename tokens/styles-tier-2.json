@@ -1,0 +1,386 @@
+{
+  "color": {
+    "accent": {
+      "red": {
+        "$type": "color",
+        "$value": "{color.brand.red.400}"
+      },
+      "orange": {
+        "$type": "color",
+        "$value": "{color.brand.orange.400}"
+      },
+      "yellow": {
+        "$type": "color",
+        "$value": "{color.brand.yellow.200}"
+      },
+      "green": {
+        "$type": "color",
+        "$value": "{color.brand.green.300}"
+      },
+      "blue": {
+        "$type": "color",
+        "$value": "{color.brand.blue.400}"
+      },
+      "violet": {
+        "$type": "color",
+        "$value": "{color.brand.violet.400}"
+      },
+      "pink": {
+        "$type": "color",
+        "$value": "{color.brand.pink.400}"
+      },
+      "dark-red": {
+        "$type": "color",
+        "$value": "{color.brand.red.900}"
+      },
+      "dark-orange": {
+        "$type": "color",
+        "$value": "{color.brand.orange.900}"
+      },
+      "dark-yellow": {
+        "$type": "color",
+        "$value": "{color.brand.yellow.900}"
+      },
+      "dark-green": {
+        "$type": "color",
+        "$value": "{color.brand.green.900}"
+      },
+      "dark-blue": {
+        "$type": "color",
+        "$value": "{color.brand.blue.900}"
+      },
+      "dark-violet": {
+        "$type": "color",
+        "$value": "{color.brand.violet.900}"
+      },
+      "dark-pink": {
+        "$type": "color",
+        "$value": "{color.brand.pink.900}"
+      }
+    },
+    "utility": {
+      "blue": {
+        "900": {
+          "$type": "color",
+          "$value": "{color.brand.blue.900}"
+        },
+        "800": {
+          "$type": "color",
+          "$value": "{color.brand.blue.800}"
+        },
+        "700": {
+          "$type": "color",
+          "$value": "{color.brand.blue.700}"
+        },
+        "500": {
+          "$type": "color",
+          "$value": "{color.brand.blue.500}"
+        },
+        "400": {
+          "$type": "color",
+          "$value": "{color.brand.blue.400}"
+        },
+        "600": {
+          "$type": "color",
+          "$value": "{color.brand.blue.600}"
+        },
+        "300": {
+          "$type": "color",
+          "$value": "{color.brand.blue.300}"
+        },
+        "100": {
+          "$type": "color",
+          "$value": "{color.brand.blue.100}"
+        },
+        "200": {
+          "$type": "color",
+          "$value": "{color.brand.blue.200}"
+        }
+      },
+      "red": {
+        "800": {
+          "$type": "color",
+          "$value": "{color.brand.red.800}"
+        },
+        "700": {
+          "$type": "color",
+          "$value": "{color.brand.red.700}"
+        },
+        "600": {
+          "$type": "color",
+          "$value": "{color.brand.red.600}"
+        },
+        "500": {
+          "$type": "color",
+          "$value": "{color.brand.red.500}"
+        },
+        "900": {
+          "$type": "color",
+          "$value": "{color.brand.red.900}"
+        },
+        "400": {
+          "$type": "color",
+          "$value": "{color.brand.red.400}"
+        },
+        "300": {
+          "$type": "color",
+          "$value": "{color.brand.red.300}"
+        },
+        "200": {
+          "$type": "color",
+          "$value": "{color.brand.red.200}"
+        },
+        "100": {
+          "$type": "color",
+          "$value": "{color.brand.red.100}"
+        }
+      },
+      "yellow": {
+        "800": {
+          "$type": "color",
+          "$value": "{color.brand.yellow.800}"
+        },
+        "500": {
+          "$type": "color",
+          "$value": "{color.brand.yellow.500}"
+        },
+        "600": {
+          "$type": "color",
+          "$value": "{color.brand.yellow.600}"
+        },
+        "400": {
+          "$type": "color",
+          "$value": "{color.brand.yellow.400}"
+        },
+        "300": {
+          "$type": "color",
+          "$value": "{color.brand.yellow.300}"
+        },
+        "900": {
+          "$type": "color",
+          "$value": "{color.brand.yellow.900}"
+        },
+        "200": {
+          "$type": "color",
+          "$value": "{color.brand.yellow.200}"
+        },
+        "700": {
+          "$type": "color",
+          "$value": "{color.brand.yellow.700}"
+        },
+        "100": {
+          "$type": "color",
+          "$value": "{color.brand.yellow.100}"
+        }
+      },
+      "green": {
+        "800": {
+          "$type": "color",
+          "$value": "{color.brand.green.800}"
+        },
+        "700": {
+          "$type": "color",
+          "$value": "{color.brand.green.700}"
+        },
+        "500": {
+          "$type": "color",
+          "$value": "{color.brand.green.500}"
+        },
+        "200": {
+          "$type": "color",
+          "$value": "{color.brand.green.200}"
+        },
+        "100": {
+          "$type": "color",
+          "$value": "{color.brand.green.100}"
+        },
+        "900": {
+          "$type": "color",
+          "$value": "{color.brand.green.900}"
+        },
+        "400": {
+          "$type": "color",
+          "$value": "{color.brand.green.400}"
+        },
+        "300": {
+          "$type": "color",
+          "$value": "{color.brand.green.300}"
+        },
+        "600": {
+          "$type": "color",
+          "$value": "{color.brand.green.600}"
+        }
+      },
+      "transparent": {
+        "warning-25": {
+          "$type": "color",
+          "$value": "#55520040",
+          "$extensions": {
+            "com.figma": {
+              "aliasOf": "color.brand.yellow.700",
+              "opacity": 0.25
+            }
+          }
+        },
+        "success-25": {
+          "$type": "color",
+          "$value": "#015c3a40",
+          "$extensions": {
+            "com.figma": {
+              "aliasOf": "color.brand.green.700",
+              "opacity": 0.25
+            }
+          }
+        },
+        "error-25": {
+          "$type": "color",
+          "$value": "#97010240",
+          "$extensions": {
+            "com.figma": {
+              "aliasOf": "color.brand.red.700",
+              "opacity": 0.25
+            }
+          }
+        }
+      }
+    }
+  },
+  "border": {
+    "width": {
+      "lg": {
+        "$type": "dimension",
+        "$value": "{border.width.4}",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "CORNER_RADIUS",
+              "STROKE_FLOAT"
+            ]
+          }
+        }
+      },
+      "md": {
+        "$type": "dimension",
+        "$value": "{border.width.2}",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "CORNER_RADIUS",
+              "STROKE_FLOAT"
+            ]
+          }
+        }
+      },
+      "xl": {
+        "$type": "dimension",
+        "$value": "{border.width.8}",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "CORNER_RADIUS",
+              "STROKE_FLOAT"
+            ]
+          }
+        }
+      },
+      "sm": {
+        "$type": "dimension",
+        "$value": "{border.width.1}",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "CORNER_RADIUS",
+              "STROKE_FLOAT"
+            ]
+          }
+        }
+      }
+    },
+    "radius": {
+      "lg": {
+        "$type": "dimension",
+        "$value": "{border.radius.16}",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "CORNER_RADIUS",
+              "STROKE_FLOAT"
+            ]
+          }
+        }
+      },
+      "md": {
+        "$type": "dimension",
+        "$value": "{border.radius.8}",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "CORNER_RADIUS",
+              "STROKE_FLOAT"
+            ]
+          }
+        }
+      },
+      "sm": {
+        "$type": "dimension",
+        "$value": "{border.radius.4}",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "CORNER_RADIUS",
+              "STROKE_FLOAT"
+            ]
+          }
+        }
+      },
+      "none": {
+        "$type": "dimension",
+        "$value": "{border.radius.0}",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "CORNER_RADIUS",
+              "STROKE_FLOAT"
+            ]
+          }
+        }
+      },
+      "x-lg": {
+        "$type": "dimension",
+        "$value": "{border.radius.32}",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "CORNER_RADIUS",
+              "STROKE_FLOAT"
+            ]
+          }
+        }
+      },
+      "round": {
+        "$type": "dimension",
+        "$value": "{border.radius.999}",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "CORNER_RADIUS",
+              "STROKE_FLOAT"
+            ]
+          }
+        }
+      },
+      "xs": {
+        "$type": "dimension",
+        "$value": "{border.radius.1}",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "CORNER_RADIUS",
+              "STROKE_FLOAT"
+            ]
+          }
+        }
+      }
+    }
+  }
+}

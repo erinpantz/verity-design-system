@@ -1,0 +1,236 @@
+{
+  "container": {
+    "constrained": {
+      "max-width": {
+        "$type": "dimension",
+        "$value": "1040px",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "WIDTH_HEIGHT"
+            ]
+          }
+        }
+      },
+      "horizontal-margin": {
+        "$type": "dimension",
+        "$value": "{spacing.40}"
+      }
+    },
+    "full-bleed": {
+      "horizontal-margin": {
+        "$type": "dimension",
+        "$value": "{spacing.0}",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "WIDTH_HEIGHT",
+              "GAP"
+            ]
+          }
+        }
+      }
+    },
+    "wide": {
+      "horizontal-margin": {
+        "$type": "dimension",
+        "$value": "{spacing.48}",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "WIDTH_HEIGHT",
+              "GAP"
+            ]
+          }
+        }
+      },
+      "max-width": {
+        "$type": "dimension",
+        "$value": "1920px",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "WIDTH_HEIGHT"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "nav-container": {
+    "thickness-expanded": {
+      "$type": "dimension",
+      "$value": "240px"
+    },
+    "thickness-collapsed": {
+      "$type": "dimension",
+      "$value": "72px"
+    },
+    "padding-x-expanded": {
+      "$type": "dimension",
+      "$value": "{spacing.16}",
+      "$description": "Left and right padding of the expanded NavContainer.",
+      "$extensions": {
+        "com.figma": {
+          "scopes": [
+            "GAP"
+          ]
+        }
+      }
+    },
+    "padding-x-collapsed": {
+      "$type": "dimension",
+      "$value": "{spacing.8}",
+      "$description": "Left and right padding of the collapsed, top-docked NavContainer.",
+      "$extensions": {
+        "com.figma": {
+          "scopes": [
+            "GAP"
+          ]
+        }
+      }
+    },
+    "padding-bottom": {
+      "$type": "dimension",
+      "$value": "{spacing.16}",
+      "$description": "Bottom padding of the expanded NavContainer.",
+      "$extensions": {
+        "com.figma": {
+          "scopes": [
+            "GAP"
+          ]
+        }
+      }
+    }
+  },
+  "grid": {
+    "columns": {
+      "$type": "number",
+      "$value": 12
+    },
+    "gutter": {
+      "$type": "dimension",
+      "$value": "{spacing.24}"
+    }
+  },
+  "nav-overlay": {
+    "thickness": {
+      "$type": "dimension",
+      "$value": "240px"
+    },
+    "padding": {
+      "$type": "dimension",
+      "$value": "{spacing.16}",
+      "$description": "Padding on all sides of NavOverlay.",
+      "$extensions": {
+        "com.figma": {
+          "scopes": [
+            "GAP"
+          ]
+        }
+      }
+    }
+  },
+  "main-nav": {
+    "link-gap": {
+      "$type": "dimension",
+      "$value": "{spacing.8}",
+      "$description": "Space between the primary links in MainNav.",
+      "$extensions": {
+        "com.figma": {
+          "scopes": [
+            "GAP"
+          ]
+        }
+      }
+    },
+    "group-gap": {
+      "$type": "dimension",
+      "$value": "{spacing.16}",
+      "$description": "Space between the menu bar and the primary links in MainNav.",
+      "$extensions": {
+        "com.figma": {
+          "scopes": [
+            "GAP"
+          ]
+        }
+      }
+    },
+    "site-title-padding": {
+      "$type": "dimension",
+      "$value": "{spacing.8}",
+      "$description": "Left inset of the site title in MainNav.",
+      "$extensions": {
+        "com.figma": {
+          "scopes": [
+            "GAP"
+          ]
+        }
+      }
+    },
+    "logo-offset": {
+      "$type": "dimension",
+      "$value": "{spacing.8}",
+      "$description": "Bottom padding under the MainNav logo. Lifts the logo so its lowercase letters, not its tallest letters, line up with the center of the menu icon.",
+      "$extensions": {
+        "com.figma": {
+          "scopes": [
+            "GAP"
+          ]
+        }
+      }
+    }
+  },
+  "nav-item": {
+    "padding": {
+      "$type": "dimension",
+      "$value": "{spacing.8}",
+      "$description": "Padding on all sides of a NavItem (its tap area).",
+      "$extensions": {
+        "com.figma": {
+          "scopes": [
+            "GAP"
+          ]
+        }
+      }
+    },
+    "gap": {
+      "$type": "dimension",
+      "$value": "{spacing.8}",
+      "$description": "Space between a NavItem icon and its label.",
+      "$extensions": {
+        "com.figma": {
+          "scopes": [
+            "GAP"
+          ]
+        }
+      }
+    }
+  },
+  "tooltip": {
+    "padding-x": {
+      "$type": "dimension",
+      "$value": "{spacing.8}",
+      "$description": "Left and right padding inside a Tooltip.",
+      "$extensions": {
+        "com.figma": {
+          "scopes": [
+            "GAP"
+          ]
+        }
+      }
+    },
+    "padding-y": {
+      "$type": "dimension",
+      "$value": "{spacing.4}",
+      "$description": "Top and bottom padding inside a Tooltip.",
+      "$extensions": {
+        "com.figma": {
+          "scopes": [
+            "GAP"
+          ]
+        }
+      }
+    }
+  }
+}
