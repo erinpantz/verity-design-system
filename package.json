@@ -8,7 +8,8 @@
     "lint": "oxlint",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "tokens": "node build-tokens.ts"
+    "tokens": "node build-tokens.ts",
+    "icons": "node build-icons.ts"
   },
   "dependencies": {
     "@fontsource-variable/plus-jakarta-sans": "^5.3.0",
