@@ -1,0 +1,24 @@
+/* Icons are single color: the SVG uses currentColor, so it takes the text
+   color around it. Strokes keep their width at every size through the
+   SVG's own vector-effect attributes. */
+
+.icon {
+  display: inline-block;
+  flex-shrink: 0;
+  vertical-align: middle;
+}
+
+.sm {
+  inline-size: var(--verity-icon-size-sm);
+  block-size: var(--verity-icon-size-sm);
+}
+
+.md {
+  inline-size: var(--verity-icon-size-md);
+  block-size: var(--verity-icon-size-md);
+}
+
+.lg {
+  inline-size: var(--verity-icon-size-lg);
+  block-size: var(--verity-icon-size-lg);
+}

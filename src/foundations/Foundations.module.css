@@ -98,6 +98,28 @@
   color: var(--verity-color-content-subtle);
 }
 
+/* A name in the code text style, in body-sm table text */
+.codeName {
+  font-family: var(--verity-viewport-typography-code-sm-font-family);
+  font-size: var(--verity-viewport-typography-code-sm-font-size);
+  font-weight: var(--verity-viewport-typography-code-sm-font-weight);
+  letter-spacing: var(--verity-viewport-typography-code-sm-letter-spacing);
+}
+
+/* A block of example code */
+.codeBlock {
+  margin: 0;
+  padding: var(--verity-padding-sm);
+  overflow-x: auto;
+  border-radius: var(--verity-border-radius-md);
+  background: var(--verity-color-background-subtle);
+  font-family: var(--verity-viewport-typography-code-default-font-family);
+  font-size: var(--verity-viewport-typography-code-default-font-size);
+  font-weight: var(--verity-viewport-typography-code-default-font-weight);
+  line-height: var(--verity-viewport-typography-code-default-line-height);
+  letter-spacing: var(--verity-viewport-typography-code-default-letter-spacing);
+}
+
 /* A description every token in a group shares, under the group heading */
 .groupDescription {
   margin: 0;

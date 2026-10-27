@@ -22,6 +22,7 @@ The Figma source of truth is the **Verity Library** file: https://www.figma.com/
 Commands are added here as they're set up.
 
 - `npm run tokens`: build `src/styles/tokens.css` from `tokens/` (run after each Figma export)
+- `npm run icons`: build `src/icons/icons.generated.ts` from the SVGs in `icons/` (run after each icon export)
 - `npm run storybook`: start Storybook at http://localhost:6006
 - `npm run build-storybook`: build the static Storybook site into `storybook-static/`
 - `npm run build`: type-check with TypeScript (the library build comes later)
@@ -31,8 +32,10 @@ Commands are added here as they're set up.
 
 ```
 tokens/                    token source JSON, exported from Figma
+icons/                     icon SVGs, exported from Figma (never edit by hand)
 src/
   styles/                  generated token CSS and global styles
+  icons/                   generated icon markup and the IconName type, from icons/
   foundations/             Storybook pages documenting every token, generated from tokens/,
                            and VerityDocs, the wrapper for MDX docs pages
   components/

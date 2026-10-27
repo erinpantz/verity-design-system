@@ -1,5 +1,6 @@
 import type { Preview } from '@storybook/react-vite'
 import '../src/styles/global.css'
+import './preview.css'
 import { ThemedDocsContainer } from './ThemedDocsContainer'
 
 const preview: Preview = {
@@ -22,7 +23,7 @@ const preview: Preview = {
           'Guidelines',
           ['Naming', 'Spacing and rhythm', 'Writing style'],
           'Foundations',
-          ['Color', 'Typography', 'Spacing and layout', 'Borders', 'Breakpoints', 'Motion and effects'],
+          ['Color', 'Typography', 'Icons', 'Spacing and layout', 'Borders', 'Breakpoints', 'Motion and effects'],
           'Actions',
           'Navigation',
           'Layout',

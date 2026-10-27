@@ -1,0 +1,8 @@
+/* Storybook only (not part of Verity's global styles): story canvases use the
+   theme's background and text color, so components that take the text color
+   around them, like Icon, show correctly in Blue and Red. */
+
+body {
+  background: var(--verity-color-background-default);
+  color: var(--verity-color-content-default);
+}
