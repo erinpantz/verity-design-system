@@ -204,6 +204,23 @@
   background: var(--verity-color-background-brand-disabled);
 }
 
+.borderExample,
+.radiusExample {
+  inline-size: var(--verity-control-size-xl);
+  block-size: var(--verity-control-size-xl);
+}
+
+/* Border drawn inside the square, so every example is the same size */
+.borderExample {
+  box-sizing: border-box;
+  border-style: solid;
+  border-color: var(--verity-color-border-default);
+}
+
+.radiusExample {
+  background: var(--verity-color-background-brand-disabled);
+}
+
 .glyph,
 .word {
   min-inline-size: var(--verity-control-size-xl);
