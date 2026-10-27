@@ -221,6 +221,26 @@
   background: var(--verity-color-background-brand-disabled);
 }
 
+.range {
+  display: flex;
+  flex-direction: column;
+  gap: var(--verity-spacing-xxs);
+}
+
+.rangeTrack {
+  position: relative;
+  block-size: var(--verity-spacing-xs);
+  border-radius: var(--verity-border-radius-xs);
+  background: var(--verity-color-background-subtle);
+}
+
+.rangeBar {
+  position: absolute;
+  inset-block: 0;
+  border-radius: var(--verity-border-radius-xs);
+  background: var(--verity-color-background-brand-disabled);
+}
+
 .glyph,
 .word {
   min-inline-size: var(--verity-control-size-xl);
