@@ -2,7 +2,7 @@
 
 Verity is Erin Tozour's personal design system. Its only consumer is her portfolio site (a separate repo, `erins-portfolio-site`), which uses Verity as a dependency. Storybook in this repo is Verity's documentation. Both repos are portfolio pieces, so clean structure and clear reasoning matter as much as working code.
 
-The Figma source of truth is the **Verity Library** file: https://www.figma.com/design/3Da0PcmwQjC19SKRduBuQD/Verity-Design-System. Its Guidelines pages (Naming, Spacing and rhythm, Writing style) are the rules this code follows.
+The Figma source of truth is the **Verity Library** file: https://www.figma.com/design/3Da0PcmwQjC19SKRduBuQD/Verity-Design-System. The rules this code follows live in this repo, in `src/guidelines/` (see Guidelines below).
 
 ## Working with Erin
 
@@ -51,34 +51,26 @@ Categories match the Figma pages: Actions, Navigation, Layout, Text, Media, Cont
 - **Every story and docs page follows the Theme toolbar** (Blue or Red). Stories get it from the decorator in `.storybook/preview.tsx`; docs pages from `.storybook/ThemedDocsContainer.tsx`. Nothing to add per page.
 - **MDX docs pages use Verity styles:** wrap the page's content in `<VerityDocs>` from `src/foundations/VerityDocs`, with a blank line inside each tag. It styles headings, paragraphs, lists, and links with tokens and applies the prose spacing rule. See `src/Introduction.mdx`.
 
-## Naming
+## Guidelines
 
-- **Component names match Figma exactly,** in PascalCase: `ButtonPrimary`, `MediaBlock`, `NavItem`, `VerityLogo`, `ErinTozourMark`.
-- **Figma property → prop:** sentence-case property names become camelCase props (`Show icon` → `showIcon`, `Media position` → `mediaPosition`).
-- **Variant values are lowercase,** exactly as in Figma: `size: 'sm' | 'md' | 'lg'`, `state: 'default' | 'hover'`. Sizes use the `xs` / `sm` / `md` / `lg` / `xl` scale.
-- **Tokens:** Figma's `color/content/default` becomes `--verity-color-content-default`.
-- **Same name, same role:** reuse a name only for the same job (for example, `children` or a `Content` slot for a component's main content).
+The rules for naming, spacing, and writing live in `src/guidelines/` and appear in Storybook under Guidelines. They're the only copy: the Figma file links to them. Read the matching page before you name, space, or write anything. Each page has an "In code" section for how its rules apply here.
+
+- `src/guidelines/Naming.mdx`: component, prop, variant value, and token names
+- `src/guidelines/SpacingAndRhythm.mdx`: who owns each space, gaps instead of margins, prose rhythm, and control sizes
+- `src/guidelines/WritingStyle.mdx`: component default text and docs copy
+
+To change a rule, change it on its guideline page, not here. If something in this file seems to disagree with a guideline page, follow the guideline page and tell Erin.
 
 ## Tokens
 
 - Never hard-code a color, size, space, radius, or font value. Use a `--verity-` custom property. If a token is missing, stop and ask; don't invent a value.
 - **Tiers:** Core Tier 1 holds raw values and is never used directly in components. Tier 2 (themes, `spacing/*`, `padding/*`) is what components normally use. Tier 3 tokens are named after one component (`button/…`, `nav-item/…`, `container/…`).
 - **Themes:** Blue and Red, switched with a `data-theme` attribute. Figma's Responsive modes (XL, Large, Medium, Small) become breakpoints.
+- **Code text** comes in the same sizes as body text: code inside `body-*` text uses the matching `code-*` tokens (`code-xl`, `code-lg`, `code-default`, `code-sm`).
 - **Color** scales use OKLCH. Accents are positional (`accent-one`, `accent-two`, …) because they map to different hues in each theme.
-
-## Layout and spacing rules
-
-- **No margins on a component's root element.** A component never adds space outside itself.
-- **Parents space their children** with `gap` (stacks, grids, sections). No spacer elements.
-- **Prose is the exception:** inside a `.prose` wrapper, headings and paragraphs get space-before from `--verity-…-space-before` tokens, and the first child has none.
-- **Controls share one size scale** (`control/size/*`). Touch targets are never below 44px on Medium and Small.
 
 ## Accessibility
 
 - Every interactive component needs **default, hover, focus, active, and disabled** states. Focus must be clearly visible (WCAG 2.4.7).
 - Use real HTML elements (`<button>`, `<a>`, `<nav>`), meet color-contrast requirements, and give images alt text. Logos use the name as their accessible label.
 - Logos and icons are single color and use `currentColor`.
-
-## Writing style (component default text and docs)
-
-Sentence case everywhere. Verb-first buttons and links, never "click here". The serial comma; "and", not "&"; curly quotes and apostrophes; en dashes for ranges (2019–2023).
