@@ -1,6 +1,12 @@
-import { Meta } from '@storybook/addon-docs/blocks';
+import { Meta, Unstyled } from '@storybook/addon-docs/blocks';
+import styles from './Introduction.module.css';
 
 <Meta title="Introduction" />
+
+{/* Unstyled turns off Storybook's docs styles, so Verity's apply instead. Edit the text below as normal Markdown. */}
+
+<Unstyled>
+<div className={`${styles.page} ${styles.prose}`}>
 
 # Verity
 
@@ -27,3 +33,6 @@ Components are grouped the same way as the Figma pages:
 - **Every value comes from a token.** Colors, sizes, spacing, radii, and fonts are never hard-coded.
 - **Components don’t add space outside themselves.** Parents space their children.
 - **Accessibility is built in.** Every interactive component has default, hover, focus, active, and disabled states, and each story is checked in the Accessibility panel.
+
+</div>
+</Unstyled>
