@@ -930,6 +930,17 @@
       "schibsted-grotesk": {
         "$type": "string",
         "$value": "Schibsted Grotesk"
+      },
+      "ibm-plex-mono": {
+        "$type": "string",
+        "$value": "IBM Plex Mono",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "FONT_FAMILY"
+            ]
+          }
+        }
       }
     }
   },

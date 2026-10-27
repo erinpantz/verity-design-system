@@ -11,11 +11,13 @@ const OUTPUT = 'src/styles/tokens.css';
 // Font stacks: Figma font name → CSS font-family list.
 // Figma uses each font's plain name. Fontsource registers the self-hosted
 // variable fonts with "Variable" added, so the stack lists that first, then a
-// locally installed copy, then the system sans-serif as a last resort.
+// locally installed copy, then a system font as a last resort.
 // When a font changes in Figma, add or update its line here.
 const FONT_STACKS: Record<string, string> = {
   'Plus Jakarta Sans': "'Plus Jakarta Sans Variable', 'Plus Jakarta Sans', sans-serif",
   'Schibsted Grotesk': "'Schibsted Grotesk Variable', 'Schibsted Grotesk', sans-serif",
+  // Fontsource has no variable version of IBM Plex Mono, so there's no "Variable" name to list first
+  'IBM Plex Mono': "'IBM Plex Mono', ui-monospace, monospace",
 };
 
 // Fonts with no line above. Style Dictionary catches errors thrown inside a

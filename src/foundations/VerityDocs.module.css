@@ -10,10 +10,6 @@
 }
 
 .page {
-  /* Docs only: Verity has no monospace font token yet, so inline code uses
-     this system stack. Not a Verity token; components don't use it. */
-  --docs-font-mono: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
-
   color: var(--verity-color-content-default);
 }
 
@@ -116,18 +112,59 @@
   letter-spacing: var(--verity-viewport-typography-label-sm-letter-spacing);
 }
 
-/* Inline code. The color is set on purpose: Storybook styles code elements
-   even inside Unstyled, and its dark gray is unreadable on Verity's backgrounds. */
+/* Code uses the code style that matches the body style around it:
+   body-default text → code-default, body-sm → code-sm (and body-lg → code-lg,
+   body-xl → code-xl, if docs text ever uses those). Inline code keeps the
+   line height of the text around it, so it doesn't use a code line-height token.
+   Color and line-height are set on purpose: Storybook styles code elements
+   even inside Unstyled, with a dark gray that's unreadable on Verity's
+   backgrounds and a line-height that would shrink the line around the code. */
 
+/* Inline code in paragraphs and lists (body-default) */
 .prose code {
   padding-inline: var(--verity-spacing-xxs);
   color: var(--verity-color-content-default);
   border-radius: var(--verity-border-radius-sm);
   background: var(--verity-color-background-subtle);
-  font-family: var(--docs-font-mono);
-  font-size: var(--verity-viewport-typography-body-sm-font-size);
+  font-family: var(--verity-viewport-typography-code-default-font-family);
+  font-size: var(--verity-viewport-typography-code-default-font-size);
+  font-weight: var(--verity-viewport-typography-code-default-font-weight);
+  letter-spacing: var(--verity-viewport-typography-code-default-letter-spacing);
+  line-height: inherit;
   overflow-wrap: anywhere;
   box-decoration-break: clone;
+}
+
+/* Inline code in table cells (body-sm) */
+.prose th code,
+.prose td code {
+  font-family: var(--verity-viewport-typography-code-sm-font-family);
+  font-size: var(--verity-viewport-typography-code-sm-font-size);
+  font-weight: var(--verity-viewport-typography-code-sm-font-weight);
+  letter-spacing: var(--verity-viewport-typography-code-sm-letter-spacing);
+}
+
+/* Code blocks use code-default, including its line height */
+.prose pre {
+  margin-block-start: var(--verity-viewport-typography-code-default-space-before);
+  padding: var(--verity-padding-sm);
+  overflow-x: auto;
+  border-radius: var(--verity-border-radius-md);
+  background: var(--verity-color-background-subtle);
+  color: var(--verity-color-content-default);
+  font-family: var(--verity-viewport-typography-code-default-font-family);
+  font-size: var(--verity-viewport-typography-code-default-font-size);
+  font-weight: var(--verity-viewport-typography-code-default-font-weight);
+  line-height: var(--verity-viewport-typography-code-default-line-height);
+  letter-spacing: var(--verity-viewport-typography-code-default-letter-spacing);
+}
+
+/* Code inside a code block takes the block's style, without the inline chip */
+.prose pre code {
+  padding: var(--verity-spacing-none);
+  background: none;
+  font: inherit;
+  letter-spacing: inherit;
 }
 
 /* Links */
