@@ -135,8 +135,8 @@
   --verity-typography-font-weight-400: 400;
   --verity-typography-font-weight-600: 600;
   --verity-typography-font-weight-700: 700;
-  --verity-typography-font-family-plus-jakarta-sans: Plus Jakarta Sans;
-  --verity-typography-font-family-schibsted-grotesk: Schibsted Grotesk;
+  --verity-typography-font-family-plus-jakarta-sans: 'Plus Jakarta Sans Variable', 'Plus Jakarta Sans', sans-serif;
+  --verity-typography-font-family-schibsted-grotesk: 'Schibsted Grotesk Variable', 'Schibsted Grotesk', sans-serif;
   --verity-spacing-0: 0px;
   --verity-spacing-4: 4px;
   --verity-spacing-8: 8px;

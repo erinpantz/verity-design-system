@@ -8,6 +8,28 @@ import type { TransformedToken } from 'style-dictionary/types';
 const TOKENS = 'tokens';
 const OUTPUT = 'src/styles/tokens.css';
 
+// Font stacks: Figma font name → CSS font-family list.
+// Figma uses each font's plain name. Fontsource registers the self-hosted
+// variable fonts with "Variable" added, so the stack lists that first, then a
+// locally installed copy, then the system sans-serif as a last resort.
+// When a font changes in Figma, add or update its line here.
+const FONT_STACKS: Record<string, string> = {
+  'Plus Jakarta Sans': "'Plus Jakarta Sans Variable', 'Plus Jakarta Sans', sans-serif",
+  'Schibsted Grotesk': "'Schibsted Grotesk Variable', 'Schibsted Grotesk', sans-serif",
+};
+
+StyleDictionary.registerTransform({
+  name: 'verity/font-family/stack',
+  type: 'value',
+  filter: (token: TransformedToken) => token.path.includes('font-family'),
+  transform: (token: TransformedToken) => {
+    const name = String(token.$value ?? token.value);
+    const stack = FONT_STACKS[name];
+    if (!stack) throw new Error(`No font stack for "${name}". Add it to FONT_STACKS in build-tokens.ts.`);
+    return stack;
+  },
+});
+
 // Figma exports font weights as "600px". CSS needs a plain number.
 StyleDictionary.registerTransform({
   name: 'verity/font-weight/unitless',
@@ -37,7 +59,7 @@ async function buildBlock({ comment, selector, file, group }: Block): Promise<st
     platforms: {
       css: {
         prefix: 'verity',
-        transforms: ['name/kebab', 'cubicBezier/css', 'verity/font-weight/unitless'],
+        transforms: ['name/kebab', 'cubicBezier/css', 'verity/font-weight/unitless', 'verity/font-family/stack'],
         files: [
           {
             destination: 'unused.css',
