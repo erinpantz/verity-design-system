@@ -1,8 +1,9 @@
-/* Verity styles for the Introduction docs page. The page uses Storybook's
-   Unstyled block, so these replace Storybook's own docs styles. */
+/* Verity styles for MDX docs pages, used by the VerityDocs wrapper. The
+   wrapper uses Storybook's Unstyled block, so these replace Storybook's own
+   docs styles. */
 
 /* Storybook's docs background (and the page behind it, below short content),
-   only on the page that contains this content */
+   only on pages that use VerityDocs */
 :global(body):has(.page),
 :global(.sbdocs-wrapper):has(.page) {
   background: var(--verity-color-background-default);
@@ -39,8 +40,19 @@
   text-transform: var(--verity-viewport-typography-heading-2-text-transform);
 }
 
+.prose h3 {
+  margin-block-start: var(--verity-viewport-typography-heading-3-space-before);
+  font-family: var(--verity-viewport-typography-heading-3-font-family);
+  font-size: var(--verity-viewport-typography-heading-3-font-size);
+  font-weight: var(--verity-viewport-typography-heading-3-font-weight);
+  line-height: var(--verity-viewport-typography-heading-3-line-height);
+  letter-spacing: var(--verity-viewport-typography-heading-3-letter-spacing);
+  text-transform: var(--verity-viewport-typography-heading-3-text-transform);
+}
+
 .prose p,
-.prose ul {
+.prose ul,
+.prose ol {
   margin-block-start: var(--verity-viewport-typography-body-default-space-before);
   font-family: var(--verity-viewport-typography-body-default-font-family);
   font-size: var(--verity-viewport-typography-body-default-font-size);
@@ -55,7 +67,8 @@
   margin-block-start: 0;
 }
 
-.prose ul {
+.prose ul,
+.prose ol {
   display: flex;
   flex-direction: column;
   gap: var(--verity-spacing-xs);

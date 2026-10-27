@@ -33,7 +33,8 @@ Commands are added here as they're set up.
 tokens/                    token source JSON, exported from Figma
 src/
   styles/                  generated token CSS and global styles
-  foundations/             Storybook pages documenting every token, generated from tokens/
+  foundations/             Storybook pages documenting every token, generated from tokens/,
+                           and VerityDocs, the wrapper for MDX docs pages
   components/
     <Category>/<Component>/
       <Component>.tsx
@@ -44,6 +45,11 @@ src/
 ```
 
 Categories match the Figma pages: Actions, Navigation, Layout, Text, Media, Content blocks (folder `ContentBlocks`). Storybook's sidebar uses the same categories.
+
+## Storybook docs
+
+- **Every story and docs page follows the Theme toolbar** (Blue or Red). Stories get it from the decorator in `.storybook/preview.tsx`; docs pages from `.storybook/ThemedDocsContainer.tsx`. Nothing to add per page.
+- **MDX docs pages use Verity styles:** wrap the page's content in `<VerityDocs>` from `src/foundations/VerityDocs`, with a blank line inside each tag. It styles headings, paragraphs, lists, and links with tokens and applies the prose spacing rule. See `src/Introduction.mdx`.
 
 ## Naming
 
