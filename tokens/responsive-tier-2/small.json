@@ -10,56 +10,57 @@
   "padding": {
     "lg": {
       "$type": "dimension",
-      "$value": "32px"
+      "$value": "{spacing.32}"
     },
     "md": {
       "$type": "dimension",
-      "$value": "24px"
+      "$value": "{spacing.24}"
     },
     "sm": {
       "$type": "dimension",
-      "$value": "16px"
+      "$value": "{spacing.16}"
     },
     "none": {
       "$type": "dimension",
-      "$value": "0px"
+      "$value": "{spacing.0}"
     },
     "xs": {
       "$type": "dimension",
-      "$value": "8px"
+      "$value": "{spacing.8}"
     }
   },
   "spacing": {
     "sm": {
       "$type": "dimension",
-      "$value": "16px"
+      "$value": "{spacing.16}"
     },
     "md": {
       "$type": "dimension",
-      "$value": "24px"
+      "$value": "{spacing.24}"
     },
     "lg": {
       "$type": "dimension",
-      "$value": "32px"
+      "$value": "{spacing.32}"
     },
     "none": {
       "$type": "dimension",
-      "$value": "0px"
+      "$value": "{spacing.0}"
     },
     "xs": {
       "$type": "dimension",
-      "$value": "8px"
+      "$value": "{spacing.8}"
     },
     "xxs": {
       "$type": "dimension",
-      "$value": "4px"
+      "$value": "{spacing.4}"
     }
   },
   "control": {
     "size": {
       "sm": {
         "$type": "dimension",
-        "$value": "44px",
+        "$value": "{size.44}",
+        "$description": "Height of controls (buttons, inputs, selects). Square controls like IconButton also use it for width. Stays at 44px or more on Medium and Small for touch.",
         "$extensions": {
           "com.figma": {
             "scopes": [
@@ -70,7 +71,8 @@
       },
       "md": {
         "$type": "dimension",
-        "$value": "44px",
+        "$value": "{size.44}",
+        "$description": "Height of controls (buttons, inputs, selects). Square controls like IconButton also use it for width. Stays at 44px or more on Medium and Small for touch.",
         "$extensions": {
           "com.figma": {
             "scopes": [
@@ -81,7 +83,8 @@
       },
       "lg": {
         "$type": "dimension",
-        "$value": "48px",
+        "$value": "{size.48}",
+        "$description": "Height of controls (buttons, inputs, selects). Square controls like IconButton also use it for width. Stays at 44px or more on Medium and Small for touch.",
         "$extensions": {
           "com.figma": {
             "scopes": [
@@ -92,7 +95,8 @@
       },
       "xl": {
         "$type": "dimension",
-        "$value": "56px",
+        "$value": "{size.56}",
+        "$description": "Height of controls (buttons, inputs, selects). Square controls like IconButton also use it for width. Stays at 44px or more on Medium and Small for touch.",
         "$extensions": {
           "com.figma": {
             "scopes": [
@@ -106,6 +110,7 @@
       "sm": {
         "$type": "dimension",
         "$value": "{spacing.12}",
+        "$description": "Left and right padding inside controls, so text lines up across buttons and inputs of the same size.",
         "$extensions": {
           "com.figma": {
             "scopes": [
@@ -117,6 +122,7 @@
       "md": {
         "$type": "dimension",
         "$value": "{spacing.16}",
+        "$description": "Left and right padding inside controls, so text lines up across buttons and inputs of the same size.",
         "$extensions": {
           "com.figma": {
             "scopes": [
@@ -128,6 +134,7 @@
       "lg": {
         "$type": "dimension",
         "$value": "{spacing.24}",
+        "$description": "Left and right padding inside controls, so text lines up across buttons and inputs of the same size.",
         "$extensions": {
           "com.figma": {
             "scopes": [
@@ -139,6 +146,7 @@
       "xl": {
         "$type": "dimension",
         "$value": "{spacing.24}",
+        "$description": "Left and right padding inside controls, so text lines up across buttons and inputs of the same size.",
         "$extensions": {
           "com.figma": {
             "scopes": [
@@ -151,6 +159,7 @@
     "gap": {
       "$type": "dimension",
       "$value": "{spacing.8}",
+      "$description": "Space between an icon and the label inside a control.",
       "$extensions": {
         "com.figma": {
           "scopes": [
