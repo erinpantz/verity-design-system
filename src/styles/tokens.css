@@ -432,7 +432,7 @@
   --verity-color-content-strong: var(--verity-color-neutral-white);
   --verity-color-content-error: var(--verity-color-brand-red-400);
   --verity-color-content-success: var(--verity-color-brand-green-400);
-  --verity-color-content-yellow: var(--verity-color-brand-yellow-400);
+  --verity-color-content-warning: var(--verity-color-brand-yellow-400);
   --verity-color-border-default: var(--verity-color-brand-blue-100);
   --verity-color-border-default-hover: var(--verity-color-brand-blue-200);
   --verity-color-border-knockout: var(--verity-color-brand-neutral-900);
@@ -582,7 +582,7 @@
   --verity-color-content-strong: var(--verity-color-neutral-white);
   --verity-color-content-error: var(--verity-color-brand-red-400);
   --verity-color-content-success: var(--verity-color-brand-green-400);
-  --verity-color-content-yellow: var(--verity-color-brand-yellow-400);
+  --verity-color-content-warning: var(--verity-color-brand-yellow-400);
   --verity-color-border-default: var(--verity-color-brand-red-100);
   --verity-color-border-default-hover: var(--verity-color-brand-red-200);
   --verity-color-border-knockout: var(--verity-color-brand-neutral-900);

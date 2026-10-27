@@ -303,7 +303,7 @@
         "$type": "color",
         "$value": "{color.brand.green.400}"
       },
-      "yellow": {
+      "warning": {
         "$type": "color",
         "$value": "{color.brand.yellow.400}"
       }
