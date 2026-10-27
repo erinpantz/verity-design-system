@@ -4,7 +4,11 @@ import { FoundationPage, TokenTiers, type TableOptions } from './Foundations';
 import { cellFor, columnsFor, groupsFor, type Group } from './tokenData';
 import styles from './Foundations.module.css';
 
-const SAMPLE_TEXT = 'Sphinx of black quartz, judge my vow';
+// Sample text for each text style. Large styles get a short line so it fits;
+// smaller styles get a sentence long enough to wrap, to show the line height.
+const SHORT_SAMPLE = 'A quiet checkmark beside every decision.';
+const LONG_SAMPLE = 'Verity: every decision made once, and kept true everywhere.';
+const LARGE_STYLES = /^(display|heading|title|blockquote)/;
 
 // Text style token → CSS property
 const PROPERTIES: Record<string, keyof CSSProperties> = {
@@ -71,7 +75,7 @@ function options(group: Group): TableOptions {
     return {
       sample: (g, column) => (
         <p className={styles.sample} style={styleFor(g, column)}>
-          {SAMPLE_TEXT}
+          {LARGE_STYLES.test(lastSegment(g.name)) ? SHORT_SAMPLE : LONG_SAMPLE}
         </p>
       ),
     };
