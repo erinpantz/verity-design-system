@@ -11,9 +11,18 @@ export interface HeadingProps {
    * heading sits.
    */
   level: 1 | 2 | 3;
+  /**
+   * A unique id for the heading, so other elements can point to it: a Section
+   * uses it to name itself, and a link to #id jumps to it. Not in Figma.
+   */
+  id?: string;
 }
 
-export function Heading({ children, level }: HeadingProps) {
+export function Heading({ children, level, id }: HeadingProps) {
   const Element = `h${level}` as const;
-  return <Element className={`${styles.heading} ${styles[`level-${level}`]}`}>{children}</Element>;
+  return (
+    <Element id={id} className={`${styles.heading} ${styles[`level-${level}`]}`}>
+      {children}
+    </Element>
+  );
 }

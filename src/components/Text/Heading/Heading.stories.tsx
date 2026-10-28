@@ -9,6 +9,8 @@ const meta = {
   argTypes: {
     level: { control: 'inline-radio', options: [1, 2, 3] },
     children: { control: 'text' },
+    // An id must be unique on the page, so it's set in code, not here
+    id: { control: false },
   },
 } satisfies Meta<typeof Heading>;
 
