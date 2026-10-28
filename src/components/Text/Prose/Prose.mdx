@@ -1,0 +1,81 @@
+import { Meta, Canvas } from '@storybook/addon-docs/blocks';
+import { VerityDocs } from '../../../foundations/VerityDocs';
+import { PropsTable } from '../../../foundations/PropsTable';
+import * as ProseStories from './Prose.stories';
+
+<Meta of={ProseStories} />
+
+<VerityDocs>
+
+# Prose
+
+Long-form text, like a case study write-up, where each block sets its own space above it. Use it for anything written as continuous paragraphs.
+
+<Canvas of={ProseStories.Default} />
+
+## When to use
+
+- **For writing,** like a case study, an article, or an about page: headings, paragraphs, quotes, and lists, one after another.
+- **For text written in Markdown.** Prose styles the plain HTML that Markdown produces, so the text needs no components.
+- **Not for laying out components.** Use `VerticalStack` or `Section`, where the layout sets the space with a gap.
+- **Not for short copy with one heading.** Use `TextBlock`.
+
+## Accessibility
+
+Prose renders a `<div>` around the text, and adds nothing for screen readers. The text’s own HTML does the work, so write it with real headings, lists, and quotes.
+
+| Situation | What to do | Example |
+|---|---|---|
+| Starting a topic | Use a real heading (`##` in Markdown), one level below the heading it belongs to. Never skip a level. | `## The problem` after the page’s `# Title` |
+| Quoting someone | Use a blockquote (`>` in Markdown), so screen readers announce it as a quote. | `> “I didn’t know why you needed it.”` |
+| Writing a link | Make the link text say where it goes, not “click here.” | “the [research summary](…)” |
+
+## Blocks
+
+Each kind of block gets its text style, and the space before it, from its own tokens. Sizes and spaces grow on larger screens; **Foundations › Typography** shows the value at each breakpoint.
+
+| Block | Markdown | Text style tokens | Space before |
+|---|---|---|---|
+| Heading level 1 | `#` | `--verity-viewport-typography-heading-1-*` | `heading-1-space-before` |
+| Heading level 2 | `##` | `--verity-viewport-typography-heading-2-*` | `heading-2-space-before` |
+| Heading level 3 | `###` | `--verity-viewport-typography-heading-3-*` | `heading-3-space-before` |
+| Paragraph | Plain text | `--verity-viewport-typography-body-default-*` | `body-default-space-before` |
+| List | `-` or `1.` | `--verity-viewport-typography-body-default-*` | `body-default-space-before` |
+| Blockquote | `>` | `--verity-viewport-typography-blockquote-*` | `blockquote-space-before` |
+| Inline code | `` `code` `` | `--verity-viewport-typography-code-default-*` | None: it sits inside the text |
+
+Each space-before token is `--verity-viewport-typography-<style>-space-before`.
+
+**Lists.** Bulleted lists use the same leaf marker as `UnorderedList`, centered on each item’s first line. Numbered lists keep their numbers. In both, items are `--verity-spacing-xs` apart, and the text lines up with the text of a bulleted list.
+
+**Links** use the link color tokens (`--verity-link-color-content-*`), with an underline and a visible focus outline.
+
+## Space
+
+Prose has no gap: each block adds its space before it, from its token. The first block adds none, so Prose starts flush with whatever holds it. This is the one place in Verity where text sets its own space; everywhere else, space comes from a layout’s gap.
+
+Prose adds no space outside itself. Place it in a `Container` or `Section` to set its width.
+
+## Color
+
+All text uses `--verity-color-content-default`. Bullet markers use `--verity-color-background-brand`, like `UnorderedList`, and links use the link color tokens.
+
+## Props
+
+<PropsTable of={ProseStories} />
+
+## In Figma
+
+| Figma | Code |
+|---|---|
+| Component `Prose` | `<Prose />` |
+| Slot `Content` | `children`: plain HTML, such as Markdown’s output |
+| Component `ProseItem`, one per block | Not built in code. Each block is a plain HTML element instead. |
+| ProseItem’s `Type` | The element: `heading-2` → `<h2>`, `body-default` → `<p>`, `blockquote` → `<blockquote>` |
+| ProseItem’s `Space before` switch | Not needed: every block gets its space before, and the first child gets none |
+
+**Why ProseItem is Figma-only.** In Figma, each block is a ProseItem with a Space before switch, and you turn the switch off on the first one. In code, Markdown already writes each block as the right element, and a first-child rule removes the space above the first block. So there’s nothing to choose and nothing to remember.
+
+ProseItem’s `body-lg` and `body-sm` types have no Markdown equivalent, so Prose doesn’t style them. For a larger intro paragraph, use `Section`’s `intro`.
+
+</VerityDocs>

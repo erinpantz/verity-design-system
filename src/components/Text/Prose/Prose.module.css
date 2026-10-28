@@ -1,0 +1,185 @@
+/* Long-form text, written as plain HTML (such as Markdown's output). Each
+   block sets its own space above it, from its text style's space-before
+   token, and the first block gets none. Prose itself has no gap.
+
+   Rules only reach the blocks directly inside Prose (with ">"), and what's
+   inside them, so components placed in Prose keep their own styles. */
+
+.prose {
+  color: var(--verity-color-content-default);
+}
+
+/* Remove the browser's default space, so only the space-before rules apply */
+.prose > * {
+  margin-block: 0;
+}
+
+/* Headings */
+
+.prose > h1 {
+  margin-block-start: var(--verity-viewport-typography-heading-1-space-before);
+  font-family: var(--verity-viewport-typography-heading-1-font-family);
+  font-size: var(--verity-viewport-typography-heading-1-font-size);
+  font-weight: var(--verity-viewport-typography-heading-1-font-weight);
+  line-height: var(--verity-viewport-typography-heading-1-line-height);
+  letter-spacing: var(--verity-viewport-typography-heading-1-letter-spacing);
+  text-transform: var(--verity-viewport-typography-heading-1-text-transform);
+}
+
+.prose > h2 {
+  margin-block-start: var(--verity-viewport-typography-heading-2-space-before);
+  font-family: var(--verity-viewport-typography-heading-2-font-family);
+  font-size: var(--verity-viewport-typography-heading-2-font-size);
+  font-weight: var(--verity-viewport-typography-heading-2-font-weight);
+  line-height: var(--verity-viewport-typography-heading-2-line-height);
+  letter-spacing: var(--verity-viewport-typography-heading-2-letter-spacing);
+  text-transform: var(--verity-viewport-typography-heading-2-text-transform);
+}
+
+.prose > h3 {
+  margin-block-start: var(--verity-viewport-typography-heading-3-space-before);
+  font-family: var(--verity-viewport-typography-heading-3-font-family);
+  font-size: var(--verity-viewport-typography-heading-3-font-size);
+  font-weight: var(--verity-viewport-typography-heading-3-font-weight);
+  line-height: var(--verity-viewport-typography-heading-3-line-height);
+  letter-spacing: var(--verity-viewport-typography-heading-3-letter-spacing);
+  text-transform: var(--verity-viewport-typography-heading-3-text-transform);
+}
+
+/* Paragraphs and lists */
+
+.prose > p,
+.prose > ul,
+.prose > ol {
+  margin-block-start: var(--verity-viewport-typography-body-default-space-before);
+  font-family: var(--verity-viewport-typography-body-default-font-family);
+  font-size: var(--verity-viewport-typography-body-default-font-size);
+  font-weight: var(--verity-viewport-typography-body-default-font-weight);
+  line-height: var(--verity-viewport-typography-body-default-line-height);
+  letter-spacing: var(--verity-viewport-typography-body-default-letter-spacing);
+  text-transform: var(--verity-viewport-typography-body-default-text-transform);
+}
+
+/* Blockquote: the text alone, in the blockquote style, as in Figma */
+
+.prose > blockquote {
+  margin-block-start: var(--verity-viewport-typography-blockquote-space-before);
+  margin-inline: 0;
+  font-family: var(--verity-viewport-typography-blockquote-font-family);
+  font-size: var(--verity-viewport-typography-blockquote-font-size);
+  font-weight: var(--verity-viewport-typography-blockquote-font-weight);
+  line-height: var(--verity-viewport-typography-blockquote-line-height);
+  letter-spacing: var(--verity-viewport-typography-blockquote-letter-spacing);
+  text-transform: var(--verity-viewport-typography-blockquote-text-transform);
+}
+
+/* Markdown wraps a blockquote's text in paragraphs */
+.prose > blockquote > p {
+  margin: 0;
+}
+
+/* The first block has nothing above it. It comes after the rules above, so it wins. */
+.prose > :first-child {
+  margin-block-start: 0;
+}
+
+/* Lists: items are spaced like UnorderedList. Nested lists (inside an item)
+   get the same styles. */
+
+.prose > ul,
+.prose > ol,
+.prose li > ul,
+.prose li > ol {
+  display: flex;
+  flex-direction: column;
+  gap: var(--verity-spacing-xs);
+  /* Room for the marker and the space after it, so text lines up in both kinds */
+  padding-inline-start: calc(var(--verity-unordered-list-marker-size) + var(--verity-spacing-sm));
+}
+
+/* A nested list sits as close to its item as the next item does */
+.prose li > ul,
+.prose li > ol {
+  margin-block-start: var(--verity-spacing-xs);
+}
+
+/* Markdown wraps an item's text in a paragraph when items have blank lines between them */
+.prose li > p {
+  margin: 0;
+}
+
+/* Bulleted lists use UnorderedList's leaf marker, drawn here because Markdown
+   can't use the component. It's centered on the item's first line. */
+
+.prose > ul,
+.prose li > ul {
+  list-style: none;
+}
+
+.prose > ul > li,
+.prose li > ul > li {
+  position: relative;
+}
+
+.prose > ul > li::before,
+.prose li > ul > li::before {
+  position: absolute;
+  inset-block-start: calc(
+    (var(--verity-viewport-typography-body-default-line-height) - var(--verity-unordered-list-marker-size)) / 2
+  );
+  inset-inline-start: calc(-1 * (var(--verity-unordered-list-marker-size) + var(--verity-spacing-sm)));
+  inline-size: var(--verity-unordered-list-marker-size);
+  block-size: var(--verity-unordered-list-marker-size);
+  border-radius: var(--verity-border-radius-lg) var(--verity-border-radius-sm) var(--verity-border-radius-sm)
+    var(--verity-border-radius-sm);
+  background: var(--verity-color-background-brand);
+  content: '';
+}
+
+/* Inline code: the code style that matches the body text around it
+   (body-default → code-default). It keeps the line height of the text around
+   it, so it doesn't use a code line-height token. Color and line-height are
+   set on purpose: Storybook styles code elements with a dark gray and a
+   line-height that would shrink the line around the code. */
+
+.prose > :is(h1, h2, h3, p, ul, ol, blockquote, table) code {
+  padding-inline: var(--verity-spacing-xxs);
+  color: var(--verity-color-content-default);
+  border-radius: var(--verity-border-radius-sm);
+  background: var(--verity-color-background-subtle);
+  font-family: var(--verity-viewport-typography-code-default-font-family);
+  font-size: var(--verity-viewport-typography-code-default-font-size);
+  font-weight: var(--verity-viewport-typography-code-default-font-weight);
+  letter-spacing: var(--verity-viewport-typography-code-default-letter-spacing);
+  line-height: inherit;
+  overflow-wrap: anywhere;
+  box-decoration-break: clone;
+}
+
+/* Links in text. Not in headings, which keep any link styles of their own
+   (Storybook adds an anchor link to each docs heading). */
+
+.prose > :is(p, ul, ol, blockquote, table) a {
+  color: var(--verity-link-color-content-default);
+  text-decoration-line: underline;
+  text-decoration-thickness: var(--verity-border-width-sm);
+  text-underline-offset: var(--verity-spacing-xxs);
+}
+
+.prose > :is(p, ul, ol, blockquote, table) a:visited {
+  color: var(--verity-link-color-content-visited);
+}
+
+.prose > :is(p, ul, ol, blockquote, table) a:hover {
+  color: var(--verity-link-color-content-hover);
+}
+
+.prose > :is(p, ul, ol, blockquote, table) a:active {
+  color: var(--verity-link-color-content-active);
+}
+
+.prose > :is(p, ul, ol, blockquote, table) a:focus-visible {
+  border-radius: var(--verity-border-radius-xs);
+  outline: var(--verity-border-width-md) solid var(--verity-color-border-focus);
+  outline-offset: var(--verity-border-width-md);
+}
