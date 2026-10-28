@@ -60,11 +60,14 @@
   text-transform: var(--verity-viewport-typography-body-default-text-transform);
 }
 
-/* Blockquote: the text alone, in the blockquote style, as in Figma */
+/* Blockquote: the blockquote text style, with a brand-colored rule on the
+   left and a gap before the text, like Figma's Quote component */
 
 .prose > blockquote {
   margin-block-start: var(--verity-viewport-typography-blockquote-space-before);
   margin-inline: 0;
+  padding-inline-start: var(--verity-spacing-md);
+  border-inline-start: var(--verity-border-width-xl) solid var(--verity-color-background-brand);
   font-family: var(--verity-viewport-typography-blockquote-font-family);
   font-size: var(--verity-viewport-typography-blockquote-font-size);
   font-weight: var(--verity-viewport-typography-blockquote-font-weight);
