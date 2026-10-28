@@ -16,21 +16,13 @@ const preview: Preview = {
       container: ThemedDocsContainer,
     },
     options: {
-      // Sidebar order matches the Figma pages
+      // Sidebar order (the rule is in CLAUDE.md): Introduction, Guidelines, and
+      // Foundations first, then everything else A–Z at every level. Stories in
+      // one component share a title, so they keep the order they're written
+      // in, with Docs first because main.ts finds .mdx files before stories.
       storySort: {
-        order: [
-          'Introduction',
-          'Guidelines',
-          ['Naming', 'Spacing and rhythm', 'Writing style'],
-          'Foundations',
-          ['Color', 'Typography', 'Icons', 'Spacing and layout', 'Borders', 'Breakpoints', 'Motion and effects'],
-          'Actions',
-          'Navigation',
-          'Layout',
-          'Text',
-          'Media',
-          'Content blocks',
-        ],
+        method: 'alphabetical',
+        order: ['Introduction', 'Guidelines', 'Foundations', '*'],
       },
     },
   },

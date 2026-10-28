@@ -55,6 +55,12 @@ src/
 
 Categories match the Figma pages: Actions, Navigation, Layout, Text, Media, Content blocks (folder `ContentBlocks`). Storybook's sidebar uses the same categories.
 
+**Sidebar order** (set by a rule in `.storybook/preview.tsx`, so new pages need no changes there):
+
+- Top-level sections: Introduction, Guidelines, Foundations, then the component categories alphabetically.
+- Inside each section, items are alphabetical: categories, components, and Foundations pages.
+- Stories inside a component keep the order they're written in, with Docs first.
+
 ## Storybook docs
 
 - **Every story and docs page follows the Theme toolbar** (Blue or Red). Stories get it from the decorator in `.storybook/preview.tsx`; docs pages from `.storybook/ThemedDocsContainer.tsx`. Nothing to add per page.
