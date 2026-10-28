@@ -2,7 +2,7 @@ import { ICONS, type IconName } from '../../../icons/icons.generated';
 import styles from './Icon.module.css';
 
 export interface IconProps {
-  /** Which icon, by its Figma name without "icon/", for example "email" or "nav/portfolio" */
+  /** Which icon, by its Figma name without “icon/”, for example “email” or “nav/portfolio” */
   name: IconName;
   /** Width and height, from the icon size tokens */
   size?: 'sm' | 'md' | 'lg';

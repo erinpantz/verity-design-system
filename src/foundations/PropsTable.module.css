@@ -1,0 +1,7 @@
+/* Prop names are short, so they stay on one line instead of breaking mid-word
+   when the Type column is long. Everything else comes from VerityDocs. */
+
+.name code {
+  overflow-wrap: normal;
+  white-space: nowrap;
+}
