@@ -904,7 +904,7 @@
   --verity-viewport-typography-blockquote-line-height: var(--verity-typography-blockquote-mobile-line-height);
   --verity-viewport-typography-blockquote-letter-spacing: var(--verity-typography-blockquote-mobile-letter-spacing);
   --verity-viewport-typography-blockquote-text-transform: var(--verity-typography-blockquote-mobile-text-transform);
-  --verity-viewport-typography-blockquote-space-before: var(--verity-spacing-md);
+  --verity-viewport-typography-blockquote-space-before: var(--verity-spacing-lg);
   --verity-viewport-typography-code-default-font-family: var(--verity-typography-code-default-font-family);
   --verity-viewport-typography-code-default-font-weight: var(--verity-typography-code-default-font-weight);
   --verity-viewport-typography-code-default-font-size: var(--verity-typography-code-default-font-size);
@@ -1132,7 +1132,7 @@
     --verity-viewport-typography-blockquote-line-height: var(--verity-typography-blockquote-mobile-line-height);
     --verity-viewport-typography-blockquote-letter-spacing: var(--verity-typography-blockquote-mobile-letter-spacing);
     --verity-viewport-typography-blockquote-text-transform: var(--verity-typography-blockquote-mobile-text-transform);
-    --verity-viewport-typography-blockquote-space-before: var(--verity-spacing-md);
+    --verity-viewport-typography-blockquote-space-before: var(--verity-spacing-lg);
     --verity-viewport-typography-code-default-font-family: var(--verity-typography-code-default-font-family);
     --verity-viewport-typography-code-default-font-weight: var(--verity-typography-code-default-font-weight);
     --verity-viewport-typography-code-default-font-size: var(--verity-typography-code-default-font-size);
@@ -1365,7 +1365,7 @@
     --verity-viewport-typography-blockquote-line-height: var(--verity-typography-blockquote-line-height);
     --verity-viewport-typography-blockquote-letter-spacing: var(--verity-typography-blockquote-letter-spacing);
     --verity-viewport-typography-blockquote-text-transform: var(--verity-typography-blockquote-text-transform);
-    --verity-viewport-typography-blockquote-space-before: var(--verity-spacing-md);
+    --verity-viewport-typography-blockquote-space-before: var(--verity-spacing-lg);
     --verity-viewport-typography-code-default-font-family: var(--verity-typography-code-default-font-family);
     --verity-viewport-typography-code-default-font-weight: var(--verity-typography-code-default-font-weight);
     --verity-viewport-typography-code-default-font-size: var(--verity-typography-code-default-font-size);

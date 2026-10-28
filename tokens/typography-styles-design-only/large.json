@@ -1402,7 +1402,7 @@
         },
         "space-before": {
           "$type": "dimension",
-          "$value": "{spacing.md}"
+          "$value": "{spacing.lg}"
         }
       },
       "code-default": {
