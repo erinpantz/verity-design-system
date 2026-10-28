@@ -1,0 +1,59 @@
+import { Meta, Canvas } from '@storybook/addon-docs/blocks';
+import { VerityDocs } from '../../../foundations/VerityDocs';
+import { PropsTable } from '../../../foundations/PropsTable';
+import * as GridStories from './Grid.stories';
+
+<Meta of={GridStories} />
+
+<VerityDocs>
+
+# Grid
+
+Arranges interchangeable items, like cards, in rows that reflow to fit the space. For uneven layouts or a featured item, use MediaText instead.
+
+<Canvas of={GridStories.Default} />
+
+## When to use
+
+- **For sets of similar items,** such as project cards or a gallery of thumbnails, where any item could take any spot.
+- **When items should match in height.** Items in a row stretch to the tallest one, so cards line up even when their text is different lengths.
+- **Not for uneven layouts or a featured item.** Use `MediaText`.
+- **Not for a few items side by side that keep their own width,** like buttons. Use `HorizontalStack`.
+
+## Accessibility
+
+A Grid renders a `<div>` by default. Use `as` to make it a list. People hear the items in the order they’re written, which is also the order they appear: left to right, then row by row.
+
+| Situation | What to do | Example |
+|---|---|---|
+| The items are a list of similar things | Use `as="ul"` with `<li>` items, so screen readers announce how many there are. | A grid of project cards |
+| The order matters | Write the items in the order people should read them. The Grid never reorders them. | The newest project first |
+| Each item has a heading | Use the same heading level in every item, one level below the section’s heading. | A section heading at level 2, card titles at level 3 |
+
+## Item width
+
+The narrowest an item can get before the row wraps. Items fill the row evenly and reflow by the space the Grid has, not by breakpoint, so a Grid works the same in a narrow column as across a whole page. On a screen narrower than the item width, items shrink to the Grid’s width rather than overflow.
+
+| `itemWidth` | Token | Value | Use for |
+|---|---|---|---|
+| `sm` | `--verity-grid-item-min-width-sm` | 200 | Small items, like thumbnails or logos |
+| `md` | `--verity-grid-item-min-width-md` | 300 | The default: cards with text |
+
+The space between items and between rows is `--verity-spacing-md` (24–32), the same at every item width.
+
+## Props
+
+<PropsTable of={GridStories} />
+
+## In Figma
+
+| Figma | Code |
+|---|---|
+| Component `Grid` | `<Grid />` |
+| Property `Item width` | `itemWidth` |
+| Slot `Content` | `children` |
+| Not in Figma | `as`: choose it in code, from what the items are |
+
+Figma’s auto layout can wrap items, but it can’t share the leftover space in a row between them. So in Figma, each item’s min width is set by hand to the `grid/item-min-width` token, and rows can look uneven. In code, every item in a row is the same width.
+
+</VerityDocs>

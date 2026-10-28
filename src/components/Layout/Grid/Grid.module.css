@@ -1,0 +1,30 @@
+/* As many columns as fit, each at least the item min width, sharing the
+   leftover space equally. It reflows by the Grid's own width, not by
+   breakpoint. min(…, 100%) lets an item shrink to the Grid's width when the
+   Grid is narrower than the min width, so it never overflows.
+   Items in a row stretch to the same height (CSS grid does this by default). */
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(var(--item-min-width), 100%), 1fr));
+  gap: var(--verity-spacing-md);
+  /* When the Grid is a list (ul or ol), remove the browser's bullets,
+     numbers, and indents, so it looks the same as a div */
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* In a list, each <li> is the grid item, so it stretches to the row's
+   height. Making it a one-cell grid stretches the card inside it too. */
+.grid > li {
+  display: grid;
+}
+
+.sm {
+  --item-min-width: var(--verity-grid-item-min-width-sm);
+}
+
+.md {
+  --item-min-width: var(--verity-grid-item-min-width-md);
+}
