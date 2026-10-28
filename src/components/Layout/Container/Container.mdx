@@ -1,0 +1,59 @@
+import { Meta, Canvas } from '@storybook/addon-docs/blocks';
+import { VerityDocs } from '../../../foundations/VerityDocs';
+import { PropsTable } from '../../../foundations/PropsTable';
+import * as ContainerStories from './Container.stories';
+
+<Meta of={ContainerStories} />
+
+<VerityDocs>
+
+# Container
+
+Sets the side margins and maximum width for a page’s content, so everything lines up. Choose constrained for reading, wide for media, or full-bleed for edge-to-edge bands.
+
+<Canvas of={ContainerStories.Default} />
+
+## When to use
+
+- **Around each block of page content,** so its edges line up with the blocks above and below it.
+- **Constrained for reading.** Text, forms, and anything people read line by line stay at a comfortable line length.
+- **Wide for media.** Images, videos, and galleries can use more of a large screen.
+- **Full-bleed for bands** whose background runs from edge to edge of the screen.
+- **Not for the space between blocks.** A Container adds no space above or below itself; the layout around it owns that space.
+- **Not for arranging items inside it.** Use `VerticalStack`, `HorizontalStack`, or `Grid` in its content.
+
+## Accessibility
+
+A Container renders a `<div>` by default. Use `as` to choose the element, based on what the Container holds.
+
+| Situation | What to do | Example |
+|---|---|---|
+| It introduces the page | Use `as="header"`, for one Container per page. | The page title and intro at the top of a case study |
+| It introduces a topic with a heading | Use `as="section"`, with the heading inside it. | A “Process” heading and the content under it |
+| It has no heading | Leave `as` out, so it renders a `<div>`. | A full-bleed image band between sections |
+
+## Width
+
+Each width sets the side margins and the maximum width from its own tokens. Both change by breakpoint, from Small to XL; **Foundations › Spacing and layout** shows the value at each one. The maximum width includes the side margins, as in Figma.
+
+| `width` | Tokens | Value | Use for |
+|---|---|---|---|
+| `constrained` | `--verity-container-constrained-horizontal-margin`<br />`--verity-container-constrained-max-width` | Margins 24–40<br />Max width 560–1040 | The default: text and anything people read |
+| `wide` | `--verity-container-wide-horizontal-margin`<br />`--verity-container-wide-max-width` | Margins 24–48<br />Max width 1920 | Images, videos, and galleries |
+| `full-bleed` | `--verity-container-full-bleed-horizontal-margin` | Margins 0<br />No max width | Bands that run edge to edge |
+
+## Props
+
+<PropsTable of={ContainerStories} />
+
+## In Figma
+
+| Figma | Code |
+|---|---|
+| Component `Container` | `<Container />` |
+| Property `Width` | `width` |
+| Slot `Content` | `children` |
+| The element named in the description: header, section, or div | `as` |
+| Max width, including the side margins | The content’s max width is the token minus both margins |
+
+</VerityDocs>

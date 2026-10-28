@@ -1,0 +1,24 @@
+/* Placeholder blocks for layout stories */
+
+.placeholder {
+  border-radius: var(--verity-border-radius-sm);
+  background: var(--verity-color-background-subtle);
+  color: var(--verity-color-content-subtle);
+  font-family: var(--verity-viewport-typography-label-sm-font-family);
+  font-size: var(--verity-viewport-typography-label-sm-font-size);
+  font-weight: var(--verity-viewport-typography-label-sm-font-weight);
+  line-height: var(--verity-viewport-typography-label-sm-line-height);
+  letter-spacing: var(--verity-viewport-typography-label-sm-letter-spacing);
+}
+
+.sm {
+  padding: var(--verity-padding-sm);
+}
+
+.md {
+  padding: var(--verity-padding-md);
+}
+
+.lg {
+  padding: var(--verity-padding-lg);
+}

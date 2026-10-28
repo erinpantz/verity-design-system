@@ -1,0 +1,32 @@
+/* The side margins are padding on the root, so nothing outside the Container
+   moves. In Figma the max width includes the side margins, so the content's
+   max width is the token minus both margins. */
+
+.container {
+  padding-inline: var(--margin);
+}
+
+.content {
+  max-inline-size: calc(var(--max-width) - 2 * var(--margin));
+  /* Centers the content: the space left over is split between the two sides */
+  margin-inline: auto;
+}
+
+.constrained {
+  --margin: var(--verity-container-constrained-horizontal-margin);
+  --max-width: var(--verity-container-constrained-max-width);
+}
+
+.wide {
+  --margin: var(--verity-container-wide-horizontal-margin);
+  --max-width: var(--verity-container-wide-max-width);
+}
+
+/* Full-bleed has no max width */
+.full-bleed {
+  --margin: var(--verity-container-full-bleed-horizontal-margin);
+}
+
+.full-bleed > .content {
+  max-inline-size: none;
+}
