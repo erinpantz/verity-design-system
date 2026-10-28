@@ -3,9 +3,8 @@
    focus. */
 
 .anchor {
-  /* The gap between the trigger and the tooltip. A stand-in until Figma's
-     tooltip/offset token is exported. */
-  --offset: var(--verity-spacing-xxs);
+  /* The gap between the trigger and the tooltip, with room for the focus ring */
+  --offset: var(--verity-tooltip-offset);
 
   position: relative;
   display: inline-flex;

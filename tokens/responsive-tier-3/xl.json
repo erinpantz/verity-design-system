@@ -253,6 +253,18 @@
           ]
         }
       }
+    },
+    "offset": {
+      "$type": "dimension",
+      "$value": "{spacing.8}",
+      "$description": "Gap between a tooltip and the element it describes. Leaves room for the focus ring.",
+      "$extensions": {
+        "com.figma": {
+          "scopes": [
+            "GAP"
+          ]
+        }
+      }
     }
   },
   "unordered-list": {

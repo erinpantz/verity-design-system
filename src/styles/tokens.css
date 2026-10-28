@@ -780,6 +780,7 @@
   --verity-nav-item-gap: var(--verity-spacing-8); /** Space between a NavItem icon and its label. */
   --verity-tooltip-padding-x: var(--verity-spacing-8); /** Left and right padding inside a Tooltip. */
   --verity-tooltip-padding-y: var(--verity-spacing-4); /** Top and bottom padding inside a Tooltip. */
+  --verity-tooltip-offset: var(--verity-spacing-8); /** Gap between a tooltip and the element it describes. Leaves room for the focus ring. */
   --verity-unordered-list-marker-size: var(--verity-size-20); /** Width and height of the marker before each UnorderedList item. */
 }
 
@@ -1008,6 +1009,7 @@
     --verity-nav-item-gap: var(--verity-spacing-8); /** Space between a NavItem icon and its label. */
     --verity-tooltip-padding-x: var(--verity-spacing-8); /** Left and right padding inside a Tooltip. */
     --verity-tooltip-padding-y: var(--verity-spacing-4); /** Top and bottom padding inside a Tooltip. */
+    --verity-tooltip-offset: var(--verity-spacing-8); /** Gap between a tooltip and the element it describes. Leaves room for the focus ring. */
     --verity-unordered-list-marker-size: var(--verity-size-20); /** Width and height of the marker before each UnorderedList item. */
   }
 
@@ -1237,6 +1239,7 @@
     --verity-nav-item-gap: var(--verity-spacing-8); /** Space between a NavItem icon and its label. */
     --verity-tooltip-padding-x: var(--verity-spacing-8); /** Left and right padding inside a Tooltip. */
     --verity-tooltip-padding-y: var(--verity-spacing-4); /** Top and bottom padding inside a Tooltip. */
+    --verity-tooltip-offset: var(--verity-spacing-8); /** Gap between a tooltip and the element it describes. Leaves room for the focus ring. */
     --verity-unordered-list-marker-size: var(--verity-size-20); /** Width and height of the marker before each UnorderedList item. */
   }
 
@@ -1466,6 +1469,7 @@
     --verity-nav-item-gap: var(--verity-spacing-8); /** Space between a NavItem icon and its label. */
     --verity-tooltip-padding-x: var(--verity-spacing-8); /** Left and right padding inside a Tooltip. */
     --verity-tooltip-padding-y: var(--verity-spacing-4); /** Top and bottom padding inside a Tooltip. */
+    --verity-tooltip-offset: var(--verity-spacing-8); /** Gap between a tooltip and the element it describes. Leaves room for the focus ring. */
     --verity-unordered-list-marker-size: var(--verity-size-20); /** Width and height of the marker before each UnorderedList item. */
   }
 }
