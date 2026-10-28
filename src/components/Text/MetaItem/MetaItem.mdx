@@ -1,0 +1,59 @@
+import { Meta, Canvas } from '@storybook/addon-docs/blocks';
+import { VerityDocs } from '../../../foundations/VerityDocs';
+import { PropsTable } from '../../../foundations/PropsTable';
+import * as MetaItemStories from './MetaItem.stories';
+
+<Meta of={MetaItemStories} />
+
+<VerityDocs>
+
+# MetaItem
+
+A short label and its value, like “Role” and “Lead designer.” Group several in a Grid to summarize a project at a glance.
+
+<Canvas of={MetaItemStories.Default} />
+
+## When to use
+
+- **For facts about a project,** like the role, team, timeline, and tools, at the top of a case study.
+- **In groups.** Put several MetaItems in a `Grid` so they line up in columns and reflow on small screens.
+- **For short values,** a few words or one line. A value that needs a paragraph belongs in a `TextBlock`.
+- **Not as a heading.** The title is a label for its value, not a heading in the page’s outline. Use `Heading` or `TextBlock` to start a topic.
+
+## Accessibility
+
+A MetaItem is one pair in a description list: the title is a `<dt>` (the term) and the value is a `<dd>` (its description), wrapped in a `<div>`. Screen readers announce the list and pair each title with its value.
+
+| Situation | What to do | Example |
+|---|---|---|
+| Showing a group of MetaItems | Put them in a `Grid` or stack with `as="dl"`. A MetaItem outside a `<dl>` isn’t valid HTML. | `<Grid as="dl" itemWidth="sm">` |
+| Showing only one | Still wrap it in a `<dl>`, with a stack’s `as="dl"`. | `<VerticalStack as="dl">` |
+| Writing the title | Use sentence case. The text style shows it in capitals, but screen readers read what you wrote, and all-capital text can be read out letter by letter. | `title="Timeline"`, not `title="TIMELINE"` |
+
+## Space
+
+The space between the title and the value is `--verity-spacing-xs` (8–16, growing on larger screens). MetaItem adds no space outside itself; the `Grid` or stack it’s in sets the space between items.
+
+## Color
+
+| Part | Text style | Color |
+|---|---|---|
+| Title | `--verity-viewport-typography-meta-default-*` | `--verity-color-content-subtle` |
+| Value | `--verity-viewport-typography-body-default-*` | `--verity-color-content-default` |
+
+The title is quieter than the value, so people scan the values first.
+
+## Props
+
+<PropsTable of={MetaItemStories} />
+
+## In Figma
+
+| Figma | Code |
+|---|---|
+| Component `MetaItem` | `<MetaItem />` |
+| Property `Title` | `title` |
+| Property `Value` | `value` |
+| Not in Figma | The `<dl>` around a group: in code, the `Grid` or stack holding MetaItems uses `as="dl"` |
+
+</VerityDocs>

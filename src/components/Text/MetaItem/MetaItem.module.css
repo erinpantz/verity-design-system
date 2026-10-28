@@ -1,0 +1,29 @@
+/* A label above its value. The space between them is a gap, never a margin. */
+
+.metaItem {
+  display: flex;
+  flex-direction: column;
+  gap: var(--verity-spacing-xs);
+}
+
+.title {
+  color: var(--verity-color-content-subtle);
+  font-family: var(--verity-viewport-typography-meta-default-font-family);
+  font-size: var(--verity-viewport-typography-meta-default-font-size);
+  font-weight: var(--verity-viewport-typography-meta-default-font-weight);
+  line-height: var(--verity-viewport-typography-meta-default-line-height);
+  letter-spacing: var(--verity-viewport-typography-meta-default-letter-spacing);
+  text-transform: var(--verity-viewport-typography-meta-default-text-transform);
+}
+
+.value {
+  /* Remove the browser's indent on <dd> */
+  margin: 0;
+  color: var(--verity-color-content-default);
+  font-family: var(--verity-viewport-typography-body-default-font-family);
+  font-size: var(--verity-viewport-typography-body-default-font-size);
+  font-weight: var(--verity-viewport-typography-body-default-font-weight);
+  line-height: var(--verity-viewport-typography-body-default-line-height);
+  letter-spacing: var(--verity-viewport-typography-body-default-letter-spacing);
+  text-transform: var(--verity-viewport-typography-body-default-text-transform);
+}
