@@ -1,0 +1,90 @@
+/* A bulleted list with a brand-colored leaf as its marker. The space between
+   items, and inside each item, is a gap, never a margin. */
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--verity-spacing-sm);
+  /* Remove the browser's bullets and indent; each item draws its own marker */
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* Each item: the marker, then the copy */
+
+.item {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--verity-spacing-sm);
+}
+
+/* The height of the item's first line, for the marker box */
+
+.first-line-title {
+  --first-line-height: var(--verity-viewport-typography-body-lg-strong-line-height);
+}
+
+.first-line-body-default {
+  --first-line-height: var(--verity-viewport-typography-body-default-line-height);
+}
+
+.first-line-body-lg {
+  --first-line-height: var(--verity-viewport-typography-body-lg-line-height);
+}
+
+/* A box as tall as the first line, with the marker centered in it */
+.markerBox {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  block-size: var(--first-line-height);
+}
+
+.marker {
+  inline-size: var(--verity-unordered-list-marker-size);
+  block-size: var(--verity-unordered-list-marker-size);
+  border-radius: var(--verity-border-radius-lg) var(--verity-border-radius-sm) var(--verity-border-radius-sm)
+    var(--verity-border-radius-sm);
+  background: var(--verity-color-background-brand);
+}
+
+/* The title above the text, then the text */
+
+.copy {
+  display: flex;
+  flex-direction: column;
+  gap: var(--verity-spacing-xxs);
+  /* Let long words wrap instead of pushing past the list's edge */
+  min-inline-size: 0;
+}
+
+.title {
+  color: var(--verity-color-content-subtle);
+  font-family: var(--verity-viewport-typography-body-lg-strong-font-family);
+  font-size: var(--verity-viewport-typography-body-lg-strong-font-size);
+  font-weight: var(--verity-viewport-typography-body-lg-strong-font-weight);
+  line-height: var(--verity-viewport-typography-body-lg-strong-line-height);
+  letter-spacing: var(--verity-viewport-typography-body-lg-strong-letter-spacing);
+  text-transform: var(--verity-viewport-typography-body-lg-strong-text-transform);
+}
+
+.body-default {
+  color: var(--verity-color-content-default);
+  font-family: var(--verity-viewport-typography-body-default-font-family);
+  font-size: var(--verity-viewport-typography-body-default-font-size);
+  font-weight: var(--verity-viewport-typography-body-default-font-weight);
+  line-height: var(--verity-viewport-typography-body-default-line-height);
+  letter-spacing: var(--verity-viewport-typography-body-default-letter-spacing);
+  text-transform: var(--verity-viewport-typography-body-default-text-transform);
+}
+
+.body-lg {
+  color: var(--verity-color-content-default);
+  font-family: var(--verity-viewport-typography-body-lg-font-family);
+  font-size: var(--verity-viewport-typography-body-lg-font-size);
+  font-weight: var(--verity-viewport-typography-body-lg-font-weight);
+  line-height: var(--verity-viewport-typography-body-lg-line-height);
+  letter-spacing: var(--verity-viewport-typography-body-lg-letter-spacing);
+  text-transform: var(--verity-viewport-typography-body-lg-text-transform);
+}

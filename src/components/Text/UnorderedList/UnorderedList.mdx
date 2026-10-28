@@ -1,0 +1,92 @@
+import { Meta, Canvas } from '@storybook/addon-docs/blocks';
+import { VerityDocs } from '../../../foundations/VerityDocs';
+import { PropsTable } from '../../../foundations/PropsTable';
+import * as UnorderedListStories from './UnorderedList.stories';
+import * as UnorderedListItemStories from './UnorderedListItem.stories';
+
+<Meta of={UnorderedListStories} />
+
+<VerityDocs>
+
+# UnorderedList
+
+A bulleted list, marked with Verity’s brand-colored leaf. Each item can have a bold title above its text.
+
+<Canvas of={UnorderedListStories.Default} />
+
+## When to use
+
+- **For a few related points in any order,** such as research methods or what a team learned.
+- **With titles,** when each point needs a short name people can scan, like “Interviews” or “Journey map.”
+- **Not for steps in order.** Use a numbered list (`<ol>`), so the order is part of the meaning.
+- **Not for cards or links laid out in rows.** Use a `Grid` or stack with `as="ul"`, which has no markers.
+- **Not inside long-form text.** In `Prose`, write the list in Markdown; it gets the same marker.
+
+## Accessibility
+
+An UnorderedList renders a `<ul>`, and each UnorderedListItem renders an `<li>`, so screen readers announce a list and how many items it has. The marker is decorative and hidden from screen readers.
+
+| Situation | What to do | Example |
+|---|---|---|
+| The list needs an introduction | Put a `Heading` or a sentence right before it, so people know what the list is about. | “What we learned,” then the list |
+| An item has a title | Use `title`. It isn’t a heading, so it doesn’t clutter the page’s outline; screen readers read it, then the text. | `title="Interviews"` |
+| Each item is a topic of its own | Use `TextBlock`s with headings instead, so people can jump between them. | Three outcomes, each with a paragraph |
+
+## Text size
+
+Set on each UnorderedListItem with `textSize`. Use the same size for every item in a list.
+
+| `textSize` | Text style tokens | Size | Use for |
+|---|---|---|---|
+| `body-default` | `--verity-viewport-typography-body-default-*` | 18 | The default: lists in body text |
+| `body-lg` | `--verity-viewport-typography-body-lg-*` | 20 | Lists that stand on their own, like key points at the top of a page |
+
+The title always uses body-lg-strong (`--verity-viewport-typography-body-lg-strong-*`), whatever the text size. It has the same size and line height as body-lg, in a heavier weight.
+
+## Marker
+
+The marker is a leaf: a square with one rounded corner, sized by `--verity-unordered-list-marker-size` (20). Its top-left corner uses `--verity-border-radius-lg` and the other three `--verity-border-radius-sm`.
+
+It sits in a box as tall as the item’s first line, and is centered in that box. So it lines up with the title when there is one, and with the first line of the text otherwise, even when the text wraps. Figma lines it up the same way.
+
+## Space
+
+| Between | Token | Value |
+|---|---|---|
+| Items | `--verity-spacing-sm` | 16–24 |
+| The marker and the text | `--verity-spacing-sm` | 16–24 |
+| The title and the text | `--verity-spacing-xxs` | 4 |
+
+UnorderedList adds no space outside itself.
+
+## Color
+
+| Part | Color |
+|---|---|
+| Marker | `--verity-color-background-brand`, so it matches the theme: blue in Blue, red in Red |
+| Title | `--verity-color-content-subtle`, the same as MetaItem’s title |
+| Text | `--verity-color-content-default` |
+
+## Props
+
+### UnorderedList
+
+<PropsTable of={UnorderedListStories} />
+
+### UnorderedListItem
+
+<PropsTable of={UnorderedListItemStories} />
+
+## In Figma
+
+| Figma | Code |
+|---|---|
+| Component `UnorderedList` | `<UnorderedList />` |
+| Slot `Content` | `children`: `UnorderedListItem`s |
+| Component `UnorderedListItem` | `<UnorderedListItem />` |
+| Properties `Show title` and `Title` | `title`, shown when provided: leave it out for no title |
+| Property `Text size` | `textSize` |
+| The item’s text | `children` |
+| Component `UnorderedListMarker` | Not a separate component: each UnorderedListItem draws its own marker |
+
+</VerityDocs>
