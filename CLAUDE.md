@@ -34,6 +34,7 @@ Commands are added here as they're set up.
 tokens/                    token source JSON, exported from Figma
 icons/                     icon SVGs, exported from Figma (never edit by hand)
 brand/                     logos, exported from Figma (never edit by hand)
+illustrations/             illustrations, exported from Figma (never edit by hand)
 templates/                 starting points for new files, such as ComponentDocs.mdx
 src/
   styles/                  generated token CSS and global styles
