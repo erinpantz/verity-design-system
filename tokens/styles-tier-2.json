@@ -422,5 +422,33 @@
         }
       }
     }
+  },
+  "focus": {
+    "ring-width": {
+      "$type": "dimension",
+      "$value": "{border.width.2}",
+      "$description": "Thickness of the keyboard focus ring on every interactive component.",
+      "$extensions": {
+        "com.figma": {
+          "scopes": [
+            "GAP",
+            "STROKE_FLOAT"
+          ]
+        }
+      }
+    },
+    "ring-offset": {
+      "$type": "dimension",
+      "$value": "{border.width.2}",
+      "$description": "Gap between a component’s edge and its focus ring.",
+      "$extensions": {
+        "com.figma": {
+          "scopes": [
+            "GAP",
+            "STROKE_FLOAT"
+          ]
+        }
+      }
+    }
   }
 }

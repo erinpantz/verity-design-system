@@ -237,6 +237,8 @@
   --verity-icon-size-sm: var(--verity-size-20); /** Small icons, 20px */
   --verity-icon-size-md: var(--verity-size-24); /** Default icon size, 24px */
   --verity-icon-size-lg: var(--verity-size-32); /** Large icons, 32px */
+  --verity-focus-ring-width: var(--verity-border-width-2); /** Thickness of the keyboard focus ring on every interactive component. */
+  --verity-focus-ring-offset: var(--verity-border-width-2); /** Gap between a component’s edge and its focus ring. */
 }
 
 /* Typography Tier 2 */
@@ -519,14 +521,22 @@
 /* Blue theme: Themes Tier 3 */
 :root,
 [data-theme="blue"] {
-  --verity-button-primary-brand-color-background-default: var(--verity-color-brand-blue-700);
-  --verity-button-primary-brand-color-background-hover: var(--verity-color-brand-blue-600);
-  --verity-button-primary-brand-color-background-active: var(--verity-color-brand-blue-600);
-  --verity-button-primary-brand-color-background-disabled: var(--verity-color-brand-blue-300);
-  --verity-button-primary-brand-color-content-default: var(--verity-color-brand-blue-100);
-  --verity-button-primary-brand-color-content-hover: var(--verity-color-neutral-white);
-  --verity-button-primary-brand-color-content-active: var(--verity-color-neutral-white);
-  --verity-button-primary-brand-color-content-disabled: var(--verity-color-brand-blue-500);
+  --verity-button-primary-color-background-default: var(--verity-color-brand-blue-700);
+  --verity-button-primary-color-background-hover: var(--verity-color-brand-blue-600);
+  --verity-button-primary-color-background-active: var(--verity-color-brand-blue-600);
+  --verity-button-primary-color-background-disabled: var(--verity-color-brand-blue-300);
+  --verity-button-primary-color-content-default: var(--verity-color-brand-blue-100);
+  --verity-button-primary-color-content-hover: var(--verity-color-neutral-white);
+  --verity-button-primary-color-content-active: var(--verity-color-neutral-white);
+  --verity-button-primary-color-content-disabled: var(--verity-color-brand-blue-500);
+  --verity-button-primary-brand-color-background-default: var(--verity-color-brand-blue-100);
+  --verity-button-primary-brand-color-background-hover: var(--verity-color-brand-blue-200);
+  --verity-button-primary-brand-color-background-active: var(--verity-color-brand-blue-200);
+  --verity-button-primary-brand-color-background-disabled: var(--verity-color-transparent-white-25);
+  --verity-button-primary-brand-color-content-default: var(--verity-color-brand-blue-700);
+  --verity-button-primary-brand-color-content-hover: var(--verity-color-brand-blue-600);
+  --verity-button-primary-brand-color-content-active: var(--verity-color-brand-blue-600);
+  --verity-button-primary-brand-color-content-disabled: var(--verity-color-brand-blue-300);
   --verity-button-secondary-color-content-default: var(--verity-color-brand-blue-200);
   --verity-button-secondary-color-content-hover: var(--verity-color-brand-blue-100);
   --verity-button-secondary-color-content-active: var(--verity-color-brand-blue-100);
@@ -543,14 +553,6 @@
   --verity-button-secondary-knockout-color-border-hover: var(--verity-color-brand-blue-600);
   --verity-button-secondary-knockout-color-border-active: var(--verity-color-brand-blue-600);
   --verity-button-secondary-knockout-color-border-disabled: var(--verity-color-brand-blue-500);
-  --verity-button-primary-light-color-background-default: var(--verity-color-brand-blue-100);
-  --verity-button-primary-light-color-background-hover: var(--verity-color-brand-blue-200);
-  --verity-button-primary-light-color-background-active: var(--verity-color-brand-blue-200);
-  --verity-button-primary-light-color-background-disabled: var(--verity-color-transparent-white-25);
-  --verity-button-primary-light-color-content-default: var(--verity-color-brand-blue-700);
-  --verity-button-primary-light-color-content-hover: var(--verity-color-brand-blue-600);
-  --verity-button-primary-light-color-content-active: var(--verity-color-brand-blue-600);
-  --verity-button-primary-light-color-content-disabled: var(--verity-color-brand-blue-300);
   --verity-link-color-content-default: var(--verity-color-brand-blue-400);
   --verity-link-color-content-hover: var(--verity-color-brand-blue-300);
   --verity-link-color-content-active: var(--verity-color-brand-blue-300);
@@ -666,14 +668,22 @@
 
 /* Red theme: Themes Tier 3 */
 [data-theme="red"] {
-  --verity-button-primary-brand-color-background-default: var(--verity-color-brand-red-600);
-  --verity-button-primary-brand-color-background-hover: var(--verity-color-brand-red-500);
-  --verity-button-primary-brand-color-background-active: var(--verity-color-brand-red-500);
-  --verity-button-primary-brand-color-background-disabled: var(--verity-color-brand-red-300);
-  --verity-button-primary-brand-color-content-default: var(--verity-color-brand-red-100);
-  --verity-button-primary-brand-color-content-hover: var(--verity-color-neutral-white);
-  --verity-button-primary-brand-color-content-active: var(--verity-color-neutral-white);
-  --verity-button-primary-brand-color-content-disabled: var(--verity-color-brand-red-400);
+  --verity-button-primary-color-background-default: var(--verity-color-brand-red-600);
+  --verity-button-primary-color-background-hover: var(--verity-color-brand-red-500);
+  --verity-button-primary-color-background-active: var(--verity-color-brand-red-500);
+  --verity-button-primary-color-background-disabled: var(--verity-color-brand-red-300);
+  --verity-button-primary-color-content-default: var(--verity-color-brand-red-100);
+  --verity-button-primary-color-content-hover: var(--verity-color-neutral-white);
+  --verity-button-primary-color-content-active: var(--verity-color-neutral-white);
+  --verity-button-primary-color-content-disabled: var(--verity-color-brand-red-400);
+  --verity-button-primary-brand-color-background-default: var(--verity-color-brand-red-100);
+  --verity-button-primary-brand-color-background-hover: var(--verity-color-brand-red-200);
+  --verity-button-primary-brand-color-background-active: var(--verity-color-brand-red-200);
+  --verity-button-primary-brand-color-background-disabled: var(--verity-color-transparent-white-25);
+  --verity-button-primary-brand-color-content-default: var(--verity-color-brand-red-600);
+  --verity-button-primary-brand-color-content-hover: var(--verity-color-brand-red-500);
+  --verity-button-primary-brand-color-content-active: var(--verity-color-brand-red-500);
+  --verity-button-primary-brand-color-content-disabled: var(--verity-color-brand-red-300);
   --verity-button-secondary-color-content-default: var(--verity-color-brand-red-100);
   --verity-button-secondary-color-content-hover: var(--verity-color-neutral-white);
   --verity-button-secondary-color-content-active: var(--verity-color-neutral-white);
@@ -690,14 +700,6 @@
   --verity-button-secondary-knockout-color-border-hover: var(--verity-color-brand-red-500);
   --verity-button-secondary-knockout-color-border-active: var(--verity-color-brand-red-500);
   --verity-button-secondary-knockout-color-border-disabled: var(--verity-color-brand-red-400);
-  --verity-button-primary-light-color-background-default: var(--verity-color-brand-red-100);
-  --verity-button-primary-light-color-background-hover: var(--verity-color-brand-red-200);
-  --verity-button-primary-light-color-background-active: var(--verity-color-brand-red-200);
-  --verity-button-primary-light-color-background-disabled: var(--verity-color-transparent-white-25);
-  --verity-button-primary-light-color-content-default: var(--verity-color-brand-red-600);
-  --verity-button-primary-light-color-content-hover: var(--verity-color-brand-red-500);
-  --verity-button-primary-light-color-content-active: var(--verity-color-brand-red-500);
-  --verity-button-primary-light-color-content-disabled: var(--verity-color-brand-red-300);
   --verity-link-color-content-default: var(--verity-color-brand-red-400);
   --verity-link-color-content-hover: var(--verity-color-brand-red-300);
   --verity-link-color-content-active: var(--verity-color-brand-red-300);

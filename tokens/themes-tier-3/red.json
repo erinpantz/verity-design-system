@@ -1,6 +1,6 @@
 {
   "button": {
-    "primary-brand": {
+    "primary": {
       "color": {
         "background": {
           "default": {
@@ -36,6 +36,46 @@
           "disabled": {
             "$type": "color",
             "$value": "{color.brand.red.400}"
+          }
+        }
+      },
+      "brand": {
+        "color": {
+          "background": {
+            "default": {
+              "$type": "color",
+              "$value": "{color.brand.red.100}"
+            },
+            "hover": {
+              "$type": "color",
+              "$value": "{color.brand.red.200}"
+            },
+            "active": {
+              "$type": "color",
+              "$value": "{color.brand.red.200}"
+            },
+            "disabled": {
+              "$type": "color",
+              "$value": "{color.transparent.white-25}"
+            }
+          },
+          "content": {
+            "default": {
+              "$type": "color",
+              "$value": "{color.brand.red.600}"
+            },
+            "hover": {
+              "$type": "color",
+              "$value": "{color.brand.red.500}"
+            },
+            "active": {
+              "$type": "color",
+              "$value": "{color.brand.red.500}"
+            },
+            "disabled": {
+              "$type": "color",
+              "$value": "{color.brand.red.300}"
+            }
           }
         }
       }
@@ -116,46 +156,6 @@
               "$type": "color",
               "$value": "{color.brand.red.400}"
             }
-          }
-        }
-      }
-    },
-    "primary-light": {
-      "color": {
-        "background": {
-          "default": {
-            "$type": "color",
-            "$value": "{color.brand.red.100}"
-          },
-          "hover": {
-            "$type": "color",
-            "$value": "{color.brand.red.200}"
-          },
-          "active": {
-            "$type": "color",
-            "$value": "{color.brand.red.200}"
-          },
-          "disabled": {
-            "$type": "color",
-            "$value": "{color.transparent.white-25}"
-          }
-        },
-        "content": {
-          "default": {
-            "$type": "color",
-            "$value": "{color.brand.red.600}"
-          },
-          "hover": {
-            "$type": "color",
-            "$value": "{color.brand.red.500}"
-          },
-          "active": {
-            "$type": "color",
-            "$value": "{color.brand.red.500}"
-          },
-          "disabled": {
-            "$type": "color",
-            "$value": "{color.brand.red.300}"
           }
         }
       }
