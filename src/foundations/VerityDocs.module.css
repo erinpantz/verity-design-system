@@ -1,81 +1,16 @@
-/* Verity styles for MDX docs pages, used by the VerityDocs wrapper. The
-   wrapper uses Storybook's Unstyled block, so these replace Storybook's own
-   docs styles. Storybook's own docs blocks (the example frame, code panel,
-   and buttons) are styled by the theme in .storybook/verityTheme.ts. */
+/* Docs-only styles for MDX docs pages, used by the VerityDocs wrapper. The
+   text styles (headings, paragraphs, lists, blockquotes, inline code, and
+   links) come from Prose, inside .page. The wrapper uses Storybook's Unstyled
+   block, so these replace Storybook's own docs styles. Storybook's own docs
+   blocks (the example frame, code panel, and buttons) are styled by the theme
+   in .storybook/verityTheme.ts.
 
-.page {
-  color: var(--verity-color-content-default);
-}
-
-/* Prose: each heading, paragraph, and list gets space before it from its
-   text style's space-before token. The first one gets none. */
-
-.prose > * {
-  margin-block: 0;
-}
-
-.prose h1 {
-  margin-block-start: var(--verity-viewport-typography-heading-1-space-before);
-  font-family: var(--verity-viewport-typography-heading-1-font-family);
-  font-size: var(--verity-viewport-typography-heading-1-font-size);
-  font-weight: var(--verity-viewport-typography-heading-1-font-weight);
-  line-height: var(--verity-viewport-typography-heading-1-line-height);
-  letter-spacing: var(--verity-viewport-typography-heading-1-letter-spacing);
-  text-transform: var(--verity-viewport-typography-heading-1-text-transform);
-}
-
-.prose h2 {
-  margin-block-start: var(--verity-viewport-typography-heading-2-space-before);
-  font-family: var(--verity-viewport-typography-heading-2-font-family);
-  font-size: var(--verity-viewport-typography-heading-2-font-size);
-  font-weight: var(--verity-viewport-typography-heading-2-font-weight);
-  line-height: var(--verity-viewport-typography-heading-2-line-height);
-  letter-spacing: var(--verity-viewport-typography-heading-2-letter-spacing);
-  text-transform: var(--verity-viewport-typography-heading-2-text-transform);
-}
-
-.prose h3 {
-  margin-block-start: var(--verity-viewport-typography-heading-3-space-before);
-  font-family: var(--verity-viewport-typography-heading-3-font-family);
-  font-size: var(--verity-viewport-typography-heading-3-font-size);
-  font-weight: var(--verity-viewport-typography-heading-3-font-weight);
-  line-height: var(--verity-viewport-typography-heading-3-line-height);
-  letter-spacing: var(--verity-viewport-typography-heading-3-letter-spacing);
-  text-transform: var(--verity-viewport-typography-heading-3-text-transform);
-}
-
-.prose p,
-.prose ul,
-.prose ol {
-  margin-block-start: var(--verity-viewport-typography-body-default-space-before);
-  font-family: var(--verity-viewport-typography-body-default-font-family);
-  font-size: var(--verity-viewport-typography-body-default-font-size);
-  font-weight: var(--verity-viewport-typography-body-default-font-weight);
-  line-height: var(--verity-viewport-typography-body-default-line-height);
-  letter-spacing: var(--verity-viewport-typography-body-default-letter-spacing);
-  text-transform: var(--verity-viewport-typography-body-default-text-transform);
-}
-
-/* The first child resets after the element rules above, so it wins */
-.prose > :first-child {
-  margin-block-start: 0;
-}
-
-.prose ul,
-.prose ol {
-  display: flex;
-  flex-direction: column;
-  gap: var(--verity-spacing-xs);
-  padding-inline-start: var(--verity-padding-sm);
-}
-
-.prose li p {
-  margin: 0;
-}
+   Prose is the only element inside .page, so ".page > * > " means "directly
+   inside Prose": a page's own blocks, not the examples shown in <Canvas>. */
 
 /* Tables fill the page width, and text wraps inside cells */
 
-.prose table {
+.page > * > table {
   margin-block-start: var(--verity-viewport-typography-body-default-space-before);
   inline-size: 100%;
   border-collapse: collapse;
@@ -86,8 +21,12 @@
   letter-spacing: var(--verity-viewport-typography-body-sm-letter-spacing);
 }
 
-.prose th,
-.prose td {
+/* A table first on the page has nothing above it, like any other block */
+.page > * > table:first-child {
+  margin-block-start: 0;
+}
+
+.page > * > table :is(th, td) {
   padding-block: var(--verity-padding-xs);
   padding-inline: var(--verity-padding-sm);
   border-block-end: var(--verity-border-width-sm) solid var(--verity-color-border-disabled);
@@ -96,7 +35,7 @@
   overflow-wrap: break-word;
 }
 
-.prose thead th {
+.page > * > table thead th {
   border-block-end-color: var(--verity-color-border-default);
   background: var(--verity-color-background-subtle);
   font-family: var(--verity-viewport-typography-label-sm-font-family);
@@ -106,33 +45,9 @@
   letter-spacing: var(--verity-viewport-typography-label-sm-letter-spacing);
 }
 
-/* Code uses the code style that matches the body style around it:
-   body-default text → code-default, body-sm → code-sm (and body-lg → code-lg,
-   body-xl → code-xl, if docs text ever uses those). Inline code keeps the
-   line height of the text around it, so it doesn't use a code line-height token.
-   Color and line-height are set on purpose: Storybook styles code elements
-   even inside Unstyled, with a dark gray that's unreadable on Verity's
-   backgrounds and a line-height that would shrink the line around the code. */
-
-/* Inline code in paragraphs and lists (body-default). Not code inside a <pre>,
-   such as Storybook's code panel, which has its own styles. */
-.prose :not(pre) > code {
-  padding-inline: var(--verity-spacing-xxs);
-  color: var(--verity-color-content-default);
-  border-radius: var(--verity-border-radius-sm);
-  background: var(--verity-color-background-subtle);
-  font-family: var(--verity-viewport-typography-code-default-font-family);
-  font-size: var(--verity-viewport-typography-code-default-font-size);
-  font-weight: var(--verity-viewport-typography-code-default-font-weight);
-  letter-spacing: var(--verity-viewport-typography-code-default-letter-spacing);
-  line-height: inherit;
-  overflow-wrap: anywhere;
-  box-decoration-break: clone;
-}
-
-/* Inline code in table cells (body-sm) */
-.prose th code,
-.prose td code {
+/* Table cells use body-sm text, so their inline code uses code-sm. Prose
+   gives it the rest of its look. */
+.page > * > table :is(th, td) code {
   font-family: var(--verity-viewport-typography-code-sm-font-family);
   font-size: var(--verity-viewport-typography-code-sm-font-size);
   font-weight: var(--verity-viewport-typography-code-sm-font-weight);
@@ -140,9 +55,9 @@
 }
 
 /* Code blocks written in the page use code-default, including its line height.
-   Only direct children, so Storybook's own code panel (inside <Canvas>) keeps
-   its layout. */
-.prose > pre {
+   Only the page's own, so Storybook's code panel (inside <Canvas>) keeps its
+   layout. */
+.page > * > pre {
   margin-block-start: var(--verity-viewport-typography-code-default-space-before);
   padding: var(--verity-padding-sm);
   overflow-x: auto;
@@ -156,37 +71,14 @@
   letter-spacing: var(--verity-viewport-typography-code-default-letter-spacing);
 }
 
+.page > * > pre:first-child {
+  margin-block-start: 0;
+}
+
 /* Code inside a code block takes the block's style, without the inline chip */
-.prose > pre code {
+.page > * > pre code {
   padding: var(--verity-spacing-none);
   background: none;
   font: inherit;
   letter-spacing: inherit;
-}
-
-/* Links */
-
-.prose a {
-  color: var(--verity-link-color-content-default);
-  text-decoration-line: underline;
-  text-decoration-thickness: var(--verity-border-width-sm);
-  text-underline-offset: var(--verity-spacing-xxs);
-}
-
-.prose a:visited {
-  color: var(--verity-link-color-content-visited);
-}
-
-.prose a:hover {
-  color: var(--verity-link-color-content-hover);
-}
-
-.prose a:active {
-  color: var(--verity-link-color-content-active);
-}
-
-.prose a:focus-visible {
-  border-radius: var(--verity-border-radius-xs);
-  outline: var(--verity-border-width-md) solid var(--verity-color-border-focus);
-  outline-offset: var(--verity-border-width-md);
 }

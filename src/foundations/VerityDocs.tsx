@@ -6,15 +6,22 @@
 //   # Page title
 //
 //   </VerityDocs>
+//
+// The text styles come from the Prose component, so docs pages and long-form
+// text on the site look the same. This file adds only what docs pages need on
+// top: tables and code blocks.
 
 import { Unstyled } from '@storybook/addon-docs/blocks';
 import type { ReactNode } from 'react';
+import { Prose } from '../components/Text/Prose';
 import styles from './VerityDocs.module.css';
 
 export function VerityDocs({ children }: { children: ReactNode }) {
   return (
     <Unstyled>
-      <div className={`${styles.page} ${styles.prose}`}>{children}</div>
+      <div className={styles.page}>
+        <Prose>{children}</Prose>
+      </div>
     </Unstyled>
   );
 }
