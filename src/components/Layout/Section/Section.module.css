@@ -1,0 +1,14 @@
+/* Section's layout comes from Container and VerticalStack. Only the intro
+   needs its own styles. */
+
+.intro {
+  /* Remove the browser's default space around paragraphs, so the gap sets it */
+  margin: 0;
+  color: var(--verity-color-content-default);
+  font-family: var(--verity-viewport-typography-body-lg-font-family);
+  font-size: var(--verity-viewport-typography-body-lg-font-size);
+  font-weight: var(--verity-viewport-typography-body-lg-font-weight);
+  line-height: var(--verity-viewport-typography-body-lg-line-height);
+  letter-spacing: var(--verity-viewport-typography-body-lg-letter-spacing);
+  text-transform: var(--verity-viewport-typography-body-lg-text-transform);
+}

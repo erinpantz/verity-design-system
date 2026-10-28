@@ -1,0 +1,83 @@
+import { Meta, Canvas } from '@storybook/addon-docs/blocks';
+import { VerityDocs } from '../../../foundations/VerityDocs';
+import { PropsTable } from '../../../foundations/PropsTable';
+import * as SectionStories from './Section.stories';
+
+<Meta of={SectionStories} />
+
+<VerityDocs>
+
+# Section
+
+A chapter of a page: a heading, an optional introduction, and the blocks that belong to it. Space between sections comes from the page, so a Section adds no space outside itself.
+
+<Canvas of={SectionStories.Default} />
+
+## When to use
+
+- **For each topic on a page,** like “Research and discovery” or “Outcomes” in a case study.
+- **With an intro,** when a sentence or two helps people decide whether to read the section.
+- **Not for the top of the page.** The page title and its intro go in a `Container` with `as="header"`.
+- **Not for content without a heading.** Use a `Container`, which sets the same widths and renders a `<div>`.
+
+## Accessibility
+
+A Section renders a `<section>` named by its heading (`aria-labelledby`), so screen readers list it as a region, such as “Research and discovery, region,” and people can jump between sections.
+
+| Situation | What to do | Example |
+|---|---|---|
+| It’s a section of the page | Keep the default, level 2, below the page’s level 1 title. | “Outcomes” on a case study |
+| It’s inside another Section | Use `headingLevel={3}`. Never skip a level. | “Interviews” inside “Research and discovery” |
+| It holds TextBlocks or cards with headings | Give them headings one level below the Section’s. TextBlock’s default, level 3, fits a level 2 Section. | “The problem” inside “Research and discovery” |
+| Writing the heading | Make it say what the section is about, since it also names the region. | “Outcomes,” not “Section 3” |
+
+## Width
+
+The same widths as `Container`, from the same tokens, with the content centered. The maximum width includes the side margins, as in Figma.
+
+| `width` | Tokens | Use for |
+|---|---|---|
+| `constrained` | `--verity-container-constrained-*` | The default: text and anything people read |
+| `wide` | `--verity-container-wide-*` | Media, grids, and wide visuals |
+| `full-bleed` | `--verity-container-full-bleed-horizontal-margin` | Bands that run edge to edge |
+
+**Layout › Container** shows the margin and maximum width at each breakpoint.
+
+## Heading level
+
+| `headingLevel` | Element | Use for |
+|---|---|---|
+| `2` | `<h2>` | The default: a section of the page |
+| `3` | `<h3>` | A section inside another section |
+| `1` | `<h1>` | Rarely: only when the section’s heading is the page’s title |
+
+## Space
+
+| Between | Token | Value |
+|---|---|---|
+| The heading and the intro | `--verity-spacing-sm` | 16–24 |
+| The header and the content | `--verity-spacing-md` | 24–32 |
+| Blocks in the content | `--verity-spacing-lg` | 32–48 |
+
+A Section adds no space above or below itself. The page sets the space between sections, with Main’s `--verity-main-spacing-section-gap`. Blocks in the content are spaced by Section’s gap, so they never need margins of their own.
+
+## Color
+
+The heading uses Heading’s color, `--verity-color-content-default`. The intro uses the same color, in the body-lg text style (`--verity-viewport-typography-body-lg-*`).
+
+## Props
+
+<PropsTable of={SectionStories} />
+
+## In Figma
+
+| Figma | Code |
+|---|---|
+| Component `Section` | `<Section />` |
+| The text of the exposed `Heading` | `heading` |
+| The exposed `Heading`’s `Level` | `headingLevel`. Level 2 is the default in both. |
+| Properties `Show intro` and `Intro` | `intro`, shown when provided: leave it out for no intro. Figma shows the intro by default; code doesn’t, so add one when the section needs it. |
+| Property `Width` | `width` |
+| Slot `Content` | `children` |
+
+</VerityDocs>
