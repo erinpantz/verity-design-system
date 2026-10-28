@@ -772,6 +772,7 @@
   --verity-nav-item-gap: var(--verity-spacing-8); /** Space between a NavItem icon and its label. */
   --verity-tooltip-padding-x: var(--verity-spacing-8); /** Left and right padding inside a Tooltip. */
   --verity-tooltip-padding-y: var(--verity-spacing-4); /** Top and bottom padding inside a Tooltip. */
+  --verity-unordered-list-marker-size: var(--verity-size-20); /** Width and height of the marker before each UnorderedList item. */
 }
 
 /* Small: Typography Styles */
@@ -992,6 +993,7 @@
     --verity-nav-item-gap: var(--verity-spacing-8); /** Space between a NavItem icon and its label. */
     --verity-tooltip-padding-x: var(--verity-spacing-8); /** Left and right padding inside a Tooltip. */
     --verity-tooltip-padding-y: var(--verity-spacing-4); /** Top and bottom padding inside a Tooltip. */
+    --verity-unordered-list-marker-size: var(--verity-size-20); /** Width and height of the marker before each UnorderedList item. */
   }
 
   /* Medium: Typography Styles */
@@ -1213,6 +1215,7 @@
     --verity-nav-item-gap: var(--verity-spacing-8); /** Space between a NavItem icon and its label. */
     --verity-tooltip-padding-x: var(--verity-spacing-8); /** Left and right padding inside a Tooltip. */
     --verity-tooltip-padding-y: var(--verity-spacing-4); /** Top and bottom padding inside a Tooltip. */
+    --verity-unordered-list-marker-size: var(--verity-size-20); /** Width and height of the marker before each UnorderedList item. */
   }
 
   /* Large: Typography Styles */
@@ -1434,5 +1437,6 @@
     --verity-nav-item-gap: var(--verity-spacing-8); /** Space between a NavItem icon and its label. */
     --verity-tooltip-padding-x: var(--verity-spacing-8); /** Left and right padding inside a Tooltip. */
     --verity-tooltip-padding-y: var(--verity-spacing-4); /** Top and bottom padding inside a Tooltip. */
+    --verity-unordered-list-marker-size: var(--verity-size-20); /** Width and height of the marker before each UnorderedList item. */
   }
 }

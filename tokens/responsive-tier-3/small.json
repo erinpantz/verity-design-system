@@ -254,5 +254,19 @@
         }
       }
     }
+  },
+  "unordered-list": {
+    "marker-size": {
+      "$type": "dimension",
+      "$value": "{size.20}",
+      "$description": "Width and height of the marker before each UnorderedList item.",
+      "$extensions": {
+        "com.figma": {
+          "scopes": [
+            "WIDTH_HEIGHT"
+          ]
+        }
+      }
+    }
   }
 }
