@@ -1,0 +1,56 @@
+/* A column of items. The space between them is the stack's gap, never a
+   margin on the items. */
+
+.stack {
+  display: flex;
+  flex-direction: column;
+  /* When the stack is a list (ul or ol), remove the browser's bullets,
+     numbers, and indents, so it looks the same as a div */
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* Gap */
+
+.gap-none {
+  gap: var(--verity-spacing-none);
+}
+
+.gap-xxs {
+  gap: var(--verity-spacing-xxs);
+}
+
+.gap-xs {
+  gap: var(--verity-spacing-xs);
+}
+
+.gap-sm {
+  gap: var(--verity-spacing-sm);
+}
+
+.gap-md {
+  gap: var(--verity-spacing-md);
+}
+
+.gap-lg {
+  gap: var(--verity-spacing-lg);
+}
+
+/* Align: how items line up across the column */
+
+.align-stretch {
+  align-items: stretch;
+}
+
+.align-start {
+  align-items: flex-start;
+}
+
+.align-center {
+  align-items: center;
+}
+
+.align-end {
+  align-items: flex-end;
+}

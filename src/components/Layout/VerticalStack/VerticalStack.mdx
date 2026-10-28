@@ -1,0 +1,71 @@
+import { Meta, Canvas } from '@storybook/addon-docs/blocks';
+import { VerityDocs } from '../../../foundations/VerityDocs';
+import { PropsTable } from '../../../foundations/PropsTable';
+import * as VerticalStackStories from './VerticalStack.stories';
+
+<Meta of={VerticalStackStories} />
+
+<VerityDocs>
+
+# VerticalStack
+
+Stacks its content in a column, with the space between items set by one gap token. Use it whenever you compose a layout from other components.
+
+<Canvas of={VerticalStackStories.Default} />
+
+## When to use
+
+- **To put components one above another,** such as a heading, an image, and a caption, with the same space between each.
+- **Inside other layouts,** such as a Container, a Grid item, or another stack. Stacks nest, so each group can have its own gap.
+- **Not for long-form text.** Use `Prose`, where each block of text sets the space above itself.
+- **Not for items side by side.** Use `HorizontalStack`. For rows of interchangeable items, use `Grid`.
+
+## Accessibility
+
+A VerticalStack renders a `<div>` by default, so it adds nothing for screen readers. Use `as` to make it a list. People hear the items in the order they’re written, which is also the order they appear, top to bottom.
+
+| Situation | What to do | Example |
+|---|---|---|
+| The stack groups content under a heading | Put the stack in a `Container` with `as="section"`, not a stack of its own. | A “Process” heading and the blocks under it |
+| The items are a list of similar things | Use `as="ul"` with `<li>` items, so screen readers announce how many there are. | Three project links |
+| The items are steps in order | Use `as="ol"` with `<li>` items. | Steps in a process |
+
+## Gap
+
+The space between items. Gaps grow on larger screens, from Small to XL; **Foundations › Spacing and layout** shows the value at each breakpoint.
+
+| `gap` | Token | Value | Use for |
+|---|---|---|---|
+| `none` | `--verity-spacing-none` | 0 | Items that should touch |
+| `xxs` | `--verity-spacing-xxs` | 4 | Tight groups, like a label pair |
+| `xs` | `--verity-spacing-xs` | 8–16 | Small groups, like a caption and its credit |
+| `sm` | `--verity-spacing-sm` | 16–24 | A heading and its body |
+| `md` | `--verity-spacing-md` | 24–32 | The default: groups of related content |
+| `lg` | `--verity-spacing-lg` | 32–48 | Separate blocks, like the blocks in a section |
+
+## Align
+
+How items line up across the column.
+
+| `align` | What it does | Use for |
+|---|---|---|
+| `stretch` | The default. Items fill the column’s width. | Page blocks, text, and anything that should span the column |
+| `start` | Items keep their own width and line up on the left. | Buttons or tags that shouldn’t stretch |
+| `center` | Items keep their own width and are centered. | A centered call to action |
+| `end` | Items keep their own width and line up on the right. | Content that ends at the right edge |
+
+## Props
+
+<PropsTable of={VerticalStackStories} />
+
+## In Figma
+
+| Figma | Code |
+|---|---|
+| Component `VerticalStack` | `<VerticalStack />` |
+| Property `Gap` | `gap` |
+| Property `Align` | `align`. `stretch` is the default in both. |
+| Not in Figma | `as`: choose it in code, from what the items are |
+| Slot `Content` | `children` |
+
+</VerityDocs>
