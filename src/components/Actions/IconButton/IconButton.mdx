@@ -1,0 +1,81 @@
+import { Meta, Canvas } from '@storybook/addon-docs/blocks';
+import { VerityDocs } from '../../../foundations/VerityDocs';
+import { PropsTable } from '../../../foundations/PropsTable';
+import * as IconButtonStories from './IconButton.stories';
+
+<Meta of={IconButtonStories} />
+
+<VerityDocs>
+
+# IconButton
+
+A square button with only an icon, for actions people recognize at a glance, like collapsing the navigation. Its label shows in a tooltip on hover and focus.
+
+<Canvas of={IconButtonStories.Default} />
+
+## When to use
+
+- **For a familiar action in a tight space,** like collapsing the navigation or a toolbar of small actions.
+- **When the icon alone is clear** to most people. The tooltip helps, but people on touch screens never see it.
+- **Not when there’s room for a label.** Use `Button` with `startIcon`, which is clearer for everyone.
+- **Not to go to another page.** Use `Link`, or a nav item in the navigation.
+
+## Accessibility
+
+An IconButton renders a `<button type="button">` inside a `Tooltip`. The button takes its name from the tooltip (`aria-labelledby`), so the `label` is both what screen readers say and what the tooltip shows, and it’s read only once. The icon is decorative and hidden from screen readers.
+
+| Situation | What to do | Example |
+|---|---|---|
+| Writing the label | Say what the button does, not what the icon looks like. Start with a verb. | “Collapse navigation,” not “Sidebar icon” |
+| The action toggles | Change the label to the action it will do next. | “Collapse navigation,” then “Expand navigation” |
+| It can’t be used yet | Use `disabled`. Keyboard users skip disabled buttons, so say on the page why. | A download that isn’t ready |
+
+The tooltip appears on hover and on keyboard focus, stays while the pointer is over it, and Escape hides it, as **Actions › Tooltip** describes.
+
+## Size
+
+Square, from the control size tokens, so an IconButton lines up with a Button of the same size. On Medium and Small screens, sm and md stay at least 44 on each side, so they’re easy to tap.
+
+| `size` | Width and height | Icon | Use for |
+|---|---|---|---|
+| `xl` | `--verity-control-size-xl` (56–64) | `--verity-icon-size-lg` | Next to an xl Button |
+| `lg` | `--verity-control-size-lg` (48–56) | `--verity-icon-size-lg` | Next to an lg Button |
+| `md` | `--verity-control-size-md` (40–44) | `--verity-icon-size-md` | The default: most icon buttons |
+| `sm` | `--verity-control-size-sm` (32–44) | `--verity-icon-size-sm` | Tight spaces, like a dense toolbar |
+
+<Canvas of={IconButtonStories.Sizes} />
+
+## States
+
+| State | What changes | Tokens |
+|---|---|---|
+| Default | The icon, with no fill | `--verity-color-content-default` |
+| Hover | A light fill behind the icon, and the tooltip | `--verity-color-background-transparent-medium` |
+| Focus | A focus ring outside the button, following its corners, and the tooltip. Keyboard focus only. | `--verity-focus-ring-width`, `--verity-focus-ring-offset`, `--verity-color-border-focus` |
+| Active | A stronger fill while pressed | `--verity-color-background-transparent-strong` |
+| Disabled | A dimmed icon and no fill. The tooltip still shows on hover. | `--verity-color-content-disabled` |
+
+<Canvas of={IconButtonStories.Disabled} />
+
+## Color
+
+The icon uses `--verity-color-content-default`, and the corners use `--verity-border-radius-md`, like Button. IconButton is for the site’s background; it has no brand or knockout color yet.
+
+## Props
+
+<PropsTable of={IconButtonStories} />
+
+## In Figma
+
+| Figma | Code |
+|---|---|
+| Component `IconButton` | `<IconButton />` |
+| The icon instance | `icon`: the icon’s name |
+| The tooltip’s text | `label`, which is also the button’s name |
+| Property `Size` | `size`. `md` is the default in both. |
+| Property `State` | Hover, focus, and active come from the browser. `State=disabled` → `disabled`. Figma draws disabled the same as default; code dims the icon with `--verity-color-content-disabled`. |
+| Property `Show tooltip` | Figma-only, for mockups. In code, the tooltip always shows on hover and focus. |
+| Layer `Focus ring` | Not a layer: an outline on keyboard focus |
+| Not in Figma | `onClick` |
+
+</VerityDocs>

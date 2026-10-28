@@ -1,0 +1,61 @@
+/* A square button with an icon and no visible label. It has no fill until
+   it's hovered or pressed. */
+
+.iconButton {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  inline-size: var(--size);
+  block-size: var(--size);
+  margin: 0;
+  padding: 0;
+  border: none;
+  border-radius: var(--verity-border-radius-md);
+  background: transparent;
+  color: var(--verity-color-content-default);
+  cursor: pointer;
+}
+
+/* Sizes: square, from the control size tokens */
+
+.xl {
+  --size: var(--verity-control-size-xl);
+}
+
+.lg {
+  --size: var(--verity-control-size-lg);
+}
+
+.md {
+  --size: var(--verity-control-size-md);
+}
+
+.sm {
+  --size: var(--verity-control-size-sm);
+}
+
+/* States */
+
+.iconButton:hover {
+  background: var(--verity-color-background-transparent-medium);
+}
+
+.iconButton:active {
+  background: var(--verity-color-background-transparent-strong);
+}
+
+/* Keyboard focus: a ring outside the button, following its corners */
+.iconButton:focus-visible {
+  outline: var(--verity-focus-ring-width) solid var(--verity-color-border-focus);
+  outline-offset: var(--verity-focus-ring-offset);
+}
+
+/* Disabled: a dimmed icon and no hover or pressed fill. Figma shows disabled
+   the same as default, so this color is code's choice; see the docs. */
+.iconButton:disabled {
+  background: transparent;
+  color: var(--verity-color-content-disabled);
+  cursor: default;
+}
