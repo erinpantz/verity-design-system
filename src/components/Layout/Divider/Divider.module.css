@@ -1,0 +1,8 @@
+/* The wave keeps its own size and is centered across the full width. The SVG
+   uses currentColor, so this color is the wave's color. */
+
+.divider {
+  display: flex;
+  justify-content: center;
+  color: var(--verity-color-background-brand);
+}

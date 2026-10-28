@@ -1,0 +1,56 @@
+import { Meta, Canvas } from '@storybook/addon-docs/blocks';
+import { VerityDocs } from '../../../foundations/VerityDocs';
+import * as DividerStories from './Divider.stories';
+
+<Meta of={DividerStories} />
+
+<VerityDocs>
+
+# Divider
+
+A decorative wave that marks a break between topics. Screen readers announce it as a separator, not as an image.
+
+<Canvas of={DividerStories.Default} />
+
+## When to use
+
+- **Between topics,** where a heading alone isn’t enough of a break, such as before the footer or between parts of a long case study.
+- **Sparingly.** One or two on a page keep it special; use it on every section and it stops meaning anything.
+- **Not for space.** A Divider adds no space above or below itself. The layout around it, such as a `VerticalStack` gap, sets that space.
+- **Not to separate items in a list or group.** Use the gap of a `VerticalStack`, `HorizontalStack`, or `Grid`.
+
+## Accessibility
+
+A Divider renders a `<div>` with `role="separator"`, so screen readers announce a separator, the same as an `<hr>`. The wave inside it has `aria-hidden="true"`, so it isn’t read out as an image.
+
+| Situation | What to do | Example |
+|---|---|---|
+| The break is between topics | Use a Divider. People who can’t see the wave still hear that a new topic starts. | Before the footer |
+| The break is only visual | Use a gap instead. A Divider tells screen readers there’s a break, so don’t use one where there isn’t. | Between cards in a Grid |
+
+## Color
+
+The wave is single color and uses `currentColor`. The Divider sets that color to `--verity-color-background-brand`, so it matches the theme: blue in Blue, red in Red. Never set a fill on the SVG itself.
+
+## Size
+
+The wave keeps the size it was drawn at, 166 × 16, and is centered across the full width of whatever holds it. It doesn’t scale with the screen.
+
+## Props
+
+Divider has no props: it looks the same everywhere.
+
+## In Figma
+
+| Figma | Code |
+|---|---|
+| Component `Divider` | `<Divider />` |
+| No properties | No props |
+
+## Changing the wave
+
+1. **Change it in Figma,** in the `Divider` component.
+2. **Ask Claude to export it.** The SVG goes to `illustrations/divider.svg`, cleaned up to use `currentColor`. Never edit that file by hand.
+3. **Refresh Storybook.** The Divider reads the file when the code is built, so there’s nothing to run.
+
+</VerityDocs>
