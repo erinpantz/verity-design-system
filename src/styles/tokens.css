@@ -704,10 +704,10 @@
   --verity-link-color-content-hover: var(--verity-color-brand-red-300);
   --verity-link-color-content-active: var(--verity-color-brand-red-300);
   --verity-link-color-content-visited: var(--verity-color-brand-red-400);
-  --verity-link-brand-color-content-default: var(--verity-color-brand-red-200);
-  --verity-link-brand-color-content-hover: var(--verity-color-brand-red-100);
-  --verity-link-brand-color-content-active: var(--verity-color-brand-red-100);
-  --verity-link-brand-color-content-visited: var(--verity-color-brand-red-200);
+  --verity-link-brand-color-content-default: var(--verity-color-brand-red-100);
+  --verity-link-brand-color-content-hover: var(--verity-color-neutral-white);
+  --verity-link-brand-color-content-active: var(--verity-color-neutral-white);
+  --verity-link-brand-color-content-visited: var(--verity-color-brand-red-100);
   --verity-link-knockout-color-content-default: var(--verity-color-brand-red-600);
   --verity-link-knockout-color-content-hover: var(--verity-color-brand-red-500);
   --verity-link-knockout-color-content-active: var(--verity-color-brand-red-500);
