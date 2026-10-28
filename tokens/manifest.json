@@ -39,7 +39,7 @@
         "Medium": "typography-styles-design-only/medium.json",
         "Small": "typography-styles-design-only/small.json"
       },
-      "tokens": 154
+      "tokens": 161
     },
     {
       "name": "Styles Tier 2",
@@ -53,7 +53,7 @@
       "modes": {
         "Mode 1": "typography-tier-2.json"
       },
-      "tokens": 174
+      "tokens": 180
     },
     {
       "name": "Responsive Tier 1",

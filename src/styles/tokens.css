@@ -411,6 +411,12 @@
   --verity-typography-code-sm-line-height: var(--verity-typography-line-height-20);
   --verity-typography-code-sm-letter-spacing: var(--verity-typography-letter-spacing-0);
   --verity-typography-code-sm-text-transform: var(--verity-typography-text-transform-none);
+  --verity-typography-body-lg-strong-font-family: var(--verity-typography-font-family-plus-jakarta-sans);
+  --verity-typography-body-lg-strong-font-weight: var(--verity-typography-font-weight-600);
+  --verity-typography-body-lg-strong-font-size: var(--verity-typography-font-size-20);
+  --verity-typography-body-lg-strong-line-height: var(--verity-typography-line-height-32);
+  --verity-typography-body-lg-strong-letter-spacing: var(--verity-typography-letter-spacing-0);
+  --verity-typography-body-lg-strong-text-transform: var(--verity-typography-text-transform-none);
   --verity-typography-display-default-mobile-text-transform: var(--verity-typography-display-default-text-transform);
   --verity-typography-title-lg-mobile-text-transform: var(--verity-typography-title-lg-text-transform);
   --verity-typography-heading-3-mobile-text-transform: var(--verity-typography-heading-3-text-transform);
@@ -927,6 +933,13 @@
   --verity-viewport-typography-code-sm-letter-spacing: var(--verity-typography-code-sm-letter-spacing);
   --verity-viewport-typography-code-sm-text-transform: var(--verity-typography-code-sm-text-transform);
   --verity-viewport-typography-code-sm-space-before: var(--verity-spacing-none);
+  --verity-viewport-typography-body-lg-strong-font-family: var(--verity-typography-body-lg-strong-font-family);
+  --verity-viewport-typography-body-lg-strong-font-weight: var(--verity-typography-body-lg-strong-font-weight);
+  --verity-viewport-typography-body-lg-strong-font-size: var(--verity-typography-body-lg-strong-font-size);
+  --verity-viewport-typography-body-lg-strong-line-height: var(--verity-typography-body-lg-strong-line-height);
+  --verity-viewport-typography-body-lg-strong-letter-spacing: var(--verity-typography-body-lg-strong-letter-spacing);
+  --verity-viewport-typography-body-lg-strong-text-transform: var(--verity-typography-body-lg-strong-text-transform);
+  --verity-viewport-typography-body-lg-strong-space-before: var(--verity-padding-sm);
   --verity-viewport-typography-display-sm-text-transform: var(--verity-typography-display-sm-mobile-text-transform);
   --verity-viewport-typography-display-default-text-transform: var(--verity-typography-display-default-mobile-text-transform);
   --verity-viewport-typography-heading-3-text-transform: var(--verity-typography-heading-3-mobile-text-transform);
@@ -1148,6 +1161,13 @@
     --verity-viewport-typography-code-sm-letter-spacing: var(--verity-typography-code-sm-letter-spacing);
     --verity-viewport-typography-code-sm-text-transform: var(--verity-typography-code-sm-text-transform);
     --verity-viewport-typography-code-sm-space-before: var(--verity-spacing-none);
+    --verity-viewport-typography-body-lg-strong-font-family: var(--verity-typography-body-lg-strong-font-family);
+    --verity-viewport-typography-body-lg-strong-font-weight: var(--verity-typography-body-lg-strong-font-weight);
+    --verity-viewport-typography-body-lg-strong-font-size: var(--verity-typography-body-lg-strong-font-size);
+    --verity-viewport-typography-body-lg-strong-line-height: var(--verity-typography-body-lg-strong-line-height);
+    --verity-viewport-typography-body-lg-strong-letter-spacing: var(--verity-typography-body-lg-strong-letter-spacing);
+    --verity-viewport-typography-body-lg-strong-text-transform: var(--verity-typography-body-lg-strong-text-transform);
+    --verity-viewport-typography-body-lg-strong-space-before: var(--verity-padding-sm);
     --verity-viewport-typography-display-sm-text-transform: var(--verity-typography-display-sm-mobile-text-transform);
     --verity-viewport-typography-display-default-text-transform: var(--verity-typography-display-default-mobile-text-transform);
     --verity-viewport-typography-heading-3-text-transform: var(--verity-typography-heading-3-mobile-text-transform);
@@ -1374,6 +1394,13 @@
     --verity-viewport-typography-code-sm-letter-spacing: var(--verity-typography-code-sm-letter-spacing);
     --verity-viewport-typography-code-sm-text-transform: var(--verity-typography-code-sm-text-transform);
     --verity-viewport-typography-code-sm-space-before: var(--verity-spacing-none);
+    --verity-viewport-typography-body-lg-strong-font-family: var(--verity-typography-body-lg-strong-font-family);
+    --verity-viewport-typography-body-lg-strong-font-weight: var(--verity-typography-body-lg-strong-font-weight);
+    --verity-viewport-typography-body-lg-strong-font-size: var(--verity-typography-body-lg-strong-font-size);
+    --verity-viewport-typography-body-lg-strong-line-height: var(--verity-typography-body-lg-strong-line-height);
+    --verity-viewport-typography-body-lg-strong-letter-spacing: var(--verity-typography-body-lg-strong-letter-spacing);
+    --verity-viewport-typography-body-lg-strong-text-transform: var(--verity-typography-body-lg-strong-text-transform);
+    --verity-viewport-typography-body-lg-strong-space-before: var(--verity-padding-sm);
   }
 }
 

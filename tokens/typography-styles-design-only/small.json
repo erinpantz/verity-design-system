@@ -1716,6 +1716,84 @@
           "$type": "dimension",
           "$value": "{spacing.none}"
         }
+      },
+      "body-lg-strong": {
+        "font-family": {
+          "$type": "fontFamily",
+          "$value": "{typography.body-lg-strong.font-family}"
+        },
+        "font-weight": {
+          "$type": "fontWeight",
+          "$value": "{typography.body-lg-strong.font-weight}",
+          "$extensions": {
+            "com.figma": {
+              "scopes": [
+                "FONT_WEIGHT",
+                "FONT_SIZE",
+                "LINE_HEIGHT",
+                "LETTER_SPACING",
+                "PARAGRAPH_SPACING",
+                "PARAGRAPH_INDENT"
+              ]
+            }
+          }
+        },
+        "font-size": {
+          "$type": "dimension",
+          "$value": "{typography.body-lg-strong.font-size}",
+          "$extensions": {
+            "com.figma": {
+              "scopes": [
+                "FONT_WEIGHT",
+                "FONT_SIZE",
+                "LINE_HEIGHT",
+                "LETTER_SPACING",
+                "PARAGRAPH_SPACING",
+                "PARAGRAPH_INDENT"
+              ]
+            }
+          }
+        },
+        "line-height": {
+          "$type": "dimension",
+          "$value": "{typography.body-lg-strong.line-height}",
+          "$extensions": {
+            "com.figma": {
+              "scopes": [
+                "FONT_WEIGHT",
+                "FONT_SIZE",
+                "LINE_HEIGHT",
+                "LETTER_SPACING",
+                "PARAGRAPH_SPACING",
+                "PARAGRAPH_INDENT"
+              ]
+            }
+          }
+        },
+        "letter-spacing": {
+          "$type": "dimension",
+          "$value": "{typography.body-lg-strong.letter-spacing}",
+          "$extensions": {
+            "com.figma": {
+              "scopes": [
+                "FONT_WEIGHT",
+                "FONT_SIZE",
+                "LINE_HEIGHT",
+                "LETTER_SPACING",
+                "PARAGRAPH_SPACING",
+                "PARAGRAPH_INDENT"
+              ]
+            }
+          }
+        },
+        "text-transform": {
+          "$type": "string",
+          "$value": "{typography.body-lg-strong.text-transform}"
+        },
+        "space-before": {
+          "$type": "dimension",
+          "$value": "{padding.sm}"
+        }
       }
     }
   }
