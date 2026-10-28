@@ -98,7 +98,7 @@ The same rules apply in code, written in CSS.
 | No outside space | No `margin` on a component’s root element. |
 | Gaps, not spacers | The parent sets `gap` on a flex or grid layout. No spacer elements. |
 | Every value is a token | Use `--verity-` custom properties, e.g. `gap: var(--verity-spacing-lg)`. Never type a pixel value. |
-| Prose rhythm | Inside a `.prose` wrapper, each heading or paragraph gets `margin-block-start` from its space-before token, and `.prose > :first-child` has none. |
+| Prose rhythm | Inside `Prose`, each block (a heading, paragraph, list, or blockquote) gets `margin-block-start` from its space-before token, and the first block has none. Docs pages get the same rhythm, because `VerityDocs` uses `Prose`. |
 
 ## Keeping spacing consistent
 
