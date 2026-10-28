@@ -934,7 +934,7 @@
         },
         "space-before": {
           "$type": "dimension",
-          "$value": "{padding.md}"
+          "$value": "{spacing.lg}"
         }
       },
       "title-lg": {
@@ -1090,7 +1090,7 @@
         },
         "space-before": {
           "$type": "dimension",
-          "$value": "{padding.md}"
+          "$value": "{spacing.lg}"
         }
       },
       "heading-1": {
