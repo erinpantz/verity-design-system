@@ -1,0 +1,82 @@
+import { Meta, Canvas } from '@storybook/addon-docs/blocks';
+import { VerityDocs } from '../../../foundations/VerityDocs';
+import { PropsTable } from '../../../foundations/PropsTable';
+import * as HorizontalStackStories from './HorizontalStack.stories';
+
+<Meta of={HorizontalStackStories} />
+
+<VerityDocs>
+
+# HorizontalStack
+
+Lines its content up in a row, with the space between items set by one gap token, and can wrap onto more lines. Use it for groups like buttons side by side.
+
+<Canvas of={HorizontalStackStories.Default} />
+
+## When to use
+
+- **For small groups side by side,** such as buttons, tags, or an icon and a label, with the same space between each.
+- **With `wrap`,** when the group can have more items than fit on a small screen, such as a list of tags.
+- **Not for rows of cards that should match in height.** Use `Grid`, which gives every item in a row the same width and height. HorizontalStack has no stretch option on purpose.
+- **Not for items one above another.** Use `VerticalStack`.
+
+## Accessibility
+
+A HorizontalStack renders a `<div>` by default, so it adds nothing for screen readers. Use `as` to make it a list. People hear the items in the order they’re written, which is also the order they appear, left to right and then line by line.
+
+| Situation | What to do | Example |
+|---|---|---|
+| The items are a list of similar things | Use `as="ul"` with `<li>` items, so screen readers announce how many there are. | A row of tags |
+| The items are steps in order | Use `as="ol"` with `<li>` items. | Steps in a process |
+| The order matters for meaning | Write the items in reading order. Don’t reorder them with CSS, or what people see and hear won’t match. | Primary button first, then secondary |
+
+## Gap
+
+The space between items, and between lines when they wrap. Gaps grow on larger screens, from Small to XL; **Foundations › Spacing and layout** shows the value at each breakpoint.
+
+| `gap` | Token | Value | Use for |
+|---|---|---|---|
+| `none` | `--verity-spacing-none` | 0 | Items that should touch |
+| `xxs` | `--verity-spacing-xxs` | 4 | Tight groups, like an icon and a label |
+| `xs` | `--verity-spacing-xs` | 8–16 | Buttons side by side, and tags |
+| `sm` | `--verity-spacing-sm` | 16–24 | Small groups of links |
+| `md` | `--verity-spacing-md` | 24–32 | The default: groups of related content |
+| `lg` | `--verity-spacing-lg` | 32–48 | Separate groups in one row |
+
+## Align
+
+How items line up vertically in the row, when they’re different heights. Items keep their own height.
+
+Center is the default because it fits the most common rows: a button next to a link, an icon next to a label, or a line of metadata. Centering keeps controls and text-sized items lined up, even when they’re different heights.
+
+| `align` | What it does | Use for |
+|---|---|---|
+| `center` | The default. Items are centered vertically. | Buttons, links, icons and labels, and metadata lines |
+| `start` | Items line up at the top. | Blocks of text of different lengths |
+| `end` | Items line up at the bottom. | Content that should share a bottom edge |
+
+## Wrap
+
+Without wrap, a full row narrows its items to make room, which can squeeze their text onto more lines. Use wrap whenever items could run out of room, such as on a small screen.
+
+| `wrap` | What it does | Use for |
+|---|---|---|
+| `false` | The default. Items stay on one line. | Groups that always fit, like two buttons |
+| `true` | Items that don’t fit move onto a new line, with the same gap between lines as between items. | Groups that can grow, like tags |
+
+## Props
+
+<PropsTable of={HorizontalStackStories} />
+
+## In Figma
+
+| Figma | Code |
+|---|---|
+| Component `HorizontalStack` | `<HorizontalStack />` |
+| Property `Gap` | `gap` |
+| Property `Align` | `align` |
+| Property `Wrap` | `wrap` |
+| Not in Figma | `as`: choose it in code, from what the items are |
+| Slot `Content` | `children` |
+
+</VerityDocs>
