@@ -1,0 +1,106 @@
+import { Meta, Canvas } from '@storybook/addon-docs/blocks';
+import { VerityDocs } from '../../../foundations/VerityDocs';
+import { PropsTable } from '../../../foundations/PropsTable';
+import * as ButtonStories from './Button.stories';
+
+<Meta of={ButtonStories} />
+
+<VerityDocs>
+
+# Button
+
+Starts an action, like booking a call or downloading a resume. Use primary for the main action in a group and secondary for the others.
+
+<Canvas of={ButtonStories.Default} />
+
+## When to use
+
+- **For an action on this page,** like opening a booking form or downloading a file.
+- **Primary for the main action,** and only one per group, so it’s clear what to do first.
+- **Secondary for the other actions** next to it, or on their own when the action is less important.
+- **Not to go to another page.** Use `Link`, so people can open it in a new tab and screen readers announce a link.
+- **Not with only an icon.** Use `IconButton`, which shows its label in a tooltip.
+
+## Accessibility
+
+A Button renders a `<button>` with `type="button"` by default, so it never submits a form by accident. It works with the keyboard (Tab, then Enter or Space), and its label is its name for screen readers. Icons are decorative and hidden from screen readers.
+
+| Situation | What to do | Example |
+|---|---|---|
+| Writing the label | Start with a verb that says what happens. Keep it short, since it stays on one line. | “Book a call,” not “Click here” |
+| It sends a form | Use `type="submit"`. | “Send message” |
+| It can’t be used yet | Use `disabled`. Keyboard users skip disabled buttons, so say on the page why it’s disabled. | “Send message” before the form is filled in |
+| It sits on a colored band | Use the `color` that matches the background. | `color="brand"` on a brand-colored band |
+
+## Variant and color
+
+Each variant has its own colors for each background. `color` is typed with `variant`, so only these pairs are allowed:
+
+| `variant` | `color` | Background | Tokens | Focus ring |
+|---|---|---|---|---|
+| `primary` | `default` | The site’s background | `--verity-button-primary-color-*` | `--verity-color-border-focus` |
+| `primary` | `brand` | A brand-colored band | `--verity-button-primary-brand-color-*` | `--verity-color-border-focus-brand` |
+| `secondary` | `default` | The site’s background | `--verity-button-secondary-color-*` | `--verity-color-border-focus` |
+| `secondary` | `knockout` | A light band | `--verity-button-secondary-knockout-color-*` | `--verity-color-border-focus-knockout` |
+
+Primary is filled. Secondary is outlined with a `--verity-border-width-md` border and no fill.
+
+<Canvas of={ButtonStories.Secondary} />
+
+<Canvas of={ButtonStories.PrimaryBrand} />
+
+<Canvas of={ButtonStories.SecondaryKnockout} />
+
+## Size
+
+Height and side padding come from the control tokens, so buttons line up with other controls of the same size. On Medium and Small screens, sm and md stay at least 44 tall, so they’re easy to tap.
+
+| `size` | Height | Side padding | Label | Icon | Use for |
+|---|---|---|---|---|---|
+| `xl` | `--verity-control-size-xl` (56–64) | `--verity-control-padding-x-xl` (24) | label-lg | `--verity-icon-size-lg` | The one call to action on a page |
+| `lg` | `--verity-control-size-lg` (48–56) | `--verity-control-padding-x-lg` (24) | label-lg | `--verity-icon-size-lg` | Calls to action in a section |
+| `md` | `--verity-control-size-md` (40–44) | `--verity-control-padding-x-md` (16) | label-default | `--verity-icon-size-md` | The default: most buttons |
+| `sm` | `--verity-control-size-sm` (32–44) | `--verity-control-padding-x-sm` (12) | label-sm | `--verity-icon-size-sm` | Tight spaces, like a card’s footer |
+
+The space between an icon and the label is `--verity-control-gap` (8). The label stays on one line, and a button keeps its size in a full row instead of shrinking.
+
+<Canvas of={ButtonStories.Sizes} />
+
+## Icons
+
+Use `startIcon` for an icon before the label and `endIcon` for one after it, such as an arrow for “next.” Icons take the label’s color.
+
+<Canvas of={ButtonStories.WithIcons} />
+
+## States
+
+| State | Primary | Secondary | Tokens |
+|---|---|---|---|
+| Default | Filled | Outlined | `…-default` |
+| Hover | A lighter fill and label | A lighter border and label | `…-hover` |
+| Focus | A focus ring outside the button, following its corners. Keyboard focus only. | The same | `--verity-focus-ring-width`, `--verity-focus-ring-offset`, and the focus color for its `color` |
+| Active | The active fill and label while pressed | The active border and label | `…-active` |
+| Disabled | The disabled fill and label | The disabled border and label | `…-disabled` |
+
+<Canvas of={ButtonStories.Disabled} />
+
+## Props
+
+<PropsTable of={ButtonStories} />
+
+## In Figma
+
+| Figma | Code |
+|---|---|
+| Component `Button` | `<Button />` |
+| Property `Label` | `children` |
+| Property `Variant` | `variant` |
+| Property `Size` | `size`. `md` is the default in both. |
+| Property `Color` | `color`, typed so only the pairs above are allowed |
+| Property `State` | Hover, focus, and active come from the browser. `State=disabled` → `disabled`. |
+| Properties `Show start icon` and the start icon | `startIcon`: the icon’s name, or leave it out |
+| Properties `Show end icon` and the end icon | `endIcon`: the icon’s name, or leave it out |
+| Layer `Focus ring` | Not a layer: an outline on keyboard focus |
+| Not in Figma | `type`, `disabled`, and `onClick` |
+
+</VerityDocs>

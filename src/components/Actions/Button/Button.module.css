@@ -1,0 +1,179 @@
+/* A button: an optional icon, the label, and an optional icon, in one line.
+   Colors come from custom properties set by each variant and color below. */
+
+.button {
+  display: inline-flex;
+  /* In a full row, the button keeps its size and its label stays on one line */
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  gap: var(--verity-control-gap);
+  box-sizing: border-box;
+  block-size: var(--height);
+  margin: 0;
+  /* Figma draws the secondary border inside the button. Every button has a
+     border (transparent on primary), and the side padding gives back its
+     width, so both variants match Figma's size and label position. */
+  padding-block: 0;
+  padding-inline: calc(var(--padding-x) - var(--verity-border-width-md));
+  border: var(--verity-border-width-md) solid var(--border);
+  border-radius: var(--verity-border-radius-md);
+  background: var(--background);
+  color: var(--content);
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+/* Sizes: height and side padding from the control tokens, and the label style */
+
+.xl {
+  --height: var(--verity-control-size-xl);
+  --padding-x: var(--verity-control-padding-x-xl);
+}
+
+.lg {
+  --height: var(--verity-control-size-lg);
+  --padding-x: var(--verity-control-padding-x-lg);
+}
+
+.md {
+  --height: var(--verity-control-size-md);
+  --padding-x: var(--verity-control-padding-x-md);
+}
+
+.sm {
+  --height: var(--verity-control-size-sm);
+  --padding-x: var(--verity-control-padding-x-sm);
+}
+
+.xl,
+.lg {
+  font-family: var(--verity-viewport-typography-label-lg-font-family);
+  font-size: var(--verity-viewport-typography-label-lg-font-size);
+  font-weight: var(--verity-viewport-typography-label-lg-font-weight);
+  line-height: var(--verity-viewport-typography-label-lg-line-height);
+  letter-spacing: var(--verity-viewport-typography-label-lg-letter-spacing);
+  text-transform: var(--verity-viewport-typography-label-lg-text-transform);
+}
+
+.md {
+  font-family: var(--verity-viewport-typography-label-default-font-family);
+  font-size: var(--verity-viewport-typography-label-default-font-size);
+  font-weight: var(--verity-viewport-typography-label-default-font-weight);
+  line-height: var(--verity-viewport-typography-label-default-line-height);
+  letter-spacing: var(--verity-viewport-typography-label-default-letter-spacing);
+  text-transform: var(--verity-viewport-typography-label-default-text-transform);
+}
+
+.sm {
+  font-family: var(--verity-viewport-typography-label-sm-font-family);
+  font-size: var(--verity-viewport-typography-label-sm-font-size);
+  font-weight: var(--verity-viewport-typography-label-sm-font-weight);
+  line-height: var(--verity-viewport-typography-label-sm-line-height);
+  letter-spacing: var(--verity-viewport-typography-label-sm-letter-spacing);
+  text-transform: var(--verity-viewport-typography-label-sm-text-transform);
+}
+
+/* Colors. Primary is filled; secondary is outlined, with no fill. */
+
+.primary {
+  --border: transparent;
+  --background: var(--bg-default);
+  --content: var(--content-default);
+}
+
+.secondary {
+  --background: transparent;
+  --border: var(--border-default);
+  --content: var(--content-default);
+}
+
+.primary-default {
+  --bg-default: var(--verity-button-primary-color-background-default);
+  --bg-hover: var(--verity-button-primary-color-background-hover);
+  --bg-active: var(--verity-button-primary-color-background-active);
+  --bg-disabled: var(--verity-button-primary-color-background-disabled);
+  --content-default: var(--verity-button-primary-color-content-default);
+  --content-hover: var(--verity-button-primary-color-content-hover);
+  --content-active: var(--verity-button-primary-color-content-active);
+  --content-disabled: var(--verity-button-primary-color-content-disabled);
+  --focus: var(--verity-color-border-focus);
+}
+
+.primary-brand {
+  --bg-default: var(--verity-button-primary-brand-color-background-default);
+  --bg-hover: var(--verity-button-primary-brand-color-background-hover);
+  --bg-active: var(--verity-button-primary-brand-color-background-active);
+  --bg-disabled: var(--verity-button-primary-brand-color-background-disabled);
+  --content-default: var(--verity-button-primary-brand-color-content-default);
+  --content-hover: var(--verity-button-primary-brand-color-content-hover);
+  --content-active: var(--verity-button-primary-brand-color-content-active);
+  --content-disabled: var(--verity-button-primary-brand-color-content-disabled);
+  --focus: var(--verity-color-border-focus-brand);
+}
+
+.secondary-default {
+  --border-default: var(--verity-button-secondary-color-border-default);
+  --border-hover: var(--verity-button-secondary-color-border-hover);
+  --border-active: var(--verity-button-secondary-color-border-active);
+  --border-disabled: var(--verity-button-secondary-color-border-disabled);
+  --content-default: var(--verity-button-secondary-color-content-default);
+  --content-hover: var(--verity-button-secondary-color-content-hover);
+  --content-active: var(--verity-button-secondary-color-content-active);
+  --content-disabled: var(--verity-button-secondary-color-content-disabled);
+  --focus: var(--verity-color-border-focus);
+}
+
+.secondary-knockout {
+  --border-default: var(--verity-button-secondary-knockout-color-border-default);
+  --border-hover: var(--verity-button-secondary-knockout-color-border-hover);
+  --border-active: var(--verity-button-secondary-knockout-color-border-active);
+  --border-disabled: var(--verity-button-secondary-knockout-color-border-disabled);
+  --content-default: var(--verity-button-secondary-knockout-color-content-default);
+  --content-hover: var(--verity-button-secondary-knockout-color-content-hover);
+  --content-active: var(--verity-button-secondary-knockout-color-content-active);
+  --content-disabled: var(--verity-button-secondary-knockout-color-content-disabled);
+  --focus: var(--verity-color-border-focus-knockout);
+}
+
+/* States */
+
+.primary:hover {
+  --background: var(--bg-hover);
+  --content: var(--content-hover);
+}
+
+.primary:active {
+  --background: var(--bg-active);
+  --content: var(--content-active);
+}
+
+.primary:disabled {
+  --background: var(--bg-disabled);
+  --content: var(--content-disabled);
+}
+
+.secondary:hover {
+  --border: var(--border-hover);
+  --content: var(--content-hover);
+}
+
+.secondary:active {
+  --border: var(--border-active);
+  --content: var(--content-active);
+}
+
+.secondary:disabled {
+  --border: var(--border-disabled);
+  --content: var(--content-disabled);
+}
+
+.button:disabled {
+  cursor: default;
+}
+
+/* Keyboard focus: a ring outside the button, following its corners */
+.button:focus-visible {
+  outline: var(--verity-focus-ring-width) solid var(--focus);
+  outline-offset: var(--verity-focus-ring-offset);
+}
