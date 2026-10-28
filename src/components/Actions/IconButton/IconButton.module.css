@@ -52,8 +52,8 @@
   outline-offset: var(--verity-focus-ring-offset);
 }
 
-/* Disabled: a dimmed icon and no hover or pressed fill. Figma shows disabled
-   the same as default, so this color is code's choice; see the docs. */
+/* Disabled: no hover or pressed fill, and a dimmed icon. The icon uses
+   currentColor, so it takes this color. */
 .iconButton:disabled {
   background: transparent;
   color: var(--verity-color-content-disabled);
