@@ -1,13 +1,7 @@
 /* Verity styles for MDX docs pages, used by the VerityDocs wrapper. The
    wrapper uses Storybook's Unstyled block, so these replace Storybook's own
-   docs styles. */
-
-/* Storybook's docs background (and the page behind it, below short content),
-   only on pages that use VerityDocs */
-:global(body):has(.page),
-:global(.sbdocs-wrapper):has(.page) {
-  background: var(--verity-color-background-default);
-}
+   docs styles. Storybook's own docs blocks (the example frame, code panel,
+   and buttons) are styled by the theme in .storybook/verityTheme.ts. */
 
 .page {
   color: var(--verity-color-content-default);
@@ -168,26 +162,6 @@
   background: none;
   font: inherit;
   letter-spacing: inherit;
-}
-
-/* Storybook's example frame (the <Canvas> block): the theme's background
-   instead of Storybook's white, and a token border instead of its shadow.
-   The space below holds the Show code and Copy code buttons, which Storybook
-   places just under the frame. */
-
-.page :global(.sbdocs-preview) {
-  margin-block: var(--verity-viewport-typography-body-default-space-before) var(--verity-spacing-lg);
-  border: var(--verity-border-width-sm) solid var(--verity-color-border-disabled);
-  border-radius: var(--verity-border-radius-md);
-  background: var(--verity-color-background-default);
-  box-shadow: none;
-}
-
-/* The "Show code" and "Copy code" buttons under the example. Copy code has no
-   stable class of its own, so it's found as the button after Show code. */
-.page :global(.docblock-code-toggle),
-.page :global(.docblock-code-toggle) ~ button {
-  color: var(--verity-color-content-subtle);
 }
 
 /* Links */
