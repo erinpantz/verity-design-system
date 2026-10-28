@@ -1,0 +1,64 @@
+import { Meta, Canvas } from '@storybook/addon-docs/blocks';
+import { VerityDocs } from '../../../foundations/VerityDocs';
+import { PropsTable } from '../../../foundations/PropsTable';
+import * as TextBlockStories from './TextBlock.stories';
+
+<Meta of={TextBlockStories} />
+
+<VerityDocs>
+
+# TextBlock
+
+A heading with body text below it, for short pieces of copy like a project summary. Its heading is level 3 by default, for use inside a Section.
+
+<Canvas of={TextBlockStories.Default} />
+
+## When to use
+
+- **For short copy with its own heading,** such as “The problem” in a project summary, or each item in a Grid of outcomes.
+- **For one to three short paragraphs.** Each paragraph is separated by the same gap as the heading and the body.
+- **Not for long-form text,** like a case study write-up. Use `Prose`, where each block sets the space above it.
+- **Not for a heading on its own.** Use `Heading`.
+
+## Accessibility
+
+A TextBlock renders a `<div>` with a `Heading` and the body text in paragraphs (`<p>`). The heading is a real heading, so it appears in the page’s outline.
+
+| Situation | What to do | Example |
+|---|---|---|
+| It’s inside a Section | Keep the default, level 3, one level below the Section’s heading. | “The problem” inside a “Research and discovery” Section |
+| It’s directly under the page title, with no Section | Use `headingLevel={2}`. Never skip a level. | A short page with no sections |
+| The body has more than one paragraph | Write each paragraph as a `<p>`, so screen readers can move between them. | Two paragraphs about the problem |
+
+## Heading level
+
+| `headingLevel` | Element | Use for |
+|---|---|---|
+| `3` | `<h3>` | The default: a TextBlock inside a Section |
+| `2` | `<h2>` | A TextBlock that starts a topic on its own |
+| `1` | `<h1>` | Rarely: only when the TextBlock is the page’s title and intro |
+
+The heading’s text style follows its level; see **Text › Heading** for the sizes.
+
+## Space
+
+TextBlock adds no space outside itself. Inside, the space between the heading and the body, and between paragraphs, is `--verity-spacing-sm` (16–24, growing on larger screens).
+
+## Color
+
+The heading and the body both use `--verity-color-content-default`. The body uses the body-default text style (`--verity-viewport-typography-body-default-*`).
+
+## Props
+
+<PropsTable of={TextBlockStories} />
+
+## In Figma
+
+| Figma | Code |
+|---|---|
+| Component `TextBlock` | `<TextBlock />` |
+| The heading’s text, in its exposed `Heading` | `heading` |
+| The exposed `Heading`’s `Level` | `headingLevel`. Level 3 is the default in both. |
+| Slot `Content` | `children` |
+
+</VerityDocs>
