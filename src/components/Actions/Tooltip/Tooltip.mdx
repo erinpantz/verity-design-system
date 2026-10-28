@@ -1,0 +1,71 @@
+import { Meta, Canvas } from '@storybook/addon-docs/blocks';
+import { VerityDocs } from '../../../foundations/VerityDocs';
+import { PropsTable } from '../../../foundations/PropsTable';
+import * as TooltipStories from './Tooltip.stories';
+
+<Meta of={TooltipStories} />
+
+<VerityDocs>
+
+# Tooltip
+
+A short hint that appears while someone hovers over or focuses a control, such as “Coming soon” on a link to a page that isn’t live yet. Hover over or tab to the button below to see it.
+
+<Canvas of={TooltipStories.Default} />
+
+## When to use
+
+- **Through the component that owns it.** `Link` shows one when it’s disabled, and `IconButton` always shows its label in one. You rarely place a Tooltip yourself.
+- **For a few words** that people can do without: a page that’s coming soon, or the name of an icon-only control.
+- **Not for anything people need to read to use the page,** like instructions or errors. Put that text on the page, where everyone sees it, including people on touch screens.
+- **Not on something that can’t be focused.** Keyboard users would never see it.
+
+## Accessibility
+
+A Tooltip renders a `<span role="tooltip">` next to its trigger. It follows WCAG 1.4.13, Content on hover or focus:
+
+- **It appears** when the pointer is over the trigger, or when the trigger has keyboard focus. It doesn’t appear after a mouse click.
+- **It stays** while the pointer moves onto the tooltip itself, so people can read it at any zoom.
+- **Escape hides it** without moving the pointer or focus. It comes back on the next hover or focus.
+
+The trigger has to point to the tooltip by its `id`, so screen readers read it:
+
+| Situation | What to do | Example |
+|---|---|---|
+| The tooltip adds a hint | Point to it with `aria-describedby`. Screen readers read the trigger’s name, then the hint. | A disabled Link: “Case studies, Coming soon” |
+| The tooltip is the trigger’s only name | Point to it with `aria-labelledby`, so its text is the name and isn’t read twice. | An IconButton: “Collapse navigation” |
+| The text matters on a phone | Don’t use a tooltip. Touch screens have no hover. | Instructions for a form field |
+
+## Placement
+
+| `placement` | Where it sits | Used by |
+|---|---|---|
+| `top` | The default. Above the trigger, lined up with its start. | `Link` |
+| `end` | Beside the trigger, after it, centered on it | `IconButton` |
+
+The gap between the trigger and the tooltip is `--verity-spacing-xxs` (4) for now. It will come from a `tooltip/offset` token once that’s added in Figma.
+
+## Space
+
+Inside, the tooltip has `--verity-tooltip-padding-y` (4) above and below its text and `--verity-tooltip-padding-x` (8) on each side. Its text stays on one line. It floats over the page, so it adds no space around its trigger.
+
+## Color
+
+The tooltip uses the knockout colors, the opposite of the page: `--verity-color-background-knockout` behind `--verity-color-content-knockout` text, in the label-sm text style. Its corners use `--verity-border-radius-sm`.
+
+## Props
+
+<PropsTable of={TooltipStories} />
+
+## In Figma
+
+| Figma | Code |
+|---|---|
+| Component `Tooltip` | `<Tooltip />` |
+| Property `Text` | `text` |
+| Not in Figma | `id`: the owner sets it, so the trigger can point to the tooltip |
+| Not in Figma | `placement`: Figma places each tooltip by hand, above a Link and beside an IconButton |
+| Not in Figma | `children`: the trigger the tooltip belongs to |
+| Turning a tooltip on in a mockup, such as Link’s `Show tooltip` | Not needed: in code, the tooltip appears on hover and focus |
+
+</VerityDocs>

@@ -1,0 +1,77 @@
+/* The anchor wraps the trigger and positions the tooltip against it. The
+   tooltip is hidden until the anchor is hovered or its trigger has keyboard
+   focus. */
+
+.anchor {
+  /* The gap between the trigger and the tooltip. A stand-in until Figma's
+     tooltip/offset token is exported. */
+  --offset: var(--verity-spacing-xxs);
+
+  position: relative;
+  display: inline-flex;
+}
+
+.tooltip {
+  position: absolute;
+  z-index: 1;
+  /* Hidden, but still in the page, so aria-labelledby and aria-describedby can read it */
+  visibility: hidden;
+  padding-block: var(--verity-tooltip-padding-y);
+  padding-inline: var(--verity-tooltip-padding-x);
+  border-radius: var(--verity-border-radius-sm);
+  background: var(--verity-color-background-knockout);
+  color: var(--verity-color-content-knockout);
+  font-family: var(--verity-viewport-typography-label-sm-font-family);
+  font-size: var(--verity-viewport-typography-label-sm-font-size);
+  font-weight: var(--verity-viewport-typography-label-sm-font-weight);
+  line-height: var(--verity-viewport-typography-label-sm-line-height);
+  letter-spacing: var(--verity-viewport-typography-label-sm-letter-spacing);
+  text-transform: var(--verity-viewport-typography-label-sm-text-transform);
+  /* A tooltip is a few words, so it stays on one line */
+  white-space: nowrap;
+}
+
+/* An invisible strip across the gap, so the pointer can move from the trigger
+   to the tooltip without it disappearing */
+.tooltip::before {
+  position: absolute;
+  content: '';
+}
+
+/* Shown on hover, and on keyboard focus of the trigger (not after a mouse click) */
+.anchor:hover > .tooltip,
+.anchor:has(:focus-visible) > .tooltip {
+  visibility: visible;
+}
+
+/* Escape hides it until the next hover or focus */
+.anchor[data-dismissed] > .tooltip {
+  visibility: hidden;
+}
+
+/* Placement: above, lined up with the trigger's start */
+
+.top > .tooltip {
+  inset-block-end: calc(100% + var(--offset));
+  inset-inline-start: 0;
+}
+
+.top > .tooltip::before {
+  inset-block-start: 100%;
+  inset-inline: 0;
+  block-size: var(--offset);
+}
+
+/* Placement: beside, at the end, centered on the trigger */
+
+.end > .tooltip {
+  inset-block-start: 50%;
+  inset-inline-start: calc(100% + var(--offset));
+  translate: 0 -50%;
+}
+
+.end > .tooltip::before {
+  inset-block: 0;
+  inset-inline-end: 100%;
+  inline-size: var(--offset);
+}
