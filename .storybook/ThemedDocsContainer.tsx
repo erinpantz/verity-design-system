@@ -1,9 +1,11 @@
 // Wraps every docs page so it follows the Theme menu in the toolbar, like
-// stories do. Sets data-theme, which tokens.css uses to pick Blue or Red.
+// stories do. Sets data-theme, which tokens.css uses to pick Blue or Red, and
+// gives Storybook's docs blocks the matching theme from verityTheme.ts.
 
 import { DocsContainer, type DocsContainerProps } from '@storybook/addon-docs/blocks'
-import { useEffect, useLayoutEffect, useState, type PropsWithChildren } from 'react'
+import { useEffect, useLayoutEffect, useMemo, useState, type PropsWithChildren } from 'react'
 import { GLOBALS_UPDATED } from 'storybook/internal/core-events'
+import { isVerityThemeName, verityTheme } from './verityTheme'
 
 type Globals = Record<string, unknown>
 
@@ -31,5 +33,11 @@ export function ThemedDocsContainer({ context, children }: PropsWithChildren<Doc
     document.documentElement.dataset.theme = theme
   }, [theme])
 
-  return <DocsContainer context={context}>{children}</DocsContainer>
+  const docsTheme = useMemo(() => verityTheme(isVerityThemeName(theme) ? theme : 'blue'), [theme])
+
+  return (
+    <DocsContainer context={context} theme={docsTheme}>
+      {children}
+    </DocsContainer>
+  )
 }
