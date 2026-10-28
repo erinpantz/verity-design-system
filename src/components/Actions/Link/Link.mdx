@@ -1,0 +1,90 @@
+import { Meta, Canvas } from '@storybook/addon-docs/blocks';
+import { VerityDocs } from '../../../foundations/VerityDocs';
+import { PropsTable } from '../../../foundations/PropsTable';
+import * as LinkStories from './Link.stories';
+
+<Meta of={LinkStories} />
+
+<VerityDocs>
+
+# Link
+
+Text that takes people to another page or place. It’s underlined, so it doesn’t rely on color alone, and its color matches the background it sits on.
+
+<Canvas of={LinkStories.Default} />
+
+## When to use
+
+- **To go somewhere:** another page, a section of this page, or another site.
+- **Inside text or on its own.** Inside a sentence, a Link takes the sentence’s font. On its own, it uses the page’s base text style, body-default.
+- **Disabled, for a page that isn’t live yet,** with the tooltip “Coming soon.” It looks like text and goes nowhere, but people can still find it.
+- **Not for actions that stay on the page,** like opening a menu or sending a form. Use `Button`, which is a real `<button>`.
+
+## Accessibility
+
+A Link renders an `<a>` with an `href`, so it works with the keyboard (Tab, then Enter) and screen readers announce it as a link.
+
+| Situation | What to do | Example |
+|---|---|---|
+| Writing the text | Say where it goes, and make it make sense on its own: screen reader users often list a page’s links. | “Read the research summary,” not “click here” |
+| The page isn’t live yet | Use `disabled` with `tooltip="Coming soon"`. Keyboard users can still reach it, and screen readers say “link, dimmed” and read the hint. | “Case studies” before the case studies go live |
+| It sits on a colored band | Use the `color` that matches the background, so the link and its focus ring have enough contrast. | `color="brand"` on a brand-colored band |
+
+**Disabled links** have no `href`, so Enter does nothing. They keep `role="link"`, `aria-disabled="true"`, and `tabIndex={0}`, so they stay in the tab order, and the tooltip is connected with `aria-describedby`. The tooltip shows on hover and on keyboard focus.
+
+## Color
+
+Choose the color by the background the link sits on.
+
+| `color` | Background | Tokens | Focus ring |
+|---|---|---|---|
+| `default` | The site’s background | `--verity-link-color-content-*` | `--verity-color-border-focus` |
+| `brand` | A brand-colored band | `--verity-link-brand-color-content-*` | `--verity-color-border-focus-brand` |
+| `knockout` | A light band | `--verity-link-knockout-color-content-*` | `--verity-color-border-focus-knockout` |
+
+<Canvas of={LinkStories.Brand} />
+
+<Canvas of={LinkStories.Knockout} />
+
+## States
+
+| State | What changes | Tokens |
+|---|---|---|
+| Default | The link color, underlined | `--verity-link-*color-content-default` |
+| Visited | Set by the browser once the page has been visited | `--verity-link-*color-content-visited` |
+| Hover | The hover color | `--verity-link-*color-content-hover` |
+| Focus | A focus ring outside the link, following its corners. Keyboard focus only. | `--verity-focus-ring-width`, `--verity-focus-ring-offset`, and the focus color for its `color` |
+| Active | The active color while pressed | `--verity-link-*color-content-active` |
+| Disabled | The disabled color, not underlined, and no hover change. It keeps its focus ring. | `--verity-link-*color-content-disabled` |
+
+<Canvas of={LinkStories.Disabled} />
+
+## Font
+
+A Link takes its font from the text around it, so it never needs a text style of its own:
+
+- **Inside text,** it matches the text: body-default in a paragraph, body-lg in a larger list.
+- **On its own,** it gets the page’s base text style, body-default, which is set on the page’s `<body>` in Verity’s `global.css`. That’s Figma’s `link/default` text style.
+
+<Canvas of={LinkStories.InsideText} />
+
+The underline is `--verity-border-width-sm` thick and sits `--verity-spacing-xxs` below the text. Links written in `Prose`, such as Markdown links, use the same tokens, so a link looks the same everywhere.
+
+## Props
+
+<PropsTable of={LinkStories} />
+
+## In Figma
+
+| Figma | Code |
+|---|---|
+| Component `Link` | `<Link />` |
+| Property `Label` | `children` |
+| Property `Color` | `color` |
+| Property `State` | Hover, focus, active, and visited come from the browser. `State=disabled` → `disabled`. |
+| Property `Show tooltip` | `tooltip`: the text to show, usually “Coming soon.” In code, it shows on hover and focus. |
+| Text style `link/default` | The page’s base text style, body-default, which a Link takes when it stands alone |
+| Layer `Focus ring` | Not a layer: an outline on keyboard focus |
+| Not in Figma | `href`: where the link goes |
+
+</VerityDocs>

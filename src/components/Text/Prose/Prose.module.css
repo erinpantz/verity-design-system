@@ -159,30 +159,33 @@
   box-decoration-break: clone;
 }
 
-/* Links in text. Not in headings, which keep any link styles of their own
-   (Storybook adds an anchor link to each docs heading). */
+/* Links written in the text, such as Markdown links. They use the same tokens
+   as the Link component, so a link looks the same everywhere. Not Link
+   components (marked with data-link), so a brand, knockout, or disabled Link
+   keeps its own look, and not links in headings, which keep any styles of their own (Storybook
+   adds an anchor link to each docs heading). */
 
-.prose > :is(p, ul, ol, blockquote, table) a {
+.prose > :is(p, ul, ol, blockquote, table) a:not([data-link]) {
+  border-radius: var(--verity-border-radius-xs);
   color: var(--verity-link-color-content-default);
   text-decoration-line: underline;
   text-decoration-thickness: var(--verity-border-width-sm);
   text-underline-offset: var(--verity-spacing-xxs);
 }
 
-.prose > :is(p, ul, ol, blockquote, table) a:visited {
+.prose > :is(p, ul, ol, blockquote, table) a:not([data-link]):visited {
   color: var(--verity-link-color-content-visited);
 }
 
-.prose > :is(p, ul, ol, blockquote, table) a:hover {
+.prose > :is(p, ul, ol, blockquote, table) a:not([data-link]):hover {
   color: var(--verity-link-color-content-hover);
 }
 
-.prose > :is(p, ul, ol, blockquote, table) a:active {
+.prose > :is(p, ul, ol, blockquote, table) a:not([data-link]):active {
   color: var(--verity-link-color-content-active);
 }
 
-.prose > :is(p, ul, ol, blockquote, table) a:focus-visible {
-  border-radius: var(--verity-border-radius-xs);
-  outline: var(--verity-border-width-md) solid var(--verity-color-border-focus);
-  outline-offset: var(--verity-border-width-md);
+.prose > :is(p, ul, ol, blockquote, table) a:not([data-link]):focus-visible {
+  outline: var(--verity-focus-ring-width) solid var(--verity-color-border-focus);
+  outline-offset: var(--verity-focus-ring-offset);
 }

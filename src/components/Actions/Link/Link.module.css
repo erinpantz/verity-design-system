@@ -1,0 +1,70 @@
+/* A text link. It takes its font from the text around it: inside a paragraph
+   it matches the paragraph, and on its own it gets the page's base text style,
+   body-default (set in global.css), which is Figma's link/default. Prose's
+   link styles use the same tokens, so a link looks the same everywhere. */
+
+.link {
+  border-radius: var(--verity-border-radius-xs);
+  color: var(--link);
+  font: inherit;
+  letter-spacing: inherit;
+  text-decoration-line: underline;
+  text-decoration-thickness: var(--verity-border-width-sm);
+  text-underline-offset: var(--verity-spacing-xxs);
+}
+
+/* Colors, by the background the link sits on */
+
+.default {
+  --link: var(--verity-link-color-content-default);
+  --link-visited: var(--verity-link-color-content-visited);
+  --link-hover: var(--verity-link-color-content-hover);
+  --link-active: var(--verity-link-color-content-active);
+  --link-disabled: var(--verity-link-color-content-disabled);
+  --focus: var(--verity-color-border-focus);
+}
+
+.brand {
+  --link: var(--verity-link-brand-color-content-default);
+  --link-visited: var(--verity-link-brand-color-content-visited);
+  --link-hover: var(--verity-link-brand-color-content-hover);
+  --link-active: var(--verity-link-brand-color-content-active);
+  --link-disabled: var(--verity-link-brand-color-content-disabled);
+  --focus: var(--verity-color-border-focus-brand);
+}
+
+.knockout {
+  --link: var(--verity-link-knockout-color-content-default);
+  --link-visited: var(--verity-link-knockout-color-content-visited);
+  --link-hover: var(--verity-link-knockout-color-content-hover);
+  --link-active: var(--verity-link-knockout-color-content-active);
+  --link-disabled: var(--verity-link-knockout-color-content-disabled);
+  --focus: var(--verity-color-border-focus-knockout);
+}
+
+/* States. The browser applies visited; the rest follow the pointer and keyboard. */
+
+.link:visited {
+  color: var(--link-visited);
+}
+
+.link:hover {
+  color: var(--link-hover);
+}
+
+.link:active {
+  color: var(--link-active);
+}
+
+.link:focus-visible {
+  outline: var(--verity-focus-ring-width) solid var(--focus);
+  outline-offset: var(--verity-focus-ring-offset);
+}
+
+/* Disabled: no underline, so it doesn't look like it goes somewhere, and no
+   hover or active change. It keeps its focus ring. */
+.link[aria-disabled='true'] {
+  color: var(--link-disabled);
+  text-decoration-line: none;
+  cursor: default;
+}

@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { useId } from 'react';
+import { Link } from '../Link';
 import { Tooltip, type TooltipProps } from './Tooltip';
 
 // A stand-in trigger for these stories, styled with tokens. Link and
@@ -70,4 +71,14 @@ export const Default: Story = {};
 export const PlacementEnd: Story = {
   name: 'Placement end',
   args: { placement: 'end', text: 'Collapse navigation' },
+};
+
+// The usual use: a disabled Link to a page that isn't live yet
+export const InContext: Story = {
+  name: 'In context',
+  render: () => (
+    <Link disabled tooltip="Coming soon">
+      Case studies
+    </Link>
+  ),
 };
