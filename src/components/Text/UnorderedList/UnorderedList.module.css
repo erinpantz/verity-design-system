@@ -4,7 +4,7 @@
 .list {
   display: flex;
   flex-direction: column;
-  gap: var(--verity-spacing-sm);
+  gap: var(--verity-spacing-xs);
   /* Remove the browser's bullets and indent; each item draws its own marker */
   margin: 0;
   padding: 0;
