@@ -1,0 +1,104 @@
+{/*
+  Component docs template. Every Verity component gets a docs page made from this file.
+
+  How to use it:
+  1. Copy this file next to the component as <Component>.mdx
+     (for example src/components/Actions/Button/Button.mdx).
+  2. Replace every [placeholder] and delete these instruction comments.
+  3. Keep the sections in this order. Sections marked "optional" can be deleted
+     when they don't apply; say which ones you left out and why.
+  4. Write to the Writing style guideline: sentence case, serial comma, "and" not "&",
+     curly quotes and apostrophes in prose, periods only on full sentences.
+  5. Write rules, not just descriptions: say what to do, and give an example.
+
+  Finished example: src/components/Media/Icon/Icon.mdx
+*/}
+
+import { Meta, Canvas } from '@storybook/addon-docs/blocks';
+import { VerityDocs } from '../../../foundations/VerityDocs';
+import { PropsTable } from '../../../foundations/PropsTable';
+import * as [Component]Stories from './[Component].stories';
+
+<Meta of={[Component]Stories} />
+
+<VerityDocs>
+
+# [Component]
+
+[One or two sentences: what it is and what it's for, in plain words.]
+
+<Canvas of={[Component]Stories.Default} />
+
+## When to use
+
+{/* Bullets. Start each with the situation in bold. Include at least one "Not for…" bullet
+    that names the component to use instead. */}
+
+- **[Situation].** [Why this component fits.]
+- **Not for [situation].** Use [OtherComponent] instead.
+
+## Accessibility
+
+{/* What this component becomes in HTML, how it gets its accessible name, and keyboard
+    behavior. Use the table for decisions the person using the component has to make. */}
+
+[What element it renders, for example a link (`<a>`) or a button (`<button>`), and why.]
+
+| Situation | What to do | Example |
+|---|---|---|
+| [Situation] | [Rule] | [Example] |
+
+## [Design property, for example Size, Variant, or Layout]
+
+{/* One section per variant property. A table of values, the tokens behind them, and
+    when to use each. Repeat this section for each property. */}
+
+| `[prop]` | Token | Value | Use for |
+|---|---|---|---|
+| `[value]` | `--verity-[token]` | [value] | [When to use it] |
+
+## States
+
+{/* Required for interactive components: default, hover, focus, active, and disabled.
+    Delete for components people can't interact with. */}
+
+| State | What changes | Tokens |
+|---|---|---|
+| Default | [Description] | `--verity-[token]` |
+| Hover | [Description] | `--verity-[token]` |
+| Focus | [Description; focus must be clearly visible] | `--verity-[token]` |
+| Active | [Description] | `--verity-[token]` |
+| Disabled | [Description] | `--verity-[token]` |
+
+## Color
+
+{/* Optional. Which color tokens the component uses and how to change them. Note any
+    exceptions to the usual rules. */}
+
+[How color works for this component.]
+
+## Props
+
+{/* Read automatically from the component's TypeScript types and comments: give every
+    prop a comment that says what it does. */}
+
+<PropsTable of={[Component]Stories} />
+
+## In Figma
+
+{/* How the Figma component maps to code: component name, each property to its prop,
+    and anything Figma does differently. */}
+
+| Figma | Code |
+|---|---|
+| Component `[Component]` | `<[Component] />` |
+| Property `[Property name]` | `[propName]` |
+
+## [Workflow, for example Adding or changing an icon]
+
+{/* Optional. Only when the component has its own steps beyond using it. Numbered steps,
+    each starting with a bold verb. */}
+
+1. **[Verb] [what].** [Details.]
+
+</VerityDocs>

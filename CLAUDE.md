@@ -33,6 +33,7 @@ Commands are added here as they're set up.
 ```
 tokens/                    token source JSON, exported from Figma
 icons/                     icon SVGs, exported from Figma (never edit by hand)
+templates/                 starting points for new files, such as ComponentDocs.mdx
 src/
   styles/                  generated token CSS and global styles
   icons/                   generated icon markup and the IconName type, from icons/
@@ -43,6 +44,7 @@ src/
       <Component>.tsx
       <Component>.module.css
       <Component>.stories.tsx
+      <Component>.mdx        docs page, made from templates/ComponentDocs.mdx
       index.ts
 .storybook/
 ```
@@ -53,6 +55,7 @@ Categories match the Figma pages: Actions, Navigation, Layout, Text, Media, Cont
 
 - **Every story and docs page follows the Theme toolbar** (Blue or Red). Stories get it from the decorator in `.storybook/preview.tsx`; docs pages from `.storybook/ThemedDocsContainer.tsx`. Nothing to add per page.
 - **MDX docs pages use Verity styles:** wrap the page's content in `<VerityDocs>` from `src/foundations/VerityDocs`, with a blank line inside each tag. It styles headings, paragraphs, lists, and links with tokens and applies the prose spacing rule. See `src/Introduction.mdx`.
+- **Every component gets a docs page:** when you build a component, also write `<Component>.mdx` next to its stories, made from `templates/ComponentDocs.mdx`. Follow the instructions at the top of the template, fill every section, and tell Erin which optional sections you left out. `src/components/Media/Icon/Icon.mdx` is a finished example.
 
 ## Guidelines
 

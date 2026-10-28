@@ -1,0 +1,68 @@
+import { Meta, Canvas } from '@storybook/addon-docs/blocks';
+import { VerityDocs } from '../../../foundations/VerityDocs';
+import { PropsTable } from '../../../foundations/PropsTable';
+import * as IconStories from './Icon.stories';
+
+<Meta of={IconStories} />
+
+<VerityDocs>
+
+# Icon
+
+A small, single-color symbol that helps people recognize an action or destination at a glance. Icons are drawn in Figma and exported into the repo, so the same set appears in both places.
+
+<Canvas of={IconStories.Default} />
+
+## When to use
+
+- **Next to a label,** to make a nav item, button, or link quicker to scan.
+- **On its own,** only inside a control that has a label: `NavItem` in the collapsed nav, or `IconButton`. The label shows as a tooltip and is read by screen readers.
+- **Not as decoration.** If an icon doesn’t help someone recognize or find something, leave it out.
+
+## Accessibility
+
+Every icon is either decorative or meaningful, and the `label` prop decides which.
+
+| Situation | What to do | Example |
+|---|---|---|
+| Text next to the icon says the same thing | Leave `label` out. The icon is hidden from screen readers, so they don’t say “Resume” twice. | A nav item with an icon and the word “Resume” |
+| The icon is inside a control that already has a label | Leave `label` out. The control’s label names it. | `IconButton` with the tooltip “Collapse navigation” |
+| The icon stands alone and carries meaning | Add a `label` that says what it means, not what it looks like. | `label="Email"`, not `label="Envelope"` |
+
+## Size
+
+Three sizes, from the icon size tokens. Icons keep the same size at every breakpoint, and strokes stay 1.5 px at every size, as in Figma.
+
+| `size` | Token | Pixels | Use for |
+|---|---|---|---|
+| `sm` | `--verity-icon-size-sm` | 20 | Small controls and dense lists |
+| `md` | `--verity-icon-size-md` | 24 | The default: nav items, buttons, and links |
+| `lg` | `--verity-icon-size-lg` | 32 | Large controls and feature callouts |
+
+## Color
+
+Icons have no color of their own. They use `currentColor`, so an icon takes the text color of whatever contains it. To change an icon’s color, set `color` on its parent with a color token. Never set a fill on the icon itself.
+
+**Nav icons are the one exception.** On hover, `NavItem` gives their shapes the four `nav-icon/color/accent-*` colors by setting `--icon-accent-brand`, `--icon-accent-three`, `--icon-accent-four`, and `--icon-accent-yellow`. Without those, every shape uses `currentColor`. The parent owns the state, so the icon never needs a hover prop. **Foundations › Icons** shows the effect.
+
+## Props
+
+<PropsTable of={IconStories} />
+
+## In Figma
+
+| Figma | Code |
+|---|---|
+| Component `icon/email` | `<Icon name="email" />` |
+| Component `icon/nav/portfolio` | `<Icon name="nav/portfolio" />` |
+| Width and height bound to `icon/size/md` | `size="md"` |
+| Nav icon `State=hover` variant | The parent sets `--icon-accent-*` on hover |
+
+## Adding or changing an icon
+
+1. **Draw it** in Figma or Illustrator, whichever suits the icon. In Illustrator, start from the icon template, `00-Icon-Template.ai`, in the Icons folder of the working files. Either way, use a 24 × 24 frame, a 1.5 px stroke, round caps, and round joins.
+2. **Add it to the Icons page in Figma** (if you drew it in Illustrator, paste it in as SVG). Name it `icon/` plus the name in lowercase with dashes, and bind its width and height to `icon/size/md`. Figma is where icons are exported from, so every icon lands here.
+3. **Ask Claude to export the icons.** The SVGs go into `icons/`, cleaned up to use `currentColor`. Never edit those files by hand.
+4. **Run `npm run icons`** to rebuild `src/icons/icons.generated.ts`. The new name shows up in the `name` prop’s options and in **Foundations › Icons**.
+
+</VerityDocs>
