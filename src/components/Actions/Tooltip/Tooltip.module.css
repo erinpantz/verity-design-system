@@ -13,8 +13,9 @@
 .tooltip {
   position: absolute;
   z-index: 1;
-  /* Hidden, but still in the page, so aria-labelledby and aria-describedby can read it */
-  visibility: hidden;
+  /* Hidden and out of the layout, so it never widens the page. Screen readers
+     still read it through aria-labelledby and aria-describedby. */
+  display: none;
   padding-block: var(--verity-tooltip-padding-y);
   padding-inline: var(--verity-tooltip-padding-x);
   border-radius: var(--verity-border-radius-sm);
@@ -40,12 +41,12 @@
 /* Shown on hover, and on keyboard focus of the trigger (not after a mouse click) */
 .anchor:hover > .tooltip,
 .anchor:has(:focus-visible) > .tooltip {
-  visibility: visible;
+  display: block;
 }
 
 /* Escape hides it until the next hover or focus */
 .anchor[data-dismissed] > .tooltip {
-  visibility: hidden;
+  display: none;
 }
 
 /* Placement: above, lined up with the trigger's start */
