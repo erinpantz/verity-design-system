@@ -4,7 +4,7 @@
 .stack {
   display: flex;
   flex-direction: column;
-  /* When the stack is a list (ul or ol), remove the browser's bullets,
+  /* When the stack is a list (ul, ol, or dl), remove the browser's bullets,
      numbers, and indents, so it looks the same as a div */
   margin: 0;
   padding: 0;

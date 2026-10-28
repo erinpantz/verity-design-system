@@ -29,6 +29,7 @@ A VerticalStack renders a `<div>` by default, so it adds nothing for screen read
 | The stack groups content under a heading | Put the stack in a `Container` with `as="section"`, not a stack of its own. | A “Process” heading and the blocks under it |
 | The items are a list of similar things | Use `as="ul"` with `<li>` items, so screen readers announce how many there are. | Three project links |
 | The items are steps in order | Use `as="ol"` with `<li>` items. | Steps in a process |
+| The items are labels and their values | Use `as="dl"` with `MetaItem`s, so screen readers pair each label with its value. | “Role” and “Timeline” in a project summary |
 
 ## Gap
 

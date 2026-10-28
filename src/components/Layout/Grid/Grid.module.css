@@ -8,7 +8,7 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min(var(--item-min-width), 100%), 1fr));
   gap: var(--verity-spacing-md);
-  /* When the Grid is a list (ul or ol), remove the browser's bullets,
+  /* When the Grid is a list (ul, ol, or dl), remove the browser's bullets,
      numbers, and indents, so it looks the same as a div */
   margin: 0;
   padding: 0;

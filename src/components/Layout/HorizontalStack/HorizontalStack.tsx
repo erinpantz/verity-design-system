@@ -15,9 +15,10 @@ export interface HorizontalStackProps {
   wrap?: boolean;
   /**
    * The HTML element: ul for a list of similar things, ol for steps in order,
-   * or div when it isn’t a list. With ul or ol, write each item as an <li>.
+   * dl for label and value pairs (MetaItems), or div when it isn’t a list.
+   * With ul or ol, write each item as an <li>.
    */
-  as?: 'div' | 'ul' | 'ol';
+  as?: 'div' | 'ul' | 'ol' | 'dl';
 }
 
 export function HorizontalStack({
@@ -31,8 +32,9 @@ export function HorizontalStack({
   return (
     <Element
       className={classes.filter(Boolean).join(' ')}
-      // Safari stops announcing a list once its bullets are removed, unless it has role="list"
-      role={Element === 'div' ? undefined : 'list'}
+      // Safari stops announcing a list once its bullets are removed, unless it has role="list".
+      // A dl keeps its own role.
+      role={Element === 'ul' || Element === 'ol' ? 'list' : undefined}
     >
       {children}
     </Element>

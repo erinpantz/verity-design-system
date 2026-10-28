@@ -27,6 +27,7 @@ A Grid renders a `<div>` by default. Use `as` to make it a list. People hear the
 | Situation | What to do | Example |
 |---|---|---|
 | The items are a list of similar things | Use `as="ul"` with `<li>` items, so screen readers announce how many there are. | A grid of project cards |
+| The items are labels and their values | Use `as="dl"` with `MetaItem`s, so screen readers pair each label with its value. | “Role,” “Team,” and “Timeline” in a project summary |
 | The order matters | Write the items in the order people should read them. The Grid never reorders them. | The newest project first |
 | Each item has a heading | Use the same heading level in every item, one level below the section’s heading. | A section heading at level 2, card titles at level 3 |
 
