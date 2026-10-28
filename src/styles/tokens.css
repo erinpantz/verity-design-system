@@ -513,8 +513,6 @@
 /* Blue theme: Themes Tier 3 */
 :root,
 [data-theme="blue"] {
-  --verity-grid-item-min-width-sm: 200px;
-  --verity-grid-item-min-width-md: 300px;
   --verity-button-primary-brand-color-background-default: var(--verity-color-brand-blue-700);
   --verity-button-primary-brand-color-background-hover: var(--verity-color-brand-blue-600);
   --verity-button-primary-brand-color-background-active: var(--verity-color-brand-blue-600);
@@ -662,8 +660,6 @@
 
 /* Red theme: Themes Tier 3 */
 [data-theme="red"] {
-  --verity-grid-item-min-width-sm: 200px;
-  --verity-grid-item-min-width-md: 300px;
   --verity-button-primary-brand-color-background-default: var(--verity-color-brand-red-600);
   --verity-button-primary-brand-color-background-hover: var(--verity-color-brand-red-500);
   --verity-button-primary-brand-color-background-active: var(--verity-color-brand-red-500);
@@ -758,6 +754,8 @@
   --verity-nav-container-thickness-expanded: 0px;
   --verity-nav-container-thickness-collapsed: 56px;
   --verity-grid-columns: 4;
+  --verity-grid-item-min-width-sm: 200px; /** Minimum width of a Grid item before the row wraps, when Item width is sm (200px). */
+  --verity-grid-item-min-width-md: 300px; /** Minimum width of a Grid item before the row wraps, when Item width is md (300px). */
   --verity-nav-overlay-thickness: 240px;
   --verity-container-constrained-horizontal-margin: var(--verity-spacing-24);
   --verity-container-full-bleed-horizontal-margin: var(--verity-spacing-0);
@@ -765,7 +763,6 @@
   --verity-nav-container-padding-x-expanded: var(--verity-spacing-16); /** Left and right padding of the expanded NavContainer. */
   --verity-nav-container-padding-x-collapsed: var(--verity-spacing-8); /** Left and right padding of the collapsed, top-docked NavContainer. */
   --verity-nav-container-padding-bottom: var(--verity-spacing-16); /** Bottom padding of the expanded NavContainer. */
-  --verity-grid-gutter: var(--verity-spacing-16);
   --verity-nav-overlay-padding: var(--verity-spacing-16); /** Padding on all sides of NavOverlay. */
   --verity-main-nav-link-gap: var(--verity-spacing-8); /** Space between the primary links in MainNav. */
   --verity-main-nav-group-gap: var(--verity-spacing-16); /** Space between the menu bar and the primary links in MainNav. */
@@ -977,6 +974,8 @@
     --verity-nav-container-thickness-expanded: 0px;
     --verity-nav-container-thickness-collapsed: 56px;
     --verity-grid-columns: 8;
+    --verity-grid-item-min-width-sm: 200px; /** Minimum width of a Grid item before the row wraps, when Item width is sm (200px). */
+    --verity-grid-item-min-width-md: 300px; /** Minimum width of a Grid item before the row wraps, when Item width is md (300px). */
     --verity-nav-overlay-thickness: 240px;
     --verity-container-constrained-horizontal-margin: var(--verity-spacing-24);
     --verity-container-full-bleed-horizontal-margin: var(--verity-spacing-0);
@@ -984,7 +983,6 @@
     --verity-nav-container-padding-x-expanded: var(--verity-spacing-16); /** Left and right padding of the expanded NavContainer. */
     --verity-nav-container-padding-x-collapsed: var(--verity-spacing-8); /** Left and right padding of the collapsed, top-docked NavContainer. */
     --verity-nav-container-padding-bottom: var(--verity-spacing-16); /** Bottom padding of the expanded NavContainer. */
-    --verity-grid-gutter: var(--verity-spacing-24);
     --verity-nav-overlay-padding: var(--verity-spacing-16); /** Padding on all sides of NavOverlay. */
     --verity-main-nav-link-gap: var(--verity-spacing-8); /** Space between the primary links in MainNav. */
     --verity-main-nav-group-gap: var(--verity-spacing-16); /** Space between the menu bar and the primary links in MainNav. */
@@ -1197,6 +1195,8 @@
     --verity-nav-container-thickness-expanded: 240px;
     --verity-nav-container-thickness-collapsed: 72px;
     --verity-grid-columns: 12;
+    --verity-grid-item-min-width-sm: 200px; /** Minimum width of a Grid item before the row wraps, when Item width is sm (200px). */
+    --verity-grid-item-min-width-md: 300px; /** Minimum width of a Grid item before the row wraps, when Item width is md (300px). */
     --verity-nav-overlay-thickness: 240px;
     --verity-container-constrained-horizontal-margin: var(--verity-spacing-40);
     --verity-container-full-bleed-horizontal-margin: var(--verity-spacing-0);
@@ -1204,7 +1204,6 @@
     --verity-nav-container-padding-x-expanded: var(--verity-spacing-16); /** Left and right padding of the expanded NavContainer. */
     --verity-nav-container-padding-x-collapsed: var(--verity-spacing-8); /** Left and right padding of the collapsed, top-docked NavContainer. */
     --verity-nav-container-padding-bottom: var(--verity-spacing-16); /** Bottom padding of the expanded NavContainer. */
-    --verity-grid-gutter: var(--verity-spacing-24);
     --verity-nav-overlay-padding: var(--verity-spacing-16); /** Padding on all sides of NavOverlay. */
     --verity-main-nav-link-gap: var(--verity-spacing-8); /** Space between the primary links in MainNav. */
     --verity-main-nav-group-gap: var(--verity-spacing-16); /** Space between the menu bar and the primary links in MainNav. */
@@ -1417,6 +1416,8 @@
     --verity-nav-container-thickness-expanded: 240px;
     --verity-nav-container-thickness-collapsed: 72px;
     --verity-grid-columns: 12;
+    --verity-grid-item-min-width-sm: 200px; /** Minimum width of a Grid item before the row wraps, when Item width is sm (200px). */
+    --verity-grid-item-min-width-md: 300px; /** Minimum width of a Grid item before the row wraps, when Item width is md (300px). */
     --verity-nav-overlay-thickness: 240px;
     --verity-container-constrained-horizontal-margin: var(--verity-spacing-40);
     --verity-container-full-bleed-horizontal-margin: var(--verity-spacing-0);
@@ -1424,7 +1425,6 @@
     --verity-nav-container-padding-x-expanded: var(--verity-spacing-16); /** Left and right padding of the expanded NavContainer. */
     --verity-nav-container-padding-x-collapsed: var(--verity-spacing-8); /** Left and right padding of the collapsed, top-docked NavContainer. */
     --verity-nav-container-padding-bottom: var(--verity-spacing-16); /** Bottom padding of the expanded NavContainer. */
-    --verity-grid-gutter: var(--verity-spacing-24);
     --verity-nav-overlay-padding: var(--verity-spacing-16); /** Padding on all sides of NavOverlay. */
     --verity-main-nav-link-gap: var(--verity-spacing-8); /** Space between the primary links in MainNav. */
     --verity-main-nav-group-gap: var(--verity-spacing-16); /** Space between the menu bar and the primary links in MainNav. */

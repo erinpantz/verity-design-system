@@ -265,17 +265,5 @@
         "$value": "{color.brand.orange.400}"
       }
     }
-  },
-  "grid": {
-    "item-min-width": {
-      "sm": {
-        "$type": "dimension",
-        "$value": "200px"
-      },
-      "md": {
-        "$type": "dimension",
-        "$value": "300px"
-      }
-    }
   }
 }

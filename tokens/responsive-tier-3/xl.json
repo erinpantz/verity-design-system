@@ -108,9 +108,31 @@
       "$type": "number",
       "$value": 12
     },
-    "gutter": {
-      "$type": "dimension",
-      "$value": "{spacing.24}"
+    "item-min-width": {
+      "sm": {
+        "$type": "dimension",
+        "$value": "200px",
+        "$description": "Minimum width of a Grid item before the row wraps, when Item width is sm (200px).",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "WIDTH_HEIGHT"
+            ]
+          }
+        }
+      },
+      "md": {
+        "$type": "dimension",
+        "$value": "300px",
+        "$description": "Minimum width of a Grid item before the row wraps, when Item width is md (300px).",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "WIDTH_HEIGHT"
+            ]
+          }
+        }
+      }
     }
   },
   "nav-overlay": {

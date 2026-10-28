@@ -30,7 +30,7 @@
         "Blue": "themes-tier-3/blue.json",
         "Red": "themes-tier-3/red.json"
       },
-      "tokens": 54
+      "tokens": 52
     },
     {
       "name": "Typography Styles (Design Only)",
@@ -83,7 +83,7 @@
         "Medium": "responsive-tier-3/medium.json",
         "Small": "responsive-tier-3/small.json"
       },
-      "tokens": 22
+      "tokens": 23
     },
     {
       "name": "Red Tier 1",
