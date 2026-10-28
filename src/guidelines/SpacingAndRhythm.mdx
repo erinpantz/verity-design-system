@@ -81,10 +81,13 @@ When a value belongs to one component, it gets a Responsive Tier 3 token named a
 | Group | Used for |
 |---|---|
 | `container/*` | Horizontal margins and max widths for `Container` and `Section` (constrained, wide, full-bleed). |
-| `grid/*` | Column count, gutter, and minimum item widths. |
+| `grid/columns` | The column guides in Figma (`Container`, `Section`, and `Shell`). Not used by components in code. |
+| `grid/item-min-width/*` | How narrow a `Grid` item can get before the row wraps (`sm` 200px, `md` 300px). |
 | `main-nav/*` | Link gap, group gap, and site title inset in `MainNav`. |
 | `nav-item/*` | `NavItem` padding (its tap area) and icon-to-label gap. |
 | `nav-container/*`, `nav-overlay/*` | Navigation thickness and padding. |
+
+The space between `Grid` items, and the gutters of the Figma column guides, use `spacing/md`. `grid/gutter` was removed on October 28, 2026.
 
 ## In code
 
