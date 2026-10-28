@@ -1,0 +1,65 @@
+import { Meta, Canvas } from '@storybook/addon-docs/blocks';
+import { VerityDocs } from '../../../foundations/VerityDocs';
+import { PropsTable } from '../../../foundations/PropsTable';
+import * as HeadingStories from './Heading.stories';
+
+<Meta of={HeadingStories} />
+
+<VerityDocs>
+
+# Heading
+
+A heading for a page or a section, at level 1, 2, or 3. Choose the level by where it sits in the page’s outline, not by how big it should look.
+
+<Canvas of={HeadingStories.Level2} />
+
+## When to use
+
+- **For the page title,** at level 1, once per page.
+- **To start a section or a part of one,** at level 2 or 3, so people can scan the page and jump between topics.
+- **With body text right below it,** use `TextBlock`, which pairs a heading with its body and sets the space between them.
+- **Not for big text that isn’t a heading,** like a pull quote or a number on a stat card. Use the component made for it, so screen readers don’t list it as a heading.
+
+## Accessibility
+
+A Heading renders `<h1>`, `<h2>`, or `<h3>`. Screen reader users often move through a page by its headings, so the levels need to form a true outline.
+
+| Situation | What to do | Example |
+|---|---|---|
+| It’s the page title | Use level 1, and only once per page. | The case study’s title |
+| It starts a topic | Use one level below the heading it belongs to. Never skip a level. | A level 2 section, with level 3 parts inside it |
+| It should look bigger or smaller | Still choose the level by the outline. Size follows the level, so a level that looks wrong is a sign the outline needs a second look. | A level 3 heading inside a level 2 section, even in a narrow card |
+
+## Level
+
+Each level has its own text style. Sizes grow on larger screens; **Foundations › Typography** shows the value at each breakpoint.
+
+| `level` | Element | Text style tokens | Size | Use for |
+|---|---|---|---|---|
+| `1` | `<h1>` | `--verity-viewport-typography-heading-1-*` | 40–48 | The page title |
+| `2` | `<h2>` | `--verity-viewport-typography-heading-2-*` | 32–40 | A section |
+| `3` | `<h3>` | `--verity-viewport-typography-heading-3-*` | 28–32 | A part of a section, or a block inside one |
+
+`level` has no default: every Heading has to say where it sits.
+
+## Space
+
+A Heading adds no space above or below itself. The stack it’s in sets that space with its gap. Inside `Prose`, each heading’s space before comes from its `heading-*-space-before` token.
+
+## Color
+
+Headings use `--verity-color-content-default`, the same color as body text, so they stand out by size and weight, not by color.
+
+## Props
+
+<PropsTable of={HeadingStories} />
+
+## In Figma
+
+| Figma | Code |
+|---|---|
+| Component `Heading` | `<Heading />` |
+| Property `Level` | `level`, as a number: `Level=2` → `level={2}`. Figma starts new instances at 1; code has no default, so you choose the level each time. |
+| Property `Text` | `children` |
+
+</VerityDocs>
