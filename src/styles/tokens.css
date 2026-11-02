@@ -159,6 +159,7 @@
   --verity-shadow-sm-blur: 4px;
   --verity-shadow-sm-spread: 0px;
   --verity-size-20: 20px;
+  --verity-size-22: 22px;
   --verity-size-24: 24px;
   --verity-size-32: 32px;
   --verity-size-40: 40px;
@@ -787,6 +788,7 @@
   --verity-main-nav-group-gap: var(--verity-spacing-16); /** Space between the menu bar and the primary links in MainNav. */
   --verity-main-nav-site-title-padding: var(--verity-spacing-8); /** Left inset of the site title in MainNav. */
   --verity-main-nav-logo-offset: var(--verity-spacing-8); /** Bottom padding under the MainNav logo. Lifts the logo so its lowercase letters, not its tallest letters, line up with the center of the menu icon. */
+  --verity-main-nav-logo-height: var(--verity-size-22); /** Height of the Erin Tozour logo in MainNav. Its width follows, so the logo keeps its proportions. */
   --verity-nav-item-padding: var(--verity-spacing-8); /** Padding on all sides of a NavItem (its tap area). */
   --verity-nav-item-gap: var(--verity-spacing-8); /** Space between a NavItem icon and its label. */
   --verity-tooltip-padding-x: var(--verity-spacing-8); /** Left and right padding inside a Tooltip. */
@@ -1019,6 +1021,7 @@
     --verity-main-nav-group-gap: var(--verity-spacing-16); /** Space between the menu bar and the primary links in MainNav. */
     --verity-main-nav-site-title-padding: var(--verity-spacing-8); /** Left inset of the site title in MainNav. */
     --verity-main-nav-logo-offset: var(--verity-spacing-8); /** Bottom padding under the MainNav logo. Lifts the logo so its lowercase letters, not its tallest letters, line up with the center of the menu icon. */
+    --verity-main-nav-logo-height: var(--verity-size-22); /** Height of the Erin Tozour logo in MainNav. Its width follows, so the logo keeps its proportions. */
     --verity-nav-item-padding: var(--verity-spacing-8); /** Padding on all sides of a NavItem (its tap area). */
     --verity-nav-item-gap: var(--verity-spacing-8); /** Space between a NavItem icon and its label. */
     --verity-tooltip-padding-x: var(--verity-spacing-8); /** Left and right padding inside a Tooltip. */
@@ -1252,6 +1255,7 @@
     --verity-main-nav-group-gap: var(--verity-spacing-16); /** Space between the menu bar and the primary links in MainNav. */
     --verity-main-nav-site-title-padding: var(--verity-spacing-8); /** Left inset of the site title in MainNav. */
     --verity-main-nav-logo-offset: var(--verity-spacing-8); /** Bottom padding under the MainNav logo. Lifts the logo so its lowercase letters, not its tallest letters, line up with the center of the menu icon. */
+    --verity-main-nav-logo-height: var(--verity-size-22); /** Height of the Erin Tozour logo in MainNav. Its width follows, so the logo keeps its proportions. */
     --verity-nav-item-padding: var(--verity-spacing-8); /** Padding on all sides of a NavItem (its tap area). */
     --verity-nav-item-gap: var(--verity-spacing-8); /** Space between a NavItem icon and its label. */
     --verity-tooltip-padding-x: var(--verity-spacing-8); /** Left and right padding inside a Tooltip. */
@@ -1485,6 +1489,7 @@
     --verity-main-nav-group-gap: var(--verity-spacing-16); /** Space between the menu bar and the primary links in MainNav. */
     --verity-main-nav-site-title-padding: var(--verity-spacing-8); /** Left inset of the site title in MainNav. */
     --verity-main-nav-logo-offset: var(--verity-spacing-8); /** Bottom padding under the MainNav logo. Lifts the logo so its lowercase letters, not its tallest letters, line up with the center of the menu icon. */
+    --verity-main-nav-logo-height: var(--verity-size-22); /** Height of the Erin Tozour logo in MainNav. Its width follows, so the logo keeps its proportions. */
     --verity-nav-item-padding: var(--verity-spacing-8); /** Padding on all sides of a NavItem (its tap area). */
     --verity-nav-item-gap: var(--verity-spacing-8); /** Space between a NavItem icon and its label. */
     --verity-tooltip-padding-x: var(--verity-spacing-8); /** Left and right padding inside a Tooltip. */

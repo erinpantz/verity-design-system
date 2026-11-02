@@ -213,6 +213,18 @@
           ]
         }
       }
+    },
+    "logo-height": {
+      "$type": "dimension",
+      "$value": "{size.22}",
+      "$description": "Height of the Erin Tozour logo in MainNav. Its width follows, so the logo keeps its proportions.",
+      "$extensions": {
+        "com.figma": {
+          "scopes": [
+            "WIDTH_HEIGHT"
+          ]
+        }
+      }
     }
   },
   "nav-item": {

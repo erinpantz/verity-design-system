@@ -1295,6 +1295,17 @@
           ]
         }
       }
+    },
+    "22": {
+      "$type": "dimension",
+      "$value": "22px",
+      "$extensions": {
+        "com.figma": {
+          "scopes": [
+            "WIDTH_HEIGHT"
+          ]
+        }
+      }
     }
   },
   "duration": {
