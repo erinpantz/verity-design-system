@@ -1,0 +1,60 @@
+import { Meta, Canvas } from '@storybook/addon-docs/blocks';
+import { VerityDocs } from '../../../foundations/VerityDocs';
+import { PropsTable } from '../../../foundations/PropsTable';
+import * as NavContainerStories from './NavContainer.stories';
+
+<Meta of={NavContainerStories} />
+
+<VerityDocs>
+
+# NavContainer
+
+Docks `MainNav` to the side or the top of the page, at the width for its state, and keeps it in place while the page scrolls.
+
+<Canvas of={NavContainerStories.Default} />
+
+## When to use
+
+- **Once per page, around `MainNav`.** The page layout (Shell, coming next) puts it beside the content.
+- **Not around NavOverlay’s MainNav.** NavOverlay sizes and places its own.
+
+## Accessibility
+
+NavContainer is a `<div>` with no role: the `<nav>` landmark is MainNav’s. It stays in place while the page scrolls (`position: sticky`), so the nav is always one Tab or one glance away, and it has the page’s background, so content scrolling under the top bar doesn’t show through.
+
+## Dock
+
+How NavContainer docks follows the screen width, in CSS with the generated breakpoints, so it’s right before JavaScript runs. On Large and XL, it reads whether MainNav is expanded from MainNav’s `data-state` attribute, so it needs no props of its own.
+
+| Width | Dock | Size | Padding |
+|---|---|---|---|
+| Small | Top, across the page | Height `--verity-nav-container-thickness-collapsed` | Left and right `--verity-nav-container-padding-x-collapsed` |
+| Medium | Left, the rail | Width `--verity-nav-container-thickness-collapsed`, full height | Top `--verity-nav-container-padding-top`, bottom `--verity-spacing-xs` |
+| Large and XL, collapsed | Left, the rail | Width `--verity-nav-container-thickness-collapsed` | The same as Medium |
+| Large and XL, expanded | Left | Width `--verity-nav-container-thickness-expanded` | Top `--verity-nav-container-padding-top`, left and right `--verity-nav-container-padding-x-expanded`, bottom `--verity-nav-container-padding-bottom` |
+
+<Canvas of={NavContainerStories.Collapsed} />
+
+It doesn’t clip what’s inside it, so the rail’s tooltips can show beside it.
+
+<Canvas of={NavContainerStories.InContext} />
+
+## Color
+
+Its background is `--verity-color-background-default`, the page’s own color. Figma’s NavContainer has no fill.
+
+## Props
+
+<PropsTable of={NavContainerStories} />
+
+## In Figma
+
+| Figma | Code |
+|---|---|
+| Component `NavContainer` | `<NavContainer />` with a `<MainNav />` inside |
+| Property `State` | Not a prop: it follows MainNav’s state |
+| Property `Dock` | Not a prop: the width decides, as MainNav’s does |
+| Clip content | Not in code, so tooltips can show past its edge |
+| Not in Figma | The background color, and staying in place while the page scrolls |
+
+</VerityDocs>

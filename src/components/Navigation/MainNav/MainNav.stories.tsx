@@ -21,7 +21,9 @@ const meta = {
   // Full height, at the width of the expanded nav's content, so Resume sits
   // at the bottom as it does on the page. Resize the window to see the
   // layout change: a top bar on Small, the rail on Medium.
-  parameters: { layout: 'fullscreen' },
+  // On the docs page, each example gets its own short frame, so a full-height
+  // nav is the frame's height, not the whole window's
+  parameters: { layout: 'fullscreen', docs: { story: { inline: false, height: '32rem' } } },
   decorators: [
     (Story) => (
       <div
