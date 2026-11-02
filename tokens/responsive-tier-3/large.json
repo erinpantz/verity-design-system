@@ -325,5 +325,47 @@
       "$value": "{duration.1500}",
       "$description": "Time for the Skeleton pulse to go from its base color to its shine, and the same back, in milliseconds."
     }
+  },
+  "footer": {
+    "call-to-action": {
+      "min-width": {
+        "$type": "dimension",
+        "$value": "320px",
+        "$description": "Narrowest the Footer call to action gets before the links wrap below it (320px).",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "WIDTH_HEIGHT"
+            ]
+          }
+        }
+      },
+      "max-width": {
+        "$type": "dimension",
+        "$value": "400px",
+        "$description": "Widest the Footer call to action gets, so its text keeps a comfortable line length (400px).",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "WIDTH_HEIGHT"
+            ]
+          }
+        }
+      }
+    },
+    "links": {
+      "min-width": {
+        "$type": "dimension",
+        "$value": "320px",
+        "$description": "Narrowest the Footer links area gets before it wraps below the call to action (320px).",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "WIDTH_HEIGHT"
+            ]
+          }
+        }
+      }
+    }
   }
 }

@@ -777,6 +777,9 @@
   --verity-grid-item-min-width-md: 300px; /** Minimum width of a Grid item before the row wraps, when Item width is md (300px). */
   --verity-nav-overlay-thickness: 240px;
   --verity-gallery-item-min-width: 200px; /** Minimum width of a Gallery item before the Gallery stacks into one column (200px). */
+  --verity-footer-call-to-action-min-width: 320px; /** Narrowest the Footer call to action gets before the links wrap below it (320px). */
+  --verity-footer-call-to-action-max-width: 400px; /** Widest the Footer call to action gets, so its text keeps a comfortable line length (400px). */
+  --verity-footer-links-min-width: 320px; /** Narrowest the Footer links area gets before it wraps below the call to action (320px). */
   --verity-container-constrained-horizontal-margin: var(--verity-spacing-24);
   --verity-container-full-bleed-horizontal-margin: var(--verity-spacing-0);
   --verity-container-wide-horizontal-margin: var(--verity-spacing-24);
@@ -1010,6 +1013,9 @@
     --verity-grid-item-min-width-md: 300px; /** Minimum width of a Grid item before the row wraps, when Item width is md (300px). */
     --verity-nav-overlay-thickness: 240px;
     --verity-gallery-item-min-width: 200px; /** Minimum width of a Gallery item before the Gallery stacks into one column (200px). */
+    --verity-footer-call-to-action-min-width: 320px; /** Narrowest the Footer call to action gets before the links wrap below it (320px). */
+    --verity-footer-call-to-action-max-width: 400px; /** Widest the Footer call to action gets, so its text keeps a comfortable line length (400px). */
+    --verity-footer-links-min-width: 320px; /** Narrowest the Footer links area gets before it wraps below the call to action (320px). */
     --verity-container-constrained-horizontal-margin: var(--verity-spacing-24);
     --verity-container-full-bleed-horizontal-margin: var(--verity-spacing-0);
     --verity-container-wide-horizontal-margin: var(--verity-spacing-24);
@@ -1244,6 +1250,9 @@
     --verity-grid-item-min-width-md: 300px; /** Minimum width of a Grid item before the row wraps, when Item width is md (300px). */
     --verity-nav-overlay-thickness: 240px;
     --verity-gallery-item-min-width: 200px; /** Minimum width of a Gallery item before the Gallery stacks into one column (200px). */
+    --verity-footer-call-to-action-min-width: 320px; /** Narrowest the Footer call to action gets before the links wrap below it (320px). */
+    --verity-footer-call-to-action-max-width: 400px; /** Widest the Footer call to action gets, so its text keeps a comfortable line length (400px). */
+    --verity-footer-links-min-width: 320px; /** Narrowest the Footer links area gets before it wraps below the call to action (320px). */
     --verity-container-constrained-horizontal-margin: var(--verity-spacing-40);
     --verity-container-full-bleed-horizontal-margin: var(--verity-spacing-0);
     --verity-container-wide-horizontal-margin: var(--verity-spacing-40);
@@ -1478,6 +1487,9 @@
     --verity-grid-item-min-width-md: 300px; /** Minimum width of a Grid item before the row wraps, when Item width is md (300px). */
     --verity-nav-overlay-thickness: 240px;
     --verity-gallery-item-min-width: 200px; /** Minimum width of a Gallery item before the Gallery stacks into one column (200px). */
+    --verity-footer-call-to-action-min-width: 320px; /** Narrowest the Footer call to action gets before the links wrap below it (320px). */
+    --verity-footer-call-to-action-max-width: 400px; /** Widest the Footer call to action gets, so its text keeps a comfortable line length (400px). */
+    --verity-footer-links-min-width: 320px; /** Narrowest the Footer links area gets before it wraps below the call to action (320px). */
     --verity-container-constrained-horizontal-margin: var(--verity-spacing-40);
     --verity-container-full-bleed-horizontal-margin: var(--verity-spacing-0);
     --verity-container-wide-horizontal-margin: var(--verity-spacing-48);

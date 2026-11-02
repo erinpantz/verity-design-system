@@ -1,0 +1,74 @@
+import { Meta, Canvas } from '@storybook/addon-docs/blocks';
+import { VerityDocs } from '../../../foundations/VerityDocs';
+import { PropsTable } from '../../../foundations/PropsTable';
+import * as FooterStories from './Footer.stories';
+
+<Meta of={FooterStories} />
+
+<VerityDocs>
+
+# Footer
+
+The site’s footer: a divider, an invitation to get in touch, the site’s links in groups, and the copyright line.
+
+<Canvas of={FooterStories.Default} />
+
+## When to use
+
+- **Once per page, at the end,** after the page’s content. `Shell` puts it there.
+- **Not for the end of a section or an article.** Use `Divider` and a `Section` there.
+
+## Accessibility
+
+A Footer renders a `<footer>`. Outside `<main>`, it’s the page’s footer landmark (`contentinfo`), so screen readers can jump to it.
+
+| Part | What it renders | What to do |
+|---|---|---|
+| Call to action heading | A level 3 `Heading` | Keep it short and inviting, like “Let’s work together” |
+| Call to action button | A `Button` with `href`: a link that looks like a button | Start the label with a verb: “Book a call” |
+| Link groups | A `LinkGroup` for each, each a named list | Name each group in a word or two, like “Connect.” A disabled link says why in its tooltip, like “Coming soon.” |
+| Copyright | A paragraph: “© {year} {name}” | Pass only the name. The year comes from today’s date, so it never goes stale. |
+
+## Width
+
+| `width` | Matches | Use for |
+|---|---|---|
+| `constrained` | The default. A constrained `Container` and `Section`: `--verity-container-constrained-*` | Pages of reading width, like most of the site |
+| `wide` | A wide Container and Section: `--verity-container-wide-*` | Pages whose sections are wide |
+
+<Canvas of={FooterStories.Wide} />
+
+The call to action and the link groups sit side by side, and wrap onto two rows when there isn’t room for both at their minimum widths. That happens because of the Footer’s own width, not the screen’s: in the constrained Footer, on Medium and Small.
+
+| Part | Narrowest | Widest |
+|---|---|---|
+| Call to action | `--verity-footer-call-to-action-min-width` (320px) | `--verity-footer-call-to-action-max-width` (400px), so its text keeps a comfortable line length |
+| Link groups | `--verity-footer-links-min-width` (320px) | All the space that’s left |
+
+On a screen narrower than a minimum, each part is the full width instead.
+
+## Space
+
+| Space | Token |
+|---|---|
+| Between the divider, the call to action and links, and the copyright | `--verity-spacing-lg` |
+| Between the call to action and the links, side by side or stacked | `--verity-spacing-lg` |
+| Inside the call to action: heading, text, button | `--verity-spacing-sm` |
+| Between link groups: across, and between rows | `--verity-spacing-lg`, `--verity-spacing-md` |
+| Outside the footer | None. Whatever holds it, like Shell, sets the space above it. |
+
+## Props
+
+<PropsTable of={FooterStories} />
+
+## In Figma
+
+| Figma | Code |
+|---|---|
+| Component `Footer` | `<Footer />` |
+| Property `Width` | `width`. `constrained` is the default in both. |
+| Property `Copyright` | `copyrightName`. The “© {year}” part is added for you, with this year. |
+| The call to action’s heading, text, and button | `callToAction`: `heading`, `text`, `buttonLabel`, and `href` |
+| The LinkGroup instances | `linkGroups`: the LinkGroups, with their Links |
+
+</VerityDocs>
