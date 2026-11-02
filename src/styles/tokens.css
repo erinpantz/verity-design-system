@@ -765,6 +765,7 @@
   --verity-grid-item-min-width-sm: 200px; /** Minimum width of a Grid item before the row wraps, when Item width is sm (200px). */
   --verity-grid-item-min-width-md: 300px; /** Minimum width of a Grid item before the row wraps, when Item width is md (300px). */
   --verity-nav-overlay-thickness: 240px;
+  --verity-gallery-item-min-width: 200px; /** Minimum width of a Gallery item before the Gallery stacks into one column (200px). */
   --verity-container-constrained-horizontal-margin: var(--verity-spacing-24);
   --verity-container-full-bleed-horizontal-margin: var(--verity-spacing-0);
   --verity-container-wide-horizontal-margin: var(--verity-spacing-24);
@@ -994,6 +995,7 @@
     --verity-grid-item-min-width-sm: 200px; /** Minimum width of a Grid item before the row wraps, when Item width is sm (200px). */
     --verity-grid-item-min-width-md: 300px; /** Minimum width of a Grid item before the row wraps, when Item width is md (300px). */
     --verity-nav-overlay-thickness: 240px;
+    --verity-gallery-item-min-width: 200px; /** Minimum width of a Gallery item before the Gallery stacks into one column (200px). */
     --verity-container-constrained-horizontal-margin: var(--verity-spacing-24);
     --verity-container-full-bleed-horizontal-margin: var(--verity-spacing-0);
     --verity-container-wide-horizontal-margin: var(--verity-spacing-24);
@@ -1224,6 +1226,7 @@
     --verity-grid-item-min-width-sm: 200px; /** Minimum width of a Grid item before the row wraps, when Item width is sm (200px). */
     --verity-grid-item-min-width-md: 300px; /** Minimum width of a Grid item before the row wraps, when Item width is md (300px). */
     --verity-nav-overlay-thickness: 240px;
+    --verity-gallery-item-min-width: 200px; /** Minimum width of a Gallery item before the Gallery stacks into one column (200px). */
     --verity-container-constrained-horizontal-margin: var(--verity-spacing-40);
     --verity-container-full-bleed-horizontal-margin: var(--verity-spacing-0);
     --verity-container-wide-horizontal-margin: var(--verity-spacing-40);
@@ -1454,6 +1457,7 @@
     --verity-grid-item-min-width-sm: 200px; /** Minimum width of a Grid item before the row wraps, when Item width is sm (200px). */
     --verity-grid-item-min-width-md: 300px; /** Minimum width of a Grid item before the row wraps, when Item width is md (300px). */
     --verity-nav-overlay-thickness: 240px;
+    --verity-gallery-item-min-width: 200px; /** Minimum width of a Gallery item before the Gallery stacks into one column (200px). */
     --verity-container-constrained-horizontal-margin: var(--verity-spacing-40);
     --verity-container-full-bleed-horizontal-margin: var(--verity-spacing-0);
     --verity-container-wide-horizontal-margin: var(--verity-spacing-48);

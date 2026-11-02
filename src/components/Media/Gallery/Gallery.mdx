@@ -1,0 +1,62 @@
+import { Meta, Canvas } from '@storybook/addon-docs/blocks';
+import { VerityDocs } from '../../../foundations/VerityDocs';
+import { PropsTable } from '../../../foundations/PropsTable';
+import * as GalleryStories from './Gallery.stories';
+
+<Meta of={GalleryStories} />
+
+<VerityDocs>
+
+# Gallery
+
+Several pictures shown together in a set layout, like two side by side and one below them across the full width. On a narrow screen, they stack in one column.
+
+<Canvas of={GalleryStories.Default} />
+
+## When to use
+
+- **For pictures that belong together,** like the stages of a design or a set of research photos.
+- **With a MediaBlock for each item,** with or without captions.
+- **Not for one picture.** Use a `MediaBlock`.
+- **Not for a set of cards or links.** Use a `Grid`, which fits as many items in a row as there’s room for.
+
+## Accessibility
+
+A Gallery renders a `<div>`, and adds nothing for screen readers. Each MediaBlock is a figure with its own caption, so people hear each picture in turn.
+
+| Situation | What to do | Example |
+|---|---|---|
+| The order matters | Write the items in the order people should read them. The Gallery never reorders them, even when it stacks. | Sketch, then mood board, then the final screen |
+| The pictures need a title | Put the Gallery in a `Section`, whose heading names the set. | “Exploring the design” |
+| Each picture needs a description | Give each Image its own `alt`, and each MediaBlock a caption if it needs one. | `alt="The setup screen, on step 2 of 5"` |
+
+## Layout
+
+| `layout` | Arrangement | Use for |
+|---|---|---|
+| `2+1` | The default. Two items side by side, then one across the full width. With more than three items, the pattern repeats. | Two details, then the whole picture |
+
+More layouts will be added. Each one sets how many columns it has and which items span the full width.
+
+## Stacking
+
+Every item is at least `--verity-gallery-item-min-width` (200) wide. When the layout’s columns would get narrower than that, the Gallery switches to one column and stacks every item, in order. It follows the Gallery’s own width, not the screen’s, so it works the same in a narrow column as across a whole page. On Small screens, the Gallery stacks.
+
+## Space
+
+The space between items, and between rows, is `--verity-spacing-sm` (16–24). A Gallery adds no space outside itself; the `Section` it’s in sets the space around it.
+
+## Props
+
+<PropsTable of={GalleryStories} />
+
+## In Figma
+
+| Figma | Code |
+|---|---|
+| Component `Gallery` | `<Gallery />` |
+| Property `Layout` | `layout`. `2+1` is the default in both. |
+| The MediaBlocks inside it | `children`: `<MediaBlock />`s, in reading order |
+| Stacking on Small | Not a separate layout: the Gallery stacks on its own when its items would be narrower than `gallery/item-min-width` |
+
+</VerityDocs>

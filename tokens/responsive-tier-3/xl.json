@@ -280,5 +280,19 @@
         }
       }
     }
+  },
+  "gallery": {
+    "item-min-width": {
+      "$type": "dimension",
+      "$value": "200px",
+      "$description": "Minimum width of a Gallery item before the Gallery stacks into one column (200px).",
+      "$extensions": {
+        "com.figma": {
+          "scopes": [
+            "WIDTH_HEIGHT"
+          ]
+        }
+      }
+    }
   }
 }
