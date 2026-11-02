@@ -1,0 +1,103 @@
+import { Meta, Canvas } from '@storybook/addon-docs/blocks';
+import { VerityDocs } from '../../../foundations/VerityDocs';
+import { PropsTable } from '../../../foundations/PropsTable';
+import * as NavItemStories from './NavItem.stories';
+
+<Meta of={NavItemStories} />
+
+<VerityDocs>
+
+# NavItem
+
+A link to one of the site’s pages, with its icon and name. On hover and on the current page, the icon takes its accent colors and moves into a pose.
+
+<Canvas of={NavItemStories.Portfolio} />
+
+## When to use
+
+- **For the site’s main pages** (Portfolio, Playground, Profile, and Resume) in `MainNav` and `NavOverlay`.
+- **Not for links in text or in the footer.** Use `Link`, which is sized and styled for reading.
+- **Not for actions,** like opening the menu. Use `IconButton`, which is a button.
+
+## Accessibility
+
+A NavItem renders a link (`<a>`) with its `label` as the link’s text. The icon is decoration, so screen readers skip it.
+
+| Situation | What to do | Example |
+|---|---|---|
+| It’s the page someone is on | Set `current`. The link gets `aria-current="page"`, so screen readers say “current page.” | Portfolio, on the portfolio page |
+| The label is hidden, in the collapsed rail | Still set `label`. It stays in the link as text that only screen readers read, and shows in a tooltip on hover and focus. | `showLabel={false}` with `label="Profile"` |
+| It links to the resume | Link to the PDF. It opens in the browser; there’s no `download` attribute, so nothing is saved without asking. | `href="/erin-tozour-resume.pdf"` |
+
+Keyboard: Tab reaches each NavItem, and Enter follows the link.
+
+## Icon
+
+| `icon` | Icon | Moves on hover |
+|---|---|---|
+| `portfolio` | `nav/portfolio` | The frame grows, and the four boxes spread out and grow |
+| `playground` | `nav/playground` | The seesaw tips, and the boxes ride it |
+| `profile` | `nav/profile` | The head tilts |
+| `resume` | `resume` | Doesn’t move or change color |
+
+<Canvas of={NavItemStories.Playground} />
+
+<Canvas of={NavItemStories.Profile} />
+
+<Canvas of={NavItemStories.Resume} />
+
+## Label
+
+| `showLabel` | What it shows | Use for |
+|---|---|---|
+| `true` | The default. The icon and the label, filling the width it’s given. | The expanded nav and NavOverlay |
+| `false` | A square with the icon. The label shows in a tooltip, at the end, on hover and focus. | The collapsed rail |
+
+<Canvas of={NavItemStories.WithoutLabel} />
+
+## States
+
+| State | What changes | Tokens |
+|---|---|---|
+| Default | No fill. The label in the default text color; a nav icon in its own color. | `--verity-color-content-default`, `--verity-nav-icon-color-default` |
+| Hover | A medium fill and a lighter label. A nav icon takes its accent colors and moves into its hover pose. | `--verity-color-background-transparent-medium`, `--verity-color-content-default-hover`, `--verity-nav-icon-color-accent-*` |
+| Focus | A ring outside the item. The icon doesn’t move. | `--verity-color-border-focus`, `--verity-focus-ring-width`, `--verity-focus-ring-offset` |
+| Active (pressed) | The strong fill, while the link is pressed | `--verity-color-background-transparent-strong` |
+| Current | The strong fill. A nav icon keeps its accent colors and settles into its active pose, even on hover. | `--verity-color-background-transparent-strong` |
+
+<Canvas of={NavItemStories.Current} />
+
+## Motion
+
+The hover and active poses are drawn in Figma. In code, each part of a nav icon is a group named after its Figma layer, and it moves between poses with a CSS transform around its own center. Strokes keep their width as parts grow.
+
+| Change | Duration | Easing |
+|---|---|---|
+| Into and out of the hover pose, and settling into the active pose | `--verity-motion-duration-playful` (300ms) | `--verity-motion-easing-playful`, which goes a little past the pose and settles back |
+| Accent colors fading in and out | `--verity-motion-duration-fast` (150ms) | `--verity-motion-easing-standard` |
+
+With “reduce motion” on, poses switch at once, with no movement. The colors still fade.
+
+NavItem gives the icon its accent colors by setting `--icon-accent-brand`, `--icon-accent-three`, `--icon-accent-four`, and `--icon-accent-yellow` on hover and on the current page. See `Icon` for how nav icons use them.
+
+<Canvas of={NavItemStories.InContext} />
+
+## Props
+
+<PropsTable of={NavItemStories} />
+
+## In Figma
+
+| Figma | Code |
+|---|---|
+| Component `NavItem` | `<NavItem />` |
+| Property `Icon` | `icon` |
+| Property `Label` | `label` |
+| Property `Show label` | `showLabel`. On in both by default. |
+| Property `State`: `default`, `hover`, `focus` | The link’s own states, from CSS. There’s no prop. |
+| Property `State`: `current` | `current` |
+| Property `Show tooltip` | Not in code. It’s for mockups; in code, the tooltip shows on hover and focus whenever the label is hidden. |
+| Nav icon variants `State=hover` and `State=active` | The hover and active poses, animated with CSS |
+| Not in Figma | `href`, and the pressed state |
+
+</VerityDocs>
