@@ -271,7 +271,7 @@
       "shine": {
         "$type": "color",
         "$value": "{color.brand.neutral.700}",
-        "$description": "The lighter band that sweeps across a Skeleton while media loads. The base is color/background/subtle.",
+        "$description": "The lighter end of the Skeleton pulse while media loads. The other end is color/background/subtle.",
         "$extensions": {
           "com.figma": {
             "scopes": [

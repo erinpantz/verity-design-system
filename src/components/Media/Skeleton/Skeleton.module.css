@@ -2,42 +2,33 @@
    It takes its container's corners, so it matches an Image's radius. */
 
 .skeleton {
-  position: relative;
-  overflow: hidden;
   inline-size: 100%;
   block-size: 100%;
   border-radius: inherit;
   background: var(--verity-color-background-subtle);
 }
 
-/* The shine: a band half the Skeleton's width, as in Figma, fading to
-   transparent on both sides. It starts just past the start edge and moves
-   until it's just past the end edge (translate percentages are of the band's
-   own width), once every skeleton/duration, at a steady speed, forever. */
+/* The pulse: the whole block goes from its base color to the shine color
+   and back, taking skeleton/duration each way, easing in and out, forever.
+   alternate runs every other loop backward, so it returns the same way it came. */
 
-.shine::after {
-  position: absolute;
-  inset-block: 0;
-  inset-inline-start: 0;
-  inline-size: 50%;
-  background: linear-gradient(to right, transparent, var(--verity-skeleton-color-shine), transparent);
-  animation: sweep var(--verity-skeleton-duration) linear infinite;
-  content: '';
+.shine {
+  animation: pulse var(--verity-skeleton-duration) ease-in-out infinite alternate;
 }
 
-@keyframes sweep {
+@keyframes pulse {
   from {
-    transform: translateX(-100%);
+    background: var(--verity-color-background-subtle);
   }
 
   to {
-    transform: translateX(200%);
+    background: var(--verity-skeleton-color-shine);
   }
 }
 
-/* With “reduce motion” on, show the base color only */
+/* With “reduce motion” on, a flat block in the base color: no animation */
 @media (prefers-reduced-motion: reduce) {
-  .shine::after {
-    display: none;
+  .shine {
+    animation: none;
   }
 }

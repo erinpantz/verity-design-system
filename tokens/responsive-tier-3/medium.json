@@ -299,7 +299,7 @@
     "duration": {
       "$type": "duration",
       "$value": "{duration.1500}",
-      "$description": "Time for one sweep of the Skeleton shine, in milliseconds."
+      "$description": "Time for the Skeleton pulse to go from its base color to its shine, and the same back, in milliseconds."
     }
   }
 }

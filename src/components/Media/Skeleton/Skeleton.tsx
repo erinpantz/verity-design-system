@@ -2,8 +2,8 @@ import styles from './Skeleton.module.css';
 
 export interface SkeletonProps {
   /**
-   * Whether the lighter band sweeps across. Turn it off when nothing is
-   * coming, like an image that failed to load.
+   * Whether the block pulses to the lighter shine color and back. Turn it
+   * off when nothing is coming, like an image that failed to load.
    */
   showShine?: boolean;
 }
