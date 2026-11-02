@@ -450,5 +450,31 @@
         }
       }
     }
+  },
+  "motion": {
+    "duration": {
+      "fast": {
+        "$type": "duration",
+        "$value": "{duration.150}",
+        "$description": "Quick changes that aren’t movement, such as a hover color fade."
+      },
+      "playful": {
+        "$type": "duration",
+        "$value": "{duration.300}",
+        "$description": "Playful moves, such as the nav icons’ hover poses."
+      }
+    },
+    "easing": {
+      "standard": {
+        "$type": "cubicBezier",
+        "$value": "{easing.standard-decelerate.strong}",
+        "$description": "Default curve for fades and simple changes."
+      },
+      "playful": {
+        "$type": "cubicBezier",
+        "$value": "{easing.overshoot}",
+        "$description": "Springy curve for playful moves."
+      }
+    }
   }
 }

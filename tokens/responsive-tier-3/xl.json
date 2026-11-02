@@ -101,6 +101,18 @@
           ]
         }
       }
+    },
+    "padding-top": {
+      "$type": "dimension",
+      "$value": "{spacing.md}",
+      "$description": "Top padding of the left-docked NavContainer.",
+      "$extensions": {
+        "com.figma": {
+          "scopes": [
+            "GAP"
+          ]
+        }
+      }
     }
   },
   "grid": {

@@ -153,6 +153,7 @@
   --verity-spacing-96: 96px;
   --verity-spacing-128: 128px;
   --verity-easing-standard-decelerate-strong: cubic-bezier(0, 0, 0.0045, 1.005);
+  --verity-easing-overshoot: cubic-bezier(0.34, 1.56, 0.64, 1); /** Springy curve that goes slightly past its target and settles back. */
   --verity-shadow-sm-x: 2px;
   --verity-shadow-sm-y: 2px;
   --verity-shadow-sm-blur: 4px;
@@ -165,6 +166,8 @@
   --verity-size-48: 48px;
   --verity-size-56: 56px;
   --verity-size-64: 64px;
+  --verity-duration-150: 150ms; /** Duration in milliseconds. */
+  --verity-duration-300: 300ms; /** Duration in milliseconds. */
   --verity-duration-1500: 1500ms; /** Duration in milliseconds. */
   --verity-shadow-sm-color: var(--verity-color-background-transparent-25);
 }
@@ -240,6 +243,10 @@
   --verity-icon-size-lg: var(--verity-size-32); /** Large icons, 32px */
   --verity-focus-ring-width: var(--verity-border-width-2); /** Thickness of the keyboard focus ring on every interactive component. */
   --verity-focus-ring-offset: var(--verity-border-width-2); /** Gap between a component’s edge and its focus ring. */
+  --verity-motion-duration-fast: var(--verity-duration-150); /** Quick changes that aren’t movement, such as a hover color fade. */
+  --verity-motion-duration-playful: var(--verity-duration-300); /** Playful moves, such as the nav icons’ hover poses. */
+  --verity-motion-easing-standard: var(--verity-easing-standard-decelerate-strong); /** Default curve for fades and simple changes. */
+  --verity-motion-easing-playful: var(--verity-easing-overshoot); /** Springy curve for playful moves. */
 }
 
 /* Typography Tier 2 */
@@ -787,6 +794,7 @@
   --verity-tooltip-offset: var(--verity-spacing-8); /** Gap between a tooltip and the element it describes. Leaves room for the focus ring. */
   --verity-unordered-list-marker-size: var(--verity-size-20); /** Width and height of the marker before each UnorderedList item. */
   --verity-skeleton-duration: var(--verity-duration-1500); /** Time for the Skeleton pulse to go from its base color to its shine, and the same back, in milliseconds. */
+  --verity-nav-container-padding-top: var(--verity-spacing-md); /** Top padding of the left-docked NavContainer. */
 }
 
 /* Small: Typography Styles */
@@ -1018,6 +1026,7 @@
     --verity-tooltip-offset: var(--verity-spacing-8); /** Gap between a tooltip and the element it describes. Leaves room for the focus ring. */
     --verity-unordered-list-marker-size: var(--verity-size-20); /** Width and height of the marker before each UnorderedList item. */
     --verity-skeleton-duration: var(--verity-duration-1500); /** Time for the Skeleton pulse to go from its base color to its shine, and the same back, in milliseconds. */
+    --verity-nav-container-padding-top: var(--verity-spacing-md); /** Top padding of the left-docked NavContainer. */
   }
 
   /* Medium: Typography Styles */
@@ -1250,6 +1259,7 @@
     --verity-tooltip-offset: var(--verity-spacing-8); /** Gap between a tooltip and the element it describes. Leaves room for the focus ring. */
     --verity-unordered-list-marker-size: var(--verity-size-20); /** Width and height of the marker before each UnorderedList item. */
     --verity-skeleton-duration: var(--verity-duration-1500); /** Time for the Skeleton pulse to go from its base color to its shine, and the same back, in milliseconds. */
+    --verity-nav-container-padding-top: var(--verity-spacing-md); /** Top padding of the left-docked NavContainer. */
   }
 
   /* Large: Typography Styles */
@@ -1482,5 +1492,6 @@
     --verity-tooltip-offset: var(--verity-spacing-8); /** Gap between a tooltip and the element it describes. Leaves room for the focus ring. */
     --verity-unordered-list-marker-size: var(--verity-size-20); /** Width and height of the marker before each UnorderedList item. */
     --verity-skeleton-duration: var(--verity-duration-1500); /** Time for the Skeleton pulse to go from its base color to its shine, and the same back, in milliseconds. */
+    --verity-nav-container-padding-top: var(--verity-spacing-md); /** Top padding of the left-docked NavContainer. */
   }
 }

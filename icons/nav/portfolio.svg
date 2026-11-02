@@ -1,7 +1,17 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
+<g class="outline">
 <rect x="4" y="4" width="16" height="16" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
+</g>
+<g class="box-1">
 <path d="M8 10.4C8 9.07452 9.07452 8 10.4 8C10.7314 8 11 8.26863 11 8.6V10C11 10.5523 10.5523 11 10 11H8.6C8.26863 11 8 10.7314 8 10.4Z" fill="var(--icon-accent-brand, currentColor)"/>
+</g>
+<g class="box-2">
 <path d="M13 8.6C13 8.26863 13.2686 8 13.6 8C14.9255 8 16 9.07452 16 10.4C16 10.7314 15.7314 11 15.4 11H14C13.4477 11 13 10.5523 13 10V8.6Z" fill="var(--icon-accent-three, currentColor)"/>
+</g>
+<g class="box-3">
 <path d="M8 13.6C8 13.2686 8.26863 13 8.6 13H10C10.5523 13 11 13.4477 11 14V15.4C11 15.7314 10.7314 16 10.4 16C9.07452 16 8 14.9255 8 13.6Z" fill="var(--icon-accent-four, currentColor)"/>
+</g>
+<g class="box-4">
 <path d="M13 14C13 13.4477 13.4477 13 14 13H15.4C15.7314 13 16 13.2686 16 13.6C16 14.9255 14.9255 16 13.6 16C13.2686 16 13 15.7314 13 15.4V14Z" fill="var(--icon-accent-yellow, currentColor)"/>
+</g>
 </svg>
