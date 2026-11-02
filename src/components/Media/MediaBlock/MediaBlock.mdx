@@ -1,0 +1,59 @@
+import { Meta, Canvas } from '@storybook/addon-docs/blocks';
+import { VerityDocs } from '../../../foundations/VerityDocs';
+import { PropsTable } from '../../../foundations/PropsTable';
+import * as MediaBlockStories from './MediaBlock.stories';
+
+<Meta of={MediaBlockStories} />
+
+<VerityDocs>
+
+# MediaBlock
+
+A picture with an optional caption below it. It’s a figure, so screen readers connect the caption to what it describes.
+
+<Canvas of={MediaBlockStories.Default} />
+
+## When to use
+
+- **For media that belongs to the content,** like a screenshot of a design or a photo from research, with or without a caption.
+- **With a caption,** when the picture needs a sentence of context: what it shows, or why it matters.
+- **In a Gallery,** for several pictures shown together. Each item in a Gallery is a MediaBlock.
+- **Not for a decorative picture** that doesn’t belong to the content. Use an `Image` on its own, with `alt=""`.
+
+## Accessibility
+
+A MediaBlock renders a `<figure>`, with the caption in a `<figcaption>`. Screen readers announce the figure and read its caption as part of it.
+
+| Situation | What to do | Example |
+|---|---|---|
+| Writing the caption | Add context the picture can’t give on its own. Don’t repeat the image’s `alt`. | “Step 2 asked for a bank login with no explanation.” |
+| The picture has a caption | Still write the Image’s `alt`, describing what’s in the picture. | `alt="The setup screen, on step 2 of 5"` |
+| It’s a long explanation | Keep the caption to a sentence or two, and put the rest in the text around it. | A paragraph in `Prose` before the MediaBlock |
+
+## Media
+
+The media is the MediaBlock’s `children`: an `Image` today, and an `Animation` once that’s built. The media fills the MediaBlock’s width, and the MediaBlock fills whatever holds it.
+
+## Caption
+
+The caption uses the body-sm text style (`--verity-viewport-typography-body-sm-*`) in `--verity-color-content-subtle`, so it reads as a note on the picture, quieter than the text around it.
+
+<Canvas of={MediaBlockStories.LongCaption} />
+
+## Space
+
+The caption sits `--verity-spacing-sm` (16–24) below the media. A MediaBlock adds no space outside itself; the `Section` or `Gallery` it’s in sets the space around it.
+
+## Props
+
+<PropsTable of={MediaBlockStories} />
+
+## In Figma
+
+| Figma | Code |
+|---|---|
+| Component `MediaBlock` | `<MediaBlock />` |
+| Property `Media` (instance swap) | `children`: an `<Image />` |
+| Properties `Show caption` and `Caption` | `caption`, shown when provided: leave it out for no caption |
+
+</VerityDocs>

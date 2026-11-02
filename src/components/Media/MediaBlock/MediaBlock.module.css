@@ -1,0 +1,19 @@
+/* The media, then its caption. The space between them is a gap, never a margin. */
+
+.mediaBlock {
+  display: flex;
+  flex-direction: column;
+  gap: var(--verity-spacing-sm);
+  /* Remove the browser's default space around a <figure> */
+  margin: 0;
+}
+
+.caption {
+  color: var(--verity-color-content-subtle);
+  font-family: var(--verity-viewport-typography-body-sm-font-family);
+  font-size: var(--verity-viewport-typography-body-sm-font-size);
+  font-weight: var(--verity-viewport-typography-body-sm-font-weight);
+  line-height: var(--verity-viewport-typography-body-sm-line-height);
+  letter-spacing: var(--verity-viewport-typography-body-sm-letter-spacing);
+  text-transform: var(--verity-viewport-typography-body-sm-text-transform);
+}
