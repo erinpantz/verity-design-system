@@ -38,10 +38,12 @@
   content: '';
 }
 
-/* Shown on hover, and on keyboard focus of the trigger (not after a mouse click) */
+/* Shown on hover, and on keyboard focus of the trigger (not after a mouse
+   click). A parent can turn it off by setting --tooltip-display: none, as
+   NavItem does while its label is showing. */
 .anchor:hover > .tooltip,
 .anchor:has(:focus-visible) > .tooltip {
-  display: block;
+  display: var(--tooltip-display, block);
 }
 
 /* Escape hides it until the next hover or focus */

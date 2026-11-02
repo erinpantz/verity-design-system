@@ -13,12 +13,17 @@ export interface TooltipProps {
   placement?: 'top' | 'end';
   /** The trigger: the element people hover over or focus */
   children: ReactNode;
+  /**
+   * Whether the tooltip only repeats text screen readers already get, like a
+   * hidden label. Screen readers then skip it, so they don’t hear it twice.
+   */
+  visualOnly?: boolean;
 }
 
 // A short hint shown while its trigger is hovered or has keyboard focus, and
 // while the pointer is over the hint itself. Escape hides it until the next
 // hover or focus (WCAG 1.4.13). Showing and hiding is CSS; Escape needs JS.
-export function Tooltip({ text, id, placement = 'top', children }: TooltipProps) {
+export function Tooltip({ text, id, placement = 'top', children, visualOnly = false }: TooltipProps) {
   const [dismissed, setDismissed] = useState(false);
 
   useEffect(() => {
@@ -37,7 +42,12 @@ export function Tooltip({ text, id, placement = 'top', children }: TooltipProps)
       onFocus={() => setDismissed(false)}
     >
       {children}
-      <span className={styles.tooltip} role="tooltip" id={id}>
+      <span
+        className={styles.tooltip}
+        role={visualOnly ? undefined : 'tooltip'}
+        aria-hidden={visualOnly || undefined}
+        id={id}
+      >
         {text}
       </span>
     </span>

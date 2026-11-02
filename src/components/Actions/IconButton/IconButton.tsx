@@ -1,4 +1,4 @@
-import { useId, type MouseEventHandler } from 'react';
+import { useId, type MouseEventHandler, type Ref } from 'react';
 import type { IconName } from '../../../icons/icons.generated';
 import { Icon } from '../../Media/Icon';
 import { Tooltip } from '../Tooltip';
@@ -18,6 +18,15 @@ export interface IconButtonProps {
   disabled?: boolean;
   /** What happens when someone presses the button */
   onClick?: MouseEventHandler<HTMLButtonElement>;
+  /**
+   * For a button that shows and hides something, like a menu: whether that
+   * thing is showing now. Screen readers hear “expanded” or “collapsed.”
+   */
+  expanded?: boolean;
+  /** For a button that opens a dialog, like a full-screen menu */
+  hasPopup?: 'dialog';
+  /** A reference to the button, so focus can return to it */
+  ref?: Ref<HTMLButtonElement>;
 }
 
 // Icon size for each button size, as on Button: xl and lg use the lg icon
@@ -26,7 +35,16 @@ const ICON_SIZE = { xl: 'lg', lg: 'lg', md: 'md', sm: 'sm' } as const;
 // A square button with only an icon. Its label shows in a tooltip on hover
 // and focus, and the button takes its name from that tooltip, so screen
 // readers hear the label once.
-export function IconButton({ icon, label, size = 'md', disabled = false, onClick }: IconButtonProps) {
+export function IconButton({
+  icon,
+  label,
+  size = 'md',
+  disabled = false,
+  onClick,
+  expanded,
+  hasPopup,
+  ref,
+}: IconButtonProps) {
   const tooltipId = useId();
   return (
     <Tooltip text={label} id={tooltipId} placement="end">
@@ -34,6 +52,9 @@ export function IconButton({ icon, label, size = 'md', disabled = false, onClick
         className={`${styles.iconButton} ${styles[size]}`}
         type="button"
         aria-labelledby={tooltipId}
+        aria-expanded={expanded}
+        aria-haspopup={hasPopup}
+        ref={ref}
         disabled={disabled}
         onClick={onClick}
       >

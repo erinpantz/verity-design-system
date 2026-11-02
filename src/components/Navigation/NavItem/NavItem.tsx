@@ -30,27 +30,29 @@ const ICON = {
 
 // A link to one of the site's pages, with its icon. On hover and on the
 // current page, a nav icon takes its accent colors and moves to a pose.
+//
+// The tooltip is always there, but it only shows while the label is hidden.
+// MainNav hides labels with CSS at some widths, so it finds the parts by
+// their data attributes: data-nav-item, data-nav-item-link, and
+// data-nav-item-label.
 export function NavItem({ icon, label, href, current = false, showLabel = true }: NavItemProps) {
   const tooltipId = useId();
-  const classes = [styles.navItem, styles[icon], showLabel ? '' : styles.iconOnly];
-
-  const link = (
-    <a
-      className={classes.join(' ').trim()}
-      href={href}
-      aria-current={current ? 'page' : undefined}
-    >
-      <Icon name={ICON[icon]} />
-      <span className={showLabel ? styles.label : styles.hiddenLabel}>{label}</span>
-    </a>
-  );
-
-  if (showLabel) return link;
-  // The link already has its name from the hidden label, so the tooltip is
-  // only for people who can see it
   return (
-    <Tooltip text={label} id={tooltipId} placement="end">
-      {link}
-    </Tooltip>
+    <div className={styles.item} data-nav-item="" data-label-hidden={showLabel ? undefined : ''}>
+      {/* The hidden label is the link's name, so screen readers skip the tooltip */}
+      <Tooltip text={label} id={tooltipId} placement="end" visualOnly>
+        <a
+          className={`${styles.navItem} ${styles[icon]}`}
+          href={href}
+          aria-current={current ? 'page' : undefined}
+          data-nav-item-link=""
+        >
+          <Icon name={ICON[icon]} />
+          <span className={styles.label} data-nav-item-label="">
+            {label}
+          </span>
+        </a>
+      </Tooltip>
+    </div>
   );
 }

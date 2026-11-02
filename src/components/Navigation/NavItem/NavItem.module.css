@@ -1,10 +1,21 @@
 /* A link to one of the site's pages: an icon and a label, as tall as a
-   control. It fills the width it's given; icon-only, it's a square. */
+   control. It fills the width it's given; icon-only, it's a square.
+
+   The item holds the Tooltip, which holds the link. The tooltip shows only
+   while the label is hidden: --tooltip-display turns it off otherwise. */
+
+.item {
+  --tooltip-display: none;
+
+  display: flex;
+  flex-direction: column;
+}
 
 .navItem {
   /* Holds the hidden label in place */
   position: relative;
   display: flex;
+  flex: 1;
   align-items: center;
   gap: var(--verity-nav-item-gap);
   box-sizing: border-box;
@@ -14,10 +25,6 @@
   border-radius: var(--verity-border-radius-md);
   color: var(--verity-color-content-default);
   text-decoration: none;
-}
-
-.iconOnly {
-  inline-size: var(--verity-control-size-md);
 }
 
 .label {
@@ -34,9 +41,23 @@
   white-space: nowrap;
 }
 
-/* Hidden from sight but still read by screen readers, so an icon-only link
-   keeps its name */
-.hiddenLabel {
+/* Icon-only (showLabel off): a square, with the label hidden from sight but
+   still read by screen readers, so the link keeps its name. The tooltip shows
+   the label on hover and focus. MainNav's CSS does the same at the widths
+   where its rail shows. */
+
+.item[data-label-hidden] {
+  --tooltip-display: block;
+
+  align-items: flex-start;
+}
+
+.item[data-label-hidden] .navItem {
+  flex: none;
+  inline-size: var(--verity-control-size-md);
+}
+
+.item[data-label-hidden] .label {
   position: absolute;
   overflow: hidden;
   inline-size: 1px;

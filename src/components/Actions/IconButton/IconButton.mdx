@@ -27,7 +27,8 @@ An IconButton renders a `<button type="button">` inside a `Tooltip`. The button 
 | Situation | What to do | Example |
 |---|---|---|
 | Writing the label | Say what the button does, not what the icon looks like. Start with a verb. | “Collapse navigation,” not “Sidebar icon” |
-| The action toggles | Change the label to the action it will do next. | “Collapse navigation,” then “Expand navigation” |
+| The action toggles | Change the label to the action it will do next, and set `expanded` to whether the thing it controls is showing. | “Collapse navigation,” then “Expand navigation” |
+| It opens a dialog | Set `hasPopup="dialog"`, and `expanded` while the dialog is open. Return focus to the button when the dialog closes, through `ref`. | MainNav’s “Open menu” on Small |
 | It can’t be used yet | Use `disabled`. Keyboard users skip disabled buttons, so say on the page why. | A download that isn’t ready |
 
 The tooltip appears on hover and on keyboard focus, stays while the pointer is over it, and Escape hides it, as **Actions › Tooltip** describes.
@@ -76,6 +77,6 @@ The icon uses `--verity-color-content-default`, and the corners use `--verity-bo
 | Property `State` | Hover, focus, and active come from the browser. `State=disabled` → `disabled`. |
 | Property `Show tooltip` | Figma-only, for mockups. In code, the tooltip always shows on hover and focus. |
 | Layer `Focus ring` | Not a layer: an outline on keyboard focus |
-| Not in Figma | `onClick` |
+| Not in Figma | `onClick`, `expanded`, `hasPopup`, and `ref` |
 
 </VerityDocs>
