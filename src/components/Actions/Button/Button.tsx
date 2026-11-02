@@ -39,6 +39,12 @@ export type ButtonProps = VariantAndColor & {
   disabled?: boolean;
   /** What happens when someone presses the button */
   onClick?: MouseEventHandler<HTMLButtonElement>;
+  /**
+   * Where it goes, for a button that goes to another page, like “Book a
+   * call.” It then renders a link (<a>) that looks like a button, and
+   * type, disabled, and onClick don’t apply.
+   */
+  href?: string;
 };
 
 // Icon size for each button size: xl and lg buttons use the lg icon
@@ -54,13 +60,29 @@ export function Button({
   type = 'button',
   disabled = false,
   onClick,
+  href,
 }: ButtonProps) {
   const classes = [styles.button, styles[variant], styles[`${variant}-${color}`], styles[size]];
-  return (
-    <button className={classes.join(' ')} type={type} disabled={disabled} onClick={onClick}>
+  const content = (
+    <>
       {startIcon && <Icon name={startIcon} size={ICON_SIZE[size]} />}
       {children}
       {endIcon && <Icon name={endIcon} size={ICON_SIZE[size]} />}
+    </>
+  );
+
+  // Going somewhere is a link, so screen readers say “link” and it works
+  // like one (open in a new tab, copy the address)
+  if (href) {
+    return (
+      <a className={classes.join(' ')} href={href}>
+        {content}
+      </a>
+    );
+  }
+  return (
+    <button className={classes.join(' ')} type={type} disabled={disabled} onClick={onClick}>
+      {content}
     </button>
   );
 }

@@ -40,6 +40,7 @@ const meta = {
     type: { control: false },
     disabled: { control: 'boolean' },
     onClick: { control: false },
+    href: { control: 'text' },
   },
 } satisfies Meta<typeof Button>;
 
@@ -101,6 +102,12 @@ export const Disabled: StoryObj = {
       </Button>
     </HorizontalStack>
   ),
+};
+
+// Goes to another page, so it's a link that looks like a button
+export const AsLink: Story = {
+  name: 'As link',
+  args: { href: 'https://calendly.com/erin-hurff/30min' },
 };
 
 // A call to action under a short pitch: the main action, then a quieter one
