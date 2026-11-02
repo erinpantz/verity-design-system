@@ -71,6 +71,10 @@ The space around a `contain` image is transparent, so the background behind it s
 
 Images load lazily by default: the browser waits until an image is close to the screen, so the page opens faster. For an image at the very top of a page, use `loading="eager"`, so it appears right away.
 
+Until the picture arrives, a `Skeleton` fills its shape, with the same ratio and corners, and is removed once the picture loads. If the file can’t load, the Skeleton’s base color stays without the shine, so it doesn’t look like it’s still on its way. Screen readers still read the `alt` text.
+
+<Canvas of={ImageStories.FailedToLoad} />
+
 ## Props
 
 <PropsTable of={ImageStories} />

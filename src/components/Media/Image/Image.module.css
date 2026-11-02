@@ -1,11 +1,25 @@
-/* An image that fills its container's width. Its height comes from the
-   aspect ratio, so the space is reserved before the file loads and nothing
-   below it moves. */
+/* An image that fills its container's width. The frame's height comes from
+   the aspect ratio, so the space is reserved before the file loads and
+   nothing below it moves. While it loads, a Skeleton fills the frame, under
+   the picture. */
+
+.frame {
+  display: grid;
+  /* One cell the size of the frame, for the Skeleton and the picture */
+  grid-template: minmax(0, 1fr) / minmax(0, 1fr);
+  overflow: hidden;
+  inline-size: 100%;
+}
+
+/* The Skeleton and the picture share the cell; the picture is on top */
+.frame > * {
+  grid-area: 1 / 1;
+}
 
 .image {
   display: block;
   inline-size: 100%;
-  block-size: auto;
+  block-size: 100%;
 }
 
 /* Aspect ratio */
@@ -22,7 +36,7 @@
   aspect-ratio: 1 / 1;
 }
 
-/* Border radius */
+/* Border radius. The frame clips the picture and the Skeleton to it. */
 
 .radius-none {
   border-radius: var(--verity-border-radius-none);

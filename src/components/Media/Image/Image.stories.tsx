@@ -75,6 +75,12 @@ export const Decorative: Story = {
   args: { alt: '', aspectRatio: '3:2' },
 };
 
+// A file that doesn't exist: the Skeleton's base color stays, with no shine
+export const FailedToLoad: Story = {
+  name: 'Failed to load',
+  args: { src: 'missing-image.jpg' },
+};
+
 export const InContext: StoryObj = {
   name: 'In context',
   render: () => (

@@ -1,3 +1,5 @@
+import { useEffect, useRef, useState } from 'react';
+import { Skeleton } from '../Skeleton';
 import styles from './Image.module.css';
 
 export interface ImageProps {
@@ -27,6 +29,8 @@ export interface ImageProps {
 // Class names for each ratio, since a colon can't be part of one
 const RATIO = { '16:9': 'ratio-16-9', '3:2': 'ratio-3-2', '1:1': 'ratio-1-1' } as const;
 
+type Status = 'loading' | 'loaded' | 'error';
+
 export function Image({
   src,
   alt,
@@ -35,6 +39,33 @@ export function Image({
   fit = 'cover',
   loading = 'lazy',
 }: ImageProps) {
-  const classes = [styles.image, styles[RATIO[aspectRatio]], styles[`radius-${borderRadius}`], styles[fit]];
-  return <img className={classes.join(' ')} src={src} alt={alt} loading={loading} decoding="async" />;
+  // What happened to which file, so a new src starts over at loading
+  const [result, setResult] = useState<{ src: string; status: Status } | null>(null);
+  const status: Status = result?.src === src ? result.status : 'loading';
+  const imgRef = useRef<HTMLImageElement>(null);
+
+  // A file can finish loading before React is listening, for example when the
+  // page was rendered on a server, so check once after the image appears
+  useEffect(() => {
+    const img = imgRef.current;
+    if (img?.complete) setResult({ src, status: img.naturalWidth > 0 ? 'loaded' : 'error' });
+  }, [src]);
+
+  const frameClasses = [styles.frame, styles[RATIO[aspectRatio]], styles[`radius-${borderRadius}`]];
+  return (
+    <div className={frameClasses.join(' ')}>
+      {/* Under the picture until it loads. If it fails, the base color stays, with no shine. */}
+      {status !== 'loaded' && <Skeleton showShine={status === 'loading'} />}
+      <img
+        ref={imgRef}
+        className={`${styles.image} ${styles[fit]}`}
+        src={src}
+        alt={alt}
+        loading={loading}
+        decoding="async"
+        onLoad={() => setResult({ src, status: 'loaded' })}
+        onError={() => setResult({ src, status: 'error' })}
+      />
+    </div>
+  );
 }
