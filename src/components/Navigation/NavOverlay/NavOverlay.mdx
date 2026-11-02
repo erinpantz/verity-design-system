@@ -1,0 +1,59 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import { VerityDocs } from '../../../foundations/VerityDocs';
+import { PropsTable } from '../../../foundations/PropsTable';
+import * as NavOverlayStories from './NavOverlay.stories';
+
+<Meta of={NavOverlayStories} />
+
+<VerityDocs>
+
+# NavOverlay
+
+The full menu, over the page, on Small and Medium. MainNav’s menu button opens it.
+
+This page’s examples would be wider than Medium, where the overlay closes, so try it in its stories instead: **Open** shows it at a phone’s width, and **On Medium** at a tablet’s. Each opens in Storybook’s viewport for that size.
+
+## When to use
+
+- **Once per page, next to `NavContainer`,** with a `MainNav` inside it set to `placement="overlay"`. The page’s MainNav opens it, and the overlay’s MainNav closes it.
+- **Not on Large and XL.** The nav sits beside the page there, so the overlay closes if the screen widens.
+- **Not for other dialogs.** It’s only for the site’s menu.
+
+## Accessibility
+
+NavOverlay is a modal `<dialog>` named “Menu.” It behaves like any dialog:
+
+| When | What happens |
+|---|---|
+| It opens | Focus moves into it, to its first link. The page behind it can’t be reached with Tab or a screen reader until it closes. |
+| Someone presses Tab | Focus moves through the menu and stays in it |
+| Someone presses Escape, the close button, or the dimmed page around it | It closes, and focus returns to the menu button that opened it |
+| The screen widens to Large | It closes, and focus returns to the menu button, which now collapses and expands the nav |
+
+The page’s menu button says whether the overlay is open (`aria-expanded`) and that it opens a dialog (`aria-haspopup="dialog"`).
+
+## Size
+
+| Part | Token |
+|---|---|
+| Width, against the start edge, the height of the screen | `--verity-nav-overlay-thickness` |
+| Padding on all sides | `--verity-nav-overlay-padding` |
+| Shadow | `--verity-shadow-sm-*` |
+
+## Color
+
+The menu has the page’s background, `--verity-color-background-default`. The page behind it is dimmed with `--verity-color-background-scrim`. Figma’s NavOverlay has no fill or scrim.
+
+## Props
+
+<PropsTable of={NavOverlayStories} />
+
+## In Figma
+
+| Figma | Code |
+|---|---|
+| Component `NavOverlay` | `<NavOverlay />` with a `<MainNav placement="overlay" />` inside |
+| The shadow, `shadow/sm` | The same shadow, from the `shadow-sm` tokens |
+| Not in Figma | `open` and `onClose`, the background color, and the dimmed page behind it |
+
+</VerityDocs>
