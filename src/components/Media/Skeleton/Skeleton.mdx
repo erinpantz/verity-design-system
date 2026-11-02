@@ -1,0 +1,66 @@
+import { Meta, Canvas } from '@storybook/addon-docs/blocks';
+import { VerityDocs } from '../../../foundations/VerityDocs';
+import { PropsTable } from '../../../foundations/PropsTable';
+import * as SkeletonStories from './Skeleton.stories';
+
+<Meta of={SkeletonStories} />
+
+<VerityDocs>
+
+# Skeleton
+
+A placeholder that holds the place of media while it loads: a block in the subtle background color, with a lighter band sweeping across it.
+
+<Canvas of={SkeletonStories.Default} />
+
+## When to use
+
+- **You usually don’t place it yourself.** `Image` shows a Skeleton until its picture loads, then removes it.
+- **For other media that loads slowly,** place it in a container with the media’s shape. It fills the container and takes its corners.
+- **Not for empty states or errors.** A Skeleton says “something is coming.” When nothing is, say so in text.
+
+## Accessibility
+
+A Skeleton renders a `<div>` with `aria-hidden="true"`, so screen readers skip it. It’s only decoration: the media it stands in for has its own accessible text, like an Image’s `alt`.
+
+| Situation | What to do | Example |
+|---|---|---|
+| Someone has “reduce motion” turned on | Nothing. The band is hidden, and only the base color shows. | The macOS setting Reduce motion |
+| The media failed to load | Turn off the shine with `showShine={false}`, so it doesn’t look like it’s still loading. Image does this for you. | An image whose file is missing |
+
+## Shine
+
+The band is half the Skeleton’s width and fades to transparent on both sides. It sweeps from the start edge to the end edge once every `--verity-skeleton-duration`, at a steady speed, and starts again.
+
+| Part | Token | Value |
+|---|---|---|
+| Base | `--verity-color-background-subtle` | The theme’s subtle background |
+| Band | `--verity-skeleton-color-shine` | A lighter neutral, in each theme |
+| One sweep | `--verity-skeleton-duration` | 1500ms |
+
+| `showShine` | What it shows | Use for |
+|---|---|---|
+| `true` | The default. The base with the sweeping band. | Media that’s on its way |
+| `false` | The base color only | Media that failed to load |
+
+<Canvas of={SkeletonStories.WithoutShine} />
+
+## Size
+
+A Skeleton fills its container’s width and height and takes its corners (`border-radius: inherit`). Give the container the media’s shape, such as an aspect ratio, and it matches. Inside an Image, it takes the Image’s `aspectRatio` and `borderRadius`.
+
+<Canvas of={SkeletonStories.InContext} />
+
+## Props
+
+<PropsTable of={SkeletonStories} />
+
+## In Figma
+
+| Figma | Code |
+|---|---|
+| Component `Skeleton` | `<Skeleton />` |
+| The `Shine` layer | The sweeping band. Figma shows it mid-sweep, in the center. |
+| Not in Figma | `showShine`, for media that failed to load |
+
+</VerityDocs>

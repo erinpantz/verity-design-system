@@ -294,5 +294,12 @@
         }
       }
     }
+  },
+  "skeleton": {
+    "duration": {
+      "$type": "duration",
+      "$value": "{duration.1500}",
+      "$description": "Time for one sweep of the Skeleton shine, in milliseconds."
+    }
   }
 }

@@ -265,5 +265,21 @@
         "$value": "{color.brand.orange.400}"
       }
     }
+  },
+  "skeleton": {
+    "color": {
+      "shine": {
+        "$type": "color",
+        "$value": "{color.brand.neutral.700}",
+        "$description": "The lighter band that sweeps across a Skeleton while media loads. The base is color/background/subtle.",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "ALL_FILLS"
+            ]
+          }
+        }
+      }
+    }
   }
 }

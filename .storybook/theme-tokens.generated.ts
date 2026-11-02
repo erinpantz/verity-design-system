@@ -492,6 +492,7 @@ export const THEME_TOKENS = {
     "size.48": "48px",
     "size.56": "56px",
     "size.64": "64px",
+    "duration.1500": "1500ms",
     "icon.size.sm": "20px",
     "icon.size.md": "24px",
     "icon.size.lg": "32px",
@@ -549,7 +550,8 @@ export const THEME_TOKENS = {
     "nav-icon.color.accent-brand": "#356bff",
     "nav-icon.color.default": "#e9f0ff",
     "nav-icon.color.accent-three": "#eb0106",
-    "nav-icon.color.accent-four": "#cf03e4"
+    "nav-icon.color.accent-four": "#cf03e4",
+    "skeleton.color.shine": "#274493"
   },
   "red": {
     "color.transparent.black-90": "#000000e6",
@@ -1038,6 +1040,7 @@ export const THEME_TOKENS = {
     "size.48": "48px",
     "size.56": "56px",
     "size.64": "64px",
+    "duration.1500": "1500ms",
     "icon.size.sm": "20px",
     "icon.size.md": "24px",
     "icon.size.lg": "32px",
@@ -1095,6 +1098,7 @@ export const THEME_TOKENS = {
     "nav-icon.color.accent-brand": "#eb0106",
     "nav-icon.color.default": "#ffe9e5",
     "nav-icon.color.accent-three": "#356bff",
-    "nav-icon.color.accent-four": "#f97001"
+    "nav-icon.color.accent-four": "#f97001",
+    "skeleton.color.shine": "#703831"
   }
 } as const;

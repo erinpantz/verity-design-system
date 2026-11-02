@@ -165,6 +165,7 @@
   --verity-size-48: 48px;
   --verity-size-56: 56px;
   --verity-size-64: 64px;
+  --verity-duration-1500: 1500ms; /** Duration in milliseconds. */
   --verity-shadow-sm-color: var(--verity-color-background-transparent-25);
 }
 
@@ -570,6 +571,7 @@
   --verity-nav-icon-color-default: var(--verity-color-brand-blue-100);
   --verity-nav-icon-color-accent-three: var(--verity-color-brand-red-500);
   --verity-nav-icon-color-accent-four: var(--verity-color-brand-violet-500);
+  --verity-skeleton-color-shine: var(--verity-color-brand-neutral-700); /** The lighter band that sweeps across a Skeleton while media loads. The base is color/background/subtle. */
   --verity-link-color-content-disabled: var(--verity-color-content-disabled); /** Link that can’t be followed yet, such as a “coming soon” page. Not underlined. */
   --verity-link-brand-color-content-disabled: var(--verity-color-content-disabled); /** Disabled link on a brand background. */
   --verity-nav-icon-color-accent-yellow: var(--verity-color-accent-yellow);
@@ -717,6 +719,7 @@
   --verity-nav-icon-color-default: var(--verity-color-brand-red-100);
   --verity-nav-icon-color-accent-three: var(--verity-color-brand-blue-500);
   --verity-nav-icon-color-accent-four: var(--verity-color-brand-orange-400);
+  --verity-skeleton-color-shine: var(--verity-color-brand-neutral-700); /** The lighter band that sweeps across a Skeleton while media loads. The base is color/background/subtle. */
   --verity-link-color-content-disabled: var(--verity-color-content-disabled); /** Link that can’t be followed yet, such as a “coming soon” page. Not underlined. */
   --verity-link-brand-color-content-disabled: var(--verity-color-content-disabled); /** Disabled link on a brand background. */
   --verity-nav-icon-color-accent-yellow: var(--verity-color-accent-yellow);
@@ -783,6 +786,7 @@
   --verity-tooltip-padding-y: var(--verity-spacing-4); /** Top and bottom padding inside a Tooltip. */
   --verity-tooltip-offset: var(--verity-spacing-8); /** Gap between a tooltip and the element it describes. Leaves room for the focus ring. */
   --verity-unordered-list-marker-size: var(--verity-size-20); /** Width and height of the marker before each UnorderedList item. */
+  --verity-skeleton-duration: var(--verity-duration-1500); /** Time for one sweep of the Skeleton shine, in milliseconds. */
 }
 
 /* Small: Typography Styles */
@@ -1013,6 +1017,7 @@
     --verity-tooltip-padding-y: var(--verity-spacing-4); /** Top and bottom padding inside a Tooltip. */
     --verity-tooltip-offset: var(--verity-spacing-8); /** Gap between a tooltip and the element it describes. Leaves room for the focus ring. */
     --verity-unordered-list-marker-size: var(--verity-size-20); /** Width and height of the marker before each UnorderedList item. */
+    --verity-skeleton-duration: var(--verity-duration-1500); /** Time for one sweep of the Skeleton shine, in milliseconds. */
   }
 
   /* Medium: Typography Styles */
@@ -1244,6 +1249,7 @@
     --verity-tooltip-padding-y: var(--verity-spacing-4); /** Top and bottom padding inside a Tooltip. */
     --verity-tooltip-offset: var(--verity-spacing-8); /** Gap between a tooltip and the element it describes. Leaves room for the focus ring. */
     --verity-unordered-list-marker-size: var(--verity-size-20); /** Width and height of the marker before each UnorderedList item. */
+    --verity-skeleton-duration: var(--verity-duration-1500); /** Time for one sweep of the Skeleton shine, in milliseconds. */
   }
 
   /* Large: Typography Styles */
@@ -1475,5 +1481,6 @@
     --verity-tooltip-padding-y: var(--verity-spacing-4); /** Top and bottom padding inside a Tooltip. */
     --verity-tooltip-offset: var(--verity-spacing-8); /** Gap between a tooltip and the element it describes. Leaves room for the focus ring. */
     --verity-unordered-list-marker-size: var(--verity-size-20); /** Width and height of the marker before each UnorderedList item. */
+    --verity-skeleton-duration: var(--verity-duration-1500); /** Time for one sweep of the Skeleton shine, in milliseconds. */
   }
 }

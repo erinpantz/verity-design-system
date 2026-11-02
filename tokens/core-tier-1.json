@@ -1286,5 +1286,12 @@
         }
       }
     }
+  },
+  "duration": {
+    "1500": {
+      "$type": "duration",
+      "$value": "1500ms",
+      "$description": "Duration in milliseconds."
+    }
   }
 }
