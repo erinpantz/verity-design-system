@@ -1,0 +1,58 @@
+import { Meta, Canvas } from '@storybook/addon-docs/blocks';
+import { VerityDocs } from '../../../foundations/VerityDocs';
+import { PropsTable } from '../../../foundations/PropsTable';
+import * as LinkGroupStories from './LinkGroup.stories';
+
+<Meta of={LinkGroupStories} />
+
+<VerityDocs>
+
+# LinkGroup
+
+A small label above a list of Links, like the footer’s Pages, Fun stuff, and Connect groups.
+
+<Canvas of={LinkGroupStories.Default} />
+
+## When to use
+
+- **For a short list of related links under a name,** like a footer group.
+- **Not for the site’s main pages.** Use `NavItem` in `MainNav`.
+- **Not for links in running text.** Put a `Link` in the sentence, or use `UnorderedList` for a list with more to say about each item.
+
+## Accessibility
+
+A LinkGroup renders its label as text with an id, and its Links as a list (`<ul>`), one Link per item (`<li>`). The list takes its name from the label (`aria-labelledby`), so screen readers say “Pages, list, 3 items” and can skip the group as a whole.
+
+| Situation | What to do | Example |
+|---|---|---|
+| Naming the group | Use a word or two that says what the links have in common | `label="Connect"` |
+| Several groups make up a navigation area | Wrap them all in one `<nav>` with its own name, so it’s a landmark people can jump to. | `<nav aria-label="Footer">` |
+| A link isn’t ready yet | Use a disabled `Link` with a tooltip. It stays in the list and in the tab order. | “Reading list,” “Coming soon” |
+
+The label isn’t a heading, because the right heading level depends on the page around it.
+
+## Space
+
+| Space | Token | Value |
+|---|---|---|
+| Between the label and the list | `--verity-spacing-xs` | 8px on Small and Medium, 16px from Large |
+| Between Links | `--verity-spacing-xxs` | 4px |
+| Around the group | None. The row or column that holds the groups sets the space between them. | — |
+
+<Canvas of={LinkGroupStories.WithDisabledLink} />
+
+<Canvas of={LinkGroupStories.InContext} />
+
+## Props
+
+<PropsTable of={LinkGroupStories} />
+
+## In Figma
+
+| Figma | Code |
+|---|---|
+| Component `LinkGroup` | `<LinkGroup />` |
+| Property `Label` | `label` |
+| Slot `Links` | `children`: the Links, each wrapped in a list item for you |
+
+</VerityDocs>
