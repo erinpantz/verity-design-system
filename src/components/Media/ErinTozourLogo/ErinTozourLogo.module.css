@@ -1,0 +1,10 @@
+/* The logo is as tall as its container, and its width follows, so it keeps
+   its proportions. In a container with no set height, it fills the width
+   instead. */
+
+.logo {
+  display: block;
+  inline-size: auto;
+  block-size: 100%;
+  max-inline-size: 100%;
+}

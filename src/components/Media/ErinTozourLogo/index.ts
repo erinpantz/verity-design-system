@@ -1,0 +1,1 @@
+export { ErinTozourLogo } from './ErinTozourLogo';

@@ -1,0 +1,53 @@
+import { Meta, Canvas } from '@storybook/addon-docs/blocks';
+import { VerityDocs } from '../../../foundations/VerityDocs';
+import * as ErinTozourLogoStories from './ErinTozourLogo.stories';
+
+<Meta of={ErinTozourLogoStories} />
+
+<VerityDocs>
+
+# ErinTozourLogo
+
+Erin Tozour’s name, drawn as a logo. It’s the site title in `MainNav`.
+
+<Canvas of={ErinTozourLogoStories.Default} />
+
+## When to use
+
+- **As the site title,** linking to the home page, as MainNav does.
+- **Anywhere the site signs its name,** like the footer.
+- **Not for the Verity design system.** Verity has its own logo, in `brand/verity-logo.svg`.
+- **Not as a heading.** The page’s heading is text, so it can be searched, translated, and resized.
+
+## Accessibility
+
+The logo renders an `<svg>` with `role="img"` and `aria-label="Erin Tozour"`, so screen readers read it as “Erin Tozour,” the name it shows.
+
+| Situation | What to do | Example |
+|---|---|---|
+| The logo is a link | Put it inside the link with nothing else. The link takes its name from the logo, “Erin Tozour.” | MainNav’s site title, linking home |
+| The name is also written as text right next to it | Show one or the other, so screen readers don’t hear the name twice | A footer with the logo, not the logo and “Erin Tozour” |
+
+## Size
+
+The logo is as tall as its container, and its width follows, so it keeps its proportions. Set the height on the container, from a token: in MainNav, `--verity-main-nav-logo-height` (22px). In a container with no height, the logo fills the width instead.
+
+## Color
+
+The logo is one color, `currentColor`, so it takes the text color of wherever it sits. In Figma, it uses `color/content/default`.
+
+<Canvas of={ErinTozourLogoStories.InBrandColor} />
+
+## Props
+
+ErinTozourLogo has no props: its name, shapes, and color come from the logo itself and the text around it.
+
+## In Figma
+
+| Figma | Code |
+|---|---|
+| Component `ErinTozourLogo`, on the Branding page | `<ErinTozourLogo />` |
+| Its fill, `color/content/default` | `currentColor`: the text color around it |
+| The exported file | `brand/erin-tozour-logo.svg`, never edited by hand |
+
+</VerityDocs>

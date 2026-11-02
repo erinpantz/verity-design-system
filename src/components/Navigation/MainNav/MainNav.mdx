@@ -1,0 +1,88 @@
+import { Meta, Canvas } from '@storybook/addon-docs/blocks';
+import { VerityDocs } from '../../../foundations/VerityDocs';
+import { PropsTable } from '../../../foundations/PropsTable';
+import * as MainNavStories from './MainNav.stories';
+
+<Meta of={MainNavStories} />
+
+<VerityDocs>
+
+# MainNav
+
+The site’s main navigation: the menu button, the site title, a link to each page, and Resume. It changes with the screen width, from a top bar on phones to a side nav on wide screens.
+
+<Canvas of={MainNavStories.Default} />
+
+## When to use
+
+- **Once per page, inside `NavContainer`,** which docks it to the side or the top.
+- **Inside `NavOverlay`,** with `placement="overlay"`, for the full menu on Small and Medium.
+- **Not for links within a page or in the footer.** Use `Link`, or `LinkGroup` for a group of them.
+
+## Accessibility
+
+MainNav renders a `<nav aria-label="Main">`, so screen readers list it as the main navigation landmark. Inside it:
+
+- **The site title** is a link home whose only content is the logo, so its name is the logo’s: “Erin Tozour.”
+- **The pages and Resume** are a list of `NavItem` links (`<ul>`), so screen readers say how many there are. The current page has `aria-current="page"`.
+- **The menu button** is an `IconButton`. What it does, and what it tells screen readers, depends on the width:
+
+| Width | The menu button | Screen readers hear |
+|---|---|---|
+| Large and XL | Collapses the nav to the rail, or expands it | “Collapse navigation, expanded,” or “Expand navigation, collapsed” (`aria-expanded`) |
+| Small and Medium | Opens `NavOverlay` | “Open menu,” that it opens a dialog (`aria-haspopup="dialog"`), and whether it’s open (`aria-expanded`) |
+| In NavOverlay | Closes the overlay | “Close menu” |
+
+In the rail, each NavItem’s label is hidden from sight but stays in the link, so the link keeps its name. The label also shows in a tooltip, which screen readers skip.
+
+## Width
+
+How MainNav looks is all CSS, keyed to the generated breakpoints, so it’s right before JavaScript runs. What the menu button does comes from the `useBreakpoint` hook, with the same values.
+
+| Width | Layout | Figma |
+|---|---|---|
+| Small (under 560px) | A top bar: the menu button, then the logo. The pages are in NavOverlay. | `State=collapsed, Dock=top` |
+| Medium (560 to 959px) | The rail: the menu button and each page’s icon, with Resume at the bottom. No logo. | `State=collapsed, Dock=left` |
+| Large and XL (960px and up) | Expanded, as `state` starts it: the logo and menu button, then each page with its label. The menu button switches to the rail and back. | `State=expanded, Dock=left` and `State=collapsed, Dock=left` |
+
+<Canvas of={MainNavStories.Collapsed} />
+
+Resize the window to see each layout; NavContainer’s stories show it docked.
+
+## Placement
+
+| `placement` | What it does | Use for |
+|---|---|---|
+| `page` | The default. The layout follows the width, as above. | The nav in NavContainer |
+| `overlay` | Always expanded, and the menu button closes the menu | The nav in NavOverlay |
+
+<Canvas of={MainNavStories.InOverlay} />
+
+## Space
+
+| Space | Token |
+|---|---|
+| Between the menu bar and the pages | `--verity-main-nav-group-gap` |
+| Between pages | `--verity-main-nav-link-gap` |
+| Between the site title and the menu button | `--verity-spacing-xxs` |
+| Before the logo | `--verity-main-nav-site-title-padding` |
+| Under the logo, which lifts it so its lowercase letters line up with the center of the menu icon | `--verity-main-nav-logo-offset` |
+| The logo’s height; its width follows | `--verity-main-nav-logo-height` |
+
+## Props
+
+<PropsTable of={MainNavStories} />
+
+## In Figma
+
+| Figma | Code |
+|---|---|
+| Component `MainNav` | `<MainNav />` |
+| Property `State` | `state`, on Large and XL. `expanded` is the default in both. On Medium and Small, the width decides. |
+| Property `Dock` | Not a prop: the width decides. Top on Small, left from Medium up. |
+| The NavItem instances | One per page, made by MainNav. `current` sets which one is the current page. |
+| The site title (ErinTozourLogo) | A link home with the `ErinTozourLogo` |
+| The menu button’s tooltip | Its label, which changes with what the button does |
+| Not in Figma | `hrefs`, `placement`, `menuOpen`, and `onMenuOpenChange` |
+
+</VerityDocs>
