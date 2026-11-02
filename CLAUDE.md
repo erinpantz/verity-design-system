@@ -41,6 +41,7 @@ src/
   icons/                   generated icon markup and the IconName type, from icons/
   foundations/             Storybook pages documenting every token, generated from tokens/,
                            and VerityDocs, the wrapper for MDX docs pages
+    sample-images/         pictures for stories only (generated; not part of the library)
   components/
     <Category>/<Component>/
       <Component>.tsx

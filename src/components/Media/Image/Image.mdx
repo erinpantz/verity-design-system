@@ -1,0 +1,89 @@
+import { Meta, Canvas } from '@storybook/addon-docs/blocks';
+import { VerityDocs } from '../../../foundations/VerityDocs';
+import { PropsTable } from '../../../foundations/PropsTable';
+import * as ImageStories from './Image.stories';
+
+<Meta of={ImageStories} />
+
+<VerityDocs>
+
+# Image
+
+A picture that fills the width of whatever holds it, in one of three shapes. Its space is held while it loads, so the page doesn’t jump.
+
+<Canvas of={ImageStories.Default} />
+
+## When to use
+
+- **For photos, screenshots, and illustrations** in a page’s content.
+- **With a caption,** put it in a `MediaBlock`, which pairs the image with its caption.
+- **For several images together,** use a `Gallery` of MediaBlocks.
+- **Not for icons or logos.** Use `Icon`, or the logo components, which take the text color and stay sharp at any size.
+
+## Accessibility
+
+An Image renders an `<img>`. Its `alt` text is what screen readers read in its place, so `alt` is required.
+
+| Situation | What to do | Example |
+|---|---|---|
+| The image shows something people need | Describe what it shows and why it’s there, in a sentence. Don’t start with “Image of.” | `alt="The setup screen, on step 2 of 5: Connect your bank"` |
+| The image is decorative, or the text beside it says it all | Use an empty `alt=""`. Screen readers skip it. | A mood photo at the top of a section |
+| The image has a caption | Still write `alt`. The caption adds context; `alt` says what’s in the picture. | A MediaBlock with the caption “Before the redesign” |
+| The image is text, like a chart or a quote | Put the text in `alt`, or on the page next to it. | A screenshot of a key metric |
+
+## Aspect ratio
+
+The image fills its container’s width, and its height comes from the ratio. That height is reserved before the file arrives, so nothing below it moves while it loads.
+
+| `aspectRatio` | Shape | Use for |
+|---|---|---|
+| `16:9` | The default. Wide. | Screenshots and wide photos |
+| `3:2` | A little taller | Photos |
+| `1:1` | Square | Portraits, details, and grids of thumbnails |
+
+<Canvas of={ImageStories.AspectRatio3x2} />
+
+## Fit
+
+How the picture fills its shape when the file’s own shape is different.
+
+| `fit` | What it does | Use for |
+|---|---|---|
+| `cover` | The default. Fills the shape and crops what doesn’t fit. | Photos, where losing the edges is fine |
+| `contain` | Shows the whole picture, with empty space around it | Screenshots, logos, and diagrams, where nothing should be cut off |
+
+The space around a `contain` image is transparent, so the background behind it shows.
+
+<Canvas of={ImageStories.FitContain} />
+
+<Canvas of={ImageStories.FitCover} />
+
+## Border radius
+
+| `borderRadius` | Token | Use for |
+|---|---|---|
+| `none` | `--verity-border-radius-none` | The default: images that run to the edge of a block |
+| `md` | `--verity-border-radius-md` | Images that sit on their own, like a screenshot in a section |
+
+<Canvas of={ImageStories.BorderRadiusMd} />
+
+## Loading
+
+Images load lazily by default: the browser waits until an image is close to the screen, so the page opens faster. For an image at the very top of a page, use `loading="eager"`, so it appears right away.
+
+## Props
+
+<PropsTable of={ImageStories} />
+
+## In Figma
+
+| Figma | Code |
+|---|---|
+| Component `Image` | `<Image />` |
+| Property `Aspect ratio` | `aspectRatio`. `16:9` is the default in both. |
+| Property `Border radius` | `borderRadius`. `none` is the default in both. |
+| The image fill’s scale mode: Fill or Fit | `fit`: Fill → `cover`, Fit → `contain` |
+| The image itself | `src` |
+| Not in Figma | `alt`, which every image needs, and `loading` |
+
+</VerityDocs>

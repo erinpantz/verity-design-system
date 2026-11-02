@@ -1,0 +1,43 @@
+/* An image that fills its container's width. Its height comes from the
+   aspect ratio, so the space is reserved before the file loads and nothing
+   below it moves. */
+
+.image {
+  display: block;
+  inline-size: 100%;
+  block-size: auto;
+}
+
+/* Aspect ratio */
+
+.ratio-16-9 {
+  aspect-ratio: 16 / 9;
+}
+
+.ratio-3-2 {
+  aspect-ratio: 3 / 2;
+}
+
+.ratio-1-1 {
+  aspect-ratio: 1 / 1;
+}
+
+/* Border radius */
+
+.radius-none {
+  border-radius: var(--verity-border-radius-none);
+}
+
+.radius-md {
+  border-radius: var(--verity-border-radius-md);
+}
+
+/* Fit: cover crops the picture to fill the shape; contain shows all of it */
+
+.cover {
+  object-fit: cover;
+}
+
+.contain {
+  object-fit: contain;
+}
