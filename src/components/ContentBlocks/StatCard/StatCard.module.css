@@ -1,11 +1,11 @@
 /* A number above what it means. The card fills the width it's given, such as
    a Grid cell, and adds no space outside itself.
 
-   Every style has the same border width, so they're all the same size.
-   Filled styles make the border transparent, so their fill shows through it.
+   Every variant has the same border width, so they're all the same size.
+   Filled variants make the border transparent, so their fill shows through it.
    Figma draws the border inside the padding, so the padding here is the
    padding token less the border, and the card is the same size as in Figma.
-   Each style sets the card's text color, and the value and description
+   Each variant sets the card's text color, and the value and description
    inherit it. */
 
 .statCard {

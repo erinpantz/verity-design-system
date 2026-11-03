@@ -30,18 +30,18 @@ A StatCard renders a `<div>` with two paragraphs: the value, then the descriptio
 | Several StatCards together | Put them in a list, each in an `<li>`, so screen readers say how many there are | `Grid as="ul"` |
 | A value with a symbol or short unit | Make the description say what it measures, so the value isn’t read alone | “4.7” with “App store rating, up from 3.9” |
 
-Every style’s text, and every outlined style’s border, meets the 4.5:1 contrast ratio in both themes.
+Every variant’s text, and every outlined variant’s border, meets the 4.5:1 contrast ratio in both themes.
 
-## Style
+## Variant
 
-| `style` | Fill | Border | Text | Use for |
+| `variant` | Fill | Border | Text | Use for |
 |---|---|---|---|---|
 | `outlined` | None | `--verity-color-border-default` | `--verity-color-content-default` | The default. Most results. |
 | `outlined-accent-one` to `-six` | None | `--verity-color-border-accent-*` | `--verity-color-content-accent-*` | A result tied to one of a set of categories |
 | `brand` | `--verity-color-background-brand` | None | `--verity-color-content-default` | The one result to notice first |
 | `accent-one` to `accent-six` | `--verity-color-background-accent-*` | None | `--verity-color-content-knockout` | A category’s result, filled |
 
-Use a filled style for one card in a set, not all of them, so it stands out. The accent hues differ by theme.
+Use a filled variant for one card in a set, not all of them, so it stands out. The accent hues differ by theme.
 
 <Canvas of={StatCardStories.OutlinedAccents} />
 
@@ -57,7 +57,7 @@ A StatCard fills the width it’s given, like a Grid cell, and adds no space out
 |---|---|
 | Inside, on every side | `--verity-padding-md`, measured from the card’s outer edge, the border included |
 | Between the value and the description | `--verity-spacing-xs` |
-| Border | `--verity-border-width-sm`, on every style. Filled styles make it transparent, so all styles are the same size. |
+| Border | `--verity-border-width-sm`, on every variant. Filled variants make it transparent, so all variants are the same size. |
 | Corners | `--verity-border-radius-md` |
 | Text | The value in `heading-2`; the description in `body-lg` |
 
@@ -72,7 +72,7 @@ A StatCard fills the width it’s given, like a Grid cell, and adds no space out
 | Figma | Code |
 |---|---|
 | Component `StatCard` | `<StatCard />` |
-| Property `Style` | `style`. `outlined` is the default in both. |
+| Property `Variant` | `variant`. `outlined` is the default in both. |
 | Property `Value` | `value` |
 | Property `Description` | `description` |
 | The fixed width | Not in code: the card fills the width it’s given |

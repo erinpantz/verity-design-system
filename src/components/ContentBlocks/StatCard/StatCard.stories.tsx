@@ -13,7 +13,7 @@ const meta = {
     description: 'Fewer people left at checkout',
   },
   argTypes: {
-    style: {
+    variant: {
       control: 'select',
       options: ['outlined', ...ACCENTS.map((a) => `outlined-${a}`), 'brand', ...ACCENTS],
     },
@@ -33,14 +33,14 @@ export const OutlinedAccents: StoryObj = {
   render: () => (
     <Grid itemWidth="sm">
       {ACCENTS.map((accent) => (
-        <StatCard key={accent} style={`outlined-${accent}`} value="38%" description={`outlined-${accent}`} />
+        <StatCard key={accent} variant={`outlined-${accent}`} value="38%" description={`outlined-${accent}`} />
       ))}
     </Grid>
   ),
 };
 
 export const Brand: Story = {
-  args: { style: 'brand' },
+  args: { variant: 'brand' },
 };
 
 export const FilledAccents: StoryObj = {
@@ -48,7 +48,7 @@ export const FilledAccents: StoryObj = {
   render: () => (
     <Grid itemWidth="sm">
       {ACCENTS.map((accent) => (
-        <StatCard key={accent} style={accent} value="38%" description={accent} />
+        <StatCard key={accent} variant={accent} value="38%" description={accent} />
       ))}
     </Grid>
   ),
@@ -61,7 +61,7 @@ export const InContext: StoryObj = {
   render: () => (
     <Section heading="The results" intro="Three months after launch, compared with the three months before.">
       <Grid as="ul" itemWidth="sm">
-        <li><StatCard style="brand" value="38%" description="Fewer people left at checkout" /></li>
+        <li><StatCard variant="brand" value="38%" description="Fewer people left at checkout" /></li>
         <li><StatCard value="2 min" description="Faster to place a weekly order" /></li>
         <li><StatCard value="4.7" description="App store rating, up from 3.9" /></li>
       </Grid>

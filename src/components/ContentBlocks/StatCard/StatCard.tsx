@@ -7,7 +7,7 @@ export interface StatCardProps {
    * How the card looks. `outlined` and `outlined-accent-*` have a border and
    * no fill; `brand` and `accent-*` are filled.
    */
-  style?: 'outlined' | `outlined-${Accent}` | 'brand' | Accent;
+  variant?: 'outlined' | `outlined-${Accent}` | 'brand' | Accent;
   /** The number, written as it should read, such as “99%” or “3×” */
   value: string;
   /** What the number means, as a short phrase or sentence */
@@ -16,9 +16,9 @@ export interface StatCardProps {
 
 // One number and what it means, such as a result in a case study. The number
 // is large, like a heading, but it isn't one: it's part of the card's text.
-export function StatCard({ style = 'outlined', value, description }: StatCardProps) {
+export function StatCard({ variant = 'outlined', value, description }: StatCardProps) {
   return (
-    <div className={`${styles.statCard} ${styles[style]}`}>
+    <div className={`${styles.statCard} ${styles[variant]}`}>
       <p className={styles.value}>{value}</p>
       <p className={styles.description}>{description}</p>
     </div>
