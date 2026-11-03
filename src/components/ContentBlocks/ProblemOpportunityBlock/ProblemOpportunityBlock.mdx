@@ -1,0 +1,71 @@
+import { Meta, Canvas } from '@storybook/addon-docs/blocks';
+import { VerityDocs } from '../../../foundations/VerityDocs';
+import { PropsTable } from '../../../foundations/PropsTable';
+import * as ProblemOpportunityBlockStories from './ProblemOpportunityBlock.stories';
+
+<Meta of={ProblemOpportunityBlockStories} />
+
+<VerityDocs>
+
+# ProblemOpportunityBlock
+
+A problem and the opportunity it opened, one above the other, so a reader sees what was wrong and what it led to.
+
+<Canvas of={ProblemOpportunityBlockStories.Default} />
+
+## When to use
+
+- **In a case study’s findings,** for each problem worth solving and the opportunity it opened. Put two or more in a `Grid` inside a Section.
+- **When the two belong together.** Each block is one problem and its own opportunity.
+- **Not for a list of problems, or a list of opportunities.** Use `UnorderedList`.
+- **Not for results.** Use `StatCard`.
+
+## Accessibility
+
+A ProblemOpportunityBlock renders a description list (`<dl>`). Each Badge is a term (`<dt>`), and the text after it is its description (`<dd>`). Screen readers announce a list of two items: “Problem,” then its text, then “Opportunity,” then its text.
+
+| Situation | What to do | Example |
+|---|---|---|
+| Writing each part | Write a full sentence or two that make sense alone. The Badge says which part it is, so don’t start with “The problem is.” | “Checkout took six steps.” |
+| Telling the parts apart | Nothing. The labels “Problem” and “Opportunity” say it, so color is a second cue, never the only one (WCAG 1.4.1). | — |
+
+The text meets the 4.5:1 contrast ratio on both fills, in both themes.
+
+## Color
+
+| Part | Fill | Border | Badge |
+|---|---|---|---|
+| Problem | `--verity-color-background-error-subtle` | `--verity-color-border-error-subtle` | `error` |
+| Opportunity | `--verity-color-background-success-subtle` | `--verity-color-border-success-subtle` | `success` |
+
+The text is `--verity-color-content-default` in both.
+
+## Space
+
+A ProblemOpportunityBlock fills the width it’s given and adds no space outside itself.
+
+| Space | Token |
+|---|---|
+| Inside each part, on every side | `--verity-padding-md`, measured from the outer edge, the border included |
+| Between the Badge and the text | `--verity-spacing-sm` |
+| Border | `--verity-border-width-sm`, on each part’s three outside edges, with none where the two meet |
+| Corners | `--verity-border-radius-md`, on the block’s four outside corners |
+| Text | The `body-lg` text style |
+
+<Canvas of={ProblemOpportunityBlockStories.InContext} />
+
+## Props
+
+<PropsTable of={ProblemOpportunityBlockStories} />
+
+## In Figma
+
+| Figma | Code |
+|---|---|
+| Component `ProblemOpportunityBlock` | `<ProblemOpportunityBlock />` |
+| Property `Problem` | `problem` |
+| Property `Opportunity` | `opportunity` |
+| The Badge instances | Made by the component, with their labels set: “Problem” in `error`, “Opportunity” in `success` |
+| The fixed width and height | Not in code: the block fills the width it’s given, and its height follows its text |
+
+</VerityDocs>
