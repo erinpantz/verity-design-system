@@ -69,22 +69,27 @@ export const NarrowColumn: Story = {
   ],
 };
 
-// A case study's findings: a Section with MediaTexts, alternating sides
+// A case study's findings: one Section per MediaText, alternating sides, with
+// Main's gap between the Sections
 export const InContext: StoryObj = {
   name: 'In context',
   parameters: { layout: 'fullscreen' },
   render: () => (
-    <Section heading="What we found" intro="Two moments in setup lost the most people." width="wide">
-      <MediaText text={text} media={media} />
-      <MediaText
-        mediaPosition="left"
-        text={
-          <TextBlock heading="Nobody knew how long it would take">
-            The progress bar showed five steps, but step 4 had three screens of its own. People felt stuck.
-          </TextBlock>
-        }
-        media={media}
-      />
-    </Section>
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--verity-main-spacing-section-gap)' }}>
+      <Section heading="The bank step" intro="Most people who left setup left here." width="wide">
+        <MediaText text={text} media={media} />
+      </Section>
+      <Section heading="The progress bar" intro="People felt stuck halfway through." width="wide">
+        <MediaText
+          mediaPosition="left"
+          text={
+            <TextBlock heading="Nobody knew how long it would take">
+              The progress bar showed five steps, but step 4 had three screens of its own.
+            </TextBlock>
+          }
+          media={media}
+        />
+      </Section>
+    </div>
   ),
 };
