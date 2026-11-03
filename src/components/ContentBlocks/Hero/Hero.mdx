@@ -47,6 +47,17 @@ Button has no brand secondary, so on `brand` the secondary button is `default`. 
 
 <Canvas of={HeroStories.Brand} />
 
+## Border radius
+
+| `borderRadius` | Token | Use for |
+|---|---|---|
+| `md` | `--verity-border-radius-md` | The default: a Hero inside a constrained or wide Container, with space around it |
+| `none` | `--verity-border-radius-none` | A Hero in a full-bleed Container, running edge to edge |
+
+Use `none` whenever the Hero sits in a full-bleed Container. Rounded corners at the screen’s edges look cut off.
+
+<Canvas of={HeroStories.FullBleed} />
+
 ## Actions
 
 `primaryAction` is required, and `secondaryAction` is optional. Both are `xl` Buttons, side by side. On a narrow screen, the second one wraps below the first.
@@ -62,7 +73,7 @@ A Hero fills the width it’s given and adds no space outside itself. Its paddin
 | Inside, on every side | `--verity-padding-lg` |
 | Between the headline, intro, and actions | `--verity-spacing-md` |
 | Between the buttons | `--verity-spacing-xs` |
-| Corners | `--verity-border-radius-md` |
+| Corners | `--verity-border-radius-md`, or none with `borderRadius="none"` |
 | Text | The headline in `display-default`; the intro in `body-xl` |
 
 <Canvas of={HeroStories.InContext} />
@@ -77,6 +88,7 @@ A Hero fills the width it’s given and adds no space outside itself. Its paddin
 |---|---|
 | Component `Hero` | `<Hero />` |
 | Property `Background` | `background`. `default` is the default in both. |
+| Property `Border radius` | `borderRadius`. `md` is the default in both. |
 | Property `Heading` | `heading` |
 | Property `Intro` | `intro` |
 | Property `Primary action` (an exposed Button) | `primaryAction`: its label and where it goes. Hero sets the Button’s variant, size, and color. |

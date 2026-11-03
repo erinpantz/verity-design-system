@@ -16,6 +16,11 @@ export interface HeroProps {
    * follow it.
    */
   background?: 'default' | 'knockout' | 'brand';
+  /**
+   * The corners: rounded with border/radius/md, or square. Use none when the
+   * Hero sits in a full-bleed Container and runs edge to edge.
+   */
+  borderRadius?: 'md' | 'none';
   /** The headline. It’s the page’s <h1>, so a page has one Hero at most. */
   heading: string;
   /** A sentence or two below the headline */
@@ -36,10 +41,16 @@ const BUTTON_COLORS = {
 
 // The band at the top of a page: a headline, an intro, and one or two
 // actions. It's the page's <header>, and its headline is the page's <h1>.
-export function Hero({ background = 'default', heading, intro, primaryAction, secondaryAction }: HeroProps) {
+export function Hero({
+  background = 'default',
+  borderRadius = 'md',
+  heading,   intro,
+  primaryAction,
+  secondaryAction,
+}: HeroProps) {
   const colors = BUTTON_COLORS[background];
   return (
-    <header className={`${styles.hero} ${styles[background]}`}>
+    <header className={`${styles.hero} ${styles[background]} ${styles[`radius-${borderRadius}`]}`}>
       <h1 className={styles.heading}>{heading}</h1>
       <p className={styles.intro}>{intro}</p>
       <div className={styles.actions}>

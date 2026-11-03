@@ -8,7 +8,6 @@
   align-items: flex-start;
   gap: var(--verity-spacing-md);
   padding: var(--verity-padding-lg);
-  border-radius: var(--verity-border-radius-md);
   background: var(--background);
   color: var(--content);
 }
@@ -32,6 +31,15 @@
   --background: var(--verity-color-background-brand);
   --content: var(--verity-color-content-default);
   --background-focus-ring: var(--verity-color-border-focus-brand);
+}
+
+/* Border radius: rounded on its own, square when it runs edge to edge */
+.radius-md {
+  border-radius: var(--verity-border-radius-md);
+}
+
+.radius-none {
+  border-radius: var(--verity-border-radius-none);
 }
 
 /* The display-default text style: larger than heading-1, for the page's
