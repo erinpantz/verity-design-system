@@ -42,10 +42,12 @@ The call to action and the link groups sit side by side, and wrap onto two rows 
 
 | Part | Narrowest | Widest |
 |---|---|---|
-| Call to action | `--verity-footer-call-to-action-min-width` (320px) | `--verity-footer-call-to-action-max-width` (400px), so its text keeps a comfortable line length |
+| Call to action | `--verity-footer-call-to-action-min-width` (320px) | `--verity-footer-call-to-action-max-width` (400px), where it starts, so its text keeps a comfortable line length |
 | Link groups | `--verity-footer-links-min-width` (320px) | All the space that’s left |
 
 On a screen narrower than a minimum, each part is the full width instead.
+
+Each link group keeps its own width. The groups spread across their area, so the first starts at its edge and the last ends at the content edge. The space between them is at least `--verity-spacing-lg`; when it can’t be, they wrap.
 
 ## Space
 
