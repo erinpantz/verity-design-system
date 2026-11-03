@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { Skeleton } from '../Skeleton';
+import { Skeleton } from '../../FeedbackAndStatus/Skeleton';
 import styles from './Image.module.css';
 
 export interface ImageProps {

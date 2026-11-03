@@ -4,7 +4,7 @@ import { TextBlock } from '../../Text/TextBlock';
 import { Skeleton } from './Skeleton';
 
 const meta = {
-  title: 'Media/Skeleton',
+  title: 'Feedback and status/Skeleton',
   component: Skeleton,
   args: { showShine: true },
   argTypes: {
