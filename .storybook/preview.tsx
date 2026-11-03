@@ -4,6 +4,20 @@ import '../src/styles/fonts.css'
 import '../src/styles/global.css'
 import { ThemedDocsContainer } from './ThemedDocsContainer'
 
+// A story shown in its own frame on a docs page (docs: { story: { inline:
+// false } }) runs its own Storybook, which doesn't know the toolbar's theme
+// and starts on the default. Its frame sits inside the docs page's frame, so
+// it reads the docs page's theme instead. On a story page, the frame's parent
+// is Storybook's own window (the top one), so this is null.
+function docsPageRoot(): HTMLElement | null {
+  try {
+    if (window.parent === window || window.parent === window.top) return null
+    return window.parent.document.documentElement
+  } catch {
+    return null
+  }
+}
+
 const preview: Preview = {
   parameters: {
     controls: {
@@ -48,19 +62,32 @@ const preview: Preview = {
   decorators: [
     (Story, context) => {
       const [, updateGlobals] = useGlobals()
-      const theme = context.globals.theme
+      const docsRoot = docsPageRoot()
+      const theme = docsRoot?.dataset.theme ?? context.globals.theme
       document.documentElement.dataset.theme = theme
 
-      // ThemeToggle sets data-theme itself. When it does, move the toolbar to
-      // match, so the toolbar and the page always agree.
       useEffect(() => {
-        const observer = new MutationObserver(() => {
-          const current = document.documentElement.dataset.theme
+        const root = document.documentElement
+        const watch = (target: HTMLElement, onChange: () => void) => {
+          const observer = new MutationObserver(onChange)
+          observer.observe(target, { attributes: true, attributeFilter: ['data-theme'] })
+          return () => observer.disconnect()
+        }
+
+        // In its own frame on a docs page: follow the docs page as it changes
+        if (docsRoot) {
+          return watch(docsRoot, () => {
+            if (docsRoot.dataset.theme) root.dataset.theme = docsRoot.dataset.theme
+          })
+        }
+
+        // ThemeToggle sets data-theme itself. When it does, move the toolbar to
+        // match, so the toolbar and the page always agree.
+        return watch(root, () => {
+          const current = root.dataset.theme
           if (current && current !== theme) updateGlobals({ theme: current })
         })
-        observer.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] })
-        return () => observer.disconnect()
-      }, [theme, updateGlobals])
+      }, [theme, updateGlobals, docsRoot])
 
       return <Story />
     },
