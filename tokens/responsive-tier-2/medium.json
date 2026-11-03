@@ -27,6 +27,10 @@
     "xs": {
       "$type": "dimension",
       "$value": "{spacing.8}"
+    },
+    "xxs": {
+      "$type": "dimension",
+      "$value": "{spacing.4}"
     }
   },
   "spacing": {

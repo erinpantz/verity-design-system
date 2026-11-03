@@ -228,6 +228,30 @@
       "warning-subtle": {
         "$type": "color",
         "$value": "{color.utility.transparent.warning-25}"
+      },
+      "accent-five": {
+        "$type": "color",
+        "$value": "{color.accent.orange}",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "ALL_FILLS",
+              "EFFECT_COLOR"
+            ]
+          }
+        }
+      },
+      "accent-six": {
+        "$type": "color",
+        "$value": "{color.accent.pink}",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "ALL_FILLS",
+              "EFFECT_COLOR"
+            ]
+          }
+        }
       }
     },
     "content": {
@@ -437,27 +461,69 @@
       },
       "error": {
         "$type": "color",
-        "$value": "{color.brand.red.400}"
+        "$value": "{color.brand.red.400}",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "STROKE_COLOR"
+            ]
+          }
+        }
       },
       "success": {
         "$type": "color",
-        "$value": "{color.brand.green.400}"
+        "$value": "{color.brand.green.400}",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "STROKE_COLOR"
+            ]
+          }
+        }
       },
       "warning": {
         "$type": "color",
-        "$value": "{color.brand.yellow.400}"
+        "$value": "{color.brand.yellow.400}",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "STROKE_COLOR"
+            ]
+          }
+        }
       },
       "error-subtle": {
         "$type": "color",
-        "$value": "{color.brand.red.700}"
+        "$value": "{color.brand.red.700}",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "STROKE_COLOR"
+            ]
+          }
+        }
       },
       "success-subtle": {
         "$type": "color",
-        "$value": "{color.brand.green.700}"
+        "$value": "{color.brand.green.700}",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "STROKE_COLOR"
+            ]
+          }
+        }
       },
       "warning-subtle": {
         "$type": "color",
-        "$value": "{color.brand.yellow.700}"
+        "$value": "{color.brand.yellow.700}",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "STROKE_COLOR"
+            ]
+          }
+        }
       },
       "focus": {
         "$type": "color",
@@ -487,6 +553,17 @@
         "$type": "color",
         "$value": "{color.brand.blue.700}",
         "$description": "Focus ring on a knockout (light) background.",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "STROKE_COLOR"
+            ]
+          }
+        }
+      },
+      "subtle": {
+        "$type": "color",
+        "$value": "{color.brand.neutral.500}",
         "$extensions": {
           "com.figma": {
             "scopes": [

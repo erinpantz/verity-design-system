@@ -135,7 +135,7 @@
       },
       "accent-three": {
         "$type": "color",
-        "$value": "{color.accent.red}",
+        "$value": "{color.accent.green}",
         "$extensions": {
           "com.figma": {
             "scopes": [
@@ -191,7 +191,7 @@
       },
       "accent-three-dark": {
         "$type": "color",
-        "$value": "{color.accent.dark-violet}"
+        "$value": "{color.accent.dark-green}"
       },
       "accent-two-dark": {
         "$type": "color",
@@ -228,6 +228,30 @@
       "warning-subtle": {
         "$type": "color",
         "$value": "{color.utility.transparent.warning-25}"
+      },
+      "accent-five": {
+        "$type": "color",
+        "$value": "{color.accent.violet}",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "ALL_FILLS",
+              "EFFECT_COLOR"
+            ]
+          }
+        }
+      },
+      "accent-six": {
+        "$type": "color",
+        "$value": "{color.accent.pink}",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "ALL_FILLS",
+              "EFFECT_COLOR"
+            ]
+          }
+        }
       }
     },
     "content": {
@@ -257,11 +281,11 @@
       },
       "accent-two": {
         "$type": "color",
-        "$value": "{color.accent.yellow}"
+        "$value": "{color.accent.blue}"
       },
       "accent-one": {
         "$type": "color",
-        "$value": "{color.accent.orange}"
+        "$value": "{color.accent.yellow}"
       },
       "accent-three": {
         "$type": "color",
@@ -269,7 +293,7 @@
       },
       "accent-four": {
         "$type": "color",
-        "$value": "{color.accent.blue}"
+        "$value": "{color.accent.orange}"
       },
       "accent-one-dark": {
         "$type": "color",
@@ -281,7 +305,7 @@
       },
       "accent-three-dark": {
         "$type": "color",
-        "$value": "{color.accent.dark-violet}"
+        "$value": "{color.accent.dark-green}"
       },
       "accent-four-dark": {
         "$type": "color",
@@ -388,7 +412,7 @@
       },
       "accent-three": {
         "$type": "color",
-        "$value": "{color.accent.red}",
+        "$value": "{color.accent.green}",
         "$extensions": {
           "com.figma": {
             "scopes": [
@@ -425,7 +449,7 @@
       },
       "accent-three-dark": {
         "$type": "color",
-        "$value": "{color.accent.dark-violet}"
+        "$value": "{color.accent.dark-green}"
       },
       "accent-two-dark": {
         "$type": "color",
@@ -437,27 +461,69 @@
       },
       "error": {
         "$type": "color",
-        "$value": "{color.brand.red.400}"
+        "$value": "{color.brand.red.400}",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "STROKE_COLOR"
+            ]
+          }
+        }
       },
       "success": {
         "$type": "color",
-        "$value": "{color.brand.green.400}"
+        "$value": "{color.brand.green.400}",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "STROKE_COLOR"
+            ]
+          }
+        }
       },
       "warning": {
         "$type": "color",
-        "$value": "{color.brand.yellow.400}"
+        "$value": "{color.brand.yellow.400}",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "STROKE_COLOR"
+            ]
+          }
+        }
       },
       "error-subtle": {
         "$type": "color",
-        "$value": "{color.brand.red.700}"
+        "$value": "{color.brand.red.700}",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "STROKE_COLOR"
+            ]
+          }
+        }
       },
       "success-subtle": {
         "$type": "color",
-        "$value": "{color.brand.green.700}"
+        "$value": "{color.brand.green.700}",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "STROKE_COLOR"
+            ]
+          }
+        }
       },
       "warning-subtle": {
         "$type": "color",
-        "$value": "{color.brand.yellow.700}"
+        "$value": "{color.brand.yellow.700}",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "STROKE_COLOR"
+            ]
+          }
+        }
       },
       "focus": {
         "$type": "color",
@@ -487,6 +553,17 @@
         "$type": "color",
         "$value": "{color.brand.red.600}",
         "$description": "Focus ring on a knockout (light) background.",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "STROKE_COLOR"
+            ]
+          }
+        }
+      },
+      "subtle": {
+        "$type": "color",
+        "$value": "{color.brand.neutral.500}",
         "$extensions": {
           "com.figma": {
             "scopes": [

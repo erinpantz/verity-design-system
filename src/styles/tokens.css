@@ -501,6 +501,7 @@
   --verity-color-border-focus: var(--verity-color-brand-blue-400); /** Focus ring on the default (dark) background. */
   --verity-color-border-focus-brand: var(--verity-color-brand-blue-100); /** Focus ring on a brand background. */
   --verity-color-border-focus-knockout: var(--verity-color-brand-blue-700); /** Focus ring on a knockout (light) background. */
+  --verity-color-border-subtle: var(--verity-color-brand-neutral-500);
   --verity-color-background-accent-one: var(--verity-color-accent-yellow);
   --verity-color-background-accent-two: var(--verity-color-accent-red);
   --verity-color-background-accent-three: var(--verity-color-accent-violet);
@@ -509,6 +510,8 @@
   --verity-color-background-accent-three-dark: var(--verity-color-accent-dark-violet);
   --verity-color-background-accent-two-dark: var(--verity-color-accent-dark-red);
   --verity-color-background-accent-one-dark: var(--verity-color-accent-dark-yellow);
+  --verity-color-background-accent-five: var(--verity-color-accent-orange);
+  --verity-color-background-accent-six: var(--verity-color-accent-pink);
   --verity-color-content-accent-two: var(--verity-color-accent-red);
   --verity-color-content-accent-one: var(--verity-color-accent-yellow);
   --verity-color-content-accent-three: var(--verity-color-accent-violet);
@@ -650,28 +653,31 @@
   --verity-color-border-focus: var(--verity-color-brand-red-400); /** Focus ring on the default (dark) background. */
   --verity-color-border-focus-brand: var(--verity-color-brand-red-100); /** Focus ring on a brand background. */
   --verity-color-border-focus-knockout: var(--verity-color-brand-red-600); /** Focus ring on a knockout (light) background. */
+  --verity-color-border-subtle: var(--verity-color-brand-neutral-500);
   --verity-color-background-accent-one: var(--verity-color-accent-yellow);
   --verity-color-background-accent-two: var(--verity-color-accent-blue);
-  --verity-color-background-accent-three: var(--verity-color-accent-red);
+  --verity-color-background-accent-three: var(--verity-color-accent-green);
   --verity-color-background-accent-four: var(--verity-color-accent-orange);
   --verity-color-background-accent-four-dark: var(--verity-color-accent-dark-orange);
-  --verity-color-background-accent-three-dark: var(--verity-color-accent-dark-violet);
+  --verity-color-background-accent-three-dark: var(--verity-color-accent-dark-green);
   --verity-color-background-accent-two-dark: var(--verity-color-accent-dark-blue);
   --verity-color-background-accent-one-dark: var(--verity-color-accent-dark-yellow);
-  --verity-color-content-accent-two: var(--verity-color-accent-yellow);
-  --verity-color-content-accent-one: var(--verity-color-accent-orange);
+  --verity-color-background-accent-five: var(--verity-color-accent-violet);
+  --verity-color-background-accent-six: var(--verity-color-accent-pink);
+  --verity-color-content-accent-two: var(--verity-color-accent-blue);
+  --verity-color-content-accent-one: var(--verity-color-accent-yellow);
   --verity-color-content-accent-three: var(--verity-color-accent-green);
-  --verity-color-content-accent-four: var(--verity-color-accent-blue);
+  --verity-color-content-accent-four: var(--verity-color-accent-orange);
   --verity-color-content-accent-one-dark: var(--verity-color-accent-dark-yellow);
   --verity-color-content-accent-two-dark: var(--verity-color-accent-dark-blue);
-  --verity-color-content-accent-three-dark: var(--verity-color-accent-dark-violet);
+  --verity-color-content-accent-three-dark: var(--verity-color-accent-dark-green);
   --verity-color-content-accent-four-dark: var(--verity-color-accent-dark-orange);
   --verity-color-border-accent-one: var(--verity-color-accent-yellow);
-  --verity-color-border-accent-three: var(--verity-color-accent-red);
+  --verity-color-border-accent-three: var(--verity-color-accent-green);
   --verity-color-border-accent-four: var(--verity-color-accent-orange);
   --verity-color-border-accent-two: var(--verity-color-accent-blue);
   --verity-color-border-accent-four-dark: var(--verity-color-accent-dark-orange);
-  --verity-color-border-accent-three-dark: var(--verity-color-accent-dark-violet);
+  --verity-color-border-accent-three-dark: var(--verity-color-accent-dark-green);
   --verity-color-border-accent-two-dark: var(--verity-color-accent-dark-blue);
   --verity-color-border-accent-one-dark: var(--verity-color-accent-dark-yellow);
 }
@@ -755,6 +761,7 @@
   --verity-padding-sm: var(--verity-spacing-16);
   --verity-padding-none: var(--verity-spacing-0);
   --verity-padding-xs: var(--verity-spacing-8);
+  --verity-padding-xxs: var(--verity-spacing-4);
   --verity-control-size-sm: var(--verity-size-44); /** Height of controls (buttons, inputs, selects). Square controls like IconButton also use it for width. Stays at 44px or more on Medium and Small for touch. */
   --verity-control-size-md: var(--verity-size-44); /** Height of controls (buttons, inputs, selects). Square controls like IconButton also use it for width. Stays at 44px or more on Medium and Small for touch. */
   --verity-control-size-lg: var(--verity-size-48); /** Height of controls (buttons, inputs, selects). Square controls like IconButton also use it for width. Stays at 44px or more on Medium and Small for touch. */
@@ -991,6 +998,7 @@
     --verity-padding-sm: var(--verity-spacing-16);
     --verity-padding-none: var(--verity-spacing-0);
     --verity-padding-xs: var(--verity-spacing-8);
+    --verity-padding-xxs: var(--verity-spacing-4);
     --verity-control-size-sm: var(--verity-size-44); /** Height of controls (buttons, inputs, selects). Square controls like IconButton also use it for width. Stays at 44px or more on Medium and Small for touch. */
     --verity-control-size-md: var(--verity-size-44); /** Height of controls (buttons, inputs, selects). Square controls like IconButton also use it for width. Stays at 44px or more on Medium and Small for touch. */
     --verity-control-size-lg: var(--verity-size-48); /** Height of controls (buttons, inputs, selects). Square controls like IconButton also use it for width. Stays at 44px or more on Medium and Small for touch. */
@@ -1228,6 +1236,7 @@
     --verity-padding-sm: var(--verity-spacing-24);
     --verity-padding-none: var(--verity-spacing-0);
     --verity-padding-xs: var(--verity-spacing-16);
+    --verity-padding-xxs: var(--verity-spacing-8);
     --verity-control-size-sm: var(--verity-size-32); /** Height of controls (buttons, inputs, selects). Square controls like IconButton also use it for width. Stays at 44px or more on Medium and Small for touch. */
     --verity-control-size-md: var(--verity-size-40); /** Height of controls (buttons, inputs, selects). Square controls like IconButton also use it for width. Stays at 44px or more on Medium and Small for touch. */
     --verity-control-size-lg: var(--verity-size-56); /** Height of controls (buttons, inputs, selects). Square controls like IconButton also use it for width. Stays at 44px or more on Medium and Small for touch. */
@@ -1465,6 +1474,7 @@
     --verity-padding-sm: var(--verity-spacing-24);
     --verity-padding-none: var(--verity-spacing-0);
     --verity-padding-xs: var(--verity-spacing-16);
+    --verity-padding-xxs: var(--verity-spacing-8);
     --verity-control-size-sm: var(--verity-size-32); /** Height of controls (buttons, inputs, selects). Square controls like IconButton also use it for width. Stays at 44px or more on Medium and Small for touch. */
     --verity-control-size-md: var(--verity-size-40); /** Height of controls (buttons, inputs, selects). Square controls like IconButton also use it for width. Stays at 44px or more on Medium and Small for touch. */
     --verity-control-size-lg: var(--verity-size-56); /** Height of controls (buttons, inputs, selects). Square controls like IconButton also use it for width. Stays at 44px or more on Medium and Small for touch. */
