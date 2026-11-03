@@ -29,6 +29,7 @@
     "oxlint": "^1.88.0",
     "remark-gfm": "^4.0.1",
     "storybook": "^10.6.4",
+    "storybook-addon-pseudo-states": "^10.6.4",
     "style-dictionary": "^5.7.1",
     "typescript": "~6.0.3",
     "vite": "^8.3.4"
