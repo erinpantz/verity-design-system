@@ -240,9 +240,27 @@ export function cellFor(token: Token, column: string): Cell {
 
 // Sort a group's tokens: numbers in order (100, 200…), sizes in order (xs, sm…),
 // text style properties in reading order, otherwise single-value dimensions
-// by size, otherwise Figma's order.
+// by size, otherwise Figma's order, with the accents gathered together.
 const SCALE = ['none', 'xxs', 'xs', 'sm', 'default', 'md', 'lg', 'x-lg', 'xl', 'xxl', 'round'];
 const TEXT_PROPERTIES = ['font-family', 'font-size', 'font-weight', 'line-height', 'letter-spacing', 'text-transform', 'space-before'];
+const ACCENT = /^accent-(one|two|three|four|five|six|seven|eight|nine|ten)(-dark)?$/;
+const ORDINALS = ['one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten'];
+
+// Accents (accent-one, accent-two…, then accent-one-dark…) go in one block,
+// in number order, where the first accent was. Figma's own order mixes them
+// with other tokens.
+function groupAccents(tokens: Token[], last: (t: Token) => string): Token[] {
+  const accents = tokens.filter((t) => ACCENT.test(last(t)));
+  if (accents.length < 2) return tokens;
+  const rank = (t: Token) => {
+    const [, ordinal, dark] = ACCENT.exec(last(t))!;
+    return (dark ? ORDINALS.length : 0) + ORDINALS.indexOf(ordinal);
+  };
+  const sorted = [...accents].sort((a, b) => rank(a) - rank(b));
+  const start = tokens.indexOf(accents[0]);
+  const rest = tokens.filter((t) => !ACCENT.test(last(t)));
+  return [...rest.slice(0, start), ...sorted, ...rest.slice(start)];
+}
 
 function sortTokens(tokens: Token[]): Token[] {
   const last = (t: Token) => t.path.split('.').at(-1)!;
@@ -254,7 +272,7 @@ function sortTokens(tokens: Token[]): Token[] {
   if (tokens.every((t) => t.type === 'dimension' && t.kind === 'none')) {
     return [...tokens].sort((a, b) => px(cellFor(a, SINGLE).value) - px(cellFor(b, SINGLE).value));
   }
-  return tokens;
+  return groupAccents(tokens, last);
 }
 
 // Within a tier, shared collections come first, then the ones that change by theme or breakpoint
