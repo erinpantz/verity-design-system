@@ -1,0 +1,17 @@
+{
+  // The library's type files (.d.ts), for `npm run build`. They carry each
+  // component's props, so a site's editor shows what Storybook shows. Starts
+  // from src/index.ts and follows its imports, so stories and Storybook-only
+  // files aren't included.
+  "extends": "./tsconfig.app.json",
+  "compilerOptions": {
+    "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.lib.tsbuildinfo",
+    "noEmit": false,
+    "declaration": true,
+    "emitDeclarationOnly": true,
+    "rootDir": "src",
+    "outDir": "dist/types"
+  },
+  "include": [],
+  "files": ["src/index.ts"]
+}
