@@ -76,10 +76,10 @@ export const InContext: StoryObj = {
   parameters: { layout: 'fullscreen' },
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--verity-main-spacing-section-gap)' }}>
-      <Section heading="The bank step" intro="Most people who left setup left here." width="wide">
+      <Section heading="The bank step" intro="Most people who left setup left here.">
         <MediaText text={text} media={media} />
       </Section>
-      <Section heading="The progress bar" intro="People felt stuck halfway through." width="wide">
+      <Section heading="The progress bar" intro="People felt stuck halfway through.">
         <MediaText
           mediaPosition="left"
           text={
