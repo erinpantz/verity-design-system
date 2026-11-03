@@ -367,5 +367,19 @@
         }
       }
     }
+  },
+  "media-text": {
+    "stack-width": {
+      "$type": "dimension",
+      "$value": "800px",
+      "$description": "Below this width, a row MediaText stacks its text above its media (800px). Measured on MediaText itself, not the screen.",
+      "$extensions": {
+        "com.figma": {
+          "scopes": [
+            "WIDTH_HEIGHT"
+          ]
+        }
+      }
+    }
   }
 }

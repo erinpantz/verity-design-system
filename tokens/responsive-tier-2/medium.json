@@ -30,7 +30,7 @@
     },
     "xxs": {
       "$type": "dimension",
-      "$value": "{spacing.4}"
+      "$value": "{spacing.8}"
     }
   },
   "spacing": {

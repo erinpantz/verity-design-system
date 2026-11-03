@@ -769,7 +769,7 @@
   --verity-padding-sm: var(--verity-spacing-16);
   --verity-padding-none: var(--verity-spacing-0);
   --verity-padding-xs: var(--verity-spacing-8);
-  --verity-padding-xxs: var(--verity-spacing-4);
+  --verity-padding-xxs: var(--verity-spacing-8);
   --verity-control-size-sm: var(--verity-size-44); /** Height of controls (buttons, inputs, selects). Square controls like IconButton also use it for width. Stays at 44px or more on Medium and Small for touch. */
   --verity-control-size-md: var(--verity-size-44); /** Height of controls (buttons, inputs, selects). Square controls like IconButton also use it for width. Stays at 44px or more on Medium and Small for touch. */
   --verity-control-size-lg: var(--verity-size-48); /** Height of controls (buttons, inputs, selects). Square controls like IconButton also use it for width. Stays at 44px or more on Medium and Small for touch. */
@@ -795,6 +795,7 @@
   --verity-footer-call-to-action-min-width: 320px; /** Narrowest the Footer call to action gets before the links wrap below it (320px). */
   --verity-footer-call-to-action-max-width: 400px; /** Widest the Footer call to action gets, so its text keeps a comfortable line length (400px). */
   --verity-footer-links-min-width: 480px; /** Narrowest the Footer links area gets before it wraps below the call to action (480px). Wide enough for all the link groups on one row, with a little room for longer labels. */
+  --verity-media-text-stack-width: 800px; /** Below this width, a row MediaText stacks its text above its media (800px). Measured on MediaText itself, not the screen. */
   --verity-container-constrained-horizontal-margin: var(--verity-spacing-24);
   --verity-container-full-bleed-horizontal-margin: var(--verity-spacing-0);
   --verity-container-wide-horizontal-margin: var(--verity-spacing-24);
@@ -1006,7 +1007,7 @@
     --verity-padding-sm: var(--verity-spacing-16);
     --verity-padding-none: var(--verity-spacing-0);
     --verity-padding-xs: var(--verity-spacing-8);
-    --verity-padding-xxs: var(--verity-spacing-4);
+    --verity-padding-xxs: var(--verity-spacing-8);
     --verity-control-size-sm: var(--verity-size-44); /** Height of controls (buttons, inputs, selects). Square controls like IconButton also use it for width. Stays at 44px or more on Medium and Small for touch. */
     --verity-control-size-md: var(--verity-size-44); /** Height of controls (buttons, inputs, selects). Square controls like IconButton also use it for width. Stays at 44px or more on Medium and Small for touch. */
     --verity-control-size-lg: var(--verity-size-48); /** Height of controls (buttons, inputs, selects). Square controls like IconButton also use it for width. Stays at 44px or more on Medium and Small for touch. */
@@ -1032,6 +1033,7 @@
     --verity-footer-call-to-action-min-width: 320px; /** Narrowest the Footer call to action gets before the links wrap below it (320px). */
     --verity-footer-call-to-action-max-width: 400px; /** Widest the Footer call to action gets, so its text keeps a comfortable line length (400px). */
     --verity-footer-links-min-width: 480px; /** Narrowest the Footer links area gets before it wraps below the call to action (480px). Wide enough for all the link groups on one row, with a little room for longer labels. */
+    --verity-media-text-stack-width: 800px; /** Below this width, a row MediaText stacks its text above its media (800px). Measured on MediaText itself, not the screen. */
     --verity-container-constrained-horizontal-margin: var(--verity-spacing-24);
     --verity-container-full-bleed-horizontal-margin: var(--verity-spacing-0);
     --verity-container-wide-horizontal-margin: var(--verity-spacing-24);
@@ -1270,6 +1272,7 @@
     --verity-footer-call-to-action-min-width: 320px; /** Narrowest the Footer call to action gets before the links wrap below it (320px). */
     --verity-footer-call-to-action-max-width: 400px; /** Widest the Footer call to action gets, so its text keeps a comfortable line length (400px). */
     --verity-footer-links-min-width: 480px; /** Narrowest the Footer links area gets before it wraps below the call to action (480px). Wide enough for all the link groups on one row, with a little room for longer labels. */
+    --verity-media-text-stack-width: 800px; /** Below this width, a row MediaText stacks its text above its media (800px). Measured on MediaText itself, not the screen. */
     --verity-container-constrained-horizontal-margin: var(--verity-spacing-40);
     --verity-container-full-bleed-horizontal-margin: var(--verity-spacing-0);
     --verity-container-wide-horizontal-margin: var(--verity-spacing-40);
@@ -1508,6 +1511,7 @@
     --verity-footer-call-to-action-min-width: 320px; /** Narrowest the Footer call to action gets before the links wrap below it (320px). */
     --verity-footer-call-to-action-max-width: 400px; /** Widest the Footer call to action gets, so its text keeps a comfortable line length (400px). */
     --verity-footer-links-min-width: 480px; /** Narrowest the Footer links area gets before it wraps below the call to action (480px). Wide enough for all the link groups on one row, with a little room for longer labels. */
+    --verity-media-text-stack-width: 800px; /** Below this width, a row MediaText stacks its text above its media (800px). Measured on MediaText itself, not the screen. */
     --verity-container-constrained-horizontal-margin: var(--verity-spacing-40);
     --verity-container-full-bleed-horizontal-margin: var(--verity-spacing-0);
     --verity-container-wide-horizontal-margin: var(--verity-spacing-48);
