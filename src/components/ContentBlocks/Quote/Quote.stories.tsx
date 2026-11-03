@@ -7,7 +7,7 @@ const meta = {
   title: 'Content blocks/Quote',
   component: Quote,
   args: {
-    quote: '“Erin made our research easy to act on. Every finding came with a decision we could make that week.”',
+    quote: 'Erin made our research easy to act on. Every finding came with a decision we could make that week.',
     name: 'Jordan Lee',
   },
   argTypes: {
@@ -40,7 +40,7 @@ export const InContext: StoryObj = {
         Most people knew what they wanted before they opened the app. The six-step checkout slowed them down at the end.
       </TextBlock>
       <Quote
-        quote="“I know what I want. I just want to get through checkout and get on with my day.”"
+        quote="I know what I want. The ‘review your order’ step just slows me down."
         name="Interview participant"
         title="weekly shopper"
       />
