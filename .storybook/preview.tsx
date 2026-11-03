@@ -1,4 +1,5 @@
 import type { Preview } from '@storybook/react-vite'
+import { useEffect, useGlobals } from 'storybook/preview-api'
 import '../src/styles/global.css'
 import './preview.css'
 import { ThemedDocsContainer } from './ThemedDocsContainer'
@@ -46,7 +47,21 @@ const preview: Preview = {
   },
   decorators: [
     (Story, context) => {
-      document.documentElement.dataset.theme = context.globals.theme
+      const [, updateGlobals] = useGlobals()
+      const theme = context.globals.theme
+      document.documentElement.dataset.theme = theme
+
+      // ThemeToggle sets data-theme itself. When it does, move the toolbar to
+      // match, so the toolbar and the page always agree.
+      useEffect(() => {
+        const observer = new MutationObserver(() => {
+          const current = document.documentElement.dataset.theme
+          if (current && current !== theme) updateGlobals({ theme: current })
+        })
+        observer.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] })
+        return () => observer.disconnect()
+      }, [theme, updateGlobals])
+
       return <Story />
     },
   ],
