@@ -17,14 +17,16 @@
   gap: var(--verity-spacing-lg);
 }
 
-/* The heading, the sentence, then the button, at its own width */
+/* The heading, the sentence, then the button, at its own width. It starts
+   at its max width, which keeps its text to a comfortable line length, and
+   only shrinks toward its min. On a screen narrower than the min, it's the
+   full width instead. */
 .callToAction {
   display: flex;
-  flex: 1 1 min(100%, var(--verity-footer-call-to-action-min-width));
+  flex: 0 1 var(--verity-footer-call-to-action-max-width);
   flex-direction: column;
   align-items: flex-start;
-  /* Keeps its text to a comfortable line length */
-  max-inline-size: var(--verity-footer-call-to-action-max-width);
+  min-inline-size: min(100%, var(--verity-footer-call-to-action-min-width));
   gap: var(--verity-spacing-sm);
 }
 
@@ -39,12 +41,15 @@
   text-transform: var(--verity-viewport-typography-body-default-text-transform);
 }
 
-/* The link groups, in a row that wraps */
+/* The link groups take the rest of the row, at their own widths, spread so
+   the last one ends at the content edge. The gaps are the least space between
+   them. On a screen narrower than the min, it's the full width instead. */
 .linkGroups {
   display: flex;
   flex: 1 1 min(100%, var(--verity-footer-links-min-width));
   flex-wrap: wrap;
   align-items: flex-start;
+  justify-content: space-between;
   gap: var(--verity-spacing-md) var(--verity-spacing-lg);
 }
 
