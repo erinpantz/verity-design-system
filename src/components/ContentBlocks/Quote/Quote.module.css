@@ -1,0 +1,39 @@
+/* The quote, then who said it, beside a brand-colored rule that runs the full
+   height. The rule and the space after it match Prose blockquotes. Quote fills
+   the width it's given and adds no space outside itself. */
+
+.quote {
+  display: flex;
+  flex-direction: column;
+  gap: var(--verity-spacing-sm);
+  margin: 0;
+  padding-inline-start: var(--verity-spacing-md);
+  border-inline-start: var(--verity-border-width-xl) solid var(--verity-color-background-brand);
+  color: var(--verity-color-content-default);
+}
+
+.text {
+  margin: 0;
+  font-family: var(--verity-viewport-typography-blockquote-font-family);
+  font-size: var(--verity-viewport-typography-blockquote-font-size);
+  font-weight: var(--verity-viewport-typography-blockquote-font-weight);
+  line-height: var(--verity-viewport-typography-blockquote-line-height);
+  letter-spacing: var(--verity-viewport-typography-blockquote-letter-spacing);
+  text-transform: var(--verity-viewport-typography-blockquote-text-transform);
+}
+
+.text > p {
+  margin: 0;
+}
+
+/* The dash, then the name and title */
+.attribution {
+  display: flex;
+  gap: var(--verity-spacing-xs);
+  font-family: var(--verity-viewport-typography-label-default-font-family);
+  font-size: var(--verity-viewport-typography-label-default-font-size);
+  font-weight: var(--verity-viewport-typography-label-default-font-weight);
+  line-height: var(--verity-viewport-typography-label-default-line-height);
+  letter-spacing: var(--verity-viewport-typography-label-default-letter-spacing);
+  text-transform: var(--verity-viewport-typography-label-default-text-transform);
+}

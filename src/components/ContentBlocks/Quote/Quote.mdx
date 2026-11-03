@@ -1,0 +1,74 @@
+import { Meta, Canvas } from '@storybook/addon-docs/blocks';
+import { VerityDocs } from '../../../foundations/VerityDocs';
+import { PropsTable } from '../../../foundations/PropsTable';
+import * as QuoteStories from './Quote.stories';
+
+<Meta of={QuoteStories} />
+
+<VerityDocs>
+
+# Quote
+
+A quote set apart from the text around it, with who said it: a testimonial, or something a customer said in research.
+
+<Canvas of={QuoteStories.Default} />
+
+## When to use
+
+- **Between blocks in a Section,** to let one person’s words make a point, like a finding from research or a word from a client.
+- **Not for a quote inside running text.** In a `Prose` block, use a blockquote (`>` in Markdown). It has the same rule and text style.
+- **Not for a heading or a pull quote of your own words.** Use `Heading` or `TextBlock`.
+
+## Accessibility
+
+A Quote renders a `<figure>`: the quote is a `<blockquote>`, and who said it is the figure’s `<figcaption>`. Screen readers announce the quote as a quote, with the attribution as its caption.
+
+| Situation | What to do | Example |
+|---|---|---|
+| Writing the quote | Include the curly quotation marks in `quote`. Quote doesn’t add them. | `“I just want to get through checkout.”` |
+| The person can’t be named | Give a description instead of a name. `name` is required, so a quote is never unattributed. | `name="Interview participant"` |
+| Showing their role | Use `title`. It follows the name after a comma. | `title="Head of product, Basket"` |
+
+The dash before the name is only for looks, so screen readers skip it.
+
+## Title
+
+| `title` | What it shows | Use for |
+|---|---|---|
+| Left out | The default. A dash and the name. | A participant, or anyone whose role doesn’t matter |
+| Set | A dash, the name, a comma, and the title | A client or colleague, whose role gives the quote weight |
+
+<Canvas of={QuoteStories.WithTitle} />
+
+## Space
+
+Quote fills the width it’s given and adds no space outside itself. Whatever holds it, like a Section, sets the space around it.
+
+| Space | Token |
+|---|---|
+| The rule beside the quote | `--verity-border-width-xl`, in `--verity-color-background-brand` |
+| Between the rule and the text | `--verity-spacing-md` |
+| Between the quote and who said it | `--verity-spacing-sm` |
+| Between the dash and the name | `--verity-spacing-xs` |
+| Text | The quote in the `blockquote` text style; who said it in `label-default` |
+
+The rule and the space beside it are the same as a Prose blockquote’s, so the two match on a page.
+
+<Canvas of={QuoteStories.InContext} />
+
+## Props
+
+<PropsTable of={QuoteStories} />
+
+## In Figma
+
+| Figma | Code |
+|---|---|
+| Component `Quote` | `<Quote />` |
+| Property `Quote` | `quote` |
+| Property `Name` | `name` |
+| Property `Title` | `title` |
+| Property `Show title` | Not a prop: set `title` to show it, or leave it out |
+| The comma before the title, with `--verity-spacing-xxs` after it | A comma and a space, so the name and title read and copy as one line |
+
+</VerityDocs>
