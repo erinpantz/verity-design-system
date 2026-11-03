@@ -27,7 +27,7 @@ A Footer renders a `<footer>`. Outside `<main>`, it’s the page’s footer land
 | Call to action heading | A level 3 `Heading` | Keep it short and inviting, like “Let’s work together” |
 | Call to action button | A `Button` with `href`: a link that looks like a button | Start the label with a verb: “Book a call” |
 | Link groups | A `LinkGroup` for each, each a named list | Name each group in a word or two, like “Connect.” A disabled link says why in its tooltip, like “Coming soon.” |
-| Copyright | A paragraph: “© {year} {name}” | Pass only the name. The year comes from today’s date, so it never goes stale. |
+| Copyright | A paragraph: `© {year} {name}` | Pass only the name. The year comes from today’s date, so it never goes stale. |
 
 ## Width
 
@@ -67,7 +67,7 @@ On a screen narrower than a minimum, each part is the full width instead.
 |---|---|
 | Component `Footer` | `<Footer />` |
 | Property `Width` | `width`. `constrained` is the default in both. |
-| Property `Copyright` | `copyrightName`. The “© {year}” part is added for you, with this year. |
+| Property `Copyright` | `copyrightName`. The `© {year}` part is added for you, with this year. |
 | The call to action’s heading, text, and button | `callToAction`: `heading`, `text`, `buttonLabel`, and `href` |
 | The LinkGroup instances | `linkGroups`: the LinkGroups, with their Links |
 
