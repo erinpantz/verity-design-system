@@ -174,8 +174,11 @@
   cursor: default;
 }
 
-/* Keyboard focus: a ring outside the button, following its corners */
+/* Keyboard focus: a ring outside the button, following its corners. The ring
+   sits on the background, not the button, so a colored band (like Hero) can
+   set --background-focus-ring to the focus color for its background.
+   Otherwise the ring uses the focus color for the button's color. */
 .button:focus-visible {
-  outline: var(--verity-focus-ring-width) solid var(--focus);
+  outline: var(--verity-focus-ring-width) solid var(--background-focus-ring, var(--focus));
   outline-offset: var(--verity-focus-ring-offset);
 }

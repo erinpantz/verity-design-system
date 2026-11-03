@@ -46,6 +46,8 @@ Each variant has its own colors for each background. `color` is typed with `vari
 
 Primary is filled. Secondary is outlined with a `--verity-border-width-md` border and no fill.
 
+The focus ring sits on the background, not on the button. When a band chooses Button colors that don’t match its background, it sets the ring to its background’s focus color, so the ring keeps a 3:1 contrast ratio. Hero does this: on its knockout background, the primary default button gets `--verity-color-border-focus-knockout`.
+
 <Canvas of={ButtonStories.Secondary} />
 
 <Canvas of={ButtonStories.PrimaryBrand} />
