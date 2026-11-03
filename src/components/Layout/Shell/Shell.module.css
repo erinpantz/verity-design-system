@@ -1,0 +1,71 @@
+/* The page frame. Small: the nav is a top bar, pinned while the page
+   scrolls, with the page column below it. Medium and up: the nav sits on
+   the left at full height and stays put, and the page column scrolls beside
+   it. NavContainer sizes and pins the nav; Shell places it. Breakpoints come
+   from the generated values (see CLAUDE.md: only page-level layout uses
+   media queries). */
+
+@value medium from '../../../styles/breakpoints.generated.module.css';
+
+.shell {
+  display: flex;
+  flex-direction: column;
+  min-block-size: 100dvh;
+  background: var(--verity-color-background-default);
+  color: var(--verity-color-content-default);
+}
+
+@media medium {
+  .shell {
+    flex-direction: row;
+    /* The nav keeps its own height, so it can stay put while the page scrolls */
+    align-items: flex-start;
+  }
+}
+
+/* The page column: Main, then the Footer, with a section's space between
+   them and the large space at the bottom */
+.page {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: var(--verity-main-spacing-section-gap);
+  min-inline-size: 0;
+  padding-block-end: var(--verity-spacing-lg);
+}
+
+/* Main: the page's sections, with a section's space between them and the
+   large space above the first */
+.main {
+  display: flex;
+  flex-direction: column;
+  gap: var(--verity-main-spacing-section-gap);
+  padding-block-start: var(--verity-spacing-lg);
+}
+
+/* Main gets focus only from the skip link, as a starting point for Tab, so
+   it doesn't need a ring of its own */
+.main:focus {
+  outline: none;
+}
+
+/* On Small, the pinned top bar would cover whatever a link jumps to, like
+   Main from the skip link or a heading in the page. Jumps stop below it. */
+@media not medium {
+  :global(html):has(.shell) {
+    scroll-padding-block-start: var(--verity-nav-container-thickness-collapsed);
+  }
+}
+
+/* The skip link: a primary Button, at the top start corner over the nav.
+   It's moved off screen until it has keyboard focus. */
+.skipLink {
+  position: fixed;
+  z-index: 2;
+  inset-block-start: var(--verity-spacing-xs);
+  inset-inline-start: var(--verity-spacing-xs);
+}
+
+.skipLink:not(:focus-within) {
+  translate: 0 calc(-100% - 2 * var(--verity-spacing-xs));
+}

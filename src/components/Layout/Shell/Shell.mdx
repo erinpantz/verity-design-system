@@ -1,0 +1,76 @@
+import { Meta, Canvas } from '@storybook/addon-docs/blocks';
+import { VerityDocs } from '../../../foundations/VerityDocs';
+import { PropsTable } from '../../../foundations/PropsTable';
+import * as ShellStories from './Shell.stories';
+
+<Meta of={ShellStories} />
+
+<VerityDocs>
+
+# Shell
+
+The page frame: the site’s nav, then the page column with Main and the Footer. Every page of the site uses it.
+
+<Canvas of={ShellStories.Large} />
+
+## When to use
+
+- **Once per page, around everything,** with the page’s content as Main and the site’s `Footer`.
+- **Not inside another layout.** It sets the whole page, from the skip link to the footer.
+
+## Accessibility
+
+| Part | What it renders | What it does |
+|---|---|---|
+| Skip link | “Skip to content,” a primary `Button` link | First in the tab order. It’s off screen until it has keyboard focus, then shows at the top start corner. It moves focus to Main, so the next Tab goes to the first link in the page’s content (WCAG 2.4.1). |
+| Nav | `MainNav`’s `<nav>` | The navigation landmark |
+| Main | `<main>` | The main landmark, with the page’s content. It can take focus from the skip link (`tabIndex={-1}`), but it isn’t in the tab order. |
+| Footer | The `Footer`’s `<footer>` | The footer landmark (`contentinfo`) |
+| Menu | `NavOverlay` | The full menu on Small and Medium, as a dialog |
+
+On Small, the top bar is pinned, so whatever a link jumps to, like Main from the skip link or a heading in the page, stops just below it (`scroll-padding-top` from `--verity-nav-container-thickness-collapsed`).
+
+## Width
+
+How Shell is laid out follows the screen width, in CSS with the generated breakpoints, so it’s right before JavaScript runs. What the menu button does is MainNav’s.
+
+| Width | Nav | Page column |
+|---|---|---|
+| XL and Large | On the left, full height, staying put. Expanded when the page opens; the menu button collapses it to the rail. | Beside the nav, scrolling |
+| Medium | The rail, on the left, full height, staying put. The menu button opens the full menu. | Beside the rail, scrolling |
+| Small | The top bar, pinned while the page scrolls. The menu button opens the full menu. | Below the bar, scrolling |
+
+The nav always opens expanded on XL and Large, and doesn’t remember the toggle between visits.
+
+<Canvas of={ShellStories.Medium} />
+
+<Canvas of={ShellStories.Small} />
+
+Each story opens in a viewport at the width of Figma’s Shell frame for its breakpoint.
+
+## Space
+
+| Space | Token |
+|---|---|
+| Above the first section in Main | `--verity-spacing-lg` |
+| Between sections in Main, and between Main and the Footer | `--verity-main-spacing-section-gap` |
+| Below the Footer | `--verity-spacing-lg` |
+| The page’s sides | None. Each Section and the Footer sets its own, through Container. |
+
+## Props
+
+<PropsTable of={ShellStories} />
+
+## In Figma
+
+| Figma | Code |
+|---|---|
+| Component `Shell` | `<Shell />` |
+| Slot `Main` | `children`: the page’s content, inside `<main>` |
+| The Footer instance | `footer`: the site’s `<Footer />` |
+| Property `Breakpoint` | Not a prop: a preview of each width. In code, the screen width decides. |
+| Property `Nav state` | Not a prop: a preview. In code, the nav opens expanded on XL and Large, and its menu button toggles it. |
+| The NavContainer and MainNav instances | Made by Shell. `current` and `hrefs` pass through to MainNav. |
+| Not in Figma | The skip link, NavOverlay, and `current` and `hrefs` |
+
+</VerityDocs>
