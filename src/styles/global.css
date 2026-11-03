@@ -18,3 +18,12 @@ body {
   line-height: var(--verity-viewport-typography-body-default-line-height);
   letter-spacing: var(--verity-viewport-typography-body-default-letter-spacing);
 }
+
+/* While the theme switches (setTheme in theme.ts), nothing fades: the whole
+   page changes at once. !important so it wins over every component's own
+   transition, for that one moment. */
+[data-theme-switching] *,
+[data-theme-switching] *::before,
+[data-theme-switching] *::after {
+  transition: none !important;
+}

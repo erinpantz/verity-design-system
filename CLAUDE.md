@@ -38,7 +38,8 @@ illustrations/             illustrations, exported from Figma (never edit by han
 templates/                 starting points for new files, such as ComponentDocs.mdx
 src/
   styles/                  generated token CSS and breakpoints, global styles, and the
-                           useBreakpoint hook
+                           useBreakpoint hook, and theme.ts (useTheme, setTheme, and the
+                           <head> script that applies the saved theme)
   icons/                   generated icon markup and the IconName type, from icons/
   foundations/             Storybook pages documenting every token, generated from tokens/,
                            and VerityDocs, the wrapper for MDX docs pages
