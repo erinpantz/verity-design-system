@@ -1,0 +1,16 @@
+/* The Badge, the heading, and the facts, one above the other. It fills the
+   width it's given and adds no space outside itself; its gap is the only
+   space between its parts. */
+
+.caseStudyHeader {
+  display: flex;
+  flex-direction: column;
+  /* The Badge keeps its own width instead of stretching */
+  align-items: flex-start;
+  gap: var(--verity-spacing-lg);
+}
+
+/* The facts Grid fills the width, so its columns can spread out */
+.caseStudyHeader > dl {
+  align-self: stretch;
+}
