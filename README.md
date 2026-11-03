@@ -32,7 +32,7 @@ import 'verity-design-system/styles.css';
 
 It’s a real CSS file, not CSS added by JavaScript, so the project’s build turns it into a `<link>` in the page’s HTML and styles load before any JavaScript runs. It holds the fonts’ `@font-face` rules, the tokens, the page’s base text style, and every component’s styles. The font files ship inside Verity (`dist/fonts/`), and the project’s build copies them into the site, so nothing loads from another server.
 
-Verity doesn’t color the page itself. `Shell` gives its area the theme’s background; a page without Shell sets `background: var(--verity-color-background-default)` and `color: var(--verity-color-content-default)` on its `<body>`.
+The stylesheet colors the page from the theme, on both `<html>` and `<body>`, so every page has the right background and text color, with or without `Shell`. Coloring `<html>` too means the area past the page’s edges when it bounces (Mac and iPhone overscroll) matches. Both themes are dark, so it also sets `color-scheme: dark`, which gives scrollbars and form controls their dark versions.
 
 ### Use the components
 
