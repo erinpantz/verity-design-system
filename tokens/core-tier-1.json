@@ -1157,7 +1157,15 @@
     },
     "56": {
       "$type": "dimension",
-      "$value": "56px"
+      "$value": "56px",
+      "$extensions": {
+        "com.figma": {
+          "scopes": [
+            "TEXT_CONTENT",
+            "GAP"
+          ]
+        }
+      }
     },
     "72": {
       "$type": "dimension",
