@@ -3,7 +3,7 @@
     "spacing": {
       "section-gap": {
         "$type": "dimension",
-        "$value": "{spacing.48}"
+        "$value": "{spacing.56}"
       }
     }
   },

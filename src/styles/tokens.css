@@ -149,6 +149,7 @@
   --verity-spacing-48: 48px;
   --verity-spacing-56: 56px;
   --verity-spacing-64: 64px;
+  --verity-spacing-72: 72px;
   --verity-spacing-80: 80px;
   --verity-spacing-96: 96px;
   --verity-spacing-128: 128px;
@@ -763,7 +764,7 @@
   --verity-spacing-none: var(--verity-spacing-0);
   --verity-spacing-xs: var(--verity-spacing-8);
   --verity-spacing-xxs: var(--verity-spacing-4);
-  --verity-main-spacing-section-gap: var(--verity-spacing-48);
+  --verity-main-spacing-section-gap: var(--verity-spacing-56);
   --verity-padding-lg: var(--verity-spacing-32);
   --verity-padding-md: var(--verity-spacing-24);
   --verity-padding-sm: var(--verity-spacing-16);
@@ -1001,7 +1002,7 @@
     --verity-spacing-none: var(--verity-spacing-0);
     --verity-spacing-xs: var(--verity-spacing-8);
     --verity-spacing-xxs: var(--verity-spacing-4);
-    --verity-main-spacing-section-gap: var(--verity-spacing-48);
+    --verity-main-spacing-section-gap: var(--verity-spacing-64);
     --verity-padding-lg: var(--verity-spacing-48);
     --verity-padding-md: var(--verity-spacing-24);
     --verity-padding-sm: var(--verity-spacing-16);
@@ -1240,7 +1241,7 @@
     --verity-spacing-none: var(--verity-spacing-0);
     --verity-spacing-xs: var(--verity-spacing-16);
     --verity-spacing-xxs: var(--verity-spacing-4);
-    --verity-main-spacing-section-gap: var(--verity-spacing-56);
+    --verity-main-spacing-section-gap: var(--verity-spacing-72);
     --verity-padding-lg: var(--verity-spacing-80);
     --verity-padding-md: var(--verity-spacing-32);
     --verity-padding-sm: var(--verity-spacing-24);
@@ -1479,7 +1480,7 @@
     --verity-spacing-none: var(--verity-spacing-0);
     --verity-spacing-xs: var(--verity-spacing-16);
     --verity-spacing-xxs: var(--verity-spacing-4);
-    --verity-main-spacing-section-gap: var(--verity-spacing-64);
+    --verity-main-spacing-section-gap: var(--verity-spacing-72);
     --verity-padding-lg: var(--verity-spacing-80);
     --verity-padding-md: var(--verity-spacing-48);
     --verity-padding-sm: var(--verity-spacing-24);
