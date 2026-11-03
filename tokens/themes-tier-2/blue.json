@@ -330,6 +330,28 @@
       "warning": {
         "$type": "color",
         "$value": "{color.brand.yellow.400}"
+      },
+      "accent-five": {
+        "$type": "color",
+        "$value": "{color.accent.orange}",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "TEXT_FILL"
+            ]
+          }
+        }
+      },
+      "accent-six": {
+        "$type": "color",
+        "$value": "{color.accent.pink}",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "TEXT_FILL"
+            ]
+          }
+        }
       }
     },
     "border": {
@@ -564,6 +586,28 @@
       "subtle": {
         "$type": "color",
         "$value": "{color.brand.neutral.500}",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "STROKE_COLOR"
+            ]
+          }
+        }
+      },
+      "accent-five": {
+        "$type": "color",
+        "$value": "{color.accent.orange}",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "STROKE_COLOR"
+            ]
+          }
+        }
+      },
+      "accent-six": {
+        "$type": "color",
+        "$value": "{color.accent.pink}",
         "$extensions": {
           "com.figma": {
             "scopes": [

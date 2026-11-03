@@ -520,6 +520,8 @@
   --verity-color-content-accent-two-dark: var(--verity-color-accent-dark-red);
   --verity-color-content-accent-three-dark: var(--verity-color-accent-dark-violet);
   --verity-color-content-accent-four-dark: var(--verity-color-accent-dark-green);
+  --verity-color-content-accent-five: var(--verity-color-accent-orange);
+  --verity-color-content-accent-six: var(--verity-color-accent-pink);
   --verity-color-border-accent-one: var(--verity-color-accent-yellow);
   --verity-color-border-accent-three: var(--verity-color-accent-violet);
   --verity-color-border-accent-four: var(--verity-color-accent-green);
@@ -528,6 +530,8 @@
   --verity-color-border-accent-three-dark: var(--verity-color-accent-dark-violet);
   --verity-color-border-accent-two-dark: var(--verity-color-accent-dark-red);
   --verity-color-border-accent-one-dark: var(--verity-color-accent-dark-yellow);
+  --verity-color-border-accent-five: var(--verity-color-accent-orange);
+  --verity-color-border-accent-six: var(--verity-color-accent-pink);
 }
 
 /* Blue theme: Themes Tier 3 */
@@ -672,6 +676,8 @@
   --verity-color-content-accent-two-dark: var(--verity-color-accent-dark-blue);
   --verity-color-content-accent-three-dark: var(--verity-color-accent-dark-green);
   --verity-color-content-accent-four-dark: var(--verity-color-accent-dark-orange);
+  --verity-color-content-accent-five: var(--verity-color-accent-violet);
+  --verity-color-content-accent-six: var(--verity-color-accent-pink);
   --verity-color-border-accent-one: var(--verity-color-accent-yellow);
   --verity-color-border-accent-three: var(--verity-color-accent-green);
   --verity-color-border-accent-four: var(--verity-color-accent-orange);
@@ -680,6 +686,8 @@
   --verity-color-border-accent-three-dark: var(--verity-color-accent-dark-green);
   --verity-color-border-accent-two-dark: var(--verity-color-accent-dark-blue);
   --verity-color-border-accent-one-dark: var(--verity-color-accent-dark-yellow);
+  --verity-color-border-accent-five: var(--verity-color-accent-violet);
+  --verity-color-border-accent-six: var(--verity-color-accent-pink);
 }
 
 /* Red theme: Themes Tier 3 */
