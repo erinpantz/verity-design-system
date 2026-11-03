@@ -41,12 +41,13 @@ export const OneAction: Story = {
   args: { secondaryAction: undefined },
 };
 
-// The top of a home page: a Hero, then the first Section
+// The top of a home page: a Hero, then the first Section, with Main's gap
+// between them
 export const InContext: StoryObj = {
   name: 'In context',
   parameters: { layout: 'fullscreen' },
   render: () => (
-    <>
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--verity-main-spacing-section-gap)' }}>
       <Hero
         background="brand"
         heading="I design tools that give people their time back"
@@ -60,6 +61,6 @@ export const InContext: StoryObj = {
           <li><StatCard value="6 hrs" description="Of admin saved per carer each week" /></li>
         </Grid>
       </Section>
-    </>
+    </div>
   ),
 };

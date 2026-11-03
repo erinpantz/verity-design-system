@@ -1,7 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { Container } from '../../Layout/Container';
 import { Section } from '../../Layout/Section';
-import { VerticalStack } from '../../Layout/VerticalStack';
 import { TextBlock } from '../../Text/TextBlock';
 import { CaseStudyHeader } from './CaseStudyHeader';
 
@@ -49,12 +48,12 @@ export const MoreFacts: Story = {
 };
 
 // The top of a case study page: a CaseStudyHeader in a Container, then the
-// first Section
+// first Section, with Main's gap between them
 export const InContext: StoryObj = {
   name: 'In context',
   parameters: { layout: 'fullscreen' },
   render: () => (
-    <VerticalStack gap="lg">
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--verity-main-spacing-section-gap)' }}>
       <Container>
         <CaseStudyHeader
           badge={{ label: 'Case study' }}
@@ -71,6 +70,6 @@ export const InContext: StoryObj = {
           Each visit ended with twenty minutes of notes, written twice: once on paper and once in the office system.
         </TextBlock>
       </Section>
-    </VerticalStack>
+    </div>
   ),
 };
