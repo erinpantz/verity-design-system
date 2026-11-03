@@ -356,8 +356,8 @@
     "links": {
       "min-width": {
         "$type": "dimension",
-        "$value": "320px",
-        "$description": "Narrowest the Footer links area gets before it wraps below the call to action (320px).",
+        "$value": "480px",
+        "$description": "Narrowest the Footer links area gets before it wraps below the call to action (480px). Wide enough for all the link groups on one row, with a little room for longer labels.",
         "$extensions": {
           "com.figma": {
             "scopes": [
