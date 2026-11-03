@@ -1,4 +1,4 @@
-import { useEffect, useState, type ReactNode } from 'react';
+import { useEffect, useRef, useState, type ReactNode } from 'react';
 import styles from './Tooltip.module.css';
 
 export interface TooltipProps {
@@ -9,7 +9,10 @@ export interface TooltipProps {
    * for a hint, or aria-labelledby when the tooltip is the trigger’s name
    */
   id: string;
-  /** Where the tooltip sits: above the trigger, or beside it at the end */
+  /**
+   * Where the tooltip sits: above the trigger, or beside it at the end. An
+   * end tooltip that wouldn't fit on the screen opens below instead.
+   */
   placement?: 'top' | 'end';
   /** The trigger: the element people hover over or focus */
   children: ReactNode;
@@ -25,6 +28,28 @@ export interface TooltipProps {
 // hover or focus (WCAG 1.4.13). Showing and hiding is CSS; Escape needs JS.
 export function Tooltip({ text, id, placement = 'top', children, visualOnly = false }: TooltipProps) {
   const [dismissed, setDismissed] = useState(false);
+  const anchorRef = useRef<HTMLSpanElement>(null);
+  const tooltipRef = useRef<HTMLSpanElement>(null);
+
+  // When it shows: a tooltip at the end that would go past the screen's edge
+  // (an IconButton at the right of the top bar) opens below its trigger
+  // instead. It's measured where it normally sits each time. A hidden tooltip
+  // measures 0 wide; if it isn't showing yet, it's measured again on the next
+  // frame.
+  const fit = (retry: boolean) => {
+    const anchor = anchorRef.current;
+    const tooltip = tooltipRef.current;
+    if (!anchor || !tooltip) return;
+    delete anchor.dataset.below;
+    const { width, right } = tooltip.getBoundingClientRect();
+    if (width === 0 && retry) requestAnimationFrame(() => fit(false));
+    else if (right > document.documentElement.clientWidth) anchor.dataset.below = '';
+  };
+
+  const show = () => {
+    setDismissed(false);
+    if (placement === 'end') fit(true);
+  };
 
   useEffect(() => {
     const onKeyDown = (event: KeyboardEvent) => {
@@ -37,9 +62,10 @@ export function Tooltip({ text, id, placement = 'top', children, visualOnly = fa
   return (
     <span
       className={`${styles.anchor} ${styles[placement]}`}
+      ref={anchorRef}
       data-dismissed={dismissed || undefined}
-      onPointerEnter={() => setDismissed(false)}
-      onFocus={() => setDismissed(false)}
+      onPointerEnter={show}
+      onFocus={show}
     >
       {children}
       <span
@@ -47,6 +73,7 @@ export function Tooltip({ text, id, placement = 'top', children, visualOnly = fa
         role={visualOnly ? undefined : 'tooltip'}
         aria-hidden={visualOnly || undefined}
         id={id}
+        ref={tooltipRef}
       >
         {text}
       </span>

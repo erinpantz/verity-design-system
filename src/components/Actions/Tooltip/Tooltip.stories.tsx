@@ -73,6 +73,21 @@ export const PlacementEnd: Story = {
   args: { placement: 'end', text: 'Collapse navigation' },
 };
 
+// At the right edge of the screen there's no room beside the trigger, so an
+// end tooltip opens below it, lined up with its end, like ThemeToggle in the
+// Small top bar
+export const PlacementEndAtTheEdge: Story = {
+  name: 'Placement end, at the edge',
+  args: { placement: 'end', text: 'Change to red' },
+  decorators: [
+    (Story) => (
+      <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
+        <Story />
+      </div>
+    ),
+  ],
+};
+
 // The usual use: a disabled Link to a page that isn't live yet
 export const InContext: Story = {
   name: 'In context',

@@ -38,12 +38,19 @@
   content: '';
 }
 
-/* Shown on hover, and on keyboard focus of the trigger (not after a mouse
-   click). A parent can turn it off by setting --tooltip-display: none, as
-   NavItem does while its label is showing. */
-.anchor:hover > .tooltip,
+/* Shown on keyboard focus of the trigger (not after a mouse click), and on
+   hover on devices with a real pointer. Touch screens have no hover: a tap
+   would leave the tooltip stuck on screen. A parent can turn it off by
+   setting --tooltip-display: none, as NavItem does while its label is
+   showing. */
 .anchor:has(:focus-visible) > .tooltip {
   display: var(--tooltip-display, block);
+}
+
+@media (hover: hover) {
+  .anchor:hover > .tooltip {
+    display: var(--tooltip-display, block);
+  }
 }
 
 /* Escape hides it until the next hover or focus */
@@ -76,4 +83,20 @@
   inset-block: 0;
   inset-inline-end: 100%;
   inline-size: var(--offset);
+}
+
+/* An end tooltip that wouldn't fit on the screen (Tooltip.tsx measures it)
+   opens below instead, with its end lined up with the trigger's end */
+
+.end[data-below] > .tooltip {
+  inset-block-start: calc(100% + var(--offset));
+  inset-inline: auto 0;
+  translate: none;
+}
+
+.end[data-below] > .tooltip::before {
+  inset-block: auto 100%;
+  inset-inline: 0;
+  inline-size: auto;
+  block-size: var(--offset);
 }

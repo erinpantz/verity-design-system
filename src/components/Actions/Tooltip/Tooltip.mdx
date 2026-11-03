@@ -24,7 +24,7 @@ A short hint that appears while someone hovers over or focuses a control, such a
 
 A Tooltip renders a `<span role="tooltip">` next to its trigger. It follows WCAG 1.4.13, Content on hover or focus:
 
-- **It appears** when the pointer is over the trigger, or when the trigger has keyboard focus. It doesn’t appear after a mouse click.
+- **It appears** when the trigger has keyboard focus, and when the pointer is over the trigger on a device with a real pointer (a mouse or trackpad). It doesn’t appear after a mouse click, or after a tap on a touch screen, where it would stay stuck on screen.
 - **It stays** while the pointer moves onto the tooltip itself, so people can read it at any zoom.
 - **Escape hides it** without moving the pointer or focus. It comes back on the next hover or focus.
 
@@ -42,9 +42,11 @@ The trigger has to point to the tooltip by its `id`, so screen readers read it:
 | `placement` | Where it sits | Used by |
 |---|---|---|
 | `top` | The default. Above the trigger, lined up with its start. | `Link` |
-| `end` | Beside the trigger, after it, centered on it | `IconButton` |
+| `end` | Beside the trigger, after it, centered on it. If it wouldn’t fit on the screen, it opens below the trigger instead, with its end lined up with the trigger’s end. | `IconButton`, `ThemeToggle` |
 
-The gap between the trigger and the tooltip is `--verity-tooltip-offset` (8) in both placements. It leaves room for the trigger’s focus ring, so the ring never touches the tooltip.
+<Canvas of={TooltipStories.PlacementEndAtTheEdge} />
+
+The gap between the trigger and the tooltip is `--verity-tooltip-offset` (8) in every placement. It leaves room for the trigger’s focus ring, so the ring never touches the tooltip.
 
 ## Space
 
@@ -65,7 +67,7 @@ The tooltip uses the knockout colors, the opposite of the page: `--verity-color-
 | Component `Tooltip` | `<Tooltip />` |
 | Property `Text` | `text` |
 | Not in Figma | `id`: the owner sets it, so the trigger can point to the tooltip |
-| Not in Figma | `placement`: Figma places each tooltip by hand, above a Link and beside an IconButton |
+| Not in Figma | `placement`: Figma places each tooltip by hand, above a Link and beside an IconButton. Opening below at the screen’s edge happens on its own. |
 | Not in Figma | `children`: the trigger the tooltip belongs to |
 | Not in Figma | `visualOnly`, for a tooltip that repeats a name screen readers already have |
 | Not in Figma | `--tooltip-display`: a parent can set it to `none` to keep the tooltip from showing, as NavItem does while its label shows |
