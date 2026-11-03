@@ -81,6 +81,11 @@ The rules for naming, spacing, and writing live in `src/guidelines/` and appear 
 
 To change a rule, change it on its guideline page, not here. If something in this file seems to disagree with a guideline page, follow the guideline page and tell Erin.
 
+## Reading Figma
+
+- `get_design_context` labels the icon inside every Icon instance `icon/resume` (a node ID ending in `;177:1768`), whatever icon is swapped in. That's the name of the icon slot in the Icon component, whose default icon is resume, not the layer's name in the file. The icon actually shown is the one in the instance (check its image). It's not a naming slip: don't report or rename it.
+- Before reporting any naming problem in Figma, check the layer in the file itself, not only in `get_design_context` output.
+
 ## Tokens
 
 - Never hard-code a color, size, space, radius, or font value. Use a `--verity-` custom property. If a token is missing, stop and ask; don't invent a value.
