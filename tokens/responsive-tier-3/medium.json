@@ -381,5 +381,28 @@
         }
       }
     }
+  },
+  "theme-toggle": {
+    "duration": {
+      "rotation": {
+        "$type": "duration",
+        "$value": "{duration.6000}",
+        "$description": "Time for one full turn of the ThemeToggle star while hovered, in milliseconds."
+      }
+    },
+    "glow": {
+      "blur": {
+        "$type": "dimension",
+        "$value": "{shadow.glow.blur}",
+        "$description": "Blur of the glow behind the ThemeToggle star.",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "EFFECT_FLOAT"
+            ]
+          }
+        }
+      }
+    }
   }
 }

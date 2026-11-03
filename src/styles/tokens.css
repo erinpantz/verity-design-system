@@ -84,6 +84,8 @@
   --verity-color-brand-blue-700: #0b00e4;
   --verity-color-brand-blue-800: #0600aa;
   --verity-color-brand-blue-900: #02006a;
+  --verity-color-brand-transparent-blue-500-50: #356bff80; /** color/brand/blue/500 at 50% opacity. Used for glows. */
+  --verity-color-brand-transparent-red-500-50: #eb010680; /** color/brand/red/500 at 50% opacity. Used for glows. */
   --verity-color-background-transparent-25: #00000040;
   --verity-color-background-transparent-90: #000000e6;
   --verity-border-width-1: 1px;
@@ -159,6 +161,7 @@
   --verity-shadow-sm-y: 2px;
   --verity-shadow-sm-blur: 4px;
   --verity-shadow-sm-spread: 0px;
+  --verity-shadow-glow-blur: 12px; /** Blur of a glow around a shape, in pixels. */
   --verity-size-20: 20px;
   --verity-size-22: 22px;
   --verity-size-24: 24px;
@@ -171,6 +174,7 @@
   --verity-duration-150: 150ms; /** Duration in milliseconds. */
   --verity-duration-300: 300ms; /** Duration in milliseconds. */
   --verity-duration-1500: 1500ms; /** Duration in milliseconds. */
+  --verity-duration-6000: 6000ms; /** Duration in milliseconds. */
   --verity-shadow-sm-color: var(--verity-color-background-transparent-25);
 }
 
@@ -438,6 +442,10 @@
 /* Blue theme: Blue Tier 1 */
 :root,
 [data-theme="blue"] {
+  --verity-color-brand-transparent-brand-90: #0b00e4e6;
+  --verity-color-brand-transparent-brand-25: #0b00e440;
+  --verity-color-brand-transparent-brand-50: #0b00e480;
+  --verity-color-brand-transparent-brand-75: #0b00e4bf;
   --verity-color-brand-neutral-100: #ebeef5;
   --verity-color-brand-neutral-200: #c9d3e7;
   --verity-color-brand-neutral-300: #a6b7db;
@@ -447,10 +455,6 @@
   --verity-color-brand-neutral-700: #274493;
   --verity-color-brand-neutral-800: #182e6b;
   --verity-color-brand-neutral-900: #081431;
-  --verity-color-brand-transparent-brand-90: #0b00e4e6;
-  --verity-color-brand-transparent-brand-25: #0b00e440;
-  --verity-color-brand-transparent-brand-50: #0b00e480;
-  --verity-color-brand-transparent-brand-75: #0b00e4bf;
   --verity-scrim: #02006abf;
 }
 
@@ -588,6 +592,10 @@
   --verity-nav-icon-color-accent-three: var(--verity-color-brand-red-500);
   --verity-nav-icon-color-accent-four: var(--verity-color-brand-violet-500);
   --verity-skeleton-color-shine: var(--verity-color-brand-neutral-700); /** The lighter end of the Skeleton pulse while media loads. The other end is color/background/subtle. */
+  --verity-theme-toggle-color-current: var(--verity-color-brand-blue-500); /** ThemeToggle star at rest: the current theme’s brand color, step 500 so it reaches 3:1 on the dark background. */
+  --verity-theme-toggle-color-next: var(--verity-color-brand-red-500); /** ThemeToggle star on hover and focus: the other theme’s brand color, previewing where a click goes. */
+  --verity-theme-toggle-glow-current: var(--verity-color-brand-transparent-blue-500-50); /** Glow behind the ThemeToggle star at rest. */
+  --verity-theme-toggle-glow-next: var(--verity-color-brand-transparent-red-500-50); /** Glow behind the ThemeToggle star on hover and focus. */
   --verity-link-color-content-disabled: var(--verity-color-content-disabled); /** Link that can’t be followed yet, such as a “coming soon” page. Not underlined. */
   --verity-link-brand-color-content-disabled: var(--verity-color-content-disabled); /** Disabled link on a brand background. */
   --verity-nav-icon-color-accent-yellow: var(--verity-color-accent-yellow);
@@ -595,6 +603,10 @@
 
 /* Red theme: Red Tier 1 */
 [data-theme="red"] {
+  --verity-color-brand-transparent-brand-90: #c60103e6;
+  --verity-color-brand-transparent-brand-25: #c6010340;
+  --verity-color-brand-transparent-brand-50: #c6010380;
+  --verity-color-brand-transparent-brand-75: #c60103bf;
   --verity-color-brand-neutral-100: #f2edec;
   --verity-color-brand-neutral-200: #decfcc;
   --verity-color-brand-neutral-300: #cbb0ab;
@@ -604,10 +616,6 @@
   --verity-color-brand-neutral-700: #703831;
   --verity-color-brand-neutral-800: #50251f;
   --verity-color-brand-neutral-900: #240f0c;
-  --verity-color-brand-transparent-brand-90: #c60103e6;
-  --verity-color-brand-transparent-brand-25: #c6010340;
-  --verity-color-brand-transparent-brand-50: #c6010380;
-  --verity-color-brand-transparent-brand-75: #c60103bf;
   --verity-scrim: #3c0000bf;
 }
 
@@ -743,6 +751,10 @@
   --verity-nav-icon-color-accent-three: var(--verity-color-brand-blue-500);
   --verity-nav-icon-color-accent-four: var(--verity-color-brand-orange-400);
   --verity-skeleton-color-shine: var(--verity-color-brand-neutral-700); /** The lighter end of the Skeleton pulse while media loads. The other end is color/background/subtle. */
+  --verity-theme-toggle-color-current: var(--verity-color-brand-red-500); /** ThemeToggle star at rest: the current theme’s brand color, step 500 so it reaches 3:1 on the dark background. */
+  --verity-theme-toggle-color-next: var(--verity-color-brand-blue-500); /** ThemeToggle star on hover and focus: the other theme’s brand color, previewing where a click goes. */
+  --verity-theme-toggle-glow-current: var(--verity-color-brand-transparent-red-500-50); /** Glow behind the ThemeToggle star at rest. */
+  --verity-theme-toggle-glow-next: var(--verity-color-brand-transparent-blue-500-50); /** Glow behind the ThemeToggle star on hover and focus. */
   --verity-link-color-content-disabled: var(--verity-color-content-disabled); /** Link that can’t be followed yet, such as a “coming soon” page. Not underlined. */
   --verity-link-brand-color-content-disabled: var(--verity-color-content-disabled); /** Disabled link on a brand background. */
   --verity-nav-icon-color-accent-yellow: var(--verity-color-accent-yellow);
@@ -816,6 +828,8 @@
   --verity-tooltip-offset: var(--verity-spacing-8); /** Gap between a tooltip and the element it describes. Leaves room for the focus ring. */
   --verity-unordered-list-marker-size: var(--verity-size-20); /** Width and height of the marker before each UnorderedList item. */
   --verity-skeleton-duration: var(--verity-duration-1500); /** Time for the Skeleton pulse to go from its base color to its shine, and the same back, in milliseconds. */
+  --verity-theme-toggle-duration-rotation: var(--verity-duration-6000); /** Time for one full turn of the ThemeToggle star while hovered, in milliseconds. */
+  --verity-theme-toggle-glow-blur: var(--verity-shadow-glow-blur); /** Blur of the glow behind the ThemeToggle star. */
   --verity-nav-container-padding-top: var(--verity-spacing-md); /** Top padding of the left-docked NavContainer. */
 }
 
@@ -1054,6 +1068,8 @@
     --verity-tooltip-offset: var(--verity-spacing-8); /** Gap between a tooltip and the element it describes. Leaves room for the focus ring. */
     --verity-unordered-list-marker-size: var(--verity-size-20); /** Width and height of the marker before each UnorderedList item. */
     --verity-skeleton-duration: var(--verity-duration-1500); /** Time for the Skeleton pulse to go from its base color to its shine, and the same back, in milliseconds. */
+    --verity-theme-toggle-duration-rotation: var(--verity-duration-6000); /** Time for one full turn of the ThemeToggle star while hovered, in milliseconds. */
+    --verity-theme-toggle-glow-blur: var(--verity-shadow-glow-blur); /** Blur of the glow behind the ThemeToggle star. */
     --verity-nav-container-padding-top: var(--verity-spacing-md); /** Top padding of the left-docked NavContainer. */
   }
 
@@ -1293,6 +1309,8 @@
     --verity-tooltip-offset: var(--verity-spacing-8); /** Gap between a tooltip and the element it describes. Leaves room for the focus ring. */
     --verity-unordered-list-marker-size: var(--verity-size-20); /** Width and height of the marker before each UnorderedList item. */
     --verity-skeleton-duration: var(--verity-duration-1500); /** Time for the Skeleton pulse to go from its base color to its shine, and the same back, in milliseconds. */
+    --verity-theme-toggle-duration-rotation: var(--verity-duration-6000); /** Time for one full turn of the ThemeToggle star while hovered, in milliseconds. */
+    --verity-theme-toggle-glow-blur: var(--verity-shadow-glow-blur); /** Blur of the glow behind the ThemeToggle star. */
     --verity-nav-container-padding-top: var(--verity-spacing-md); /** Top padding of the left-docked NavContainer. */
   }
 
@@ -1532,6 +1550,8 @@
     --verity-tooltip-offset: var(--verity-spacing-8); /** Gap between a tooltip and the element it describes. Leaves room for the focus ring. */
     --verity-unordered-list-marker-size: var(--verity-size-20); /** Width and height of the marker before each UnorderedList item. */
     --verity-skeleton-duration: var(--verity-duration-1500); /** Time for the Skeleton pulse to go from its base color to its shine, and the same back, in milliseconds. */
+    --verity-theme-toggle-duration-rotation: var(--verity-duration-6000); /** Time for one full turn of the ThemeToggle star while hovered, in milliseconds. */
+    --verity-theme-toggle-glow-blur: var(--verity-shadow-glow-blur); /** Blur of the glow behind the ThemeToggle star. */
     --verity-nav-container-padding-top: var(--verity-spacing-md); /** Top padding of the left-docked NavContainer. */
   }
 }

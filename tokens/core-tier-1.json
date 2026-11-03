@@ -330,6 +330,18 @@
           "$type": "color",
           "$value": "#02006a"
         }
+      },
+      "transparent": {
+        "blue-500-50": {
+          "$type": "color",
+          "$value": "#356bff80",
+          "$description": "color/brand/blue/500 at 50% opacity. Used for glows."
+        },
+        "red-500-50": {
+          "$type": "color",
+          "$value": "#eb010680",
+          "$description": "color/brand/red/500 at 50% opacity. Used for glows."
+        }
       }
     },
     "background": {
@@ -1225,6 +1237,13 @@
         "$type": "color",
         "$value": "{color.background.transparent-25}"
       }
+    },
+    "glow": {
+      "blur": {
+        "$type": "dimension",
+        "$value": "12px",
+        "$description": "Blur of a glow around a shape, in pixels."
+      }
     }
   },
   "size": {
@@ -1342,6 +1361,11 @@
     "300": {
       "$type": "duration",
       "$value": "300ms",
+      "$description": "Duration in milliseconds."
+    },
+    "6000": {
+      "$type": "duration",
+      "$value": "6000ms",
       "$description": "Duration in milliseconds."
     }
   }

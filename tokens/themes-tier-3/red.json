@@ -281,5 +281,59 @@
         }
       }
     }
+  },
+  "theme-toggle": {
+    "color": {
+      "current": {
+        "$type": "color",
+        "$value": "{color.brand.red.500}",
+        "$description": "ThemeToggle star at rest: the current theme’s brand color, step 500 so it reaches 3:1 on the dark background.",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "SHAPE_FILL"
+            ]
+          }
+        }
+      },
+      "next": {
+        "$type": "color",
+        "$value": "{color.brand.blue.500}",
+        "$description": "ThemeToggle star on hover and focus: the other theme’s brand color, previewing where a click goes.",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "SHAPE_FILL"
+            ]
+          }
+        }
+      }
+    },
+    "glow": {
+      "current": {
+        "$type": "color",
+        "$value": "{color.brand.transparent.red-500-50}",
+        "$description": "Glow behind the ThemeToggle star at rest.",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "EFFECT_COLOR"
+            ]
+          }
+        }
+      },
+      "next": {
+        "$type": "color",
+        "$value": "{color.brand.transparent.blue-500-50}",
+        "$description": "Glow behind the ThemeToggle star on hover and focus.",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "EFFECT_COLOR"
+            ]
+          }
+        }
+      }
+    }
   }
 }
