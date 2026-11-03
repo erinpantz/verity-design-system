@@ -1,0 +1,67 @@
+/* The text and the media, side by side or one above the other. MediaText
+   fills the width it's given and adds no space outside itself. The gap
+   between the two is the same in both layouts. */
+
+.mediaText {
+  display: flex;
+  gap: var(--verity-spacing-lg);
+}
+
+/* Stacked: the text above the media at every width */
+.stacked {
+  flex-direction: column;
+}
+
+/* Row: side by side, and stacked when MediaText is narrower than the stack
+   width. This follows MediaText's own width, not the screen's, so it also
+   stacks in a narrow column, with no media query.
+
+   How it works: each column's flex-basis is (stack width - MediaText's
+   width) × 999.
+   - Narrower than the stack width: the basis is huge, so each column takes
+     a full line and they wrap, one above the other.
+   - At the stack width or wider: the basis is negative, which counts as 0,
+     so the columns share the width by their flex-grow: the ratio. */
+.row {
+  flex-wrap: wrap;
+  /* The text sits at the top when the media is taller */
+  align-items: flex-start;
+}
+
+.row > .text,
+.row > .media {
+  flex-basis: calc((var(--verity-media-text-stack-width) - 100%) * 999);
+  /* Lets a column shrink below its content's width, so the ratio holds */
+  min-inline-size: 0;
+}
+
+.row > .text {
+  flex-grow: var(--text-share);
+}
+
+.row > .media {
+  flex-grow: var(--media-share);
+}
+
+/* Media on the left: the row runs right to left. The text stays first in
+   the HTML, and when the row wraps, the first line is still the text, so
+   it stays above the media. */
+.media-left {
+  flex-direction: row-reverse;
+}
+
+/* The media column's share, out of 10 */
+.ratio-60 {
+  --media-share: 6;
+  --text-share: 4;
+}
+
+.ratio-50 {
+  --media-share: 5;
+  --text-share: 5;
+}
+
+.ratio-40 {
+  --media-share: 4;
+  --text-share: 6;
+}

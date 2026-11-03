@@ -1,0 +1,98 @@
+import { Meta, Canvas } from '@storybook/addon-docs/blocks';
+import { VerityDocs } from '../../../foundations/VerityDocs';
+import { PropsTable } from '../../../foundations/PropsTable';
+import * as MediaTextStories from './MediaText.stories';
+
+<Meta of={MediaTextStories} />
+
+<VerityDocs>
+
+# MediaText
+
+Text beside an image or an animation, or above it, so a reader sees what the words describe.
+
+<Canvas of={MediaTextStories.Default} />
+
+## When to use
+
+- **When text and one piece of media explain each other,** like a finding beside the screen it’s about.
+- **Alternating sides down a page,** with `mediaPosition`, to tell a story in steps.
+- **Not for several images in a row.** Use `Gallery`.
+- **Not for a set of equal items,** like cards. Use `Grid`.
+- **Not for media on its own.** Use `MediaBlock`.
+
+## Accessibility
+
+A MediaText is a `<div>` around two parts: the text, then the media. The text always comes first in the HTML, so screen readers and the keyboard reach it first, even when the media is on the left. MediaText adds no meaning of its own; the parts inside it do.
+
+| Situation | What to do | Example |
+|---|---|---|
+| Writing the text | Use a `TextBlock`, with a heading at the right level for the page. | `<TextBlock heading="Setup asked for too much, too soon">` |
+| Adding the media | Use a `MediaBlock`, so its caption is linked to it. Give the image alt text that says what it shows. | “The setup screen, on step 2 of 5: Connect your bank” |
+| Putting the media on the left | Use `mediaPosition="left"`. Don’t reorder the text and media yourself; the reading order should stay text first. | — |
+
+## Layout
+
+| `layout` | What it shows | Use for |
+|---|---|---|
+| `row` | The default. Text and media side by side, at the ratio and position you choose. It stacks, text first, when MediaText is narrower than `--verity-media-text-stack-width` (800px). | Most pairs, on a wide Section |
+| `stacked` | Text above media, at every width. | When the media needs the full width at any screen size, like a wide diagram |
+
+A row stacks by MediaText’s own width, not the screen’s, so it also stacks in a narrow column on a wide screen.
+
+<Canvas of={MediaTextStories.Stacked} />
+
+<Canvas of={MediaTextStories.NarrowColumn} />
+
+## Media position
+
+| `mediaPosition` | What it shows |
+|---|---|
+| `right` | The default. Media on the right. |
+| `left` | Media on the left. It moves only how it looks: the text is still read first, and still sits above the media when the row stacks. |
+
+<Canvas of={MediaTextStories.MediaLeft} />
+
+## Media ratio
+
+`mediaRatio` is the media column’s share of the row’s width. When the layout is `stacked`, or a row has stacked, the ratio doesn’t apply.
+
+| `mediaRatio` | Media | Text | Use for |
+|---|---|---|---|
+| `60` | 60% | 40% | The default. Media with detail worth seeing large, like a screen. |
+| `50` | 50% | 50% | When the text and media matter equally |
+| `40` | 40% | 60% | Longer text with a smaller image |
+
+<Canvas of={MediaTextStories.Ratios} />
+
+## Space
+
+A MediaText fills the width it’s given and adds no space outside itself.
+
+| Space | Token |
+|---|---|
+| Between the text and the media, in a row or stacked | `--verity-spacing-lg` |
+| The width where a row stacks | `--verity-media-text-stack-width` (800px) |
+
+In a row, the text sits at the top when the media is taller.
+
+<Canvas of={MediaTextStories.InContext} />
+
+## Props
+
+<PropsTable of={MediaTextStories} />
+
+## In Figma
+
+| Figma | Code |
+|---|---|
+| Component `MediaText` | `<MediaText />` |
+| Property `Layout` | `layout`. `row` is the default in both. |
+| Property `Media position` | `mediaPosition`. `right` is the default in both. |
+| Property `Media ratio` | `mediaRatio`. `60` is the default in both. |
+| Slot `Text` | `text` |
+| Slot `Media` | `media` |
+| Stacking below 800px | Code does it by itself. Figma can’t, so a row in Figma stays a row at any width. |
+| The fixed width | Not in code: MediaText fills the width it’s given |
+
+</VerityDocs>
