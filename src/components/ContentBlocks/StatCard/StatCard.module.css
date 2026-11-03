@@ -1,0 +1,117 @@
+/* A number above what it means. The card fills the width it's given, such as
+   a Grid cell, and adds no space outside itself.
+
+   Every style has the same border width, so they're all the same size.
+   Filled styles make the border transparent, so their fill shows through it.
+   Figma draws the border inside the padding, so the padding here is the
+   padding token less the border, and the card is the same size as in Figma.
+   Each style sets the card's text color, and the value and description
+   inherit it. */
+
+.statCard {
+  display: flex;
+  flex-direction: column;
+  gap: var(--verity-spacing-xs);
+  box-sizing: border-box;
+  padding: calc(var(--verity-padding-md) - var(--verity-border-width-sm));
+  border: var(--verity-border-width-sm) solid transparent;
+  border-radius: var(--verity-border-radius-md);
+}
+
+.value,
+.description {
+  margin: 0;
+}
+
+/* The heading-2 text style, though it isn't a heading */
+.value {
+  font-family: var(--verity-viewport-typography-heading-2-font-family);
+  font-size: var(--verity-viewport-typography-heading-2-font-size);
+  font-weight: var(--verity-viewport-typography-heading-2-font-weight);
+  line-height: var(--verity-viewport-typography-heading-2-line-height);
+  letter-spacing: var(--verity-viewport-typography-heading-2-letter-spacing);
+  text-transform: var(--verity-viewport-typography-heading-2-text-transform);
+}
+
+.description {
+  font-family: var(--verity-viewport-typography-body-lg-font-family);
+  font-size: var(--verity-viewport-typography-body-lg-font-size);
+  font-weight: var(--verity-viewport-typography-body-lg-font-weight);
+  line-height: var(--verity-viewport-typography-body-lg-line-height);
+  letter-spacing: var(--verity-viewport-typography-body-lg-letter-spacing);
+  text-transform: var(--verity-viewport-typography-body-lg-text-transform);
+}
+
+/* Outlined: a border and no fill */
+.outlined {
+  border-color: var(--verity-color-border-default);
+  color: var(--verity-color-content-default);
+}
+
+/* Outlined accents: the accent's border and text colors */
+.outlined-accent-one {
+  border-color: var(--verity-color-border-accent-one);
+  color: var(--verity-color-content-accent-one);
+}
+
+.outlined-accent-two {
+  border-color: var(--verity-color-border-accent-two);
+  color: var(--verity-color-content-accent-two);
+}
+
+.outlined-accent-three {
+  border-color: var(--verity-color-border-accent-three);
+  color: var(--verity-color-content-accent-three);
+}
+
+.outlined-accent-four {
+  border-color: var(--verity-color-border-accent-four);
+  color: var(--verity-color-content-accent-four);
+}
+
+.outlined-accent-five {
+  border-color: var(--verity-color-border-accent-five);
+  color: var(--verity-color-content-accent-five);
+}
+
+.outlined-accent-six {
+  border-color: var(--verity-color-border-accent-six);
+  color: var(--verity-color-content-accent-six);
+}
+
+/* Brand: the brand fill with the default text color */
+.brand {
+  background: var(--verity-color-background-brand);
+  color: var(--verity-color-content-default);
+}
+
+/* Filled accents: the accent's fill with knockout (dark) text */
+.accent-one {
+  background: var(--verity-color-background-accent-one);
+  color: var(--verity-color-content-knockout);
+}
+
+.accent-two {
+  background: var(--verity-color-background-accent-two);
+  color: var(--verity-color-content-knockout);
+}
+
+.accent-three {
+  background: var(--verity-color-background-accent-three);
+  color: var(--verity-color-content-knockout);
+}
+
+.accent-four {
+  background: var(--verity-color-background-accent-four);
+  color: var(--verity-color-content-knockout);
+}
+
+.accent-five {
+  background: var(--verity-color-background-accent-five);
+  color: var(--verity-color-content-knockout);
+}
+
+.accent-six {
+  background: var(--verity-color-background-accent-six);
+  color: var(--verity-color-content-knockout);
+}

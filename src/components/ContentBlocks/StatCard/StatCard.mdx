@@ -1,0 +1,80 @@
+import { Meta, Canvas } from '@storybook/addon-docs/blocks';
+import { VerityDocs } from '../../../foundations/VerityDocs';
+import { PropsTable } from '../../../foundations/PropsTable';
+import * as StatCardStories from './StatCard.stories';
+
+<Meta of={StatCardStories} />
+
+<VerityDocs>
+
+# StatCard
+
+One number and what it means, such as a result in a case study. The number is large, so a reader can take in the results at a glance.
+
+<Canvas of={StatCardStories.Default} />
+
+## When to use
+
+- **To show results,** two to four at a time, in a `Grid` inside a Section.
+- **When the number is the point.** Write the value as it should read, with its unit: “38%”, “2 min”, or “4.7”.
+- **Not for a number in a sentence.** Write it in the text.
+- **Not for something people click.** A StatCard isn’t a link or a button.
+
+## Accessibility
+
+A StatCard renders a `<div>` with two paragraphs: the value, then the description. Screen readers read them in that order, like “38%. Fewer people left at checkout.”
+
+| Situation | What to do | Example |
+|---|---|---|
+| The value looks like a heading | Leave it as it is. It uses the `heading-2` text style but isn’t a heading, so it doesn’t clutter the page’s outline. The Section above it has the heading. | “The results”, then three StatCards |
+| Several StatCards together | Put them in a list, each in an `<li>`, so screen readers say how many there are | `Grid as="ul"` |
+| A value with a symbol or short unit | Make the description say what it measures, so the value isn’t read alone | “4.7” with “App store rating, up from 3.9” |
+
+Every style’s text, and every outlined style’s border, meets the 4.5:1 contrast ratio in both themes.
+
+## Style
+
+| `style` | Fill | Border | Text | Use for |
+|---|---|---|---|---|
+| `outlined` | None | `--verity-color-border-default` | `--verity-color-content-default` | The default. Most results. |
+| `outlined-accent-one` to `-six` | None | `--verity-color-border-accent-*` | `--verity-color-content-accent-*` | A result tied to one of a set of categories |
+| `brand` | `--verity-color-background-brand` | None | `--verity-color-content-default` | The one result to notice first |
+| `accent-one` to `accent-six` | `--verity-color-background-accent-*` | None | `--verity-color-content-knockout` | A category’s result, filled |
+
+Use a filled style for one card in a set, not all of them, so it stands out. The accent hues differ by theme.
+
+<Canvas of={StatCardStories.OutlinedAccents} />
+
+<Canvas of={StatCardStories.Brand} />
+
+<Canvas of={StatCardStories.FilledAccents} />
+
+## Space
+
+A StatCard fills the width it’s given, like a Grid cell, and adds no space outside itself.
+
+| Space | Token |
+|---|---|
+| Inside, on every side | `--verity-padding-md`, measured from the card’s outer edge, the border included |
+| Between the value and the description | `--verity-spacing-xs` |
+| Border | `--verity-border-width-sm`, on every style. Filled styles make it transparent, so all styles are the same size. |
+| Corners | `--verity-border-radius-md` |
+| Text | The value in `heading-2`; the description in `body-lg` |
+
+<Canvas of={StatCardStories.InContext} />
+
+## Props
+
+<PropsTable of={StatCardStories} />
+
+## In Figma
+
+| Figma | Code |
+|---|---|
+| Component `StatCard` | `<StatCard />` |
+| Property `Style` | `style`. `outlined` is the default in both. |
+| Property `Value` | `value` |
+| Property `Description` | `description` |
+| The fixed width | Not in code: the card fills the width it’s given |
+
+</VerityDocs>
