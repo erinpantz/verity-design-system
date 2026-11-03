@@ -1,0 +1,87 @@
+import { Meta, Canvas } from '@storybook/addon-docs/blocks';
+import { VerityDocs } from '../../../foundations/VerityDocs';
+import { PropsTable } from '../../../foundations/PropsTable';
+import * as HeroStories from './Hero.stories';
+
+<Meta of={HeroStories} />
+
+<VerityDocs>
+
+# Hero
+
+The band at the top of a page: a large headline, a short intro, and one or two actions that say where to go next.
+
+<Canvas of={HeroStories.Default} />
+
+## When to use
+
+- **At the top of a page that introduces something,** like the home page, with one or two places to go next.
+- **Once per page.** Its headline is the page’s `<h1>`.
+- **Not with a CaseStudyHeader.** Its heading is also the page’s `<h1>`, so a page starts with a Hero or a CaseStudyHeader, never both.
+- **Not for a call to action partway down a page.** Use a `Section` with a `Button`.
+
+## Accessibility
+
+A Hero renders a `<header>`: the page’s introduction. Its headline is the page’s `<h1>`, in the `display-default` text style, which is larger than `heading-1`. Its actions are Buttons with `href`, so each one renders a link (`<a>`) that looks like a button.
+
+| Situation | What to do | Example |
+|---|---|---|
+| Writing the headline | Say what the page is about in one short sentence, in sentence case. It’s the page’s title for screen readers. | “I design tools that give people their time back” |
+| Writing the actions | Start each label with a verb that says where it goes. Put the main one in `primaryAction`. | “View my work,” then “Book a call” |
+| Only one thing to do | Leave out `secondaryAction`. | — |
+| Choosing a background | Pick any of the three. The text and buttons follow it, and meet the 4.5:1 contrast ratio in both themes. | `background="brand"` |
+
+Every focus ring follows the background, not the button, so it keeps a 3:1 contrast ratio on every background in both themes. Some buttons’ colors don’t match the band. For example, on knockout the primary button is default, so Hero sets its ring to `--verity-color-border-focus-knockout`.
+
+## Background
+
+| `background` | Fill | Text | Primary button | Secondary button | Focus ring |
+|---|---|---|---|---|---|
+| `default` | `--verity-color-background-default` | `--verity-color-content-default` | `default` | `default` | `--verity-color-border-focus` |
+| `knockout` | `--verity-color-background-knockout` | `--verity-color-content-knockout` | `default` | `knockout` | `--verity-color-border-focus-knockout` |
+| `brand` | `--verity-color-background-brand` | `--verity-color-content-default` | `brand` | `default` | `--verity-color-border-focus-brand` |
+
+Button has no brand secondary, so on `brand` the secondary button is `default`. Use `default` on most pages, and `knockout` or `brand` to make a page’s opening stand out.
+
+<Canvas of={HeroStories.Knockout} />
+
+<Canvas of={HeroStories.Brand} />
+
+## Actions
+
+`primaryAction` is required, and `secondaryAction` is optional. Both are `xl` Buttons, side by side. On a narrow screen, the second one wraps below the first.
+
+<Canvas of={HeroStories.OneAction} />
+
+## Space
+
+A Hero fills the width it’s given and adds no space outside itself. Its padding is there for its background.
+
+| Space | Token |
+|---|---|
+| Inside, on every side | `--verity-padding-lg` |
+| Between the headline, intro, and actions | `--verity-spacing-md` |
+| Between the buttons | `--verity-spacing-xs` |
+| Corners | `--verity-border-radius-md` |
+| Text | The headline in `display-default`; the intro in `body-xl` |
+
+<Canvas of={HeroStories.InContext} />
+
+## Props
+
+<PropsTable of={HeroStories} />
+
+## In Figma
+
+| Figma | Code |
+|---|---|
+| Component `Hero` | `<Hero />` |
+| Property `Background` | `background`. `default` is the default in both. |
+| Property `Heading` | `heading` |
+| Property `Intro` | `intro` |
+| Property `Primary action` (an exposed Button) | `primaryAction`: its label and where it goes. Hero sets the Button’s variant, size, and color. |
+| Property `Secondary action` (an exposed Button) | `secondaryAction` |
+| Property `Show secondary action` | Not a prop: set `secondaryAction` to show it, or leave it out |
+| The fixed width | Not in code: the Hero fills the width it’s given |
+
+</VerityDocs>

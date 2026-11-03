@@ -1,0 +1,65 @@
+/* A headline, an intro, and the actions, on a colored band. It fills the
+   width it's given. Its padding is there for the background, so it adds no
+   space outside itself. */
+
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--verity-spacing-md);
+  padding: var(--verity-padding-lg);
+  border-radius: var(--verity-border-radius-md);
+  background: var(--background);
+  color: var(--content);
+}
+
+/* Each background sets the text color, and the focus ring color for the
+   buttons on it (see Button.module.css), since some buttons' own colors
+   don't match the band */
+.default {
+  --background: var(--verity-color-background-default);
+  --content: var(--verity-color-content-default);
+  --background-focus-ring: var(--verity-color-border-focus);
+}
+
+.knockout {
+  --background: var(--verity-color-background-knockout);
+  --content: var(--verity-color-content-knockout);
+  --background-focus-ring: var(--verity-color-border-focus-knockout);
+}
+
+.brand {
+  --background: var(--verity-color-background-brand);
+  --content: var(--verity-color-content-default);
+  --background-focus-ring: var(--verity-color-border-focus-brand);
+}
+
+/* The display-default text style: larger than heading-1, for the page's
+   headline */
+.heading {
+  margin: 0;
+  font-family: var(--verity-viewport-typography-display-default-font-family);
+  font-size: var(--verity-viewport-typography-display-default-font-size);
+  font-weight: var(--verity-viewport-typography-display-default-font-weight);
+  line-height: var(--verity-viewport-typography-display-default-line-height);
+  letter-spacing: var(--verity-viewport-typography-display-default-letter-spacing);
+  text-transform: var(--verity-viewport-typography-display-default-text-transform);
+}
+
+.intro {
+  margin: 0;
+  font-family: var(--verity-viewport-typography-body-xl-font-family);
+  font-size: var(--verity-viewport-typography-body-xl-font-size);
+  font-weight: var(--verity-viewport-typography-body-xl-font-weight);
+  line-height: var(--verity-viewport-typography-body-xl-line-height);
+  letter-spacing: var(--verity-viewport-typography-body-xl-letter-spacing);
+  text-transform: var(--verity-viewport-typography-body-xl-text-transform);
+}
+
+/* The buttons side by side. Buttons keep their size, so on a narrow screen
+   the second one wraps below the first. */
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--verity-spacing-xs);
+}
