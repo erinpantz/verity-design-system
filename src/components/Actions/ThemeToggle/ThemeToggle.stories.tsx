@@ -19,18 +19,20 @@ export const Default: Story = {};
 
 // The states below are held on with the pseudo-states addon, so the colors,
 // fill, ring, and tooltip show without a pointer. The star doesn't spin here:
-// the spin starts from a real hover or focus.
+// the spin starts from a real hover or focus. They're set as story globals,
+// not parameters: with parameters, the addon saves the state as a global
+// that stays on for every story opened afterwards.
 
 export const Hover: Story = {
-  parameters: { pseudo: { hover: true } },
+  globals: { pseudo: { hover: true } },
 };
 
 export const Focus: Story = {
-  parameters: { pseudo: { focusVisible: true } },
+  globals: { pseudo: { focusVisible: true } },
 };
 
 export const Active: Story = {
-  parameters: { pseudo: { active: true } },
+  globals: { pseudo: { active: true } },
 };
 
 // In MainNav's rail, above Resume. Resize the window to Small to see it at
