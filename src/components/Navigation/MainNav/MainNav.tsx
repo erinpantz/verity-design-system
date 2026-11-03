@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useBreakpoint } from '../../../styles/useBreakpoint';
 import { IconButton } from '../../Actions/IconButton';
+import { ThemeToggle } from '../../Actions/ThemeToggle';
 import { ErinTozourLogo } from '../../Media/ErinTozourLogo';
 import { NavItem } from '../NavItem';
 import styles from './MainNav.module.css';
@@ -48,7 +49,7 @@ const PAGES = [
 ] as const;
 
 // The site's main navigation: the menu button, the site title, a NavItem per
-// page, and Resume. How it looks at each width is all CSS (see
+// page, ThemeToggle, and Resume. How it looks at each width is all CSS (see
 // MainNav.module.css), so it's right before JavaScript runs. What the menu
 // button does depends on the width too, and that comes from useBreakpoint.
 export function MainNav({
@@ -101,6 +102,11 @@ export function MainNav({
         <span className={styles.menuButton}>
           <IconButton icon="dock-to-left" {...menuButton} />
         </span>
+        {/* ThemeToggle at the end of the Small top bar. CSS shows it only
+            there; everywhere else, the one above Resume shows. */}
+        <span className={styles.topBarThemeToggle}>
+          <ThemeToggle />
+        </span>
       </div>
       <ul className={styles.links}>
         {PAGES.map(({ page, label }) => (
@@ -108,7 +114,10 @@ export function MainNav({
             <NavItem icon={page} label={label} href={links[page]} current={current === page} />
           </li>
         ))}
-        <li className={styles.resume}>
+        <li className={styles.themeToggle}>
+          <ThemeToggle />
+        </li>
+        <li>
           <NavItem icon="resume" label="Resume" href={links.resume} />
         </li>
       </ul>

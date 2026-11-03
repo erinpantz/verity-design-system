@@ -2,8 +2,8 @@
    so it's right before JavaScript runs. Breakpoints come from the generated
    values (see CLAUDE.md: only page-level layout uses media queries).
 
-   - Small: a top bar with the menu button and the logo. The pages are in
-     NavOverlay.
+   - Small: a top bar with the menu button, the logo, and ThemeToggle. The
+     pages are in NavOverlay.
    - Medium: the rail, icons only, with each label in a tooltip.
    - Large and XL: expanded (data-state="expanded") or the rail ("collapsed").
    - In NavOverlay (.overlay): always expanded.
@@ -55,24 +55,31 @@
   display: flex;
 }
 
-/* The pages, then Resume at the bottom. The last row takes the space that's
-   left, and Resume sits at its end. */
+/* The top bar's ThemeToggle shows only on Small (below) */
+.topBarThemeToggle {
+  display: none;
+}
+
+/* The pages, then ThemeToggle and Resume at the bottom. ThemeToggle's row
+   takes the space that's left, and it sits at the row's end, so the two
+   bottom items keep the same link gap as the pages. */
 .links {
   display: grid;
   flex: 1;
-  grid-template-rows: repeat(3, auto) 1fr;
+  grid-template-rows: repeat(3, auto) 1fr auto;
   gap: var(--verity-main-nav-link-gap);
   margin: 0;
   padding: 0;
   list-style: none;
 }
 
-.resume {
+.themeToggle {
+  display: flex;
   align-self: end;
 }
 
-/* Small: the top bar. The menu button comes first, then the logo; the pages
-   and Resume are in NavOverlay. */
+/* Small: the top bar. The menu button comes first, then the logo, then
+   ThemeToggle at the end; the pages and Resume are in NavOverlay. */
 
 @media not medium {
   .page {
@@ -90,6 +97,10 @@
 
   .page .links {
     display: none;
+  }
+
+  .page .topBarThemeToggle {
+    display: flex;
   }
 }
 

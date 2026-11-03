@@ -1,4 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
+import { MainNav } from '../../Navigation/MainNav';
+import { NavContainer } from '../../Navigation/NavContainer';
 import { ThemeToggle } from './ThemeToggle';
 
 const meta = {
@@ -29,4 +31,16 @@ export const Focus: Story = {
 
 export const Active: Story = {
   parameters: { pseudo: { active: true } },
+};
+
+// In MainNav's rail, above Resume. Resize the window to Small to see it at
+// the right end of the top bar, where its tooltip opens below.
+export const InContext: StoryObj = {
+  name: 'In context',
+  parameters: { layout: 'fullscreen', docs: { story: { inline: false, height: '32rem' } } },
+  render: () => (
+    <NavContainer>
+      <MainNav state="collapsed" current="portfolio" />
+    </NavContainer>
+  ),
 };
