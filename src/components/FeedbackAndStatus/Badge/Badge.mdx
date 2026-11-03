@@ -1,0 +1,77 @@
+import { Meta, Canvas } from '@storybook/addon-docs/blocks';
+import { VerityDocs } from '../../../foundations/VerityDocs';
+import { PropsTable } from '../../../foundations/PropsTable';
+import * as BadgeStories from './Badge.stories';
+
+<Meta of={BadgeStories} />
+
+<VerityDocs>
+
+# Badge
+
+A short label in a pill: a tag, a category, or a status. It labels what’s next to it, and it isn’t interactive.
+
+<Canvas of={BadgeStories.Default} />
+
+## When to use
+
+- **To tag or sort content,** like the type of a project. Use `neutral` for a tag that isn’t one of a set of categories.
+- **To show which category something is in,** with one accent per category.
+- **To show a status,** like a problem, something shipped, or work in progress, with `error`, `success`, or `warning`.
+- **Not for something people click or filter by.** A Badge isn’t a control. Use `Button` or `Link`.
+- **Not for a sentence.** Keep the label to a word or two; for more, use text.
+
+## Accessibility
+
+A Badge renders a `<span>` of text, so screen readers read its label like any other text. It has no role and can’t be focused.
+
+| Situation | What to do | Example |
+|---|---|---|
+| Choosing a color | Make the label say what it means. Color is a second cue, never the only one (WCAG 1.4.1). | “Problem” in `error`, not an empty red pill |
+| A row of tags | Put them in a list, each in an `<li>`, so screen readers say how many there are | `HorizontalStack as="ul"` |
+| A status that changes while someone is on the page | Announce the change some other way, such as a live region (`aria-live`). A Badge doesn’t announce it. | A “Saved” status after a form is sent |
+
+Every color’s text meets the 4.5:1 contrast ratio for text in both themes.
+
+## Color
+
+Neutral and status badges use the default text color; accent badges use the knockout (dark) text, because the accent fills are light.
+
+| `color` | Background | Text | Use for |
+|---|---|---|---|
+| `neutral` | `--verity-color-background-subtle` | `--verity-color-content-default` | The default. A tag that isn’t a category. |
+| `accent-one` to `accent-six` | `--verity-color-background-accent-one` to `-six` | `--verity-color-content-knockout` | Categories, one accent each. The hues differ by theme. |
+| `error` | `--verity-color-background-error` | `--verity-color-content-default` | Something wrong, or a problem to solve |
+| `success` | `--verity-color-background-success` | `--verity-color-content-default` | Something done or working, or an opportunity |
+| `warning` | `--verity-color-background-warning` | `--verity-color-content-default` | Something that needs attention or isn’t finished |
+
+<Canvas of={BadgeStories.Categories} />
+
+<Canvas of={BadgeStories.Status} />
+
+## Space
+
+A Badge adds no space outside itself. Whatever holds it sets the space around it.
+
+| Space | Token |
+|---|---|
+| Left and right, inside | `--verity-padding-xs` |
+| Top and bottom, inside | `--verity-padding-xxs` |
+| Corners | `--verity-border-radius-round` |
+| Text | The `label-sm` text style (`--verity-viewport-typography-label-sm-*`) |
+
+<Canvas of={BadgeStories.InContext} />
+
+## Props
+
+<PropsTable of={BadgeStories} />
+
+## In Figma
+
+| Figma | Code |
+|---|---|
+| Component `Badge` | `<Badge />` |
+| Property `Color` | `color`. `neutral` is the default in both. |
+| Property `Label` | `label` |
+
+</VerityDocs>

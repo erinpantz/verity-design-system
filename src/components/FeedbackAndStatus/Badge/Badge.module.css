@@ -1,0 +1,70 @@
+/* A short label in a pill. Its width follows its text; it adds no space
+   outside itself. */
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  /* Keeps the pill to one line inside a row that wraps */
+  white-space: nowrap;
+  padding: var(--verity-padding-xxs) var(--verity-padding-xs);
+  border-radius: var(--verity-border-radius-round);
+  font-family: var(--verity-viewport-typography-label-sm-font-family);
+  font-size: var(--verity-viewport-typography-label-sm-font-size);
+  font-weight: var(--verity-viewport-typography-label-sm-font-weight);
+  line-height: var(--verity-viewport-typography-label-sm-line-height);
+  letter-spacing: var(--verity-viewport-typography-label-sm-letter-spacing);
+  text-transform: var(--verity-viewport-typography-label-sm-text-transform);
+}
+
+/* A tag that isn't a category */
+.neutral {
+  background: var(--verity-color-background-subtle);
+  color: var(--verity-color-content-default);
+}
+
+/* Categories: each accent's fill, with knockout (dark) text */
+.accent-one {
+  background: var(--verity-color-background-accent-one);
+  color: var(--verity-color-content-knockout);
+}
+
+.accent-two {
+  background: var(--verity-color-background-accent-two);
+  color: var(--verity-color-content-knockout);
+}
+
+.accent-three {
+  background: var(--verity-color-background-accent-three);
+  color: var(--verity-color-content-knockout);
+}
+
+.accent-four {
+  background: var(--verity-color-background-accent-four);
+  color: var(--verity-color-content-knockout);
+}
+
+.accent-five {
+  background: var(--verity-color-background-accent-five);
+  color: var(--verity-color-content-knockout);
+}
+
+.accent-six {
+  background: var(--verity-color-background-accent-six);
+  color: var(--verity-color-content-knockout);
+}
+
+/* Status */
+.error {
+  background: var(--verity-color-background-error);
+  color: var(--verity-color-content-default);
+}
+
+.success {
+  background: var(--verity-color-background-success);
+  color: var(--verity-color-content-default);
+}
+
+.warning {
+  background: var(--verity-color-background-warning);
+  color: var(--verity-color-content-default);
+}
