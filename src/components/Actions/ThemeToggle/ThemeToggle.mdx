@@ -1,0 +1,119 @@
+import { Meta, Canvas } from '@storybook/addon-docs/blocks';
+import { VerityDocs } from '../../../foundations/VerityDocs';
+import { PropsTable } from '../../../foundations/PropsTable';
+import * as ThemeToggleStories from './ThemeToggle.stories';
+
+<Meta of={ThemeToggleStories} />
+
+<VerityDocs>
+
+# ThemeToggle
+
+An icon-only button that switches the whole site between the Blue and Red themes. Its star shows the current theme’s brand color and previews the other theme’s on hover and focus. Hover over it, tab to it, or click it below.
+
+<Canvas of={ThemeToggleStories.Default} />
+
+## When to use
+
+- **Once per page, in MainNav.** It sits above Resume in the side rail and at the right end of the Small top bar. NavContainer and NavOverlay get it through MainNav.
+- **For the site’s theme only.** It changes every page, and the choice is remembered on the next visit.
+- **Not for any other on and off setting.** Use `IconButton`, or `Button` when there’s room for a label.
+- **Not as a link.** It changes the current page, so it’s a `<button>`.
+
+## Accessibility
+
+A ThemeToggle renders a `<button type="button">` inside a `Tooltip`, like `IconButton`. Its label is the tooltip’s text and its name for screen readers (`aria-labelledby`), and the star is decorative.
+
+| Situation | What to do | Example |
+|---|---|---|
+| Writing the label | Say what a click does: the theme it changes to, not the one showing now. The label changes with the theme. | “Change to red” in Blue, “Change to blue” in Red |
+| The theme changes | A visually hidden live region (`role="status"`) tells screen readers what happened. The button’s name changes at the same moment. | “Changed to red” |
+| Showing which theme is on | Don’t add `aria-pressed`. The label already says what a click does, and “pressed” would describe it a second time, the other way around. | — |
+| Using a keyboard | Tab to it, then press Enter or Space. Focus shows the ring, the tooltip, and the next theme’s colors, and the star spins. | — |
+
+The tooltip normally opens beside the button. At the right end of the Small top bar there’s no room, so it opens below the button, lined up with its right edge (see **Actions › Tooltip**).
+
+## Motion
+
+The colors fade, and the star turns. The star looks the same every 45°, so stopping on any 45° step never shows a snap.
+
+| When | What happens | Tokens |
+|---|---|---|
+| Hover or keyboard focus | The star and its glow fade to the next theme’s colors, and the star spins at a steady speed until both hover and focus end. | `--verity-motion-duration-fast` (150), `--verity-motion-easing-standard`, and one turn per `--verity-theme-toggle-duration-rotation` (6000) |
+| Mouse out or blur | The colors fade back. The star turns forward to the next 45° step and stops there. | `--verity-motion-duration-playful` (300), `--verity-motion-easing-standard` |
+| Click, or Enter or Space | The whole site switches theme at once: nothing on the page fades. If the pointer or focus is still on the button, it goes straight to the new theme’s hover look and label, and keeps spinning. | — |
+| Tap on a touch screen | The theme switches, and the star turns one 45° step with a springy settle. There’s no hover preview, and no tooltip. | `--verity-motion-duration-playful` (300), `--verity-motion-easing-playful` |
+| Reduce motion is on | The star never turns. The color fades stay, since they don’t move anything. | — |
+
+Only the star turns: the button’s fill and focus ring stay still.
+
+## States
+
+Size, fills, and focus ring match IconButton md, so the two line up in a column.
+
+| State | What changes | Tokens |
+|---|---|---|
+| Default | The star in the current theme’s brand color, with a soft glow | `--verity-theme-toggle-color-current`, `--verity-theme-toggle-glow-current`, `--verity-theme-toggle-glow-blur` (12) |
+| Hover | A light fill, the next theme’s colors, the spin, and the tooltip. Devices with a real pointer only. | `--verity-color-background-transparent-medium`, `--verity-theme-toggle-color-next`, `--verity-theme-toggle-glow-next` |
+| Focus | A focus ring outside the button, following its corners, the next theme’s colors, the spin, and the tooltip. Keyboard focus only. | `--verity-focus-ring-width`, `--verity-focus-ring-offset`, `--verity-color-border-focus` |
+| Active | A stronger fill and the next theme’s colors while pressed | `--verity-color-background-transparent-strong` |
+| Disabled | None: the theme can always change | — |
+
+<Canvas of={ThemeToggleStories.Hover} />
+
+<Canvas of={ThemeToggleStories.Focus} />
+
+<Canvas of={ThemeToggleStories.Active} />
+
+## Color
+
+The star is the one filled icon outside the nav icons: `icon/theme` uses `fill="currentColor"`, so it takes the star’s color like any other icon. Icon needs nothing special for it.
+
+The star’s colors come from its own tokens, which swap with the theme:
+
+| Theme | At rest (`current`) | On hover, focus, and press (`next`) |
+|---|---|---|
+| Blue | `color/brand/blue/500` | `color/brand/red/500` |
+| Red | `color/brand/red/500` | `color/brand/blue/500` |
+
+Step 500 reaches 3:1 against the dark background, enough for a meaningful graphic (WCAG 1.4.11). The glow is a CSS `drop-shadow`, so it follows the star’s points. It uses the same colors at 50% opacity.
+
+## Props
+
+ThemeToggle has no props. It reads the current theme from the page and switches it with `setTheme`, from `src/styles/theme.ts`.
+
+<PropsTable of={ThemeToggleStories} />
+
+## In Figma
+
+| Figma | Code |
+|---|---|
+| Component `ThemeToggle` | `<ThemeToggle />` |
+| Property `State` | Hover, focus, and active come from the browser. There’s no disabled state. |
+| The tooltip’s text | Set by the theme: “Change to red” or “Change to blue” |
+| Layer `Focus ring` | Not a layer: an outline on keyboard focus, following the button’s md corners |
+| Not in Figma | The spin, the settle, and the tap step (see Motion), and the screen reader announcement |
+| Not in Figma | The tooltip opening below at the screen’s edge |
+
+## Setting up a site
+
+The theme is the `data-theme` attribute on the page’s `<html>` element. `tokens.css` uses Blue when it’s missing or `blue`, and Red when it’s `red`. ThemeToggle saves the visitor’s choice in localStorage under `verity-theme`.
+
+1. **Import Verity’s global styles** once, as for every Verity component. They also turn off every transition for the moment the theme switches, so the whole page changes at once.
+2. **Put `themeScript` first in `<head>`, inline.** It applies the saved theme before the page is painted, so a Red visitor never sees a flash of Blue. It has to be inline, in the page’s HTML: a separate script file would load too late. In a React page template:
+
+   ```tsx
+   // themeScript is in src/styles/theme.ts. Its import path is set when
+   // Verity’s library build is added.
+   <head>
+     <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+     …
+   </head>
+   ```
+
+   First-time visitors have nothing saved and get Blue, with no extra work.
+3. **Use MainNav.** It includes ThemeToggle in the right places at every width.
+
+In Storybook, the Theme toolbar and ThemeToggle set the same attribute, so they always agree: choosing a theme in the toolbar changes the star and its label, and clicking the star changes the toolbar.
+
+</VerityDocs>

@@ -1,0 +1,73 @@
+/* An icon-only button with a glowing star. Size, fills, and focus ring match
+   IconButton md. The star shows the current theme's brand color at rest and
+   previews the other theme's on hover, focus, and press. The rotation is in
+   ThemeToggle.tsx. */
+
+.themeToggle {
+  /* The star's color and glow, changed by each state below */
+  --star: var(--verity-theme-toggle-color-current);
+  --glow: var(--verity-theme-toggle-glow-current);
+
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  inline-size: var(--verity-control-size-md);
+  block-size: var(--verity-control-size-md);
+  margin: 0;
+  padding: 0;
+  border: none;
+  border-radius: var(--verity-border-radius-md);
+  background: transparent;
+  cursor: pointer;
+}
+
+/* The star, filled. A drop-shadow glow follows its shape (a box-shadow would
+   be square). Both fade between states. */
+.star {
+  display: flex;
+  color: var(--star);
+  filter: drop-shadow(0 0 var(--verity-theme-toggle-glow-blur) var(--glow));
+  transition:
+    color var(--verity-motion-duration-fast) var(--verity-motion-easing-standard),
+    filter var(--verity-motion-duration-fast) var(--verity-motion-easing-standard);
+}
+
+/* States. Hover only on devices with a real pointer: on a touch screen, a
+   tap would leave the hover look stuck after the theme changes. */
+
+@media (hover: hover) {
+  .themeToggle:hover {
+    --star: var(--verity-theme-toggle-color-next);
+    --glow: var(--verity-theme-toggle-glow-next);
+
+    background: var(--verity-color-background-transparent-medium);
+  }
+}
+
+/* Keyboard focus: a ring outside the button, following its corners */
+.themeToggle:focus-visible {
+  --star: var(--verity-theme-toggle-color-next);
+  --glow: var(--verity-theme-toggle-glow-next);
+
+  outline: var(--verity-focus-ring-width) solid var(--verity-color-border-focus);
+  outline-offset: var(--verity-focus-ring-offset);
+}
+
+.themeToggle:active {
+  --star: var(--verity-theme-toggle-color-next);
+  --glow: var(--verity-theme-toggle-glow-next);
+
+  background: var(--verity-color-background-transparent-strong);
+}
+
+/* The announcement for screen readers: in the page, but not shown */
+.announcement {
+  position: absolute;
+  overflow: hidden;
+  inline-size: 1px;
+  block-size: 1px;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
