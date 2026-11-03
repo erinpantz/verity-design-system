@@ -1,5 +1,6 @@
 import type { Preview } from '@storybook/react-vite'
 import { useEffect, useGlobals } from 'storybook/preview-api'
+import '../src/styles/fonts.css'
 import '../src/styles/global.css'
 import './preview.css'
 import { ThemedDocsContainer } from './ThemedDocsContainer'

@@ -1,0 +1,10 @@
+/* Verity's fonts, self-hosted with Fontsource (decisions log, Oct 27). Font
+   stacks are set in build-tokens.ts.
+
+   Storybook imports this file. The library build reads it too: it copies the
+   font files into dist/fonts/ and writes their @font-face rules at the top of
+   dist/styles.css, so the fonts ship inside Verity (see build-styles.ts). */
+
+@import '@fontsource-variable/plus-jakarta-sans';
+@import '@fontsource-variable/schibsted-grotesk';
+@import '@fontsource/ibm-plex-mono/400.css';
