@@ -7,7 +7,6 @@
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min(var(--item-min-width), 100%), 1fr));
-  gap: var(--verity-spacing-md);
   /* When the Grid is a list (ul, ol, or dl), remove the browser's bullets,
      numbers, and indents, so it looks the same as a div */
   margin: 0;
@@ -27,4 +26,14 @@
 
 .md {
   --item-min-width: var(--verity-grid-item-min-width-md);
+}
+
+/* Gap: the space between items and between rows */
+
+.gap-md {
+  gap: var(--verity-spacing-md);
+}
+
+.gap-lg {
+  gap: var(--verity-spacing-lg);
 }

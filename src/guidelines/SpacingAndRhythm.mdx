@@ -66,7 +66,7 @@ A Container sets the width and side margins. Its content has no gap, so it holds
 |---|---|---|
 | Things stacked top to bottom, such as full-width screenshots | `VerticalStack` | Its `gap` option (`md` by default) |
 | Things side by side, such as buttons | `HorizontalStack` | Its `gap` option |
-| Items of equal weight that wrap into rows, such as stat cards | `Grid` | `spacing/md` |
+| Items of equal weight that wrap into rows, such as stat cards | `Grid` | Its `gap` option: `md` by default, `lg` for quotes |
 | A set of images shown together | `Gallery` | Its own layout |
 | A heading and the blocks under it | `Section` | `spacing/xl` between blocks |
 
@@ -130,7 +130,7 @@ When a value belongs to one component, it gets a Responsive Tier 3 token named a
 | `nav-item/*` | `NavItem` padding (its tap area) and icon-to-label gap. |
 | `nav-container/*`, `nav-overlay/*` | Navigation thickness and padding. |
 
-The space between `Grid` items, and the gutters of the Figma column guides, use `spacing/md`. `grid/gutter` was removed on October 28, 2026.
+The space between `Grid` items uses `spacing/md` by default, or `spacing/lg` for quotes (Grid’s `gap`). The gutters of the Figma column guides use `spacing/md`. `grid/gutter` was removed on October 28, 2026.
 
 ## In code
 

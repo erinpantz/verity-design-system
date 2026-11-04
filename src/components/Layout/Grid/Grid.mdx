@@ -40,7 +40,18 @@ The narrowest an item can get before the row wraps. Items fill the row evenly an
 | `sm` | `--verity-grid-item-min-width-sm` | 200 | Small items, like thumbnails or logos |
 | `md` | `--verity-grid-item-min-width-md` | 300 | The default: cards with text |
 
-The space between items and between rows is `--verity-spacing-md` (24–32), the same at every item width.
+## Gap
+
+The space between items and between rows, the same at every item width.
+
+| `gap` | Token | Value | Use for |
+|---|---|---|---|
+| `md` | `--verity-spacing-md` | 24–32 | The default: cards and other items with a background or border |
+| `lg` | `--verity-spacing-lg` | 32–48 | Items made of text with no box around them, like `Quote`s |
+
+**Why quotes get more space:** a card’s background or border shows where it ends, so `md` is enough between cards. Quotes are text on the page’s background, so at `md` the end of one quote runs into the start of the next. `lg` gives each quote room to read as its own.
+
+<Canvas of={GridStories.GapLg} />
 
 ## Props
 
@@ -52,6 +63,7 @@ The space between items and between rows is `--verity-spacing-md` (24–32), the
 |---|---|
 | Component `Grid` | `<Grid />` |
 | Property `Item width` | `itemWidth` |
+| Property `Gap` | `gap` |
 | Slot `Content` | `children` |
 | Not in Figma | `as`: choose it in code, from what the items are |
 
