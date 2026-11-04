@@ -19,6 +19,7 @@ Each level of a page owns one kind of space. When something looks too close or t
 |---|---|---|
 | Main (in Shell) | The space between Sections on a page. | Main gap → `main/spacing/section-gap` |
 | Section | The space between its heading and intro, between its header and content, and between the blocks in its Content slot. | Heading to intro → `spacing/sm`<br />Header to content → `spacing/md`<br />Between blocks → `spacing/lg` |
+| Container | No space. It sets the width and side margins, and its content has no gap, so it holds one thing. | — |
 | Stacks | The space between siblings when you compose a layout. | `VerticalStack` and `HorizontalStack` gap → `spacing/*` |
 | Inside a component | The space between a component’s own parts, and the padding inside anything with a background, border, or tap area. | Auto layout gap and padding → `spacing/*`, `padding/*`, `control/*`, or a Tier 3 token |
 | TextBlock | The space between a heading and the component it introduces, such as a list or a Grid of stat cards. | Heading to body → `spacing/sm` |
@@ -34,6 +35,7 @@ Each level of a page owns one kind of space. When something looks too close or t
 | Choose the right tier | Use Tier 2 tokens for general spacing. Use a Tier 3 token when the value belongs to one component. Never bind Core Tier 1 tokens directly. | `spacing/lg` between blocks. `nav-item/padding` inside `NavItem`. Not `spacing/8`. |
 | Gap or padding | `spacing/*` is the space between things. `padding/*` is the inset inside a container. | Section blocks → `spacing/lg`. `Hero` inset → `padding/lg`. |
 | Stack or frame | Use a stack when people compose the content, like a slot or a page layout. A fixed group inside a component can be an auto layout frame, as long as its gap is a token. | `VerticalStack` in a page layout. `Hero`’s Actions frame. |
+| One thing per Container | A Container adds no gap, so two things placed straight in it touch. For more than one, put a stack, a `Grid`, or a `Section` in it, and let that set the gap. | Two screenshots → a `VerticalStack` in a wide `Container`. |
 | Same size, same height | Controls take their height from `control/size/*`, not from their content plus padding, so different controls line up side by side. | An `lg` `Button` next to an `lg` `TextInput`. |
 
 ## A heading and what it introduces
@@ -55,6 +57,25 @@ A heading sits close to what it introduces. Where the heading goes depends on wh
 In MDX, the `TextBlock` wraps the component: `<TextBlock heading="Takeaways">` before the `<UnorderedList>`, and `</TextBlock>` after it.
 
 **Exception:** a component that illustrates the paragraphs above it, such as a `MediaBlock` or a pair of quotes after a paragraph, stays its own block in the Section. Its heading introduces the paragraphs, not the image, so it stays in Prose.
+
+## More than one thing in a Container
+
+A Container sets the width and side margins. Its content has no gap, so it holds one thing. For more than one, put one of these in it and let it set the space:
+
+| What’s in it | Use | Space between them |
+|---|---|---|
+| Things stacked top to bottom, such as full-width screenshots | `VerticalStack` | Its `gap` option (`md` by default) |
+| Things side by side, such as buttons | `HorizontalStack` | Its `gap` option |
+| Items of equal weight that wrap into rows, such as stat cards | `Grid` | `spacing/md` |
+| A set of images shown together | `Gallery` | Its own layout |
+| A heading and the blocks under it | `Section` | `spacing/lg` between blocks |
+
+**Why:** a gap on Container would make it a second kind of stack, with one spacing chosen for everything inside it. Keeping it to width and margins means the space always comes from a component made to set it, which you can see and change in one place.
+
+| Do | Don’t |
+|---|---|
+| Two screenshots in a `VerticalStack`, inside a wide `Container` | Two `MediaBlock`s straight in a `Container`’s Content slot |
+| A `Gallery`, when the images are one set seen side by side | Two `Image`s next to each other in a `Container` |
 
 ## Spacing scale
 
@@ -125,6 +146,6 @@ The same rules apply in code, written in CSS.
 
 Ask Claude to audit spacing in the Figma file with the `figma-spacing-audit` skill. The audit lists gaps and padding without tokens, Core Tier 1 tokens used directly, plain frames that could be stacks, headings set as plain text, and any space outside a component. You review the list and approve the fixes.
 
-The same skill audits page designs that use the library. It finds instances of components or variants that no longer exist, spacing overrides left over from older versions, and Prose blocks that end with a heading followed by a component.
+The same skill audits page designs that use the library. It finds instances of components or variants that no longer exist, spacing overrides left over from older versions, Prose blocks that end with a heading followed by a component, and Containers that hold more than one thing.
 
 </VerityDocs>
