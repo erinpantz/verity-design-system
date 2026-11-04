@@ -9,7 +9,7 @@ import * as TextBlockStories from './TextBlock.stories';
 
 # TextBlock
 
-A heading with body text below it, for short pieces of copy like a project summary. Its heading is level 3 by default, for use inside a Section.
+A heading with what it introduces below it: a few short paragraphs, or a component such as a list or a Grid of stat cards. Its heading is level 3 by default, for use inside a Section.
 
 <Canvas of={TextBlockStories.Default} />
 
@@ -17,8 +17,11 @@ A heading with body text below it, for short pieces of copy like a project summa
 
 - **For short copy with its own heading,** such as “The problem” in a project summary, or each item in a Grid of outcomes.
 - **For one to three short paragraphs.** Each paragraph is separated by the same gap as the heading and the body.
+- **For a heading that introduces a component,** such as “Takeaways” above an `UnorderedList`, or “Outcomes” above a `Grid` of `StatCard`s. Put the component in the body, so the heading sits `--verity-spacing-sm` from it. A heading at the end of a `Prose` block would sit a Section’s block gap away instead. See **Guidelines › Spacing and rhythm**.
 - **Not for long-form text,** like a case study write-up. Use `Prose`, where each block sets the space above it.
 - **Not for a heading on its own.** Use `Heading`.
+
+<Canvas of={TextBlockStories.IntroducingAList} />
 
 ## Accessibility
 
@@ -46,7 +49,7 @@ TextBlock adds no space outside itself. Inside, the space between the heading an
 
 ## Color
 
-The heading and the body both use `--verity-color-content-default`. The body uses the body-default text style (`--verity-viewport-typography-body-default-*`).
+The heading and the body both use `--verity-color-content-default`. The body uses the body-default text style (`--verity-viewport-typography-body-default-*`). A component in the body keeps its own text styles.
 
 ## Props
 

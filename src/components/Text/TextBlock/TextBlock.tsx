@@ -11,8 +11,9 @@ export interface TextBlockProps {
    */
   headingLevel?: 1 | 2 | 3;
   /**
-   * The body text. Plain text becomes one paragraph; for more than one,
-   * write each paragraph as a <p>.
+   * The body: what the heading introduces. Plain text becomes one paragraph;
+   * for more than one, write each paragraph as a <p>. It can also be a
+   * component, such as an UnorderedList or a Grid of StatCards.
    */
   children?: ReactNode;
 }

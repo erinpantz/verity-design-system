@@ -19,6 +19,7 @@ Long-form text, like a case study write-up, where each block sets its own space 
 - **For text written in Markdown.** Prose styles the plain HTML that Markdown produces, so the text needs no components.
 - **Not for laying out components.** Use `VerticalStack` or `Section`, where the layout sets the space with a gap.
 - **Not for short copy with one heading.** Use `TextBlock`.
+- **Not for a heading followed by a component.** Don’t end a Prose block with a heading. A heading that introduces a component, such as an `UnorderedList` or a `Grid` of `StatCard`s, goes in a `TextBlock` with that component. A heading over paragraphs or a Markdown list stays in Prose. See **Guidelines › Spacing and rhythm**.
 
 ## Accessibility
 

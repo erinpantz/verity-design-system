@@ -3,6 +3,7 @@ import { Container } from '../../Layout/Container';
 import { Grid } from '../../Layout/Grid';
 import { VerticalStack } from '../../Layout/VerticalStack';
 import { Heading } from '../Heading';
+import { UnorderedList, UnorderedListItem } from '../UnorderedList';
 import { TextBlock } from './TextBlock';
 
 const meta = {
@@ -38,6 +39,22 @@ export const TwoParagraphs: Story = {
         </p>
         <p>Support tickets about setup doubled in a year, and most asked the same three questions.</p>
       </>
+    ),
+  },
+};
+
+// A heading that introduces a component: the component goes in the body,
+// so the heading sits spacing/sm from it (Guidelines › Spacing and rhythm)
+export const IntroducingAList: Story = {
+  name: 'Introducing a list',
+  args: {
+    heading: 'Takeaways',
+    children: (
+      <UnorderedList>
+        <UnorderedListItem>Most people stalled on the second step of setup.</UnorderedListItem>
+        <UnorderedListItem>Setup asked for the same details twice.</UnorderedListItem>
+        <UnorderedListItem>Support answered the same three questions every day.</UnorderedListItem>
+      </UnorderedList>
     ),
   },
 };
