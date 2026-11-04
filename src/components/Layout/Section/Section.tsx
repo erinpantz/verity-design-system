@@ -25,7 +25,9 @@ export interface SectionProps {
 }
 
 // A <section> named by its heading. Container sets the width, and stacks set
-// the space: header to content, and between the blocks in children.
+// the space from the header to the content. The blocks in children are
+// spaced by Section's own content gap, spacing/xl, which is wider than any
+// stack gap, as in Figma, where the Content slot is bound to spacing/xl.
 export function Section({ heading, headingLevel = 2, intro, width = 'constrained', children }: SectionProps) {
   // A unique id for the heading on this page, so the section can point to it
   const headingId = useId();
@@ -39,7 +41,7 @@ export function Section({ heading, headingLevel = 2, intro, width = 'constrained
             </Heading>
             {intro && <p className={styles.intro}>{intro}</p>}
           </VerticalStack>
-          <VerticalStack gap="lg">{children}</VerticalStack>
+          <div className={styles.content}>{children}</div>
         </VerticalStack>
       </Container>
     </section>

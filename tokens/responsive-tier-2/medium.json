@@ -57,6 +57,10 @@
     "xxs": {
       "$type": "dimension",
       "$value": "{spacing.4}"
+    },
+    "xl": {
+      "$type": "dimension",
+      "$value": "{spacing.40}"
     }
   },
   "control": {

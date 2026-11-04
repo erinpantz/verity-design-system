@@ -1,5 +1,13 @@
-/* Section's layout comes from Container and VerticalStack. Only the intro
-   needs its own styles. */
+/* Section's layout comes from Container and VerticalStack, except the space
+   between its blocks, which is wider than any stack gap. */
+
+/* The blocks in the content: a column, like VerticalStack, with spacing/xl
+   between them */
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--verity-spacing-xl);
+}
 
 .intro {
   /* Remove the browser's default space around paragraphs, so the gap sets it */
