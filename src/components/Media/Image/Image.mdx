@@ -60,12 +60,18 @@ The space around a `contain` image is transparent, so the background behind it s
 
 ## Border radius
 
+Images have rounded corners, unless they run edge to edge.
+
 | `borderRadius` | Token | Use for |
 |---|---|---|
-| `none` | `--verity-border-radius-none` | The default: images that run to the edge of a block |
-| `md` | `--verity-border-radius-md` | Images that sit on their own, like a screenshot in a section |
+| `md` | `--verity-border-radius-md` | The default: every image in a page’s content, on its own or in a `MediaBlock`, `Gallery`, or `MediaText` |
+| `none` | `--verity-border-radius-none` | Only an image that runs edge to edge in a full-bleed `Container`, where rounded corners would meet the screen edges |
 
-<Canvas of={ImageStories.BorderRadiusMd} />
+<Canvas of={ImageStories.BorderRadiusNone} />
+
+**Why rounded by default:** most images sit inside the page’s margins, and rounded corners match the site’s other rounded shapes, such as cards and buttons. Making `md` the default means it’s right without anyone setting it.
+
+**Why `none` is set by hand:** a full-bleed Container could square its images automatically, but Figma couldn’t show that, so Figma and code would disagree. `Hero` works the same way, with the same property. Animation follows this rule too.
 
 ## Loading
 
@@ -85,7 +91,7 @@ Until the picture arrives, a `Skeleton` fills its shape, with the same ratio and
 |---|---|
 | Component `Image` | `<Image />` |
 | Property `Aspect ratio` | `aspectRatio`. `16:9` is the default in both. |
-| Property `Border radius` | `borderRadius`. `none` is the default in both. |
+| Property `Border radius` | `borderRadius`. `md` is the default in both. |
 | The image fill’s scale mode: Fill or Fit | `fit`: Fill → `cover`, Fit → `contain` |
 | The image itself | `src` |
 | Not in Figma | `alt`, which every image needs, and `loading` |

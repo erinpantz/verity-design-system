@@ -15,13 +15,13 @@ const meta = {
     children: (
       <>
         <MediaBlock caption="Early sketches of the new step 2.">
-          <Image src={shapes} alt="Abstract shapes from an early sketch" aspectRatio="3:2" borderRadius="md" />
+          <Image src={shapes} alt="Abstract shapes from an early sketch" aspectRatio="3:2" />
         </MediaBlock>
         <MediaBlock caption="A mood board for the onboarding illustrations.">
-          <Image src={landscape} alt="Hills at dusk, with the sun setting behind them" aspectRatio="3:2" borderRadius="md" />
+          <Image src={landscape} alt="Hills at dusk, with the sun setting behind them" aspectRatio="3:2" />
         </MediaBlock>
         <MediaBlock caption="The final design of step 2, with the explanation added.">
-          <Image src={screenshot} alt="The setup screen, on step 2 of 5: Connect your bank" borderRadius="md" />
+          <Image src={screenshot} alt="The setup screen, on step 2 of 5: Connect your bank" />
         </MediaBlock>
       </>
     ),
@@ -44,13 +44,13 @@ export const WithoutCaptions: Story = {
     children: (
       <>
         <MediaBlock>
-          <Image src={shapes} alt="Abstract shapes from an early sketch" aspectRatio="3:2" borderRadius="md" />
+          <Image src={shapes} alt="Abstract shapes from an early sketch" aspectRatio="3:2" />
         </MediaBlock>
         <MediaBlock>
-          <Image src={landscape} alt="Hills at dusk, with the sun setting behind them" aspectRatio="3:2" borderRadius="md" />
+          <Image src={landscape} alt="Hills at dusk, with the sun setting behind them" aspectRatio="3:2" />
         </MediaBlock>
         <MediaBlock>
-          <Image src={screenshot} alt="The setup screen, on step 2 of 5: Connect your bank" borderRadius="md" />
+          <Image src={screenshot} alt="The setup screen, on step 2 of 5: Connect your bank" />
         </MediaBlock>
       </>
     ),
@@ -64,13 +64,13 @@ export const InContext: StoryObj = {
     <Section heading="Exploring the design" intro="From first sketches to the final screen." width="wide">
       <Gallery>
         <MediaBlock caption="Early sketches of the new step 2.">
-          <Image src={shapes} alt="Abstract shapes from an early sketch" aspectRatio="3:2" borderRadius="md" />
+          <Image src={shapes} alt="Abstract shapes from an early sketch" aspectRatio="3:2" />
         </MediaBlock>
         <MediaBlock caption="A mood board for the onboarding illustrations.">
-          <Image src={landscape} alt="Hills at dusk, with the sun setting behind them" aspectRatio="3:2" borderRadius="md" />
+          <Image src={landscape} alt="Hills at dusk, with the sun setting behind them" aspectRatio="3:2" />
         </MediaBlock>
         <MediaBlock caption="The final design of step 2, with the explanation added.">
-          <Image src={screenshot} alt="The setup screen, on step 2 of 5: Connect your bank" borderRadius="md" />
+          <Image src={screenshot} alt="The setup screen, on step 2 of 5: Connect your bank" />
         </MediaBlock>
       </Gallery>
     </Section>

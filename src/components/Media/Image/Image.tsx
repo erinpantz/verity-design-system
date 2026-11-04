@@ -12,7 +12,10 @@ export interface ImageProps {
   alt: string;
   /** The image’s shape. It fills its container’s width and keeps this ratio. */
   aspectRatio?: '16:9' | '3:2' | '1:1';
-  /** The corners: square, or rounded with border/radius/md */
+  /**
+   * The corners: rounded with border/radius/md, or square. Use none only for
+   * an image that runs edge to edge in a full-bleed Container.
+   */
   borderRadius?: 'none' | 'md';
   /**
    * How the picture fills the shape: cover crops it to fill, contain shows
@@ -35,7 +38,7 @@ export function Image({
   src,
   alt,
   aspectRatio = '16:9',
-  borderRadius = 'none',
+  borderRadius = 'md',
   fit = 'cover',
   loading = 'lazy',
 }: ImageProps) {

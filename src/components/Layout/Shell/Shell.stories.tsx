@@ -27,13 +27,13 @@ const page = (
     <Section heading="Selected work">
       <Gallery>
         <MediaBlock caption="Setup, before: step 2 asked for a bank login with no explanation.">
-          <Image src={screenshot} alt="The setup screen, on step 2 of 5: Connect your bank" borderRadius="md" />
+          <Image src={screenshot} alt="The setup screen, on step 2 of 5: Connect your bank" />
         </MediaBlock>
         <MediaBlock caption="Early sketches of the new flow.">
-          <Image src={shapes} alt="Overlapping circles in blue, yellow, and green" borderRadius="md" />
+          <Image src={shapes} alt="Overlapping circles in blue, yellow, and green" />
         </MediaBlock>
         <MediaBlock caption="Field research with small-business owners in Ohio.">
-          <Image src={landscape} alt="Hills at dusk, with the sun setting behind them" borderRadius="md" />
+          <Image src={landscape} alt="Hills at dusk, with the sun setting behind them" />
         </MediaBlock>
       </Gallery>
     </Section>

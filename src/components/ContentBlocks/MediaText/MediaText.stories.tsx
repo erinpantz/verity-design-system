@@ -14,7 +14,7 @@ const text = (
 
 const media = (
   <MediaBlock caption="Step 2 of the old setup">
-    <Image src={screenshot} alt="The setup screen, on step 2 of 5: Connect your bank" borderRadius="md" />
+    <Image src={screenshot} alt="The setup screen, on step 2 of 5: Connect your bank" />
   </MediaBlock>
 );
 

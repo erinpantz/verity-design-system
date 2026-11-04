@@ -11,7 +11,7 @@ const meta = {
   args: {
     caption: 'Step 2 asked for a bank login with no explanation.',
     children: (
-      <Image src={screenshot} alt="The setup screen, on step 2 of 5: Connect your bank" borderRadius="md" />
+      <Image src={screenshot} alt="The setup screen, on step 2 of 5: Connect your bank" />
     ),
   },
   argTypes: {
@@ -48,7 +48,7 @@ export const InContext: StoryObj = {
         <p>Half of the people who reached step 2 left the flow there.</p>
       </Prose>
       <MediaBlock caption="Step 2 asked for a bank login with no explanation.">
-        <Image src={screenshot} alt="The setup screen, on step 2 of 5: Connect your bank" borderRadius="md" />
+        <Image src={screenshot} alt="The setup screen, on step 2 of 5: Connect your bank" />
       </MediaBlock>
     </Section>
   ),
