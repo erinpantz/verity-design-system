@@ -3,17 +3,22 @@
 .mediaBlock {
   display: flex;
   flex-direction: column;
-  gap: var(--verity-spacing-sm);
+  gap: var(--verity-spacing-xs);
   /* Remove the browser's default space around a <figure> */
   margin: 0;
 }
 
 .caption {
+  /* Centered under the media, and never wider than the content column, even under wide media */
+  align-self: center;
+  inline-size: 100%;
+  max-inline-size: var(--verity-content-column-width);
+  text-align: center;
   color: var(--verity-color-content-subtle);
-  font-family: var(--verity-viewport-typography-body-sm-font-family);
-  font-size: var(--verity-viewport-typography-body-sm-font-size);
-  font-weight: var(--verity-viewport-typography-body-sm-font-weight);
-  line-height: var(--verity-viewport-typography-body-sm-line-height);
-  letter-spacing: var(--verity-viewport-typography-body-sm-letter-spacing);
-  text-transform: var(--verity-viewport-typography-body-sm-text-transform);
+  font-family: var(--verity-viewport-typography-body-default-font-family);
+  font-size: var(--verity-viewport-typography-body-default-font-size);
+  font-weight: var(--verity-viewport-typography-body-default-font-weight);
+  line-height: var(--verity-viewport-typography-body-default-line-height);
+  letter-spacing: var(--verity-viewport-typography-body-default-letter-spacing);
+  text-transform: var(--verity-viewport-typography-body-default-text-transform);
 }

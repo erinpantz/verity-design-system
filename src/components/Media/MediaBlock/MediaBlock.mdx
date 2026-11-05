@@ -36,7 +36,7 @@ The media is the MediaBlock’s `children`: an `Image` today, and an `Animation`
 
 ## Caption
 
-The caption uses the body-sm text style (`--verity-viewport-typography-body-sm-*`) in `--verity-color-content-subtle`, so it reads as a note on the picture, quieter than the text around it.
+The caption is centered under the media, in the body-default text style (`--verity-viewport-typography-body-default-*`) and `--verity-color-content-subtle`, so it reads as a note on the picture, quieter than the text around it. It’s never wider than the content column (`--verity-content-column-width`, 880), so under wide media it stays a comfortable line length instead of stretching across the page.
 
 <Canvas of={MediaBlockStories.LongCaption} />
 
@@ -46,7 +46,7 @@ In a `Section` or `Container`, every block sits in the content column, `--verity
 
 ## Space
 
-The caption sits `--verity-spacing-sm` (16–24) below the media. A MediaBlock adds no space outside itself; the `Section` or `Gallery` it’s in sets the space around it.
+The caption sits `--verity-spacing-xs` (8–16) below the media, close enough to read as part of it. A MediaBlock adds no space outside itself; the `Section` or `Gallery` it’s in sets the space around it.
 
 ## Props
 
