@@ -18,6 +18,7 @@ const meta = {
     ),
   },
   argTypes: {
+    width: { control: 'inline-radio', options: ['column', 'wide'] },
     gap: { control: 'inline-radio', options: ['none', 'xxs', 'xs', 'sm', 'md', 'lg'] },
     align: { control: 'inline-radio', options: ['stretch', 'start', 'center', 'end'] },
     // A list needs <li> items, so it's chosen in code, not here

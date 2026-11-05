@@ -23,6 +23,7 @@ const meta = {
     ),
   },
   argTypes: {
+    width: { control: 'inline-radio', options: ['column', 'wide'] },
     gap: { control: 'inline-radio', options: ['none', 'xxs', 'xs', 'sm', 'md', 'lg'] },
     align: { control: 'inline-radio', options: ['start', 'center', 'end'] },
     wrap: { control: 'boolean' },

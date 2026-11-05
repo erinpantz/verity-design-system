@@ -14,6 +14,12 @@ export interface HorizontalStackProps {
   /** Whether items that don’t fit move onto a new line */
   wrap?: boolean;
   /**
+   * How wide it can get in a Section or Container: column (the default), or
+   * wide to break out to the full width, like a stack of screenshots that
+   * need room. Inside another component, it fills the space it's given.
+   */
+  width?: 'column' | 'wide';
+  /**
    * The HTML element: ul for a list of similar things, ol for steps in order,
    * dl for label and value pairs (MetaItems), or div when it isn’t a list.
    * With ul or ol, write each item as an <li>.
@@ -26,12 +32,14 @@ export function HorizontalStack({
   gap = 'md',
   align = 'center',
   wrap = false,
+  width = 'column',
   as: Element = 'div',
 }: HorizontalStackProps) {
   const classes = [styles.stack, styles[`gap-${gap}`], styles[`align-${align}`], wrap && styles.wrap];
   return (
     <Element
       className={classes.filter(Boolean).join(' ')}
+      data-width={width}
       // Safari stops announcing a list once its bullets are removed, unless it has role="list".
       // A dl keeps its own role.
       role={Element === 'ul' || Element === 'ol' ? 'list' : undefined}

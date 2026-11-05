@@ -34,14 +34,16 @@ A Container renders a `<div>` by default. Use `as` to choose the element, based 
 
 Every block sits in the content column, `--verity-content-column-width` (880), centered. So text, MediaText, quotes, and lists all share left and right edges down the page, and lines of text stay a readable length.
 
-A `MediaBlock`, `Gallery`, or `Grid` can break out with `width="wide"`, up to `--verity-content-wide-width` (1824), still centered. Nothing else does, so a wide block always reads as intentional.
+A `MediaBlock`, `Gallery`, `Grid`, `VerticalStack`, or `HorizontalStack` can break out with `width="wide"`, up to `--verity-content-wide-width` (1824), still centered. Nothing else does, so a wide block always reads as intentional.
 
 | Block | Width | Token |
 |---|---|---|
 | Everything, by default | The column | `--verity-content-column-width` (880) |
-| `MediaBlock`, `Gallery`, or `Grid` with `width="wide"` | The full width | `--verity-content-wide-width` (1824) |
+| `MediaBlock`, `Gallery`, `Grid`, `VerticalStack`, or `HorizontalStack` with `width="wide"` | The full width | `--verity-content-wide-width` (1824) |
 
-The width applies to the outermost block. An `Image` inside a `MediaBlock` takes the MediaBlock’s width; a MediaBlock inside a `Gallery` takes the Gallery’s.
+The width applies to the outermost block. An `Image` inside a `MediaBlock` takes the MediaBlock’s width; a MediaBlock inside a `Gallery` or a stack takes the Gallery’s or the stack’s. In Figma, set those inner MediaBlocks to `Width=wide`, since each MediaBlock holds itself to the column there.
+
+**When to go wide:** sparingly, to highlight something or show detail. Most images read best in the column: they line up with the text, take less space, and let the reader see more of the story at once.
 
 The page’s side margins come from Shell, so a Container has none of its own.
 

@@ -4,7 +4,7 @@ import styles from './Container.module.css';
 export interface ContainerProps {
   /**
    * The content. Each block is held to the content column, centered; a
-   * MediaBlock, Gallery, or Grid with width="wide" spans the full width.
+   * MediaBlock, Gallery, Grid, or stack with width="wide" spans the full width.
    */
   children?: ReactNode;
   /**

@@ -14,7 +14,7 @@ export interface SectionProps {
   intro?: string;
   /**
    * The blocks that belong to the section, from top to bottom. Each sits in
-   * the content column; a MediaBlock, Gallery, or Grid with width="wide"
+   * the content column; a MediaBlock, Gallery, Grid, or stack with width="wide"
    * spans the full width.
    */
   children?: ReactNode;

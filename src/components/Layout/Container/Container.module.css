@@ -1,7 +1,7 @@
 /* The content column, centered, with room to break out. Three tracks: space,
    the column (content/column-width), and space. Every block goes in the
    column, so all blocks share left and right edges; a block marked
-   data-width="wide" (MediaBlock, Gallery, or Grid with width="wide") spans
+   data-width="wide" (MediaBlock, Gallery, Grid, or stack with width="wide") spans
    all three, up to content/wide-width. No side margins: Shell sets those.
 
    In Figma, each block component carries the column as its max width and

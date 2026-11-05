@@ -12,6 +12,12 @@ export interface VerticalStackProps {
    */
   align?: 'stretch' | 'start' | 'center' | 'end';
   /**
+   * How wide it can get in a Section or Container: column (the default), or
+   * wide to break out to the full width, like a stack of screenshots that
+   * need room. Inside another component, it fills the space it's given.
+   */
+  width?: 'column' | 'wide';
+  /**
    * The HTML element: ul for a list of similar things, ol for steps in order,
    * dl for label and value pairs (MetaItems), or div when it isn’t a list.
    * With ul or ol, write each item as an <li>.
@@ -19,10 +25,11 @@ export interface VerticalStackProps {
   as?: 'div' | 'ul' | 'ol' | 'dl';
 }
 
-export function VerticalStack({ children, gap = 'md', align = 'stretch', as: Element = 'div' }: VerticalStackProps) {
+export function VerticalStack({ children, gap = 'md', align = 'stretch', width = 'column', as: Element = 'div' }: VerticalStackProps) {
   return (
     <Element
       className={`${styles.stack} ${styles[`gap-${gap}`]} ${styles[`align-${align}`]}`}
+      data-width={width}
       // Safari stops announcing a list once its bullets are removed, unless it has role="list".
       // A dl keeps its own role.
       role={Element === 'ul' || Element === 'ol' ? 'list' : undefined}
