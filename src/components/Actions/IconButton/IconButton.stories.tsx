@@ -1,7 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
+import landscape from '../../../foundations/sample-images/landscape.jpg';
 import { ICON_NAMES } from '../../../icons/icons.generated';
 import { HorizontalStack } from '../../Layout/HorizontalStack';
 import { VerticalStack } from '../../Layout/VerticalStack';
+import { Image } from '../../Media/Image';
 import { IconButton } from './IconButton';
 
 const meta = {
@@ -11,12 +13,14 @@ const meta = {
     icon: 'dock-to-left',
     label: 'Collapse navigation',
     size: 'md',
+    background: 'none',
     disabled: false,
   },
   argTypes: {
     icon: { control: 'select', options: ICON_NAMES },
     label: { control: 'text' },
     size: { control: 'inline-radio', options: ['xl', 'lg', 'md', 'sm'] },
+    background: { control: 'inline-radio', options: ['none', 'scrim'] },
     disabled: { control: 'boolean' },
     onClick: { control: false },
   },
@@ -42,6 +46,28 @@ export const Sizes: StoryObj = {
 
 export const Disabled: Story = {
   args: { disabled: true },
+};
+
+// On top of a picture, like Animation's pause button: the scrim keeps the
+// icon readable whatever is behind it. Hover and press it to see the fills
+// stack on the scrim, and use the controls to try disabled.
+export const OnAnImage: Story = {
+  name: 'On an image',
+  args: { icon: 'pause', label: 'Pause animation', size: 'sm', background: 'scrim' },
+  render: (args) => (
+    <div style={{ position: 'relative' }}>
+      <Image src={landscape} alt="Hills at dusk, with the sun setting behind them" />
+      <div
+        style={{
+          position: 'absolute',
+          insetBlockEnd: 'var(--verity-padding-xs)',
+          insetInlineEnd: 'var(--verity-padding-xs)',
+        }}
+      >
+        <IconButton {...args} />
+      </div>
+    </div>
+  ),
 };
 
 // A column of actions, like the controls at the top of a collapsed sidebar.

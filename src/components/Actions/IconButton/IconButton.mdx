@@ -46,21 +46,36 @@ Square, from the control size tokens, so an IconButton lines up with a Button of
 
 <Canvas of={IconButtonStories.Sizes} />
 
+## Background
+
+| `background` | Token | Use for |
+|---|---|---|
+| `none` | None: the page shows through | The default. Buttons on the page’s own background, like the navigation. |
+| `scrim` | `--verity-color-background-scrim` | Buttons on top of an image or animation, like Animation’s pause button |
+
+**Use `scrim` whenever the button sits on media.** A picture can be light, dark, or busy right where the button is, and the icon alone could disappear into it. The scrim is a dark, see-through fill that keeps the icon readable against anything, while still letting the picture show through.
+
+**Don’t use `scrim` on the page’s background.** There, the icon is already readable, and the fill would make the button look pressed.
+
+The scrim is the button’s base layer. Hover and pressed add the same fills as `none`, on top of the scrim, so the button reacts the same way on media as it does on the page.
+
+<Canvas of={IconButtonStories.OnAnImage} />
+
 ## States
 
 | State | What changes | Tokens |
 |---|---|---|
-| Default | The icon, with no fill | `--verity-color-content-default` |
-| Hover | A light fill behind the icon, and the tooltip | `--verity-color-background-transparent-medium` |
+| Default | The icon, with no fill, or on the scrim | `--verity-color-content-default`, `--verity-color-background-scrim` |
+| Hover | A light fill behind the icon, on top of any scrim, and the tooltip | `--verity-color-background-transparent-medium` |
 | Focus | A focus ring outside the button, following its corners, and the tooltip. Keyboard focus only. | `--verity-focus-ring-width`, `--verity-focus-ring-offset`, `--verity-color-border-focus` |
-| Active | A stronger fill while pressed | `--verity-color-background-transparent-strong` |
-| Disabled | A dimmed icon and no fill. The tooltip still shows on hover. | `--verity-color-content-disabled` |
+| Active | A stronger fill while pressed, on top of any scrim | `--verity-color-background-transparent-strong` |
+| Disabled | A dimmed icon and no hover or pressed fill. A scrim stays. The tooltip still shows on hover. | `--verity-color-content-disabled` |
 
 <Canvas of={IconButtonStories.Disabled} />
 
 ## Color
 
-The icon uses `--verity-color-content-default`, and the corners use `--verity-border-radius-md`, like Button. IconButton is for the site’s background; it has no brand or knockout color yet.
+The icon uses `--verity-color-content-default`, and the corners use `--verity-border-radius-md`, like Button. On media, `background="scrim"` puts the icon on `--verity-color-background-scrim` (see Background). IconButton has no brand or knockout color yet.
 
 ## Props
 
@@ -74,6 +89,7 @@ The icon uses `--verity-color-content-default`, and the corners use `--verity-bo
 | The icon instance | `icon`: the icon’s name |
 | The tooltip’s text | `label`, which is also the button’s name |
 | Property `Size` | `size`. `md` is the default in both. |
+| Property `Background` | `background`. `none` is the default in both. |
 | Property `State` | Hover, focus, and active come from the browser. `State=disabled` → `disabled`. |
 | Property `Show tooltip` | Figma-only, for mockups. In code, the tooltip always shows on hover and focus. |
 | Layer `Focus ring` | Not a layer: an outline on keyboard focus |

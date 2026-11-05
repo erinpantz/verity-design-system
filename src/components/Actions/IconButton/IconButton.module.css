@@ -1,5 +1,5 @@
-/* A square button with an icon and no visible label. It has no fill until
-   it's hovered or pressed. */
+/* A square button with an icon and no visible label. Its background is
+   either nothing or a scrim; hover and press add a fill on top of it. */
 
 .iconButton {
   display: inline-flex;
@@ -13,7 +13,6 @@
   padding: 0;
   border: none;
   border-radius: var(--verity-border-radius-md);
-  background: transparent;
   color: var(--verity-color-content-default);
   cursor: pointer;
 }
@@ -36,14 +35,33 @@
   --size: var(--verity-control-size-sm);
 }
 
-/* States */
+/* Background: the base layer, under the hover and pressed fills */
+
+.none {
+  background-color: transparent;
+}
+
+/* For a button on top of an image or animation, so the icon stays readable */
+.scrim {
+  background-color: var(--verity-color-background-scrim);
+}
+
+/* States. Hover and pressed add a fill on top of the background, as an image
+   layer over the background color, so a scrim stays under it. A gradient
+   from a color to itself is a solid layer of that color. */
 
 .iconButton:hover {
-  background: var(--verity-color-background-transparent-medium);
+  background-image: linear-gradient(
+    var(--verity-color-background-transparent-medium),
+    var(--verity-color-background-transparent-medium)
+  );
 }
 
 .iconButton:active {
-  background: var(--verity-color-background-transparent-strong);
+  background-image: linear-gradient(
+    var(--verity-color-background-transparent-strong),
+    var(--verity-color-background-transparent-strong)
+  );
 }
 
 /* Keyboard focus: a ring outside the button, following its corners */
@@ -52,10 +70,11 @@
   outline-offset: var(--verity-focus-ring-offset);
 }
 
-/* Disabled: no hover or pressed fill, and a dimmed icon. The icon uses
-   currentColor, so it takes this color. */
+/* Disabled: no hover or pressed fill, and a dimmed icon. The background
+   stays, so a scrim still sits behind the icon. The icon uses currentColor,
+   so it takes this color. */
 .iconButton:disabled {
-  background: transparent;
+  background-image: none;
   color: var(--verity-color-content-disabled);
   cursor: default;
 }
