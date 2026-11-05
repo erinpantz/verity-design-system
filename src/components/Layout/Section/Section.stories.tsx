@@ -17,7 +17,6 @@ const meta = {
     heading: 'Research and discovery',
     headingLevel: 2,
     intro: 'We started with the people who left, to learn where setup lost them.',
-    width: 'constrained',
     children: (
       <>
         <TextBlock heading="The problem">
@@ -34,7 +33,6 @@ const meta = {
     heading: { control: 'text' },
     headingLevel: { control: 'inline-radio', options: [1, 2, 3] },
     intro: { control: 'text' },
-    width: { control: 'inline-radio', options: ['constrained', 'wide'] },
     children: { control: false },
   },
 } satisfies Meta<typeof Section>;
@@ -50,13 +48,14 @@ export const WithoutIntro: Story = {
   args: { intro: undefined },
 };
 
+// A Grid set to wide breaks out of the column; the header and other blocks stay in it
 export const Wide: Story = {
+  name: 'With a wide block',
   args: {
     heading: 'Outcomes',
     intro: 'Three months after launch, setup was faster and more people finished it.',
-    width: 'wide',
     children: (
-      <Grid>
+      <Grid width="wide">
         <TextBlock heading="Faster setup">The median time to connect an account fell from 14 minutes to 4.</TextBlock>
         <TextBlock heading="Fewer tickets">Setup tickets dropped by 60 percent.</TextBlock>
         <TextBlock heading="More customers stayed">Three in four finished setup, up from one in two.</TextBlock>
@@ -105,7 +104,7 @@ export const InContext: StoryObj = {
           </UnorderedListItem>
         </UnorderedList>
       </Section>
-      <Section heading="Outcomes" width="wide">
+      <Section heading="Outcomes">
         <Grid>
           <TextBlock heading="Faster setup">The median time to connect an account fell from 14 minutes to 4.</TextBlock>
           <TextBlock heading="Fewer tickets">Setup tickets dropped by 60 percent.</TextBlock>

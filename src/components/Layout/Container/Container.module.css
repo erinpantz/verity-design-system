@@ -1,15 +1,30 @@
-/* A maximum width for the content, and nothing else: no side margins and no
-   centering. Every Container starts at the left edge of Main, so text and
-   media on a page share one left edge. Shell sets the page's side margins. */
+/* The content column, centered, with room to break out. Three tracks: space,
+   the column (content/column-width), and space. Every block goes in the
+   column, so all blocks share left and right edges; a block marked
+   data-width="wide" (MediaBlock, Gallery, or Grid with width="wide") spans
+   all three, up to content/wide-width. No side margins: Shell sets those.
+
+   In Figma, each block component carries the column as its max width and
+   Container centers them; the result is the same. */
 
 .container {
-  max-inline-size: var(--max-width);
+  display: grid;
+  grid-template-columns:
+    [wide-start] minmax(0, 1fr)
+    [column-start] minmax(0, var(--verity-content-column-width))
+    [column-end] minmax(0, 1fr)
+    [wide-end];
+  max-inline-size: var(--verity-content-wide-width);
+  /* Centered in Main */
+  margin-inline: auto;
+  inline-size: 100%;
 }
 
-.constrained {
-  --max-width: var(--verity-container-constrained-max-width);
+.container > * {
+  grid-column: column;
+  min-inline-size: 0;
 }
 
-.wide {
-  --max-width: var(--verity-container-wide-max-width);
+.container > [data-width='wide'] {
+  grid-column: wide;
 }

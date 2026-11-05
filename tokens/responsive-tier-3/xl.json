@@ -1,30 +1,26 @@
 {
-  "container": {
-    "constrained": {
-      "max-width": {
-        "$type": "dimension",
-        "$value": "960px",
-        "$description": "The widest a constrained Container’s content gets. The side margins come from Shell (main/padding-inline), not from Container.",
-        "$extensions": {
-          "com.figma": {
-            "scopes": [
-              "WIDTH_HEIGHT"
-            ]
-          }
+  "content": {
+    "column-width": {
+      "$type": "dimension",
+      "$value": "880px",
+      "$description": "The width of the content column: every block on a page (text, MediaText, quotes, lists) is this wide at most, centered, so all blocks share left and right edges. MediaBlock, Gallery, and Grid can opt out with Width=wide.",
+      "$extensions": {
+        "com.figma": {
+          "scopes": [
+            "WIDTH_HEIGHT"
+          ]
         }
       }
     },
-    "wide": {
-      "max-width": {
-        "$type": "dimension",
-        "$value": "1824px",
-        "$description": "The widest a wide Container’s content gets. The side margins come from Shell (main/padding-inline), not from Container.",
-        "$extensions": {
-          "com.figma": {
-            "scopes": [
-              "WIDTH_HEIGHT"
-            ]
-          }
+    "wide-width": {
+      "$type": "dimension",
+      "$value": "1824px",
+      "$description": "The widest a page’s content gets: Sections and Containers span up to this width, and MediaBlock, Gallery, and Grid set to Width=wide fill it.",
+      "$extensions": {
+        "com.figma": {
+          "scopes": [
+            "WIDTH_HEIGHT"
+          ]
         }
       }
     }
@@ -373,20 +369,6 @@
               "EFFECT_FLOAT"
             ]
           }
-        }
-      }
-    }
-  },
-  "text": {
-    "max-width": {
-      "$type": "dimension",
-      "$value": "680px",
-      "$description": "The widest text gets, so lines stay easy to read: Prose, TextBlock, Section’s header, MediaBlock’s caption, and Quote. Media and grids keep the full width.",
-      "$extensions": {
-        "com.figma": {
-          "scopes": [
-            "WIDTH_HEIGHT"
-          ]
         }
       }
     }

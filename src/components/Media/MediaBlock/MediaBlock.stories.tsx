@@ -15,6 +15,7 @@ const meta = {
     ),
   },
   argTypes: {
+    width: { control: 'inline-radio', options: ['column', 'wide'] },
     caption: { control: 'text' },
     children: { control: false },
   },
@@ -43,7 +44,7 @@ export const InContext: StoryObj = {
   name: 'In context',
   parameters: { layout: 'fullscreen' },
   render: () => (
-    <Section heading="Before the redesign" intro="The old setup flow had five steps and no explanations." width="wide">
+    <Section heading="Before the redesign" intro="The old setup flow had five steps and no explanations.">
       <Prose>
         <p>Half of the people who reached step 2 left the flow there.</p>
       </Prose>

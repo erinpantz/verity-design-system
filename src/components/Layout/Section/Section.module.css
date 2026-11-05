@@ -1,21 +1,46 @@
-/* Section's layout comes from Container and VerticalStack, except the space
-   between its blocks, which is wider than any stack gap. */
+/* The same column as Container: space, the content column, and space. The
+   header sits in the column; the content spans all three tracks and lines its
+   blocks up on the same tracks (subgrid), so each block sits in the column
+   and a block marked data-width="wide" spans the full width. */
 
-/* The header: the heading and intro, at the text width, so the heading lines
-   up with the text below it */
+.section {
+  display: grid;
+  grid-template-columns:
+    [wide-start] minmax(0, 1fr)
+    [column-start] minmax(0, var(--verity-content-column-width))
+    [column-end] minmax(0, 1fr)
+    [wide-end];
+  row-gap: var(--verity-spacing-md);
+  max-inline-size: var(--verity-content-wide-width);
+  /* Centered in Main */
+  margin-inline: auto;
+  inline-size: 100%;
+}
+
+/* The heading and intro, in the column */
 .header {
+  grid-column: column;
   display: flex;
   flex-direction: column;
   gap: var(--verity-spacing-sm);
-  max-inline-size: var(--verity-text-max-width);
+  min-inline-size: 0;
 }
 
-/* The blocks in the content: a column, like VerticalStack, with spacing/xl
-   between them */
+/* The blocks, with spacing/xl between them, wider than any stack gap */
 .content {
-  display: flex;
-  flex-direction: column;
-  gap: var(--verity-spacing-xl);
+  grid-column: wide;
+  display: grid;
+  grid-template-columns: subgrid;
+  row-gap: var(--verity-spacing-xl);
+}
+
+.content > * {
+  grid-column: column;
+  min-inline-size: 0;
+}
+
+.content > [data-width='wide'] {
+  grid-column: wide;
 }
 
 .intro {

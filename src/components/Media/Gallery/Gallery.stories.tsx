@@ -27,6 +27,7 @@ const meta = {
     ),
   },
   argTypes: {
+    width: { control: 'inline-radio', options: ['column', 'wide'] },
     layout: { control: 'inline-radio', options: ['2+1'] },
     children: { control: false },
   },
@@ -61,7 +62,7 @@ export const InContext: StoryObj = {
   name: 'In context',
   parameters: { layout: 'fullscreen' },
   render: () => (
-    <Section heading="Exploring the design" intro="From first sketches to the final screen." width="wide">
+    <Section heading="Exploring the design" intro="From first sketches to the final screen.">
       <Gallery>
         <MediaBlock caption="Early sketches of the new step 2.">
           <Image src={shapes} alt="Abstract shapes from an early sketch" aspectRatio="3:2" />

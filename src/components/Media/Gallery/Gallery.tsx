@@ -9,12 +9,22 @@ export interface GalleryProps {
   layout?: '2+1';
   /** The items, each a MediaBlock, in reading order */
   children: ReactNode;
+  /**
+   * How wide it can get in a Section or Container: column (the default), or
+   * wide to break out to the full width. Inside another component, it fills
+   * the space it's given.
+   */
+  width?: 'column' | 'wide';
 }
 
 // Class names for each layout, since "+" can't be part of one. To add a
 // layout, add it to the layout type, here, and in Gallery.module.css.
 const LAYOUT = { '2+1': 'layout-2-1' } as const;
 
-export function Gallery({ layout = '2+1', children }: GalleryProps) {
-  return <div className={`${styles.gallery} ${styles[LAYOUT[layout]]}`}>{children}</div>;
+export function Gallery({ layout = '2+1', children, width = 'column' }: GalleryProps) {
+  return (
+    <div className={`${styles.gallery} ${styles[LAYOUT[layout]]}`} data-width={width}>
+      {children}
+    </div>
+  );
 }

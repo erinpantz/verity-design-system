@@ -28,7 +28,6 @@ const meta = {
   title: 'Layout/Footer',
   component: Footer,
   args: {
-    width: 'constrained',
     callToAction: {
       heading: 'Let’s work together',
       text: 'Have a project in mind, or want to talk design systems? Book a 30-minute call.',
@@ -39,7 +38,6 @@ const meta = {
     copyrightName: 'Erin Tozour',
   },
   argTypes: {
-    width: { control: 'inline-radio', options: ['constrained', 'wide'] },
     callToAction: { control: 'object' },
     linkGroups: { control: false },
     copyrightName: { control: 'text' },
@@ -51,10 +49,6 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-// Constrained, the same width as a constrained Section. Narrow the window to
+// In the content column, like every Section above it. Narrow the window to
 // see the links wrap below the call to action.
 export const Default: Story = {};
-
-export const Wide: Story = {
-  args: { width: 'wide' },
-};

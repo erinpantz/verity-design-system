@@ -31,14 +31,9 @@ A Footer renders a `<footer>`. Outside `<main>`, it’s the page’s footer land
 
 ## Width
 
-| `width` | Matches | Use for |
-|---|---|---|
-| `constrained` | The default. A constrained `Container` and `Section`: `--verity-container-constrained-*` | Pages of reading width, like most of the site |
-| `wide` | A wide Container and Section: `--verity-container-wide-*` | Pages whose sections are wide |
+The Footer sits in the content column, `--verity-content-column-width` (880), centered, like every Section above it.
 
-<Canvas of={FooterStories.Wide} />
-
-The call to action and the link groups sit side by side, and the links wrap below when there isn’t room for the call to action at its max width and the links at their min. That happens because of the Footer’s own width, not the screen’s: in the constrained Footer, below XL; in the wide Footer, on Medium and Small and on narrow Large screens.
+The call to action and the link groups sit side by side, and the links wrap below when there isn’t room for the call to action at its max width and the links at their min. That happens because of the Footer’s own width, not the screen’s.
 
 | Part | Narrowest | Widest |
 |---|---|---|
@@ -68,7 +63,6 @@ Each link group keeps its own width. The groups spread across their area, so the
 | Figma | Code |
 |---|---|
 | Component `Footer` | `<Footer />` |
-| Property `Width` | `width`. `constrained` is the default in both. |
 | Property `Copyright` | `copyrightName`. The `© {year}` part is added for you, with this year. |
 | The call to action’s heading, text, and button | `callToAction`: `heading`, `text`, `buttonLabel`, and `href` |
 | The LinkGroup instances | `linkGroups`: the LinkGroups, with their Links |

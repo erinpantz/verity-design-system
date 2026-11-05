@@ -2,10 +2,11 @@ import type { ReactNode } from 'react';
 import styles from './Container.module.css';
 
 export interface ContainerProps {
-  /** The content. It gets the Container’s maximum width and nothing else. */
+  /**
+   * The content. Each block is held to the content column, centered; a
+   * MediaBlock, Gallery, or Grid with width="wide" spans the full width.
+   */
   children?: ReactNode;
-  /** How wide the content can get: constrained for reading, or wide for media */
-  width?: 'constrained' | 'wide';
   /**
    * The HTML element: header for the one Container that introduces the page,
    * section for one that introduces a topic, and div when there’s no heading
@@ -13,9 +14,9 @@ export interface ContainerProps {
   as?: 'div' | 'header' | 'section';
 }
 
-// Sets only a maximum width. It has no side margins and isn't centered, so
-// every Container starts at the left edge of Main; Shell sets the page's side
-// margins (main/padding-inline).
-export function Container({ children, width = 'constrained', as: Element = 'div' }: ContainerProps) {
-  return <Element className={`${styles.container} ${styles[width]}`}>{children}</Element>;
+// Centers the page's content: every block sits in one column, so all blocks
+// share left and right edges, and wide blocks break out to the full width.
+// The page's side margins come from Shell (main/padding-inline).
+export function Container({ children, as: Element = 'div' }: ContainerProps) {
+  return <Element className={styles.container}>{children}</Element>;
 }

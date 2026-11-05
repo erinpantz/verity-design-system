@@ -15,9 +15,7 @@ const ORDER = [
   'control.size',
   'control.padding-x',
   'control',
-  'container.constrained',
-  'container.wide',
-  'text',
+  'content',
   'grid',
   'grid.item-min-width',
 ];

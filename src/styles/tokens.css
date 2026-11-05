@@ -798,8 +798,8 @@
 
 /* Small: Responsive Tier 3 */
 :root {
-  --verity-container-constrained-max-width: 512px; /** The widest a constrained Container’s content gets. The side margins come from Shell (main/padding-inline), not from Container. */
-  --verity-container-wide-max-width: 1824px; /** The widest a wide Container’s content gets. The side margins come from Shell (main/padding-inline), not from Container. */
+  --verity-content-column-width: 880px; /** The width of the content column: every block on a page (text, MediaText, quotes, lists) is this wide at most, centered, so all blocks share left and right edges. MediaBlock, Gallery, and Grid can opt out with Width=wide. */
+  --verity-content-wide-width: 1824px; /** The widest a page’s content gets: Sections and Containers span up to this width, and MediaBlock, Gallery, and Grid set to Width=wide fill it. */
   --verity-nav-container-thickness-expanded: 0px;
   --verity-nav-container-thickness-collapsed: 56px;
   --verity-grid-columns: 4;
@@ -811,7 +811,6 @@
   --verity-footer-call-to-action-max-width: 400px; /** Widest the Footer call to action gets, so its text keeps a comfortable line length (400px). */
   --verity-footer-links-min-width: 480px; /** Narrowest the Footer links area gets before it wraps below the call to action (480px). Wide enough for all the link groups on one row, with a little room for longer labels. */
   --verity-media-text-stack-width: 800px; /** Below this width, a row MediaText stacks its text above its media (800px). Measured on MediaText itself, not the screen. */
-  --verity-text-max-width: 680px; /** The widest text gets, so lines stay easy to read: Prose, TextBlock, Section’s header, MediaBlock’s caption, and Quote. Media and grids keep the full width. */
   --verity-nav-container-padding-x-expanded: var(--verity-spacing-16); /** Left and right padding of the expanded NavContainer. */
   --verity-nav-container-padding-x-collapsed: var(--verity-spacing-8); /** Left and right padding of the collapsed, top-docked NavContainer. */
   --verity-nav-container-padding-bottom: var(--verity-spacing-16); /** Bottom padding of the expanded NavContainer. */
@@ -1038,8 +1037,8 @@
 
   /* Medium: Responsive Tier 3 */
   :root {
-    --verity-container-constrained-max-width: 752px; /** The widest a constrained Container’s content gets. The side margins come from Shell (main/padding-inline), not from Container. */
-    --verity-container-wide-max-width: 1824px; /** The widest a wide Container’s content gets. The side margins come from Shell (main/padding-inline), not from Container. */
+    --verity-content-column-width: 880px; /** The width of the content column: every block on a page (text, MediaText, quotes, lists) is this wide at most, centered, so all blocks share left and right edges. MediaBlock, Gallery, and Grid can opt out with Width=wide. */
+    --verity-content-wide-width: 1824px; /** The widest a page’s content gets: Sections and Containers span up to this width, and MediaBlock, Gallery, and Grid set to Width=wide fill it. */
     --verity-nav-container-thickness-expanded: 0px;
     --verity-nav-container-thickness-collapsed: 56px;
     --verity-grid-columns: 8;
@@ -1051,7 +1050,6 @@
     --verity-footer-call-to-action-max-width: 400px; /** Widest the Footer call to action gets, so its text keeps a comfortable line length (400px). */
     --verity-footer-links-min-width: 480px; /** Narrowest the Footer links area gets before it wraps below the call to action (480px). Wide enough for all the link groups on one row, with a little room for longer labels. */
     --verity-media-text-stack-width: 800px; /** Below this width, a row MediaText stacks its text above its media (800px). Measured on MediaText itself, not the screen. */
-    --verity-text-max-width: 680px; /** The widest text gets, so lines stay easy to read: Prose, TextBlock, Section’s header, MediaBlock’s caption, and Quote. Media and grids keep the full width. */
     --verity-nav-container-padding-x-expanded: var(--verity-spacing-16); /** Left and right padding of the expanded NavContainer. */
     --verity-nav-container-padding-x-collapsed: var(--verity-spacing-8); /** Left and right padding of the collapsed, top-docked NavContainer. */
     --verity-nav-container-padding-bottom: var(--verity-spacing-16); /** Bottom padding of the expanded NavContainer. */
@@ -1279,8 +1277,8 @@
 
   /* Large: Responsive Tier 3 */
   :root {
-    --verity-container-constrained-max-width: 880px; /** The widest a constrained Container’s content gets. The side margins come from Shell (main/padding-inline), not from Container. */
-    --verity-container-wide-max-width: 1824px; /** The widest a wide Container’s content gets. The side margins come from Shell (main/padding-inline), not from Container. */
+    --verity-content-column-width: 880px; /** The width of the content column: every block on a page (text, MediaText, quotes, lists) is this wide at most, centered, so all blocks share left and right edges. MediaBlock, Gallery, and Grid can opt out with Width=wide. */
+    --verity-content-wide-width: 1824px; /** The widest a page’s content gets: Sections and Containers span up to this width, and MediaBlock, Gallery, and Grid set to Width=wide fill it. */
     --verity-nav-container-thickness-expanded: 240px;
     --verity-nav-container-thickness-collapsed: 72px;
     --verity-grid-columns: 12;
@@ -1292,7 +1290,6 @@
     --verity-footer-call-to-action-max-width: 400px; /** Widest the Footer call to action gets, so its text keeps a comfortable line length (400px). */
     --verity-footer-links-min-width: 480px; /** Narrowest the Footer links area gets before it wraps below the call to action (480px). Wide enough for all the link groups on one row, with a little room for longer labels. */
     --verity-media-text-stack-width: 800px; /** Below this width, a row MediaText stacks its text above its media (800px). Measured on MediaText itself, not the screen. */
-    --verity-text-max-width: 680px; /** The widest text gets, so lines stay easy to read: Prose, TextBlock, Section’s header, MediaBlock’s caption, and Quote. Media and grids keep the full width. */
     --verity-nav-container-padding-x-expanded: var(--verity-spacing-16); /** Left and right padding of the expanded NavContainer. */
     --verity-nav-container-padding-x-collapsed: var(--verity-spacing-8); /** Left and right padding of the collapsed, top-docked NavContainer. */
     --verity-nav-container-padding-bottom: var(--verity-spacing-16); /** Bottom padding of the expanded NavContainer. */
@@ -1520,8 +1517,8 @@
 
   /* XL: Responsive Tier 3 */
   :root {
-    --verity-container-constrained-max-width: 960px; /** The widest a constrained Container’s content gets. The side margins come from Shell (main/padding-inline), not from Container. */
-    --verity-container-wide-max-width: 1824px; /** The widest a wide Container’s content gets. The side margins come from Shell (main/padding-inline), not from Container. */
+    --verity-content-column-width: 880px; /** The width of the content column: every block on a page (text, MediaText, quotes, lists) is this wide at most, centered, so all blocks share left and right edges. MediaBlock, Gallery, and Grid can opt out with Width=wide. */
+    --verity-content-wide-width: 1824px; /** The widest a page’s content gets: Sections and Containers span up to this width, and MediaBlock, Gallery, and Grid set to Width=wide fill it. */
     --verity-nav-container-thickness-expanded: 240px;
     --verity-nav-container-thickness-collapsed: 72px;
     --verity-grid-columns: 12;
@@ -1533,7 +1530,6 @@
     --verity-footer-call-to-action-max-width: 400px; /** Widest the Footer call to action gets, so its text keeps a comfortable line length (400px). */
     --verity-footer-links-min-width: 480px; /** Narrowest the Footer links area gets before it wraps below the call to action (480px). Wide enough for all the link groups on one row, with a little room for longer labels. */
     --verity-media-text-stack-width: 800px; /** Below this width, a row MediaText stacks its text above its media (800px). Measured on MediaText itself, not the screen. */
-    --verity-text-max-width: 680px; /** The widest text gets, so lines stay easy to read: Prose, TextBlock, Section’s header, MediaBlock’s caption, and Quote. Media and grids keep the full width. */
     --verity-nav-container-padding-x-expanded: var(--verity-spacing-16); /** Left and right padding of the expanded NavContainer. */
     --verity-nav-container-padding-x-collapsed: var(--verity-spacing-8); /** Left and right padding of the collapsed, top-docked NavContainer. */
     --verity-nav-container-padding-bottom: var(--verity-spacing-16); /** Bottom padding of the expanded NavContainer. */

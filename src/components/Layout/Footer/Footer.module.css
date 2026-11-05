@@ -1,5 +1,5 @@
 /* The footer: a divider, then the call to action beside the link groups,
-   then the copyright line. Container sets its width and side margins. It
+   then the copyright line. Container sets its width (the content column). It
    adds no space outside itself. */
 
 .stack {

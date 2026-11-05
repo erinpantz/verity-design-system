@@ -9,8 +9,6 @@
 }
 
 .caption {
-  /* Under a wide image, the caption keeps the text width */
-  max-inline-size: var(--verity-text-max-width);
   color: var(--verity-color-content-subtle);
   font-family: var(--verity-viewport-typography-body-sm-font-family);
   font-size: var(--verity-viewport-typography-body-sm-font-size);

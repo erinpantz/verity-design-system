@@ -9,16 +9,14 @@ import * as ContainerStories from './Container.stories';
 
 # Container
 
-Sets the maximum width for a page’s content: constrained for reading, or wide for media. It has no side margins and isn’t centered, so every Container on a page starts at the same left edge.
+Centers a page’s content in one column, so every block shares the same left and right edges. Images, galleries, and grids can break out to the full width.
 
 <Canvas of={ContainerStories.Default} />
 
 ## When to use
 
 - **Around each block of page content,** so its edges line up with the blocks above and below it.
-- **Constrained for reading.** Text, forms, and anything people read line by line stay at a comfortable line length.
-- **Wide for media.** Images, videos, and galleries can use more of a large screen.
-- **Full-bleed for bands** whose background runs from edge to edge of the screen. An `Image` or `Hero` that runs edge to edge in one takes `borderRadius="none"`, because rounded corners would meet the screen edges. See **Media › Image**.
+- **For content without a heading,** like the case study header or a wide image between Sections. With a heading, use a `Section`, which works the same way.
 - **Not for the space between blocks.** A Container adds no space above or below itself; the layout around it owns that space.
 - **One thing inside.** A Container adds no gap, so two things placed straight in it touch. For more than one, put a `VerticalStack`, `HorizontalStack`, `Grid`, or `Section` in its content and let that set the space. For images seen together as one set, use a `Gallery`. See **Guidelines › Spacing and rhythm**.
 
@@ -29,25 +27,25 @@ A Container renders a `<div>` by default. Use `as` to choose the element, based 
 | Situation | What to do | Example |
 |---|---|---|
 | It introduces the page | Use `as="header"`, for one Container per page. | The page title and intro at the top of a case study |
-| It introduces a topic with a heading | Use a `Section` instead. It renders a `<section>` named by its heading, with the same widths. | A “Process” heading and the content under it |
+| It introduces a topic with a heading | Use a `Section` instead. It renders a `<section>` named by its heading, with the same column. | A “Process” heading and the content under it |
 | It has no heading | Leave `as` out, so it renders a `<div>`. | A wide image between sections |
 
 ## Width
 
-Each width sets only a maximum width, from its own token, by breakpoint; **Foundations › Spacing and layout** shows the value at each one. The page’s side margins come from Shell, not from Container.
+Every block sits in the content column, `--verity-content-column-width` (880), centered. So text, MediaText, quotes, and lists all share left and right edges down the page, and lines of text stay a readable length.
 
-Text inside any Container stays at the text width, `--verity-text-max-width` (680); only media and grids use the full width. So a wide Container suits a case study: the images get room, and the text stays readable.
+A `MediaBlock`, `Gallery`, or `Grid` can break out with `width="wide"`, up to `--verity-content-wide-width` (1824), still centered. Nothing else does, so a wide block always reads as intentional.
 
-| `width` | Tokens | Value | Use for |
-|---|---|---|---|
-| `constrained` | `--verity-container-constrained-max-width` | 512–960 | The default: pages that are mostly text |
-| `wide` | `--verity-container-wide-max-width` | 1824 | Pages with images, videos, and galleries, like case studies |
+| Block | Width | Token |
+|---|---|---|
+| Everything, by default | The column | `--verity-content-column-width` (880) |
+| `MediaBlock`, `Gallery`, or `Grid` with `width="wide"` | The full width | `--verity-content-wide-width` (1824) |
 
-## Alignment
+The width applies to the outermost block. An `Image` inside a `MediaBlock` takes the MediaBlock’s width; a MediaBlock inside a `Gallery` takes the Gallery’s.
 
-Every Container starts at the left edge of Main, whatever its width, so text, images, and the Footer share one left edge down the page. A constrained and a wide Container can sit on the same page and still line up. On a screen wider than a Container’s maximum width, the space left over is on the right.
+The page’s side margins come from Shell, so a Container has none of its own.
 
-**Why left-aligned:** in testing, the eye followed a case study more easily when text and images started at the same point, instead of text starting at one edge and images at another. It’s also a more distinctive look than the usual centered column.
+**Why one column:** blocks of different widths left uneven right edges, especially where MediaText met Prose. One column keeps every edge aligned, and centering it shares the leftover space on large screens between both sides, which looks more balanced than leaving it all on the right.
 
 ## Props
 
@@ -58,9 +56,8 @@ Every Container starts at the left edge of Main, whatever its width, so text, im
 | Figma | Code |
 |---|---|
 | Component `Container` | `<Container />` |
-| Property `Width` | `width` |
 | Slot `Content`, holding one item | `children` |
 | The element named in the description: header, section, or div | `as` |
-| Max width | `max-inline-size`, from the same token |
+| Each block’s max width, bound to `content/column-width` | A grid column in Container, from the same token. A new component lands in the column automatically. |
 
 </VerityDocs>

@@ -42,6 +42,10 @@ More layouts will be added. Each one sets how many columns it has and which item
 
 Every item is at least `--verity-gallery-item-min-width` (200) wide. When the layout’s columns would get narrower than that, the Gallery switches to one column and stacks every item, in order. It follows the Gallery’s own width, not the screen’s, so it works the same in a narrow column as across a whole page. On Small screens, the Gallery stacks.
 
+## Width
+
+In a `Section` or `Container`, every block sits in the content column, `--verity-content-column-width` (880). Use `width="wide"` to break out to the full width, `--verity-content-wide-width` (1824), for a set of images that needs room to show its detail. Inside another component, it fills the space it’s given. See **Layout › Container**.
+
 ## Space
 
 The space between items, and between rows, is `--verity-spacing-sm` (16–24). A Gallery adds no space outside itself; the `Section` it’s in sets the space around it.
@@ -55,6 +59,7 @@ The space between items, and between rows, is `--verity-spacing-sm` (16–24). A
 | Figma | Code |
 |---|---|
 | Component `Gallery` | `<Gallery />` |
+| Property `Width` | `width`. `column` is the default in both. |
 | Property `Layout` | `layout`. `2+1` is the default in both. |
 | The MediaBlocks inside it | `children`: `<MediaBlock />`s, in reading order |
 | Stacking on Small | Not a separate layout: the Gallery stacks on its own when its items would be narrower than `gallery/item-min-width` |

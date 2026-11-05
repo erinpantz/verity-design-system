@@ -6,8 +6,6 @@
    inside them, so components placed in Prose keep their own styles. */
 
 .prose {
-  /* Lines stay easy to read, however wide the space */
-  max-inline-size: var(--verity-text-max-width);
   color: var(--verity-color-content-default);
 }
 

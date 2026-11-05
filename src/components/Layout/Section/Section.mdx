@@ -18,7 +18,7 @@ A chapter of a page: a heading, an optional introduction, and the blocks that be
 - **For each topic on a page,** like “Research and discovery” or “Outcomes” in a case study.
 - **With an intro,** when a sentence or two helps people decide whether to read the section.
 - **Not for the top of the page.** The page title and its intro go in a `Container` with `as="header"`.
-- **Not for content without a heading.** Use a `Container`, which sets the same widths and renders a `<div>`.
+- **Not for content without a heading.** Use a `Container`, which centers its content in the same column and renders a `<div>`.
 
 ## Accessibility
 
@@ -33,14 +33,9 @@ A Section renders a `<section>` named by its heading (`aria-labelledby`), so scr
 
 ## Width
 
-The same widths as `Container`, from the same tokens, starting at the left edge of Main. The header (heading and intro) stays at the text width, `--verity-text-max-width` (680), so the heading lines up with the text below it.
+The same column as `Container`: every block sits in `--verity-content-column-width` (880), centered, and the heading and intro sit in it too, so the heading lines up with the blocks below it. A `MediaBlock`, `Gallery`, or `Grid` with `width="wide"` breaks out to `--verity-content-wide-width` (1824). A Section has no width of its own to set. See **Layout › Container** for why.
 
-| `width` | Token | Use for |
-|---|---|---|
-| `constrained` | `--verity-container-constrained-max-width` | The default: sections that are mostly text |
-| `wide` | `--verity-container-wide-max-width` | Sections with images, grids, and wide visuals |
-
-**Layout › Container** shows the maximum width at each breakpoint.
+<Canvas of={SectionStories.Wide} />
 
 ## Heading level
 
@@ -76,7 +71,6 @@ The heading uses Heading’s color, `--verity-color-content-default`. The intro 
 | The text of the exposed `Heading` | `heading` |
 | The exposed `Heading`’s `Level` | `headingLevel`. Level 2 is the default in both. |
 | Properties `Show intro` and `Intro` | `intro`, shown when provided: leave it out for no intro. Figma shows the intro by default; code doesn’t, so add one when the section needs it. |
-| Property `Width` | `width` |
 | Slot `Content` | `children` |
 
 </VerityDocs>

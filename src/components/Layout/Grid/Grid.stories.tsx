@@ -20,6 +20,7 @@ const meta = {
     children: items,
   },
   argTypes: {
+    width: { control: 'inline-radio', options: ['column', 'wide'] },
     itemWidth: { control: 'inline-radio', options: ['sm', 'md'] },
     gap: { control: 'inline-radio', options: ['md', 'lg'] },
     // A list needs <li> items, so it's chosen in code, not here
@@ -56,7 +57,7 @@ export const InContext: Story = {
   name: 'In context',
   parameters: { layout: 'fullscreen' },
   render: () => (
-    <Container as="section" width="wide">
+    <Container as="section">
       <VerticalStack gap="md">
         <Placeholder size="sm">Section heading</Placeholder>
         <Grid as="ul">

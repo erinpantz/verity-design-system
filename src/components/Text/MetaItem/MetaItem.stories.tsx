@@ -46,7 +46,7 @@ export const InContext: StoryObj = {
   name: 'In context',
   parameters: { layout: 'fullscreen' },
   render: () => (
-    <Container width="wide">
+    <Container>
       <Grid as="dl" itemWidth="sm">
         <MetaItem title="Role" value="Lead designer" />
         <MetaItem title="Team" value="Two designers, four engineers, and a product manager" />

@@ -19,7 +19,7 @@ Each level of a page owns one kind of space. When something looks too close or t
 |---|---|---|
 | Main (in Shell) | The page’s side margins, and the space between Sections on a page. | Side padding of Main and the Footer → `main/padding-inline`<br />Main gap → `main/spacing/section-gap` |
 | Section | The space between its heading and intro, between its header and content, and between the blocks in its Content slot. | Heading to intro → `spacing/sm`<br />Header to content → `spacing/md`<br />Between blocks → `spacing/xl` |
-| Container | No space. It sets a maximum width only, with no side margins, and its content has no gap, so it holds one thing. | — |
+| Container | No space. It centers its content in the content column, with no side margins, and its content has no gap, so it holds one thing. | — |
 | Stacks | The space between siblings when you compose a layout. | `VerticalStack` and `HorizontalStack` gap → `spacing/*` |
 | Inside a component | The space between a component’s own parts, and the padding inside anything with a background, border, or tap area. | Auto layout gap and padding → `spacing/*`, `padding/*`, `control/*`, or a Tier 3 token |
 | TextBlock | The space between a heading and the component it introduces, such as a list or a Grid of stat cards. | Heading to body → `spacing/sm` |
@@ -35,8 +35,8 @@ Each level of a page owns one kind of space. When something looks too close or t
 | Choose the right tier | Use Tier 2 tokens for general spacing. Use a Tier 3 token when the value belongs to one component. Never bind Core Tier 1 tokens directly. | `spacing/xl` between Section blocks. `nav-item/padding` inside `NavItem`. Not `spacing/8`. |
 | Gap or padding | `spacing/*` is the space between things. `padding/*` is the inset inside a container. | Section blocks → `spacing/xl`. `Hero` inset → `padding/lg`. |
 | Stack or frame | Use a stack when people compose the content, like a slot or a page layout. A fixed group inside a component can be an auto layout frame, as long as its gap is a token. | `VerticalStack` in a page layout. `Hero`’s Actions frame. |
-| Text at a readable width | Text stops at `text/max-width` (680), however wide the space. Media and grids use the full width. Every Container starts at the left edge of Main, so text and media share one left edge. | `Prose` in a wide `Section`: the text is 680 wide, the images beside it in the same Section up to 1824. |
-| One thing per Container | A Container adds no gap, so two things placed straight in it touch. For more than one, put a stack, a `Grid`, or a `Section` in it, and let that set the gap. | Two screenshots → a `VerticalStack` in a wide `Container`. |
+| One column, with wide breakouts | Every block in a Section or Container sits in the content column (`content/column-width`, 880), centered, so all blocks share left and right edges. Only `MediaBlock`, `Gallery`, and `Grid` can break out, with Width `wide` (`content/wide-width`, 1824). | Prose, MediaText, and a TextBlock of stat cards all 880 wide; a screenshot below them at `width="wide"`. |
+| One thing per Container | A Container adds no gap, so two things placed straight in it touch. For more than one, put a stack, a `Grid`, or a `Section` in it, and let that set the gap. | Two screenshots → a `VerticalStack` in a `Container`. |
 | Same size, same height | Controls take their height from `control/size/*`, not from their content plus padding, so different controls line up side by side. | An `lg` `Button` next to an `lg` `TextInput`. |
 
 ## A heading and what it introduces
@@ -61,7 +61,7 @@ In MDX, the `TextBlock` wraps the component: `<TextBlock heading="Takeaways">` b
 
 ## More than one thing in a Container
 
-A Container sets a maximum width. Its content has no gap, so it holds one thing. For more than one, put one of these in it and let it set the space:
+A Container centers its content in the column. Its content has no gap, so it holds one thing. For more than one, put one of these in it and let it set the space:
 
 | What’s in it | Use | Space between them |
 |---|---|---|
@@ -75,7 +75,7 @@ A Container sets a maximum width. Its content has no gap, so it holds one thing.
 
 | Do | Don’t |
 |---|---|
-| Two screenshots in a `VerticalStack`, inside a wide `Container` | Two `MediaBlock`s straight in a `Container`’s Content slot |
+| Two screenshots in a `VerticalStack`, inside a `Container` | Two `MediaBlock`s straight in a `Container`’s Content slot |
 | A `Gallery`, when the images are one set seen side by side | Two `Image`s next to each other in a `Container` |
 
 ## Spacing scale
@@ -124,8 +124,7 @@ When a value belongs to one component, it gets a Responsive Tier 3 token named a
 
 | Group | Used for |
 |---|---|
-| `container/*` | Maximum widths for `Container` and `Section` (constrained and wide). |
-| `text/max-width` | The widest text gets (680): `Prose`, `TextBlock`, `Section`’s header, `MediaBlock`’s caption, and `Quote`. |
+| `content/*` | The content column (`column-width`, 880) and the full width wide blocks can reach (`wide-width`, 1824), for `Container` and `Section`. |
 | `grid/columns` | The column guides in Figma (`Container`, `Section`, and `Shell`). Not used by components in code. |
 | `grid/item-min-width/*` | How narrow a `Grid` item can get before the row wraps (`sm` 200px, `md` 300px). |
 | `main-nav/*` | Link gap, group gap, and site title inset in `MainNav`. |

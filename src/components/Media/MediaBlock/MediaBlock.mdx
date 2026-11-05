@@ -36,9 +36,13 @@ The media is the MediaBlock’s `children`: an `Image` today, and an `Animation`
 
 ## Caption
 
-The caption uses the body-sm text style (`--verity-viewport-typography-body-sm-*`) in `--verity-color-content-subtle`, so it reads as a note on the picture, quieter than the text around it. It’s no wider than the text width, `--verity-text-max-width` (680), so under a wide image it lines up with the text above and below.
+The caption uses the body-sm text style (`--verity-viewport-typography-body-sm-*`) in `--verity-color-content-subtle`, so it reads as a note on the picture, quieter than the text around it.
 
 <Canvas of={MediaBlockStories.LongCaption} />
+
+## Width
+
+In a `Section` or `Container`, every block sits in the content column, `--verity-content-column-width` (880). Use `width="wide"` to break out to the full width, `--verity-content-wide-width` (1824), for a screenshot or image that needs room to show its detail. Inside another component, it fills the space it’s given. See **Layout › Container**.
 
 ## Space
 
@@ -53,6 +57,7 @@ The caption sits `--verity-spacing-sm` (16–24) below the media. A MediaBlock a
 | Figma | Code |
 |---|---|
 | Component `MediaBlock` | `<MediaBlock />` |
+| Property `Width` | `width`. `column` is the default in both. |
 | Property `Media` (instance swap) | `children`: an `<Image />` |
 | Properties `Show caption` and `Caption` | `caption`, shown when provided: leave it out for no caption |
 

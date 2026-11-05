@@ -69,7 +69,7 @@ export const InContext: Story = {
   name: 'In context',
   parameters: { layout: 'fullscreen' },
   render: () => (
-    <Container as="section" width="wide">
+    <Container as="section">
       <VerticalStack gap="md">
         <Heading level={2}>Outcomes</Heading>
         <Grid>

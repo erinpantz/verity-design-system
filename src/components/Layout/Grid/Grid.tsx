@@ -12,6 +12,12 @@ export interface GridProps {
    */
   gap?: 'md' | 'lg';
   /**
+   * How wide it can get in a Section or Container: column (the default), or
+   * wide to break out to the full width. Inside another component, it fills
+   * the space it's given.
+   */
+  width?: 'column' | 'wide';
+  /**
    * The HTML element: ul for a list of similar things, like project cards,
    * ol for items in order, dl for label and value pairs (MetaItems), or div
    * when it isn’t a list. With ul or ol, write each item as an <li>.
@@ -19,10 +25,11 @@ export interface GridProps {
   as?: 'div' | 'ul' | 'ol' | 'dl';
 }
 
-export function Grid({ children, itemWidth = 'md', gap = 'md', as: Element = 'div' }: GridProps) {
+export function Grid({ children, itemWidth = 'md', gap = 'md', width = 'column', as: Element = 'div' }: GridProps) {
   return (
     <Element
       className={`${styles.grid} ${styles[itemWidth]} ${styles[`gap-${gap}`]}`}
+      data-width={width}
       // Safari stops announcing a list once its bullets are removed, unless it has role="list".
       // A dl keeps its own role.
       role={Element === 'ul' || Element === 'ol' ? 'list' : undefined}
