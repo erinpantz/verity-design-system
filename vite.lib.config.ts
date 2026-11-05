@@ -4,7 +4,10 @@
 // It bundles src/library.ts (src/index.ts plus the global styles) into
 // dist/index.js as an ES module, and its CSS into dist/styles.css
 // (build-styles.ts finishes that file and adds the fonts).
-// React stays out of the bundle: the site brings its own copy.
+// React stays out of the bundle: the site brings its own copy. So do
+// lottie-web and fflate, Animation's player: they're dependencies, so the
+// site installs them with Verity, and its own build loads them only when an
+// animation is about to show.
 
 import react from '@vitejs/plugin-react';
 import { defineConfig } from 'vite';
@@ -26,8 +29,9 @@ export default defineConfig({
     // Readable output: the site's own build minifies it
     minify: false,
     rolldownOptions: {
-      // react, react-dom, and their subpaths, like react/jsx-runtime
-      external: [/^react(-dom)?(\/.*)?$/],
+      // react, react-dom, lottie-web, fflate, and their subpaths, like
+      // react/jsx-runtime and lottie-web/build/player/lottie_light
+      external: [/^react(-dom)?(\/.*)?$/, /^lottie-web(\/.*)?$/, /^fflate(\/.*)?$/],
     },
   },
 });

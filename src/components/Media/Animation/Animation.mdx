@@ -1,0 +1,111 @@
+import { Meta, Canvas } from '@storybook/addon-docs/blocks';
+import { VerityDocs } from '../../../foundations/VerityDocs';
+import { PropsTable } from '../../../foundations/PropsTable';
+import * as AnimationStories from './Animation.stories';
+
+<Meta of={AnimationStories} />
+
+<VerityDocs>
+
+# Animation
+
+A Lottie animation that loops while it’s on screen, with a button to pause it. It works like an Image: same shapes, same corners, and its space is held while it loads, so the page doesn’t jump.
+
+<Canvas of={AnimationStories.Default} />
+
+## When to use
+
+- **For a short, looping illustration of a moment in a product,** like a loading state or a feature at work, where motion says more than a still.
+- **With a caption,** put it in a `MediaBlock`, as its media, the same way as an Image.
+- **For several animations together,** use a `Grid` of MediaBlocks, each with its own Animation.
+- **Not when a still says it all.** Use an `Image`: it costs less to load and nothing moves.
+- **Not for a screen recording or anything with sound.** Animation plays Lottie files only.
+
+## Accessibility
+
+An Animation is one picture to screen readers, described by its `alt` text, like an Image. Nothing is announced as it loops. The pause and play button is a normal `<button>`, an `IconButton`, named by its label.
+
+| Situation | What to do | Example |
+|---|---|---|
+| The animation shows something people need | Describe what happens in it, in a sentence. Don’t start with “Animation of.” | `alt="A card fills with colored lines and shapes, above the words “Creating your call Summary…”"` |
+| It’s decorative, or the text beside it says it all | Use an empty `alt=""`. Screen readers skip it, but still reach the button. | An animation next to a paragraph that describes the same step |
+| It has a caption | Still write `alt`. The caption adds context; `alt` says what’s in the animation. | A MediaBlock with the caption “Creating the summary” |
+| The artwork contains words | Put the words in `alt`. | “Generating Care Insights…” |
+
+### Why it loops, and why there’s a pause button
+
+The animations show a moment that repeats in the product, like a summary being written, so they loop instead of playing once and stopping on a frame people might miss.
+
+Anything that moves for more than five seconds, next to other content, needs a way to pause it (WCAG 2.2.2, Pause, Stop, Hide). Motion pulls the eye, and for some people it makes reading the text around it hard or impossible. So every Animation has a pause button, and a pause sticks: scrolling away and back doesn’t restart it.
+
+## Playback
+
+It plays only while it’s on the screen, and stops while it’s scrolled away, so it doesn’t use the computer’s power for nothing. Pausing holds the current frame.
+
+The button sits in the bottom-right corner, `--verity-padding-xs` (8–16) from the edges. It’s an IconButton with `size="sm"` and `background="scrim"`, so it stays readable on any artwork. It shows a pause icon, labeled “Pause animation,” while playing, and a play icon, labeled “Play animation,” while paused.
+
+| When | The button | Why |
+|---|---|---|
+| Playing | Hidden until the pointer is over the animation, or the button has keyboard focus. It fades in and out with `--verity-motion-duration-fast` and `--verity-motion-easing-standard`. | So it doesn’t sit on top of the artwork while people watch. Keyboard users can always reach it: it’s only see-through, never removed, and it shows as soon as it has focus. |
+| Paused | Always showing | So it’s clear the animation is stopped, and how to start it again |
+| On a touch screen | Always showing | Touch screens have no hover, so there’d be no way to make it appear |
+| The file failed to load | Hidden | There’s nothing to play: the poster stays |
+
+<Canvas of={AnimationStories.Paused} />
+
+## Reduce motion
+
+When a visitor has turned on “reduce motion” in their system settings, the animation starts paused on its poster, with the play button showing. Playing it is their choice. Their file isn’t even downloaded until they press play.
+
+If they change the setting while the page is open, the animation follows it: turning it on pauses any animation that’s playing, and turning it off plays them again, except one the visitor paused.
+
+<Canvas of={AnimationStories.ReduceMotion} />
+
+## Aspect ratio
+
+The animation fills its container’s width, and its height comes from the ratio, the same three shapes as Image. If the artwork’s own shape is different, it fills the shape and its edges are cropped, like an Image with `fit="cover"`, so match the ratio to the artwork. The Laguna Companion animations are square, so they use `1:1`.
+
+| `aspectRatio` | Shape | Use for |
+|---|---|---|
+| `16:9` | The default. Wide. | Wide artwork |
+| `3:2` | A little taller | Artwork a little wider than it is tall |
+| `1:1` | Square | Square artwork, and animations side by side in a Grid |
+
+## Loading
+
+1. **Right away,** the poster shows in the animation’s space, with a `Skeleton` under it until it loads. The space comes from the aspect ratio, so nothing below it moves.
+2. **When the animation is about to scroll into view,** within a screen’s height of it, the player and the file start to download. Pages without animations never download the player.
+3. **Once it’s ready,** the animation replaces the poster, in the same space, and starts to play.
+
+If the file can’t load, the poster stays and the button is hidden. For the poster, use the animation’s first frame, so the switch from poster to animation can’t be seen.
+
+<Canvas of={AnimationStories.InAMediaBlock} />
+
+## Corners
+
+Animations are always rounded, with `--verity-border-radius-md`, like Images. There’s no prop for it. See **Media › Image** for why.
+
+## Color
+
+Animation adds no background color: each animation’s artwork brings its own, as its bottom layer (white, in the Laguna Companion files). That keeps the artwork looking the way it was designed in both themes. The only Verity color is the button’s scrim, `--verity-color-background-scrim`.
+
+<Canvas of={AnimationStories.InAGrid} />
+
+## Props
+
+<PropsTable of={AnimationStories} />
+
+## In Figma
+
+| Figma | Code |
+|---|---|
+| Component `Animation` | `<Animation />` |
+| Property `Aspect ratio` | `aspectRatio`. `16:9` is the default in both. |
+| Property `Border radius` (one option, `md`) | No prop: always `md`, like Image |
+| Property `Show controls` | Figma-only, a preview. In code, the button is always there, and shows and hides as **Playback** describes. |
+| Property `Playback` (`playing` or `paused`) | Figma-only, a preview of the button’s icon. In code, the visitor and their reduce motion setting decide. |
+| The frame’s fill, a placeholder picture | `src`, the .lottie file, and `poster`, a still of it |
+| Layer `Playback control` | The pause and play button: an `IconButton` with `size="sm"` and `background="scrim"` |
+| Not in Figma | `alt`, which every animation needs |
+
+</VerityDocs>

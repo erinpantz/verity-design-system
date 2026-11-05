@@ -50,6 +50,7 @@ src/
   foundations/             Storybook pages documenting every token, generated from tokens/,
                            and VerityDocs, the wrapper for MDX docs pages
     sample-images/         pictures for stories only (generated; not part of the library)
+    sample-animations/     .lottie files and their posters for stories only (not part of the library)
   components/
     <Category>/<Component>/
       <Component>.tsx

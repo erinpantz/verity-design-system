@@ -32,7 +32,7 @@ A MediaBlock renders a `<figure>`, with the caption in a `<figcaption>`. Screen 
 
 ## Media
 
-The media is the MediaBlock’s `children`: an `Image` today, and an `Animation` once that’s built. The media fills the MediaBlock’s width, and the MediaBlock fills whatever holds it.
+The media is the MediaBlock’s `children`: an `Image` or an `Animation`. The media fills the MediaBlock’s width, and the MediaBlock fills whatever holds it. See **Media › Animation**.
 
 ## Caption
 
@@ -58,7 +58,7 @@ The caption sits `--verity-spacing-xs` (8–16) below the media, close enough to
 |---|---|
 | Component `MediaBlock` | `<MediaBlock />` |
 | Property `Width` | `width`. `column` is the default in both. |
-| Property `Media` (instance swap) | `children`: an `<Image />` |
+| Property `Media` (instance swap) | `children`: an `<Image />` or an `<Animation />` |
 | Properties `Show caption` and `Caption` | `caption`, shown when provided: leave it out for no caption |
 
 </VerityDocs>

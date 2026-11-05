@@ -1,0 +1,50 @@
+/* An animation over its poster, with a pause and play button in the corner.
+   The poster is an Image, so it brings the frame: the shape from the aspect
+   ratio, the rounded corners, and the Skeleton while it loads. The animation
+   is drawn on top of it in the same space, so nothing moves when it's ready.
+   The artwork brings its own background, so there's no color here. */
+
+.animation {
+  /* The button is placed against this box */
+  position: relative;
+}
+
+/* The poster and the animation share one cell; the animation is on top */
+.media {
+  display: grid;
+  grid-template: minmax(0, 1fr) / minmax(0, 1fr);
+}
+
+.media > * {
+  grid-area: 1 / 1;
+}
+
+/* Where the player draws. Hidden until the animation first plays, so the
+   poster shows until then. Clipped to the same corners as the poster. */
+.canvas {
+  overflow: hidden;
+  border-radius: var(--verity-border-radius-md);
+  visibility: hidden;
+}
+
+.canvas[data-showing] {
+  visibility: visible;
+}
+
+/* The pause and play button, in the bottom-right corner */
+.control {
+  position: absolute;
+  inset-block-end: var(--verity-padding-xs);
+  inset-inline-end: var(--verity-padding-xs);
+  transition: opacity var(--verity-motion-duration-fast) var(--verity-motion-easing-standard);
+}
+
+/* While it plays, the button fades out of the way, and back in on hover over
+   the animation or keyboard focus on the button. It's only see-through, so
+   keyboard users can still reach it. While paused, it always shows, and on
+   touch screens, which have no hover, it always shows too. */
+@media (hover: hover) {
+  .animation[data-playing]:not(:hover) .control:not(:has(:focus-visible)) {
+    opacity: 0;
+  }
+}
