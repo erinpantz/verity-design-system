@@ -60,18 +60,18 @@ The space around a `contain` image is transparent, so the background behind it s
 
 ## Border radius
 
-Images have rounded corners, unless they run edge to edge.
+Images have rounded corners.
 
 | `borderRadius` | Token | Use for |
 |---|---|---|
 | `md` | `--verity-border-radius-md` | The default: every image in a page’s content, on its own or in a `MediaBlock`, `Gallery`, or `MediaText` |
-| `none` | `--verity-border-radius-none` | Only an image that runs edge to edge in a full-bleed `Container`, where rounded corners would meet the screen edges |
+| `none` | `--verity-border-radius-none` | Square corners. Verity has no edge-to-edge layouts, so use `md` unless a design calls for square corners. |
 
 <Canvas of={ImageStories.BorderRadiusNone} />
 
 **Why rounded by default:** most images sit inside the page’s margins, and rounded corners match the site’s other rounded shapes, such as cards and buttons. Making `md` the default means it’s right without anyone setting it.
 
-**Why `none` is set by hand:** a full-bleed Container could square its images automatically, but Figma couldn’t show that, so Figma and code would disagree. `Hero` works the same way, with the same property. Animation follows this rule too.
+Animation follows the same rule.
 
 ## Loading
 

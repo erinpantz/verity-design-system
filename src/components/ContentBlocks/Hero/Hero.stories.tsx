@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { Container } from '../../Layout/Container';
 import { Section } from '../../Layout/Section';
 import { StatCard } from '../StatCard';
 import { Grid } from '../../Layout/Grid';
@@ -36,20 +35,6 @@ export const Knockout: Story = {
 
 export const Brand: Story = {
   args: { background: 'brand' },
-};
-
-// A Hero in a full-bleed Container runs edge to edge, so its corners are square
-export const FullBleed: Story = {
-  name: 'Full bleed',
-  parameters: { layout: 'fullscreen' },
-  args: { background: 'brand', borderRadius: 'none' },
-  decorators: [
-    (Story) => (
-      <Container width="full-bleed">
-        <Story />
-      </Container>
-    ),
-  ],
 };
 
 export const OneAction: Story = {

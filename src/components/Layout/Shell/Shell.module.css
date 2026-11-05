@@ -24,7 +24,9 @@
 }
 
 /* The page column: Main, then the Footer, with a section's space between
-   them and the large space at the bottom */
+   them and the large space at the bottom. Its side padding is the page's
+   side margins, so nothing inside it needs margins of its own, and every
+   Container and the Footer start at the same left edge. */
 .page {
   display: flex;
   flex: 1;
@@ -32,6 +34,7 @@
   gap: var(--verity-main-spacing-section-gap);
   min-inline-size: 0;
   padding-block-end: var(--verity-spacing-lg);
+  padding-inline: var(--verity-main-padding-inline);
 }
 
 /* Main: the page's sections, with a section's space between them and the

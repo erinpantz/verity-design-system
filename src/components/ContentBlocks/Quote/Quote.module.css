@@ -8,6 +8,8 @@
   gap: var(--verity-spacing-sm);
   margin: 0;
   padding-inline-start: var(--verity-spacing-md);
+  /* A long quote stays easy to read on a wide page */
+  max-inline-size: var(--verity-text-max-width);
   border-inline-start: var(--verity-border-width-xl) solid var(--verity-color-background-brand);
   color: var(--verity-color-content-default);
 }

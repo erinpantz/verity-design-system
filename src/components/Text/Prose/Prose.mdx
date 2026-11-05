@@ -57,7 +57,7 @@ Each space-before token is `--verity-viewport-typography-<style>-space-before`.
 
 Prose has no gap: each block adds its space before it, from its token. The first block adds none, so Prose starts flush with whatever holds it. This is the one place in Verity where text sets its own space; everywhere else, space comes from a layout’s gap.
 
-Prose adds no space outside itself. Place it in a `Container` or `Section` to set its width.
+Prose adds no space outside itself. Its width is the space it’s given, up to the text width, `--verity-text-max-width` (680), so lines stay easy to read in a wide Section.
 
 ## Color
 

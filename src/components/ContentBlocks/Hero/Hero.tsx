@@ -17,8 +17,7 @@ export interface HeroProps {
    */
   background?: 'default' | 'knockout' | 'brand';
   /**
-   * The corners: rounded with border/radius/md, or square. Use none when the
-   * Hero sits in a full-bleed Container and runs edge to edge.
+   * The corners: rounded with border/radius/md (the default), or square
    */
   borderRadius?: 'md' | 'none';
   /** The headline. It’s the page’s <h1>, so a page has one Hero at most. */

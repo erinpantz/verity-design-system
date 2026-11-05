@@ -15,11 +15,11 @@ export interface SectionProps {
   /** A short introduction below the heading. Leave it out for no intro. */
   intro?: string;
   /**
-   * How wide the section can get, with the same side margins and maximum
-   * widths as Container: constrained for reading, wide for media, or
-   * full-bleed for edge-to-edge bands
+   * How wide the section can get, with the same maximum widths as
+   * Container: constrained for reading, or wide for media. Its text stays
+   * at a readable width either way.
    */
-  width?: 'constrained' | 'wide' | 'full-bleed';
+  width?: 'constrained' | 'wide';
   /** The blocks that belong to the section, from top to bottom */
   children?: ReactNode;
 }
@@ -35,12 +35,12 @@ export function Section({ heading, headingLevel = 2, intro, width = 'constrained
     <section aria-labelledby={headingId}>
       <Container width={width}>
         <VerticalStack gap="md">
-          <VerticalStack gap="sm">
+          <div className={styles.header}>
             <Heading level={headingLevel} id={headingId}>
               {heading}
             </Heading>
             {intro && <p className={styles.intro}>{intro}</p>}
-          </VerticalStack>
+          </div>
           <div className={styles.content}>{children}</div>
         </VerticalStack>
       </Container>

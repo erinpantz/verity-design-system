@@ -33,15 +33,14 @@ A Section renders a `<section>` named by its heading (`aria-labelledby`), so scr
 
 ## Width
 
-The same widths as `Container`, from the same tokens, with the content centered. The maximum width includes the side margins, as in Figma.
+The same widths as `Container`, from the same tokens, starting at the left edge of Main. The header (heading and intro) stays at the text width, `--verity-text-max-width` (680), so the heading lines up with the text below it.
 
-| `width` | Tokens | Use for |
+| `width` | Token | Use for |
 |---|---|---|
-| `constrained` | `--verity-container-constrained-*` | The default: text and anything people read |
-| `wide` | `--verity-container-wide-*` | Media, grids, and wide visuals |
-| `full-bleed` | `--verity-container-full-bleed-horizontal-margin` | Bands that run edge to edge |
+| `constrained` | `--verity-container-constrained-max-width` | The default: sections that are mostly text |
+| `wide` | `--verity-container-wide-max-width` | Sections with images, grids, and wide visuals |
 
-**Layout › Container** shows the margin and maximum width at each breakpoint.
+**Layout › Container** shows the maximum width at each breakpoint.
 
 ## Heading level
 

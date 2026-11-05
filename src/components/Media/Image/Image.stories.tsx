@@ -43,7 +43,7 @@ export const AspectRatio1x1: Story = {
   args: { aspectRatio: '1:1', src: shapes, alt: 'Overlapping circles in blue, yellow, and green' },
 };
 
-// Square corners, only for an image that runs edge to edge in a full-bleed Container
+// Square corners, for the rare design that calls for them
 export const BorderRadiusNone: Story = {
   name: 'Border radius none',
   args: { borderRadius: 'none' },

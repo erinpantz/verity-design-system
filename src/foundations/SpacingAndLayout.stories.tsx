@@ -17,7 +17,7 @@ const ORDER = [
   'control',
   'container.constrained',
   'container.wide',
-  'container.full-bleed',
+  'text',
   'grid',
   'grid.item-min-width',
 ];

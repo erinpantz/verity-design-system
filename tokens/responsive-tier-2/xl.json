@@ -5,6 +5,18 @@
         "$type": "dimension",
         "$value": "{spacing.72}"
       }
+    },
+    "padding-inline": {
+      "$type": "dimension",
+      "$value": "{spacing.48}",
+      "$description": "Space between the page’s content and its edges, on both sides, set by Shell on Main and the Footer. Containers and other components have no side margins of their own.",
+      "$extensions": {
+        "com.figma": {
+          "scopes": [
+            "GAP"
+          ]
+        }
+      }
     }
   },
   "padding": {

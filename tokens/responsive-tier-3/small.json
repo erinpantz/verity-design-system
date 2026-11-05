@@ -3,7 +3,8 @@
     "constrained": {
       "max-width": {
         "$type": "dimension",
-        "$value": "560px",
+        "$value": "512px",
+        "$description": "The widest a constrained Container’s content gets. The side margins come from Shell (main/padding-inline), not from Container.",
         "$extensions": {
           "com.figma": {
             "scopes": [
@@ -11,42 +12,13 @@
             ]
           }
         }
-      },
-      "horizontal-margin": {
-        "$type": "dimension",
-        "$value": "{spacing.24}"
-      }
-    },
-    "full-bleed": {
-      "horizontal-margin": {
-        "$type": "dimension",
-        "$value": "{spacing.0}",
-        "$extensions": {
-          "com.figma": {
-            "scopes": [
-              "WIDTH_HEIGHT",
-              "GAP"
-            ]
-          }
-        }
       }
     },
     "wide": {
-      "horizontal-margin": {
-        "$type": "dimension",
-        "$value": "{spacing.24}",
-        "$extensions": {
-          "com.figma": {
-            "scopes": [
-              "WIDTH_HEIGHT",
-              "GAP"
-            ]
-          }
-        }
-      },
       "max-width": {
         "$type": "dimension",
-        "$value": "1920px",
+        "$value": "1824px",
+        "$description": "The widest a wide Container’s content gets. The side margins come from Shell (main/padding-inline), not from Container.",
         "$extensions": {
           "com.figma": {
             "scopes": [
@@ -401,6 +373,20 @@
               "EFFECT_FLOAT"
             ]
           }
+        }
+      }
+    }
+  },
+  "text": {
+    "max-width": {
+      "$type": "dimension",
+      "$value": "680px",
+      "$description": "The widest text gets, so lines stay easy to read: Prose, TextBlock, Section’s header, MediaBlock’s caption, and Quote. Media and grids keep the full width.",
+      "$extensions": {
+        "com.figma": {
+          "scopes": [
+            "WIDTH_HEIGHT"
+          ]
         }
       }
     }

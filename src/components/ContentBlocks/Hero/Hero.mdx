@@ -51,12 +51,8 @@ Button has no brand secondary, so on `brand` the secondary button is `default`. 
 
 | `borderRadius` | Token | Use for |
 |---|---|---|
-| `md` | `--verity-border-radius-md` | The default: a Hero inside a constrained or wide Container, with space around it |
-| `none` | `--verity-border-radius-none` | A Hero in a full-bleed Container, running edge to edge |
-
-Use `none` whenever the Hero sits in a full-bleed Container. Rounded corners at the screen’s edges look cut off.
-
-<Canvas of={HeroStories.FullBleed} />
+| `md` | `--verity-border-radius-md` | The default: every Hero |
+| `none` | `--verity-border-radius-none` | Square corners. Verity has no edge-to-edge layouts, so use `md` unless a design calls for square corners. |
 
 ## Actions
 

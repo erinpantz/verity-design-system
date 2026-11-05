@@ -9,7 +9,7 @@ import * as ContainerStories from './Container.stories';
 
 # Container
 
-Sets the side margins and maximum width for a page’s content, so everything lines up. Choose constrained for reading, wide for media, or full-bleed for edge-to-edge bands.
+Sets the maximum width for a page’s content: constrained for reading, or wide for media. It has no side margins and isn’t centered, so every Container on a page starts at the same left edge.
 
 <Canvas of={ContainerStories.Default} />
 
@@ -30,17 +30,24 @@ A Container renders a `<div>` by default. Use `as` to choose the element, based 
 |---|---|---|
 | It introduces the page | Use `as="header"`, for one Container per page. | The page title and intro at the top of a case study |
 | It introduces a topic with a heading | Use a `Section` instead. It renders a `<section>` named by its heading, with the same widths. | A “Process” heading and the content under it |
-| It has no heading | Leave `as` out, so it renders a `<div>`. | A full-bleed image band between sections |
+| It has no heading | Leave `as` out, so it renders a `<div>`. | A wide image between sections |
 
 ## Width
 
-Each width sets the side margins and the maximum width from its own tokens. Both change by breakpoint, from Small to XL; **Foundations › Spacing and layout** shows the value at each one. The maximum width includes the side margins, as in Figma.
+Each width sets only a maximum width, from its own token, by breakpoint; **Foundations › Spacing and layout** shows the value at each one. The page’s side margins come from Shell, not from Container.
+
+Text inside any Container stays at the text width, `--verity-text-max-width` (680); only media and grids use the full width. So a wide Container suits a case study: the images get room, and the text stays readable.
 
 | `width` | Tokens | Value | Use for |
 |---|---|---|---|
-| `constrained` | `--verity-container-constrained-horizontal-margin`<br />`--verity-container-constrained-max-width` | Margins 24–40<br />Max width 560–1040 | The default: text and anything people read |
-| `wide` | `--verity-container-wide-horizontal-margin`<br />`--verity-container-wide-max-width` | Margins 24–48<br />Max width 1920 | Images, videos, and galleries |
-| `full-bleed` | `--verity-container-full-bleed-horizontal-margin` | Margins 0<br />No max width | Bands that run edge to edge |
+| `constrained` | `--verity-container-constrained-max-width` | 512–960 | The default: pages that are mostly text |
+| `wide` | `--verity-container-wide-max-width` | 1824 | Pages with images, videos, and galleries, like case studies |
+
+## Alignment
+
+Every Container starts at the left edge of Main, whatever its width, so text, images, and the Footer share one left edge down the page. A constrained and a wide Container can sit on the same page and still line up. On a screen wider than a Container’s maximum width, the space left over is on the right.
+
+**Why left-aligned:** in testing, the eye followed a case study more easily when text and images started at the same point, instead of text starting at one edge and images at another. It’s also a more distinctive look than the usual centered column.
 
 ## Props
 
@@ -54,6 +61,6 @@ Each width sets the side margins and the maximum width from its own tokens. Both
 | Property `Width` | `width` |
 | Slot `Content`, holding one item | `children` |
 | The element named in the description: header, section, or div | `as` |
-| Max width, including the side margins | The content’s max width is the token minus both margins |
+| Max width | `max-inline-size`, from the same token |
 
 </VerityDocs>

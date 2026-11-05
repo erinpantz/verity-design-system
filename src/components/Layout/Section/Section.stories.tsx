@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { Placeholder } from '../../../foundations/Placeholder';
 import { Heading } from '../../Text/Heading';
 import { MetaItem } from '../../Text/MetaItem';
 import { Prose } from '../../Text/Prose';
@@ -35,7 +34,7 @@ const meta = {
     heading: { control: 'text' },
     headingLevel: { control: 'inline-radio', options: [1, 2, 3] },
     intro: { control: 'text' },
-    width: { control: 'inline-radio', options: ['constrained', 'wide', 'full-bleed'] },
+    width: { control: 'inline-radio', options: ['constrained', 'wide'] },
     children: { control: false },
   },
 } satisfies Meta<typeof Section>;
@@ -63,16 +62,6 @@ export const Wide: Story = {
         <TextBlock heading="More customers stayed">Three in four finished setup, up from one in two.</TextBlock>
       </Grid>
     ),
-  },
-};
-
-export const FullBleed: Story = {
-  name: 'Full bleed',
-  args: {
-    heading: 'The new flow',
-    intro: undefined,
-    width: 'full-bleed',
-    children: <Placeholder size="lg">Edge-to-edge image</Placeholder>,
   },
 };
 

@@ -13,8 +13,7 @@ export interface ImageProps {
   /** The image’s shape. It fills its container’s width and keeps this ratio. */
   aspectRatio?: '16:9' | '3:2' | '1:1';
   /**
-   * The corners: rounded with border/radius/md, or square. Use none only for
-   * an image that runs edge to edge in a full-bleed Container.
+   * The corners: rounded with border/radius/md (the default), or square
    */
   borderRadius?: 'none' | 'md';
   /**

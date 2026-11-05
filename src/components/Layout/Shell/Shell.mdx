@@ -55,7 +55,9 @@ Each story opens in a viewport at the width of Figma’s Shell frame for its bre
 | Above the first section in Main | `--verity-spacing-lg` |
 | Between sections in Main, and between Main and the Footer | `--verity-main-spacing-section-gap` |
 | Below the Footer | `--verity-spacing-lg` |
-| The page’s sides | None. Each Section and the Footer sets its own, through Container. |
+| The page’s sides, around Main and the Footer | `--verity-main-padding-inline` (24–48) |
+
+Shell owns the page’s side margins, so nothing inside Main needs its own. Containers, Sections, and the Footer start at the left edge of Main, so everything on the page shares one left edge.
 
 ## Props
 

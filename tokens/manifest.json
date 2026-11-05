@@ -73,7 +73,7 @@
         "Medium": "responsive-tier-2/medium.json",
         "Small": "responsive-tier-2/small.json"
       },
-      "tokens": 23
+      "tokens": 24
     },
     {
       "name": "Responsive Tier 3",
@@ -83,7 +83,7 @@
         "Medium": "responsive-tier-3/medium.json",
         "Small": "responsive-tier-3/small.json"
       },
-      "tokens": 35
+      "tokens": 33
     },
     {
       "name": "Red Tier 1",

@@ -1,6 +1,15 @@
 /* Section's layout comes from Container and VerticalStack, except the space
    between its blocks, which is wider than any stack gap. */
 
+/* The header: the heading and intro, at the text width, so the heading lines
+   up with the text below it */
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--verity-spacing-sm);
+  max-inline-size: var(--verity-text-max-width);
+}
+
 /* The blocks in the content: a column, like VerticalStack, with spacing/xl
    between them */
 .content {
