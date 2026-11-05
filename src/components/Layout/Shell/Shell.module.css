@@ -61,14 +61,17 @@
 }
 
 /* The skip link: a primary Button, at the top start corner over the nav.
-   It's moved off screen until it has keyboard focus. */
+   It's moved off screen until it has keyboard focus. Written as hide, then
+   show, with no :focus-within inside :not(): Storybook's pseudo-states addon
+   rewrites :not(:focus-within) into a rule that always matches. */
 .skipLink {
   position: fixed;
   z-index: 2;
   inset-block-start: var(--verity-spacing-xs);
   inset-inline-start: var(--verity-spacing-xs);
+  translate: 0 calc(-100% - 2 * var(--verity-spacing-xs));
 }
 
-.skipLink:not(:focus-within) {
-  translate: 0 calc(-100% - 2 * var(--verity-spacing-xs));
+.skipLink:focus-within {
+  translate: none;
 }
