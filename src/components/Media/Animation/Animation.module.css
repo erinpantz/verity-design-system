@@ -42,9 +42,16 @@
 /* While it plays, the button fades out of the way, and back in on hover over
    the animation or keyboard focus on the button. It's only see-through, so
    keyboard users can still reach it. While paused, it always shows, and on
-   touch screens, which have no hover, it always shows too. */
+   touch screens, which have no hover, it always shows too.
+   Written as hide, then show, with no :hover inside :not(): Storybook's
+   pseudo-states addon rewrites :not(:hover) into a rule that always matches. */
 @media (hover: hover) {
-  .animation[data-playing]:not(:hover) .control:not(:has(:focus-visible)) {
+  .animation[data-playing] .control {
     opacity: 0;
+  }
+
+  .animation[data-playing]:hover .control,
+  .animation[data-playing] .control:has(:focus-visible) {
+    opacity: 1;
   }
 }
