@@ -53,14 +53,17 @@
 }
 
 /* The link groups stay together, packed at their own widths with
-   spacing/md between them, in an area footer/links/min-width wide: on Large
-   and XL just enough for all three groups on one row, so the last one ends at
-   the Footer's edge. They wrap when they can't fit. On a screen narrower than
-   the min, it's the full width instead. */
+   spacing/md between them. The area is as wide as the groups on one row, so
+   the last one ends at the Footer's edge, and never narrower than
+   footer/links/min-width, which decides when the row wraps. Sized by its
+   content rather than by the token, so text that renders a little wider than
+   in Figma still fits on one row. It shrinks, and the groups wrap, only when
+   the line is narrower. On a screen narrower than the min, it's the full
+   width instead. */
 .linkGroups {
   display: flex;
-  flex: 1 1 min(100%, var(--verity-footer-links-min-width));
-  max-inline-size: var(--verity-footer-links-min-width);
+  flex: 0 1 auto;
+  min-inline-size: min(100%, var(--verity-footer-links-min-width));
   flex-wrap: wrap;
   align-items: flex-start;
   gap: var(--verity-spacing-md);
