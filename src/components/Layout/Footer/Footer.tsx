@@ -32,7 +32,7 @@ export function Footer({ callToAction, linkGroups, copyrightName }: FooterProps)
   return (
     <footer className={styles.footer}>
       <Container>
-        <div className={styles.stack}>
+        <div className={styles.stack} data-width="wide">
           <div className={styles.top}>
             <div className={styles.callToAction}>
               <Heading level={3}>{callToAction.heading}</Heading>

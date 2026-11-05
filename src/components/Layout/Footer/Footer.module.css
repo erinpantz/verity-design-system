@@ -1,7 +1,8 @@
 /* The footer: a deep brand-colored block holding the call to action beside
    the link groups, then the copyright line. The background sets it apart from
-   the page's content, so it needs no divider. Container sets its width (the
-   content column). It adds no space outside itself. */
+   the page's content, so it needs no divider. It's wide (data-width="wide"),
+   so Container lets it span the page up to content/wide-width, like a wide
+   image. It adds no space outside itself. */
 
 .stack {
   display: flex;
@@ -12,12 +13,15 @@
   background: var(--verity-color-background-brand-dark);
 }
 
-/* The call to action and the link groups sit side by side, and wrap onto two
-   rows when there isn't room for both at their minimum widths. On a screen
-   narrower than a minimum, each one is the full width instead. */
+/* The call to action and the link groups sit side by side, the call to action
+   at the start and the links at the end, with the open space between them.
+   They wrap onto two rows when there isn't room for both at their minimum
+   widths; then each starts at the left. On a screen narrower than a minimum,
+   each one is the full width instead. */
 .top {
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-between;
   gap: var(--verity-spacing-lg);
 }
 
@@ -48,15 +52,17 @@
   text-transform: var(--verity-viewport-typography-body-default-text-transform);
 }
 
-/* The link groups take the rest of the row, at their own widths, spread so
-   the last one ends at the content edge. The gaps are the least space between
-   them. On a screen narrower than the min, it's the full width instead. */
+/* The link groups stay together, packed at their own widths with
+   spacing/md between them, in an area footer/links/min-width wide: on Large
+   and XL just enough for all three groups on one row, so the last one ends at
+   the Footer's edge. They wrap when they can't fit. On a screen narrower than
+   the min, it's the full width instead. */
 .linkGroups {
   display: flex;
   flex: 1 1 min(100%, var(--verity-footer-links-min-width));
+  max-inline-size: var(--verity-footer-links-min-width);
   flex-wrap: wrap;
   align-items: flex-start;
-  justify-content: space-between;
   gap: var(--verity-spacing-md);
 }
 

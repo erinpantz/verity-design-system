@@ -49,6 +49,7 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-// In the content column, like every Section above it. Narrow the window to
-// see the links wrap below the call to action.
+// Wide, spanning the page like a wide image: the call to action at the start,
+// the links at the end. Narrow the window to see the links wrap below the
+// call to action.
 export const Default: Story = {};
