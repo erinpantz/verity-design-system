@@ -13,32 +13,36 @@
   background: var(--verity-color-background-brand-dark);
 }
 
-/* The call to action and the link groups sit side by side, the call to action
-   at the start and the links at the end, with the open space between them.
-   They wrap onto two rows when there isn't room for both at their minimum
-   widths; then each starts at the left. On a screen narrower than a minimum,
-   each one is the full width instead. */
+/* The call to action and the link groups sit side by side. The call to action
+   takes the extra space, so the links end at the Footer's edge. They wrap
+   onto two rows when there isn't room for both at their minimum widths; then
+   each starts at the left. On a screen narrower than a minimum, each one is
+   the full width instead. */
 .top {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
   gap: var(--verity-spacing-lg);
 }
 
-/* The heading, the sentence, then the button. It starts at its min and grows
-   with the links, up to its max, which keeps its text to a comfortable line
-   length. Starting at the min means the row only wraps when both parts can't
-   fit at their minimums, as in Figma: side by side on Large and XL, stacked on
-   Medium and Small (the min widths change by breakpoint). On a screen
-   narrower than the min, it's the full width instead. */
+/* The heading, the sentence, then the button. It starts at its min and takes
+   all the space the links don't need, which pushes them to the end. Its
+   contents stop at its max, which keeps the text to a comfortable line
+   length (in Figma, a Content frame inside it does that). Starting at the min
+   means the row only wraps when both parts can't fit at their minimums:
+   side by side on Large and XL, stacked on Medium and Small (the min widths
+   change by breakpoint). On a screen narrower than the min, it's the full
+   width instead. */
 .callToAction {
   display: flex;
   flex: 1 1 min(100%, var(--verity-footer-call-to-action-min-width));
-  max-inline-size: var(--verity-footer-call-to-action-max-width);
   flex-direction: column;
   align-items: flex-start;
   min-inline-size: min(100%, var(--verity-footer-call-to-action-min-width));
   gap: var(--verity-spacing-sm);
+}
+
+.callToAction > * {
+  max-inline-size: var(--verity-footer-call-to-action-max-width);
 }
 
 .text {
