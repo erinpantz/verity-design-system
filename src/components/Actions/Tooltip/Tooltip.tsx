@@ -10,10 +10,11 @@ export interface TooltipProps {
    */
   id: string;
   /**
-   * Where the tooltip sits: above the trigger, or beside it at the end. An
-   * end tooltip that wouldn't fit on the screen opens below instead.
+   * Where the tooltip sits: above the trigger, lined up with its start
+   * (top) or its end (top-end), or beside it at the end. An end tooltip that
+   * wouldn't fit on the screen opens below instead.
    */
-  placement?: 'top' | 'end';
+  placement?: 'top' | 'top-end' | 'end';
   /** The trigger: the element people hover over or focus */
   children: ReactNode;
   /**

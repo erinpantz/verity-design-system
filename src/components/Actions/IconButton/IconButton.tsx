@@ -28,6 +28,12 @@ export interface IconButtonProps {
    * thing is showing now. Screen readers hear “expanded” or “collapsed.”
    */
   expanded?: boolean;
+  /**
+   * Where the tooltip opens: beside the button (end, the default), above it
+   * lined up with its start (top), or above it lined up with its end
+   * (top-end), for a button in a corner, like Animation’s
+   */
+  tooltipPlacement?: 'end' | 'top' | 'top-end';
   /** For a button that opens a dialog, like a full-screen menu */
   hasPopup?: 'dialog';
   /** A reference to the button, so focus can return to it */
@@ -49,11 +55,12 @@ export function IconButton({
   onClick,
   expanded,
   hasPopup,
+  tooltipPlacement = 'end',
   ref,
 }: IconButtonProps) {
   const tooltipId = useId();
   return (
-    <Tooltip text={label} id={tooltipId} placement="end">
+    <Tooltip text={label} id={tooltipId} placement={tooltipPlacement}>
       <button
         className={`${styles.iconButton} ${styles[size]} ${styles[background]}`}
         type="button"

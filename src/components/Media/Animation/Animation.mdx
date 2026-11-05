@@ -42,7 +42,7 @@ Anything that moves for more than five seconds, next to other content, needs a w
 
 It plays only while it’s on the screen, and stops while it’s scrolled away, so it doesn’t use the computer’s power for nothing. Pausing holds the current frame.
 
-The button sits in the bottom-right corner, `--verity-padding-xs` (8–16) from the edges. It’s an IconButton with `size="sm"` and `background="scrim"`, so it stays readable on any artwork. It shows a pause icon, labeled “Pause animation,” while playing, and a play icon, labeled “Play animation,” while paused.
+The button sits in the bottom-right corner, `--verity-padding-xs` (8–16) from the edges. It’s an IconButton with `size="sm"` and `background="scrim"`, so it stays readable on any artwork. Its tooltip opens above it, lined up with its right edge (`tooltipPlacement="top-end"`), so it stays inside the animation. It shows a pause icon, labeled “Pause animation,” while playing, and a play icon, labeled “Play animation,” while paused.
 
 | When | The button | Why |
 |---|---|---|
@@ -105,7 +105,7 @@ Animation adds no background color: each animation’s artwork brings its own, a
 | Property `Show controls` | Figma-only, a preview. In code, the button is always there, and shows and hides as **Playback** describes. |
 | Property `Playback` (`playing` or `paused`) | Figma-only, a preview of the button’s icon. In code, the visitor and their reduce motion setting decide. |
 | The frame’s fill, a placeholder picture | `src`, the .lottie file, and `poster`, a still of it |
-| Layer `Playback control` | The pause and play button: an `IconButton` with `size="sm"` and `background="scrim"` |
+| Layer `Playback control` | The pause and play button: an `IconButton` with `size="sm"`, `background="scrim"`, and `tooltipPlacement="top-end"` |
 | Not in Figma | `alt`, which every animation needs |
 
 </VerityDocs>

@@ -55,7 +55,7 @@ const meta = {
   },
   argTypes: {
     text: { control: 'text' },
-    placement: { control: 'inline-radio', options: ['top', 'end'] },
+    placement: { control: 'inline-radio', options: ['top', 'top-end', 'end'] },
     // Set by the component that owns the tooltip, not here
     id: { control: false },
     children: { control: false },
@@ -67,6 +67,20 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {};
+
+// For a trigger at the end of something the tooltip shouldn't spill past,
+// like the pause button in an Animation's bottom-right corner
+export const PlacementTopEnd: Story = {
+  name: 'Placement top end',
+  args: { placement: 'top-end', text: 'Pause animation' },
+  decorators: [
+    (Story) => (
+      <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
+        <Story />
+      </div>
+    ),
+  ],
+};
 
 export const PlacementEnd: Story = {
   name: 'Placement end',

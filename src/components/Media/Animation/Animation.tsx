@@ -137,6 +137,7 @@ function AnimationPlayer({ src, poster, alt, aspectRatio = '16:9' }: AnimationPr
             label={playing ? 'Pause animation' : 'Play animation'}
             size="sm"
             background="scrim"
+            tooltipPlacement="top-end"
             onClick={() => setChoice(playing ? 'pause' : 'play')}
           />
         </div>

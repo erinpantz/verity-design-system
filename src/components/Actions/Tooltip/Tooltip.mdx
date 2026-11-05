@@ -42,7 +42,10 @@ The trigger has to point to the tooltip by its `id`, so screen readers read it:
 | `placement` | Where it sits | Used by |
 |---|---|---|
 | `top` | The default. Above the trigger, lined up with its start. | `Link` |
+| `top-end` | Above the trigger, lined up with its end, so it doesn’t spill past whatever the trigger sits at the end of | `Animation`’s pause and play button |
 | `end` | Beside the trigger, after it, centered on it. If it wouldn’t fit on the screen, it opens below the trigger instead, with its end lined up with the trigger’s end. | `IconButton`, `ThemeToggle` |
+
+<Canvas of={TooltipStories.PlacementTopEnd} />
 
 <Canvas of={TooltipStories.PlacementEndAtTheEdge} />
 
@@ -67,7 +70,7 @@ The tooltip uses the knockout colors, the opposite of the page: `--verity-color-
 | Component `Tooltip` | `<Tooltip />` |
 | Property `Text` | `text` |
 | Not in Figma | `id`: the owner sets it, so the trigger can point to the tooltip |
-| Not in Figma | `placement`: Figma places each tooltip by hand, above a Link and beside an IconButton. Opening below at the screen’s edge happens on its own. |
+| Not in Figma | `placement`: Figma places each tooltip by hand, above a Link, above and lined up with the end in an Animation, and beside an IconButton. Opening below at the screen’s edge happens on its own. |
 | Not in Figma | `children`: the trigger the tooltip belongs to |
 | Not in Figma | `visualOnly`, for a tooltip that repeats a name screen readers already have |
 | Not in Figma | `--tooltip-display`: a parent can set it to `none` to keep the tooltip from showing, as NavItem does while its label shows |

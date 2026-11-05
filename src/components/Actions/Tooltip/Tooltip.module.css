@@ -71,6 +71,21 @@
   block-size: var(--offset);
 }
 
+/* Placement: above, with its end lined up with the trigger's end, for a
+   trigger at the end of something it shouldn't spill past, like the button
+   in an Animation's corner */
+
+.top-end > .tooltip {
+  inset-block-end: calc(100% + var(--offset));
+  inset-inline-end: 0;
+}
+
+.top-end > .tooltip::before {
+  inset-block-start: 100%;
+  inset-inline: 0;
+  block-size: var(--offset);
+}
+
 /* Placement: beside, at the end, centered on the trigger */
 
 .end > .tooltip {

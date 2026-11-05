@@ -21,6 +21,7 @@ const meta = {
     label: { control: 'text' },
     size: { control: 'inline-radio', options: ['xl', 'lg', 'md', 'sm'] },
     background: { control: 'inline-radio', options: ['none', 'scrim'] },
+    tooltipPlacement: { control: 'inline-radio', options: ['end', 'top', 'top-end'] },
     disabled: { control: 'boolean' },
     onClick: { control: false },
   },
@@ -53,7 +54,13 @@ export const Disabled: Story = {
 // stack on the scrim, and use the controls to try disabled.
 export const OnAnImage: Story = {
   name: 'On an image',
-  args: { icon: 'pause', label: 'Pause animation', size: 'sm', background: 'scrim' },
+  args: {
+    icon: 'pause',
+    label: 'Pause animation',
+    size: 'sm',
+    background: 'scrim',
+    tooltipPlacement: 'top-end',
+  },
   render: (args) => (
     <div style={{ position: 'relative' }}>
       <Image src={landscape} alt="Hills at dusk, with the sun setting behind them" />
