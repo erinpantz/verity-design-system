@@ -252,6 +252,19 @@
             ]
           }
         }
+      },
+      "brand-dark": {
+        "$type": "color",
+        "$value": "{color.brand.red.900}",
+        "$description": "A deep brand-colored background for a block that should stand apart from the page, like the Footer. Brand 900 in each theme.",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "FRAME_FILL",
+              "SHAPE_FILL"
+            ]
+          }
+        }
       }
     },
     "content": {

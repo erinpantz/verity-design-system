@@ -480,6 +480,7 @@
   --verity-color-background-error-subtle: var(--verity-color-utility-transparent-error-25);
   --verity-color-background-success-subtle: var(--verity-color-utility-transparent-success-25);
   --verity-color-background-warning-subtle: var(--verity-color-utility-transparent-warning-25);
+  --verity-color-background-brand-dark: var(--verity-color-brand-blue-900); /** A deep brand-colored background for a block that should stand apart from the page, like the Footer. Brand 900 in each theme. */
   --verity-color-content-default: var(--verity-color-brand-blue-100);
   --verity-color-content-default-hover: var(--verity-color-neutral-white);
   --verity-color-content-knockout: var(--verity-color-brand-neutral-900);
@@ -640,6 +641,7 @@
   --verity-color-background-error-subtle: var(--verity-color-utility-transparent-error-25);
   --verity-color-background-success-subtle: var(--verity-color-utility-transparent-success-25);
   --verity-color-background-warning-subtle: var(--verity-color-utility-transparent-warning-25);
+  --verity-color-background-brand-dark: var(--verity-color-brand-red-900); /** A deep brand-colored background for a block that should stand apart from the page, like the Footer. Brand 900 in each theme. */
   --verity-color-content-default: var(--verity-color-brand-red-100);
   --verity-color-content-default-hover: var(--verity-color-neutral-white);
   --verity-color-content-knockout: var(--verity-color-brand-neutral-900);
@@ -798,8 +800,8 @@
 
 /* Small: Responsive Tier 3 */
 :root {
-  --verity-content-column-width: 880px; /** The width of the content column: every block on a page (text, MediaText, quotes, lists) is this wide at most, centered, so all blocks share left and right edges. MediaBlock, Gallery, and Grid can opt out with Width=wide. */
-  --verity-content-wide-width: 1824px; /** The widest a page’s content gets: Sections and Containers span up to this width, and MediaBlock, Gallery, and Grid set to Width=wide fill it. */
+  --verity-content-column-width: 880px; /** The width of the content column: every block on a page (text, MediaText, quotes, lists) is this wide at most, centered, so all blocks share left and right edges. MediaBlock, Gallery, Grid, and the stacks can opt out with Width=wide. */
+  --verity-content-wide-width: 1824px; /** The widest a page’s content gets: Sections and Containers span up to this width, and MediaBlock, Gallery, Grid, and stacks set to Width=wide fill it. */
   --verity-nav-container-thickness-expanded: 0px;
   --verity-nav-container-thickness-collapsed: 56px;
   --verity-grid-columns: 4;
@@ -807,9 +809,9 @@
   --verity-grid-item-min-width-md: 300px; /** Minimum width of a Grid item before the row wraps, when Item width is md (300px). */
   --verity-nav-overlay-thickness: 240px;
   --verity-gallery-item-min-width: 200px; /** Minimum width of a Gallery item before the Gallery stacks into one column (200px). */
-  --verity-footer-call-to-action-min-width: 320px; /** Narrowest the Footer call to action gets before the links wrap below it (320px). */
+  --verity-footer-call-to-action-min-width: 240px; /** Narrowest the Footer call to action gets before the links wrap below it: 300 on Large and XL (side by side), 320 on Medium and 240 on Small (stacked). */
   --verity-footer-call-to-action-max-width: 400px; /** Widest the Footer call to action gets, so its text keeps a comfortable line length (400px). */
-  --verity-footer-links-min-width: 480px; /** Narrowest the Footer links area gets before it wraps below the call to action (480px). Wide enough for all the link groups on one row, with a little room for longer labels. */
+  --verity-footer-links-min-width: 240px; /** Narrowest the Footer links area gets before it wraps below the call to action: 432 on Large and XL, just enough for the three link groups on one row with spacing/md between them; 480 on Medium and 240 on Small, which stack. */
   --verity-media-text-stack-width: 800px; /** Below this width, a row MediaText stacks its text above its media (800px). Measured on MediaText itself, not the screen. */
   --verity-nav-container-padding-x-expanded: var(--verity-spacing-16); /** Left and right padding of the expanded NavContainer. */
   --verity-nav-container-padding-x-collapsed: var(--verity-spacing-8); /** Left and right padding of the collapsed, top-docked NavContainer. */
@@ -1037,8 +1039,8 @@
 
   /* Medium: Responsive Tier 3 */
   :root {
-    --verity-content-column-width: 880px; /** The width of the content column: every block on a page (text, MediaText, quotes, lists) is this wide at most, centered, so all blocks share left and right edges. MediaBlock, Gallery, and Grid can opt out with Width=wide. */
-    --verity-content-wide-width: 1824px; /** The widest a page’s content gets: Sections and Containers span up to this width, and MediaBlock, Gallery, and Grid set to Width=wide fill it. */
+    --verity-content-column-width: 880px; /** The width of the content column: every block on a page (text, MediaText, quotes, lists) is this wide at most, centered, so all blocks share left and right edges. MediaBlock, Gallery, Grid, and the stacks can opt out with Width=wide. */
+    --verity-content-wide-width: 1824px; /** The widest a page’s content gets: Sections and Containers span up to this width, and MediaBlock, Gallery, Grid, and stacks set to Width=wide fill it. */
     --verity-nav-container-thickness-expanded: 0px;
     --verity-nav-container-thickness-collapsed: 56px;
     --verity-grid-columns: 8;
@@ -1046,9 +1048,9 @@
     --verity-grid-item-min-width-md: 300px; /** Minimum width of a Grid item before the row wraps, when Item width is md (300px). */
     --verity-nav-overlay-thickness: 240px;
     --verity-gallery-item-min-width: 200px; /** Minimum width of a Gallery item before the Gallery stacks into one column (200px). */
-    --verity-footer-call-to-action-min-width: 320px; /** Narrowest the Footer call to action gets before the links wrap below it (320px). */
+    --verity-footer-call-to-action-min-width: 320px; /** Narrowest the Footer call to action gets before the links wrap below it: 300 on Large and XL (side by side), 320 on Medium and 240 on Small (stacked). */
     --verity-footer-call-to-action-max-width: 400px; /** Widest the Footer call to action gets, so its text keeps a comfortable line length (400px). */
-    --verity-footer-links-min-width: 480px; /** Narrowest the Footer links area gets before it wraps below the call to action (480px). Wide enough for all the link groups on one row, with a little room for longer labels. */
+    --verity-footer-links-min-width: 480px; /** Narrowest the Footer links area gets before it wraps below the call to action: 432 on Large and XL, just enough for the three link groups on one row with spacing/md between them; 480 on Medium and 240 on Small, which stack. */
     --verity-media-text-stack-width: 800px; /** Below this width, a row MediaText stacks its text above its media (800px). Measured on MediaText itself, not the screen. */
     --verity-nav-container-padding-x-expanded: var(--verity-spacing-16); /** Left and right padding of the expanded NavContainer. */
     --verity-nav-container-padding-x-collapsed: var(--verity-spacing-8); /** Left and right padding of the collapsed, top-docked NavContainer. */
@@ -1277,8 +1279,8 @@
 
   /* Large: Responsive Tier 3 */
   :root {
-    --verity-content-column-width: 880px; /** The width of the content column: every block on a page (text, MediaText, quotes, lists) is this wide at most, centered, so all blocks share left and right edges. MediaBlock, Gallery, and Grid can opt out with Width=wide. */
-    --verity-content-wide-width: 1824px; /** The widest a page’s content gets: Sections and Containers span up to this width, and MediaBlock, Gallery, and Grid set to Width=wide fill it. */
+    --verity-content-column-width: 880px; /** The width of the content column: every block on a page (text, MediaText, quotes, lists) is this wide at most, centered, so all blocks share left and right edges. MediaBlock, Gallery, Grid, and the stacks can opt out with Width=wide. */
+    --verity-content-wide-width: 1824px; /** The widest a page’s content gets: Sections and Containers span up to this width, and MediaBlock, Gallery, Grid, and stacks set to Width=wide fill it. */
     --verity-nav-container-thickness-expanded: 240px;
     --verity-nav-container-thickness-collapsed: 72px;
     --verity-grid-columns: 12;
@@ -1286,9 +1288,9 @@
     --verity-grid-item-min-width-md: 300px; /** Minimum width of a Grid item before the row wraps, when Item width is md (300px). */
     --verity-nav-overlay-thickness: 240px;
     --verity-gallery-item-min-width: 200px; /** Minimum width of a Gallery item before the Gallery stacks into one column (200px). */
-    --verity-footer-call-to-action-min-width: 320px; /** Narrowest the Footer call to action gets before the links wrap below it (320px). */
+    --verity-footer-call-to-action-min-width: 300px; /** Narrowest the Footer call to action gets before the links wrap below it: 300 on Large and XL (side by side), 320 on Medium and 240 on Small (stacked). */
     --verity-footer-call-to-action-max-width: 400px; /** Widest the Footer call to action gets, so its text keeps a comfortable line length (400px). */
-    --verity-footer-links-min-width: 480px; /** Narrowest the Footer links area gets before it wraps below the call to action (480px). Wide enough for all the link groups on one row, with a little room for longer labels. */
+    --verity-footer-links-min-width: 432px; /** Narrowest the Footer links area gets before it wraps below the call to action: 432 on Large and XL, just enough for the three link groups on one row with spacing/md between them; 480 on Medium and 240 on Small, which stack. */
     --verity-media-text-stack-width: 800px; /** Below this width, a row MediaText stacks its text above its media (800px). Measured on MediaText itself, not the screen. */
     --verity-nav-container-padding-x-expanded: var(--verity-spacing-16); /** Left and right padding of the expanded NavContainer. */
     --verity-nav-container-padding-x-collapsed: var(--verity-spacing-8); /** Left and right padding of the collapsed, top-docked NavContainer. */
@@ -1517,8 +1519,8 @@
 
   /* XL: Responsive Tier 3 */
   :root {
-    --verity-content-column-width: 880px; /** The width of the content column: every block on a page (text, MediaText, quotes, lists) is this wide at most, centered, so all blocks share left and right edges. MediaBlock, Gallery, and Grid can opt out with Width=wide. */
-    --verity-content-wide-width: 1824px; /** The widest a page’s content gets: Sections and Containers span up to this width, and MediaBlock, Gallery, and Grid set to Width=wide fill it. */
+    --verity-content-column-width: 880px; /** The width of the content column: every block on a page (text, MediaText, quotes, lists) is this wide at most, centered, so all blocks share left and right edges. MediaBlock, Gallery, Grid, and the stacks can opt out with Width=wide. */
+    --verity-content-wide-width: 1824px; /** The widest a page’s content gets: Sections and Containers span up to this width, and MediaBlock, Gallery, Grid, and stacks set to Width=wide fill it. */
     --verity-nav-container-thickness-expanded: 240px;
     --verity-nav-container-thickness-collapsed: 72px;
     --verity-grid-columns: 12;
@@ -1526,9 +1528,9 @@
     --verity-grid-item-min-width-md: 300px; /** Minimum width of a Grid item before the row wraps, when Item width is md (300px). */
     --verity-nav-overlay-thickness: 240px;
     --verity-gallery-item-min-width: 200px; /** Minimum width of a Gallery item before the Gallery stacks into one column (200px). */
-    --verity-footer-call-to-action-min-width: 320px; /** Narrowest the Footer call to action gets before the links wrap below it (320px). */
+    --verity-footer-call-to-action-min-width: 300px; /** Narrowest the Footer call to action gets before the links wrap below it: 300 on Large and XL (side by side), 320 on Medium and 240 on Small (stacked). */
     --verity-footer-call-to-action-max-width: 400px; /** Widest the Footer call to action gets, so its text keeps a comfortable line length (400px). */
-    --verity-footer-links-min-width: 480px; /** Narrowest the Footer links area gets before it wraps below the call to action (480px). Wide enough for all the link groups on one row, with a little room for longer labels. */
+    --verity-footer-links-min-width: 432px; /** Narrowest the Footer links area gets before it wraps below the call to action: 432 on Large and XL, just enough for the three link groups on one row with spacing/md between them; 480 on Medium and 240 on Small, which stack. */
     --verity-media-text-stack-width: 800px; /** Below this width, a row MediaText stacks its text above its media (800px). Measured on MediaText itself, not the screen. */
     --verity-nav-container-padding-x-expanded: var(--verity-spacing-16); /** Left and right padding of the expanded NavContainer. */
     --verity-nav-container-padding-x-collapsed: var(--verity-spacing-8); /** Left and right padding of the collapsed, top-docked NavContainer. */

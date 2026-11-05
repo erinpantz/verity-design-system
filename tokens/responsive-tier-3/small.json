@@ -3,7 +3,7 @@
     "column-width": {
       "$type": "dimension",
       "$value": "880px",
-      "$description": "The width of the content column: every block on a page (text, MediaText, quotes, lists) is this wide at most, centered, so all blocks share left and right edges. MediaBlock, Gallery, and Grid can opt out with Width=wide.",
+      "$description": "The width of the content column: every block on a page (text, MediaText, quotes, lists) is this wide at most, centered, so all blocks share left and right edges. MediaBlock, Gallery, Grid, and the stacks can opt out with Width=wide.",
       "$extensions": {
         "com.figma": {
           "scopes": [
@@ -15,7 +15,7 @@
     "wide-width": {
       "$type": "dimension",
       "$value": "1824px",
-      "$description": "The widest a page’s content gets: Sections and Containers span up to this width, and MediaBlock, Gallery, and Grid set to Width=wide fill it.",
+      "$description": "The widest a page’s content gets: Sections and Containers span up to this width, and MediaBlock, Gallery, Grid, and stacks set to Width=wide fill it.",
       "$extensions": {
         "com.figma": {
           "scopes": [
@@ -298,8 +298,8 @@
     "call-to-action": {
       "min-width": {
         "$type": "dimension",
-        "$value": "320px",
-        "$description": "Narrowest the Footer call to action gets before the links wrap below it (320px).",
+        "$value": "240px",
+        "$description": "Narrowest the Footer call to action gets before the links wrap below it: 300 on Large and XL (side by side), 320 on Medium and 240 on Small (stacked).",
         "$extensions": {
           "com.figma": {
             "scopes": [
@@ -324,8 +324,8 @@
     "links": {
       "min-width": {
         "$type": "dimension",
-        "$value": "480px",
-        "$description": "Narrowest the Footer links area gets before it wraps below the call to action (480px). Wide enough for all the link groups on one row, with a little room for longer labels.",
+        "$value": "240px",
+        "$description": "Narrowest the Footer links area gets before it wraps below the call to action: 432 on Large and XL, just enough for the three link groups on one row with spacing/md between them; 480 on Medium and 240 on Small, which stack.",
         "$extensions": {
           "com.figma": {
             "scopes": [

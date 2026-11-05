@@ -2,7 +2,6 @@ import type { ReactNode } from 'react';
 import { Button } from '../../Actions/Button';
 import { Heading } from '../../Text/Heading';
 import { Container } from '../Container';
-import { Divider } from '../Divider';
 import styles from './Footer.module.css';
 
 export interface FooterProps {
@@ -26,15 +25,14 @@ export interface FooterProps {
 // once, when the page loads.
 const YEAR = new Date().getFullYear();
 
-// The site's footer: a divider, a call to action, the link groups, and the
-// copyright line. Its content comes from the site. It adds no space outside
+// The site's footer: a deep brand-colored block with a call to action, the
+// link groups, and the copyright line. Its content comes from the site. It adds no space outside
 // itself; whatever holds it (Shell) sets the space above it.
 export function Footer({ callToAction, linkGroups, copyrightName }: FooterProps) {
   return (
     <footer className={styles.footer}>
       <Container>
         <div className={styles.stack}>
-          <Divider />
           <div className={styles.top}>
             <div className={styles.callToAction}>
               <Heading level={3}>{callToAction.heading}</Heading>

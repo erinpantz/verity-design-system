@@ -9,7 +9,7 @@ import * as FooterStories from './Footer.stories';
 
 # Footer
 
-The site’s footer: a divider, an invitation to get in touch, the site’s links in groups, and the copyright line.
+The site’s footer: a deep brand-colored block with an invitation to get in touch, the site’s links in groups, and the copyright line.
 
 <Canvas of={FooterStories.Default} />
 
@@ -33,26 +33,33 @@ A Footer renders a `<footer>`. Outside `<main>`, it’s the page’s footer land
 
 The Footer sits in the content column, `--verity-content-column-width` (880), centered, like every Section above it.
 
-The call to action and the link groups sit side by side, and the links wrap below when there isn’t room for the call to action at its max width and the links at their min. That happens because of the Footer’s own width, not the screen’s.
+The call to action and the link groups sit side by side on Large and XL, and stack on Medium and Small. The minimum widths change by breakpoint to make that happen, and the row only wraps when both parts can’t fit at their minimums. That depends on the Footer’s own width, not the screen’s.
 
-| Part | Narrowest | Widest |
+| Part | Narrowest: XL and Large / Medium / Small | Widest |
 |---|---|---|
-| Call to action | `--verity-footer-call-to-action-min-width` (320px) | `--verity-footer-call-to-action-max-width` (400px), where it starts, so its text keeps a comfortable line length |
-| Link groups | `--verity-footer-links-min-width` (480px), wide enough for all the groups on one row | All the space that’s left |
+| Call to action | `--verity-footer-call-to-action-min-width` (300 / 320 / 240) | `--verity-footer-call-to-action-max-width` (400), so its text keeps a comfortable line length |
+| Link groups | `--verity-footer-links-min-width` (432 / 480 / 240). On Large and XL, just enough for all three groups on one row | All the space that’s left |
 
 On a screen narrower than a minimum, each part is the full width instead.
 
-Each link group keeps its own width. The groups spread across their area, so the first starts at its edge and the last ends at the content edge. The space between them is at least `--verity-spacing-lg`; when it can’t be, they wrap.
+Each link group keeps its own width. The groups spread across their area, so the first starts at its edge and the last ends at the content edge. The space between them is at least `--verity-spacing-md`; when it can’t be, they wrap.
+
+## Color
+
+The block’s background is `--verity-color-background-brand-dark`: brand 900 in each theme, so the Footer stands apart from the page’s content without a divider, and follows the theme. Its text uses the usual content colors.
 
 ## Space
 
 | Space | Token |
 |---|---|
-| Between the divider, the call to action and links, and the copyright | `--verity-spacing-lg` |
+| Inside the block, around its content | `--verity-padding-md` |
+| Between the call to action and links, and the copyright | `--verity-spacing-lg` |
 | Between the call to action and the links, side by side or stacked | `--verity-spacing-lg` |
 | Inside the call to action: heading, text, button | `--verity-spacing-sm` |
-| Between link groups: across, and between rows | `--verity-spacing-lg`, `--verity-spacing-md` |
+| Between link groups: across, and between rows | `--verity-spacing-md` |
 | Outside the footer | None. Whatever holds it, like Shell, sets the space above it. |
+
+The corners are `--verity-border-radius-md`.
 
 ## Props
 
