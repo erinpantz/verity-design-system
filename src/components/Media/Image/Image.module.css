@@ -9,6 +9,8 @@
   grid-template: minmax(0, 1fr) / minmax(0, 1fr);
   overflow: hidden;
   inline-size: 100%;
+  /* Always rounded: Verity has no edge-to-edge layouts. The frame clips the picture and the Skeleton to it. */
+  border-radius: var(--verity-border-radius-md);
 }
 
 /* The Skeleton and the picture share the cell; the picture is on top */
@@ -34,16 +36,6 @@
 
 .ratio-1-1 {
   aspect-ratio: 1 / 1;
-}
-
-/* Border radius. The frame clips the picture and the Skeleton to it. */
-
-.radius-none {
-  border-radius: var(--verity-border-radius-none);
-}
-
-.radius-md {
-  border-radius: var(--verity-border-radius-md);
 }
 
 /* Fit: cover crops the picture to fill the shape; contain shows all of it */

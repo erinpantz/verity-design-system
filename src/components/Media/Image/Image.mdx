@@ -58,18 +58,11 @@ The space around a `contain` image is transparent, so the background behind it s
 
 <Canvas of={ImageStories.FitCover} />
 
-## Border radius
+## Corners
 
-Images have rounded corners.
+Images are always rounded, with `--verity-border-radius-md`. There’s no prop for it.
 
-| `borderRadius` | Token | Use for |
-|---|---|---|
-| `md` | `--verity-border-radius-md` | The default: every image in a page’s content, on its own or in a `MediaBlock`, `Gallery`, or `MediaText` |
-| `none` | `--verity-border-radius-none` | Square corners. Verity has no edge-to-edge layouts, so use `md` unless a design calls for square corners. |
-
-<Canvas of={ImageStories.BorderRadiusNone} />
-
-**Why rounded by default:** most images sit inside the page’s margins, and rounded corners match the site’s other rounded shapes, such as cards and buttons. Making `md` the default means it’s right without anyone setting it.
+**Why always rounded:** every image sits inside the page’s content column, and rounded corners match the site’s other rounded shapes, such as cards and buttons. Square corners were for edge-to-edge layouts, which Verity removed on Nov 5, 2026, so there’s nothing left to choose.
 
 Animation follows the same rule.
 
@@ -91,7 +84,7 @@ Until the picture arrives, a `Skeleton` fills its shape, with the same ratio and
 |---|---|
 | Component `Image` | `<Image />` |
 | Property `Aspect ratio` | `aspectRatio`. `16:9` is the default in both. |
-| Property `Border radius` | `borderRadius`. `md` is the default in both. |
+| Property `Border radius` (one option, `md`) | No prop: always `md`. Figma keeps the property because it can’t delete a variant property. |
 | The image fill’s scale mode: Fill or Fit | `fit`: Fill → `cover`, Fit → `contain` |
 | The image itself | `src` |
 | Not in Figma | `alt`, which every image needs, and `loading` |

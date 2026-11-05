@@ -13,10 +13,6 @@ export interface ImageProps {
   /** The image’s shape. It fills its container’s width and keeps this ratio. */
   aspectRatio?: '16:9' | '3:2' | '1:1';
   /**
-   * The corners: rounded with border/radius/md (the default), or square
-   */
-  borderRadius?: 'none' | 'md';
-  /**
    * How the picture fills the shape: cover crops it to fill, contain shows
    * all of it, with space around it if its shape is different
    */
@@ -37,7 +33,6 @@ export function Image({
   src,
   alt,
   aspectRatio = '16:9',
-  borderRadius = 'md',
   fit = 'cover',
   loading = 'lazy',
 }: ImageProps) {
@@ -53,7 +48,7 @@ export function Image({
     if (img?.complete) setResult({ src, status: img.naturalWidth > 0 ? 'loaded' : 'error' });
   }, [src]);
 
-  const frameClasses = [styles.frame, styles[RATIO[aspectRatio]], styles[`radius-${borderRadius}`]];
+  const frameClasses = [styles.frame, styles[RATIO[aspectRatio]]];
   return (
     <div className={frameClasses.join(' ')}>
       {/* Under the picture until it loads. If it fails, the base color stays, with no shine. */}

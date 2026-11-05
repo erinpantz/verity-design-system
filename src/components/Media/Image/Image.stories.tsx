@@ -13,7 +13,6 @@ const meta = {
     src: landscape,
     alt: 'Hills at dusk, with the sun setting behind them',
     aspectRatio: '16:9',
-    borderRadius: 'md',
     fit: 'cover',
     loading: 'lazy',
   },
@@ -21,7 +20,6 @@ const meta = {
     src: { control: false },
     alt: { control: 'text' },
     aspectRatio: { control: 'inline-radio', options: ['16:9', '3:2', '1:1'] },
-    borderRadius: { control: 'inline-radio', options: ['md', 'none'] },
     fit: { control: 'inline-radio', options: ['cover', 'contain'] },
     loading: { control: 'inline-radio', options: ['lazy', 'eager'] },
   },
@@ -41,12 +39,6 @@ export const AspectRatio3x2: Story = {
 export const AspectRatio1x1: Story = {
   name: 'Aspect ratio 1:1',
   args: { aspectRatio: '1:1', src: shapes, alt: 'Overlapping circles in blue, yellow, and green' },
-};
-
-// Square corners, for the rare design that calls for them
-export const BorderRadiusNone: Story = {
-  name: 'Border radius none',
-  args: { borderRadius: 'none' },
 };
 
 // A screenshot shown whole: contain keeps every edge, with space around it

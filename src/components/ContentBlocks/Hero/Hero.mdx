@@ -47,13 +47,6 @@ Button has no brand secondary, so on `brand` the secondary button is `default`. 
 
 <Canvas of={HeroStories.Brand} />
 
-## Border radius
-
-| `borderRadius` | Token | Use for |
-|---|---|---|
-| `md` | `--verity-border-radius-md` | The default: every Hero |
-| `none` | `--verity-border-radius-none` | Square corners. Verity has no edge-to-edge layouts, so use `md` unless a design calls for square corners. |
-
 ## Actions
 
 `primaryAction` is required, and `secondaryAction` is optional. Both are `xl` Buttons, side by side. On a narrow screen, the second one wraps below the first.
@@ -69,7 +62,7 @@ A Hero fills the width it’s given and adds no space outside itself. Its paddin
 | Inside, on every side | `--verity-padding-lg` |
 | Between the headline, intro, and actions | `--verity-spacing-md` |
 | Between the buttons | `--verity-spacing-xs` |
-| Corners | `--verity-border-radius-md`, or none with `borderRadius="none"` |
+| Corners | `--verity-border-radius-md`, always (Verity has no edge-to-edge layouts) |
 | Text | The headline in `display-default`; the intro in `body-xl` |
 
 <Canvas of={HeroStories.InContext} />
@@ -84,7 +77,7 @@ A Hero fills the width it’s given and adds no space outside itself. Its paddin
 |---|---|
 | Component `Hero` | `<Hero />` |
 | Property `Background` | `background`. `default` is the default in both. |
-| Property `Border radius` | `borderRadius`. `md` is the default in both. |
+| Property `Border radius` (one option, `md`) | No prop: always `md`. Figma keeps the property because it can’t delete a variant property. |
 | Property `Heading` | `heading` |
 | Property `Intro` | `intro` |
 | Property `Primary action` (an exposed Button) | `primaryAction`: its label and where it goes. Hero sets the Button’s variant, size, and color. |

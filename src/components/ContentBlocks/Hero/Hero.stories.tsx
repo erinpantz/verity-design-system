@@ -15,7 +15,6 @@ const meta = {
   },
   argTypes: {
     background: { control: 'inline-radio', options: ['default', 'knockout', 'brand'] },
-    borderRadius: { control: 'inline-radio', options: ['md', 'none'] },
     heading: { control: 'text' },
     intro: { control: 'text' },
     primaryAction: { control: 'object' },
