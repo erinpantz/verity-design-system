@@ -7,6 +7,7 @@ import conversationTips from '../../../foundations/sample-animations/creating-co
 import conversationTipsPoster from '../../../foundations/sample-animations/creating-conversation-tips.png';
 import summary from '../../../foundations/sample-animations/creating-summary.lottie?url';
 import summaryPoster from '../../../foundations/sample-animations/creating-summary.png';
+import { Container } from '../../Layout/Container';
 import { Grid } from '../../Layout/Grid';
 import { MediaBlock } from '../MediaBlock';
 import { Animation } from './Animation';
@@ -33,6 +34,14 @@ const CARE_INSIGHTS = {
 const meta = {
   title: 'Media/Animation',
   component: Animation,
+  // In the content column, as on a page, so a whole animation fits on screen
+  decorators: [
+    (Story) => (
+      <Container>
+        <Story />
+      </Container>
+    ),
+  ],
   args: { ...SUMMARY, aspectRatio: '1:1' },
   argTypes: {
     src: { control: false },
