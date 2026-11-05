@@ -82,6 +82,7 @@ Categories match the Figma pages. There are seven: Actions, Content blocks (fold
 - **Storybook's own UI and docs blocks** (sidebar, toolbar, addon panel, the example frame, and code panels) are styled through `.storybook/verityTheme.ts`, not CSS that targets Storybook's class names. Those class names can change in any Storybook upgrade.
 - **MDX docs pages use Verity styles:** wrap the page's content in `<VerityDocs>` from `src/foundations/VerityDocs`, with a blank line inside each tag. It styles headings, paragraphs, lists, and links with tokens and applies the prose spacing rule. See `src/Introduction.mdx`.
 - **Every component gets a docs page:** when you build a component, also write `<Component>.mdx` next to its stories, made from `templates/ComponentDocs.mdx`. Follow the instructions at the top of the template, fill every section, and tell Erin which optional sections you left out. `src/components/Media/Icon/Icon.mdx` is a finished example.
+- **Story-only layout may use inline styles:** placing a component on an image or arranging a demo can use `style={{ … }}` in the story, with every value from a Verity token (`var(--verity-…)`). It's scaffolding that never ships. Components never use inline styles: their styles live in their CSS Modules.
 
 ## Guidelines
 
