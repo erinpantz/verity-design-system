@@ -1,0 +1,121 @@
+import { Meta, Canvas } from '@storybook/addon-docs/blocks';
+import { VerityDocs } from '../../../foundations/VerityDocs';
+import { PropsTable } from '../../../foundations/PropsTable';
+import * as VideoStories from './Video.stories';
+
+<Meta of={VideoStories} />
+
+<VerityDocs>
+
+# Video
+
+A short, silent clip that loops while it’s on screen, with a button to pause it. It plays and pauses exactly like an Animation, and it works like an Image: same shapes, same corners, and its space is held while it loads, so the page doesn’t jump.
+
+<Canvas of={VideoStories.Default} />
+
+## When to use
+
+- **For a short, silent clip of a product at work,** like a prototype walkthrough: 10 to 30 seconds, one task each.
+- **With a caption,** put it in a `MediaBlock`, as its media, the same way as an Image. Use `width="wide"` when people need to see the detail.
+- **Not for an illustration.** Use an `Animation`: a Lottie file is smaller and stays sharp at any size.
+- **Not when a still says it all.** Use an `Image`: it costs less to load and nothing moves.
+- **Not for anything with sound or longer than about 30 seconds,** like a talk or an interview. Video plays muted, with no controls to seek or turn the sound on. Link to the full video instead.
+
+## Accessibility
+
+A Video is one picture to screen readers, described by its `alt` text, like an Image. It has no sound, no scrubber, and no native controls: the pause and play button is the only control, a normal `<button>` (an `IconButton`) named by its label.
+
+A silent video needs a text alternative that says what happens in it (WCAG 1.2.1, Audio-only and Video-only). Write it in `alt`, or in the text right beside the video.
+
+| Situation | What to do | Example |
+|---|---|---|
+| The video shows something people need | In `alt`, describe what happens, in order, in a sentence. Don’t start with “Video of.” | `alt="A call summary is edited: a line is selected, rewritten, and saved, and the summary updates"` |
+| The text beside it already walks through the same steps | Use an empty `alt=""`. Screen readers skip it, but still reach the button. | A numbered list of the steps, right before the video |
+| It has a caption | Still write `alt`. The caption adds context; `alt` says what happens in the video. | A MediaBlock with the caption “Editing a summary takes one click.” |
+| The clip shows words on screen that matter | Put the words in `alt`. | “The button changes to Saved” |
+
+### Why it loops, and why there’s a pause button
+
+A walkthrough is easy to miss the first time, so the clip loops instead of playing once and stopping on its last frame.
+
+Anything that moves for more than five seconds, next to other content, needs a way to pause it (WCAG 2.2.2, Pause, Stop, Hide). Motion pulls the eye, and for some people it makes reading the text around it hard or impossible. So every Video has a pause button, and a pause sticks: scrolling away and back doesn’t restart it.
+
+## Playback
+
+It plays only while it’s on the screen, and stops while it’s scrolled away, so it doesn’t use the computer’s power for nothing. Pausing holds the current frame. It always plays muted and inline, so phones play it in place instead of opening it full screen.
+
+The button and its rules are the same as Animation’s: they share one piece of code, so they can’t drift apart. It sits in the bottom-right corner, `--verity-padding-xs` (8–16) from the edges. It’s an IconButton with `size="sm"` and `background="scrim"`, so it stays readable on any clip. Its tooltip opens above it, lined up with its right edge (`tooltipPlacement="top-end"`), so it stays inside the video. It shows a pause icon, labeled “Pause video,” while playing, and a play icon, labeled “Play video,” while paused.
+
+| When | The button | Why |
+|---|---|---|
+| Playing | Hidden until the pointer is over the video, or the button has keyboard focus. It fades in and out with `--verity-motion-duration-fast` and `--verity-motion-easing-standard`. | So it doesn’t sit on top of the clip while people watch. Keyboard users can always reach it: it’s only see-through, never removed, and it shows as soon as it has focus. |
+| Paused | Always showing | So it’s clear the video is stopped, and how to start it again |
+| On a touch screen | Always showing | Touch screens have no hover, so there’d be no way to make it appear |
+| The file failed to load | Hidden | There’s nothing to play: the poster stays |
+
+<Canvas of={VideoStories.Paused} />
+
+## Reduce motion
+
+When a visitor has turned on “reduce motion” in their system settings, the video starts paused on its poster, with the play button showing. Playing it is their choice. The file isn’t even downloaded until they press play.
+
+If they change the setting while the page is open, the video follows it: turning it on pauses any video that’s playing, and turning it off plays them again, except one the visitor paused.
+
+<Canvas of={VideoStories.ReduceMotion} />
+
+## Aspect ratio
+
+The video fills its container’s width, and its height comes from the ratio, the same three shapes as Image. If the clip’s own shape is different, it fills the shape and its edges are cropped, like an Image with `fit="cover"`, so match the ratio to the clip.
+
+| `aspectRatio` | Shape | Use for |
+|---|---|---|
+| `16:9` | The default. Wide. | Screen recordings and most clips |
+| `3:2` | A little taller | Clips a little wider than they are tall |
+| `1:1` | Square | Square clips, and videos side by side in a Grid |
+
+## Files
+
+| File | What to use | Why |
+|---|---|---|
+| `src` | An MP4 with H.264 video and no audio track | Every browser plays it. With no audio track, browsers treat it as silent and let it play on its own. |
+| Size | 1920 × 1080 for `16:9`; for the other ratios, the same width at that shape | Sharp at the widest it gets (`width="wide"`, 1824) |
+| Frame rate and weight | 30 fps, under about 5 MB | Smooth enough for a product walkthrough, and quick to load |
+| Length | 10 to 30 seconds, one task each | Short enough to loop without losing people. Split a longer flow into several clips. |
+| `poster` | A still at the same size, usually the first frame | It shows while the video loads, so the switch to the video can’t be seen |
+
+## Loading
+
+1. **Right away,** the poster shows in the video’s space, with a `Skeleton` under it until it loads. The space comes from the aspect ratio, so nothing below it moves.
+2. **When the video is about to scroll into view,** within a screen’s height of it, the file starts to download. Before that, nothing is downloaded.
+3. **Once it can play,** the video replaces the poster, in the same space, and starts to play.
+
+If the file can’t load, the poster stays and the button is hidden.
+
+<Canvas of={VideoStories.InAMediaBlock} />
+
+## Corners
+
+Videos are always rounded, with `--verity-border-radius-md`, like Images and Animations. There’s no prop for it. See **Media › Image** for why.
+
+## Color
+
+Video adds no background color: the clip brings its own. The only Verity color is the button’s scrim, `--verity-color-background-scrim`.
+
+## Props
+
+<PropsTable of={VideoStories} />
+
+## In Figma
+
+| Figma | Code |
+|---|---|
+| Component `Video` | `<Video />` |
+| Property `Aspect ratio` | `aspectRatio`. `16:9` is the default in both. |
+| Property `Border radius` (one option, `md`) | Figma-only. No prop: always `md`, like Image |
+| Property `Show controls` | Figma-only, a preview. In code, the button is always there, and shows and hides as **Playback** describes. |
+| Property `Playback` (`playing` or `paused`) | Figma-only, a preview of the button’s icon. In code, the visitor and their reduce motion setting decide. |
+| The frame’s fill, a placeholder picture | `src`, the MP4, and `poster`, a still of it |
+| Layer `Playback control` | The pause and play button: an `IconButton` with `size="sm"`, `background="scrim"`, and `tooltipPlacement="top-end"` |
+| Not in Figma | `alt`, which every video needs |
+
+</VerityDocs>

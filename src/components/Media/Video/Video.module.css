@@ -1,0 +1,9 @@
+/* The video fills the frame's shape, like an Image with fit="cover": if the
+   clip's shape is different, its edges are cropped. PlaybackFrame brings the
+   rest: the poster, the corners, and the button. */
+.video {
+  display: block;
+  inline-size: 100%;
+  block-size: 100%;
+  object-fit: cover;
+}

@@ -66,6 +66,8 @@ export { Image } from './components/Media/Image';
 export type { ImageProps } from './components/Media/Image';
 export { MediaBlock } from './components/Media/MediaBlock';
 export type { MediaBlockProps } from './components/Media/MediaBlock';
+export { Video } from './components/Media/Video';
+export type { VideoProps } from './components/Media/Video';
 
 // Navigation
 export { LinkGroup } from './components/Navigation/LinkGroup';

@@ -2,7 +2,7 @@ import type { ReactNode } from 'react';
 import styles from './MediaBlock.module.css';
 
 export interface MediaBlockProps {
-  /** The media: an Image or an Animation */
+  /** The media: an Image, an Animation, or a Video */
   children: ReactNode;
   /** A short line below the media that says what it shows or why it matters. Leave it out for no caption. */
   caption?: string;
