@@ -13,7 +13,7 @@ Sites install Verity by tag (for example `github:erinpantz/verity-design-system#
 
 ### Changed
 
-- **Button docs:** removed the rule against using a Button to go to another page. A Button with `href` is a link that looks like a button, for a call to action like “Book a call.”
+- **Button docs:** a Button is now also for a call to action that goes to another page, like “Book a call,” and the rule against that is removed. A Button with `href` is a link that looks like a button.
 
 ## [0.3.0] – 2026-11-06
 
