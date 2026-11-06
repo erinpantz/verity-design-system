@@ -508,6 +508,7 @@
   --verity-color-border-focus-brand: var(--verity-color-brand-blue-100); /** Focus ring on a brand background. */
   --verity-color-border-focus-knockout: var(--verity-color-brand-blue-700); /** Focus ring on a knockout (light) background. */
   --verity-color-border-subtle: var(--verity-color-brand-neutral-500);
+  --verity-color-border-divider: var(--verity-color-brand-neutral-800); /** Decorative lines that separate groups, such as the line above Resume in MainNav. Low contrast on purpose: a divider that only groups items needn’t meet 3:1. Use color/border/subtle for borders that show a control’s edge. */
   --verity-color-background-accent-one: var(--verity-color-accent-yellow);
   --verity-color-background-accent-two: var(--verity-color-accent-red);
   --verity-color-background-accent-three: var(--verity-color-accent-violet);
@@ -669,6 +670,7 @@
   --verity-color-border-focus-brand: var(--verity-color-brand-red-100); /** Focus ring on a brand background. */
   --verity-color-border-focus-knockout: var(--verity-color-brand-red-600); /** Focus ring on a knockout (light) background. */
   --verity-color-border-subtle: var(--verity-color-brand-neutral-500);
+  --verity-color-border-divider: var(--verity-color-brand-neutral-800); /** Decorative lines that separate groups, such as the line above Resume in MainNav. Low contrast on purpose: a divider that only groups items needn’t meet 3:1. Use color/border/subtle for borders that show a control’s edge. */
   --verity-color-background-accent-one: var(--verity-color-accent-yellow);
   --verity-color-background-accent-two: var(--verity-color-accent-blue);
   --verity-color-background-accent-three: var(--verity-color-accent-green);
