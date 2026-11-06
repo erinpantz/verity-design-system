@@ -49,9 +49,10 @@ const PAGES = [
 ] as const;
 
 // The site's main navigation: the menu button, the site title, a NavItem per
-// page, Resume under a line, and ThemeToggle at the bottom. How it looks at each width is all CSS (see
-// MainNav.module.css), so it's right before JavaScript runs. What the menu
-// button does depends on the width too, and that comes from useBreakpoint.
+// page, Resume under a line, and ThemeToggle at the bottom. How it looks at
+// each width is all CSS (see MainNav.module.css), so it's right before
+// JavaScript runs. What the menu button does depends on the width too, and
+// that comes from useBreakpoint.
 export function MainNav({
   current,
   hrefs = {},
