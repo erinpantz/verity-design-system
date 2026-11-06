@@ -11,7 +11,7 @@ export interface ImageProps {
    */
   alt: string;
   /** The image’s shape. It fills its container’s width and keeps this ratio. */
-  aspectRatio?: '16:9' | '3:2' | '1:1';
+  aspectRatio?: '16:9' | '3:2' | '4:3' | '1:1';
   /**
    * How the picture fills the shape: cover crops it to fill, contain shows
    * all of it, with space around it if its shape is different
@@ -25,7 +25,7 @@ export interface ImageProps {
 }
 
 // Class names for each ratio, since a colon can't be part of one
-const RATIO = { '16:9': 'ratio-16-9', '3:2': 'ratio-3-2', '1:1': 'ratio-1-1' } as const;
+const RATIO = { '16:9': 'ratio-16-9', '3:2': 'ratio-3-2', '4:3': 'ratio-4-3', '1:1': 'ratio-1-1' } as const;
 
 type Status = 'loading' | 'loaded' | 'error';
 

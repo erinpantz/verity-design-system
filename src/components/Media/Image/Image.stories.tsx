@@ -19,7 +19,7 @@ const meta = {
   argTypes: {
     src: { control: false },
     alt: { control: 'text' },
-    aspectRatio: { control: 'inline-radio', options: ['16:9', '3:2', '1:1'] },
+    aspectRatio: { control: 'inline-radio', options: ['16:9', '3:2', '4:3', '1:1'] },
     fit: { control: 'inline-radio', options: ['cover', 'contain'] },
     loading: { control: 'inline-radio', options: ['lazy', 'eager'] },
   },
@@ -34,6 +34,12 @@ export const Default: Story = {};
 export const AspectRatio3x2: Story = {
   name: 'Aspect ratio 3:2',
   args: { aspectRatio: '3:2' },
+};
+
+// For screenshot boards and slides, which are often 4:3
+export const AspectRatio4x3: Story = {
+  name: 'Aspect ratio 4:3',
+  args: { aspectRatio: '4:3' },
 };
 
 export const AspectRatio1x1: Story = {

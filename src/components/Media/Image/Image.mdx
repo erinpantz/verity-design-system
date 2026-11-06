@@ -39,7 +39,10 @@ The image fills its container’s width, and its height comes from the ratio. Th
 |---|---|---|
 | `16:9` | The default. Wide. | Screenshots and wide photos |
 | `3:2` | A little taller | Photos |
+| `4:3` | Taller again | Screenshot boards and slides |
 | `1:1` | Square | Portraits, details, and grids of thumbnails |
+
+Pick the ratio closest to the picture’s own shape, so little is cropped. If nothing can be cut, like a slide with text near its edges, use `fit="contain"`.
 
 <Canvas of={ImageStories.AspectRatio3x2} />
 
