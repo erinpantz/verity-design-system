@@ -4,7 +4,7 @@ Every release of Verity, newest first. The format follows [Keep a Changelog](htt
 
 Sites install Verity by tag (for example `github:erinpantz/verity-design-system#v0.3.0`), so a site only changes when it moves to a new tag on purpose.
 
-## [Unreleased]
+## [0.3.1] – 2026-11-06
 
 ### Added
 
