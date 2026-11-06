@@ -4,6 +4,16 @@ Every release of Verity, newest first. The format follows [Keep a Changelog](htt
 
 Sites install Verity by tag (for example `github:erinpantz/verity-design-system#v0.3.0`), so a site only changes when it moves to a new tag on purpose.
 
+## [0.3.3] – 2026-11-06
+
+### Added
+
+- **Tokens:** `color/border/divider` (`--verity-color-border-divider`), neutral 800 in each theme, for decorative lines that group items. It’s low contrast on purpose; borders that show a control’s edge still use `color/border/subtle`.
+
+### Changed
+
+- **MainNav:** Resume moves up from the bottom to sit under the pages, below a thin line, because it opens a PDF rather than a page on the site. ThemeToggle is now alone at the bottom. The line is a decorative border, so screen readers don’t announce it. ThemeToggle now sits after the list of links instead of inside it, so screen readers hear a list of four links, and the tab order follows the new visual order. The Small top bar is unchanged, and NavOverlay picks up the new order. No props changed.
+
 ## [0.3.2] – 2026-11-06
 
 ### Added
