@@ -9,7 +9,7 @@ import * as MainNavStories from './MainNav.stories';
 
 # MainNav
 
-The site’s main navigation: the menu button, the site title, a link to each page, the theme toggle, and Resume. It changes with the screen width, from a top bar on phones to a side nav on wide screens.
+The site’s main navigation: the menu button, the site title, a link to each page, Resume, and the theme toggle. In the side nav, a thin line sets Resume apart from the pages, because it opens a PDF rather than a page on the site, and ThemeToggle sits alone at the bottom. It changes with the screen width, from a top bar on phones to a side nav on wide screens.
 
 <Canvas of={MainNavStories.Default} />
 
@@ -24,7 +24,9 @@ The site’s main navigation: the menu button, the site title, a link to each pa
 MainNav renders a `<nav aria-label="Main">`, so screen readers list it as the main navigation landmark. Inside it:
 
 - **The site title** is a link home whose only content is the logo, so its name is the logo’s: “Erin Tozour.”
-- **The pages, ThemeToggle, and Resume** are a list (`<ul>`), so screen readers say how many items there are. The pages and Resume are `NavItem` links, and the current page has `aria-current="page"`. ThemeToggle is a button: it changes the page instead of going somewhere (see **Actions › ThemeToggle**).
+- **The pages and Resume** are a list (`<ul>`) of four `NavItem` links, so screen readers say how many there are and read them in a row. The current page has `aria-current="page"`.
+- **The line above Resume** is a CSS border. It only groups the links for the eye, so screen readers don’t announce it: it isn’t an `<hr>` or `role="separator"`.
+- **ThemeToggle** is a button: it changes the page instead of going somewhere (see **Actions › ThemeToggle**). So it sits after the list, outside it but still in the nav, and comes last in the tab order, as it does on screen.
 - **On Small,** a second ThemeToggle sits in the top bar. Only one of the two is ever shown, and the hidden one is hidden from screen readers too.
 - **The menu button** is an `IconButton`. What it does, and what it tells screen readers, depends on the width:
 
@@ -43,8 +45,8 @@ How MainNav looks is all CSS, keyed to the generated breakpoints, so it’s righ
 | Width | Layout | Figma |
 |---|---|---|
 | Small (under 560px) | A top bar: the menu button, the logo, and ThemeToggle at the end. The pages are in NavOverlay. ThemeToggle’s tooltip opens below it, where it fits. | `State=collapsed, Dock=top` |
-| Medium (560 to 959px) | The rail: the menu button and each page’s icon, with ThemeToggle and Resume at the bottom. No logo. | `State=collapsed, Dock=left` |
-| Large and XL (960px and up) | Expanded, as `state` starts it: the logo and menu button, then each page with its label. The menu button switches to the rail and back. | `State=expanded, Dock=left` and `State=collapsed, Dock=left` |
+| Medium (560 to 959px) | The rail: the menu button, each page’s icon, then Resume, with ThemeToggle at the bottom. No logo. | `State=collapsed, Dock=left` |
+| Large and XL (960px and up) | Expanded, as `state` starts it: the logo and menu button, each page with its label, then Resume, with ThemeToggle at the bottom. The menu button switches to the rail and back. | `State=expanded, Dock=left` and `State=collapsed, Dock=left` |
 
 <Canvas of={MainNavStories.Collapsed} />
 
@@ -64,7 +66,9 @@ Resize the window to see each layout; NavContainer’s stories show it docked.
 | Space | Token |
 |---|---|
 | Between the menu bar and the pages | `--verity-main-nav-group-gap` |
-| Between pages, and between ThemeToggle and Resume | `--verity-main-nav-link-gap` |
+| Between pages | `--verity-main-nav-link-gap` |
+| From the pages to the line above Resume, and from the line to Resume | `--verity-main-nav-group-gap`, on both sides |
+| The line’s width and color | `--verity-border-width-sm`, `--verity-color-border-divider` |
 | Between the site title and the menu button | `--verity-spacing-xxs` |
 | Before the logo | `--verity-main-nav-site-title-padding` |
 | Under the logo, which lifts it so its lowercase letters line up with the center of the menu icon | `--verity-main-nav-logo-offset` |
@@ -81,8 +85,9 @@ Resize the window to see each layout; NavContainer’s stories show it docked.
 | Component `MainNav` | `<MainNav />` |
 | Property `State` | `state`, on Large and XL. `expanded` is the default in both. On Medium and Small, the width decides. |
 | Property `Dock` | Not a prop: the width decides. Top on Small, left from Medium up. |
-| The NavItem instances | One per page, made by MainNav. `current` sets which one is the current page. |
-| The ThemeToggle instances, above Resume and in the top bar | Made by MainNav, with nothing to set |
+| The NavItem instances | One per page, plus Resume, made by MainNav. `current` sets which one is the current page. |
+| The Primary Links and Secondary Links groups | The pages, then Resume, in one list; the line is Resume’s top border |
+| The ThemeToggle instances, at the bottom and in the top bar | Made by MainNav, with nothing to set |
 | The site title (ErinTozourLogo) | A link home with the `ErinTozourLogo` |
 | The menu button’s tooltip | Its label, which changes with what the button does |
 | Not in Figma | `hrefs`, `placement`, `menuOpen`, and `onMenuOpenChange` |

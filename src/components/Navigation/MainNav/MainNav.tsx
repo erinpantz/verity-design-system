@@ -49,7 +49,7 @@ const PAGES = [
 ] as const;
 
 // The site's main navigation: the menu button, the site title, a NavItem per
-// page, ThemeToggle, and Resume. How it looks at each width is all CSS (see
+// page, Resume under a line, and ThemeToggle at the bottom. How it looks at each width is all CSS (see
 // MainNav.module.css), so it's right before JavaScript runs. What the menu
 // button does depends on the width too, and that comes from useBreakpoint.
 export function MainNav({
@@ -103,24 +103,30 @@ export function MainNav({
           <IconButton icon="dock-to-left" {...menuButton} />
         </span>
         {/* ThemeToggle at the end of the Small top bar. CSS shows it only
-            there; everywhere else, the one above Resume shows. */}
+            there; everywhere else, the one at the bottom of the nav shows. */}
         <span className={styles.topBarThemeToggle}>
           <ThemeToggle />
         </span>
       </div>
+      {/* The links, in one list so screen readers hear them together: the
+          pages, then Resume. Resume opens a PDF rather than a page, so it
+          sits in its own group, under a line drawn in CSS (decorative, so
+          nothing is announced). */}
       <ul className={styles.links}>
         {PAGES.map(({ page, label }) => (
           <li key={page}>
             <NavItem icon={page} label={label} href={links[page]} current={current === page} />
           </li>
         ))}
-        <li className={styles.themeToggle}>
-          <ThemeToggle />
-        </li>
-        <li>
+        <li className={styles.secondaryLinks}>
           <NavItem icon="resume" label="Resume" href={links.resume} />
         </li>
       </ul>
+      {/* ThemeToggle, alone at the bottom. It's a button, not a place to go,
+          so it's outside the list of links (but still in the nav). */}
+      <div className={styles.themeToggle}>
+        <ThemeToggle />
+      </div>
     </nav>
   );
 }

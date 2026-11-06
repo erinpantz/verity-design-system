@@ -60,26 +60,41 @@
   display: none;
 }
 
-/* The pages, then ThemeToggle and Resume at the bottom. ThemeToggle's row
-   takes the space that's left, and it sits at the row's end, so the two
-   bottom items keep the same link gap as the pages. */
+/* The links: the pages, then Resume in its own group. The pages are the link
+   gap apart. */
 .links {
-  display: grid;
-  flex: 1;
-  grid-template-rows: repeat(3, auto) 1fr auto;
-  gap: var(--verity-main-nav-link-gap);
+  display: flex;
+  flex-direction: column;
   margin: 0;
   padding: 0;
   list-style: none;
 }
 
+.links > li + li {
+  margin-block-start: var(--verity-main-nav-link-gap);
+}
+
+/* Resume's group, under a line: the group gap above the line, as between
+   the nav's other groups, and the same gap again between the line and
+   Resume. The line is a border, so it's decorative and screen readers skip
+   it. It's as wide as the list, so as wide as the nav items: the full nav
+   when expanded, and the 40px icons in the rail. */
+.links > .secondaryLinks {
+  margin-block-start: var(--verity-main-nav-group-gap);
+  padding-block-start: var(--verity-main-nav-group-gap);
+  border-block-start: var(--verity-border-width-sm) solid var(--verity-color-border-divider);
+}
+
+/* ThemeToggle, alone at the bottom: its top margin takes the space that's
+   left. */
 .themeToggle {
   display: flex;
-  align-self: end;
+  margin-block-start: auto;
 }
 
 /* Small: the top bar. The menu button comes first, then the logo, then
-   ThemeToggle at the end; the pages and Resume are in NavOverlay. */
+   ThemeToggle at the end; the pages and Resume are in NavOverlay, and the
+   side nav's bottom ThemeToggle is hidden. */
 
 @media not medium {
   .page {
@@ -95,7 +110,8 @@
     order: -1;
   }
 
-  .page .links {
+  .page .links,
+  .page .themeToggle {
     display: none;
   }
 
