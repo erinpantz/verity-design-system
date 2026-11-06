@@ -4,6 +4,13 @@ Every release of Verity, newest first. The format follows [Keep a Changelog](htt
 
 Sites install Verity by tag (for example `github:erinpantz/verity-design-system#v0.3.0`), so a site only changes when it moves to a new tag on purpose.
 
+## [Unreleased]
+
+### Added
+
+- **Button and Link:** an `opensInNewTab` prop, for pages on other sites that people come back from. It adds `target="_blank"` and `rel="noopener noreferrer"`, and screen readers hear “opens in a new tab” after the label, from text that isn’t shown.
+- **Footer:** `callToAction.opensInNewTab`, passed to its Button.
+
 ## [0.3.0] – 2026-11-06
 
 ### Added

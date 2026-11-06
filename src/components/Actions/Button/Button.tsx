@@ -45,6 +45,12 @@ export type ButtonProps = VariantAndColor & {
    * type, disabled, and onClick don’t apply.
    */
   href?: string;
+  /**
+   * Whether the link opens in a new tab, for a page on another site that
+   * people come back from, like a booking page. Only with href. Screen
+   * readers hear “opens in a new tab” after the label.
+   */
+  opensInNewTab?: boolean;
 };
 
 // Icon size for each button size: xl and lg buttons use the lg icon
@@ -61,6 +67,7 @@ export function Button({
   disabled = false,
   onClick,
   href,
+  opensInNewTab = false,
 }: ButtonProps) {
   const classes = [styles.button, styles[variant], styles[`${variant}-${color}`], styles[size]];
   const content = (
@@ -74,9 +81,17 @@ export function Button({
   // Going somewhere is a link, so screen readers say “link” and it works
   // like one (open in a new tab, copy the address)
   if (href) {
+    // A new tab gets rel="noopener noreferrer", so the page it opens can't
+    // control this one, and hidden text, so screen reader users know (WCAG G201)
     return (
-      <a className={classes.join(' ')} href={href}>
+      <a
+        className={classes.join(' ')}
+        href={href}
+        target={opensInNewTab ? '_blank' : undefined}
+        rel={opensInNewTab ? 'noopener noreferrer' : undefined}
+      >
         {content}
+        {opensInNewTab && <span className={styles.newTab}> (opens in a new tab)</span>}
       </a>
     );
   }

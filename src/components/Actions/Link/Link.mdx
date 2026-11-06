@@ -32,6 +32,8 @@ A Link renders an `<a>` with an `href`, so it works with the keyboard (Tab, then
 
 **Disabled links** have no `href`, so Enter does nothing. They keep `role="link"`, `aria-disabled="true"`, and `tabIndex={0}`, so they stay in the tab order, and the tooltip is connected with `aria-describedby`. The tooltip shows on hover and on keyboard focus.
 
+**Links that open in a new tab** (`opensInNewTab`) get `target="_blank"` and `rel="noopener noreferrer"`, so the page they open can’t control this one. Screen readers hear “opens in a new tab” after the link text, from text that’s in the link but not shown. Use it only for pages on other sites that people come back from.
+
 ## Color
 
 Choose the color by the background the link sits on.
@@ -85,6 +87,6 @@ The underline is `--verity-border-width-sm` thick and sits `--verity-spacing-xxs
 | Property `Show tooltip` | `tooltip`: the text to show, usually “Coming soon.” In code, it shows on hover and focus. |
 | Text style `link/default` | The page’s base text style, body-default, which a Link takes when it stands alone |
 | Layer `Focus ring` | Not a layer: an outline on keyboard focus |
-| Not in Figma | `href`: where the link goes |
+| Not in Figma | `href`: where the link goes. `opensInNewTab`: whether it opens in a new tab. |
 
 </VerityDocs>

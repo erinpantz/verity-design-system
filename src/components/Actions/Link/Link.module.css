@@ -68,3 +68,13 @@
   text-decoration-line: none;
   cursor: default;
 }
+
+/* “(opens in a new tab)” for screen readers: in the link's name, but not shown */
+.newTab {
+  position: absolute;
+  overflow: hidden;
+  inline-size: 1px;
+  block-size: 1px;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}

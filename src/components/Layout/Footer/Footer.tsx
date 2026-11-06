@@ -14,6 +14,8 @@ export interface FooterProps {
     text: string;
     buttonLabel: string;
     href: string;
+    /** Whether the button opens its page in a new tab, as for a booking page on another site */
+    opensInNewTab?: boolean;
   };
   /** The link groups: a LinkGroup for each, like Pages, Fun stuff, and Connect */
   linkGroups: ReactNode;
@@ -37,7 +39,9 @@ export function Footer({ callToAction, linkGroups, copyrightName }: FooterProps)
             <div className={styles.callToAction}>
               <Heading level={3}>{callToAction.heading}</Heading>
               <p className={styles.text}>{callToAction.text}</p>
-              <Button href={callToAction.href}>{callToAction.buttonLabel}</Button>
+              <Button href={callToAction.href} opensInNewTab={callToAction.opensInNewTab}>
+                {callToAction.buttonLabel}
+              </Button>
             </div>
             <div className={styles.linkGroups}>{linkGroups}</div>
           </div>

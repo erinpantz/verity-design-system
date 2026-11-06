@@ -41,6 +41,7 @@ const meta = {
     disabled: { control: 'boolean' },
     onClick: { control: false },
     href: { control: 'text' },
+    opensInNewTab: { control: 'boolean' },
   },
 } satisfies Meta<typeof Button>;
 
@@ -108,6 +109,13 @@ export const Disabled: StoryObj = {
 export const AsLink: Story = {
   name: 'As link',
   args: { href: 'https://calendly.com/erin-hurff/30min' },
+};
+
+// Goes to a page on another site, in a new tab. Screen readers hear
+// “opens in a new tab” after the label; it isn't shown.
+export const OpensInNewTab: Story = {
+  name: 'Opens in new tab',
+  args: { href: 'https://calendly.com/erin-hurff/30min', opensInNewTab: true },
 };
 
 // A call to action under a short pitch: the main action, then a quieter one

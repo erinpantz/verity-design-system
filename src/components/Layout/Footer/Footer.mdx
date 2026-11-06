@@ -25,7 +25,7 @@ A Footer renders a `<footer>`. Outside `<main>`, it’s the page’s footer land
 | Part | What it renders | What to do |
 |---|---|---|
 | Call to action heading | A level 3 `Heading` | Keep it short and inviting, like “Let’s work together” |
-| Call to action button | A `Button` with `href`: a link that looks like a button | Start the label with a verb: “Book a call” |
+| Call to action button | A `Button` with `href`: a link that looks like a button | Start the label with a verb: “Book a call.” For a booking page on another site, set `opensInNewTab`. |
 | Link groups | A `LinkGroup` for each, each a named list | Name each group in a word or two, like “Connect.” A disabled link says why in its tooltip, like “Coming soon.” |
 | Copyright | A paragraph: `© {year} {name}` | Pass only the name. The year comes from today’s date, so it never goes stale. |
 
@@ -73,7 +73,7 @@ The corners are `--verity-border-radius-md`.
 |---|---|
 | Component `Footer` | `<Footer />` |
 | Property `Copyright` | `copyrightName`. The `© {year}` part is added for you, with this year. |
-| The call to action’s heading, text, and button | `callToAction`: `heading`, `text`, `buttonLabel`, and `href` |
+| The call to action’s heading, text, and button | `callToAction`: `heading`, `text`, `buttonLabel`, `href`, and `opensInNewTab` |
 | The LinkGroup instances | `linkGroups`: the LinkGroups, with their Links |
 
 </VerityDocs>

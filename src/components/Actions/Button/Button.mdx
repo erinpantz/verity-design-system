@@ -30,6 +30,7 @@ A Button renders a `<button>` with `type="button"` by default, so it never submi
 | Writing the label | Start with a verb that says what happens. Keep it short, since it stays on one line. | “Book a call,” not “Click here” |
 | It sends a form | Use `type="submit"`. | “Send message” |
 | It goes to another page | Use `href`. It renders a link (`<a>`) that looks like a button, so screen readers say “link” and people can open it in a new tab. | “Book a call” to Calendly |
+| It goes to another site people come back from | Add `opensInNewTab`. It opens the page in a new tab with `rel="noopener noreferrer"`, so that page can’t control this one, and screen readers hear “opens in a new tab” after the label. Use it only for pages on other sites, like a booking page. | “Book a meeting” to Calendly |
 | It can’t be used yet | Use `disabled`. Keyboard users skip disabled buttons, so say on the page why it’s disabled. | “Send message” before the form is filled in |
 | It sits on a colored band | Use the `color` that matches the background. | `color="brand"` on a brand-colored band |
 
@@ -104,6 +105,6 @@ Use `startIcon` for an icon before the label and `endIcon` for one after it, suc
 | Properties `Show start icon` and the start icon | `startIcon`: the icon’s name, or leave it out |
 | Properties `Show end icon` and the end icon | `endIcon`: the icon’s name, or leave it out |
 | Layer `Focus ring` | Not a layer: an outline on keyboard focus |
-| Not in Figma | `type`, `disabled`, `onClick`, and `href` |
+| Not in Figma | `type`, `disabled`, `onClick`, `href`, and `opensInNewTab` |
 
 </VerityDocs>

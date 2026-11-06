@@ -39,6 +39,7 @@ const meta = {
   argTypes: {
     children: { control: 'text' },
     href: { control: 'text' },
+    opensInNewTab: { control: 'boolean' },
     color: { control: 'inline-radio', options: ['default', 'brand', 'knockout'] },
     disabled: { control: 'boolean' },
     tooltip: { control: 'text' },
@@ -64,6 +65,13 @@ export const Knockout: Story = {
 export const Disabled: Story = {
   args: { disabled: true, tooltip: 'Coming soon' },
   decorators: [roomForTooltip],
+};
+
+// Goes to a page on another site, in a new tab. Screen readers hear
+// “opens in a new tab” after the link text; it isn't shown.
+export const OpensInNewTab: Story = {
+  name: 'Opens in new tab',
+  args: { href: 'https://www.linkedin.com', opensInNewTab: true },
 };
 
 // A Link takes its font from the text around it: body-default in a TextBlock,

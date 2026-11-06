@@ -19,9 +19,15 @@ export interface LinkProps {
   disabled?: boolean;
   /** A short hint shown on hover and focus, usually “Coming soon” on a disabled link */
   tooltip?: string;
+  /**
+   * Whether the link opens in a new tab, for a page on another site that
+   * people come back from. Screen readers hear “opens in a new tab” after
+   * the link text. Ignored when the link is disabled.
+   */
+  opensInNewTab?: boolean;
 }
 
-export function Link({ children, href, color = 'default', disabled = false, tooltip }: LinkProps) {
+export function Link({ children, href, color = 'default', disabled = false, tooltip, opensInNewTab = false }: LinkProps) {
   const tooltipId = useId();
   const describedBy = tooltip ? tooltipId : undefined;
   // data-link tells Prose this is a Link, so Prose leaves its styles alone
@@ -39,8 +45,16 @@ export function Link({ children, href, color = 'default', disabled = false, tool
       {children}
     </a>
   ) : (
-    <a {...common} href={href}>
+    // A new tab gets rel="noopener noreferrer", so the page it opens can't
+    // control this one, and hidden text, so screen reader users know (WCAG G201)
+    <a
+      {...common}
+      href={href}
+      target={opensInNewTab ? '_blank' : undefined}
+      rel={opensInNewTab ? 'noopener noreferrer' : undefined}
+    >
       {children}
+      {opensInNewTab && <span className={styles.newTab}> (opens in a new tab)</span>}
     </a>
   );
 
