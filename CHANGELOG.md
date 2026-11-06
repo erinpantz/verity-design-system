@@ -11,6 +11,10 @@ Sites install Verity by tag (for example `github:erinpantz/verity-design-system#
 - **Button and Link:** an `opensInNewTab` prop, for pages on other sites that people come back from. It adds `target="_blank"` and `rel="noopener noreferrer"`, and screen readers hear “opens in a new tab” after the label, from text that isn’t shown.
 - **Footer:** `callToAction.opensInNewTab`, passed to its Button.
 
+### Changed
+
+- **Button docs:** removed the rule against using a Button to go to another page. A Button with `href` is a link that looks like a button, for a call to action like “Book a call.”
+
 ## [0.3.0] – 2026-11-06
 
 ### Added
