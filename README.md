@@ -93,7 +93,7 @@ While both are changing, the site can use this folder directly instead of a GitH
 ### Releasing a version
 
 1. **Write the release notes** at the top of `CHANGELOG.md`: what was added, changed, removed, and fixed, with any breaking change called out.
-2. **Update the version** in `package.json` and `package-lock.json`, for example `0.4.0`, and commit it with the changelog. While Verity is below 1.0, any breaking change means a new minor version.
-3. **Tag it** with the notes as its message: `git tag -a v0.4.0`, then push the commits and the tag: `git push && git push origin v0.4.0`. Never move a tag that’s been pushed; release a new version instead.
-4. **Publish a GitHub Release** from the tag: `gh release create v0.4.0 --title "v0.4.0" --notes-from-tag`.
+2. **Update the version** in `package.json` and `package-lock.json`, for example `0.3.2`, and commit it with the changelog. While Verity is below 1.0, a breaking change gets a new minor version (0.4.0), and everything else, new features included, gets a new patch version (0.3.2).
+3. **Tag it** with the notes as its message: `git tag -a v0.3.2`, then push the commits and the tag: `git push && git push origin v0.3.2`. Never move a tag that’s been pushed; release a new version instead.
+4. **Publish a GitHub Release** from the tag: `gh release create v0.3.2 --title "v0.3.2" --notes-from-tag`.
 5. **Update the site** to the new tag.

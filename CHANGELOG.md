@@ -1,6 +1,6 @@
 # Changelog
 
-Every release of Verity, newest first. The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and versions follow [Semantic Versioning](https://semver.org/): while Verity is below 1.0, a new minor version (0.x.0) can include breaking changes, and they’re always listed under **Removed** or marked **Breaking**.
+Every release of Verity, newest first. The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and versions follow [Semantic Versioning](https://semver.org/): while Verity is below 1.0, a breaking change gets a new minor version (0.x.0), and everything else, new features included, gets a new patch version (0.x.y). Breaking changes are always listed under **Removed** or marked **Breaking**.
 
 Sites install Verity by tag (for example `github:erinpantz/verity-design-system#v0.3.0`), so a site only changes when it moves to a new tag on purpose.
 
@@ -76,6 +76,7 @@ The first library release: everything in the Figma library except Animation, wit
 - **Theme helpers:** `themeScript`, `useTheme`, and `setTheme`, so a site applies the saved theme before the first paint.
 - **The library build:** one entry point with every component and its prop types, one stylesheet (`verity-design-system/styles.css`) with the fonts inside it, and `npm run build:watch` for working with a linked copy.
 
+[0.3.1]: https://github.com/erinpantz/verity-design-system/compare/v0.3.0...v0.3.1
 [0.3.0]: https://github.com/erinpantz/verity-design-system/compare/v0.2.0...v0.3.0
 [0.2.0]: https://github.com/erinpantz/verity-design-system/compare/v0.1.0...v0.2.0
 [0.1.0]: https://github.com/erinpantz/verity-design-system/releases/tag/v0.1.0
