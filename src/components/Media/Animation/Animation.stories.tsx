@@ -11,7 +11,7 @@ import { Container } from '../../Layout/Container';
 import { Grid } from '../../Layout/Grid';
 import { MediaBlock } from '../MediaBlock';
 import { Animation } from './Animation';
-import { ReducedMotionOverride } from './useReducedMotion';
+import { ReducedMotionOverride } from '../Playback/useReducedMotion';
 
 // The sample animations, from the Laguna Companion case study. Their artwork
 // is square, so the stories use 1:1; the component's default is 16:9.

@@ -11,7 +11,7 @@ function subscribe(onChange: () => void) {
 const current = () => window.matchMedia(QUERY).matches;
 
 /**
- * For stories only: turns “reduce motion” on or off for the animations inside
+ * For stories only: turns “reduce motion” on or off for the animations and videos inside
  * it, whatever the computer is set to, so the docs can show both. It's not
  * exported from the library; the site always follows the visitor's setting.
  */
