@@ -88,10 +88,12 @@ While both are changing, the site can use this folder directly instead of a GitH
 1. **Link it.** In the site: `npm install ../verity-design-system` (the path to this folder). npm adds a link to the folder instead of a copy.
 2. **Use one React.** The linked folder has its own React for Storybook, and two copies of React break components. In the site’s `vite.config.ts`, add `resolve: { dedupe: ['react', 'react-dom'] }`.
 3. **Run two terminals.** In Verity: `npm run build:watch`, which rebuilds `dist/` on every save. In the site: its dev server (`npm run dev`), which reloads when `dist/` changes.
-4. **Switch back** to a tagged version before deploying the site: `npm install github:erinpantz/verity-design-system#v0.1.0`.
+4. **Switch back** to a tagged version before deploying the site: `npm install github:erinpantz/verity-design-system#v0.3.0` (the latest tag).
 
 ### Releasing a version
 
-1. **Update the version** in `package.json`, for example `0.2.0`, and commit it.
-2. **Tag it:** `git tag v0.2.0`, then `git push origin v0.2.0` along with the commits.
-3. **Update the site** to the new tag.
+1. **Write the release notes** at the top of `CHANGELOG.md`: what was added, changed, removed, and fixed, with any breaking change called out.
+2. **Update the version** in `package.json` and `package-lock.json`, for example `0.4.0`, and commit it with the changelog. While Verity is below 1.0, any breaking change means a new minor version.
+3. **Tag it** with the notes as its message: `git tag -a v0.4.0`, then push the commits and the tag: `git push && git push origin v0.4.0`. Never move a tag that’s been pushed; release a new version instead.
+4. **Publish a GitHub Release** from the tag: `gh release create v0.4.0 --title "v0.4.0" --notes-from-tag`.
+5. **Update the site** to the new tag.
