@@ -4,6 +4,12 @@ Every release of Verity, newest first. The format follows [Keep a Changelog](htt
 
 Sites install Verity by tag (for example `github:erinpantz/verity-design-system#v0.3.0`), so a site only changes when it moves to a new tag on purpose.
 
+## [0.3.5] – 2026-11-09
+
+### Added
+
+- **VerticalStack:** an `xl` gap (`spacing/xl`), for separate blocks that need as much room as Section puts between its blocks. HorizontalStack keeps its gaps.
+
 ## [0.3.4] – 2026-11-09
 
 ### Changed
@@ -98,6 +104,7 @@ The first library release: everything in the Figma library except Animation, wit
 - **Theme helpers:** `themeScript`, `useTheme`, and `setTheme`, so a site applies the saved theme before the first paint.
 - **The library build:** one entry point with every component and its prop types, one stylesheet (`verity-design-system/styles.css`) with the fonts inside it, and `npm run build:watch` for working with a linked copy.
 
+[0.3.5]: https://github.com/erinpantz/verity-design-system/compare/v0.3.4...v0.3.5
 [0.3.4]: https://github.com/erinpantz/verity-design-system/compare/v0.3.3...v0.3.4
 [0.3.3]: https://github.com/erinpantz/verity-design-system/compare/v0.3.2...v0.3.3
 [0.3.2]: https://github.com/erinpantz/verity-design-system/compare/v0.3.1...v0.3.2
