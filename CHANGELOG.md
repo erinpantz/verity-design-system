@@ -4,6 +4,16 @@ Every release of Verity, newest first. The format follows [Keep a Changelog](htt
 
 Sites install Verity by tag (for example `github:erinpantz/verity-design-system#v0.3.0`), so a site only changes when it moves to a new tag on purpose.
 
+## [0.3.10] – 2026-11-09
+
+### Changed
+
+- **ThemeToggle:** it floats in the screen’s bottom-right corner at every width, rendered by Shell, `spacing/md` from the edges plus the safe area. It sits above the page’s content and below NavOverlay, and comes right after the nav and before Main in the tab order. It’s always on `color/background/scrim`, with hover and press fills over it like IconButton’s `background="scrim"`, and its tooltip opens above it (`top-end`).
+- **MainNav:** ThemeToggle is gone from the side rail and the Small top bar. The rail ends after Resume, and the top bar is the menu button and the logo. NavOverlay follows.
+- **Shell:** it renders ThemeToggle in the corner.
+
+No props changed.
+
 ## [0.3.9] – 2026-11-09
 
 ### Changed
@@ -137,6 +147,7 @@ The first library release: everything in the Figma library except Animation, wit
 - **Theme helpers:** `themeScript`, `useTheme`, and `setTheme`, so a site applies the saved theme before the first paint.
 - **The library build:** one entry point with every component and its prop types, one stylesheet (`verity-design-system/styles.css`) with the fonts inside it, and `npm run build:watch` for working with a linked copy.
 
+[0.3.10]: https://github.com/erinpantz/verity-design-system/compare/v0.3.9...v0.3.10
 [0.3.9]: https://github.com/erinpantz/verity-design-system/compare/v0.3.8...v0.3.9
 [0.3.8]: https://github.com/erinpantz/verity-design-system/compare/v0.3.7...v0.3.8
 [0.3.7]: https://github.com/erinpantz/verity-design-system/compare/v0.3.6...v0.3.7
