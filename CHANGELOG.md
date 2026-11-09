@@ -4,6 +4,23 @@ Every release of Verity, newest first. The format follows [Keep a Changelog](htt
 
 Sites install Verity by tag (for example `github:erinpantz/verity-design-system#v0.3.0`), so a site only changes when it moves to a new tag on purpose.
 
+## [0.4.0] – 2026-11-09
+
+### Added
+
+- **BackLink:** a link back to the page above, with a back arrow and a label, on `color/background/scrim`, with hover and press fills over it like IconButton’s `background="scrim"`. Props: `href` and `label`.
+- **Shell:** a `mode` prop, `default` or `focused`, and `backLink` (`href` and `label`) for focused mode. Focused mode has no MainNav: a BackLink floats in the top-left corner (`spacing/md` from the top and `main/padding-inline` from the left, plus the safe area), ThemeToggle stays in the bottom-right, and Main starts lower so the title clears the link. In the tab order: BackLink, ThemeToggle, then Main.
+- **Icons:** `back`.
+- **Tokens:** `main/padding-top-focused` (72 at every breakpoint), the space above Main in focused mode.
+
+### Changed
+
+- **CaseStudyHeader:** the heading, still the page’s `<h1>`, is now in `display-default`, like Hero’s headline.
+
+### Removed
+
+- **Breaking:** CaseStudyHeader’s `badge` prop. Remove `badge` from every CaseStudyHeader; the header is now the title and the facts.
+
 ## [0.3.10] – 2026-11-09
 
 ### Changed
@@ -147,6 +164,7 @@ The first library release: everything in the Figma library except Animation, wit
 - **Theme helpers:** `themeScript`, `useTheme`, and `setTheme`, so a site applies the saved theme before the first paint.
 - **The library build:** one entry point with every component and its prop types, one stylesheet (`verity-design-system/styles.css`) with the fonts inside it, and `npm run build:watch` for working with a linked copy.
 
+[0.4.0]: https://github.com/erinpantz/verity-design-system/compare/v0.3.10...v0.4.0
 [0.3.10]: https://github.com/erinpantz/verity-design-system/compare/v0.3.9...v0.3.10
 [0.3.9]: https://github.com/erinpantz/verity-design-system/compare/v0.3.8...v0.3.9
 [0.3.8]: https://github.com/erinpantz/verity-design-system/compare/v0.3.7...v0.3.8
