@@ -5,7 +5,7 @@ export interface VerticalStackProps {
   /** The items to stack, from top to bottom */
   children?: ReactNode;
   /** The space between items, from the spacing tokens */
-  gap?: 'none' | 'xxs' | 'xs' | 'sm' | 'md' | 'lg';
+  gap?: 'none' | 'xxs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl';
   /**
    * How items line up across the column: stretch to fill its width, or keep
    * their own width and line up at the start, center, or end

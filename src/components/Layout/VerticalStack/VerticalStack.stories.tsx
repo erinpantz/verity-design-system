@@ -19,7 +19,7 @@ const meta = {
   },
   argTypes: {
     width: { control: 'inline-radio', options: ['column', 'wide'] },
-    gap: { control: 'inline-radio', options: ['none', 'xxs', 'xs', 'sm', 'md', 'lg'] },
+    gap: { control: 'inline-radio', options: ['none', 'xxs', 'xs', 'sm', 'md', 'lg', 'xl'] },
     align: { control: 'inline-radio', options: ['stretch', 'start', 'center', 'end'] },
     // A list needs <li> items, so it's chosen in code, not here
     as: { control: false },
@@ -56,6 +56,12 @@ export const GapSm: Story = {
 export const GapLg: Story = {
   name: 'Gap lg',
   args: { gap: 'lg' },
+};
+
+// As much room as Section puts between its blocks
+export const GapXl: Story = {
+  name: 'Gap xl',
+  args: { gap: 'xl' },
 };
 
 export const AlignStart: Story = {
