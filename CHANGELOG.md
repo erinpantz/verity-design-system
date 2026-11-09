@@ -4,6 +4,13 @@ Every release of Verity, newest first. The format follows [Keep a Changelog](htt
 
 Sites install Verity by tag (for example `github:erinpantz/verity-design-system#v0.3.0`), so a site only changes when it moves to a new tag on purpose.
 
+## [0.3.8] – 2026-11-09
+
+### Added
+
+- **CaseStudyHighlights:** a wide box of images that shows a project at a glance, under a centered heading (“Project highlights” by default, level 3, set with `headingLevel`). It goes in a case study’s Overview Section and is always wide, like a MediaBlock with `width="wide"`. Its MediaBlocks fill the box.
+- **Guidelines (Spacing and rhythm):** CaseStudyHighlights joins the Footer as a block that’s always wide.
+
 ## [0.3.7] – 2026-11-09
 
 ### Added
@@ -124,6 +131,7 @@ The first library release: everything in the Figma library except Animation, wit
 - **Theme helpers:** `themeScript`, `useTheme`, and `setTheme`, so a site applies the saved theme before the first paint.
 - **The library build:** one entry point with every component and its prop types, one stylesheet (`verity-design-system/styles.css`) with the fonts inside it, and `npm run build:watch` for working with a linked copy.
 
+[0.3.8]: https://github.com/erinpantz/verity-design-system/compare/v0.3.7...v0.3.8
 [0.3.7]: https://github.com/erinpantz/verity-design-system/compare/v0.3.6...v0.3.7
 [0.3.6]: https://github.com/erinpantz/verity-design-system/compare/v0.3.5...v0.3.6
 [0.3.5]: https://github.com/erinpantz/verity-design-system/compare/v0.3.4...v0.3.5
