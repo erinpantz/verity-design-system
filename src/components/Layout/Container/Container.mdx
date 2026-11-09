@@ -34,7 +34,7 @@ A Container renders a `<div>` by default. Use `as` to choose the element, based 
 
 Every block sits in the content column, `--verity-content-column-width` (880), centered. So text, MediaText, quotes, and lists all share left and right edges down the page, and lines of text stay a readable length.
 
-A `MediaBlock`, `Gallery`, `Grid`, `VerticalStack`, or `HorizontalStack` can break out with `width="wide"`, up to `--verity-content-wide-width` (1824), still centered. Nothing else does, except the `Footer`, which is always wide as the page’s closing band, so a wide block always reads as intentional.
+A `MediaBlock`, `Gallery`, `Grid`, `VerticalStack`, or `HorizontalStack` can break out with `width="wide"`, up to `--verity-content-wide-width` (1824), still centered. Nothing else does, except two blocks that are always wide: the `Footer`, as the page’s closing band, and `CaseStudyHighlights`. So a wide block always reads as intentional.
 
 | Block | Width | Token |
 |---|---|---|

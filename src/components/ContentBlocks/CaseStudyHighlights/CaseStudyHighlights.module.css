@@ -1,0 +1,25 @@
+/* A box on the subtle background: the heading, then the images. Every space
+   is a gap or the box's padding, never a margin, and the root adds no space
+   outside itself. Its width comes from the Section or Container it's in. */
+
+.caseStudyHighlights {
+  display: flex;
+  flex-direction: column;
+  gap: var(--verity-spacing-lg);
+  padding-block: var(--verity-padding-md);
+  padding-inline: var(--verity-padding-lg);
+  border-radius: var(--verity-border-radius-lg);
+  background-color: var(--verity-color-background-subtle);
+}
+
+/* The heading, centered over the images */
+.heading {
+  text-align: center;
+}
+
+/* The images, top to bottom. Each MediaBlock fills the box's width. */
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--verity-spacing-xl);
+}

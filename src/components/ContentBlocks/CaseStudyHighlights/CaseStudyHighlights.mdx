@@ -1,0 +1,78 @@
+import { Meta, Canvas } from '@storybook/addon-docs/blocks';
+import { VerityDocs } from '../../../foundations/VerityDocs';
+import { PropsTable } from '../../../foundations/PropsTable';
+import * as CaseStudyHighlightsStories from './CaseStudyHighlights.stories';
+
+<Meta of={CaseStudyHighlightsStories} />
+
+<VerityDocs>
+
+# CaseStudyHighlights
+
+A wide box of images that shows a project at a glance, under a centered heading. It usually sits in a case study’s Overview Section, so people see the work before they read about it.
+
+<Canvas of={CaseStudyHighlightsStories.Default} />
+
+## When to use
+
+- **In a case study’s Overview Section,** under its heading, for the two or three images that sum up the project: the final design, a key screen, the system behind it.
+- **Once per case study.** It’s the project at a glance; the Sections below tell the story.
+- **Not for images that belong to a step in the story.** Put those in a `MediaBlock` in their own Section, `width="wide"` if they need the room.
+- **Not for a set of images that people compare side by side.** Use a `Gallery`.
+
+## Accessibility
+
+A CaseStudyHighlights is a plain box with a real heading: an `<h3>` by default. Screen reader users find it by heading, like any part of a Section. It isn’t a landmark of its own, because the Section around it already is one (“Overview”), and a region for every part of a Section would crowd the landmarks list.
+
+Each image is a `MediaBlock`, a `<figure>`, with its own `alt` text and optional caption.
+
+| Situation | What to do | Example |
+|---|---|---|
+| Choosing the heading level | Keep `headingLevel={3}` in a Section, whose heading is level 2. Change it only if it sits somewhere else in the page’s outline. | Overview (h2), then Project highlights (h3) |
+| Writing the heading | Keep the default, “Project highlights,” unless another name says more. Sentence case, no period. | “Project highlights” |
+| Writing each image’s alt text | Describe what’s in the picture, as for any `Image`. The heading doesn’t replace it. | `alt="The setup screen, on step 2 of 5: Connect your bank"` |
+
+## Width
+
+It’s always wide: in a `Section` or `Container`, it spans up to `--verity-content-wide-width` (1824), centered, like a `MediaBlock` with `width="wide"`. There’s no `width` prop. It uses the same mechanism as the other wide blocks (`data-width="wide"`), so it lines up with them.
+
+The images inside fill the box. A MediaBlock’s caption still stops at the content column’s width, centered, so it stays easy to read.
+
+<Canvas of={CaseStudyHighlightsStories.InAnOverviewSection} />
+
+## Space
+
+| Space | Token |
+|---|---|
+| Inside the box, top and bottom | `--verity-padding-md` (24–48) |
+| Inside the box, left and right | `--verity-padding-lg` (32–80) |
+| Between the heading and the images | `--verity-spacing-lg` (32–48) |
+| Between the images | `--verity-spacing-xl` (40–56) |
+
+It adds no space outside itself: the Section sets the space above and below it, `--verity-spacing-xl`, as for every block.
+
+## Color
+
+| Part | Token |
+|---|---|
+| The box | `--verity-color-background-subtle`, with `--verity-border-radius-lg` corners |
+| The heading | `--verity-color-content-default`, from `Heading` |
+| The captions | `--verity-color-content-subtle`, from `MediaBlock` |
+
+Both text colors pass contrast on the box in both themes: the heading at about 11:1, and the captions at over 6:1.
+
+## Props
+
+<PropsTable of={CaseStudyHighlightsStories} />
+
+## In Figma
+
+| Figma | Code |
+|---|---|
+| Component `CaseStudyHighlights` | `<CaseStudyHighlights />` |
+| The Heading instance | `heading`, “Project highlights” by default in both. Its level is `headingLevel`, 3 by default. |
+| Slot `Content` | `children`: the MediaBlocks |
+| The MediaBlocks, each Width=wide and Fill container | Plain `<MediaBlock>`s: in code, every MediaBlock fills the box, so no `width` is needed |
+| Not in Figma | `headingLevel` |
+
+</VerityDocs>
