@@ -54,7 +54,7 @@ export const MotionAndEffects: StoryObj = {
   name: 'Motion and effects',
   render: () => (
     <FoundationPage title="Motion and effects" intro="Every easing and shadow token, with each curve and shadow drawn as an example.">
-      <TokenTiers page="motion" order={['easing.standard-decelerate', 'shadow.sm']} options={options} />
+      <TokenTiers page="motion" order={['easing.standard-decelerate', 'shadow.sm', 'shadow.md', 'shadow.lg']} options={options} />
     </FoundationPage>
   ),
 };

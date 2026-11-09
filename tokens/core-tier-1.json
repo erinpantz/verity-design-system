@@ -1219,23 +1219,58 @@
     "sm": {
       "x": {
         "$type": "dimension",
-        "$value": "2px"
+        "$value": "0px",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "EFFECT_FLOAT"
+            ]
+          }
+        }
       },
       "y": {
         "$type": "dimension",
-        "$value": "2px"
+        "$value": "2px",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "EFFECT_FLOAT"
+            ]
+          }
+        }
       },
       "blur": {
         "$type": "dimension",
-        "$value": "4px"
+        "$value": "4px",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "EFFECT_FLOAT"
+            ]
+          }
+        }
       },
       "spread": {
         "$type": "dimension",
-        "$value": "0px"
+        "$value": "0px",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "EFFECT_FLOAT"
+            ]
+          }
+        }
       },
       "color": {
         "$type": "color",
-        "$value": "{color.background.transparent-25}"
+        "$value": "{color.background.transparent-25}",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "EFFECT_COLOR"
+            ]
+          }
+        }
       }
     },
     "glow": {
@@ -1243,6 +1278,120 @@
         "$type": "dimension",
         "$value": "12px",
         "$description": "Blur of a glow around a shape, in pixels."
+      }
+    },
+    "md": {
+      "x": {
+        "$type": "dimension",
+        "$value": "0px",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "EFFECT_FLOAT"
+            ]
+          }
+        }
+      },
+      "y": {
+        "$type": "dimension",
+        "$value": "4px",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "EFFECT_FLOAT"
+            ]
+          }
+        }
+      },
+      "blur": {
+        "$type": "dimension",
+        "$value": "12px",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "EFFECT_FLOAT"
+            ]
+          }
+        }
+      },
+      "spread": {
+        "$type": "dimension",
+        "$value": "0px",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "EFFECT_FLOAT"
+            ]
+          }
+        }
+      },
+      "color": {
+        "$type": "color",
+        "$value": "{color.background.transparent-25}",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "EFFECT_COLOR"
+            ]
+          }
+        }
+      }
+    },
+    "lg": {
+      "x": {
+        "$type": "dimension",
+        "$value": "0px",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "EFFECT_FLOAT"
+            ]
+          }
+        }
+      },
+      "y": {
+        "$type": "dimension",
+        "$value": "8px",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "EFFECT_FLOAT"
+            ]
+          }
+        }
+      },
+      "blur": {
+        "$type": "dimension",
+        "$value": "24px",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "EFFECT_FLOAT"
+            ]
+          }
+        }
+      },
+      "spread": {
+        "$type": "dimension",
+        "$value": "0px",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "EFFECT_FLOAT"
+            ]
+          }
+        }
+      },
+      "color": {
+        "$type": "color",
+        "$value": "{color.background.transparent-25}",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "EFFECT_COLOR"
+            ]
+          }
+        }
       }
     }
   },

@@ -157,11 +157,19 @@
   --verity-spacing-128: 128px;
   --verity-easing-standard-decelerate-strong: cubic-bezier(0, 0, 0.0045, 1.005);
   --verity-easing-overshoot: cubic-bezier(0.34, 1.56, 0.64, 1); /** Springy curve that goes slightly past its target and settles back. */
-  --verity-shadow-sm-x: 2px;
+  --verity-shadow-sm-x: 0px;
   --verity-shadow-sm-y: 2px;
   --verity-shadow-sm-blur: 4px;
   --verity-shadow-sm-spread: 0px;
   --verity-shadow-glow-blur: 12px; /** Blur of a glow around a shape, in pixels. */
+  --verity-shadow-md-x: 0px;
+  --verity-shadow-md-y: 4px;
+  --verity-shadow-md-blur: 12px;
+  --verity-shadow-md-spread: 0px;
+  --verity-shadow-lg-x: 0px;
+  --verity-shadow-lg-y: 8px;
+  --verity-shadow-lg-blur: 24px;
+  --verity-shadow-lg-spread: 0px;
   --verity-size-20: 20px;
   --verity-size-22: 22px;
   --verity-size-24: 24px;
@@ -176,6 +184,8 @@
   --verity-duration-1500: 1500ms; /** Duration in milliseconds. */
   --verity-duration-6000: 6000ms; /** Duration in milliseconds. */
   --verity-shadow-sm-color: var(--verity-color-background-transparent-25);
+  --verity-shadow-md-color: var(--verity-color-background-transparent-25);
+  --verity-shadow-lg-color: var(--verity-color-background-transparent-25);
 }
 
 /* Styles Tier 2 */
