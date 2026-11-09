@@ -3,6 +3,10 @@
 // icons from Figma and run `npm run icons`.
 
 export const ICONS = {
+  "back": {
+    viewBox: "0 0 24 24",
+    markup: "<path d=\"M19 12H5M11 6L5 12L11 18\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-miterlimit=\"10\" stroke-linecap=\"round\" stroke-linejoin=\"round\" vector-effect=\"non-scaling-stroke\"/>",
+  },
   "dock-to-left": {
     viewBox: "0 0 24 24",
     markup: "<path d=\"M9 4V20M20 20H4V4H20V20Z\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-miterlimit=\"10\" stroke-linecap=\"round\" stroke-linejoin=\"round\" vector-effect=\"non-scaling-stroke\"/>",

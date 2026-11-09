@@ -794,6 +794,7 @@
   --verity-spacing-xl: var(--verity-spacing-40);
   --verity-main-spacing-section-gap: var(--verity-spacing-56);
   --verity-main-padding-inline: var(--verity-spacing-24); /** Space between the page’s content and its edges, on both sides, set by Shell on Main and the Footer. Containers and other components have no side margins of their own. */
+  --verity-main-padding-top-focused: var(--verity-spacing-72); /** Space above Main in Shell’s focused mode, so the page’s title clears the floating BackLink: the link’s inset (spacing/md) plus its height (control/size/md), rounded to the spacing scale. */
   --verity-padding-lg: var(--verity-spacing-32);
   --verity-padding-md: var(--verity-spacing-24);
   --verity-padding-sm: var(--verity-spacing-16);
@@ -1033,6 +1034,7 @@
     --verity-spacing-xl: var(--verity-spacing-40);
     --verity-main-spacing-section-gap: var(--verity-spacing-64);
     --verity-main-padding-inline: var(--verity-spacing-24); /** Space between the page’s content and its edges, on both sides, set by Shell on Main and the Footer. Containers and other components have no side margins of their own. */
+    --verity-main-padding-top-focused: var(--verity-spacing-72); /** Space above Main in Shell’s focused mode, so the page’s title clears the floating BackLink: the link’s inset (spacing/md) plus its height (control/size/md), rounded to the spacing scale. */
     --verity-padding-lg: var(--verity-spacing-48);
     --verity-padding-md: var(--verity-spacing-24);
     --verity-padding-sm: var(--verity-spacing-16);
@@ -1273,6 +1275,7 @@
     --verity-spacing-xl: var(--verity-spacing-56);
     --verity-main-spacing-section-gap: var(--verity-spacing-72);
     --verity-main-padding-inline: var(--verity-spacing-40); /** Space between the page’s content and its edges, on both sides, set by Shell on Main and the Footer. Containers and other components have no side margins of their own. */
+    --verity-main-padding-top-focused: var(--verity-spacing-72); /** Space above Main in Shell’s focused mode, so the page’s title clears the floating BackLink: the link’s inset (spacing/md) plus its height (control/size/md), rounded to the spacing scale. */
     --verity-padding-lg: var(--verity-spacing-80);
     --verity-padding-md: var(--verity-spacing-32);
     --verity-padding-sm: var(--verity-spacing-24);
@@ -1513,6 +1516,7 @@
     --verity-spacing-xl: var(--verity-spacing-56);
     --verity-main-spacing-section-gap: var(--verity-spacing-72);
     --verity-main-padding-inline: var(--verity-spacing-48); /** Space between the page’s content and its edges, on both sides, set by Shell on Main and the Footer. Containers and other components have no side margins of their own. */
+    --verity-main-padding-top-focused: var(--verity-spacing-72); /** Space above Main in Shell’s focused mode, so the page’s title clears the floating BackLink: the link’s inset (spacing/md) plus its height (control/size/md), rounded to the spacing scale. */
     --verity-padding-lg: var(--verity-spacing-80);
     --verity-padding-md: var(--verity-spacing-48);
     --verity-padding-sm: var(--verity-spacing-24);

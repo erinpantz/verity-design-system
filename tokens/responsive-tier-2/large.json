@@ -17,6 +17,18 @@
           ]
         }
       }
+    },
+    "padding-top-focused": {
+      "$type": "dimension",
+      "$value": "{spacing.72}",
+      "$description": "Space above Main in Shell’s focused mode, so the page’s title clears the floating BackLink: the link’s inset (spacing/md) plus its height (control/size/md), rounded to the spacing scale.",
+      "$extensions": {
+        "com.figma": {
+          "scopes": [
+            "GAP"
+          ]
+        }
+      }
     }
   },
   "padding": {
