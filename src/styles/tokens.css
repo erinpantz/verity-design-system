@@ -457,15 +457,15 @@
   --verity-color-brand-transparent-brand-25: #0b00e440;
   --verity-color-brand-transparent-brand-50: #0b00e480;
   --verity-color-brand-transparent-brand-75: #0b00e4bf;
-  --verity-color-brand-neutral-100: #ebeef5;
-  --verity-color-brand-neutral-200: #c9d3e7;
-  --verity-color-brand-neutral-300: #a6b7db;
-  --verity-color-brand-neutral-400: #8098ce;
-  --verity-color-brand-neutral-500: #5e7dc4;
-  --verity-color-brand-neutral-600: #3f5fb1;
-  --verity-color-brand-neutral-700: #274493;
-  --verity-color-brand-neutral-800: #182e6b;
-  --verity-color-brand-neutral-900: #081431;
+  --verity-color-brand-neutral-100: #eaeef7;
+  --verity-color-brand-neutral-200: #c6d3ed;
+  --verity-color-brand-neutral-300: #a1b7e6;
+  --verity-color-brand-neutral-400: #7897dd;
+  --verity-color-brand-neutral-500: #547ad8;
+  --verity-color-brand-neutral-600: #345ac7;
+  --verity-color-brand-neutral-700: #1c3da8;
+  --verity-color-brand-neutral-800: #10287b;
+  --verity-color-brand-neutral-900: #051239;
   --verity-scrim: #02006abf;
 }
 
@@ -620,15 +620,15 @@
   --verity-color-brand-transparent-brand-25: #c6010340;
   --verity-color-brand-transparent-brand-50: #c6010380;
   --verity-color-brand-transparent-brand-75: #c60103bf;
-  --verity-color-brand-neutral-100: #f2edec;
-  --verity-color-brand-neutral-200: #decfcc;
-  --verity-color-brand-neutral-300: #cbb0ab;
-  --verity-color-brand-neutral-400: #b68e87;
-  --verity-color-brand-neutral-500: #a57068;
-  --verity-color-brand-neutral-600: #8d5249;
-  --verity-color-brand-neutral-700: #703831;
-  --verity-color-brand-neutral-800: #50251f;
-  --verity-color-brand-neutral-900: #240f0c;
+  --verity-color-brand-neutral-100: #f3edeb;
+  --verity-color-brand-neutral-200: #e1ceca;
+  --verity-color-brand-neutral-300: #d1aea7;
+  --verity-color-brand-neutral-400: #be8a81;
+  --verity-color-brand-neutral-500: #af6a61;
+  --verity-color-brand-neutral-600: #974b40;
+  --verity-color-brand-neutral-700: #793028;
+  --verity-color-brand-neutral-800: #571f18;
+  --verity-color-brand-neutral-900: #280c09;
   --verity-scrim: #3c0000bf;
 }
 
