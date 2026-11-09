@@ -88,6 +88,7 @@
   --verity-color-brand-transparent-red-500-50: #eb010680; /** color/brand/red/500 at 50% opacity. Used for glows. */
   --verity-color-background-transparent-25: #00000040;
   --verity-color-background-transparent-90: #000000e6;
+  --verity-color-background-transparent-50: #00000080;
   --verity-border-width-1: 1px;
   --verity-border-width-2: 2px;
   --verity-border-width-4: 4px;
@@ -183,9 +184,9 @@
   --verity-duration-300: 300ms; /** Duration in milliseconds. */
   --verity-duration-1500: 1500ms; /** Duration in milliseconds. */
   --verity-duration-6000: 6000ms; /** Duration in milliseconds. */
-  --verity-shadow-sm-color: var(--verity-color-background-transparent-25);
-  --verity-shadow-md-color: var(--verity-color-background-transparent-25);
-  --verity-shadow-lg-color: var(--verity-color-background-transparent-25);
+  --verity-shadow-sm-color: var(--verity-color-background-transparent-50);
+  --verity-shadow-md-color: var(--verity-color-background-transparent-50);
+  --verity-shadow-lg-color: var(--verity-color-background-transparent-50);
 }
 
 /* Styles Tier 2 */

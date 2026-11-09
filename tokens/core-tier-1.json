@@ -352,6 +352,10 @@
       "transparent-90": {
         "$type": "color",
         "$value": "#000000e6"
+      },
+      "transparent-50": {
+        "$type": "color",
+        "$value": "#00000080"
       }
     }
   },
@@ -1263,7 +1267,7 @@
       },
       "color": {
         "$type": "color",
-        "$value": "{color.background.transparent-25}",
+        "$value": "{color.background.transparent-50}",
         "$extensions": {
           "com.figma": {
             "scopes": [
@@ -1327,7 +1331,7 @@
       },
       "color": {
         "$type": "color",
-        "$value": "{color.background.transparent-25}",
+        "$value": "{color.background.transparent-50}",
         "$extensions": {
           "com.figma": {
             "scopes": [
@@ -1384,7 +1388,7 @@
       },
       "color": {
         "$type": "color",
-        "$value": "{color.background.transparent-25}",
+        "$value": "{color.background.transparent-50}",
         "$extensions": {
           "com.figma": {
             "scopes": [
