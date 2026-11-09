@@ -8,7 +8,6 @@ const meta = {
   title: 'Content blocks/CaseStudyHeader',
   component: CaseStudyHeader,
   args: {
-    badge: { label: 'Case study' },
     heading: 'Saving admin time and improving care quality',
     facts: [
       { title: 'Role', value: 'Lead product designer' },
@@ -17,7 +16,6 @@ const meta = {
     ],
   },
   argTypes: {
-    badge: { control: 'object' },
     heading: { control: 'text' },
     facts: { control: 'object' },
   },
@@ -28,11 +26,6 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {};
-
-export const BadgeColor: Story = {
-  name: 'Badge color',
-  args: { badge: { label: 'Healthcare', color: 'accent-one' } },
-};
 
 export const MoreFacts: Story = {
   name: 'More facts',
@@ -56,7 +49,6 @@ export const InContext: StoryObj = {
     <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--verity-main-spacing-section-gap)' }}>
       <Container>
         <CaseStudyHeader
-          badge={{ label: 'Case study' }}
           heading="Saving admin time and improving care quality"
           facts={[
             { title: 'Role', value: 'Lead product designer' },

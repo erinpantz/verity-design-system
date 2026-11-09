@@ -87,3 +87,24 @@
   inset-inline-end: calc(var(--verity-spacing-md) + env(safe-area-inset-right, 0px));
   display: flex;
 }
+
+/* Focused mode: no nav. The back link floats in the top-left corner,
+   spacing/md from the top and the page's side margin from the left, plus the
+   safe area, above the page's content like ThemeToggle. Main starts lower,
+   so the page's title clears the link, and a jump to a heading stops below
+   it too. */
+.backLink {
+  position: fixed;
+  z-index: 1;
+  inset-block-start: calc(var(--verity-spacing-md) + env(safe-area-inset-top, 0px));
+  inset-inline-start: calc(var(--verity-main-padding-inline) + env(safe-area-inset-left, 0px));
+  display: flex;
+}
+
+.shell[data-mode='focused'] .main {
+  padding-block-start: var(--verity-main-padding-top-focused);
+}
+
+:global(html):has(.shell[data-mode='focused']) {
+  scroll-padding-block-start: var(--verity-main-padding-top-focused);
+}

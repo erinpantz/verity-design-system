@@ -11,6 +11,7 @@ const linkGroups = (
       <Link href="#portfolio">Portfolio</Link>
       <Link href="#playground">Playground</Link>
       <Link href="#profile">Profile</Link>
+      <Link href="#resume">Resume</Link>
     </LinkGroup>
     <LinkGroup label="Fun stuff">
       <Link href="#albums">My 20 favorite albums</Link>

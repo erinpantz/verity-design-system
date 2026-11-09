@@ -9,13 +9,14 @@ import * as ShellStories from './Shell.stories';
 
 # Shell
 
-The page frame: the site’s nav, the theme toggle in the screen’s bottom-right corner, and the page column with Main and the Footer. Every page of the site uses it.
+The page frame: the site’s nav, the theme toggle in the screen’s bottom-right corner, and the page column with Main and the Footer. Every page of the site uses it. In focused mode, for reading one piece of work, a link back replaces the nav.
 
 <Canvas of={ShellStories.Large} />
 
 ## When to use
 
 - **Once per page, around everything,** with the page’s content as Main and the site’s `Footer`.
+- **In focused mode for a case study,** with `mode="focused"` and a `backLink` to the page it came from. See **Mode**.
 - **Not inside another layout.** It sets the whole page, from the skip link to the footer.
 
 ## Accessibility
@@ -23,11 +24,14 @@ The page frame: the site’s nav, the theme toggle in the screen’s bottom-righ
 | Part | What it renders | What it does |
 |---|---|---|
 | Skip link | “Skip to content,” a primary `Button` link | First in the tab order. It’s off screen until it has keyboard focus, then shows at the top start corner. It moves focus to Main, so the next Tab goes to the first link in the page’s content (WCAG 2.4.1). |
-| Nav | `MainNav`’s `<nav>` | The navigation landmark |
+| Nav | `MainNav`’s `<nav>` | The navigation landmark. Not in focused mode. |
+| Back link | `BackLink`, an `<a href>` | Focused mode only, in place of the nav. In the tab order: the back link, then the theme toggle, then Main. |
 | Theme toggle | `ThemeToggle`, a `<button>` | Right after the nav and before Main in the tab order, so it’s reached early on every page without being part of the navigation |
 | Main | `<main>` | The main landmark, with the page’s content. It can take focus from the skip link (`tabIndex={-1}`), but it isn’t in the tab order. |
 | Footer | The `Footer`’s `<footer>` | The footer landmark (`contentinfo`) |
-| Menu | `NavOverlay` | The full menu on Small and Medium, as a dialog |
+| Menu | `NavOverlay` | The full menu on Small and Medium, as a dialog. Not in focused mode. |
+
+The skip link works the same in both modes: it moves focus to Main.
 
 On Small, the top bar is pinned, so whatever a link jumps to, like Main from the skip link or a heading in the page, stops just below it (`scroll-padding-top` from `--verity-nav-container-thickness-collapsed`).
 
@@ -42,6 +46,30 @@ How Shell is laid out follows the screen width, in CSS with the generated breakp
 | Small | The top bar, pinned while the page scrolls. The menu button opens the full menu. | Below the bar, scrolling |
 
 The nav always opens expanded on XL and Large, and doesn’t remember the toggle between visits.
+
+## Mode
+
+`mode` is a real choice between two ways to read the site, not a preview.
+
+| `mode` | What it shows | Use for |
+|---|---|---|
+| `default` | The site’s nav: MainNav docked on the left, or the top bar on Small, with NavOverlay for the full menu | Pages people move between: the portfolio, the playground, the profile |
+| `focused` | No nav. A `BackLink` floats in the top-left corner, and ThemeToggle stays in the bottom-right. | One piece of work read from start to end, like a case study |
+
+**Why focused mode:** a case study is long, and people read it start to end. With the nav gone, the page gets the whole width at every breakpoint and nothing beside it competes with the work. The way out stays in one place: the back link, always in reach in the corner, names the page it goes back to.
+
+In focused mode:
+
+| What | How |
+|---|---|
+| The back link’s position | Fixed to the top-left corner: `--verity-spacing-md` from the top and `--verity-main-padding-inline` from the left, the page’s own side margin, so it lines up with the page’s content. Plus the safe area (`env(safe-area-inset-top)` and `env(safe-area-inset-left)`). |
+| Where it goes | `backLink`: its `href` and `label`. It’s `{ href: '/', label: 'Portfolio' }` unless you set it. |
+| The space above Main | `--verity-main-padding-top-focused` (72) instead of `--verity-spacing-lg`, so the page’s title clears the back link: its inset plus its height. A link that jumps to a heading stops below the back link too. |
+| Layer | Like the theme toggle: above the page’s content, which scrolls under it |
+
+<Canvas of={ShellStories.FocusedLarge} />
+
+<Canvas of={ShellStories.FocusedSmall} />
 
 ## Theme toggle
 
@@ -65,11 +93,12 @@ Each story opens in a viewport at the width of Figma’s Shell frame for its bre
 
 | Space | Token |
 |---|---|
-| Above the first section in Main | `--verity-spacing-lg` |
+| Above the first section in Main | `--verity-spacing-lg`, or `--verity-main-padding-top-focused` in focused mode |
 | Between sections in Main, and between Main and the Footer | `--verity-main-spacing-section-gap` |
 | Below the Footer | `--verity-spacing-lg` |
 | The page’s sides, around Main and the Footer | `--verity-main-padding-inline` (24–48) |
 | The theme toggle, from the screen’s bottom and right edges | `--verity-spacing-md`, plus the safe area |
+| The back link, from the screen’s top and left edges (focused mode) | `--verity-spacing-md` and `--verity-main-padding-inline`, plus the safe area |
 
 Shell owns the page’s side margins, so nothing inside Main needs its own. Containers and Sections center their content in the same column inside them, and the Footer spans the wide width, up to `--verity-content-wide-width`.
 
@@ -86,8 +115,10 @@ Shell owns the page’s side margins, so nothing inside Main needs its own. Cont
 | The Footer instance | `footer`: the site’s `<Footer />` |
 | Property `Breakpoint` | Not a prop: a preview of each width. In code, the screen width decides. |
 | Property `Nav state` | Not a prop: a preview. In code, the nav opens expanded on XL and Large, and its menu button toggles it. |
+| Property `Mode` | `mode`. `default` is the default in both. |
+| The BackLink instance (focused) | Made by Shell. `backLink` sets where it goes and what it says. |
 | The NavContainer and MainNav instances | Made by Shell. `current` and `hrefs` pass through to MainNav. |
 | The ThemeToggle instance, in the bottom-right corner | Made by Shell, with nothing to set |
-| Not in Figma | The skip link, NavOverlay, and `current` and `hrefs` |
+| Not in Figma | The skip link, NavOverlay, and `current`, `hrefs`, and `backLink` |
 
 </VerityDocs>

@@ -9,7 +9,7 @@ import * as CaseStudyHeaderStories from './CaseStudyHeader.stories';
 
 # CaseStudyHeader
 
-The top of a case study: a Badge, the case study’s title, and the facts about the project, like the role, team, and year.
+The top of a case study: its title, large, and the facts about the project, like the role, team, and year.
 
 <Canvas of={CaseStudyHeaderStories.Default} />
 
@@ -21,13 +21,11 @@ The top of a case study: a Badge, the case study’s title, and the facts about 
 
 ## Accessibility
 
-A CaseStudyHeader renders a `<header>`: the page’s introduction. Its heading is a `Heading` at level 1, the page’s `<h1>`. The facts are a description list (`<dl>`): each fact’s title is a term (`<dt>`) and its value is the description (`<dd>`), so screen readers pair them.
+A CaseStudyHeader renders a `<header>`: the page’s introduction. Its heading is the page’s `<h1>`, set in `display-default` like a Hero’s headline. The facts are a description list (`<dl>`): each fact’s title is a term (`<dt>`) and its value is the description (`<dd>`), so screen readers pair them.
 
 | Situation | What to do | Example |
 |---|---|---|
 | Writing the heading | Say what the work achieved, in sentence case. It’s the page’s title for screen readers. | “Saving admin time and improving care quality” |
-| Writing the badge | A word or two that says what kind of page it is, or the project’s category. | “Case study” |
-| Coloring the badge | Leave it neutral, or give it an accent for the project’s category. The label always says what it means, so color is never the only cue. | `badge={{ label: 'Healthcare', color: 'accent-one' }}` |
 | Writing the facts | Keep each title to a word or two, in sentence case, and each value to one short line. List them in the order people should read them. | “Role,” “Lead product designer” |
 
 ## Facts
@@ -36,17 +34,15 @@ A CaseStudyHeader renders a `<header>`: the page’s introduction. Its heading i
 
 <Canvas of={CaseStudyHeaderStories.MoreFacts} />
 
-<Canvas of={CaseStudyHeaderStories.BadgeColor} />
-
 ## Space
 
 A CaseStudyHeader fills the width it’s given and adds no space outside itself. Put it in a `Container`, which holds it to the same content column as the Sections below it.
 
 | Space | Token |
 |---|---|
-| Between the Badge, the heading, and the facts | `--verity-spacing-lg` |
+| Between the heading and the facts | `--verity-spacing-lg` |
 | Between the facts | `--verity-spacing-md`, from `Grid` |
-| Text | The heading in `heading-1`; the facts in the MetaItem text styles |
+| Text | The heading in `display-default` (`--verity-viewport-typography-display-default-*`), like Hero’s headline; the facts in the MetaItem text styles |
 
 Nothing inside adds space of its own: the header’s gap is the only space between its parts.
 
@@ -61,8 +57,7 @@ Nothing inside adds space of its own: the header’s gap is the only space betwe
 | Figma | Code |
 |---|---|
 | Component `CaseStudyHeader` | `<CaseStudyHeader />` |
-| The Badge (an exposed instance) | `badge`: its label, and its color if not neutral |
-| The Heading (an exposed instance) | `heading`. Always level 1 in code. |
+| Text layer `Heading`, in Display/Default | `heading`. Always the page’s `<h1>` in code. |
 | Slot `Facts`, holding a Grid of MetaItems | `facts`: a list of title and value pairs, passed as data. CaseStudyHeader makes the Grid (`as="dl"`, `itemWidth="sm"`) and the MetaItems. In Figma, you fill the slot by hand. |
 | The fixed width | Not in code: the header fills the width it’s given |
 

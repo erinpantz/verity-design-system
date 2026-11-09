@@ -72,6 +72,8 @@ export { Video } from './components/Media/Video';
 export type { VideoProps } from './components/Media/Video';
 
 // Navigation
+export { BackLink } from './components/Navigation/BackLink';
+export type { BackLinkProps } from './components/Navigation/BackLink';
 export { LinkGroup } from './components/Navigation/LinkGroup';
 export type { LinkGroupProps } from './components/Navigation/LinkGroup';
 export { MainNav } from './components/Navigation/MainNav';

@@ -2,11 +2,13 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import landscape from '../../../foundations/sample-images/landscape.jpg';
 import screenshot from '../../../foundations/sample-images/screenshot.png';
 import shapes from '../../../foundations/sample-images/shapes.jpg';
+import { CaseStudyHeader } from '../../ContentBlocks/CaseStudyHeader';
 import { Gallery } from '../../Media/Gallery';
 import { Image } from '../../Media/Image';
 import { MediaBlock } from '../../Media/MediaBlock';
 import { Prose } from '../../Text/Prose';
 import { UnorderedList, UnorderedListItem } from '../../Text/UnorderedList';
+import { Container } from '../Container';
 import { Footer } from '../Footer';
 import type { FooterProps } from '../Footer/Footer';
 import FooterStories from '../Footer/Footer.stories';
@@ -65,6 +67,38 @@ const page = (
   </>
 );
 
+// A case study, as Main in focused mode: reading one piece of work
+const caseStudy = (
+  <>
+    <Container>
+      <CaseStudyHeader
+        heading="Saving admin time and improving care quality"
+        facts={[
+          { title: 'Role', value: 'Lead product designer' },
+          { title: 'Team', value: 'Two designers and six engineers' },
+          { title: 'Year', value: '2025' },
+        ]}
+      />
+    </Container>
+    <Section heading="Overview">
+      <Prose>
+        <p>
+          Carers ended each visit with twenty minutes of notes, written twice: once on paper and once in the office
+          system. We designed a companion app that writes the notes during the visit.
+        </p>
+      </Prose>
+      <MediaBlock width="wide">
+        <Image src={screenshot} alt="The setup screen, on step 2 of 5: Connect your bank" />
+      </MediaBlock>
+    </Section>
+    <Section heading="Results">
+      <Prose>
+        <p>Notes take four minutes instead of twenty, and the office copy is always up to date.</p>
+      </Prose>
+    </Section>
+  </>
+);
+
 const meta = {
   title: 'Layout/Shell',
   component: Shell,
@@ -74,6 +108,8 @@ const meta = {
     footer: { control: false },
     current: { control: 'inline-radio', options: [undefined, 'portfolio', 'playground', 'profile'] },
     hrefs: { control: false },
+    mode: { control: 'inline-radio', options: ['default', 'focused'] },
+    backLink: { control: 'object' },
   },
   parameters: {
     layout: 'fullscreen',
@@ -112,5 +148,37 @@ export const Medium: Story = {
 
 // The top bar, pinned while the page scrolls. Its menu button opens the full menu.
 export const Small: Story = {
+  globals: { viewport: { value: 'sm' } },
+};
+
+// Focused mode: a case study with a link back instead of the nav. The back
+// link floats in the top-left corner and ThemeToggle in the bottom-right.
+const focused = {
+  mode: 'focused' as const,
+  children: caseStudy,
+  backLink: { href: '#portfolio', label: 'Portfolio' },
+};
+
+export const FocusedXL: Story = {
+  name: 'Focused, XL',
+  args: focused,
+  globals: { viewport: { value: 'xl' } },
+};
+
+export const FocusedLarge: Story = {
+  name: 'Focused, Large',
+  args: focused,
+  globals: { viewport: { value: 'lg' } },
+};
+
+export const FocusedMedium: Story = {
+  name: 'Focused, Medium',
+  args: focused,
+  globals: { viewport: { value: 'md' } },
+};
+
+export const FocusedSmall: Story = {
+  name: 'Focused, Small',
+  args: focused,
   globals: { viewport: { value: 'sm' } },
 };

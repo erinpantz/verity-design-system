@@ -1,0 +1,81 @@
+import { Meta, Canvas } from '@storybook/addon-docs/blocks';
+import { VerityDocs } from '../../../foundations/VerityDocs';
+import { PropsTable } from '../../../foundations/PropsTable';
+import * as BackLinkStories from './BackLink.stories';
+
+<Meta of={BackLinkStories} />
+
+<VerityDocs>
+
+# BackLink
+
+A link back to the page above this one, with a back arrow, on a scrim. In Shell’s focused mode, it floats in the top-left corner in place of the nav.
+
+<Canvas of={BackLinkStories.Default} />
+
+## When to use
+
+- **In Shell’s focused mode,** where Shell places it for you: set `mode="focused"` and `backLink` on Shell. See **Layout › Shell**.
+- **To go back one level,** like from a case study to the portfolio. Name the page it goes to.
+- **Not for links within a page or in running text.** Use `Link`.
+- **Not for an action that changes the page.** Use `Button` or `IconButton`: a BackLink always goes somewhere.
+
+## Accessibility
+
+A BackLink renders an `<a href>`, so it works like any link: Enter follows it, and screen readers announce it as a link. Its name is its `label`. The arrow is decorative and hidden from screen readers, since “link” already says it goes somewhere.
+
+| Situation | What to do | Example |
+|---|---|---|
+| Writing the label | Name the page it goes to, in a word or two, sentence case. Don’t add “Back to”: the arrow shows the direction, and the name stays short. | “Portfolio” |
+| Choosing the href | The page above this one, not the browser’s history, so it works for someone who arrived from a search or a shared link | `href="/"` |
+
+## States
+
+The surface is always a scrim, so it stays readable over whatever scrolls under it. Hover and press add a fill on top of it, like `IconButton` with `background="scrim"`.
+
+| State | What changes | Tokens |
+|---|---|---|
+| Default | The scrim, with the arrow and label in the default content color | `--verity-color-background-scrim`, `--verity-color-content-default` |
+| Hover | A light fill over the scrim. Devices with a real pointer only. | `--verity-color-background-transparent-medium` |
+| Focus | The shared focus ring, outside the link, following its corners. Keyboard focus only. | `--verity-focus-ring-width`, `--verity-focus-ring-offset`, `--verity-color-border-focus` |
+| Active | A stronger fill over the scrim while pressed | `--verity-color-background-transparent-strong` |
+| Disabled | None: a link back always goes somewhere | — |
+
+<Canvas of={BackLinkStories.Hover} />
+
+<Canvas of={BackLinkStories.Focus} />
+
+<Canvas of={BackLinkStories.Active} />
+
+## Size and space
+
+| What | Token |
+|---|---|
+| Height | `--verity-control-size-md` (40–44) |
+| Side padding | `--verity-control-padding-x-md` |
+| Between the arrow and the label | `--verity-control-gap` |
+| Corners | `--verity-border-radius-md` |
+| The arrow | `icon/back`, at `--verity-icon-size-sm` (20) |
+| The label | `label-default` (`--verity-viewport-typography-label-default-*`) |
+
+## Color
+
+The label stays readable on the scrim even over a white picture: about 15:1 over the page’s background and over 7:1 over white, in both themes.
+
+<Canvas of={BackLinkStories.OverAnImage} />
+
+## Props
+
+<PropsTable of={BackLinkStories} />
+
+## In Figma
+
+| Figma | Code |
+|---|---|
+| Component `BackLink` | `<BackLink />` |
+| Property `State` | Hover, focus, and active come from the browser. There’s no disabled state. |
+| The label text | `label` |
+| Layer `Focus ring` | Not a layer: an outline on keyboard focus, following the link’s md corners |
+| Not in Figma | `href` |
+
+</VerityDocs>
