@@ -9,18 +9,16 @@ import * as ThemeToggleStories from './ThemeToggle.stories';
 
 # ThemeToggle
 
-An icon-only button that switches the whole site between the Blue and Red themes. Its star shows the current theme’s brand color and previews the other theme’s on hover and focus. Hover over it, tab to it, or click it below.
+An icon-only button that switches the whole site between the Blue and Red themes. It floats in the screen’s bottom-right corner, on a scrim, at every width. Its star shows the current theme’s brand color and previews the other theme’s on hover and focus. Hover over it, tab to it, or click it below.
 
 <Canvas of={ThemeToggleStories.Default} />
 
 ## When to use
 
-- **Once per page, in MainNav.** It sits above Resume in the side rail and at the right end of the Small top bar. NavContainer and NavOverlay get it through MainNav.
+- **Once per page, from `Shell`.** Shell fixes it to the screen’s bottom-right corner at every width, so a site doesn’t place it. See **Placement**.
 - **For the site’s theme only.** It changes every page, and the choice is remembered on the next visit.
 - **Not for any other on and off setting.** Use `IconButton`, or `Button` when there’s room for a label.
 - **Not as a link.** It changes the current page, so it’s a `<button>`.
-
-<Canvas of={ThemeToggleStories.InContext} />
 
 ## Accessibility
 
@@ -33,7 +31,21 @@ A ThemeToggle renders a `<button type="button">` inside a `Tooltip`, like `IconB
 | Showing which theme is on | Don’t add `aria-pressed`. The label already says what a click does, and “pressed” would describe it a second time, the other way around. | — |
 | Using a keyboard | Tab to it, then press Enter or Space. Focus shows the ring, the tooltip, and the next theme’s colors, and the star spins. | — |
 
-The tooltip normally opens beside the button. At the right end of the Small top bar there’s no room, so it opens below the button, lined up with its right edge (see **Actions › Tooltip**).
+In the tab order, it comes right after the nav and before Main, since Shell places it there in the page. Its tooltip opens above it, lined up with its right edge (`top-end`, see **Actions › Tooltip**), so it stays on the screen.
+
+## Placement
+
+`Shell` fixes it to the screen’s bottom-right corner, at every width, so it’s always in reach and never takes room in the nav.
+
+| What | How | Tokens |
+|---|---|---|
+| Distance from the bottom and right edges | `--verity-spacing-md`, plus the screen’s safe area (`env(safe-area-inset-bottom)` and `env(safe-area-inset-right)`), so it clears a phone’s rounded corners and home bar | `--verity-spacing-md` (24–32) |
+| Layer | Above the page’s content, which scrolls under it. Below anything modal: `NavOverlay` covers it while the menu is open. | — |
+| Surface | Always on a scrim, so it stays readable over whatever scrolls under it, like `IconButton` with `background="scrim"` | `--verity-color-background-scrim` |
+
+At the end of a page, it sits at the Footer’s bottom-right corner and doesn’t cover any of the Footer’s links.
+
+<Canvas of={ThemeToggleStories.InContext} />
 
 ## Motion
 
@@ -51,14 +63,14 @@ Only the star turns: the button’s fill and focus ring stay still.
 
 ## States
 
-Size, fills, and focus ring match IconButton md, so the two line up in a column.
+Size, fills, and focus ring match IconButton md with `background="scrim"`. Hover and press add a fill on top of the scrim, so the scrim always stays under it.
 
 | State | What changes | Tokens |
 |---|---|---|
-| Default | The star in the current theme’s brand color, with a soft glow | `--verity-theme-toggle-color-current`, `--verity-theme-toggle-glow-current`, `--verity-theme-toggle-glow-blur` (12) |
-| Hover | A light fill, the next theme’s colors, the spin, and the tooltip. Devices with a real pointer only. | `--verity-color-background-transparent-medium`, `--verity-theme-toggle-color-next`, `--verity-theme-toggle-glow-next` |
+| Default | The scrim, and the star in the current theme’s brand color, with a soft glow | `--verity-color-background-scrim`, `--verity-theme-toggle-color-current`, `--verity-theme-toggle-glow-current`, `--verity-theme-toggle-glow-blur` (12) |
+| Hover | A light fill over the scrim, the next theme’s colors, the spin, and the tooltip. Devices with a real pointer only. | `--verity-color-background-transparent-medium`, `--verity-theme-toggle-color-next`, `--verity-theme-toggle-glow-next` |
 | Focus | A focus ring outside the button, following its corners, the next theme’s colors, the spin, and the tooltip. Keyboard focus only. | `--verity-focus-ring-width`, `--verity-focus-ring-offset`, `--verity-color-border-focus` |
-| Active | A stronger fill and the next theme’s colors while pressed | `--verity-color-background-transparent-strong` |
+| Active | A stronger fill over the scrim, and the next theme’s colors, while pressed | `--verity-color-background-transparent-strong` |
 | Disabled | None: the theme can always change | — |
 
 <Canvas of={ThemeToggleStories.Hover} />
@@ -78,7 +90,7 @@ The star’s colors come from its own tokens, which swap with the theme:
 | Blue | `color/brand/blue/500` | `color/brand/red/500` |
 | Red | `color/brand/red/500` | `color/brand/blue/500` |
 
-Step 500 reaches 3:1 against the dark background, enough for a meaningful graphic (WCAG 1.4.11). The glow is a CSS `drop-shadow`, so it follows the star’s points. It uses the same colors at 50% opacity.
+Step 500 reaches 3:1 on the scrim over the page’s background (about 3.9:1 in both themes), enough for a meaningful graphic (WCAG 1.4.11). The glow is a CSS `drop-shadow`, so it follows the star’s points. It uses the same colors at 50% opacity.
 
 ## Props
 
@@ -95,7 +107,7 @@ ThemeToggle has no props. It reads the current theme from the page and switches 
 | The tooltip’s text | Set by the theme: “Change to red” or “Change to blue” |
 | Layer `Focus ring` | Not a layer: an outline on keyboard focus, following the button’s md corners |
 | Not in Figma | The spin, the settle, and the tap step (see Motion), and the screen reader announcement |
-| Not in Figma | The tooltip opening below at the screen’s edge |
+| Where it sits | Not a property: Shell places it in the screen’s corner |
 
 ## Setting up a site
 
@@ -114,7 +126,7 @@ The theme is the `data-theme` attribute on the page’s `<html>` element. `token
    ```
 
    First-time visitors have nothing saved and get Blue, with no extra work.
-3. **Use MainNav.** It includes ThemeToggle in the right places at every width.
+3. **Use Shell.** It places ThemeToggle in the screen’s corner at every width.
 
 In Storybook, the Theme toolbar and ThemeToggle set the same attribute, so they always agree: choosing a theme in the toolbar changes the star and its label, and clicking the star changes the toolbar.
 

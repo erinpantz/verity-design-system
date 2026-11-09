@@ -1,5 +1,6 @@
-/* An icon-only button with a glowing star. Size, fills, and focus ring match
-   IconButton md. The star shows the current theme's brand color at rest and
+/* An icon-only button with a glowing star, floating in the page's corner.
+   Size, fills, and focus ring match IconButton md with background="scrim":
+   the scrim keeps it readable over whatever scrolls under it. The star shows the current theme's brand color at rest and
    previews the other theme's on hover, focus, and press. The rotation is in
    ThemeToggle.tsx. */
 
@@ -19,7 +20,7 @@
   padding: 0;
   border: none;
   border-radius: var(--verity-border-radius-md);
-  background: transparent;
+  background-color: var(--verity-color-background-scrim);
   cursor: pointer;
 }
 
@@ -34,15 +35,21 @@
     filter var(--verity-motion-duration-fast) var(--verity-motion-easing-standard);
 }
 
-/* States. Hover only on devices with a real pointer: on a touch screen, a
-   tap would leave the hover look stuck after the theme changes. */
+/* States. Hover and pressed add a fill on top of the scrim, as an image
+   layer over the background color, like IconButton: a gradient from a color
+   to itself is a solid layer of that color. Hover only on devices with a
+   real pointer: on a touch screen, a tap would leave the hover look stuck
+   after the theme changes. */
 
 @media (hover: hover) {
   .themeToggle:hover {
     --star: var(--verity-theme-toggle-color-next);
     --glow: var(--verity-theme-toggle-glow-next);
 
-    background: var(--verity-color-background-transparent-medium);
+    background-image: linear-gradient(
+      var(--verity-color-background-transparent-medium),
+      var(--verity-color-background-transparent-medium)
+    );
   }
 }
 
@@ -59,7 +66,10 @@
   --star: var(--verity-theme-toggle-color-next);
   --glow: var(--verity-theme-toggle-glow-next);
 
-  background: var(--verity-color-background-transparent-strong);
+  background-image: linear-gradient(
+    var(--verity-color-background-transparent-strong),
+    var(--verity-color-background-transparent-strong)
+  );
 }
 
 /* The announcement for screen readers: in the page, but not shown */

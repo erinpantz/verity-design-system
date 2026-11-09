@@ -46,6 +46,8 @@ function turnTo(star: HTMLElement, from: number, to: number, easing: string) {
 }
 
 // An icon-only button that switches the whole site between Blue and Red.
+// Shell floats it in the screen's bottom-right corner, so its tooltip opens
+// above it, lined up with its right edge.
 // Its colors and their fades are CSS. The rotation is the Web Animations API,
 // because only code can read where the star is when the pointer leaves and
 // finish the turn at the next 45° step.
@@ -130,7 +132,7 @@ export function ThemeToggle() {
 
   return (
     <>
-      <Tooltip text={`Change to ${next}`} id={tooltipId} placement="end">
+      <Tooltip text={`Change to ${next}`} id={tooltipId} placement="top-end">
         <button
           className={styles.themeToggle}
           type="button"

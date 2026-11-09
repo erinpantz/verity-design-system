@@ -2,8 +2,8 @@
    so it's right before JavaScript runs. Breakpoints come from the generated
    values (see CLAUDE.md: only page-level layout uses media queries).
 
-   - Small: a top bar with the menu button, the logo, and ThemeToggle. The
-     pages are in NavOverlay.
+   - Small: a top bar with the menu button and the logo. The pages are in
+     NavOverlay.
    - Medium: the rail, icons only, with each label in a tooltip.
    - Large and XL: expanded (data-state="expanded") or the rail ("collapsed").
    - In NavOverlay (.overlay): always expanded.
@@ -55,11 +55,6 @@
   display: flex;
 }
 
-/* The top bar's ThemeToggle shows only on Small (below) */
-.topBarThemeToggle {
-  display: none;
-}
-
 /* The links: the pages, then Resume in its own group. The pages are the link
    gap apart. */
 .links {
@@ -85,16 +80,8 @@
   border-block-start: var(--verity-border-width-sm) solid var(--verity-color-border-divider);
 }
 
-/* ThemeToggle, alone at the bottom: its top margin takes the space that's
-   left. */
-.themeToggle {
-  display: flex;
-  margin-block-start: auto;
-}
-
-/* Small: the top bar. The menu button comes first, then the logo, then
-   ThemeToggle at the end; the pages and Resume are in NavOverlay, and the
-   side nav's bottom ThemeToggle is hidden. */
+/* Small: the top bar: the menu button, then the logo. The pages and Resume
+   are in NavOverlay. */
 
 @media not medium {
   .page {
@@ -110,13 +97,8 @@
     order: -1;
   }
 
-  .page .links,
-  .page .themeToggle {
+  .page .links {
     display: none;
-  }
-
-  .page .topBarThemeToggle {
-    display: flex;
   }
 }
 

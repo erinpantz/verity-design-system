@@ -1,11 +1,34 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { MainNav } from '../../Navigation/MainNav';
-import { NavContainer } from '../../Navigation/NavContainer';
+import { Footer } from '../../Layout/Footer';
+import type { FooterProps } from '../../Layout/Footer/Footer';
+import FooterStories from '../../Layout/Footer/Footer.stories';
+import { Section } from '../../Layout/Section';
+import { Shell } from '../../Layout/Shell';
+import { Prose } from '../../Text/Prose';
 import { ThemeToggle } from './ThemeToggle';
 
 const meta = {
   title: 'Actions/ThemeToggle',
   component: ThemeToggle,
+  // At the end of the row, with room above: the tooltip opens above the
+  // button and lines up with its right edge, as in the page's corner. Not
+  // for the full-page example, which has Shell's corner.
+  decorators: [
+    (Story, { parameters }) =>
+      parameters.layout === 'fullscreen' ? (
+        <Story />
+      ) : (
+        <div
+          style={{
+            display: 'flex',
+            justifyContent: 'flex-end',
+            paddingBlockStart: 'var(--verity-spacing-xl)',
+          }}
+        >
+          <Story />
+        </div>
+      ),
+  ],
 } satisfies Meta<typeof ThemeToggle>;
 
 export default meta;
@@ -35,14 +58,18 @@ export const Active: Story = {
   globals: { pseudo: { active: true } },
 };
 
-// In MainNav's rail, above Resume. Resize the window to Small to see it at
-// the right end of the top bar, where its tooltip opens below.
+// Where it lives: Shell floats it in the screen's bottom-right corner, at
+// every width. Scroll the page to see it stay put.
 export const InContext: StoryObj = {
   name: 'In context',
   parameters: { layout: 'fullscreen', docs: { story: { inline: false, height: '32rem' } } },
   render: () => (
-    <NavContainer>
-      <MainNav state="collapsed" current="portfolio" />
-    </NavContainer>
+    <Shell current="portfolio" footer={<Footer {...(FooterStories.args as FooterProps)} />}>
+      <Section heading="Portfolio" headingLevel={1}>
+        <Prose>
+          <p>Case studies from ten years of product design: research, design systems, and shipped work.</p>
+        </Prose>
+      </Section>
+    </Shell>
   ),
 };

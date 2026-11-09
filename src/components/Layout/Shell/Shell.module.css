@@ -75,3 +75,15 @@
 .skipLink:focus-within {
   translate: none;
 }
+
+/* ThemeToggle, fixed to the screen's bottom-right corner at every width,
+   inset by spacing/md plus the safe area (a phone's rounded corners and home
+   bar). It sits above the page's content, which scrolls under it; NavOverlay
+   is a modal dialog in the browser's top layer, so it covers the toggle. */
+.themeToggle {
+  position: fixed;
+  z-index: 1;
+  inset-block-end: calc(var(--verity-spacing-md) + env(safe-area-inset-bottom, 0px));
+  inset-inline-end: calc(var(--verity-spacing-md) + env(safe-area-inset-right, 0px));
+  display: flex;
+}

@@ -42,8 +42,8 @@ The trigger has to point to the tooltip by its `id`, so screen readers read it:
 | `placement` | Where it sits | Used by |
 |---|---|---|
 | `top` | The default. Above the trigger, lined up with its start. | `Link` |
-| `top-end` | Above the trigger, lined up with its end, so it doesn’t spill past whatever the trigger sits at the end of | `Animation`’s pause and play button |
-| `end` | Beside the trigger, after it, centered on it. If it wouldn’t fit on the screen, it opens below the trigger instead, with its end lined up with the trigger’s end. | `IconButton`, `ThemeToggle` |
+| `top-end` | Above the trigger, lined up with its end, so it doesn’t spill past whatever the trigger sits at the end of | `Animation`’s pause and play button, and `ThemeToggle` in the page’s corner |
+| `end` | Beside the trigger, after it, centered on it. If it wouldn’t fit on the screen, it opens below the trigger instead, with its end lined up with the trigger’s end. | `IconButton`, like the nav rail’s menu button |
 
 <Canvas of={TooltipStories.PlacementTopEnd} />
 

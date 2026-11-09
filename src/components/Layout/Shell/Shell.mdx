@@ -9,7 +9,7 @@ import * as ShellStories from './Shell.stories';
 
 # Shell
 
-The page frame: the site’s nav, then the page column with Main and the Footer. Every page of the site uses it.
+The page frame: the site’s nav, the theme toggle in the screen’s bottom-right corner, and the page column with Main and the Footer. Every page of the site uses it.
 
 <Canvas of={ShellStories.Large} />
 
@@ -24,6 +24,7 @@ The page frame: the site’s nav, then the page column with Main and the Footer.
 |---|---|---|
 | Skip link | “Skip to content,” a primary `Button` link | First in the tab order. It’s off screen until it has keyboard focus, then shows at the top start corner. It moves focus to Main, so the next Tab goes to the first link in the page’s content (WCAG 2.4.1). |
 | Nav | `MainNav`’s `<nav>` | The navigation landmark |
+| Theme toggle | `ThemeToggle`, a `<button>` | Right after the nav and before Main in the tab order, so it’s reached early on every page without being part of the navigation |
 | Main | `<main>` | The main landmark, with the page’s content. It can take focus from the skip link (`tabIndex={-1}`), but it isn’t in the tab order. |
 | Footer | The `Footer`’s `<footer>` | The footer landmark (`contentinfo`) |
 | Menu | `NavOverlay` | The full menu on Small and Medium, as a dialog |
@@ -42,6 +43,18 @@ How Shell is laid out follows the screen width, in CSS with the generated breakp
 
 The nav always opens expanded on XL and Large, and doesn’t remember the toggle between visits.
 
+## Theme toggle
+
+Shell renders `ThemeToggle` and fixes it to the screen’s bottom-right corner, at every width. It used to sit in the nav, at the bottom of the rail and at the end of the Small top bar. In the corner it’s in the same place on every screen, it’s always in reach while the page scrolls, and the nav holds only places to go.
+
+| What | How |
+|---|---|
+| Position | `--verity-spacing-md` (24–32) from the bottom and right edges, plus the safe area (`env(safe-area-inset-bottom)` and `env(safe-area-inset-right)`) for a phone’s rounded corners and home bar |
+| Layer | Above the page’s content, which scrolls under it. Below anything modal: `NavOverlay` is a modal dialog, in the browser’s top layer, so it covers the toggle while the menu is open. |
+| Surface | A scrim, so it stays readable over whatever scrolls under it (see **Actions › ThemeToggle**) |
+
+At the end of a page, it sits at the Footer’s bottom-right corner, over the Footer’s band but not over any of its links, at every breakpoint.
+
 <Canvas of={ShellStories.Medium} />
 
 <Canvas of={ShellStories.Small} />
@@ -56,6 +69,7 @@ Each story opens in a viewport at the width of Figma’s Shell frame for its bre
 | Between sections in Main, and between Main and the Footer | `--verity-main-spacing-section-gap` |
 | Below the Footer | `--verity-spacing-lg` |
 | The page’s sides, around Main and the Footer | `--verity-main-padding-inline` (24–48) |
+| The theme toggle, from the screen’s bottom and right edges | `--verity-spacing-md`, plus the safe area |
 
 Shell owns the page’s side margins, so nothing inside Main needs its own. Containers and Sections center their content in the same column inside them, and the Footer spans the wide width, up to `--verity-content-wide-width`.
 
@@ -73,6 +87,7 @@ Shell owns the page’s side margins, so nothing inside Main needs its own. Cont
 | Property `Breakpoint` | Not a prop: a preview of each width. In code, the screen width decides. |
 | Property `Nav state` | Not a prop: a preview. In code, the nav opens expanded on XL and Large, and its menu button toggles it. |
 | The NavContainer and MainNav instances | Made by Shell. `current` and `hrefs` pass through to MainNav. |
+| The ThemeToggle instance, in the bottom-right corner | Made by Shell, with nothing to set |
 | Not in Figma | The skip link, NavOverlay, and `current` and `hrefs` |
 
 </VerityDocs>

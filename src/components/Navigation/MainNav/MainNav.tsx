@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { useBreakpoint } from '../../../styles/useBreakpoint';
 import { IconButton } from '../../Actions/IconButton';
-import { ThemeToggle } from '../../Actions/ThemeToggle';
 import { ErinTozourLogo } from '../../Media/ErinTozourLogo';
 import { NavItem } from '../NavItem';
 import styles from './MainNav.module.css';
@@ -49,10 +48,10 @@ const PAGES = [
 ] as const;
 
 // The site's main navigation: the menu button, the site title, a NavItem per
-// page, Resume under a line, and ThemeToggle at the bottom. How it looks at
-// each width is all CSS (see MainNav.module.css), so it's right before
-// JavaScript runs. What the menu button does depends on the width too, and
-// that comes from useBreakpoint.
+// page, and Resume under a line. ThemeToggle isn't in the nav: Shell floats
+// it in the screen's corner. How it looks at each width is all CSS (see
+// MainNav.module.css), so it's right before JavaScript runs. What the menu
+// button does depends on the width too, and that comes from useBreakpoint.
 export function MainNav({
   current,
   hrefs = {},
@@ -103,11 +102,6 @@ export function MainNav({
         <span className={styles.menuButton}>
           <IconButton icon="dock-to-left" {...menuButton} />
         </span>
-        {/* ThemeToggle at the end of the Small top bar. CSS shows it only
-            there; everywhere else, the one at the bottom of the nav shows. */}
-        <span className={styles.topBarThemeToggle}>
-          <ThemeToggle />
-        </span>
       </div>
       {/* The links, in one list so screen readers hear them together: the
           pages, then Resume. Resume opens a PDF rather than a page, so it
@@ -123,11 +117,6 @@ export function MainNav({
           <NavItem icon="resume" label="Resume" href={links.resume} />
         </li>
       </ul>
-      {/* ThemeToggle, alone at the bottom. It's a button, not a place to go,
-          so it's outside the list of links (but still in the nav). */}
-      <div className={styles.themeToggle}>
-        <ThemeToggle />
-      </div>
     </nav>
   );
 }

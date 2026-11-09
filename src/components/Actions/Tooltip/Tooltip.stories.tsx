@@ -88,8 +88,8 @@ export const PlacementEnd: Story = {
 };
 
 // At the right edge of the screen there's no room beside the trigger, so an
-// end tooltip opens below it, lined up with its end, like ThemeToggle in the
-// Small top bar
+// end tooltip opens below it, lined up with its end, like a button at the
+// right end of a top bar
 export const PlacementEndAtTheEdge: Story = {
   name: 'Placement end, at the edge',
   args: { placement: 'end', text: 'Change to red' },

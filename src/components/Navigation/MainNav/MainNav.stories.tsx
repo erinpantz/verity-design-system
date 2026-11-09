@@ -38,8 +38,7 @@ const docked: Decorator = (Story) => (
   </NavContainer>
 );
 
-// In NavOverlay: the overlay's width and padding, full height, so
-// ThemeToggle sits at the bottom
+// In NavOverlay: the overlay's width and padding, full height
 const overlayFrame: Decorator = (Story) => (
   <div
     style={{
