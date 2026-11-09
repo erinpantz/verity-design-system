@@ -10,11 +10,11 @@
 
 .caption {
   /* A block centered under the media, never wider than the content column,
-     even under wide media. The text inside is aligned left, so under wide
-     media it starts at the same edge as the text above. */
+     even under wide media, with its text centered in it. */
   align-self: center;
   inline-size: 100%;
   max-inline-size: var(--verity-content-column-width);
+  text-align: center;
   color: var(--verity-color-content-subtle);
   font-family: var(--verity-viewport-typography-body-default-font-family);
   font-size: var(--verity-viewport-typography-body-default-font-size);
