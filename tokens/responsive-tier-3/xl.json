@@ -448,5 +448,19 @@
       "$value": 4,
       "$description": "How far a tilted NavCard turns at rest, in degrees (left or right by its Tilt property). It straightens on hover and focus. Code only."
     }
+  },
+  "nav-card-group": {
+    "gap": {
+      "$type": "dimension",
+      "$value": "-24px",
+      "$description": "Space between the NavCards in a NavCardGroup. Negative, so each card overlaps the one before it by 24px. Stored as the negative gap because Figma can’t bind a gap to a negated token.",
+      "$extensions": {
+        "com.figma": {
+          "scopes": [
+            "GAP"
+          ]
+        }
+      }
+    }
   }
 }
