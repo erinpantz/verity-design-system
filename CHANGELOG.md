@@ -4,6 +4,17 @@ Every release of Verity, newest first. The format follows [Keep a Changelog](htt
 
 Sites install Verity by tag (for example `github:erinpantz/verity-design-system#v0.3.0`), so a site only changes when it moves to a new tag on purpose.
 
+## [0.4.7] – 2026-11-10
+
+### Added
+
+- **Hero:** a `width` prop, `column` (the default) or `wide`. A wide Hero breaks out of the column to `content/wide-width`, like a wide MediaBlock, so the band can line up with wide content, as on Home. Only the band goes wide.
+
+### Changed
+
+- **Hero:** the headline and intro are one group, never wider than `content/column-width`, so the text keeps a readable measure in a wide Hero. The spacing is now `spacing/sm` between the headline and intro and `spacing/lg` between the text and the actions (it was `spacing/md` between all three). No other props changed.
+- **Tokens:** Figma scopes only: `border/radius/*` apply to corner radius and `border/width/*` to stroke width. No CSS changes.
+
 ## [0.4.6] – 2026-11-10
 
 ### Added
@@ -218,6 +229,7 @@ The first library release: everything in the Figma library except Animation, wit
 - **Theme helpers:** `themeScript`, `useTheme`, and `setTheme`, so a site applies the saved theme before the first paint.
 - **The library build:** one entry point with every component and its prop types, one stylesheet (`verity-design-system/styles.css`) with the fonts inside it, and `npm run build:watch` for working with a linked copy.
 
+[0.4.7]: https://github.com/erinpantz/verity-design-system/compare/v0.4.6...v0.4.7
 [0.4.6]: https://github.com/erinpantz/verity-design-system/compare/v0.4.5...v0.4.6
 [0.4.5]: https://github.com/erinpantz/verity-design-system/compare/v0.4.4...v0.4.5
 [0.4.4]: https://github.com/erinpantz/verity-design-system/compare/v0.4.3...v0.4.4
