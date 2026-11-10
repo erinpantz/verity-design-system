@@ -1252,11 +1252,11 @@
       "body-xl": {
         "font-family": {
           "$type": "fontFamily",
-          "$value": "{typography.body-xl.font-family}"
+          "$value": "{typography.body-xl-mobile.font-family}"
         },
         "font-weight": {
           "$type": "fontWeight",
-          "$value": "{typography.body-xl.font-weight}",
+          "$value": "{typography.body-xl-mobile.font-weight}",
           "$extensions": {
             "com.figma": {
               "scopes": [
@@ -1272,7 +1272,7 @@
         },
         "font-size": {
           "$type": "dimension",
-          "$value": "{typography.body-xl.font-size}",
+          "$value": "{typography.body-xl-mobile.font-size}",
           "$extensions": {
             "com.figma": {
               "scopes": [
@@ -1288,7 +1288,7 @@
         },
         "line-height": {
           "$type": "dimension",
-          "$value": "{typography.body-xl.line-height}",
+          "$value": "{typography.body-xl-mobile.line-height}",
           "$extensions": {
             "com.figma": {
               "scopes": [
@@ -1304,7 +1304,7 @@
         },
         "letter-spacing": {
           "$type": "dimension",
-          "$value": "{typography.body-xl.letter-spacing}",
+          "$value": "{typography.body-xl-mobile.letter-spacing}",
           "$extensions": {
             "com.figma": {
               "scopes": [

@@ -422,7 +422,7 @@
     "size": {
       "$type": "dimension",
       "$value": "200px",
-      "$description": "Width and height of a NavCard (it’s square).",
+      "$description": "Width and height of a NavCard (it’s square): 200, and 144 on Small so two overlapping cards fit a phone.",
       "$extensions": {
         "com.figma": {
           "scopes": [
@@ -458,6 +458,20 @@
         "com.figma": {
           "scopes": [
             "GAP"
+          ]
+        }
+      }
+    }
+  },
+  "hero": {
+    "text-min-width": {
+      "$type": "dimension",
+      "$value": "400px",
+      "$description": "The narrowest a Hero’s text (Body) gets beside media: 560 on XL and Large, 400 on Medium, 200 on Small. When the text and the media don’t both fit, the media wraps under the text.",
+      "$extensions": {
+        "com.figma": {
+          "scopes": [
+            "WIDTH_HEIGHT"
           ]
         }
       }

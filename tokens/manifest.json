@@ -7,7 +7,7 @@
       "modes": {
         "Mode 1": "core-tier-1.json"
       },
-      "tokens": 184
+      "tokens": 192
     },
     {
       "name": "Themes Tier 2",
@@ -53,7 +53,7 @@
       "modes": {
         "Mode 1": "typography-tier-2.json"
       },
-      "tokens": 180
+      "tokens": 186
     },
     {
       "name": "Responsive Tier 1",
@@ -83,7 +83,7 @@
         "Medium": "responsive-tier-3/medium.json",
         "Small": "responsive-tier-3/small.json"
       },
-      "tokens": 40
+      "tokens": 41
     },
     {
       "name": "Red Tier 1",

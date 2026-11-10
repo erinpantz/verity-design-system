@@ -114,6 +114,10 @@
   --verity-typography-font-size-48: 48px;
   --verity-typography-font-size-56: 56px;
   --verity-typography-font-size-64: 64px;
+  --verity-typography-font-size-72: 72px;
+  --verity-typography-font-size-80: 80px;
+  --verity-typography-font-size-88: 88px;
+  --verity-typography-font-size-96: 96px;
   --verity-typography-font-size-100: 100px;
   --verity-typography-text-transform-none: none;
   --verity-typography-text-transform-uppercase: uppercase;
@@ -135,6 +139,10 @@
   --verity-typography-line-height-56: 56px;
   --verity-typography-line-height-64: 64px;
   --verity-typography-line-height-72: 72px;
+  --verity-typography-line-height-80: 80px;
+  --verity-typography-line-height-88: 88px;
+  --verity-typography-line-height-96: 96px;
+  --verity-typography-line-height-104: 104px;
   --verity-typography-line-height-110: 110px;
   --verity-typography-font-weight-400: 400;
   --verity-typography-font-weight-600: 600;
@@ -294,9 +302,9 @@
   --verity-typography-title-default-font-size: var(--verity-typography-font-size-28);
   --verity-typography-display-default-mobile-font-weight: var(--verity-typography-font-weight-800);
   --verity-typography-display-default-mobile-font-family: var(--verity-typography-font-family-schibsted-grotesk);
-  --verity-typography-display-default-mobile-font-size: var(--verity-typography-font-size-56);
+  --verity-typography-display-default-mobile-font-size: var(--verity-typography-font-size-48);
   --verity-typography-display-default-mobile-letter-spacing: var(--verity-typography-letter-spacing-minus-1-half);
-  --verity-typography-display-default-mobile-line-height: var(--verity-typography-line-height-64);
+  --verity-typography-display-default-mobile-line-height: var(--verity-typography-line-height-56);
   --verity-typography-title-lg-mobile-letter-spacing: var(--verity-typography-letter-spacing-minus-half);
   --verity-typography-title-lg-mobile-font-size: var(--verity-typography-font-size-28);
   --verity-typography-title-lg-mobile-font-weight: var(--verity-typography-font-weight-700);
@@ -313,9 +321,9 @@
   --verity-typography-heading-3-mobile-line-height: var(--verity-typography-line-height-36);
   --verity-typography-heading-3-mobile-font-family: var(--verity-typography-font-family-schibsted-grotesk);
   --verity-typography-heading-3-mobile-font-weight: var(--verity-typography-font-weight-700);
-  --verity-typography-display-default-line-height: var(--verity-typography-line-height-110);
+  --verity-typography-display-default-line-height: var(--verity-typography-line-height-96);
   --verity-typography-display-default-text-transform: var(--verity-typography-text-transform-none);
-  --verity-typography-display-default-font-size: var(--verity-typography-font-size-100);
+  --verity-typography-display-default-font-size: var(--verity-typography-font-size-88);
   --verity-typography-display-default-font-weight: var(--verity-typography-font-weight-800);
   --verity-typography-display-default-font-family: var(--verity-typography-font-family-schibsted-grotesk);
   --verity-typography-display-default-letter-spacing: var(--verity-typography-letter-spacing-minus-2);
@@ -450,6 +458,12 @@
   --verity-typography-body-lg-strong-line-height: var(--verity-typography-line-height-32);
   --verity-typography-body-lg-strong-letter-spacing: var(--verity-typography-letter-spacing-0);
   --verity-typography-body-lg-strong-text-transform: var(--verity-typography-text-transform-none);
+  --verity-typography-body-xl-mobile-font-family: var(--verity-typography-font-family-plus-jakarta-sans);
+  --verity-typography-body-xl-mobile-font-weight: var(--verity-typography-font-weight-400);
+  --verity-typography-body-xl-mobile-font-size: var(--verity-typography-font-size-24);
+  --verity-typography-body-xl-mobile-line-height: var(--verity-typography-line-height-32);
+  --verity-typography-body-xl-mobile-letter-spacing: var(--verity-typography-letter-spacing-0);
+  --verity-typography-body-xl-mobile-text-transform: var(--verity-typography-text-transform-none);
   --verity-typography-display-default-mobile-text-transform: var(--verity-typography-display-default-text-transform);
   --verity-typography-title-lg-mobile-text-transform: var(--verity-typography-title-lg-text-transform);
   --verity-typography-heading-3-mobile-text-transform: var(--verity-typography-heading-3-text-transform);
@@ -849,9 +863,10 @@
   --verity-media-text-stack-width: 800px; /** Below this width, a row MediaText stacks its text above its media (800px). Measured on MediaText itself, not the screen. */
   --verity-portfolio-card-image-scale-hover: 1.05; /** How much a PortfolioCard image grows inside its frame on hover, focus, and active. Code only (no Figma field takes a scale); Figma shows it by cropping the image to 105%. */
   --verity-portfolio-card-text-max-width: 400px; /** The widest PortfolioCard’s text gets in the brand gallery type, so the thumbnails get the rest. */
-  --verity-nav-card-size: 200px; /** Width and height of a NavCard (it’s square). */
+  --verity-nav-card-size: 144px; /** Width and height of a NavCard (it’s square): 200, and 144 on Small so two overlapping cards fit a phone. */
   --verity-nav-card-tilt: 4; /** How far a tilted NavCard turns at rest, in degrees (left or right by its Tilt property). It straightens on hover and focus. Code only. */
   --verity-nav-card-group-gap: -24px; /** Space between the NavCards in a NavCardGroup. Negative, so each card overlaps the one before it by 24px. Stored as the negative gap because Figma can’t bind a gap to a negated token. */
+  --verity-hero-text-min-width: 200px; /** The narrowest a Hero’s text (Body) gets beside media: 560 on XL and Large, 400 on Medium, 200 on Small. When the text and the media don’t both fit, the media wraps under the text. */
   --verity-nav-container-padding-x-expanded: var(--verity-spacing-16); /** Left and right padding of the expanded NavContainer. */
   --verity-nav-container-padding-x-collapsed: var(--verity-spacing-8); /** Left and right padding of the collapsed, top-docked NavContainer. */
   --verity-nav-container-padding-bottom: var(--verity-spacing-16); /** Bottom padding of the expanded NavContainer. */
@@ -870,7 +885,7 @@
   --verity-skeleton-duration: var(--verity-duration-1500); /** Time for the Skeleton pulse to go from its base color to its shine, and the same back, in milliseconds. */
   --verity-theme-toggle-duration-rotation: var(--verity-duration-6000); /** Time for one full turn of the ThemeToggle star while hovered, in milliseconds. */
   --verity-theme-toggle-glow-blur: var(--verity-shadow-glow-blur); /** Blur of the glow behind the ThemeToggle star. */
-  --verity-nav-card-icon-size: var(--verity-size-96); /** Width and height of the nav icon on a NavCard. */
+  --verity-nav-card-icon-size: var(--verity-size-64); /** Width and height of the nav icon on a NavCard. */
   --verity-nav-container-padding-top: var(--verity-spacing-md); /** Top padding of the left-docked NavContainer. */
 }
 
@@ -984,11 +999,11 @@
   --verity-viewport-typography-meta-sm-font-weight: var(--verity-typography-meta-sm-font-weight);
   --verity-viewport-typography-meta-sm-font-size: var(--verity-typography-meta-sm-font-size);
   --verity-viewport-typography-meta-sm-font-family: var(--verity-typography-meta-sm-font-family);
-  --verity-viewport-typography-body-xl-font-family: var(--verity-typography-body-xl-font-family);
-  --verity-viewport-typography-body-xl-font-weight: var(--verity-typography-body-xl-font-weight);
-  --verity-viewport-typography-body-xl-font-size: var(--verity-typography-body-xl-font-size);
-  --verity-viewport-typography-body-xl-line-height: var(--verity-typography-body-xl-line-height);
-  --verity-viewport-typography-body-xl-letter-spacing: var(--verity-typography-body-xl-letter-spacing);
+  --verity-viewport-typography-body-xl-font-family: var(--verity-typography-body-xl-mobile-font-family);
+  --verity-viewport-typography-body-xl-font-weight: var(--verity-typography-body-xl-mobile-font-weight);
+  --verity-viewport-typography-body-xl-font-size: var(--verity-typography-body-xl-mobile-font-size);
+  --verity-viewport-typography-body-xl-line-height: var(--verity-typography-body-xl-mobile-line-height);
+  --verity-viewport-typography-body-xl-letter-spacing: var(--verity-typography-body-xl-mobile-letter-spacing);
   --verity-viewport-typography-body-xl-text-transform: var(--verity-typography-body-xl-text-transform);
   --verity-viewport-typography-body-xl-space-before: var(--verity-padding-sm);
   --verity-viewport-typography-blockquote-font-family: var(--verity-typography-blockquote-mobile-font-family);
@@ -1097,9 +1112,10 @@
     --verity-media-text-stack-width: 800px; /** Below this width, a row MediaText stacks its text above its media (800px). Measured on MediaText itself, not the screen. */
     --verity-portfolio-card-image-scale-hover: 1.05; /** How much a PortfolioCard image grows inside its frame on hover, focus, and active. Code only (no Figma field takes a scale); Figma shows it by cropping the image to 105%. */
     --verity-portfolio-card-text-max-width: 400px; /** The widest PortfolioCard’s text gets in the brand gallery type, so the thumbnails get the rest. */
-    --verity-nav-card-size: 200px; /** Width and height of a NavCard (it’s square). */
+    --verity-nav-card-size: 200px; /** Width and height of a NavCard (it’s square): 200, and 144 on Small so two overlapping cards fit a phone. */
     --verity-nav-card-tilt: 4; /** How far a tilted NavCard turns at rest, in degrees (left or right by its Tilt property). It straightens on hover and focus. Code only. */
     --verity-nav-card-group-gap: -24px; /** Space between the NavCards in a NavCardGroup. Negative, so each card overlaps the one before it by 24px. Stored as the negative gap because Figma can’t bind a gap to a negated token. */
+    --verity-hero-text-min-width: 400px; /** The narrowest a Hero’s text (Body) gets beside media: 560 on XL and Large, 400 on Medium, 200 on Small. When the text and the media don’t both fit, the media wraps under the text. */
     --verity-nav-container-padding-x-expanded: var(--verity-spacing-16); /** Left and right padding of the expanded NavContainer. */
     --verity-nav-container-padding-x-collapsed: var(--verity-spacing-8); /** Left and right padding of the collapsed, top-docked NavContainer. */
     --verity-nav-container-padding-bottom: var(--verity-spacing-16); /** Bottom padding of the expanded NavContainer. */
@@ -1232,11 +1248,11 @@
     --verity-viewport-typography-meta-sm-font-weight: var(--verity-typography-meta-sm-font-weight);
     --verity-viewport-typography-meta-sm-font-size: var(--verity-typography-meta-sm-font-size);
     --verity-viewport-typography-meta-sm-font-family: var(--verity-typography-meta-sm-font-family);
-    --verity-viewport-typography-body-xl-font-family: var(--verity-typography-body-xl-font-family);
-    --verity-viewport-typography-body-xl-font-weight: var(--verity-typography-body-xl-font-weight);
-    --verity-viewport-typography-body-xl-font-size: var(--verity-typography-body-xl-font-size);
-    --verity-viewport-typography-body-xl-line-height: var(--verity-typography-body-xl-line-height);
-    --verity-viewport-typography-body-xl-letter-spacing: var(--verity-typography-body-xl-letter-spacing);
+    --verity-viewport-typography-body-xl-font-family: var(--verity-typography-body-xl-mobile-font-family);
+    --verity-viewport-typography-body-xl-font-weight: var(--verity-typography-body-xl-mobile-font-weight);
+    --verity-viewport-typography-body-xl-font-size: var(--verity-typography-body-xl-mobile-font-size);
+    --verity-viewport-typography-body-xl-line-height: var(--verity-typography-body-xl-mobile-line-height);
+    --verity-viewport-typography-body-xl-letter-spacing: var(--verity-typography-body-xl-mobile-letter-spacing);
     --verity-viewport-typography-body-xl-text-transform: var(--verity-typography-body-xl-text-transform);
     --verity-viewport-typography-body-xl-space-before: var(--verity-padding-sm);
     --verity-viewport-typography-blockquote-font-family: var(--verity-typography-blockquote-mobile-font-family);
@@ -1346,9 +1362,10 @@
     --verity-media-text-stack-width: 800px; /** Below this width, a row MediaText stacks its text above its media (800px). Measured on MediaText itself, not the screen. */
     --verity-portfolio-card-image-scale-hover: 1.05; /** How much a PortfolioCard image grows inside its frame on hover, focus, and active. Code only (no Figma field takes a scale); Figma shows it by cropping the image to 105%. */
     --verity-portfolio-card-text-max-width: 400px; /** The widest PortfolioCard’s text gets in the brand gallery type, so the thumbnails get the rest. */
-    --verity-nav-card-size: 200px; /** Width and height of a NavCard (it’s square). */
+    --verity-nav-card-size: 200px; /** Width and height of a NavCard (it’s square): 200, and 144 on Small so two overlapping cards fit a phone. */
     --verity-nav-card-tilt: 4; /** How far a tilted NavCard turns at rest, in degrees (left or right by its Tilt property). It straightens on hover and focus. Code only. */
     --verity-nav-card-group-gap: -24px; /** Space between the NavCards in a NavCardGroup. Negative, so each card overlaps the one before it by 24px. Stored as the negative gap because Figma can’t bind a gap to a negated token. */
+    --verity-hero-text-min-width: 560px; /** The narrowest a Hero’s text (Body) gets beside media: 560 on XL and Large, 400 on Medium, 200 on Small. When the text and the media don’t both fit, the media wraps under the text. */
     --verity-nav-container-padding-x-expanded: var(--verity-spacing-16); /** Left and right padding of the expanded NavContainer. */
     --verity-nav-container-padding-x-collapsed: var(--verity-spacing-8); /** Left and right padding of the collapsed, top-docked NavContainer. */
     --verity-nav-container-padding-bottom: var(--verity-spacing-16); /** Bottom padding of the expanded NavContainer. */
@@ -1595,9 +1612,10 @@
     --verity-media-text-stack-width: 800px; /** Below this width, a row MediaText stacks its text above its media (800px). Measured on MediaText itself, not the screen. */
     --verity-portfolio-card-image-scale-hover: 1.05; /** How much a PortfolioCard image grows inside its frame on hover, focus, and active. Code only (no Figma field takes a scale); Figma shows it by cropping the image to 105%. */
     --verity-portfolio-card-text-max-width: 400px; /** The widest PortfolioCard’s text gets in the brand gallery type, so the thumbnails get the rest. */
-    --verity-nav-card-size: 200px; /** Width and height of a NavCard (it’s square). */
+    --verity-nav-card-size: 200px; /** Width and height of a NavCard (it’s square): 200, and 144 on Small so two overlapping cards fit a phone. */
     --verity-nav-card-tilt: 4; /** How far a tilted NavCard turns at rest, in degrees (left or right by its Tilt property). It straightens on hover and focus. Code only. */
     --verity-nav-card-group-gap: -24px; /** Space between the NavCards in a NavCardGroup. Negative, so each card overlaps the one before it by 24px. Stored as the negative gap because Figma can’t bind a gap to a negated token. */
+    --verity-hero-text-min-width: 560px; /** The narrowest a Hero’s text (Body) gets beside media: 560 on XL and Large, 400 on Medium, 200 on Small. When the text and the media don’t both fit, the media wraps under the text. */
     --verity-nav-container-padding-x-expanded: var(--verity-spacing-16); /** Left and right padding of the expanded NavContainer. */
     --verity-nav-container-padding-x-collapsed: var(--verity-spacing-8); /** Left and right padding of the collapsed, top-docked NavContainer. */
     --verity-nav-container-padding-bottom: var(--verity-spacing-16); /** Bottom padding of the expanded NavContainer. */
