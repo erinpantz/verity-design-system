@@ -45,6 +45,17 @@ Icons have no color of their own. They use `currentColor`, so an icon takes the 
 
 **Nav icons are the one exception.** On hover, `NavItem` gives their shapes the four `nav-icon/color/accent-*` colors by setting `--icon-accent-brand`, `--icon-accent-three`, `--icon-accent-four`, and `--icon-accent-yellow`. Without those, every shape uses `currentColor`. The parent owns the state, so the icon never needs a hover prop. **Foundations › Icons** shows the effect.
 
+## Back and forward
+
+`back` and `forward` are mirror-image arrows. Use them for direction, not decoration:
+
+| Icon | Use for | Example |
+|---|---|---|
+| `back` | Going back up a level | `BackLink`’s arrow |
+| `forward` | Going on to something, at the end of a label | PortfolioCard’s “Case study” label |
+
+Both are decorative next to text that says where they go, so leave out `label`.
+
 ## Props
 
 <PropsTable of={IconStories} />

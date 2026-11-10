@@ -15,6 +15,10 @@ export const ICONS = {
     viewBox: "0 0 24 24",
     markup: "<path d=\"M4 6L12 13L20 6M3 19V5H21V19H3Z\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-miterlimit=\"10\" stroke-linecap=\"round\" stroke-linejoin=\"round\" vector-effect=\"non-scaling-stroke\"/>",
   },
+  "forward": {
+    viewBox: "0 0 24 24",
+    markup: "<path d=\"M5 12H19M13 18L19 12L13 6\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-miterlimit=\"10\" stroke-linecap=\"round\" stroke-linejoin=\"round\" vector-effect=\"non-scaling-stroke\"/>",
+  },
   "nav/playground": {
     viewBox: "0 0 24 24",
     markup: "<g class=\"plank\"><line x1=\"1.75\" y1=\"12.9746\" x2=\"22.25\" y2=\"12.9746\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" vector-effect=\"non-scaling-stroke\"/></g><g class=\"stand\"><path d=\"M11.152 15.3568C11.5437 14.7301 12.4563 14.7301 12.848 15.3568L16.0438 20.47C16.46 21.136 15.9812 22 15.1958 22H8.80425C8.01881 22 7.53997 21.136 7.95625 20.47L11.152 15.3568Z\" fill=\"var(--icon-accent-brand, currentColor)\"/></g><g class=\"box-1\"><path d=\"M2 6C2 5.44772 2.44772 5 3 5H7C7.55228 5 8 5.44772 8 6V10C8 10.5523 7.55228 11 7 11H3C2.44772 11 2 10.5523 2 10V6Z\" fill=\"var(--icon-accent-yellow, currentColor)\"/></g><g class=\"box-2\"><path d=\"M16 6C16 5.44772 16.4477 5 17 5H21C21.5523 5 22 5.44772 22 6V10C22 10.5523 21.5523 11 21 11H17C16.4477 11 16 10.5523 16 10V6Z\" fill=\"var(--icon-accent-three, currentColor)\"/></g>",
