@@ -4,6 +4,28 @@ Every release of Verity, newest first. The format follows [Keep a Changelog](htt
 
 Sites install Verity by tag (for example `github:erinpantz/verity-design-system#v0.3.0`), so a site only changes when it moves to a new tag on purpose.
 
+## [0.5.0] – 2026-11-10
+
+### Added
+
+- **NavCard:** a large, square link to one of the site’s pages, with its nav icon above its label, on PortfolioCard’s surface. Props: `page` (`portfolio` or `profile`), `label`, `href`, and `tilt` (`none`, `left`, or `right`). On hover and focus it lifts, grows, straightens, and comes in front, and the icon takes its hover pose and accent colors. Two, tilted each way, make the pair on Home.
+- **Icons:** `forward`, the mirror of `back`.
+- **Grid:** `itemWidth` `lg` (`grid/item-min-width/lg`) and `xl` (`grid/item-min-width/xl`).
+- **Button:** `as="span"`, its look without a link or button, for inside another link: it follows the parent’s hover, focus, and press.
+- **Tokens:** shared motion tokens `motion/lift/sm`, `motion/lift/md`, and `motion/scale/hover`; `nav-card/size`, `nav-card/icon-size` (with Core `size/96`), `nav-card/tilt`, and `nav-card/icon/color/accent-brand`; `grid/item-min-width/xl`; and `color/background|content|border/accent-one-hover`.
+
+### Changed
+
+- **Hero:** the intro is `color/content/subtle` on the default and brand backgrounds (knockout keeps one color). Actions are optional: with no `primaryAction`, there’s no actions group and no space for one, as on Home.
+- **PortfolioCard:** the Badge is now a label that looks like a secondary Button, with the `forward` arrow, and follows the card’s hover, focus, and press. It’s a span, not a second link. A brand gallery’s thumbnails take the rest of the card, with no maximum width.
+- **Button:** the brand primary background is `color/background/accent-one`, and `accent-one-hover` on hover.
+- **BackLink and PortfolioCard:** use the shared motion tokens. Nothing looks different.
+- **NavItem:** its icon poses and accent colors moved to a shared place, used by NavCard too. Nothing looks or moves differently.
+
+### Removed
+
+- **Breaking:** the tokens `back-link/lift-hover`, `portfolio-card/lift-hover`, and `portfolio-card/scale-hover`. Use `motion/lift/sm`, `motion/lift/md`, and `motion/scale/hover`.
+
 ## [0.4.8] – 2026-11-10
 
 ### Added
@@ -239,6 +261,7 @@ The first library release: everything in the Figma library except Animation, wit
 - **Theme helpers:** `themeScript`, `useTheme`, and `setTheme`, so a site applies the saved theme before the first paint.
 - **The library build:** one entry point with every component and its prop types, one stylesheet (`verity-design-system/styles.css`) with the fonts inside it, and `npm run build:watch` for working with a linked copy.
 
+[0.5.0]: https://github.com/erinpantz/verity-design-system/compare/v0.4.8...v0.5.0
 [0.4.8]: https://github.com/erinpantz/verity-design-system/compare/v0.4.7...v0.4.8
 [0.4.7]: https://github.com/erinpantz/verity-design-system/compare/v0.4.6...v0.4.7
 [0.4.6]: https://github.com/erinpantz/verity-design-system/compare/v0.4.5...v0.4.6
