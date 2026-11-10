@@ -253,7 +253,6 @@
         "$extensions": {
           "com.figma": {
             "scopes": [
-              "CORNER_RADIUS",
               "STROKE_FLOAT"
             ]
           }
@@ -265,7 +264,6 @@
         "$extensions": {
           "com.figma": {
             "scopes": [
-              "CORNER_RADIUS",
               "STROKE_FLOAT"
             ]
           }
@@ -277,7 +275,6 @@
         "$extensions": {
           "com.figma": {
             "scopes": [
-              "CORNER_RADIUS",
               "STROKE_FLOAT"
             ]
           }
@@ -289,7 +286,6 @@
         "$extensions": {
           "com.figma": {
             "scopes": [
-              "CORNER_RADIUS",
               "STROKE_FLOAT"
             ]
           }
@@ -303,8 +299,7 @@
         "$extensions": {
           "com.figma": {
             "scopes": [
-              "CORNER_RADIUS",
-              "STROKE_FLOAT"
+              "CORNER_RADIUS"
             ]
           }
         }
@@ -315,8 +310,7 @@
         "$extensions": {
           "com.figma": {
             "scopes": [
-              "CORNER_RADIUS",
-              "STROKE_FLOAT"
+              "CORNER_RADIUS"
             ]
           }
         }
@@ -327,8 +321,7 @@
         "$extensions": {
           "com.figma": {
             "scopes": [
-              "CORNER_RADIUS",
-              "STROKE_FLOAT"
+              "CORNER_RADIUS"
             ]
           }
         }
@@ -339,8 +332,7 @@
         "$extensions": {
           "com.figma": {
             "scopes": [
-              "CORNER_RADIUS",
-              "STROKE_FLOAT"
+              "CORNER_RADIUS"
             ]
           }
         }
@@ -351,8 +343,7 @@
         "$extensions": {
           "com.figma": {
             "scopes": [
-              "CORNER_RADIUS",
-              "STROKE_FLOAT"
+              "CORNER_RADIUS"
             ]
           }
         }
@@ -363,8 +354,7 @@
         "$extensions": {
           "com.figma": {
             "scopes": [
-              "CORNER_RADIUS",
-              "STROKE_FLOAT"
+              "CORNER_RADIUS"
             ]
           }
         }
@@ -375,8 +365,7 @@
         "$extensions": {
           "com.figma": {
             "scopes": [
-              "CORNER_RADIUS",
-              "STROKE_FLOAT"
+              "CORNER_RADIUS"
             ]
           }
         }
