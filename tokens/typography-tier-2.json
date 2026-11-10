@@ -225,7 +225,7 @@
     "display-default-mobile": {
       "font-weight": {
         "$type": "fontWeight",
-        "$value": "{typography.font-weight.700}",
+        "$value": "{typography.font-weight.800}",
         "$extensions": {
           "com.figma": {
             "scopes": [
@@ -557,7 +557,7 @@
       },
       "font-weight": {
         "$type": "fontWeight",
-        "$value": "{typography.font-weight.700}",
+        "$value": "{typography.font-weight.800}",
         "$extensions": {
           "com.figma": {
             "scopes": [
@@ -1113,7 +1113,7 @@
     "display-sm": {
       "font-weight": {
         "$type": "fontWeight",
-        "$value": "{typography.font-weight.700}",
+        "$value": "{typography.font-weight.800}",
         "$extensions": {
           "com.figma": {
             "scopes": [
@@ -1375,7 +1375,7 @@
       },
       "font-weight": {
         "$type": "fontWeight",
-        "$value": "{typography.font-weight.700}",
+        "$value": "{typography.font-weight.800}",
         "$extensions": {
           "com.figma": {
             "scopes": [

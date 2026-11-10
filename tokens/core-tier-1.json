@@ -936,6 +936,22 @@
             ]
           }
         }
+      },
+      "800": {
+        "$type": "dimension",
+        "$value": "800px",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "FONT_WEIGHT",
+              "FONT_SIZE",
+              "LINE_HEIGHT",
+              "LETTER_SPACING",
+              "PARAGRAPH_SPACING",
+              "PARAGRAPH_INDENT"
+            ]
+          }
+        }
       }
     },
     "font-family": {
