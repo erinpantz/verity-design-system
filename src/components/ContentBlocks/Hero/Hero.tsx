@@ -1,3 +1,4 @@
+import type { ReactNode } from 'react';
 import { Button } from '../../Actions/Button';
 import styles from './Hero.module.css';
 
@@ -30,6 +31,12 @@ export interface HeroProps {
    * stays at the column’s width either way.
    */
   width?: 'column' | 'wide';
+  /**
+   * Something beside the text, like a NavCardGroup on Home. It sits to the
+   * right of the text, centered, and wraps under it when there isn’t room.
+   * Leave it out for text only.
+   */
+  media?: ReactNode;
 }
 
 // Button colors for each background. Button has no brand secondary, so on
@@ -44,6 +51,8 @@ const BUTTON_COLORS = {
 // one or two actions. It's the page's <header>, and its headline is the
 // page's <h1>. With width="wide" the band breaks out of the column, and the
 // text group stays at the column's width so it keeps a readable measure.
+// The headline, intro, and actions are one group (Body); optional media sits
+// beside it, after it in the reading order, and wraps under it when needed.
 export function Hero({
   background = 'default',
   heading,
@@ -51,27 +60,31 @@ export function Hero({
   primaryAction,
   secondaryAction,
   width = 'column',
+  media,
 }: HeroProps) {
   const colors = BUTTON_COLORS[background];
   return (
     <header className={`${styles.hero} ${styles[background]}`} data-width={width}>
-      <div className={styles.text}>
-        <h1 className={styles.heading}>{heading}</h1>
-        <p className={styles.intro}>{intro}</p>
-      </div>
-      {/* No main action, no actions group: the band ends after the text */}
-      {primaryAction && (
-        <div className={styles.actions}>
-          <Button size="xl" color={colors.primary} href={primaryAction.href}>
-            {primaryAction.label}
-          </Button>
-          {secondaryAction && (
-            <Button variant="secondary" size="xl" color={colors.secondary} href={secondaryAction.href}>
-              {secondaryAction.label}
-            </Button>
-          )}
+      <div className={styles.body}>
+        <div className={styles.text}>
+          <h1 className={styles.heading}>{heading}</h1>
+          <p className={styles.intro}>{intro}</p>
         </div>
-      )}
+        {/* No main action, no actions group: the body ends after the text */}
+        {primaryAction && (
+          <div className={styles.actions}>
+            <Button size="xl" color={colors.primary} href={primaryAction.href}>
+              {primaryAction.label}
+            </Button>
+            {secondaryAction && (
+              <Button variant="secondary" size="xl" color={colors.secondary} href={secondaryAction.href}>
+                {secondaryAction.label}
+              </Button>
+            )}
+          </div>
+        )}
+      </div>
+      {media && <div className={styles.media}>{media}</div>}
     </header>
   );
 }

@@ -1,6 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { Container } from '../../Layout/Container';
 import { Section } from '../../Layout/Section';
+import { NavCard } from '../../Navigation/NavCard';
+import { NavCardGroup } from '../../Navigation/NavCardGroup';
 import { StatCard } from '../StatCard';
 import { Grid } from '../../Layout/Grid';
 import { Hero } from './Hero';
@@ -76,6 +78,48 @@ export const OneAction: Story = {
 export const NoActions: Story = {
   name: 'No actions',
   args: { primaryAction: undefined, secondaryAction: undefined },
+};
+
+// Home's two ways in, as the Hero's media
+const homeCards = (
+  <NavCardGroup>
+    <NavCard page="portfolio" label="Portfolio" href="#portfolio" />
+    <NavCard page="profile" label="Profile" href="#profile" />
+  </NavCardGroup>
+);
+
+// The Home layout: a wide Hero with no actions, and a NavCardGroup beside
+// the text. Hover the cards: they shuffle and lift inside the band.
+export const WithMedia: Story = {
+  name: 'With media',
+  args: {
+    width: 'wide',
+    primaryAction: undefined,
+    secondaryAction: undefined,
+    media: homeCards,
+  },
+  argTypes: { media: { control: false } },
+  parameters: { layout: 'fullscreen' },
+  decorators: [inContainer],
+};
+
+// Narrower than the text's minimum plus the cards, so the cards wrap under
+// the text, at the start
+export const WithMediaWrapped: Story = {
+  name: 'With media, wrapped',
+  args: {
+    primaryAction: undefined,
+    secondaryAction: undefined,
+    media: homeCards,
+  },
+  argTypes: { media: { control: false } },
+  decorators: [
+    (Story) => (
+      <div style={{ maxInlineSize: 'var(--verity-content-column-width)' }}>
+        <Story />
+      </div>
+    ),
+  ],
 };
 
 // The top of a home page: a Hero, then the first Section, with Main's gap

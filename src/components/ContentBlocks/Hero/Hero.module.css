@@ -1,12 +1,17 @@
-/* The text (a headline and an intro), then the actions, on a colored band.
-   It fills the width it's given: the column, or the wide width with
+/* The body (the text, then the actions) and optional media, on a colored
+   band. It fills the width it's given: the column, or the wide width with
    data-width="wide", which a Section or Container reads. Its padding is
-   there for the background, so it adds no space outside itself. */
+   there for the background, so it adds no space outside itself.
+
+   The body and the media share a row that wraps, like Figma's auto layout:
+   the body takes at least hero/text-min-width and fills the rest, the media
+   keeps its own size, and when both don't fit the media wraps under the
+   text. No breakpoint needed. Without media, the body is alone in the row. */
 
 .hero {
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+  flex-wrap: wrap;
+  align-items: center;
   gap: var(--verity-spacing-lg);
   padding: var(--verity-padding-lg);
   background: var(--background);
@@ -61,6 +66,27 @@
   line-height: var(--verity-viewport-typography-body-xl-line-height);
   letter-spacing: var(--verity-viewport-typography-body-xl-letter-spacing);
   text-transform: var(--verity-viewport-typography-body-xl-text-transform);
+}
+
+/* The headline, intro, and actions (Figma's Body): at least the text min
+   width, never wider than the band or the content column, and filling the
+   rest of the row */
+.body {
+  display: flex;
+  flex: 1 1 var(--verity-hero-text-min-width);
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--verity-spacing-lg);
+  min-inline-size: min(100%, var(--verity-hero-text-min-width));
+  max-inline-size: var(--verity-content-column-width);
+}
+
+/* The media, beside the body or wrapped under it at the start, with its own
+   contents centered */
+.media {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* The headline and the intro, as one group, never wider than the content
