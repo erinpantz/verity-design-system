@@ -4,6 +4,16 @@ Every release of Verity, newest first. The format follows [Keep a Changelog](htt
 
 Sites install Verity by tag (for example `github:erinpantz/verity-design-system#v0.3.0`), so a site only changes when it moves to a new tag on purpose.
 
+## [0.4.5] – 2026-11-10
+
+### Added
+
+- **Tokens:** `back-link/lift-hover` (`spacing/4`).
+
+### Changed
+
+- **BackLink:** a small shadow at rest. On hover and keyboard focus it lifts by `back-link/lift-hover` with the large shadow, and the focus ring moves with it; pressed, it settles back down with the small shadow. Only the visible surface moves, so the link’s hit area stays put under the pointer. The lift moves over `motion/duration/playful`; hover’s only on devices with a real pointer, and there’s no lift with reduce motion on. No props changed.
+
 ## [0.4.4] – 2026-11-10
 
 ### Added
@@ -198,6 +208,7 @@ The first library release: everything in the Figma library except Animation, wit
 - **Theme helpers:** `themeScript`, `useTheme`, and `setTheme`, so a site applies the saved theme before the first paint.
 - **The library build:** one entry point with every component and its prop types, one stylesheet (`verity-design-system/styles.css`) with the fonts inside it, and `npm run build:watch` for working with a linked copy.
 
+[0.4.5]: https://github.com/erinpantz/verity-design-system/compare/v0.4.4...v0.4.5
 [0.4.4]: https://github.com/erinpantz/verity-design-system/compare/v0.4.3...v0.4.4
 [0.4.3]: https://github.com/erinpantz/verity-design-system/compare/v0.4.2...v0.4.3
 [0.4.2]: https://github.com/erinpantz/verity-design-system/compare/v0.4.1...v0.4.2
