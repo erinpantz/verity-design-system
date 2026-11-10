@@ -4,6 +4,16 @@ Every release of Verity, newest first. The format follows [Keep a Changelog](htt
 
 Sites install Verity by tag (for example `github:erinpantz/verity-design-system#v0.3.0`), so a site only changes when it moves to a new tag on purpose.
 
+## [0.4.4] – 2026-11-10
+
+### Added
+
+- **Tokens:** `portfolio-card/scale-hover` (1.02) and `portfolio-card/lift-hover` (`spacing/8`).
+
+### Changed
+
+- **PortfolioCard:** on hover and keyboard focus, the whole card rises by `portfolio-card/lift-hover` and grows to `portfolio-card/scale-hover`, with the large shadow (it was medium). The focus ring moves and grows with it. Pressed, it settles back down with the small shadow. The lift and growth move over `motion/duration/playful`; hover’s only on devices with a real pointer, and none of it with reduce motion on. No props changed.
+
 ## [0.4.3] – 2026-11-09
 
 ### Fixed
@@ -188,6 +198,7 @@ The first library release: everything in the Figma library except Animation, wit
 - **Theme helpers:** `themeScript`, `useTheme`, and `setTheme`, so a site applies the saved theme before the first paint.
 - **The library build:** one entry point with every component and its prop types, one stylesheet (`verity-design-system/styles.css`) with the fonts inside it, and `npm run build:watch` for working with a linked copy.
 
+[0.4.4]: https://github.com/erinpantz/verity-design-system/compare/v0.4.3...v0.4.4
 [0.4.3]: https://github.com/erinpantz/verity-design-system/compare/v0.4.2...v0.4.3
 [0.4.2]: https://github.com/erinpantz/verity-design-system/compare/v0.4.1...v0.4.2
 [0.4.1]: https://github.com/erinpantz/verity-design-system/compare/v0.4.0...v0.4.1
