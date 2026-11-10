@@ -99,12 +99,13 @@ export const Narrow: StoryObj = {
   ),
 };
 
-// Like the Portfolio page: a wide Grid of cards. Each card lays itself out by
-// its own width, so here the pictures sit below the text.
+// Side by side in a wide Grid with itemWidth="xl", so the large headings have
+// room: two to a row on a wide screen, one on narrower ones. Each card lays
+// itself out by its own width, so here the pictures sit below the text.
 export const InAGrid: StoryObj = {
   name: 'In a Grid',
   render: () => (
-    <Grid width="wide" gap="lg">
+    <Grid width="wide" itemWidth="xl" gap="lg">
       <PortfolioCard {...CASE_STUDY} />
       <PortfolioCard
         {...CASE_STUDY}
@@ -114,7 +115,6 @@ export const InAGrid: StoryObj = {
         year="2023"
         thumbnail={landscape}
       />
-      <PortfolioCard {...BRAND_GALLERY} />
     </Grid>
   ),
 };
