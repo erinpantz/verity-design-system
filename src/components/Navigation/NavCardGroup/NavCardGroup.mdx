@@ -1,0 +1,84 @@
+import { Meta, Canvas } from '@storybook/addon-docs/blocks';
+import { VerityDocs } from '../../../foundations/VerityDocs';
+import { PropsTable } from '../../../foundations/PropsTable';
+import * as NavCardGroupStories from './NavCardGroup.stories';
+
+<Meta of={NavCardGroupStories} />
+
+<VerityDocs>
+
+# NavCardGroup
+
+A row of two or more `NavCard`s, each overlapping the one before it and tilted the other way, like cards laid on a table. Hover or focus one underneath, and it shuffles to the top.
+
+<Canvas of={NavCardGroupStories.Default} />
+
+## When to use
+
+- **On Home, for the pair of cards into the site’s main pages.**
+- **With two or three NavCards.** More would cover too much of each card.
+- **Not for cards that need to be read side by side.** The overlap hides part of each card; use a `HorizontalStack` or a `Grid`.
+
+## Accessibility
+
+The group is a plain container; each `NavCard` stays its own link, named by its label. The shuffle only changes how the cards look:
+
+- **The focus order follows the reading order,** first card to last, whichever card is on top.
+- **Keyboard focus shuffles a card to the top,** on every device, so its focus ring is never hidden under its neighbor.
+- **With reduce motion on,** there’s no slide: the card simply comes to the front.
+
+| Situation | What to do | Example |
+|---|---|---|
+| Ordering the cards | In the order people should read them; the last one starts on top | Portfolio, then Profile |
+| Setting tilt | Don’t: the group tilts each card, left, right, left | `<NavCard page="profile" … />` |
+
+## Overlap and tilt
+
+Each card after the first overlaps the one before it by `--verity-nav-card-group-gap` (−24), and the cards are vertically centered. The group tilts them in turn: the first to the left, the next to the right, then left again, each by `--verity-nav-card-tilt` (4°).
+
+The token is a negative gap. CSS gaps can’t be negative, so in code it’s a negative margin on each card after the first.
+
+<Canvas of={NavCardGroupStories.ThreeCards} />
+
+## The shuffle
+
+The group decides which card is on top. At first it’s the last one. When a card is hovered (devices with a real pointer only) or gets keyboard focus, it comes to the top and stays there after the pointer or focus leaves, until another card is chosen, like a card put back on a deck.
+
+A card that’s underneath doesn’t just jump in front, which would look like it passed through its neighbor. Instead:
+
+1. **It slides out sideways, quickly,** away from its neighbor, just far enough to clear it: the first card to the left, the last to the right, and a middle card away from the neighbor that’s above it.
+2. **It comes to the front at the moment it’s clear,** when the slide out ends.
+3. **It slides back into place, now on top,** going slightly past its spot and settling, like a card dropped back on a deck.
+
+At the same time, the card straightens, lifts, and grows as a `NavCard` always does on hover and focus. A card that’s already on top doesn’t slide; it just lifts.
+
+| What | How | Tokens |
+|---|---|---|
+| Slide out | About 40px sideways: the overlap, plus how far the two tilts stick out sideways, plus the hover growth, worked out from the tokens | `--verity-motion-duration-fast`, `--verity-motion-easing-standard` |
+| Slide back | Back into place, past it a little and settling. Only this sideways slide overshoots: the straighten, lift, growth, and shadow keep the standard easing, so the card doesn’t wobble. | `--verity-motion-duration-playful`, `--verity-motion-easing-playful` |
+| Coming to the front | When the slide out ends, while the card is clear | `--verity-motion-duration-fast` |
+| Reduce motion is on | No slide: the card comes to the front at once. NavCard’s fades stay. | — |
+
+## Space
+
+| Space | Token |
+|---|---|
+| The overlap between cards | `--verity-nav-card-group-gap` (−24) |
+| Each card | `--verity-nav-card-size` (200) |
+
+Two cards take about 376px. The group doesn’t wrap or shrink, so on the narrowest phones (under about 424px wide, with the page’s side margins) the pair is wider than the content column. It adds no space outside itself.
+
+## Props
+
+<PropsTable of={NavCardGroupStories} />
+
+## In Figma
+
+| Figma | Code |
+|---|---|
+| Component `NavCardGroup` | `<NavCardGroup />` |
+| The NavCard instances, rotated 4° each way | `children`: the NavCards. The group sets their tilt, so in code they don’t set `tilt`. |
+| The gap of −24 | `--verity-nav-card-group-gap`, as a negative margin |
+| Not in Figma | The shuffle and which card is on top, which are code only |
+
+</VerityDocs>

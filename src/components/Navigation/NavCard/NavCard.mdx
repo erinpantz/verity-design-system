@@ -15,7 +15,7 @@ A large, square link to one of the site’s pages, with the page’s nav icon ab
 
 ## When to use
 
-- **On Home, as a playful way into the site’s main pages,** two side by side, one tilted each way.
+- **On Home, as a playful way into the site’s main pages,** two or more in a `NavCardGroup`, which overlaps and tilts them.
 - **For the Portfolio and Profile pages,** which have their own nav icons.
 - **Not for navigation that’s always there.** That’s `MainNav`, with `NavItem`s.
 - **Not for a piece of work.** Use `PortfolioCard`.
@@ -41,9 +41,9 @@ A NavCard renders one `<a href>` around everything, so the whole card is one sto
 | `left` | Turned `--verity-nav-card-tilt` (4) degrees to the left (counterclockwise) |
 | `right` | Turned 4 degrees to the right (clockwise) |
 
-On hover and focus a tilted card straightens and comes in front of its neighbor, so two side by side can overlap as one rises. Two NavCards in a `HorizontalStack`, one tilted each way, make the pair on Home.
+On hover and focus a tilted card straightens and comes in front of its neighbor. In a `NavCardGroup`, the group sets each card’s tilt and decides which card is on top, so don’t set `tilt` there. See **Navigation › NavCardGroup**.
 
-<Canvas of={NavCardStories.PairOnHome} />
+<Canvas of={NavCardStories.TiltLeft} />
 
 ## States
 

@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { HorizontalStack } from '../../Layout/HorizontalStack';
 import { NavCard } from './NavCard';
 
 const meta = {
@@ -49,7 +48,8 @@ export const Active: Story = {
   globals: { pseudo: { active: true } },
 };
 
-// Tilted, for a playful pair. Hover to straighten it.
+// Tilted, as in a NavCardGroup, which sets the tilts for you. Hover to
+// straighten it.
 export const TiltLeft: Story = {
   name: 'Tilt left',
   args: { tilt: 'left' },
@@ -58,16 +58,4 @@ export const TiltLeft: Story = {
 export const TiltRight: Story = {
   name: 'Tilt right',
   args: { page: 'profile', label: 'Profile', href: '#profile', tilt: 'right' },
-};
-
-// The pair on Home: one tilted each way, side by side. Hover one: it
-// straightens and comes in front of the other.
-export const PairOnHome: StoryObj = {
-  name: 'Pair on Home',
-  render: () => (
-    <HorizontalStack>
-      <NavCard page="portfolio" label="Portfolio" href="#portfolio" tilt="left" />
-      <NavCard page="profile" label="Profile" href="#profile" tilt="right" />
-    </HorizontalStack>
-  ),
 };

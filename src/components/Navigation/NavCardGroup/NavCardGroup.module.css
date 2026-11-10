@@ -1,0 +1,107 @@
+/* A row of NavCards, each overlapping the one before it, vertically
+   centered. Each card sits in a slot the group owns: the slot slides and
+   stacks, and the NavCard inside it lifts, grows, and straightens on its
+   own, so the two motions run together without fighting. */
+
+.navCardGroup {
+  /* How far a card slides out to clear its neighbor: the overlap, plus how
+     far the two 4° tilts stick out sideways, plus the hover growth */
+  --clear: calc(
+    -1 * var(--verity-nav-card-group-gap)
+      + var(--verity-nav-card-size)
+      * (cos(var(--verity-nav-card-tilt) * 1deg) + sin(var(--verity-nav-card-tilt) * 1deg) - 1)
+      + var(--verity-nav-card-size) * (var(--verity-motion-scale-hover) - 1) / 2
+  );
+
+  display: flex;
+  align-items: center;
+}
+
+/* Each card after the first overlaps the one before it. The token is a
+   negative gap, and CSS gaps can't be negative, so it's a negative margin
+   on the card's own side. */
+.slot + .slot {
+  margin-inline-start: var(--verity-nav-card-group-gap);
+}
+
+/* Stacking: every slot is at 0, so later cards sit on earlier ones and the
+   last is on top. The top card, once one is chosen, is at 1. The switch
+   waits until the end of the slide out, when the moving card is clear of
+   its neighbor, so the cards never seem to pass through each other. */
+.slot {
+  position: relative;
+  z-index: 0;
+  display: flex;
+  transition: z-index 0s linear var(--verity-motion-duration-fast);
+}
+
+.slot[data-top] {
+  z-index: 1;
+}
+
+/* The shuffle, in two legs, while the card itself straightens, lifts, and
+   grows (all with the standard easing, so it doesn't wobble):
+   1. Out sideways to clear the neighbor: quick, with the standard easing.
+   2. Back into place, now on top: with the playful overshoot, so it goes
+      slightly past its spot and settles. Only this sideways slide uses it.
+   The second leg starts when the first ends. Both hold their last frame
+   (forwards), and the second is listed later, so it takes over from the
+   first without a jump and holds the card in place until the group clears
+   the shuffle. */
+.slot[data-shuffle] {
+  animation-duration: var(--verity-motion-duration-fast), var(--verity-motion-duration-playful);
+  animation-timing-function: var(--verity-motion-easing-standard), var(--verity-motion-easing-playful);
+  animation-delay: 0s, var(--verity-motion-duration-fast);
+  animation-fill-mode: forwards;
+}
+
+.slot[data-shuffle='left'] {
+  animation-name: shuffle-out-left, shuffle-back-left;
+}
+
+.slot[data-shuffle='right'] {
+  animation-name: shuffle-out-right, shuffle-back-right;
+}
+
+@keyframes shuffle-out-left {
+  to {
+    translate: calc(-1 * var(--clear)) 0;
+  }
+}
+
+@keyframes shuffle-back-left {
+  from {
+    translate: calc(-1 * var(--clear)) 0;
+  }
+
+  to {
+    translate: 0 0;
+  }
+}
+
+@keyframes shuffle-out-right {
+  to {
+    translate: var(--clear) 0;
+  }
+}
+
+@keyframes shuffle-back-right {
+  from {
+    translate: var(--clear) 0;
+  }
+
+  to {
+    translate: 0 0;
+  }
+}
+
+/* Reduce motion: no slide; the card simply comes to the front */
+@media (prefers-reduced-motion: reduce) {
+  .slot {
+    transition: none;
+  }
+
+  .slot[data-shuffle] {
+    animation-name: none;
+  }
+}

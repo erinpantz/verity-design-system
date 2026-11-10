@@ -82,6 +82,8 @@ export { MainNav } from './components/Navigation/MainNav';
 export type { MainNavProps } from './components/Navigation/MainNav';
 export { NavCard } from './components/Navigation/NavCard';
 export type { NavCardProps } from './components/Navigation/NavCard';
+export { NavCardGroup } from './components/Navigation/NavCardGroup';
+export type { NavCardGroupProps } from './components/Navigation/NavCardGroup';
 export { NavContainer } from './components/Navigation/NavContainer';
 export type { NavContainerProps } from './components/Navigation/NavContainer';
 export { NavItem } from './components/Navigation/NavItem';
