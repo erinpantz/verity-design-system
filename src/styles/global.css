@@ -19,6 +19,13 @@ html {
   color-scheme: dark;
 }
 
+/* No default page margin: browsers add 8px around body, which would shift
+   every page in and make wide content narrower than in Figma. Shell owns the
+   page's edges. */
+body {
+  margin: 0;
+}
+
 /* The page's base text style. Text that doesn't set its own style, such as a
    Link that stands alone, uses body-default. Components with a text style of
    their own set it themselves. */
