@@ -4,6 +4,16 @@ Every release of Verity, newest first. The format follows [Keep a Changelog](htt
 
 Sites install Verity by tag (for example `github:erinpantz/verity-design-system#v0.3.0`), so a site only changes when it moves to a new tag on purpose.
 
+## [0.4.8] – 2026-11-10
+
+### Added
+
+- **Tokens:** Core `border/radius/40`.
+
+### Changed
+
+- **Tokens:** every Tier 2 radius is a step larger: `border/radius/xs` 2 (was 1), `sm` 8 (was 4), `md` 16 (was 8), `lg` 32 (was 16), and `x-lg` 40 (was 32). `none` and `round` are unchanged. Every component that uses them is rounder: buttons, cards, images, the nav, and tooltips. At Large and XL a 32px-tall `sm` Button is a full pill and an `sm` IconButton a circle. Storybook’s own interface follows. No props changed.
+
 ## [0.4.7] – 2026-11-10
 
 ### Added
@@ -229,6 +239,7 @@ The first library release: everything in the Figma library except Animation, wit
 - **Theme helpers:** `themeScript`, `useTheme`, and `setTheme`, so a site applies the saved theme before the first paint.
 - **The library build:** one entry point with every component and its prop types, one stylesheet (`verity-design-system/styles.css`) with the fonts inside it, and `npm run build:watch` for working with a linked copy.
 
+[0.4.8]: https://github.com/erinpantz/verity-design-system/compare/v0.4.7...v0.4.8
 [0.4.7]: https://github.com/erinpantz/verity-design-system/compare/v0.4.6...v0.4.7
 [0.4.6]: https://github.com/erinpantz/verity-design-system/compare/v0.4.5...v0.4.6
 [0.4.5]: https://github.com/erinpantz/verity-design-system/compare/v0.4.4...v0.4.5
