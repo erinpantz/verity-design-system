@@ -47,6 +47,21 @@ Button has no brand secondary, so on `brand` the secondary button is `default`. 
 
 <Canvas of={HeroStories.Brand} />
 
+## Width
+
+| `width` | The band | Use for |
+|---|---|---|
+| `column` | The default. The content column, like the blocks below it | Most pages |
+| `wide` | Breaks out to `--verity-content-wide-width` (1824) in a `Section` or `Container`, like a `MediaBlock` with `width="wide"` | When the band should line up with wide content below it, as on Home |
+
+Only the band goes wide. The headline and intro are one group, never wider than `--verity-content-column-width` (880), so the text keeps a readable measure either way, and it sits at the start, with the buttons. On Small and Medium, where the column and the wide width are the same, the two look the same.
+
+<Canvas of={HeroStories.Wide} />
+
+<Canvas of={HeroStories.WideKnockout} />
+
+<Canvas of={HeroStories.WideBrand} />
+
 ## Actions
 
 `primaryAction` is required, and `secondaryAction` is optional. Both are `xl` Buttons, side by side. On a narrow screen, the second one wraps below the first.
@@ -60,7 +75,8 @@ A Hero fills the width it’s given and adds no space outside itself. Its paddin
 | Space | Token |
 |---|---|
 | Inside, on every side | `--verity-padding-lg` |
-| Between the headline, intro, and actions | `--verity-spacing-md` |
+| Between the headline and the intro, inside the text group | `--verity-spacing-sm` |
+| Between the text group and the actions | `--verity-spacing-lg` |
 | Between the buttons | `--verity-spacing-xs` |
 | Corners | `--verity-border-radius-md`, always (Verity has no edge-to-edge layouts) |
 | Text | The headline in `display-default`; the intro in `body-xl` |
@@ -83,6 +99,8 @@ A Hero fills the width it’s given and adds no space outside itself. Its paddin
 | Property `Primary action` (an exposed Button) | `primaryAction`: its label and where it goes. Hero sets the Button’s variant, size, and color. |
 | Property `Secondary action` (an exposed Button) | `secondaryAction` |
 | Property `Show secondary action` | Not a prop: set `secondaryAction` to show it, or leave it out |
-| The fixed width | Not in code: the Hero fills the width it’s given |
+| Property `Width` | `width`. `column` is the default in both. |
+| Frame `Text` | The headline and intro group: `spacing/sm` between them, at most `content/column-width` wide |
+| The fixed width | Not in code: the Hero fills the width it’s given, the column or the wide width |
 
 </VerityDocs>

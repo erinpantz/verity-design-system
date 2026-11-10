@@ -24,6 +24,12 @@ export interface HeroProps {
   primaryAction: HeroAction;
   /** A second, less important action. Leave it out for one button. */
   secondaryAction?: HeroAction;
+  /**
+   * How wide the band gets in a Section or Container: column (the default),
+   * or wide to break out to the full width, like a wide MediaBlock. The text
+   * stays at the column’s width either way.
+   */
+  width?: 'column' | 'wide';
 }
 
 // Button colors for each background. Button has no brand secondary, so on
@@ -34,19 +40,25 @@ const BUTTON_COLORS = {
   brand: { primary: 'brand', secondary: 'default' },
 } as const;
 
-// The band at the top of a page: a headline, an intro, and one or two
-// actions. It's the page's <header>, and its headline is the page's <h1>.
+// The band at the top of a page: a headline and an intro, as one group, then
+// one or two actions. It's the page's <header>, and its headline is the
+// page's <h1>. With width="wide" the band breaks out of the column, and the
+// text group stays at the column's width so it keeps a readable measure.
 export function Hero({
   background = 'default',
-  heading,   intro,
+  heading,
+  intro,
   primaryAction,
   secondaryAction,
+  width = 'column',
 }: HeroProps) {
   const colors = BUTTON_COLORS[background];
   return (
-    <header className={`${styles.hero} ${styles[background]}`}>
-      <h1 className={styles.heading}>{heading}</h1>
-      <p className={styles.intro}>{intro}</p>
+    <header className={`${styles.hero} ${styles[background]}`} data-width={width}>
+      <div className={styles.text}>
+        <h1 className={styles.heading}>{heading}</h1>
+        <p className={styles.intro}>{intro}</p>
+      </div>
       <div className={styles.actions}>
         <Button size="xl" color={colors.primary} href={primaryAction.href}>
           {primaryAction.label}

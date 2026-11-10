@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
+import { Container } from '../../Layout/Container';
 import { Section } from '../../Layout/Section';
 import { StatCard } from '../StatCard';
 import { Grid } from '../../Layout/Grid';
@@ -19,6 +20,7 @@ const meta = {
     intro: { control: 'text' },
     primaryAction: { control: 'object' },
     secondaryAction: { control: 'object' },
+    width: { control: 'inline-radio', options: ['column', 'wide'] },
   },
 } satisfies Meta<typeof Hero>;
 
@@ -34,6 +36,35 @@ export const Knockout: Story = {
 
 export const Brand: Story = {
   args: { background: 'brand' },
+};
+
+// Wide: the band breaks out of the Container's column to the wide width,
+// and the text still wraps at the column's width. Shown in a Container, as
+// on a page.
+const inContainer = (Story: () => React.ReactElement) => (
+  <Container>
+    <Story />
+  </Container>
+);
+
+export const Wide: Story = {
+  args: { width: 'wide' },
+  parameters: { layout: 'fullscreen' },
+  decorators: [inContainer],
+};
+
+export const WideKnockout: Story = {
+  name: 'Wide knockout',
+  args: { width: 'wide', background: 'knockout' },
+  parameters: { layout: 'fullscreen' },
+  decorators: [inContainer],
+};
+
+export const WideBrand: Story = {
+  name: 'Wide brand',
+  args: { width: 'wide', background: 'brand' },
+  parameters: { layout: 'fullscreen' },
+  decorators: [inContainer],
 };
 
 export const OneAction: Story = {
