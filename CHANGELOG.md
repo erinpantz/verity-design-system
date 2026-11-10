@@ -4,6 +4,18 @@ Every release of Verity, newest first. The format follows [Keep a Changelog](htt
 
 Sites install Verity by tag (for example `github:erinpantz/verity-design-system#v0.3.0`), so a site only changes when it moves to a new tag on purpose.
 
+## [0.5.2] – 2026-11-10
+
+### Added
+
+- **Hero:** an optional `media` prop, something beside the text, like a NavCardGroup on Home. The headline, intro, and actions stay one group on the left (at least `hero/text-min-width`, at most the content column) and the media sits to its right, `spacing/lg` apart, vertically centered; when both don’t fit, the media wraps under the text. Without media, Hero looks the same as before.
+- **Tokens:** `hero/text-min-width` (560 on XL and Large, 400 on Medium, 200 on Small); `typography/body-xl-mobile/*` (24/32); Core font sizes 72, 80, 88, and 96, and line heights 80, 88, 96, and 104.
+
+### Changed
+
+- **Typography:** `display/default` is 88/96 on desktop (was 100/110) and 48/56 on mobile (was 56/64), the same as `display/sm` there. `body-xl` uses its new mobile set, 24/32, on Medium and Small (desktop stays 32/40), so Hero’s intro is 24px there.
+- **NavCard:** on Small, cards are 144 (was 200) with a 64px icon (was 96), so two in a NavCardGroup fit a 320px screen.
+
 ## [0.5.1] – 2026-11-10
 
 ### Added
@@ -273,6 +285,7 @@ The first library release: everything in the Figma library except Animation, wit
 - **Theme helpers:** `themeScript`, `useTheme`, and `setTheme`, so a site applies the saved theme before the first paint.
 - **The library build:** one entry point with every component and its prop types, one stylesheet (`verity-design-system/styles.css`) with the fonts inside it, and `npm run build:watch` for working with a linked copy.
 
+[0.5.2]: https://github.com/erinpantz/verity-design-system/compare/v0.5.1...v0.5.2
 [0.5.1]: https://github.com/erinpantz/verity-design-system/compare/v0.5.0...v0.5.1
 [0.5.0]: https://github.com/erinpantz/verity-design-system/compare/v0.4.8...v0.5.0
 [0.4.8]: https://github.com/erinpantz/verity-design-system/compare/v0.4.7...v0.4.8
