@@ -492,6 +492,7 @@
   --verity-color-background-success-subtle: var(--verity-color-utility-transparent-success-25);
   --verity-color-background-warning-subtle: var(--verity-color-utility-transparent-warning-25);
   --verity-color-background-brand-dark: var(--verity-color-brand-blue-900); /** A deep brand-colored background for a block that should stand apart from the page, like the Footer. Brand 900 in each theme. */
+  --verity-color-background-brand-active: var(--verity-color-brand-blue-800);
   --verity-color-content-default: var(--verity-color-brand-blue-100);
   --verity-color-content-default-hover: var(--verity-color-neutral-white);
   --verity-color-content-knockout: var(--verity-color-brand-neutral-900);
@@ -506,8 +507,8 @@
   --verity-color-border-default: var(--verity-color-brand-blue-100);
   --verity-color-border-default-hover: var(--verity-color-brand-blue-200);
   --verity-color-border-knockout: var(--verity-color-brand-neutral-900);
-  --verity-color-border-brand: var(--verity-color-brand-blue-700);
-  --verity-color-border-brand-hover: var(--verity-color-brand-blue-600);
+  --verity-color-border-brand: var(--verity-color-brand-blue-600);
+  --verity-color-border-brand-hover: var(--verity-color-brand-blue-500);
   --verity-color-border-disabled: var(--verity-color-brand-neutral-300);
   --verity-color-border-error: var(--verity-color-brand-red-400);
   --verity-color-border-success: var(--verity-color-brand-green-400);
@@ -520,6 +521,7 @@
   --verity-color-border-focus-knockout: var(--verity-color-brand-blue-700); /** Focus ring on a knockout (light) background. */
   --verity-color-border-subtle: var(--verity-color-brand-neutral-500);
   --verity-color-border-divider: var(--verity-color-brand-neutral-800); /** Decorative lines that separate groups, such as the line above Resume in MainNav. Low contrast on purpose: a divider that only groups items needn’t meet 3:1. Use color/border/subtle for borders that show a control’s edge. */
+  --verity-color-border-brand-active: var(--verity-color-brand-blue-700);
   --verity-color-background-accent-one: var(--verity-color-accent-yellow);
   --verity-color-background-accent-two: var(--verity-color-accent-red);
   --verity-color-background-accent-three: var(--verity-color-accent-violet);
@@ -654,6 +656,7 @@
   --verity-color-background-success-subtle: var(--verity-color-utility-transparent-success-25);
   --verity-color-background-warning-subtle: var(--verity-color-utility-transparent-warning-25);
   --verity-color-background-brand-dark: var(--verity-color-brand-red-900); /** A deep brand-colored background for a block that should stand apart from the page, like the Footer. Brand 900 in each theme. */
+  --verity-color-background-brand-active: var(--verity-color-brand-red-700);
   --verity-color-content-default: var(--verity-color-brand-red-100);
   --verity-color-content-default-hover: var(--verity-color-neutral-white);
   --verity-color-content-knockout: var(--verity-color-brand-neutral-900);
@@ -668,8 +671,8 @@
   --verity-color-border-default: var(--verity-color-brand-red-100);
   --verity-color-border-default-hover: var(--verity-color-brand-red-200);
   --verity-color-border-knockout: var(--verity-color-brand-neutral-900);
-  --verity-color-border-brand: var(--verity-color-brand-red-600);
-  --verity-color-border-brand-hover: var(--verity-color-brand-red-500);
+  --verity-color-border-brand: var(--verity-color-brand-red-500);
+  --verity-color-border-brand-hover: var(--verity-color-brand-red-400);
   --verity-color-border-disabled: var(--verity-color-brand-neutral-300);
   --verity-color-border-error: var(--verity-color-brand-red-400);
   --verity-color-border-success: var(--verity-color-brand-green-400);
@@ -682,6 +685,7 @@
   --verity-color-border-focus-knockout: var(--verity-color-brand-red-600); /** Focus ring on a knockout (light) background. */
   --verity-color-border-subtle: var(--verity-color-brand-neutral-500);
   --verity-color-border-divider: var(--verity-color-brand-neutral-800); /** Decorative lines that separate groups, such as the line above Resume in MainNav. Low contrast on purpose: a divider that only groups items needn’t meet 3:1. Use color/border/subtle for borders that show a control’s edge. */
+  --verity-color-border-brand-active: var(--verity-color-brand-red-600);
   --verity-color-background-accent-one: var(--verity-color-accent-yellow);
   --verity-color-background-accent-two: var(--verity-color-accent-blue);
   --verity-color-background-accent-three: var(--verity-color-accent-green);
@@ -821,12 +825,15 @@
   --verity-grid-columns: 4;
   --verity-grid-item-min-width-sm: 200px; /** Minimum width of a Grid item before the row wraps, when Item width is sm (200px). */
   --verity-grid-item-min-width-md: 300px; /** Minimum width of a Grid item before the row wraps, when Item width is md (300px). */
+  --verity-grid-item-min-width-lg: 300px; /** Minimum width of a Grid item before the row wraps, when Item width is lg (400px; 300px on Medium and Small). */
   --verity-nav-overlay-thickness: 240px;
   --verity-gallery-item-min-width: 200px; /** Minimum width of a Gallery item before the Gallery stacks into one column (200px). */
   --verity-footer-call-to-action-min-width: 240px; /** Narrowest the Footer call to action gets before the links wrap below it: 300 on Large and XL (side by side), 320 on Medium and 240 on Small (stacked). */
   --verity-footer-call-to-action-max-width: 400px; /** Widest the Footer call to action gets, so its text keeps a comfortable line length (400px). */
   --verity-footer-links-min-width: 240px; /** Narrowest the Footer links area gets before it wraps below the call to action: 432 on Large and XL, just enough for the three link groups on one row with spacing/md between them; 480 on Medium and 240 on Small, which stack. */
   --verity-media-text-stack-width: 800px; /** Below this width, a row MediaText stacks its text above its media (800px). Measured on MediaText itself, not the screen. */
+  --verity-portfolio-card-image-scale-hover: 1.05; /** How much a PortfolioCard image grows inside its frame on hover, focus, and active. Code only (no Figma field takes a scale); Figma shows it by cropping the image to 105%. */
+  --verity-portfolio-card-text-max-width: 400px; /** The widest PortfolioCard’s text gets in the brand gallery type, so the thumbnails get the rest. */
   --verity-nav-container-padding-x-expanded: var(--verity-spacing-16); /** Left and right padding of the expanded NavContainer. */
   --verity-nav-container-padding-x-collapsed: var(--verity-spacing-8); /** Left and right padding of the collapsed, top-docked NavContainer. */
   --verity-nav-container-padding-bottom: var(--verity-spacing-16); /** Bottom padding of the expanded NavContainer. */
@@ -1061,12 +1068,15 @@
     --verity-grid-columns: 8;
     --verity-grid-item-min-width-sm: 200px; /** Minimum width of a Grid item before the row wraps, when Item width is sm (200px). */
     --verity-grid-item-min-width-md: 300px; /** Minimum width of a Grid item before the row wraps, when Item width is md (300px). */
+    --verity-grid-item-min-width-lg: 300px; /** Minimum width of a Grid item before the row wraps, when Item width is lg (400px; 300px on Medium and Small). */
     --verity-nav-overlay-thickness: 240px;
     --verity-gallery-item-min-width: 200px; /** Minimum width of a Gallery item before the Gallery stacks into one column (200px). */
     --verity-footer-call-to-action-min-width: 320px; /** Narrowest the Footer call to action gets before the links wrap below it: 300 on Large and XL (side by side), 320 on Medium and 240 on Small (stacked). */
     --verity-footer-call-to-action-max-width: 400px; /** Widest the Footer call to action gets, so its text keeps a comfortable line length (400px). */
     --verity-footer-links-min-width: 480px; /** Narrowest the Footer links area gets before it wraps below the call to action: 432 on Large and XL, just enough for the three link groups on one row with spacing/md between them; 480 on Medium and 240 on Small, which stack. */
     --verity-media-text-stack-width: 800px; /** Below this width, a row MediaText stacks its text above its media (800px). Measured on MediaText itself, not the screen. */
+    --verity-portfolio-card-image-scale-hover: 1.05; /** How much a PortfolioCard image grows inside its frame on hover, focus, and active. Code only (no Figma field takes a scale); Figma shows it by cropping the image to 105%. */
+    --verity-portfolio-card-text-max-width: 400px; /** The widest PortfolioCard’s text gets in the brand gallery type, so the thumbnails get the rest. */
     --verity-nav-container-padding-x-expanded: var(--verity-spacing-16); /** Left and right padding of the expanded NavContainer. */
     --verity-nav-container-padding-x-collapsed: var(--verity-spacing-8); /** Left and right padding of the collapsed, top-docked NavContainer. */
     --verity-nav-container-padding-bottom: var(--verity-spacing-16); /** Bottom padding of the expanded NavContainer. */
@@ -1302,12 +1312,15 @@
     --verity-grid-columns: 12;
     --verity-grid-item-min-width-sm: 200px; /** Minimum width of a Grid item before the row wraps, when Item width is sm (200px). */
     --verity-grid-item-min-width-md: 300px; /** Minimum width of a Grid item before the row wraps, when Item width is md (300px). */
+    --verity-grid-item-min-width-lg: 400px; /** Minimum width of a Grid item before the row wraps, when Item width is lg (400px; 300px on Medium and Small). */
     --verity-nav-overlay-thickness: 240px;
     --verity-gallery-item-min-width: 200px; /** Minimum width of a Gallery item before the Gallery stacks into one column (200px). */
     --verity-footer-call-to-action-min-width: 300px; /** Narrowest the Footer call to action gets before the links wrap below it: 300 on Large and XL (side by side), 320 on Medium and 240 on Small (stacked). */
     --verity-footer-call-to-action-max-width: 400px; /** Widest the Footer call to action gets, so its text keeps a comfortable line length (400px). */
     --verity-footer-links-min-width: 432px; /** Narrowest the Footer links area gets before it wraps below the call to action: 432 on Large and XL, just enough for the three link groups on one row with spacing/md between them; 480 on Medium and 240 on Small, which stack. */
     --verity-media-text-stack-width: 800px; /** Below this width, a row MediaText stacks its text above its media (800px). Measured on MediaText itself, not the screen. */
+    --verity-portfolio-card-image-scale-hover: 1.05; /** How much a PortfolioCard image grows inside its frame on hover, focus, and active. Code only (no Figma field takes a scale); Figma shows it by cropping the image to 105%. */
+    --verity-portfolio-card-text-max-width: 400px; /** The widest PortfolioCard’s text gets in the brand gallery type, so the thumbnails get the rest. */
     --verity-nav-container-padding-x-expanded: var(--verity-spacing-16); /** Left and right padding of the expanded NavContainer. */
     --verity-nav-container-padding-x-collapsed: var(--verity-spacing-8); /** Left and right padding of the collapsed, top-docked NavContainer. */
     --verity-nav-container-padding-bottom: var(--verity-spacing-16); /** Bottom padding of the expanded NavContainer. */
@@ -1543,12 +1556,15 @@
     --verity-grid-columns: 12;
     --verity-grid-item-min-width-sm: 200px; /** Minimum width of a Grid item before the row wraps, when Item width is sm (200px). */
     --verity-grid-item-min-width-md: 300px; /** Minimum width of a Grid item before the row wraps, when Item width is md (300px). */
+    --verity-grid-item-min-width-lg: 400px; /** Minimum width of a Grid item before the row wraps, when Item width is lg (400px; 300px on Medium and Small). */
     --verity-nav-overlay-thickness: 240px;
     --verity-gallery-item-min-width: 200px; /** Minimum width of a Gallery item before the Gallery stacks into one column (200px). */
     --verity-footer-call-to-action-min-width: 300px; /** Narrowest the Footer call to action gets before the links wrap below it: 300 on Large and XL (side by side), 320 on Medium and 240 on Small (stacked). */
     --verity-footer-call-to-action-max-width: 400px; /** Widest the Footer call to action gets, so its text keeps a comfortable line length (400px). */
     --verity-footer-links-min-width: 432px; /** Narrowest the Footer links area gets before it wraps below the call to action: 432 on Large and XL, just enough for the three link groups on one row with spacing/md between them; 480 on Medium and 240 on Small, which stack. */
     --verity-media-text-stack-width: 800px; /** Below this width, a row MediaText stacks its text above its media (800px). Measured on MediaText itself, not the screen. */
+    --verity-portfolio-card-image-scale-hover: 1.05; /** How much a PortfolioCard image grows inside its frame on hover, focus, and active. Code only (no Figma field takes a scale); Figma shows it by cropping the image to 105%. */
+    --verity-portfolio-card-text-max-width: 400px; /** The widest PortfolioCard’s text gets in the brand gallery type, so the thumbnails get the rest. */
     --verity-nav-container-padding-x-expanded: var(--verity-spacing-16); /** Left and right padding of the expanded NavContainer. */
     --verity-nav-container-padding-x-collapsed: var(--verity-spacing-8); /** Left and right padding of the collapsed, top-docked NavContainer. */
     --verity-nav-container-padding-bottom: var(--verity-spacing-16); /** Bottom padding of the expanded NavContainer. */

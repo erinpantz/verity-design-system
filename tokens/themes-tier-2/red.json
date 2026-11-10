@@ -265,6 +265,18 @@
             ]
           }
         }
+      },
+      "brand-active": {
+        "$type": "color",
+        "$value": "{color.brand.red.700}",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "ALL_FILLS",
+              "EFFECT_COLOR"
+            ]
+          }
+        }
       }
     },
     "content": {
@@ -403,7 +415,7 @@
       },
       "brand": {
         "$type": "color",
-        "$value": "{color.brand.red.600}",
+        "$value": "{color.brand.red.500}",
         "$extensions": {
           "com.figma": {
             "scopes": [
@@ -414,7 +426,7 @@
       },
       "brand-hover": {
         "$type": "color",
-        "$value": "{color.brand.red.500}",
+        "$value": "{color.brand.red.400}",
         "$extensions": {
           "com.figma": {
             "scopes": [
@@ -633,6 +645,17 @@
         "$type": "color",
         "$value": "{color.brand.neutral.800}",
         "$description": "Decorative lines that separate groups, such as the line above Resume in MainNav. Low contrast on purpose: a divider that only groups items needn’t meet 3:1. Use color/border/subtle for borders that show a control’s edge.",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "STROKE_COLOR"
+            ]
+          }
+        }
+      },
+      "brand-active": {
+        "$type": "color",
+        "$value": "{color.brand.red.600}",
         "$extensions": {
           "com.figma": {
             "scopes": [

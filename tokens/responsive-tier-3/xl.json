@@ -112,6 +112,18 @@
             ]
           }
         }
+      },
+      "lg": {
+        "$type": "dimension",
+        "$value": "400px",
+        "$description": "Minimum width of a Grid item before the row wraps, when Item width is lg (400px; 300px on Medium and Small).",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "WIDTH_HEIGHT"
+            ]
+          }
+        }
       }
     }
   },
@@ -369,6 +381,27 @@
               "EFFECT_FLOAT"
             ]
           }
+        }
+      }
+    }
+  },
+  "portfolio-card": {
+    "image": {
+      "scale-hover": {
+        "$type": "number",
+        "$value": 1.05,
+        "$description": "How much a PortfolioCard image grows inside its frame on hover, focus, and active. Code only (no Figma field takes a scale); Figma shows it by cropping the image to 105%."
+      }
+    },
+    "text-max-width": {
+      "$type": "dimension",
+      "$value": "400px",
+      "$description": "The widest PortfolioCard’s text gets in the brand gallery type, so the thumbnails get the rest.",
+      "$extensions": {
+        "com.figma": {
+          "scopes": [
+            "WIDTH_HEIGHT"
+          ]
         }
       }
     }

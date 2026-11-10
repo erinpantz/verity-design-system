@@ -15,7 +15,7 @@
         "Blue": "themes-tier-2/blue.json",
         "Red": "themes-tier-2/red.json"
       },
-      "tokens": 78
+      "tokens": 80
     },
     {
       "name": "Blue Tier 1",
@@ -83,7 +83,7 @@
         "Medium": "responsive-tier-3/medium.json",
         "Small": "responsive-tier-3/small.json"
       },
-      "tokens": 32
+      "tokens": 35
     },
     {
       "name": "Red Tier 1",
