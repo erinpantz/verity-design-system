@@ -1,0 +1,111 @@
+import { Meta, Canvas } from '@storybook/addon-docs/blocks';
+import { VerityDocs } from '../../../foundations/VerityDocs';
+import { PropsTable } from '../../../foundations/PropsTable';
+import * as NavCardStories from './NavCard.stories';
+
+<Meta of={NavCardStories} />
+
+<VerityDocs>
+
+# NavCard
+
+A large, square link to one of the site’s pages, with the page’s nav icon above its name. On hover, the icon moves just as it does in the nav.
+
+<Canvas of={NavCardStories.Default} />
+
+## When to use
+
+- **On Home, as a playful way into the site’s main pages,** two side by side, one tilted each way.
+- **For the Portfolio and Profile pages,** which have their own nav icons.
+- **Not for navigation that’s always there.** That’s `MainNav`, with `NavItem`s.
+- **Not for a piece of work.** Use `PortfolioCard`.
+
+## Accessibility
+
+A NavCard renders one `<a href>` around everything, so the whole card is one stop for the keyboard and one link for screen readers.
+
+- **Its name is its label:** a screen reader hears “Portfolio, link.”
+- **The icon is decorative,** hidden from screen readers: the label already says where it goes.
+- **The tilt and the motion don’t change what it means.** With reduce motion on, it doesn’t lift, grow, or straighten.
+
+| Situation | What to do | Example |
+|---|---|---|
+| Writing the label | The page’s name, as in the nav, so the two match | “Portfolio” |
+| Choosing `page` | The page it goes to, so its icon matches the nav’s | `page="profile"` |
+
+## Tilt
+
+| `tilt` | The card |
+|---|---|
+| `none` | The default. Straight. |
+| `left` | Turned `--verity-nav-card-tilt` (4) degrees to the left (counterclockwise) |
+| `right` | Turned 4 degrees to the right (clockwise) |
+
+On hover and focus a tilted card straightens and comes in front of its neighbor, so two side by side can overlap as one rises. Two NavCards in a `HorizontalStack`, one tilted each way, make the pair on Home.
+
+<Canvas of={NavCardStories.PairOnHome} />
+
+## States
+
+| State | What changes | Tokens |
+|---|---|---|
+| Default | The brand fill and border, the default text color, a small shadow, and the icon in its own color | `--verity-color-background-brand`, `--verity-color-border-brand`, `--verity-color-content-default`, `--verity-shadow-sm-*` |
+| Hover | It rises, grows a little, straightens, and comes in front, with a large shadow, a lighter fill and border, and brighter text. The icon takes its hover pose and accent colors. Devices with a real pointer only, so a tap doesn’t leave it raised. | `--verity-motion-lift-md` (8), `--verity-motion-scale-hover` (1.02), `--verity-shadow-lg-*`, `--verity-color-background-brand-hover`, `--verity-color-border-brand-hover`, `--verity-color-content-default-hover` |
+| Focus | The hover look, plus the shared focus ring, which moves, grows, and turns with the card. Keyboard focus only, on every device. | `--verity-focus-ring-width`, `--verity-focus-ring-offset`, `--verity-color-border-focus` |
+| Active | It settles back down with the small shadow, so pressing reads as pushing it in, and a darker fill and border. It stays straight, and the icon keeps its hover pose. | `--verity-color-background-brand-active`, `--verity-color-border-brand-active`, `--verity-shadow-sm-*` |
+| Disabled | None: a NavCard always goes somewhere | — |
+
+<Canvas of={NavCardStories.Hover} />
+
+<Canvas of={NavCardStories.Focus} />
+
+<Canvas of={NavCardStories.Active} />
+
+The surface is exactly `PortfolioCard`’s, so the two read as one family.
+
+## Icon
+
+The icon is the page’s nav icon, from the shared `NavIcon`, so it has the same poses as in the nav: on hover and focus it moves to its hover pose and takes its accent colors, and keeps them while pressed. Where the nav uses `--verity-nav-icon-color-accent-brand`, NavCard uses its own `--verity-nav-card-icon-color-accent-brand`, which shows on the brand fill.
+
+| What | Token |
+|---|---|
+| Size | `--verity-nav-card-icon-size` (96). The strokes keep their width, as in every icon. |
+| Brand accent on hover | `--verity-nav-card-icon-color-accent-brand` |
+
+## Motion
+
+| What | How | Tokens |
+|---|---|---|
+| The lift, growth, and straightening | On hover and focus, and back on mouse out, blur, or press (it stays straight while pressed) | `--verity-motion-duration-playful`, `--verity-motion-easing-standard` |
+| Fill, border, text color, and shadow | Fade between states | `--verity-motion-duration-fast`, `--verity-motion-easing-standard` |
+| The icon’s pose | As in the nav | `--verity-motion-duration-playful`, `--verity-motion-easing-playful` |
+| Reduce motion is on | No lift, growth, or straightening, and a tilted card stays tilted. The fades stay, and the icon switches pose at once. | — |
+
+## Space
+
+| Space | Token |
+|---|---|
+| The card’s width and height | `--verity-nav-card-size` (200) |
+| Inside the card | `--verity-padding-sm` |
+| Between the icon and the label | `--verity-spacing-xxs` |
+| Corners and border | `--verity-border-radius-md`, `--verity-border-width-sm` |
+| The label | `label-default` |
+
+It adds no space outside itself: the stack it’s in sets that.
+
+## Props
+
+<PropsTable of={NavCardStories} />
+
+## In Figma
+
+| Figma | Code |
+|---|---|
+| Component `NavCard` | `<NavCard />` |
+| Property `Page` | `page` |
+| Property `State` | Not a prop: hover, focus, and active come from the browser |
+| The label text | `label` |
+| A 4° rotation on the instance | `tilt`. Figma has no Tilt property: designers rotate the instance by 4°. |
+| Not in Figma | `href`; the lift, growth, and straightening, which are code only |
+
+</VerityDocs>

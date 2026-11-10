@@ -80,6 +80,8 @@ export { LinkGroup } from './components/Navigation/LinkGroup';
 export type { LinkGroupProps } from './components/Navigation/LinkGroup';
 export { MainNav } from './components/Navigation/MainNav';
 export type { MainNavProps } from './components/Navigation/MainNav';
+export { NavCard } from './components/Navigation/NavCard';
+export type { NavCardProps } from './components/Navigation/NavCard';
 export { NavContainer } from './components/Navigation/NavContainer';
 export type { NavContainerProps } from './components/Navigation/NavContainer';
 export { NavItem } from './components/Navigation/NavItem';
