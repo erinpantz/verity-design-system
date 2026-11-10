@@ -4,6 +4,17 @@ Every release of Verity, newest first. The format follows [Keep a Changelog](htt
 
 Sites install Verity by tag (for example `github:erinpantz/verity-design-system#v0.3.0`), so a site only changes when it moves to a new tag on purpose.
 
+## [0.5.1] – 2026-11-10
+
+### Added
+
+- **NavCardGroup:** a row of two or more NavCards, each overlapping the one before it by `nav-card-group/gap` and tilted left, right, left. The last card starts on top. A card that’s hovered (devices with a real pointer) or keyboard-focused comes to the top and stays there: if it’s underneath, it slides out sideways until it clears its neighbor (quickly), comes to the front at that moment, and slides back into place with a slight overshoot, while it straightens, lifts, and grows. With reduce motion on, it simply comes to the front.
+- **Tokens:** `nav-card-group/gap` (−24).
+
+### Changed
+
+- **NavCard:** the pair story moved to NavCardGroup, which sets the cards’ tilt. No props changed.
+
 ## [0.5.0] – 2026-11-10
 
 ### Added
@@ -21,6 +32,7 @@ Sites install Verity by tag (for example `github:erinpantz/verity-design-system#
 - **Button:** the brand primary background is `color/background/accent-one`, and `accent-one-hover` on hover.
 - **BackLink and PortfolioCard:** use the shared motion tokens. Nothing looks different.
 - **NavItem:** its icon poses and accent colors moved to a shared place, used by NavCard too. Nothing looks or moves differently.
+- **PortfolioCard docs:** the Grid example shows two cards to a row, in a wide Grid with `itemWidth="xl"`, so the large headings have room.
 
 ### Removed
 
@@ -261,6 +273,7 @@ The first library release: everything in the Figma library except Animation, wit
 - **Theme helpers:** `themeScript`, `useTheme`, and `setTheme`, so a site applies the saved theme before the first paint.
 - **The library build:** one entry point with every component and its prop types, one stylesheet (`verity-design-system/styles.css`) with the fonts inside it, and `npm run build:watch` for working with a linked copy.
 
+[0.5.1]: https://github.com/erinpantz/verity-design-system/compare/v0.5.0...v0.5.1
 [0.5.0]: https://github.com/erinpantz/verity-design-system/compare/v0.4.8...v0.5.0
 [0.4.8]: https://github.com/erinpantz/verity-design-system/compare/v0.4.7...v0.4.8
 [0.4.7]: https://github.com/erinpantz/verity-design-system/compare/v0.4.6...v0.4.7
