@@ -1009,6 +1009,10 @@
       "1": {
         "$type": "dimension",
         "$value": "1px"
+      },
+      "40": {
+        "$type": "dimension",
+        "$value": "40px"
       }
     },
     "width": {

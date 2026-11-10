@@ -100,6 +100,7 @@
   --verity-border-radius-8: 8px;
   --verity-border-radius-16: 16px;
   --verity-border-radius-32: 32px;
+  --verity-border-radius-40: 40px;
   --verity-border-radius-999: 999px;
   --verity-typography-font-size-12: 12px;
   --verity-typography-font-size-14: 14px;
@@ -245,13 +246,13 @@
   --verity-color-utility-green-700: var(--verity-color-brand-green-700);
   --verity-color-utility-green-800: var(--verity-color-brand-green-800);
   --verity-color-utility-green-900: var(--verity-color-brand-green-900);
-  --verity-border-radius-lg: var(--verity-border-radius-16);
-  --verity-border-radius-md: var(--verity-border-radius-8);
-  --verity-border-radius-sm: var(--verity-border-radius-4);
+  --verity-border-radius-lg: var(--verity-border-radius-32);
+  --verity-border-radius-md: var(--verity-border-radius-16);
+  --verity-border-radius-sm: var(--verity-border-radius-8);
   --verity-border-radius-none: var(--verity-border-radius-0);
-  --verity-border-radius-x-lg: var(--verity-border-radius-32);
+  --verity-border-radius-x-lg: var(--verity-border-radius-40);
   --verity-border-radius-round: var(--verity-border-radius-999);
-  --verity-border-radius-xs: var(--verity-border-radius-1);
+  --verity-border-radius-xs: var(--verity-border-radius-2);
   --verity-border-width-lg: var(--verity-border-width-4);
   --verity-border-width-md: var(--verity-border-width-2);
   --verity-border-width-xl: var(--verity-border-width-8);

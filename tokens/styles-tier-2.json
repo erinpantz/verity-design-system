@@ -295,7 +295,7 @@
     "radius": {
       "lg": {
         "$type": "dimension",
-        "$value": "{border.radius.16}",
+        "$value": "{border.radius.32}",
         "$extensions": {
           "com.figma": {
             "scopes": [
@@ -306,7 +306,7 @@
       },
       "md": {
         "$type": "dimension",
-        "$value": "{border.radius.8}",
+        "$value": "{border.radius.16}",
         "$extensions": {
           "com.figma": {
             "scopes": [
@@ -317,7 +317,7 @@
       },
       "sm": {
         "$type": "dimension",
-        "$value": "{border.radius.4}",
+        "$value": "{border.radius.8}",
         "$extensions": {
           "com.figma": {
             "scopes": [
@@ -339,7 +339,7 @@
       },
       "x-lg": {
         "$type": "dimension",
-        "$value": "{border.radius.32}",
+        "$value": "{border.radius.40}",
         "$extensions": {
           "com.figma": {
             "scopes": [
@@ -361,7 +361,7 @@
       },
       "xs": {
         "$type": "dimension",
-        "$value": "{border.radius.1}",
+        "$value": "{border.radius.2}",
         "$extensions": {
           "com.figma": {
             "scopes": [
