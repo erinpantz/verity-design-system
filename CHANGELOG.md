@@ -4,6 +4,13 @@ Every release of Verity, newest first. The format follows [Keep a Changelog](htt
 
 Sites install Verity by tag (for example `github:erinpantz/verity-design-system#v0.3.0`), so a site only changes when it moves to a new tag on purpose.
 
+## [0.4.3] – 2026-11-09
+
+### Fixed
+
+- **Global styles:** body has no margin, so pages no longer start 8px in from the browser’s edge, and wide content is as wide as in Figma.
+- **Shell:** in focused mode, Main’s top space is `main/padding-top-focused` plus its usual `spacing/lg`, as in Figma, so the title sits `spacing/lg` below the BackLink (120 down on XL) instead of right under it. Jumps to a heading stop at the same place.
+
 ## [0.4.2] – 2026-11-09
 
 ### Added
@@ -181,6 +188,7 @@ The first library release: everything in the Figma library except Animation, wit
 - **Theme helpers:** `themeScript`, `useTheme`, and `setTheme`, so a site applies the saved theme before the first paint.
 - **The library build:** one entry point with every component and its prop types, one stylesheet (`verity-design-system/styles.css`) with the fonts inside it, and `npm run build:watch` for working with a linked copy.
 
+[0.4.3]: https://github.com/erinpantz/verity-design-system/compare/v0.4.2...v0.4.3
 [0.4.2]: https://github.com/erinpantz/verity-design-system/compare/v0.4.1...v0.4.2
 [0.4.1]: https://github.com/erinpantz/verity-design-system/compare/v0.4.0...v0.4.1
 [0.4.0]: https://github.com/erinpantz/verity-design-system/compare/v0.3.10...v0.4.0
