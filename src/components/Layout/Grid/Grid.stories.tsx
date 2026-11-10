@@ -21,7 +21,7 @@ const meta = {
   },
   argTypes: {
     width: { control: 'inline-radio', options: ['column', 'wide'] },
-    itemWidth: { control: 'inline-radio', options: ['sm', 'md'] },
+    itemWidth: { control: 'inline-radio', options: ['sm', 'md', 'lg', 'xl'] },
     gap: { control: 'inline-radio', options: ['md', 'lg'] },
     // A list needs <li> items, so it's chosen in code, not here
     as: { control: false },
@@ -38,6 +38,19 @@ export const Default: Story = {};
 export const ItemWidthSm: Story = {
   name: 'Item width sm',
   args: { itemWidth: 'sm' },
+};
+
+// Wide, so the larger widths have room for more than one column
+export const ItemWidthLg: Story = {
+  name: 'Item width lg',
+  args: { itemWidth: 'lg', width: 'wide' },
+  decorators: [(Story) => <Container><Story /></Container>],
+};
+
+export const ItemWidthXl: Story = {
+  name: 'Item width xl',
+  args: { itemWidth: 'xl', width: 'wide' },
+  decorators: [(Story) => <Container><Story /></Container>],
 };
 
 // Quotes have no box around them, so they need more space to read as separate

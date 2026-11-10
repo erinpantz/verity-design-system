@@ -5,7 +5,7 @@ export interface GridProps {
   /** The items, such as cards, in the order they should appear */
   children?: ReactNode;
   /** The narrowest an item can get before the row wraps, from the grid item min width tokens */
-  itemWidth?: 'sm' | 'md';
+  itemWidth?: 'sm' | 'md' | 'lg' | 'xl';
   /**
    * The space between items and between rows: md for cards, lg for items
    * made of text with no box around them, like quotes

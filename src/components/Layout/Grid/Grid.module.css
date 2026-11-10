@@ -28,6 +28,14 @@
   --item-min-width: var(--verity-grid-item-min-width-md);
 }
 
+.lg {
+  --item-min-width: var(--verity-grid-item-min-width-lg);
+}
+
+.xl {
+  --item-min-width: var(--verity-grid-item-min-width-xl);
+}
+
 /* Gap: the space between items and between rows */
 
 .gap-md {
