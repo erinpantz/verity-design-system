@@ -26,6 +26,8 @@ export { Hero } from './components/ContentBlocks/Hero';
 export type { HeroProps, HeroAction } from './components/ContentBlocks/Hero';
 export { MediaText } from './components/ContentBlocks/MediaText';
 export type { MediaTextProps } from './components/ContentBlocks/MediaText';
+export { PortfolioCard } from './components/ContentBlocks/PortfolioCard';
+export type { PortfolioCardProps } from './components/ContentBlocks/PortfolioCard';
 export { ProblemOpportunityBlock } from './components/ContentBlocks/ProblemOpportunityBlock';
 export type { ProblemOpportunityBlockProps } from './components/ContentBlocks/ProblemOpportunityBlock';
 export { Quote } from './components/ContentBlocks/Quote';

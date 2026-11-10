@@ -1,0 +1,127 @@
+import { Meta, Canvas } from '@storybook/addon-docs/blocks';
+import { VerityDocs } from '../../../foundations/VerityDocs';
+import { PropsTable } from '../../../foundations/PropsTable';
+import * as PortfolioCardStories from './PortfolioCard.stories';
+
+<Meta of={PortfolioCardStories} />
+
+<VerityDocs>
+
+# PortfolioCard
+
+A link to one piece of work, for the Portfolio and Home pages: the heading, the project and years, a Badge for the type, and its pictures. The whole card is one link.
+
+<Canvas of={PortfolioCardStories.Default} />
+
+## When to use
+
+- **On the Portfolio and Home pages,** one card per case study or brand gallery.
+- **Several together:** stack them, or put them in a `Grid`. Each card lays itself out by its own width.
+- **Not for a link inside a page’s text.** Use `Link`.
+- **Not for a call to action.** Use `Button`: a PortfolioCard always goes to a piece of work.
+
+## Accessibility
+
+A PortfolioCard renders one `<a href>` around everything, so the whole card is one stop for the keyboard and one link for screen readers.
+
+- **Its name is the heading** (`aria-labelledby`), so a screen reader hears “Designing AI that care teams trust, link,” not everything inside the card.
+- **The project, years, and type describe it** (`aria-describedby`), read after the name: “Laguna Companion, 2024–2025, Case study.”
+- **The pictures are decorative** (`alt=""`): the heading already says where the link goes, and descriptions of thumbnails would make the link’s name long.
+- **The heading is a real `<h2>` or `<h3>`,** so people who move by headings find each card. `headingLevel` sets it: 2 on a page of cards, 3 under a Section’s heading.
+
+| Situation | What to do | Example |
+|---|---|---|
+| Writing the heading | The case study’s own heading, or the brand’s name for a gallery. Sentence case, no period. | “Designing AI that care teams trust” |
+| Writing the year | The years of the work, with an en dash between two years | “2024–2025” |
+| Choosing the heading level | 2 when the cards are the page’s main sections, 3 when they sit under a Section’s heading | `headingLevel={3}` under “Selected work” |
+
+## Type
+
+| `type` | Pictures | Badge |
+|---|---|---|
+| `case-study` | The default. One `thumbnail`, at 3:2. Shows the `project`. | “Case study,” `accent-one` |
+| `brand-gallery` | Exactly three `thumbnails`, at 1:1, in one row | “Brand gallery,” `accent-two` |
+
+<Canvas of={PortfolioCardStories.BrandGallery} />
+
+## Layout
+
+The card follows its own width, not the screen’s: the text and the pictures sit side by side, and the pictures wrap below the text when there isn’t room for both minimums.
+
+| Part | Case study | Brand gallery |
+|---|---|---|
+| Text | At least `--verity-grid-item-min-width-md` (300), at most `--verity-content-column-width` (880) | At least `--verity-grid-item-min-width-md` (300), at most `--verity-portfolio-card-text-max-width` (400) |
+| Pictures | At least `--verity-grid-item-min-width-lg` (400; 300 on Medium and Small) | The rest: at least `--verity-grid-item-min-width-lg`, at most `--verity-content-column-width`. The three thumbnails always stay in one row and shrink together, `--verity-spacing-md` apart. |
+
+Side by side, a case study’s text and picture share the width equally; a brand gallery’s text stops at 400 and the thumbnails take the rest.
+
+<Canvas of={PortfolioCardStories.Narrow} />
+
+<Canvas of={PortfolioCardStories.InAGrid} />
+
+## States
+
+| State | What changes | Tokens |
+|---|---|---|
+| Default | The brand fill and border, the default text color, and a small shadow | `--verity-color-background-brand`, `--verity-color-border-brand`, `--verity-color-content-default`, `--verity-shadow-sm-*` |
+| Hover | A lighter fill and border, brighter text, a medium shadow, and the pictures zoom. Devices with a real pointer only. | `--verity-color-background-brand-hover`, `--verity-color-border-brand-hover`, `--verity-color-content-default-hover`, `--verity-shadow-md-*` |
+| Focus | The hover look, plus the shared focus ring outside the card, following its corners. Keyboard focus only. | `--verity-focus-ring-width`, `--verity-focus-ring-offset`, `--verity-color-border-focus` |
+| Active | A darker fill and border and brighter text while pressed, and the shadow settles back to small. The pictures stay zoomed, so pressing doesn’t make them jump back. | `--verity-color-background-brand-active`, `--verity-color-border-brand-active`, `--verity-shadow-sm-*` |
+| Visited | No change: a card looks the same once visited | — |
+| Disabled | None: a card always goes somewhere | — |
+
+<Canvas of={PortfolioCardStories.Hover} />
+
+<Canvas of={PortfolioCardStories.Focus} />
+
+<Canvas of={PortfolioCardStories.Active} />
+
+## Motion
+
+| What | How | Tokens |
+|---|---|---|
+| Fill, border, text color, and shadow | Fade between states | `--verity-motion-duration-fast`, `--verity-motion-easing-standard` |
+| The zoom | Each picture grows to 105% inside its own frame, clipped by the frame’s rounded corners, and eases back on mouse out | `--verity-portfolio-card-image-scale-hover` (1.05), `--verity-motion-duration-playful`, `--verity-motion-easing-standard` |
+| Reduce motion is on | No zoom. The fades stay, since they don’t move anything. | — |
+
+The zoom uses the standard easing, not the playful one: a zoom that bounces looks jittery.
+
+## Space
+
+| Space | Token |
+|---|---|
+| Inside the card | `--verity-padding-lg` |
+| Between the text and the pictures, side by side or stacked | `--verity-spacing-lg` |
+| Between the heading and the details, and between the details and the Badge | `--verity-spacing-sm` |
+| Between the project and the year | `--verity-spacing-xxs` |
+| Between a brand gallery’s thumbnails | `--verity-spacing-md` |
+| Corners and border | `--verity-border-radius-md`, `--verity-border-width-sm` |
+
+It adds no space outside itself: the stack or Grid it’s in sets that.
+
+## Color
+
+The heading in `display-sm` and the details in `body-default` use `--verity-color-content-default`, then `--verity-color-content-default-hover` on hover, focus, and press. Every pair passes 4.5:1 in both themes; the closest is the hover fill in Red, at about 4.6:1.
+
+Each brand border is one step lighter than its fill, so the card’s edge shows on the page’s dark background.
+
+## Props
+
+<PropsTable of={PortfolioCardStories} />
+
+## In Figma
+
+| Figma | Code |
+|---|---|
+| Component `PortfolioCard` | `<PortfolioCard />` |
+| Property `Type` | `type`. `case-study` is the default in both. |
+| Property `State` | Not a prop: hover, focus, and active come from the browser |
+| The pictures cropped to 105% in hover, focus, and active | The zoom, `--verity-portfolio-card-image-scale-hover`, animated in code |
+| The focus ring, with `border/radius/sm` corners | An outline that follows the card’s `md` corners |
+| The TextBlock, Heading, and text layers | `heading`, `project`, and `year`. The heading is in `display-sm`, a real `<h2>` or `<h3>`. |
+| The thumbnails | `thumbnail` for a case study, `thumbnails` (three) for a brand gallery |
+| The Badge | Set by `type`, with nothing to choose |
+| Sample text and pictures | Placeholders: the site passes its own |
+| Not in Figma | `href` and `headingLevel` |
+
+</VerityDocs>

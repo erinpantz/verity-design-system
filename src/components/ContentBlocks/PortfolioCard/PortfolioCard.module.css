@@ -1,0 +1,183 @@
+/* A card that's one link: the text, then the pictures, side by side, on the
+   brand background. Its layout follows its own width, not the screen's: the
+   text and the pictures each have a minimum width, and the pictures wrap
+   below the text when both don't fit. Every value is a token. */
+
+.portfolioCard {
+  /* The colors and shadow for each state, set below */
+  --fill: var(--verity-color-background-brand);
+  --border: var(--verity-color-border-brand);
+  --content: var(--verity-color-content-default);
+  --shadow-x: var(--verity-shadow-sm-x);
+  --shadow-y: var(--verity-shadow-sm-y);
+  --shadow-blur: var(--verity-shadow-sm-blur);
+  --shadow-spread: var(--verity-shadow-sm-spread);
+  --shadow-color: var(--verity-shadow-sm-color);
+  /* The widest the text gets: the column for a case study, less for a
+     brand gallery, so the thumbnails get the rest */
+  --text-max: var(--verity-content-column-width);
+  --images-max: none;
+
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--verity-spacing-lg);
+  box-sizing: border-box;
+  padding: var(--verity-padding-lg);
+  border: var(--verity-border-width-sm) solid var(--border);
+  border-radius: var(--verity-border-radius-md);
+  background-color: var(--fill);
+  box-shadow: var(--shadow-x) var(--shadow-y) var(--shadow-blur) var(--shadow-spread) var(--shadow-color);
+  color: var(--content);
+  /* It's a link: no underline on its text */
+  text-decoration: none;
+  transition:
+    background-color var(--verity-motion-duration-fast) var(--verity-motion-easing-standard),
+    border-color var(--verity-motion-duration-fast) var(--verity-motion-easing-standard),
+    color var(--verity-motion-duration-fast) var(--verity-motion-easing-standard),
+    box-shadow var(--verity-motion-duration-fast) var(--verity-motion-easing-standard);
+}
+
+.brand-gallery {
+  --text-max: var(--verity-portfolio-card-text-max-width);
+  --images-max: var(--verity-content-column-width);
+}
+
+/* The text and the pictures share the row equally, each no narrower than its
+   minimum, and wrap onto two rows when their minimums don't fit. If the text
+   reaches its maximum, the pictures take the rest. */
+.text {
+  display: flex;
+  flex: 1 1 0;
+  flex-direction: column;
+  gap: var(--verity-spacing-sm);
+  min-inline-size: min(100%, var(--verity-grid-item-min-width-md));
+  max-inline-size: var(--text-max);
+}
+
+.images {
+  flex: 1 1 0;
+  min-inline-size: min(100%, var(--verity-grid-item-min-width-lg));
+  max-inline-size: var(--images-max);
+}
+
+/* The heading, in display-sm. A real h2 or h3, styled here rather than with
+   Heading, whose levels set their own sizes, like CaseStudyHeader's title. */
+.heading {
+  margin: 0;
+  font-family: var(--verity-viewport-typography-display-sm-font-family);
+  font-size: var(--verity-viewport-typography-display-sm-font-size);
+  font-weight: var(--verity-viewport-typography-display-sm-font-weight);
+  line-height: var(--verity-viewport-typography-display-sm-line-height);
+  letter-spacing: var(--verity-viewport-typography-display-sm-letter-spacing);
+  text-transform: var(--verity-viewport-typography-display-sm-text-transform);
+}
+
+/* The project and year, then the Badge, which keeps its own width */
+.details {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--verity-spacing-sm);
+}
+
+.projectInfo {
+  display: flex;
+  flex-direction: column;
+  gap: var(--verity-spacing-xxs);
+  font-family: var(--verity-viewport-typography-body-default-font-family);
+  font-size: var(--verity-viewport-typography-body-default-font-size);
+  font-weight: var(--verity-viewport-typography-body-default-font-weight);
+  line-height: var(--verity-viewport-typography-body-default-line-height);
+  letter-spacing: var(--verity-viewport-typography-body-default-letter-spacing);
+  text-transform: var(--verity-viewport-typography-body-default-text-transform);
+}
+
+.projectInfo > p {
+  margin: 0;
+}
+
+/* A brand gallery's three thumbnails: always one row, shrinking together,
+   never wrapping */
+.thumbnails {
+  display: flex;
+  gap: var(--verity-spacing-md);
+}
+
+.thumbnail {
+  flex: 1 1 0;
+  min-inline-size: 0;
+}
+
+/* The zoom: each picture grows inside its own frame, which clips it to the
+   frame's rounded corners. It eases in and back out. */
+.portfolioCard img {
+  transition: scale var(--verity-motion-duration-playful) var(--verity-motion-easing-standard);
+}
+
+/* States. Hover only on devices with a real pointer, so a tap doesn't leave
+   the hover look stuck. Focus shows the same look, plus the focus ring. */
+
+@media (hover: hover) {
+  .portfolioCard:hover {
+    --fill: var(--verity-color-background-brand-hover);
+    --border: var(--verity-color-border-brand-hover);
+    --content: var(--verity-color-content-default-hover);
+    --shadow-x: var(--verity-shadow-md-x);
+    --shadow-y: var(--verity-shadow-md-y);
+    --shadow-blur: var(--verity-shadow-md-blur);
+    --shadow-spread: var(--verity-shadow-md-spread);
+    --shadow-color: var(--verity-shadow-md-color);
+  }
+
+  .portfolioCard:hover img {
+    scale: var(--verity-portfolio-card-image-scale-hover);
+  }
+}
+
+.portfolioCard:focus-visible {
+  --fill: var(--verity-color-background-brand-hover);
+  --border: var(--verity-color-border-brand-hover);
+  --content: var(--verity-color-content-default-hover);
+  --shadow-x: var(--verity-shadow-md-x);
+  --shadow-y: var(--verity-shadow-md-y);
+  --shadow-blur: var(--verity-shadow-md-blur);
+  --shadow-spread: var(--verity-shadow-md-spread);
+  --shadow-color: var(--verity-shadow-md-color);
+
+  /* The shared focus ring, following the card's corners */
+  outline: var(--verity-focus-ring-width) solid var(--verity-color-border-focus);
+  outline-offset: var(--verity-focus-ring-offset);
+}
+
+.portfolioCard:focus-visible img {
+  scale: var(--verity-portfolio-card-image-scale-hover);
+}
+
+/* Pressed: darker, and the shadow settles back. The pictures stay zoomed, so
+   pressing doesn't make them jump back. */
+.portfolioCard:active {
+  --fill: var(--verity-color-background-brand-active);
+  --border: var(--verity-color-border-brand-active);
+  --content: var(--verity-color-content-default-hover);
+  --shadow-x: var(--verity-shadow-sm-x);
+  --shadow-y: var(--verity-shadow-sm-y);
+  --shadow-blur: var(--verity-shadow-sm-blur);
+  --shadow-spread: var(--verity-shadow-sm-spread);
+  --shadow-color: var(--verity-shadow-sm-color);
+}
+
+.portfolioCard:active img {
+  scale: var(--verity-portfolio-card-image-scale-hover);
+}
+
+/* Reduce motion: no zoom. The color and shadow fades stay, since they don't
+   move anything. */
+@media (prefers-reduced-motion: reduce) {
+  .portfolioCard img,
+  .portfolioCard:hover img,
+  .portfolioCard:focus-visible img,
+  .portfolioCard:active img {
+    scale: none;
+    transition: none;
+  }
+}

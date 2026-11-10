@@ -1,0 +1,119 @@
+import type { Meta, StoryObj } from '@storybook/react-vite';
+import landscape from '../../../foundations/sample-images/landscape.jpg';
+import screenshot from '../../../foundations/sample-images/screenshot.png';
+import shapes from '../../../foundations/sample-images/shapes.jpg';
+import { Container } from '../../Layout/Container';
+import { Grid } from '../../Layout/Grid';
+import { PortfolioCard } from './PortfolioCard';
+
+// Sample work, standing in for the site's case studies and galleries
+const CASE_STUDY = {
+  type: 'case-study' as const,
+  href: '#laguna-companion',
+  heading: 'Designing AI that care teams trust',
+  project: 'Laguna Companion',
+  year: '2024–2025',
+  thumbnail: screenshot,
+};
+
+const BRAND_GALLERY = {
+  type: 'brand-gallery' as const,
+  href: '#northwind',
+  heading: 'Northwind',
+  year: '2019–2021',
+  thumbnails: [landscape, shapes, screenshot] as [string, string, string],
+};
+
+const meta = {
+  title: 'Content blocks/PortfolioCard',
+  component: PortfolioCard,
+  args: CASE_STUDY,
+  argTypes: {
+    type: { control: 'inline-radio', options: ['case-study', 'brand-gallery'] },
+    href: { control: 'text' },
+    heading: { control: 'text' },
+    headingLevel: { control: 'inline-radio', options: [2, 3] },
+    project: { control: 'text' },
+    year: { control: 'text' },
+    thumbnail: { control: false },
+    thumbnails: { control: false },
+  },
+  // Wide, as on the Portfolio page
+  decorators: [
+    (Story) => (
+      <Container>
+        <div data-width="wide">
+          <Story />
+        </div>
+      </Container>
+    ),
+  ],
+} satisfies Meta<typeof PortfolioCard>;
+
+export default meta;
+
+type Story = StoryObj<typeof meta>;
+
+// A case study: the text beside one 3:2 thumbnail
+export const Default: Story = {};
+
+// A brand gallery: the text beside three 1:1 thumbnails, in one row
+export const BrandGallery: Story = {
+  name: 'Brand gallery',
+  args: BRAND_GALLERY,
+};
+
+// The states below are held on with the pseudo-states addon. They're story
+// globals, not parameters, so the state doesn't stay on for every story
+// opened afterwards. The zoom shows here too.
+
+export const Hover: Story = {
+  globals: { pseudo: { hover: true } },
+};
+
+export const Focus: Story = {
+  globals: { pseudo: { focusVisible: true } },
+};
+
+export const Active: Story = {
+  globals: { pseudo: { active: true } },
+};
+
+// In the content column, too narrow for the text and the pictures side by
+// side, so the pictures wrap below the text. A brand gallery's three
+// thumbnails stay in one row and shrink together.
+export const Narrow: StoryObj = {
+  render: () => (
+    <div
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+        gap: 'var(--verity-spacing-lg)',
+        maxInlineSize: 'var(--verity-content-column-width)',
+      }}
+    >
+      <PortfolioCard {...CASE_STUDY} />
+      <PortfolioCard {...BRAND_GALLERY} />
+    </div>
+  ),
+};
+
+// Like the Portfolio page: a wide Grid of cards. Each card lays itself out by
+// its own width, so here the pictures sit below the text.
+export const InAGrid: StoryObj = {
+  name: 'In a Grid',
+  render: () => (
+    <Grid width="wide" gap="lg">
+      <PortfolioCard {...CASE_STUDY} />
+      <PortfolioCard
+        {...CASE_STUDY}
+        href="#setup"
+        heading="Making setup make sense"
+        project="Ledgerly onboarding"
+        year="2023"
+        thumbnail={landscape}
+      />
+      <PortfolioCard {...BRAND_GALLERY} />
+    </Grid>
+  ),
+};
