@@ -415,5 +415,12 @@
       "$value": "{spacing.8}",
       "$description": "How far a PortfolioCard moves up on hover and focus. Code only (Figma can’t move a variant without changing its layout)."
     }
+  },
+  "back-link": {
+    "lift-hover": {
+      "$type": "dimension",
+      "$value": "{spacing.4}",
+      "$description": "How far BackLink moves up on hover and focus. Code only (Figma can’t move a variant without changing its layout)."
+    }
   }
 }

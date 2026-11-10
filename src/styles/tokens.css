@@ -854,6 +854,7 @@
   --verity-theme-toggle-duration-rotation: var(--verity-duration-6000); /** Time for one full turn of the ThemeToggle star while hovered, in milliseconds. */
   --verity-theme-toggle-glow-blur: var(--verity-shadow-glow-blur); /** Blur of the glow behind the ThemeToggle star. */
   --verity-portfolio-card-lift-hover: var(--verity-spacing-8); /** How far a PortfolioCard moves up on hover and focus. Code only (Figma can’t move a variant without changing its layout). */
+  --verity-back-link-lift-hover: var(--verity-spacing-4); /** How far BackLink moves up on hover and focus. Code only (Figma can’t move a variant without changing its layout). */
   --verity-nav-container-padding-top: var(--verity-spacing-md); /** Top padding of the left-docked NavContainer. */
 }
 
@@ -1099,6 +1100,7 @@
     --verity-theme-toggle-duration-rotation: var(--verity-duration-6000); /** Time for one full turn of the ThemeToggle star while hovered, in milliseconds. */
     --verity-theme-toggle-glow-blur: var(--verity-shadow-glow-blur); /** Blur of the glow behind the ThemeToggle star. */
     --verity-portfolio-card-lift-hover: var(--verity-spacing-8); /** How far a PortfolioCard moves up on hover and focus. Code only (Figma can’t move a variant without changing its layout). */
+    --verity-back-link-lift-hover: var(--verity-spacing-4); /** How far BackLink moves up on hover and focus. Code only (Figma can’t move a variant without changing its layout). */
     --verity-nav-container-padding-top: var(--verity-spacing-md); /** Top padding of the left-docked NavContainer. */
   }
 
@@ -1345,6 +1347,7 @@
     --verity-theme-toggle-duration-rotation: var(--verity-duration-6000); /** Time for one full turn of the ThemeToggle star while hovered, in milliseconds. */
     --verity-theme-toggle-glow-blur: var(--verity-shadow-glow-blur); /** Blur of the glow behind the ThemeToggle star. */
     --verity-portfolio-card-lift-hover: var(--verity-spacing-8); /** How far a PortfolioCard moves up on hover and focus. Code only (Figma can’t move a variant without changing its layout). */
+    --verity-back-link-lift-hover: var(--verity-spacing-4); /** How far BackLink moves up on hover and focus. Code only (Figma can’t move a variant without changing its layout). */
     --verity-nav-container-padding-top: var(--verity-spacing-md); /** Top padding of the left-docked NavContainer. */
   }
 
@@ -1591,6 +1594,7 @@
     --verity-theme-toggle-duration-rotation: var(--verity-duration-6000); /** Time for one full turn of the ThemeToggle star while hovered, in milliseconds. */
     --verity-theme-toggle-glow-blur: var(--verity-shadow-glow-blur); /** Blur of the glow behind the ThemeToggle star. */
     --verity-portfolio-card-lift-hover: var(--verity-spacing-8); /** How far a PortfolioCard moves up on hover and focus. Code only (Figma can’t move a variant without changing its layout). */
+    --verity-back-link-lift-hover: var(--verity-spacing-4); /** How far BackLink moves up on hover and focus. Code only (Figma can’t move a variant without changing its layout). */
     --verity-nav-container-padding-top: var(--verity-spacing-md); /** Top padding of the left-docked NavContainer. */
   }
 }
