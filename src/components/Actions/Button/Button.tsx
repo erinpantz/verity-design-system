@@ -51,6 +51,14 @@ export type ButtonProps = VariantAndColor & {
    * readers hear “opens in a new tab” after the label.
    */
   opensInNewTab?: boolean;
+  /**
+   * span: the button’s look inside another link or button, such as a card’s
+   * label, which can’t be a second link. It renders a plain <span> with no
+   * focus or click of its own, and shows its hover and active looks when the
+   * link or button around it is hovered, focused, or pressed. type,
+   * disabled, onClick, href, and opensInNewTab don’t apply.
+   */
+  as?: 'span';
 };
 
 // Icon size for each button size: xl and lg buttons use the lg icon
@@ -68,6 +76,7 @@ export function Button({
   onClick,
   href,
   opensInNewTab = false,
+  as,
 }: ButtonProps) {
   const classes = [styles.button, styles[variant], styles[`${variant}-${color}`], styles[size]];
   const content = (
@@ -77,6 +86,12 @@ export function Button({
       {endIcon && <Icon name={endIcon} size={ICON_SIZE[size]} />}
     </>
   );
+
+  // Just the look, inside a link or button that does the work. It follows
+  // that parent's state (see .followsParent in the CSS).
+  if (as === 'span') {
+    return <span className={[...classes, styles.followsParent].join(' ')}>{content}</span>;
+  }
 
   // Going somewhere is a link, so screen readers say “link” and it works
   // like one (open in a new tab, copy the address)

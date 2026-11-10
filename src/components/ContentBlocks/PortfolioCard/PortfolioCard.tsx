@@ -1,5 +1,5 @@
 import { useId } from 'react';
-import { Badge } from '../../FeedbackAndStatus/Badge';
+import { Button } from '../../Actions/Button';
 import { Image } from '../../Media/Image';
 import styles from './PortfolioCard.module.css';
 
@@ -22,13 +22,14 @@ export interface PortfolioCardProps {
   thumbnails?: [string, string, string];
 }
 
-const BADGE = {
-  'case-study': { label: 'Case study', color: 'accent-one' },
-  'brand-gallery': { label: 'Brand gallery', color: 'accent-two' },
+// The label at the end of the text, set by the type
+const LABEL = {
+  'case-study': 'Case study',
+  'brand-gallery': 'Brand gallery',
 } as const;
 
 // A link to one piece of work: the whole card is one <a>. Its name is the
-// heading, and the project, year, and badge describe it, so a screen reader
+// heading, and the project, year, and type label describe it, so a screen reader
 // hears “Designing AI that care teams trust, link,” then the details, not
 // the pictures, which are decorative. The text and the pictures sit side by
 // side, and the pictures wrap below when the card is narrow.
@@ -45,7 +46,6 @@ export function PortfolioCard({
   const headingId = useId();
   const detailsId = useId();
   const Heading = `h${headingLevel}` as const;
-  const badge = BADGE[type];
   return (
     <a
       className={`${styles.portfolioCard} ${styles[type]}`}
@@ -62,7 +62,11 @@ export function PortfolioCard({
             {type === 'case-study' && project && <p>{project}</p>}
             <p>{year}</p>
           </div>
-          <Badge label={badge.label} color={badge.color} />
+          {/* Looks like a secondary Button and follows the card's state,
+              but it's a span: the card is already the link */}
+          <Button as="span" variant="secondary" size="md" endIcon="forward">
+            {LABEL[type]}
+          </Button>
         </div>
       </div>
       {type === 'case-study' ? (

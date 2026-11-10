@@ -16,7 +16,6 @@
   /* The widest the text gets: the column for a case study, less for a
      brand gallery, so the thumbnails get the rest */
   --text-max: var(--verity-content-column-width);
-  --images-max: none;
 
   display: flex;
   flex-wrap: wrap;
@@ -43,7 +42,6 @@
 
 .brand-gallery {
   --text-max: var(--verity-portfolio-card-text-max-width);
-  --images-max: var(--verity-content-column-width);
 }
 
 /* The text and the pictures share the row equally, each no narrower than its
@@ -61,7 +59,6 @@
 .images {
   flex: 1 1 0;
   min-inline-size: min(100%, var(--verity-grid-item-min-width-lg));
-  max-inline-size: var(--images-max);
 }
 
 /* The heading, in display-sm. A real h2 or h3, styled here rather than with
@@ -76,7 +73,7 @@
   text-transform: var(--verity-viewport-typography-display-sm-text-transform);
 }
 
-/* The project and year, then the Badge, which keeps its own width */
+/* The project and year, then the type label, which keeps its own width */
 .details {
   display: flex;
   flex-direction: column;

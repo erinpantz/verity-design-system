@@ -87,6 +87,12 @@ Use `startIcon` for an icon before the label and `endIcon` for one after it, suc
 
 <Canvas of={ButtonStories.Disabled} />
 
+## Inside a link or button
+
+A link or button can’t hold another one. When something that’s already a link needs a button’s look, like the label on a `PortfolioCard`, use `as="span"`. It renders a plain `<span>` with the button’s look and no focus, role, or click of its own, so the link around it stays the one thing to press. `type`, `disabled`, `onClick`, `href`, and `opensInNewTab` don’t apply.
+
+It follows the link or button around it: its hover look while that’s hovered (devices with a real pointer) or has keyboard focus, and its active look while it’s pressed. It never shows a focus ring: the parent has it.
+
 ## Props
 
 <PropsTable of={ButtonStories} />

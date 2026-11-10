@@ -9,7 +9,7 @@ import * as PortfolioCardStories from './PortfolioCard.stories';
 
 # PortfolioCard
 
-A link to one piece of work, for the Portfolio and Home pages: the heading, the project and years, a Badge for the type, and its pictures. The whole card is one link.
+A link to one piece of work, for the Portfolio and Home pages: the heading, the project and years, a label for the type that looks like a button, and its pictures. The whole card is one link.
 
 <Canvas of={PortfolioCardStories.Default} />
 
@@ -26,6 +26,7 @@ A PortfolioCard renders one `<a href>` around everything, so the whole card is o
 
 - **Its name is the heading** (`aria-labelledby`), so a screen reader hears “Designing AI that care teams trust, link,” not everything inside the card.
 - **The project, years, and type describe it** (`aria-describedby`), read after the name: “Laguna Companion, 2024–2025, Case study.”
+- **The type label looks like a button but isn’t one:** it’s a plain `<span>` (`Button` with `as="span"`), because the whole card is already the link, and a link can’t hold another link or button. It has no focus of its own, and it’s read as part of the description.
 - **The pictures are decorative** (`alt=""`): the heading already says where the link goes, and descriptions of thumbnails would make the link’s name long.
 - **The heading is a real `<h2>` or `<h3>`,** so people who move by headings find each card. `headingLevel` sets it: 2 on a page of cards, 3 under a Section’s heading.
 
@@ -37,10 +38,12 @@ A PortfolioCard renders one `<a href>` around everything, so the whole card is o
 
 ## Type
 
-| `type` | Pictures | Badge |
+| `type` | Pictures | Label |
 |---|---|---|
-| `case-study` | The default. One `thumbnail`, at 3:2. Shows the `project`. | “Case study,” `accent-one` |
-| `brand-gallery` | Exactly three `thumbnails`, at 1:1, in one row | “Brand gallery,” `accent-two` |
+| `case-study` | The default. One `thumbnail`, at 3:2. Shows the `project`. | “Case study” |
+| `brand-gallery` | Exactly three `thumbnails`, at 1:1, in one row | “Brand gallery” |
+
+The label looks exactly like a secondary `Button` (`color="default"`, size `md`) with the `forward` arrow at its end, so the card reads as something to open. It follows the card’s state: the button’s hover look while the card is hovered or focused, and its active look while it’s pressed. It never shows a focus ring of its own; the card has it.
 
 <Canvas of={PortfolioCardStories.BrandGallery} />
 
@@ -51,7 +54,7 @@ The card follows its own width, not the screen’s: the text and the pictures si
 | Part | Case study | Brand gallery |
 |---|---|---|
 | Text | At least `--verity-grid-item-min-width-md` (300), at most `--verity-content-column-width` (880) | At least `--verity-grid-item-min-width-md` (300), at most `--verity-portfolio-card-text-max-width` (400) |
-| Pictures | At least `--verity-grid-item-min-width-lg` (400; 300 on Medium and Small) | The rest: at least `--verity-grid-item-min-width-lg`, at most `--verity-content-column-width`. The three thumbnails always stay in one row and shrink together, `--verity-spacing-md` apart. |
+| Pictures | At least `--verity-grid-item-min-width-lg` (400; 300 on Medium and Small) | The rest of the card, with no maximum: at least `--verity-grid-item-min-width-lg`. The three thumbnails always stay in one row and shrink together, `--verity-spacing-md` apart. |
 
 Side by side, a case study’s text and picture share the width equally; a brand gallery’s text stops at 400 and the thumbnails take the rest.
 
@@ -66,6 +69,7 @@ Side by side, a case study’s text and picture share the width equally; a brand
 | Default | The brand fill and border, the default text color, and a small shadow | `--verity-color-background-brand`, `--verity-color-border-brand`, `--verity-color-content-default`, `--verity-shadow-sm-*` |
 | Hover | The card rises and grows a little, with a large shadow; a lighter fill and border, brighter text, and the pictures zoom. Devices with a real pointer only, so a tap on a phone doesn’t leave a card raised. | `--verity-motion-lift-md` (8), `--verity-motion-scale-hover` (1.02), `--verity-shadow-lg-*`, `--verity-color-background-brand-hover`, `--verity-color-border-brand-hover`, `--verity-color-content-default-hover` |
 | Focus | The hover look, raised and grown, plus the shared focus ring outside the card, following its corners. The ring moves and grows with the card. Keyboard focus only, on every device. | `--verity-focus-ring-width`, `--verity-focus-ring-offset`, `--verity-color-border-focus` |
+| Label | Follows the card: the secondary Button’s default look at rest, its hover look on the card’s hover and focus, and its active look on press. Paired that way, it reaches 4.5:1 in both themes; the closest is Red’s hover, at 4.63:1. | `--verity-button-secondary-color-*` |
 | Active | The card settles back down, with no lift or growth and the small shadow, so pressing reads as pushing it in. A darker fill and border, and brighter text. The pictures stay zoomed, so they don’t jump back. | `--verity-color-background-brand-active`, `--verity-color-border-brand-active`, `--verity-shadow-sm-*` |
 | Visited | No change: a card looks the same once visited | — |
 | Disabled | None: a card always goes somewhere | — |
@@ -97,7 +101,7 @@ Raised, a card grows about 1% on each side and moves up 8px, so in a stack with 
 |---|---|
 | Inside the card | `--verity-padding-lg` |
 | Between the text and the pictures, side by side or stacked | `--verity-spacing-lg` |
-| Between the heading and the details, and between the details and the Badge | `--verity-spacing-sm` |
+| Between the heading and the details, and between the details and the label | `--verity-spacing-sm` |
 | Between the project and the year | `--verity-spacing-xxs` |
 | Between a brand gallery’s thumbnails | `--verity-spacing-md` |
 | Corners and border | `--verity-border-radius-md`, `--verity-border-width-sm` |
@@ -125,7 +129,7 @@ Each brand border is one step lighter than its fill, so the card’s edge shows 
 | The focus ring, with `border/radius/sm` corners | An outline that follows the card’s `md` corners |
 | The TextBlock, Heading, and text layers | `heading`, `project`, and `year`. The heading is in `display-sm`, a real `<h2>` or `<h3>`. |
 | The thumbnails | `thumbnail` for a case study, `thumbnails` (three) for a brand gallery |
-| The Badge | Set by `type`, with nothing to choose |
+| The Button-style label, with the `forward` icon | Set by `type`, with nothing to choose. In code it’s `Button` with `as="span"`, not a second link. |
 | Sample text and pictures | Placeholders: the site passes its own |
 | Not in Figma | `href` and `headingLevel` |
 
