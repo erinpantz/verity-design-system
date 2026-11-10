@@ -1,6 +1,7 @@
 import { useId } from 'react';
 import { Tooltip } from '../../Actions/Tooltip';
 import { Icon } from '../../Media/Icon';
+import { NavIcon, navIconTrigger } from '../NavIcon';
 import styles from './NavItem.module.css';
 
 export interface NavItemProps {
@@ -20,16 +21,9 @@ export interface NavItemProps {
   showLabel?: boolean;
 }
 
-// The Icon for each page. The three nav icons animate between poses.
-const ICON = {
-  portfolio: 'nav/portfolio',
-  playground: 'nav/playground',
-  profile: 'nav/profile',
-  resume: 'resume',
-} as const;
-
 // A link to one of the site's pages, with its icon. On hover and on the
-// current page, a nav icon takes its accent colors and moves to a pose.
+// current page, a nav icon takes its accent colors and moves to a pose; the
+// poses are shared with NavCard, in NavIcon. Resume's icon doesn't move.
 //
 // The tooltip is always there, but it only shows while the label is hidden.
 // MainNav hides labels with CSS at some widths, so it finds the parts by
@@ -42,12 +36,12 @@ export function NavItem({ icon, label, href, current = false, showLabel = true }
       {/* The hidden label is the link's name, so screen readers skip the tooltip */}
       <Tooltip text={label} id={tooltipId} placement="end" visualOnly>
         <a
-          className={`${styles.navItem} ${styles[icon]}`}
+          className={`${styles.navItem} ${navIconTrigger}`}
           href={href}
           aria-current={current ? 'page' : undefined}
           data-nav-item-link=""
         >
-          <Icon name={ICON[icon]} />
+          {icon === 'resume' ? <Icon name="resume" /> : <NavIcon page={icon} />}
           <span className={styles.label} data-nav-item-label="">
             {label}
           </span>

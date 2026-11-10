@@ -1,0 +1,134 @@
+/* The nav icons' colors and poses, in one place for NavItem and NavCard.
+
+   The link around the icon drives it, with classes it puts on itself:
+   - .trigger: the hover pose and accent colors on hover, and the active pose
+     and accent colors on the current page (aria-current="page"). The current
+     page keeps its active pose on hover.
+   - .triggerFocus: the hover pose and accent colors on keyboard focus too,
+     and kept while pressed.
+   A parent can swap the brand accent by setting --nav-icon-accent-brand. */
+
+.navIcon {
+  display: flex;
+  /* The icon draws in its own color; its accents come in on hover */
+  color: var(--verity-nav-icon-color-default);
+}
+
+/* Accent colors. The icon's shapes fill with var(--icon-accent-…,
+   currentColor), so they use currentColor until these are set. */
+.trigger:is(:hover, [aria-current='page']) .navIcon,
+.triggerFocus:is(:focus-visible, :active) .navIcon {
+  --icon-accent-brand: var(--nav-icon-accent-brand, var(--verity-nav-icon-color-accent-brand));
+  --icon-accent-three: var(--verity-nav-icon-color-accent-three);
+  --icon-accent-four: var(--verity-nav-icon-color-accent-four);
+  --icon-accent-yellow: var(--verity-nav-icon-color-accent-yellow);
+}
+
+/* The colors fade in and out */
+.navIcon svg :is(path, rect, circle, line) {
+  transition:
+    fill var(--verity-motion-duration-fast) var(--verity-motion-easing-standard),
+    stroke var(--verity-motion-duration-fast) var(--verity-motion-easing-standard);
+}
+
+/* Poses. Each part of a nav icon is a group named after its Figma layer.
+   Parts move around their own center, and their strokes keep their width
+   when scaled (vector-effect in the SVG). The default pose has no transform.
+   Moving between any two poses takes the same playful timing, both ways. */
+
+.navIcon svg :global(g) {
+  transform-box: fill-box;
+  transform-origin: center;
+  transition: transform var(--verity-motion-duration-playful) var(--verity-motion-easing-playful);
+}
+
+/* Portfolio, hover: the frame grows and the four boxes spread out and grow */
+
+.trigger:not([aria-current='page']):hover .portfolio :global(.outline),
+.triggerFocus:is(:focus-visible, :active) .portfolio :global(.outline) {
+  transform: scale(1.125);
+}
+
+.trigger:not([aria-current='page']):hover .portfolio :global(.box-1),
+.triggerFocus:is(:focus-visible, :active) .portfolio :global(.box-1) {
+  transform: translate(-1.5px, -1.5px) scale(2);
+}
+
+.trigger:not([aria-current='page']):hover .portfolio :global(.box-2),
+.triggerFocus:is(:focus-visible, :active) .portfolio :global(.box-2) {
+  transform: translate(1.5px, -1.5px) scale(2);
+}
+
+.trigger:not([aria-current='page']):hover .portfolio :global(.box-3),
+.triggerFocus:is(:focus-visible, :active) .portfolio :global(.box-3) {
+  transform: translate(-1.5px, 1.5px) scale(2);
+}
+
+.trigger:not([aria-current='page']):hover .portfolio :global(.box-4),
+.triggerFocus:is(:focus-visible, :active) .portfolio :global(.box-4) {
+  transform: translate(1.5px, 1.5px) scale(2);
+}
+
+/* Portfolio, current: the frame stays grown, and the boxes settle closer in */
+
+.trigger[aria-current='page'] .portfolio :global(.outline) {
+  transform: scale(1.125);
+}
+
+.trigger[aria-current='page'] .portfolio :global(.box-1) {
+  transform: translate(-0.5px, -0.5px) scale(1.333);
+}
+
+.trigger[aria-current='page'] .portfolio :global(.box-2) {
+  transform: translate(0.5px, -0.5px) scale(1.333);
+}
+
+.trigger[aria-current='page'] .portfolio :global(.box-3) {
+  transform: translate(-0.5px, 0.5px) scale(1.333);
+}
+
+.trigger[aria-current='page'] .portfolio :global(.box-4) {
+  transform: translate(0.5px, 0.5px) scale(1.333);
+}
+
+/* Playground, hover: the seesaw tips, and the boxes ride it. Current is
+   level, the default pose. */
+
+.trigger:not([aria-current='page']):hover .playground :global(.plank),
+.triggerFocus:is(:focus-visible, :active) .playground :global(.plank) {
+  transform: rotate(8deg);
+}
+
+.trigger:not([aria-current='page']):hover .playground :global(.box-1),
+.triggerFocus:is(:focus-visible, :active) .playground :global(.box-1) {
+  transform: translate(0.79px, -1px) rotate(8deg);
+}
+
+.trigger:not([aria-current='page']):hover .playground :global(.box-2),
+.triggerFocus:is(:focus-visible, :active) .playground :global(.box-2) {
+  transform: translate(-0.24px, -0.37px) rotate(8deg) scale(1.402);
+}
+
+/* Profile, hover: the head tilts. Current is upright, the default pose. */
+
+.trigger:not([aria-current='page']):hover .profile :global(.glasses),
+.triggerFocus:is(:focus-visible, :active) .profile :global(.glasses) {
+  transform: translate(-0.18px, -0.02px) rotate(6.2deg);
+}
+
+.trigger:not([aria-current='page']):hover .profile :global(.bangs),
+.triggerFocus:is(:focus-visible, :active) .profile :global(.bangs) {
+  transform: translate(1.23px, 0.03px) rotate(6.2deg);
+}
+
+.trigger:not([aria-current='page']):hover .profile :global(.bun),
+.triggerFocus:is(:focus-visible, :active) .profile :global(.bun) {
+  transform: translate(5.31px, 1.31px) rotate(6.2deg);
+}
+
+/* With “reduce motion” on, poses switch at once. The color fade stays. */
+@media (prefers-reduced-motion: reduce) {
+  .navIcon svg :global(g) {
+    transition: none;
+  }
+}

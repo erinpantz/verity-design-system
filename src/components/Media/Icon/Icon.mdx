@@ -43,7 +43,7 @@ Three sizes, from the icon size tokens. Icons keep the same size at every breakp
 
 Icons have no color of their own. They use `currentColor`, so an icon takes the text color of whatever contains it. To change an icon’s color, set `color` on its parent with a color token. Never set a fill on the icon itself.
 
-**Nav icons are the one exception.** On hover, `NavItem` gives their shapes the four `nav-icon/color/accent-*` colors by setting `--icon-accent-brand`, `--icon-accent-three`, `--icon-accent-four`, and `--icon-accent-yellow`. Without those, every shape uses `currentColor`. The parent owns the state, so the icon never needs a hover prop. **Foundations › Icons** shows the effect.
+**Nav icons are the one exception.** On hover, `NavItem` and `NavCard` (through the shared `NavIcon`) give their shapes the four `nav-icon/color/accent-*` colors by setting `--icon-accent-brand`, `--icon-accent-three`, `--icon-accent-four`, and `--icon-accent-yellow`. Without those, every shape uses `currentColor`. The parent owns the state, so the icon never needs a hover prop. **Foundations › Icons** shows the effect.
 
 ## Back and forward
 

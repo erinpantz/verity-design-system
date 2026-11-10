@@ -78,7 +78,7 @@ The hover and active poses are drawn in Figma. In code, each part of a nav icon 
 
 With “reduce motion” on, poses switch at once, with no movement. The colors still fade.
 
-NavItem gives the icon its accent colors by setting `--icon-accent-brand`, `--icon-accent-three`, `--icon-accent-four`, and `--icon-accent-yellow` on hover and on the current page. See `Icon` for how nav icons use them.
+The icon takes its accent colors (`--icon-accent-brand`, `--icon-accent-three`, `--icon-accent-four`, and `--icon-accent-yellow`) on hover and on the current page. The poses and accents live in one shared place, `NavIcon`, which `NavCard` uses too, so each icon moves the same way everywhere. See `Icon` for how nav icons use the accents.
 
 <Canvas of={NavItemStories.InContext} />
 
