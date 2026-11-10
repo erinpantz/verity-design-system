@@ -31,14 +31,14 @@ A BackLink renders an `<a href>`, so it works like any link: Enter follows it, a
 
 ## States
 
-The surface is always a scrim, so it stays readable over whatever scrolls under it. Hover and press add a fill on top of it, like `IconButton` with `background="scrim"`.
+The surface is always a scrim, so it stays readable over whatever scrolls under it, with a small shadow. Hover and press add a fill on top of the scrim, like `IconButton` with `background="scrim"`. On hover and focus it lifts with a larger shadow, like `PortfolioCard`.
 
 | State | What changes | Tokens |
 |---|---|---|
-| Default | The scrim, with the arrow and label in the default content color | `--verity-color-background-scrim`, `--verity-color-content-default` |
-| Hover | A light fill over the scrim. Devices with a real pointer only. | `--verity-color-background-transparent-medium` |
-| Focus | The shared focus ring, outside the link, following its corners. Keyboard focus only. | `--verity-focus-ring-width`, `--verity-focus-ring-offset`, `--verity-color-border-focus` |
-| Active | A stronger fill over the scrim while pressed | `--verity-color-background-transparent-strong` |
+| Default | The scrim, a small shadow, and the arrow and label in the default content color | `--verity-color-background-scrim`, `--verity-shadow-sm-*`, `--verity-color-content-default` |
+| Hover | It lifts, with the large shadow and a light fill over the scrim. Devices with a real pointer only, so a tap doesn’t leave it raised. | `--verity-back-link-lift-hover` (4), `--verity-shadow-lg-*`, `--verity-color-background-transparent-medium` |
+| Focus | The hover lift and shadow, plus the shared focus ring, which moves with it. Keyboard focus only, on every device. | `--verity-focus-ring-width`, `--verity-focus-ring-offset`, `--verity-color-border-focus` |
+| Active | It settles back down with the small shadow, so pressing reads as pushing it in, and a stronger fill over the scrim | `--verity-shadow-sm-*`, `--verity-color-background-transparent-strong` |
 | Disabled | None: a link back always goes somewhere | — |
 
 <Canvas of={BackLinkStories.Hover} />
@@ -46,6 +46,18 @@ The surface is always a scrim, so it stays readable over whatever scrolls under 
 <Canvas of={BackLinkStories.Focus} />
 
 <Canvas of={BackLinkStories.Active} />
+
+## Motion
+
+| What | How | Tokens |
+|---|---|---|
+| The lift | Up by `--verity-back-link-lift-hover` on hover and focus, and back down on mouse out, blur, or press. No growth: at this size, PortfolioCard’s 2% wouldn’t show. | `--verity-motion-duration-playful`, `--verity-motion-easing-standard` |
+| The shadow | Fades between states. The hover and press fills switch at once, like IconButton’s. | `--verity-motion-duration-fast`, `--verity-motion-easing-standard` |
+| Reduce motion is on | No lift. The shadow fade stays, since it doesn’t move anything. | — |
+
+**Only what you see moves.** The link is the hit area and stays still; the surface inside it (the scrim, the shadow, the fills, and the focus ring) is what lifts. If the whole 40px link moved, a pointer near its bottom edge could end up below it as it rose, end the hover, drop it back, and make it flicker.
+
+In Shell’s focused mode it stays clear of the screen’s top edge when lifted, and nothing clips its shadow.
 
 ## Size and space
 
