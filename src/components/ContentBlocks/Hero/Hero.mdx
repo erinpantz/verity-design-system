@@ -9,13 +9,13 @@ import * as HeroStories from './Hero.stories';
 
 # Hero
 
-The band at the top of a page: a large headline, a short intro, and one or two actions that say where to go next.
+The band at the top of a page: a large headline, a short intro, and up to two actions that say where to go next.
 
 <Canvas of={HeroStories.Default} />
 
 ## When to use
 
-- **At the top of a page that introduces something,** like the home page, with one or two places to go next.
+- **At the top of a page that introduces something,** with one or two places to go next, or none when the page itself shows where to go, as on Home.
 - **Once per page.** Its headline is the page’s `<h1>`.
 - **Not with a CaseStudyHeader.** Its heading is also the page’s `<h1>`, so a page starts with a Hero or a CaseStudyHeader, never both.
 - **Not for a call to action partway down a page.** Use a `Section` with a `Button`.
@@ -35,13 +35,13 @@ Every focus ring follows the background, not the button, so it keeps a 3:1 contr
 
 ## Background
 
-| `background` | Fill | Text | Primary button | Secondary button | Focus ring |
-|---|---|---|---|---|---|
-| `default` | `--verity-color-background-default` | `--verity-color-content-default` | `default` | `default` | `--verity-color-border-focus` |
-| `knockout` | `--verity-color-background-knockout` | `--verity-color-content-knockout` | `default` | `knockout` | `--verity-color-border-focus-knockout` |
-| `brand` | `--verity-color-background-brand` | `--verity-color-content-default` | `brand` | `default` | `--verity-color-border-focus-brand` |
+| `background` | Fill | Headline | Intro | Primary button | Secondary button | Focus ring |
+|---|---|---|---|---|---|---|
+| `default` | `--verity-color-background-default` | `--verity-color-content-default` | `--verity-color-content-subtle` | `default` | `default` | `--verity-color-border-focus` |
+| `knockout` | `--verity-color-background-knockout` | `--verity-color-content-knockout` | `--verity-color-content-knockout` | `default` | `knockout` | `--verity-color-border-focus-knockout` |
+| `brand` | `--verity-color-background-brand` | `--verity-color-content-default` | `--verity-color-content-subtle` | `brand` | `default` | `--verity-color-border-focus-brand` |
 
-Button has no brand secondary, so on `brand` the secondary button is `default`. Use `default` on most pages, and `knockout` or `brand` to make a page’s opening stand out.
+The intro is quieter than the headline on `default` and `brand`; on `knockout` both use the knockout text color. The intro is `body-xl` (32), large text, so it needs 3:1: subtle on the Red brand band is about 3.05:1, the closest pair. Button has no brand secondary, so on `brand` the secondary button is `default`. Use `default` on most pages, and `knockout` or `brand` to make a page’s opening stand out.
 
 <Canvas of={HeroStories.Knockout} />
 
@@ -64,9 +64,13 @@ Only the band goes wide. The headline and intro are one group, never wider than 
 
 ## Actions
 
-`primaryAction` is required, and `secondaryAction` is optional. Both are `xl` Buttons, side by side. On a narrow screen, the second one wraps below the first.
+Both are optional. `primaryAction` is the main one; `secondaryAction` sits next to it and needs a `primaryAction`. Both are `xl` Buttons, side by side. On a narrow screen, the second one wraps below the first.
+
+With no `primaryAction`, there are no actions at all, and no space for them: the band ends after the text. Home uses its Hero this way, because the cards below it are where to go next.
 
 <Canvas of={HeroStories.OneAction} />
+
+<Canvas of={HeroStories.NoActions} />
 
 ## Space
 
@@ -96,6 +100,7 @@ A Hero fills the width it’s given and adds no space outside itself. Its paddin
 | Property `Border radius` (one option, `md`) | No prop: always `md`. Figma keeps the property because it can’t delete a variant property. |
 | Property `Heading` | `heading` |
 | Property `Intro` | `intro` |
+| Property `Show actions` | Not a prop: set `primaryAction` to show the actions, or leave it out for none |
 | Property `Primary action` (an exposed Button) | `primaryAction`: its label and where it goes. Hero sets the Button’s variant, size, and color. |
 | Property `Secondary action` (an exposed Button) | `secondaryAction` |
 | Property `Show secondary action` | Not a prop: set `secondaryAction` to show it, or leave it out |

@@ -21,18 +21,21 @@
 .default {
   --background: var(--verity-color-background-default);
   --content: var(--verity-color-content-default);
+  --intro: var(--verity-color-content-subtle);
   --background-focus-ring: var(--verity-color-border-focus);
 }
 
 .knockout {
   --background: var(--verity-color-background-knockout);
   --content: var(--verity-color-content-knockout);
+  --intro: var(--verity-color-content-knockout);
   --background-focus-ring: var(--verity-color-border-focus-knockout);
 }
 
 .brand {
   --background: var(--verity-color-background-brand);
   --content: var(--verity-color-content-default);
+  --intro: var(--verity-color-content-subtle);
   --background-focus-ring: var(--verity-color-border-focus-brand);
 }
 
@@ -50,6 +53,8 @@
 
 .intro {
   margin: 0;
+  /* Quieter than the headline on default and brand; knockout keeps one color */
+  color: var(--intro);
   font-family: var(--verity-viewport-typography-body-xl-font-family);
   font-size: var(--verity-viewport-typography-body-xl-font-size);
   font-weight: var(--verity-viewport-typography-body-xl-font-weight);

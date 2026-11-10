@@ -72,6 +72,12 @@ export const OneAction: Story = {
   args: { secondaryAction: undefined },
 };
 
+// No actions, as on Home: the band ends after the text
+export const NoActions: Story = {
+  name: 'No actions',
+  args: { primaryAction: undefined, secondaryAction: undefined },
+};
+
 // The top of a home page: a Hero, then the first Section, with Main's gap
 // between them
 export const InContext: StoryObj = {

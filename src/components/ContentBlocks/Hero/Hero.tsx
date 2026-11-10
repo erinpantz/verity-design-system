@@ -20,9 +20,9 @@ export interface HeroProps {
   heading: string;
   /** A sentence or two below the headline */
   intro: string;
-  /** The main action */
-  primaryAction: HeroAction;
-  /** A second, less important action. Leave it out for one button. */
+  /** The main action. Leave it out for no actions at all, as on Home. */
+  primaryAction?: HeroAction;
+  /** A second, less important action, next to the main one. Leave it out for one button. */
   secondaryAction?: HeroAction;
   /**
    * How wide the band gets in a Section or Container: column (the default),
@@ -59,16 +59,19 @@ export function Hero({
         <h1 className={styles.heading}>{heading}</h1>
         <p className={styles.intro}>{intro}</p>
       </div>
-      <div className={styles.actions}>
-        <Button size="xl" color={colors.primary} href={primaryAction.href}>
-          {primaryAction.label}
-        </Button>
-        {secondaryAction && (
-          <Button variant="secondary" size="xl" color={colors.secondary} href={secondaryAction.href}>
-            {secondaryAction.label}
+      {/* No main action, no actions group: the band ends after the text */}
+      {primaryAction && (
+        <div className={styles.actions}>
+          <Button size="xl" color={colors.primary} href={primaryAction.href}>
+            {primaryAction.label}
           </Button>
-        )}
-      </div>
+          {secondaryAction && (
+            <Button variant="secondary" size="xl" color={colors.secondary} href={secondaryAction.href}>
+              {secondaryAction.label}
+            </Button>
+          )}
+        </div>
+      )}
     </header>
   );
 }
