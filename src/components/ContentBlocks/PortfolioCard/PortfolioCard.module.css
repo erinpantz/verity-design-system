@@ -30,11 +30,15 @@
   color: var(--content);
   /* It's a link: no underline on its text */
   text-decoration: none;
+  /* Colors and shadow fade quickly; the lift and growth move at the image
+     zoom's pace */
   transition:
     background-color var(--verity-motion-duration-fast) var(--verity-motion-easing-standard),
     border-color var(--verity-motion-duration-fast) var(--verity-motion-easing-standard),
     color var(--verity-motion-duration-fast) var(--verity-motion-easing-standard),
-    box-shadow var(--verity-motion-duration-fast) var(--verity-motion-easing-standard);
+    box-shadow var(--verity-motion-duration-fast) var(--verity-motion-easing-standard),
+    scale var(--verity-motion-duration-playful) var(--verity-motion-easing-standard),
+    translate var(--verity-motion-duration-playful) var(--verity-motion-easing-standard);
 }
 
 .brand-gallery {
@@ -115,18 +119,23 @@
 }
 
 /* States. Hover only on devices with a real pointer, so a tap doesn't leave
-   the hover look stuck. Focus shows the same look, plus the focus ring. */
+   a card raised. Keyboard focus shows the same look everywhere, plus the
+   focus ring. On both, the card rises and grows a little, with a larger
+   shadow; the focus ring is an outline, so it moves and grows with it. */
 
 @media (hover: hover) {
   .portfolioCard:hover {
     --fill: var(--verity-color-background-brand-hover);
     --border: var(--verity-color-border-brand-hover);
     --content: var(--verity-color-content-default-hover);
-    --shadow-x: var(--verity-shadow-md-x);
-    --shadow-y: var(--verity-shadow-md-y);
-    --shadow-blur: var(--verity-shadow-md-blur);
-    --shadow-spread: var(--verity-shadow-md-spread);
-    --shadow-color: var(--verity-shadow-md-color);
+    --shadow-x: var(--verity-shadow-lg-x);
+    --shadow-y: var(--verity-shadow-lg-y);
+    --shadow-blur: var(--verity-shadow-lg-blur);
+    --shadow-spread: var(--verity-shadow-lg-spread);
+    --shadow-color: var(--verity-shadow-lg-color);
+
+    scale: var(--verity-portfolio-card-scale-hover);
+    translate: 0 calc(-1 * var(--verity-portfolio-card-lift-hover));
   }
 
   .portfolioCard:hover img {
@@ -138,11 +147,14 @@
   --fill: var(--verity-color-background-brand-hover);
   --border: var(--verity-color-border-brand-hover);
   --content: var(--verity-color-content-default-hover);
-  --shadow-x: var(--verity-shadow-md-x);
-  --shadow-y: var(--verity-shadow-md-y);
-  --shadow-blur: var(--verity-shadow-md-blur);
-  --shadow-spread: var(--verity-shadow-md-spread);
-  --shadow-color: var(--verity-shadow-md-color);
+  --shadow-x: var(--verity-shadow-lg-x);
+  --shadow-y: var(--verity-shadow-lg-y);
+  --shadow-blur: var(--verity-shadow-lg-blur);
+  --shadow-spread: var(--verity-shadow-lg-spread);
+  --shadow-color: var(--verity-shadow-lg-color);
+
+  scale: var(--verity-portfolio-card-scale-hover);
+  translate: 0 calc(-1 * var(--verity-portfolio-card-lift-hover));
 
   /* The shared focus ring, following the card's corners */
   outline: var(--verity-focus-ring-width) solid var(--verity-color-border-focus);
@@ -153,8 +165,9 @@
   scale: var(--verity-portfolio-card-image-scale-hover);
 }
 
-/* Pressed: darker, and the shadow settles back. The pictures stay zoomed, so
-   pressing doesn't make them jump back. */
+/* Pressed: darker, and the card settles back down, with no growth and the
+   small shadow, so pressing reads as pushing it in. The pictures stay
+   zoomed, so they don't jump back. */
 .portfolioCard:active {
   --fill: var(--verity-color-background-brand-active);
   --border: var(--verity-color-border-brand-active);
@@ -164,15 +177,26 @@
   --shadow-blur: var(--verity-shadow-sm-blur);
   --shadow-spread: var(--verity-shadow-sm-spread);
   --shadow-color: var(--verity-shadow-sm-color);
+
+  scale: none;
+  translate: none;
 }
 
 .portfolioCard:active img {
   scale: var(--verity-portfolio-card-image-scale-hover);
 }
 
-/* Reduce motion: no zoom. The color and shadow fades stay, since they don't
-   move anything. */
+/* Reduce motion: no lift, growth, or zoom. The color and shadow fades stay,
+   since they don't move anything. */
 @media (prefers-reduced-motion: reduce) {
+  .portfolioCard,
+  .portfolioCard:hover,
+  .portfolioCard:focus-visible,
+  .portfolioCard:active {
+    scale: none;
+    translate: none;
+  }
+
   .portfolioCard img,
   .portfolioCard:hover img,
   .portfolioCard:focus-visible img,

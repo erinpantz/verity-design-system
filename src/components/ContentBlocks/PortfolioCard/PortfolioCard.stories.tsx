@@ -4,6 +4,7 @@ import screenshot from '../../../foundations/sample-images/screenshot.png';
 import shapes from '../../../foundations/sample-images/shapes.jpg';
 import { Container } from '../../Layout/Container';
 import { Grid } from '../../Layout/Grid';
+import { VerticalStack } from '../../Layout/VerticalStack';
 import { PortfolioCard } from './PortfolioCard';
 
 // Sample work, standing in for the site's case studies and galleries
@@ -115,5 +116,25 @@ export const InAGrid: StoryObj = {
       />
       <PortfolioCard {...BRAND_GALLERY} />
     </Grid>
+  ),
+};
+
+// Stacked, gap md, as on the Portfolio page. Hover a card: it rises and grows
+// without touching its neighbors.
+export const InAStack: StoryObj = {
+  name: 'In a stack',
+  render: () => (
+    <VerticalStack gap="md">
+      <PortfolioCard {...CASE_STUDY} />
+      <PortfolioCard {...BRAND_GALLERY} />
+      <PortfolioCard
+        {...CASE_STUDY}
+        href="#setup"
+        heading="Making setup make sense"
+        project="Ledgerly onboarding"
+        year="2023"
+        thumbnail={landscape}
+      />
+    </VerticalStack>
   ),
 };
