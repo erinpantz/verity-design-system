@@ -90,9 +90,10 @@
 
 /* Focused mode: no nav. The back link floats in the top-left corner,
    spacing/md from the top and the page's side margin from the left, plus the
-   safe area, above the page's content like ThemeToggle. Main starts lower,
-   so the page's title clears the link, and a jump to a heading stops below
-   it too. */
+   safe area, above the page's content like ThemeToggle. Main starts lower:
+   main/padding-top-focused clears the link, and Main keeps its own
+   spacing/lg on top of it, as in Figma, so the title sits spacing/lg below
+   the link. A jump to a heading stops at the same place. */
 .backLink {
   position: fixed;
   z-index: 1;
@@ -102,9 +103,9 @@
 }
 
 .shell[data-mode='focused'] .main {
-  padding-block-start: var(--verity-main-padding-top-focused);
+  padding-block-start: calc(var(--verity-main-padding-top-focused) + var(--verity-spacing-lg));
 }
 
 :global(html):has(.shell[data-mode='focused']) {
-  scroll-padding-block-start: var(--verity-main-padding-top-focused);
+  scroll-padding-block-start: calc(var(--verity-main-padding-top-focused) + var(--verity-spacing-lg));
 }
