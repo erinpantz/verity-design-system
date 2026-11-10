@@ -44,15 +44,15 @@
           "background": {
             "default": {
               "$type": "color",
-              "$value": "{color.brand.blue.100}"
+              "$value": "{color.background.accent-one}"
             },
             "hover": {
               "$type": "color",
-              "$value": "{color.brand.blue.200}"
+              "$value": "{color.background.accent-one-hover}"
             },
             "active": {
               "$type": "color",
-              "$value": "{color.brand.blue.200}"
+              "$value": "{color.background.accent-one}"
             },
             "disabled": {
               "$type": "color",
@@ -331,6 +331,25 @@
             "scopes": [
               "EFFECT_COLOR"
             ]
+          }
+        }
+      }
+    }
+  },
+  "nav-card": {
+    "icon": {
+      "color": {
+        "accent-brand": {
+          "$type": "color",
+          "$value": "{color.brand.blue.300}",
+          "$description": "Replaces nav-icon/color/accent-brand on a NavCard: the nav’s brand accent would match the card’s brand fill. Brand 300 in each theme.",
+          "$extensions": {
+            "com.figma": {
+              "scopes": [
+                "ALL_FILLS",
+                "STROKE_COLOR"
+              ]
+            }
           }
         }
       }

@@ -64,7 +64,7 @@ Side by side, a case study’s text and picture share the width equally; a brand
 | State | What changes | Tokens |
 |---|---|---|
 | Default | The brand fill and border, the default text color, and a small shadow | `--verity-color-background-brand`, `--verity-color-border-brand`, `--verity-color-content-default`, `--verity-shadow-sm-*` |
-| Hover | The card rises and grows a little, with a large shadow; a lighter fill and border, brighter text, and the pictures zoom. Devices with a real pointer only, so a tap on a phone doesn’t leave a card raised. | `--verity-portfolio-card-lift-hover` (8), `--verity-portfolio-card-scale-hover` (1.02), `--verity-shadow-lg-*`, `--verity-color-background-brand-hover`, `--verity-color-border-brand-hover`, `--verity-color-content-default-hover` |
+| Hover | The card rises and grows a little, with a large shadow; a lighter fill and border, brighter text, and the pictures zoom. Devices with a real pointer only, so a tap on a phone doesn’t leave a card raised. | `--verity-motion-lift-md` (8), `--verity-motion-scale-hover` (1.02), `--verity-shadow-lg-*`, `--verity-color-background-brand-hover`, `--verity-color-border-brand-hover`, `--verity-color-content-default-hover` |
 | Focus | The hover look, raised and grown, plus the shared focus ring outside the card, following its corners. The ring moves and grows with the card. Keyboard focus only, on every device. | `--verity-focus-ring-width`, `--verity-focus-ring-offset`, `--verity-color-border-focus` |
 | Active | The card settles back down, with no lift or growth and the small shadow, so pressing reads as pushing it in. A darker fill and border, and brighter text. The pictures stay zoomed, so they don’t jump back. | `--verity-color-background-brand-active`, `--verity-color-border-brand-active`, `--verity-shadow-sm-*` |
 | Visited | No change: a card looks the same once visited | — |
@@ -81,7 +81,7 @@ Side by side, a case study’s text and picture share the width equally; a brand
 | What | How | Tokens |
 |---|---|---|
 | Fill, border, text color, and shadow | Fade between states | `--verity-motion-duration-fast`, `--verity-motion-easing-standard` |
-| The lift and growth | The card moves up and grows on hover and focus, and settles back on mouse out, blur, or press | `--verity-portfolio-card-lift-hover`, `--verity-portfolio-card-scale-hover`, `--verity-motion-duration-playful`, `--verity-motion-easing-standard` |
+| The lift and growth | The card moves up and grows on hover and focus, and settles back on mouse out, blur, or press | `--verity-motion-lift-md`, `--verity-motion-scale-hover`, `--verity-motion-duration-playful`, `--verity-motion-easing-standard` |
 | The zoom | Each picture grows to 105% inside its own frame, clipped by the frame’s rounded corners, and eases back on mouse out | `--verity-portfolio-card-image-scale-hover` (1.05), `--verity-motion-duration-playful`, `--verity-motion-easing-standard` |
 | Reduce motion is on | No lift, growth, or zoom. The color and shadow fades stay, since they don’t move anything. | — |
 

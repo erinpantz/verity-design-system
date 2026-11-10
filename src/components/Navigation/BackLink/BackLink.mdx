@@ -36,7 +36,7 @@ The surface is always a scrim, so it stays readable over whatever scrolls under 
 | State | What changes | Tokens |
 |---|---|---|
 | Default | The scrim, a small shadow, and the arrow and label in the default content color | `--verity-color-background-scrim`, `--verity-shadow-sm-*`, `--verity-color-content-default` |
-| Hover | It lifts, with the large shadow and a light fill over the scrim. Devices with a real pointer only, so a tap doesn’t leave it raised. | `--verity-back-link-lift-hover` (4), `--verity-shadow-lg-*`, `--verity-color-background-transparent-medium` |
+| Hover | It lifts, with the large shadow and a light fill over the scrim. Devices with a real pointer only, so a tap doesn’t leave it raised. | `--verity-motion-lift-sm` (4), `--verity-shadow-lg-*`, `--verity-color-background-transparent-medium` |
 | Focus | The hover lift and shadow, plus the shared focus ring, which moves with it. Keyboard focus only, on every device. | `--verity-focus-ring-width`, `--verity-focus-ring-offset`, `--verity-color-border-focus` |
 | Active | It settles back down with the small shadow, so pressing reads as pushing it in, and a stronger fill over the scrim | `--verity-shadow-sm-*`, `--verity-color-background-transparent-strong` |
 | Disabled | None: a link back always goes somewhere | — |
@@ -51,7 +51,7 @@ The surface is always a scrim, so it stays readable over whatever scrolls under 
 
 | What | How | Tokens |
 |---|---|---|
-| The lift | Up by `--verity-back-link-lift-hover` on hover and focus, and back down on mouse out, blur, or press. No growth: at this size, PortfolioCard’s 2% wouldn’t show. | `--verity-motion-duration-playful`, `--verity-motion-easing-standard` |
+| The lift | Up by `--verity-motion-lift-sm` on hover and focus, and back down on mouse out, blur, or press. No growth: at this size, PortfolioCard’s 2% wouldn’t show. | `--verity-motion-duration-playful`, `--verity-motion-easing-standard` |
 | The shadow | Fades between states. The hover and press fills switch at once, like IconButton’s. | `--verity-motion-duration-fast`, `--verity-motion-easing-standard` |
 | Reduce motion is on | No lift. The shadow fade stays, since it doesn’t move anything. | — |
 

@@ -134,8 +134,8 @@
     --shadow-spread: var(--verity-shadow-lg-spread);
     --shadow-color: var(--verity-shadow-lg-color);
 
-    scale: var(--verity-portfolio-card-scale-hover);
-    translate: 0 calc(-1 * var(--verity-portfolio-card-lift-hover));
+    scale: var(--verity-motion-scale-hover);
+    translate: 0 calc(-1 * var(--verity-motion-lift-md));
   }
 
   .portfolioCard:hover img {
@@ -153,8 +153,8 @@
   --shadow-spread: var(--verity-shadow-lg-spread);
   --shadow-color: var(--verity-shadow-lg-color);
 
-  scale: var(--verity-portfolio-card-scale-hover);
-  translate: 0 calc(-1 * var(--verity-portfolio-card-lift-hover));
+  scale: var(--verity-motion-scale-hover);
+  translate: 0 calc(-1 * var(--verity-motion-lift-md));
 
   /* The shared focus ring, following the card's corners */
   outline: var(--verity-focus-ring-width) solid var(--verity-color-border-focus);

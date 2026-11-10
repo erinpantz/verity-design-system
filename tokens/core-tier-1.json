@@ -1518,6 +1518,17 @@
           ]
         }
       }
+    },
+    "96": {
+      "$type": "dimension",
+      "$value": "96px",
+      "$extensions": {
+        "com.figma": {
+          "scopes": [
+            "WIDTH_HEIGHT"
+          ]
+        }
+      }
     }
   },
   "duration": {

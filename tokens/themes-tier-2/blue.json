@@ -277,6 +277,18 @@
             ]
           }
         }
+      },
+      "accent-one-hover": {
+        "$type": "color",
+        "$value": "{color.brand.yellow.100}",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "ALL_FILLS",
+              "EFFECT_COLOR"
+            ]
+          }
+        }
       }
     },
     "content": {
@@ -377,6 +389,10 @@
             ]
           }
         }
+      },
+      "accent-one-hover": {
+        "$type": "color",
+        "$value": "{color.brand.yellow.100}"
       }
     },
     "border": {
@@ -656,6 +672,17 @@
       "brand-active": {
         "$type": "color",
         "$value": "{color.brand.blue.700}",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "STROKE_COLOR"
+            ]
+          }
+        }
+      },
+      "accent-one-hover": {
+        "$type": "color",
+        "$value": "{color.brand.yellow.100}",
         "$extensions": {
           "com.figma": {
             "scopes": [

@@ -464,6 +464,25 @@
         "$value": "{easing.overshoot}",
         "$description": "Springy curve for playful moves."
       }
+    },
+    "lift": {
+      "sm": {
+        "$type": "dimension",
+        "$value": "{spacing.4}",
+        "$description": "How far a small control moves up on hover and focus, such as BackLink. Code only."
+      },
+      "md": {
+        "$type": "dimension",
+        "$value": "{spacing.8}",
+        "$description": "How far a card moves up on hover and focus, such as PortfolioCard and NavCard. Code only."
+      }
+    },
+    "scale": {
+      "hover": {
+        "$type": "number",
+        "$value": 1.02,
+        "$description": "How much a card grows on hover and focus, such as PortfolioCard and NavCard. Code only."
+      }
     }
   }
 }

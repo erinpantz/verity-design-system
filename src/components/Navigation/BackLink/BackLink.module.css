@@ -57,7 +57,7 @@
     --shadow-spread: var(--verity-shadow-lg-spread);
     --shadow-color: var(--verity-shadow-lg-color);
 
-    translate: 0 calc(-1 * var(--verity-back-link-lift-hover));
+    translate: 0 calc(-1 * var(--verity-motion-lift-sm));
     background-image: linear-gradient(
       var(--verity-color-background-transparent-medium),
       var(--verity-color-background-transparent-medium)
@@ -78,7 +78,7 @@
   --shadow-spread: var(--verity-shadow-lg-spread);
   --shadow-color: var(--verity-shadow-lg-color);
 
-  translate: 0 calc(-1 * var(--verity-back-link-lift-hover));
+  translate: 0 calc(-1 * var(--verity-motion-lift-sm));
   outline: var(--verity-focus-ring-width) solid var(--verity-color-border-focus);
   outline-offset: var(--verity-focus-ring-offset);
 }
