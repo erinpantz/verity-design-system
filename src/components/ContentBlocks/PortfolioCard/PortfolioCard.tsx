@@ -6,6 +6,11 @@ import styles from './PortfolioCard.module.css';
 export interface PortfolioCardProps {
   /** What the card links to: a case study, or a brand’s gallery */
   type?: 'case-study' | 'brand-gallery';
+  /**
+   * lg for a wide card on its own row, sm for several side by side, as in a
+   * Grid with fillRows
+   */
+  size?: 'lg' | 'sm';
   /** Where the card goes */
   href: string;
   /** The case study’s heading, or the brand’s name for a gallery. It’s the link’s name for screen readers. */
@@ -35,6 +40,7 @@ const LABEL = {
 // side, and the pictures wrap below when the card is narrow.
 export function PortfolioCard({
   type = 'case-study',
+  size = 'lg',
   href,
   heading,
   headingLevel = 2,
@@ -48,7 +54,7 @@ export function PortfolioCard({
   const Heading = `h${headingLevel}` as const;
   return (
     <a
-      className={`${styles.portfolioCard} ${styles[type]}`}
+      className={`${styles.portfolioCard} ${styles[type]} ${styles[`size-${size}`]}`}
       href={href}
       aria-labelledby={headingId}
       aria-describedby={detailsId}

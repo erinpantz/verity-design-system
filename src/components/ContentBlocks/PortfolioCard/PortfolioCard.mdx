@@ -62,6 +62,25 @@ Side by side, a case study’s text and picture share the width equally; a brand
 
 <Canvas of={PortfolioCardStories.InAGrid} />
 
+## Size
+
+| `size` | Use for | Heading | Layout |
+|---|---|---|---|
+| `lg` | The default. A card on its own row, wide | `display-sm` | Text on the left, pictures on the right, wrapping below when narrow (see **Layout**) |
+| `sm` | Several side by side, like three in a `Grid` with `itemWidth="md"` and `fillRows` | `title-lg` (28/36 on Medium and Small) | Picture and text, each at least `--verity-portfolio-card-content-min-width` (180): side by side, picture on the left, when both fit; stacked, picture on top, when they don’t |
+
+In a small card, the wrap decides the layout, with no breakpoint: a narrow card stacks, a wider one puts its picture beside its text. A case study’s 3:2 picture fills its side; a brand gallery’s three thumbnails stay square, in one row, and its text has no maximum width.
+
+**The picture comes first on screen, the heading first in the code.** The picture is decorative and the heading names the link, so the heading stays first for screen readers; CSS moves the picture before it, and nothing focusable moves.
+
+**Labels line up across a row.** When a Grid row stretches a small card taller than its content, the extra height goes above the label, side by side or stacked, so the labels sit at the same height across the row.
+
+Everything else is the same as `lg`: colors, the button-look label, focus ring, lift, growth, image zoom, motion, and reduce motion.
+
+<Canvas of={PortfolioCardStories.SmallInAGrid} />
+
+<Canvas of={PortfolioCardStories.SmallInAGridNarrow} />
+
 ## States
 
 | State | What changes | Tokens |
@@ -99,11 +118,13 @@ Raised, a card grows about 1% on each side and moves up 8px, so in a stack with 
 
 | Space | Token |
 |---|---|
-| Inside the card | `--verity-padding-lg` |
-| Between the text and the pictures, side by side or stacked | `--verity-spacing-lg` |
+| Inside the card | `--verity-padding-lg`; `--verity-padding-md` for `sm` |
+| Between the text and the pictures, side by side or stacked | `--verity-spacing-lg`; `--verity-spacing-md` for `sm` |
 | Between the heading and the details, and between the details and the label | `--verity-spacing-sm` |
 | Between the project and the year | `--verity-spacing-xxs` |
-| Between a brand gallery’s thumbnails | `--verity-spacing-md` |
+| Between a brand gallery’s thumbnails | `--verity-spacing-md`; `--verity-spacing-sm` for `sm` |
+| Between the project and the year, `sm` | None, as in Figma |
+| The narrowest the picture or the text gets, `sm` | `--verity-portfolio-card-content-min-width` (180) |
 | Corners and border | `--verity-border-radius-md`, `--verity-border-width-sm` |
 
 It adds no space outside itself: the stack or Grid it’s in sets that.
@@ -124,6 +145,7 @@ Each brand border is one step lighter than its fill, so the card’s edge shows 
 |---|---|
 | Component `PortfolioCard` | `<PortfolioCard />` |
 | Property `Type` | `type`. `case-study` is the default in both. |
+| Property `Size` | `size`. `lg` is the default in both. |
 | Property `State` | Not a prop: hover, focus, and active come from the browser |
 | The pictures cropped to 105% in hover, focus, and active | The zoom, `--verity-portfolio-card-image-scale-hover`, animated in code |
 | The focus ring, with `border/radius/sm` corners | An outline that follows the card’s `md` corners |

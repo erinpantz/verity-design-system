@@ -109,6 +109,63 @@
   min-inline-size: 0;
 }
 
+/* Size sm: for several cards side by side. A two-track grid: the picture
+   and the text each take at least portfolio-card/content-min-width, side by
+   side in equal columns when both fit, stacked when they don't, so it wraps
+   like Figma's auto layout with no breakpoint. The picture comes first on
+   screen (order), but the heading stays first in the DOM, since the picture
+   is decorative. Rows are "auto 1fr": stacked, the picture row keeps its
+   height and the text row takes any extra; side by side, the one row does.
+   Inside the text, the label's auto top margin takes that extra, so labels
+   line up across a stretched row. */
+.size-sm {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(var(--verity-portfolio-card-content-min-width), 100%), 1fr));
+  grid-auto-rows: auto 1fr;
+  gap: var(--verity-spacing-md);
+  padding: var(--verity-padding-md);
+}
+
+/* The grid sizes the text and the pictures, so lg's widths don't apply */
+.size-sm .text,
+.size-sm .images {
+  min-inline-size: 0;
+  max-inline-size: none;
+}
+
+.size-sm .images {
+  order: -1;
+  align-self: start;
+}
+
+.size-sm .heading {
+  font-family: var(--verity-viewport-typography-title-lg-font-family);
+  font-size: var(--verity-viewport-typography-title-lg-font-size);
+  font-weight: var(--verity-viewport-typography-title-lg-font-weight);
+  line-height: var(--verity-viewport-typography-title-lg-line-height);
+  letter-spacing: var(--verity-viewport-typography-title-lg-letter-spacing);
+  text-transform: var(--verity-viewport-typography-title-lg-text-transform);
+}
+
+/* The project and year sit right together, as in Figma's sm */
+.size-sm .projectInfo {
+  gap: var(--verity-spacing-none);
+}
+
+/* The details fill the text's height, and the label sits at the bottom */
+.size-sm .details {
+  flex: 1;
+}
+
+.size-sm .details > :last-child {
+  margin-block-start: auto;
+}
+
+/* A gallery's three thumbnails, a little closer together */
+.size-sm .thumbnails {
+  gap: var(--verity-spacing-sm);
+}
+
 /* The zoom: each picture grows inside its own frame, which clips it to the
    frame's rounded corners. It eases in and back out. */
 .portfolioCard img {
