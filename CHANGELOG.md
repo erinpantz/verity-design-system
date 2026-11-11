@@ -4,6 +4,12 @@ Every release of Verity, newest first. The format follows [Keep a Changelog](htt
 
 Sites install Verity by tag (for example `github:erinpantz/verity-design-system#v0.3.0`), so a site only changes when it moves to a new tag on purpose.
 
+## [0.7.0] – 2026-11-11
+
+### Changed
+
+- **PortfolioCard (breaking):** `project` is renamed `company`. The line under a case study’s heading is now the company the work was for, from the case study’s Company fact (“Laguna”), not the project’s name. A site that passes `project` needs to pass `company` instead.
+
 ## [0.6.1] – 2026-11-11
 
 ### Added
@@ -322,6 +328,7 @@ The first library release: everything in the Figma library except Animation, wit
 - **Theme helpers:** `themeScript`, `useTheme`, and `setTheme`, so a site applies the saved theme before the first paint.
 - **The library build:** one entry point with every component and its prop types, one stylesheet (`verity-design-system/styles.css`) with the fonts inside it, and `npm run build:watch` for working with a linked copy.
 
+[0.7.0]: https://github.com/erinpantz/verity-design-system/compare/v0.6.1...v0.7.0
 [0.6.1]: https://github.com/erinpantz/verity-design-system/compare/v0.6.0...v0.6.1
 [0.6.0]: https://github.com/erinpantz/verity-design-system/compare/v0.5.3...v0.6.0
 [0.5.3]: https://github.com/erinpantz/verity-design-system/compare/v0.5.2...v0.5.3
