@@ -17,7 +17,7 @@ Each level of a page owns one kind of space. When something looks too close or t
 
 | Level | Owns | Set with |
 |---|---|---|
-| Main (in Shell) | The page’s side margins, and the space between Sections on a page. | Side padding of Main and the Footer → `main/padding-inline`<br />Main gap → `main/spacing/section-gap` |
+| Main (in Shell) | The page’s side margins, the space above the first Section, and the space between Sections on a page. | Side padding of Main and the Footer → `main/padding-inline`<br />Main top padding → `main/padding-top` (the section gap)<br />Main gap → `main/spacing/section-gap` |
 | Section | The space between its heading and intro, between its header and content, and between the blocks in its Content slot. | Heading to intro → `spacing/sm`<br />Header to content → `spacing/md`<br />Between blocks → `spacing/xl` |
 | Container | No space. It centers its content in the content column, with no side margins, and its content has no gap, so it holds one thing. | — |
 | Stacks | The space between siblings when you compose a layout. | `VerticalStack` and `HorizontalStack` gap → `spacing/*` |

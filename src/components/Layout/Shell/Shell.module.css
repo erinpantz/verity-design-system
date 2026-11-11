@@ -38,12 +38,13 @@
 }
 
 /* Main: the page's sections, with a section's space between them and the
-   large space above the first */
+   same space above the first (main/padding-top points to the section gap),
+   so the top of the page matches the rhythm below it */
 .main {
   display: flex;
   flex-direction: column;
   gap: var(--verity-main-spacing-section-gap);
-  padding-block-start: var(--verity-spacing-lg);
+  padding-block-start: var(--verity-main-padding-top);
 }
 
 /* Main gets focus only from the skip link, as a starting point for Tab, so
@@ -90,10 +91,9 @@
 
 /* Focused mode: no nav. The back link floats in the top-left corner,
    spacing/md from the top and the page's side margin from the left, plus the
-   safe area, above the page's content like ThemeToggle. Main starts lower:
-   main/padding-top-focused clears the link, and Main keeps its own
-   spacing/lg on top of it, as in Figma, so the title sits spacing/lg below
-   the link. A jump to a heading stops at the same place. */
+   safe area, above the page's content like ThemeToggle. Main's top padding
+   is main/padding-top-focused, which clears the link, plus spacing/lg, as in
+   Figma, so the title sits spacing/lg below the link. A jump to a heading stops at the same place. */
 .backLink {
   position: fixed;
   z-index: 1;

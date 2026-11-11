@@ -64,7 +64,7 @@ In focused mode:
 |---|---|
 | The back link’s position | Fixed to the top-left corner: `--verity-spacing-md` from the top and `--verity-main-padding-inline` from the left, the page’s own side margin, so it lines up with the page’s content. Plus the safe area (`env(safe-area-inset-top)` and `env(safe-area-inset-left)`). |
 | Where it goes | `backLink`: its `href` and `label`. It’s `{ href: '/', label: 'Portfolio' }` unless you set it. |
-| The space above Main | `--verity-main-padding-top-focused` (72) plus Main’s own `--verity-spacing-lg`, as in Figma: the first clears the back link (its inset plus its height), and the second is the usual space above the first section. So the title starts 120 down on XL and Large, `--verity-spacing-lg` below the link. A link that jumps to a heading stops at the same place. |
+| The space above Main | `--verity-main-padding-top-focused` (72) plus `--verity-spacing-lg`, as in Figma: the first clears the back link (its inset plus its height), and the second is the usual space above the first section. So the title starts 120 down on XL and Large, `--verity-spacing-lg` below the link. A link that jumps to a heading stops at the same place. |
 | Layer | Like the theme toggle: above the page’s content, which scrolls under it |
 
 <Canvas of={ShellStories.FocusedLarge} />
@@ -93,10 +93,10 @@ Each story opens in a viewport at the width of Figma’s Shell frame for its bre
 
 | Space | Token |
 |---|---|
-| Above the first section in Main | `--verity-spacing-lg`, plus `--verity-main-padding-top-focused` in focused mode |
+| Above the first section in Main | `--verity-main-padding-top` (56–72), the same as the space between sections. In focused mode, `--verity-main-padding-top-focused` plus `--verity-spacing-lg` instead. |
 | Between sections in Main, and between Main and the Footer | `--verity-main-spacing-section-gap` |
 | Below the Footer | `--verity-spacing-lg` |
-| The page’s sides, around Main and the Footer | `--verity-main-padding-inline` (24–48) |
+| The page’s sides, around Main and the Footer | `--verity-main-padding-inline` (24–72) |
 | The theme toggle, from the screen’s bottom and right edges | `--verity-spacing-md`, plus the safe area |
 | The back link, from the screen’s top and left edges (focused mode) | `--verity-spacing-md` and `--verity-main-padding-inline`, plus the safe area |
 
