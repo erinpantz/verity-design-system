@@ -38,6 +38,13 @@ export interface IconButtonProps {
   hasPopup?: 'dialog';
   /** A reference to the button, so focus can return to it */
   ref?: Ref<HTMLButtonElement>;
+  /**
+   * span: the button’s look inside another button or link, like VideoEmbed’s
+   * play button on its poster. It follows the parent’s hover, focus, and
+   * press, has no tooltip, and is hidden from screen readers: the parent
+   * carries the name. Leave it out for a real button.
+   */
+  as?: 'span';
 }
 
 // Icon size for each button size, as on Button: xl and lg use the lg icon
@@ -57,8 +64,21 @@ export function IconButton({
   hasPopup,
   tooltipPlacement = 'end',
   ref,
+  as,
 }: IconButtonProps) {
   const tooltipId = useId();
+  // The look only, inside a parent that's the real button or link; it
+  // follows that parent's state (see .followsParent in the CSS)
+  if (as === 'span') {
+    return (
+      <span
+        className={`${styles.iconButton} ${styles[size]} ${styles[background]} ${styles.followsParent}`}
+        aria-hidden="true"
+      >
+        <Icon name={icon} size={ICON_SIZE[size]} />
+      </span>
+    );
+  }
   return (
     <Tooltip text={label} id={tooltipId} placement={tooltipPlacement}>
       <button

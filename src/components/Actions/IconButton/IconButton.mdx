@@ -73,6 +73,12 @@ The scrim is the button’s base layer. Hover and pressed add the same fills as 
 
 <Canvas of={IconButtonStories.Disabled} />
 
+## Inside a button or link
+
+A button can’t hold another one. When something that’s already a button or link needs an IconButton’s look, like the play button on a `VideoEmbed`’s poster, use `as="span"`. It renders a plain `<span>` with the look, hidden from screen readers, with no tooltip, focus, role, or click of its own, so the button around it stays the one thing to press and carries the name. `label`, `tooltipPlacement`, `disabled`, `onClick`, `expanded`, `hasPopup`, and `ref` don’t apply.
+
+It follows the button or link around it: the hover fill while that’s hovered (devices with a real pointer) or has keyboard focus, and the pressed fill while it’s pressed. It never shows a focus ring: the parent has it. See **Media › VideoEmbed**.
+
 ## Color
 
 The icon uses `--verity-color-content-default`, and the corners use `--verity-border-radius-md`, like Button. On media, `background="scrim"` puts the icon on `--verity-color-background-scrim` (see Background). IconButton has no brand or knockout color yet.

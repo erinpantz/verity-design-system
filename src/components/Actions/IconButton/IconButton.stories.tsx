@@ -24,6 +24,7 @@ const meta = {
     tooltipPlacement: { control: 'inline-radio', options: ['end', 'top', 'top-end'] },
     disabled: { control: 'boolean' },
     onClick: { control: false },
+    as: { control: false },
   },
 } satisfies Meta<typeof IconButton>;
 

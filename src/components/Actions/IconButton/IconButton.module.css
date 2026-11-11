@@ -78,3 +78,36 @@
   color: var(--verity-color-content-disabled);
   cursor: default;
 }
+
+/* as="span": the look inside a parent button or link, following its state.
+   Hover (devices with a real pointer) and keyboard focus show the hover
+   fill; press shows the pressed fill. No focus ring: the parent has it. */
+@media (hover: hover) {
+  :is(a, button):hover .followsParent {
+    background-image: linear-gradient(
+      var(--verity-color-background-transparent-medium),
+      var(--verity-color-background-transparent-medium)
+    );
+  }
+}
+
+:is(a, button):focus-visible .followsParent {
+  background-image: linear-gradient(
+    var(--verity-color-background-transparent-medium),
+    var(--verity-color-background-transparent-medium)
+  );
+}
+
+:is(a, button):active .followsParent {
+  background-image: linear-gradient(
+    var(--verity-color-background-transparent-strong),
+    var(--verity-color-background-transparent-strong)
+  );
+}
+
+/* Never its own ring: it can't take focus, and the parent draws the ring.
+   (Storybook's held-on focus would otherwise draw one on it too.) */
+.iconButton.followsParent {
+  outline: none;
+  cursor: inherit;
+}
