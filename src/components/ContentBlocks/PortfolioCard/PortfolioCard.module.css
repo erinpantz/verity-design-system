@@ -1,7 +1,8 @@
 /* A card that's one link: the text, then the pictures, side by side, on the
-   brand background. Its layout follows its own width, not the screen's: the
-   text and the pictures each have a minimum width, and the pictures wrap
-   below the text when both don't fit. Every value is a token. */
+   brand background. Its layout follows its own width, not the screen's. The
+   large card: the text and the pictures each have a minimum width, and the
+   pictures wrap below the text when both don't fit. The small card: see
+   .size-sm. Every value is a token. */
 
 .portfolioCard {
   /* The colors and shadow for each state, set below */
@@ -109,18 +110,35 @@
   min-inline-size: 0;
 }
 
-/* Size sm: for several cards side by side. A two-track grid: the picture
-   and the text each take at least portfolio-card/content-min-width, side by
-   side in equal columns when both fit, stacked when they don't, so it wraps
-   like Figma's auto layout with no breakpoint. The picture comes first on
-   screen (order), but the heading stays first in the DOM, since the picture
-   is decorative. Rows are "auto 1fr": stacked, the picture row keeps its
-   height and the text row takes any extra; side by side, the one row does.
-   Inside the text, the label's auto top margin takes that extra, so labels
-   line up across a stretched row. */
+/* Size sm: for several cards side by side. A grid of equal columns that
+   fills the card: one column (the picture above the text) when the card is
+   narrower than portfolio-card/stack-width, and two (side by side, sharing
+   the width equally) at that width or wider. It follows the card's own
+   width, not the screen's, with no breakpoint.
+
+   How it works: each column is at least --column-min, half of what's left
+   of the stack width after the padding, the borders, and the gap. So two
+   columns fit exactly when the card is at least the stack width; below it,
+   the grid makes one (auto-fit). min(…, 100%) keeps a column from being
+   wider than a narrow card.
+
+   The picture comes first on screen (order), but the heading stays first in
+   the DOM, since the picture is decorative. Rows are "auto 1fr": stacked,
+   the picture row keeps its height and the text row takes any extra; side
+   by side, the one row does. Inside the text, the label's auto top margin
+   takes that extra, so labels line up across a stretched row. */
 .size-sm {
+  --column-min: calc(
+    (
+      var(--verity-portfolio-card-stack-width)
+      - 2 * var(--verity-padding-md)
+      - 2 * var(--verity-border-width-sm)
+      - var(--verity-spacing-md)
+    ) / 2
+  );
+
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(var(--verity-portfolio-card-content-min-width), 100%), 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(var(--column-min), 100%), 1fr));
   grid-auto-rows: auto 1fr;
   gap: var(--verity-spacing-md);
   padding: var(--verity-padding-md);

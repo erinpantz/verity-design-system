@@ -67,9 +67,11 @@ Side by side, a case study’s text and picture share the width equally; a brand
 | `size` | Use for | Heading | Layout |
 |---|---|---|---|
 | `lg` | The default. A card on its own row, wide | `display-sm` | Text on the left, pictures on the right, wrapping below when narrow (see **Layout**) |
-| `sm` | Several side by side, like three in a `Grid` with `itemWidth="md"` and `fillRows` | `title-lg` (28/36 on Medium and Small) | Picture and text, each at least `--verity-portfolio-card-content-min-width` (180): side by side, picture on the left, when both fit; stacked, picture on top, when they don’t |
+| `sm` | Several side by side, like three in a `Grid` with `itemWidth="md"` and `fillRows` | `title-lg` (28/36 on Medium and Small) | Set by the card’s own width. Narrower than `--verity-portfolio-card-stack-width` (640): stacked, picture on top. At 640 or wider: side by side, picture on the left, sharing the width equally. |
 
-In a small card, the wrap decides the layout, with no breakpoint: a narrow card stacks, a wider one puts its picture beside its text. A case study’s 3:2 picture fills its side; a brand gallery’s three thumbnails stay square, in one row, and its text has no maximum width.
+In a small card, its own width decides the layout, not the screen’s, so there’s no breakpoint and no prop: three cards to a row stack, and a card alone on a wide row puts its picture beside its text. A case study’s picture keeps 3:2 and fills its side; a brand gallery’s three thumbnails stay square, in one row, and its text has no maximum width.
+
+The big card (`lg`) doesn’t use the stack width: its text and pictures each have a minimum width (see **Layout**), so it stacks on narrow screens by itself.
 
 **The picture comes first on screen, the heading first in the code.** The picture is decorative and the heading names the link, so the heading stays first for screen readers; CSS moves the picture before it, and nothing focusable moves.
 
@@ -78,6 +80,8 @@ In a small card, the wrap decides the layout, with no breakpoint: a narrow card 
 Everything else is the same as `lg`: colors, the button-look label, focus ring, lift, growth, image zoom, motion, and reduce motion.
 
 <Canvas of={PortfolioCardStories.SmallInAGrid} />
+
+<Canvas of={PortfolioCardStories.SmallWide} />
 
 <Canvas of={PortfolioCardStories.SmallInAGridNarrow} />
 
@@ -124,7 +128,7 @@ Raised, a card grows about 1% on each side and moves up 8px, so in a stack with 
 | Between the project and the year | `--verity-spacing-xxs` |
 | Between a brand gallery’s thumbnails | `--verity-spacing-md`; `--verity-spacing-sm` for `sm` |
 | Between the project and the year, `sm` | None, as in Figma |
-| The narrowest the picture or the text gets, `sm` | `--verity-portfolio-card-content-min-width` (180) |
+| Where `sm` switches from stacked to side by side, measured on the card | `--verity-portfolio-card-stack-width` (640) |
 | Corners and border | `--verity-border-radius-md`, `--verity-border-width-sm` |
 
 It adds no space outside itself: the stack or Grid it’s in sets that.
@@ -146,6 +150,7 @@ Each brand border is one step lighter than its fill, so the card’s edge shows 
 | Component `PortfolioCard` | `<PortfolioCard />` |
 | Property `Type` | `type`. `case-study` is the default in both. |
 | Property `Size` | `size`. `lg` is the default in both. |
+| Property `Layout` (`stacked` or `row`), on `sm` | Not a prop: the card’s width decides, at `--verity-portfolio-card-stack-width` (640). In Figma, pick the one that matches the card’s width. |
 | Property `State` | Not a prop: hover, focus, and active come from the browser |
 | The pictures cropped to 105% in hover, focus, and active | The zoom, `--verity-portfolio-card-image-scale-hover`, animated in code |
 | The focus ring, with `border/radius/sm` corners | An outline that follows the card’s `md` corners |

@@ -140,8 +140,8 @@ export const InAStack: StoryObj = {
   ),
 };
 
-// Small, for several side by side. Narrow, as here, the picture sits on top;
-// wide enough for both minimums, it moves to the left of the text.
+// Small, for several side by side. Narrower than portfolio-card/stack-width
+// (640), as here, the picture sits on top of the text.
 export const Small: Story = {
   args: { size: 'sm' },
   decorators: [
@@ -165,7 +165,7 @@ const SETUP = {
 const GALLERY_TWO = { ...BRAND_GALLERY, href: '#lumen', heading: 'Lumen', year: '2018' };
 
 // Three small cards in a wide Grid with itemWidth="md" and fillRows: three
-// across, each with its picture on top. The rows stretch the cards to the
+// across, each narrower than the stack width, so each has its picture on top. The rows stretch the cards to the
 // same height, and the extra space goes above the labels, so they line up.
 export const SmallInAGrid: StoryObj = {
   name: 'Small, in a Grid',
@@ -179,7 +179,8 @@ export const SmallInAGrid: StoryObj = {
 };
 
 // Narrower, in the content column: two plus one. The third card takes the
-// row's full width, so its picture moves beside its text.
+// row's full width, at least the stack width, so its picture moves beside
+// its text.
 export const SmallInAGridNarrow: StoryObj = {
   name: 'Small, in a Grid, narrower',
   render: () => (
@@ -207,3 +208,16 @@ export const SmallInAGridNarrowCaseStudy: StoryObj = {
   ),
 };
 
+
+// A lone small card at the wide width: at least the stack width, so the
+// picture and the text sit side by side, sharing the width equally
+export const SmallWide: Story = {
+  name: 'Small, wide',
+  args: { size: 'sm' },
+};
+
+// The same, for a brand gallery: the three thumbnails stay square
+export const SmallWideBrandGallery: Story = {
+  name: 'Small, wide, brand gallery',
+  args: { ...BRAND_GALLERY, size: 'sm' },
+};
