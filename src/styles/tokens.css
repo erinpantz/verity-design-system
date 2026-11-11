@@ -321,9 +321,9 @@
   --verity-typography-heading-3-mobile-line-height: var(--verity-typography-line-height-36);
   --verity-typography-heading-3-mobile-font-family: var(--verity-typography-font-family-schibsted-grotesk);
   --verity-typography-heading-3-mobile-font-weight: var(--verity-typography-font-weight-700);
-  --verity-typography-display-default-line-height: var(--verity-typography-line-height-96);
+  --verity-typography-display-default-line-height: var(--verity-typography-line-height-88);
   --verity-typography-display-default-text-transform: var(--verity-typography-text-transform-none);
-  --verity-typography-display-default-font-size: var(--verity-typography-font-size-88);
+  --verity-typography-display-default-font-size: var(--verity-typography-font-size-80);
   --verity-typography-display-default-font-weight: var(--verity-typography-font-weight-800);
   --verity-typography-display-default-font-family: var(--verity-typography-font-family-schibsted-grotesk);
   --verity-typography-display-default-letter-spacing: var(--verity-typography-letter-spacing-minus-2);
@@ -852,7 +852,7 @@
   --verity-nav-container-thickness-collapsed: 56px;
   --verity-grid-columns: 4;
   --verity-grid-item-min-width-sm: 200px; /** Minimum width of a Grid item before the row wraps, when Item width is sm (200px). */
-  --verity-grid-item-min-width-md: 300px; /** Minimum width of a Grid item before the row wraps, when Item width is md (300px). */
+  --verity-grid-item-min-width-md: 280px; /** Minimum width of a Grid item before the row wraps, when Item width is md (280px). */
   --verity-grid-item-min-width-lg: 300px; /** Minimum width of a Grid item before the row wraps, when Item width is lg (400px; 300px on Medium and Small). */
   --verity-grid-item-min-width-xl: 400px; /** Minimum width of a Grid item before the row wraps, when Item width is xl (600px; 400px on Medium and Small). */
   --verity-nav-overlay-thickness: 240px;
@@ -863,6 +863,7 @@
   --verity-media-text-stack-width: 800px; /** Below this width, a row MediaText stacks its text above its media (800px). Measured on MediaText itself, not the screen. */
   --verity-portfolio-card-image-scale-hover: 1.05; /** How much a PortfolioCard image grows inside its frame on hover, focus, and active. Code only (no Figma field takes a scale); Figma shows it by cropping the image to 105%. */
   --verity-portfolio-card-text-max-width: 400px; /** The widest PortfolioCard’s text gets in the brand gallery type, so the thumbnails get the rest. */
+  --verity-portfolio-card-content-min-width: 180px; /** Min width of a small PortfolioCard’s image and of its text. They sit side by side when both fit, and stack (image on top) when they don’t. */
   --verity-nav-card-size: 144px; /** Width and height of a NavCard (it’s square): 200, and 144 on Small so two overlapping cards fit a phone. */
   --verity-nav-card-tilt: 4; /** How far a tilted NavCard turns at rest, in degrees (left or right by its Tilt property). It straightens on hover and focus. Code only. */
   --verity-nav-card-group-gap: -24px; /** Space between the NavCards in a NavCardGroup. Negative, so each card overlaps the one before it by 24px. Stored as the negative gap because Figma can’t bind a gap to a negated token. */
@@ -1101,7 +1102,7 @@
     --verity-nav-container-thickness-collapsed: 56px;
     --verity-grid-columns: 8;
     --verity-grid-item-min-width-sm: 200px; /** Minimum width of a Grid item before the row wraps, when Item width is sm (200px). */
-    --verity-grid-item-min-width-md: 300px; /** Minimum width of a Grid item before the row wraps, when Item width is md (300px). */
+    --verity-grid-item-min-width-md: 280px; /** Minimum width of a Grid item before the row wraps, when Item width is md (280px). */
     --verity-grid-item-min-width-lg: 300px; /** Minimum width of a Grid item before the row wraps, when Item width is lg (400px; 300px on Medium and Small). */
     --verity-grid-item-min-width-xl: 400px; /** Minimum width of a Grid item before the row wraps, when Item width is xl (600px; 400px on Medium and Small). */
     --verity-nav-overlay-thickness: 240px;
@@ -1112,6 +1113,7 @@
     --verity-media-text-stack-width: 800px; /** Below this width, a row MediaText stacks its text above its media (800px). Measured on MediaText itself, not the screen. */
     --verity-portfolio-card-image-scale-hover: 1.05; /** How much a PortfolioCard image grows inside its frame on hover, focus, and active. Code only (no Figma field takes a scale); Figma shows it by cropping the image to 105%. */
     --verity-portfolio-card-text-max-width: 400px; /** The widest PortfolioCard’s text gets in the brand gallery type, so the thumbnails get the rest. */
+    --verity-portfolio-card-content-min-width: 180px; /** Min width of a small PortfolioCard’s image and of its text. They sit side by side when both fit, and stack (image on top) when they don’t. */
     --verity-nav-card-size: 200px; /** Width and height of a NavCard (it’s square): 200, and 144 on Small so two overlapping cards fit a phone. */
     --verity-nav-card-tilt: 4; /** How far a tilted NavCard turns at rest, in degrees (left or right by its Tilt property). It straightens on hover and focus. Code only. */
     --verity-nav-card-group-gap: -24px; /** Space between the NavCards in a NavCardGroup. Negative, so each card overlaps the one before it by 24px. Stored as the negative gap because Figma can’t bind a gap to a negated token. */
@@ -1351,7 +1353,7 @@
     --verity-nav-container-thickness-collapsed: 72px;
     --verity-grid-columns: 12;
     --verity-grid-item-min-width-sm: 200px; /** Minimum width of a Grid item before the row wraps, when Item width is sm (200px). */
-    --verity-grid-item-min-width-md: 300px; /** Minimum width of a Grid item before the row wraps, when Item width is md (300px). */
+    --verity-grid-item-min-width-md: 280px; /** Minimum width of a Grid item before the row wraps, when Item width is md (280px). */
     --verity-grid-item-min-width-lg: 400px; /** Minimum width of a Grid item before the row wraps, when Item width is lg (400px; 300px on Medium and Small). */
     --verity-grid-item-min-width-xl: 600px; /** Minimum width of a Grid item before the row wraps, when Item width is xl (600px; 400px on Medium and Small). */
     --verity-nav-overlay-thickness: 240px;
@@ -1362,6 +1364,7 @@
     --verity-media-text-stack-width: 800px; /** Below this width, a row MediaText stacks its text above its media (800px). Measured on MediaText itself, not the screen. */
     --verity-portfolio-card-image-scale-hover: 1.05; /** How much a PortfolioCard image grows inside its frame on hover, focus, and active. Code only (no Figma field takes a scale); Figma shows it by cropping the image to 105%. */
     --verity-portfolio-card-text-max-width: 400px; /** The widest PortfolioCard’s text gets in the brand gallery type, so the thumbnails get the rest. */
+    --verity-portfolio-card-content-min-width: 180px; /** Min width of a small PortfolioCard’s image and of its text. They sit side by side when both fit, and stack (image on top) when they don’t. */
     --verity-nav-card-size: 200px; /** Width and height of a NavCard (it’s square): 200, and 144 on Small so two overlapping cards fit a phone. */
     --verity-nav-card-tilt: 4; /** How far a tilted NavCard turns at rest, in degrees (left or right by its Tilt property). It straightens on hover and focus. Code only. */
     --verity-nav-card-group-gap: -24px; /** Space between the NavCards in a NavCardGroup. Negative, so each card overlaps the one before it by 24px. Stored as the negative gap because Figma can’t bind a gap to a negated token. */
@@ -1601,7 +1604,7 @@
     --verity-nav-container-thickness-collapsed: 72px;
     --verity-grid-columns: 12;
     --verity-grid-item-min-width-sm: 200px; /** Minimum width of a Grid item before the row wraps, when Item width is sm (200px). */
-    --verity-grid-item-min-width-md: 300px; /** Minimum width of a Grid item before the row wraps, when Item width is md (300px). */
+    --verity-grid-item-min-width-md: 280px; /** Minimum width of a Grid item before the row wraps, when Item width is md (280px). */
     --verity-grid-item-min-width-lg: 400px; /** Minimum width of a Grid item before the row wraps, when Item width is lg (400px; 300px on Medium and Small). */
     --verity-grid-item-min-width-xl: 600px; /** Minimum width of a Grid item before the row wraps, when Item width is xl (600px; 400px on Medium and Small). */
     --verity-nav-overlay-thickness: 240px;
@@ -1612,6 +1615,7 @@
     --verity-media-text-stack-width: 800px; /** Below this width, a row MediaText stacks its text above its media (800px). Measured on MediaText itself, not the screen. */
     --verity-portfolio-card-image-scale-hover: 1.05; /** How much a PortfolioCard image grows inside its frame on hover, focus, and active. Code only (no Figma field takes a scale); Figma shows it by cropping the image to 105%. */
     --verity-portfolio-card-text-max-width: 400px; /** The widest PortfolioCard’s text gets in the brand gallery type, so the thumbnails get the rest. */
+    --verity-portfolio-card-content-min-width: 180px; /** Min width of a small PortfolioCard’s image and of its text. They sit side by side when both fit, and stack (image on top) when they don’t. */
     --verity-nav-card-size: 200px; /** Width and height of a NavCard (it’s square): 200, and 144 on Small so two overlapping cards fit a phone. */
     --verity-nav-card-tilt: 4; /** How far a tilted NavCard turns at rest, in degrees (left or right by its Tilt property). It straightens on hover and focus. Code only. */
     --verity-nav-card-group-gap: -24px; /** Space between the NavCards in a NavCardGroup. Negative, so each card overlaps the one before it by 24px. Stored as the negative gap because Figma can’t bind a gap to a negated token. */

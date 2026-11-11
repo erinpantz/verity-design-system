@@ -521,7 +521,7 @@
     "display-default": {
       "line-height": {
         "$type": "dimension",
-        "$value": "{typography.line-height.96}",
+        "$value": "{typography.line-height.88}",
         "$extensions": {
           "com.figma": {
             "scopes": [
@@ -541,7 +541,7 @@
       },
       "font-size": {
         "$type": "dimension",
-        "$value": "{typography.font-size.88}",
+        "$value": "{typography.font-size.80}",
         "$extensions": {
           "com.figma": {
             "scopes": [

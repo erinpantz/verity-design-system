@@ -103,8 +103,8 @@
       },
       "md": {
         "$type": "dimension",
-        "$value": "300px",
-        "$description": "Minimum width of a Grid item before the row wraps, when Item width is md (300px).",
+        "$value": "280px",
+        "$description": "Minimum width of a Grid item before the row wraps, when Item width is md (280px).",
         "$extensions": {
           "com.figma": {
             "scopes": [
@@ -409,6 +409,18 @@
       "$type": "dimension",
       "$value": "400px",
       "$description": "The widest PortfolioCard’s text gets in the brand gallery type, so the thumbnails get the rest.",
+      "$extensions": {
+        "com.figma": {
+          "scopes": [
+            "WIDTH_HEIGHT"
+          ]
+        }
+      }
+    },
+    "content-min-width": {
+      "$type": "dimension",
+      "$value": "180px",
+      "$description": "Min width of a small PortfolioCard’s image and of its text. They sit side by side when both fit, and stack (image on top) when they don’t.",
       "$extensions": {
         "com.figma": {
           "scopes": [
