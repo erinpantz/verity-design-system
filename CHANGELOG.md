@@ -4,6 +4,18 @@ Every release of Verity, newest first. The format follows [Keep a Changelog](htt
 
 Sites install Verity by tag (for example `github:erinpantz/verity-design-system#v0.3.0`), so a site only changes when it moves to a new tag on purpose.
 
+## [0.5.3] – 2026-11-11
+
+### Added
+
+- **Grid:** a `fillRows` prop, off by default. On, items still wrap at their `itemWidth` minimum and match heights in a row, but grow to share it, so an item alone on the last row takes the full width: three items go three across, then two plus one, then one.
+- **PortfolioCard:** a `size` prop, `lg` (the default, unchanged) or `sm`, for several cards side by side. A small card has `padding/md` and a `title-lg` heading; its picture and text are each at least `portfolio-card/content-min-width`, side by side (picture on the left) when both fit and stacked (picture on top) when not, with no breakpoint. Stretched by a Grid row, its extra height goes above the label, so labels line up.
+- **Tokens:** `portfolio-card/content-min-width` (180).
+
+### Changed
+
+- **Tokens:** `grid/item-min-width/md` is 280 (was 300), so three md items fit a 904-wide Grid. `display/default` is 80/88 on desktop (was 88/96), so Hero’s and CaseStudyHeader’s titles are a little smaller on Large and XL; mobile stays 48/56.
+
 ## [0.5.2] – 2026-11-10
 
 ### Added
@@ -285,6 +297,7 @@ The first library release: everything in the Figma library except Animation, wit
 - **Theme helpers:** `themeScript`, `useTheme`, and `setTheme`, so a site applies the saved theme before the first paint.
 - **The library build:** one entry point with every component and its prop types, one stylesheet (`verity-design-system/styles.css`) with the fonts inside it, and `npm run build:watch` for working with a linked copy.
 
+[0.5.3]: https://github.com/erinpantz/verity-design-system/compare/v0.5.2...v0.5.3
 [0.5.2]: https://github.com/erinpantz/verity-design-system/compare/v0.5.1...v0.5.2
 [0.5.1]: https://github.com/erinpantz/verity-design-system/compare/v0.5.0...v0.5.1
 [0.5.0]: https://github.com/erinpantz/verity-design-system/compare/v0.4.8...v0.5.0
