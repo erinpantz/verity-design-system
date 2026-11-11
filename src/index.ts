@@ -72,6 +72,8 @@ export { MediaBlock } from './components/Media/MediaBlock';
 export type { MediaBlockProps } from './components/Media/MediaBlock';
 export { Video } from './components/Media/Video';
 export type { VideoProps } from './components/Media/Video';
+export { VideoEmbed } from './components/Media/VideoEmbed';
+export type { VideoEmbedProps, VideoEmbedProvider } from './components/Media/VideoEmbed';
 
 // Navigation
 export { BackLink } from './components/Navigation/BackLink';

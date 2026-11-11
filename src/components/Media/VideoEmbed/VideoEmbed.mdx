@@ -1,0 +1,106 @@
+import { Meta, Canvas } from '@storybook/addon-docs/blocks';
+import { VerityDocs } from '../../../foundations/VerityDocs';
+import { PropsTable } from '../../../foundations/PropsTable';
+import * as VideoEmbedStories from './VideoEmbed.stories';
+
+<Meta of={VideoEmbedStories} />
+
+<VerityDocs>
+
+# VideoEmbed
+
+A video hosted elsewhere, like Vimeo, with sound, the provider’s own controls, and full screen. It shows a poster with a play button until someone presses it, and only then loads the player.
+
+<Canvas of={VideoEmbedStories.Default} />
+
+## When to use
+
+- **For a video with sound, or longer than a short clip,** like a talk, an interview, or a full walkthrough with narration.
+- **With a caption,** put it in a `MediaBlock`, as its media, the same way as an Image or a Video.
+- **Not for a short, silent clip we host,** like a 10-second prototype walkthrough. Use a `Video`: it loops on its own, with no player to load and nothing sent to another site.
+- **Not when a still says it all.** Use an `Image`.
+
+## Accessibility
+
+Before it’s pressed, the whole poster is one `<button>`, named “Play” plus the video’s `title`, so screen readers hear “Play The new Vimeo player, button.” The poster’s `alt` is read as its description. The play button on it is only a look (`IconButton` with `as="span"`), so there’s one thing to press, not two.
+
+Pressing it replaces the poster with the provider’s player, an `<iframe>` named by `title`, and moves keyboard focus into the player, so keyboard users can carry on with its controls. The player brings its own controls, captions, and full screen.
+
+| Situation | What to do | Example |
+|---|---|---|
+| Writing the title | The video’s own title, as on the provider, without “Video” | `title="Designing AI that care teams trust"` |
+| Writing the alt | What the poster shows, in a sentence. Use `alt=""` when the title says enough. | `alt="Erin presenting at a whiteboard"` |
+| The video has speech | Turn on captions on the provider: they show in its player (WCAG 1.2.2) | Vimeo’s captions, uploaded with the video |
+
+### Click to load
+
+Nothing loads from the provider until someone presses play: no player, no request, and no cookies. The page stays light, and a visitor who never plays the video never contacts Vimeo. The player then starts on its own, with `autoplay`, since the visitor just asked for it, and Vimeo is asked not to track them (`dnt=1`). If the browser won’t start a video with sound by itself, Vimeo starts it muted, with its Unmute button showing.
+
+Nothing moves or plays before the press, so there’s nothing extra to do for reduce motion.
+
+## Provider
+
+| `provider` | The player | Video ID |
+|---|---|---|
+| `vimeo` | The default. `https://player.vimeo.com/video/<id>?autoplay=1&dnt=1`, with autoplay, full screen, picture-in-picture, and encrypted media allowed. Vimeo needs encrypted media to start playing: without it, its player shows “Unable to play video.” | The number at the end of the video’s link: `76979871` in `vimeo.com/76979871` |
+
+Only Vimeo for now. Another provider is one more entry in the component’s list of players.
+
+<Canvas of={VideoEmbedStories.Playing} />
+
+## Aspect ratio
+
+| `aspectRatio` | Use for |
+|---|---|
+| `16:9` | The default: most videos |
+| `3:2` | To match photos and Video clips around it |
+| `4:3` | Older or presentation videos |
+| `1:1` | Square videos, like ones made for social media |
+
+Match the video’s own shape, so the player doesn’t show bars. The poster and the player fill the same box, so nothing moves when the player replaces the poster.
+
+<Canvas of={VideoEmbedStories.AspectRatio1To1} />
+
+## States
+
+The poster is the button. The play button on it follows its state.
+
+| State | What changes | Tokens |
+|---|---|---|
+| Default | The poster, with the play button centered on a scrim | `--verity-color-background-scrim`, `--verity-control-size-xl`, `--verity-icon-size-lg` |
+| Hover | A light fill on the play button, over its scrim. Devices with a real pointer only. | `--verity-color-background-transparent-medium` |
+| Focus | The shared focus ring around the whole poster, following its corners, and the play button’s hover fill. Keyboard focus only. | `--verity-focus-ring-width`, `--verity-focus-ring-offset`, `--verity-color-border-focus` |
+| Active | A stronger fill on the play button while pressed | `--verity-color-background-transparent-strong` |
+| Disabled | None: a video can always be played | — |
+
+<Canvas of={VideoEmbedStories.Hover} />
+
+<Canvas of={VideoEmbedStories.Focus} />
+
+<Canvas of={VideoEmbedStories.Active} />
+
+## Space
+
+| What | Token |
+|---|---|
+| Corners, of the poster and the player | `--verity-border-radius-md` |
+| The play button | `--verity-control-size-xl` (64), with a `--verity-icon-size-lg` (32) icon |
+
+It fills its container’s width and adds no space outside itself.
+
+## Props
+
+<PropsTable of={VideoEmbedStories} />
+
+## In Figma
+
+| Figma | Code |
+|---|---|
+| Component `VideoEmbed` | `<VideoEmbed />` |
+| Property `State` | Not a prop: hover, focus, and active come from the browser |
+| The poster image | `poster`, with `alt` |
+| The `IconButton` instance on the poster | Not a prop: always `play`, `xl`, on a scrim, as `IconButton` with `as="span"` |
+| The focus ring around the play button, in `State=focus` | In code, the ring goes around the whole poster, since the whole poster is the button |
+| Not in Figma | `provider`, `videoId`, `title`, `aspectRatio`, and the player, which loads in code only |
+
+</VerityDocs>

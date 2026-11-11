@@ -1,0 +1,74 @@
+/* A box in the video's shape. First it holds the poster, as one button with
+   the play button's look centered on it; after a press, the provider's
+   player, in the same box, so nothing moves. The box doesn't clip, so the
+   poster's focus ring shows outside it. */
+
+.frame {
+  display: grid;
+  grid-template: minmax(0, 1fr) / minmax(0, 1fr);
+  inline-size: 100%;
+}
+
+/* Aspect ratio, as on Image */
+
+.ratio-16-9 {
+  aspect-ratio: 16 / 9;
+}
+
+.ratio-3-2 {
+  aspect-ratio: 3 / 2;
+}
+
+.ratio-4-3 {
+  aspect-ratio: 4 / 3;
+}
+
+.ratio-1-1 {
+  aspect-ratio: 1 / 1;
+}
+
+/* The poster: a button with no look of its own, filling the box, with the
+   md corners, like Video */
+.poster {
+  display: grid;
+  grid-template: minmax(0, 1fr) / minmax(0, 1fr);
+  place-items: center;
+  margin: 0;
+  padding: 0;
+  border: none;
+  border-radius: var(--verity-border-radius-md);
+  background: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+/* The picture and the play button share the cell; the button is on top */
+.poster > * {
+  grid-area: 1 / 1;
+}
+
+.image {
+  display: block;
+  inline-size: 100%;
+  block-size: 100%;
+}
+
+.control {
+  display: flex;
+}
+
+/* Keyboard focus: the shared focus ring around the poster, following its
+   corners */
+.poster:focus-visible {
+  outline: var(--verity-focus-ring-width) solid var(--verity-color-border-focus);
+  outline-offset: var(--verity-focus-ring-offset);
+}
+
+/* The provider's player, filling the same box, with the same corners */
+.player {
+  display: block;
+  inline-size: 100%;
+  block-size: 100%;
+  border: none;
+  border-radius: var(--verity-border-radius-md);
+}
