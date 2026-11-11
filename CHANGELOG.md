@@ -4,6 +4,24 @@ Every release of Verity, newest first. The format follows [Keep a Changelog](htt
 
 Sites install Verity by tag (for example `github:erinpantz/verity-design-system#v0.3.0`), so a site only changes when it moves to a new tag on purpose.
 
+## [0.6.0] – 2026-11-11
+
+### Added
+
+- **Section:** a `width` prop, `column` (the default, unchanged) or `wide`. With `wide`, the header (heading and intro) starts at the wide edge, lined up with wide blocks, and is still at most `content/column-width` long; blocks keep their own widths. Use it only when the section’s content is wide, like a wide Grid of cards. The rule is also on the Spacing and rhythm guideline.
+- **Tokens:** `main/padding-top`, pointing to `main/spacing/section-gap` (72, 72, 64, 56); `portfolio-card/stack-width` (640); Core `font-size/44` and `line-height/52`.
+
+### Changed
+
+- **Shell:** on default pages, the space above Main is `main/padding-top`, the same as the space between sections (was `spacing/lg`). Focused mode is unchanged.
+- **Tokens:** the page’s side margins, `main/padding-inline`, are 72, 56, 32, and 24 on XL, Large, Medium, and Small (were 48, 40, 24, and 24). `display/default` and `display/sm` are 44/52 on Medium and Small (were 48/56).
+- **Hero:** no padding on the default background, where there’s no visible band, so its text lines up with the blocks around it. Brand and knockout keep `padding/lg`.
+- **PortfolioCard:** a small card (`size="sm"`) stacks, picture on top, when it’s narrower than `portfolio-card/stack-width` (640), and puts its picture and text side by side, sharing the width equally, at 640 or wider. It’s measured on the card itself, with no breakpoint and no prop. The large card is unchanged.
+
+### Removed
+
+- **Tokens (breaking):** `portfolio-card/content-min-width`, replaced by `portfolio-card/stack-width`. Nothing in Verity uses it; a site that used `--verity-portfolio-card-content-min-width` directly needs to stop.
+
 ## [0.5.3] – 2026-11-11
 
 ### Added
@@ -297,6 +315,7 @@ The first library release: everything in the Figma library except Animation, wit
 - **Theme helpers:** `themeScript`, `useTheme`, and `setTheme`, so a site applies the saved theme before the first paint.
 - **The library build:** one entry point with every component and its prop types, one stylesheet (`verity-design-system/styles.css`) with the fonts inside it, and `npm run build:watch` for working with a linked copy.
 
+[0.6.0]: https://github.com/erinpantz/verity-design-system/compare/v0.5.3...v0.6.0
 [0.5.3]: https://github.com/erinpantz/verity-design-system/compare/v0.5.2...v0.5.3
 [0.5.2]: https://github.com/erinpantz/verity-design-system/compare/v0.5.1...v0.5.2
 [0.5.1]: https://github.com/erinpantz/verity-design-system/compare/v0.5.0...v0.5.1
