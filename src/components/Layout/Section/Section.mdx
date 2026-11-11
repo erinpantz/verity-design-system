@@ -33,7 +33,18 @@ A Section renders a `<section>` named by its heading (`aria-labelledby`), so scr
 
 ## Width
 
-The same column as `Container`: every block sits in `--verity-content-column-width` (880), centered, and the heading and intro sit in it too, so the heading lines up with the blocks below it. A `MediaBlock`, `Gallery`, `Grid`, `VerticalStack`, or `HorizontalStack` with `width="wide"` breaks out to `--verity-content-wide-width` (1824), and a `CaseStudyHighlights` is always that wide. A Section has no width of its own to set. See **Layout › Container** for why.
+The same column as `Container`: every block sits in `--verity-content-column-width` (880), centered, and the heading and intro sit in it too, so the heading lines up with the blocks below it. A `MediaBlock`, `Gallery`, `Grid`, `VerticalStack`, or `HorizontalStack` with `width="wide"` breaks out to `--verity-content-wide-width` (1824), and a `CaseStudyHighlights` is always that wide. See **Layout › Container** for why.
+
+<Canvas of={SectionStories.WithAWideBlock} />
+
+`width` sets where the header sits. The blocks keep their own widths either way.
+
+| `width` | The heading and intro | Use for |
+|---|---|---|
+| `column` | The default. In the centered column, lined up with column-width blocks | Most sections: text, or text with a wide picture |
+| `wide` | Starting at the wide edge, the same edge as wide blocks, and still at most `--verity-content-column-width` long | A section whose content is wide, like a wide `Grid` of cards or a `Gallery`, so the heading lines up with it |
+
+**Use `wide` only when the content is wide.** Over column-width text, the heading would sit to the left of the text below it, and the two wouldn’t line up.
 
 <Canvas of={SectionStories.Wide} />
 
@@ -71,6 +82,7 @@ The heading uses Heading’s color, `--verity-color-content-default`. The intro 
 | The text of the exposed `Heading` | `heading` |
 | The exposed `Heading`’s `Level` | `headingLevel`. Level 2 is the default in both. |
 | Properties `Show intro` and `Intro` | `intro`, shown when provided: leave it out for no intro. Figma shows the intro by default; code doesn’t, so add one when the section needs it. |
+| Property `Width` | `width`. Figma’s value `constrained` is `column` in code. |
 | Slot `Content` | `children` |
 
 </VerityDocs>

@@ -1,4 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
+import landscape from '../../../foundations/sample-images/landscape.jpg';
+import screenshot from '../../../foundations/sample-images/screenshot.png';
+import shapes from '../../../foundations/sample-images/shapes.jpg';
+import { PortfolioCard } from '../../ContentBlocks/PortfolioCard';
 import { Heading } from '../../Text/Heading';
 import { MetaItem } from '../../Text/MetaItem';
 import { Prose } from '../../Text/Prose';
@@ -33,6 +37,7 @@ const meta = {
     heading: { control: 'text' },
     headingLevel: { control: 'inline-radio', options: [1, 2, 3] },
     intro: { control: 'text' },
+    width: { control: 'inline-radio', options: ['column', 'wide'] },
     children: { control: false },
   },
 } satisfies Meta<typeof Section>;
@@ -49,7 +54,7 @@ export const WithoutIntro: Story = {
 };
 
 // A Grid set to wide breaks out of the column; the header and other blocks stay in it
-export const Wide: Story = {
+export const WithAWideBlock: Story = {
   name: 'With a wide block',
   args: {
     heading: 'Outcomes',
@@ -59,6 +64,48 @@ export const Wide: Story = {
         <TextBlock heading="Faster setup">The median time to connect an account fell from 14 minutes to 4.</TextBlock>
         <TextBlock heading="Fewer tickets">Setup tickets dropped by 60 percent.</TextBlock>
         <TextBlock heading="More customers stayed">Three in four finished setup, up from one in two.</TextBlock>
+      </Grid>
+    ),
+  },
+};
+
+// A wide Section over wide content: the header starts at the wide edge, lined
+// up with the Grid of cards, and is still at most the column's width
+export const Wide: Story = {
+  args: {
+    width: 'wide',
+    heading: 'Selected work',
+    intro: 'Products and brands I’ve designed, from AI for care teams to a coffee roaster’s identity.',
+    children: (
+      <Grid width="wide" itemWidth="md" fillRows>
+        <PortfolioCard
+          size="sm"
+          headingLevel={3}
+          type="case-study"
+          href="#laguna-companion"
+          heading="Designing AI that care teams trust"
+          project="Laguna Companion"
+          year="2024–2025"
+          thumbnail={screenshot}
+        />
+        <PortfolioCard
+          size="sm"
+          headingLevel={3}
+          type="brand-gallery"
+          href="#northwind"
+          heading="Northwind"
+          year="2019–2021"
+          thumbnails={[landscape, shapes, screenshot]}
+        />
+        <PortfolioCard
+          size="sm"
+          headingLevel={3}
+          type="brand-gallery"
+          href="#harbor"
+          heading="Harbor Coffee"
+          year="2018"
+          thumbnails={[shapes, landscape, screenshot]}
+        />
       </Grid>
     ),
   },

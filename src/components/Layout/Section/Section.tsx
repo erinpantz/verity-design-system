@@ -18,16 +18,25 @@ export interface SectionProps {
    * spans the full width.
    */
   children?: ReactNode;
+  /**
+   * Where the header sits: column (the default) in the centered content
+   * column, or wide to start at the wide edge, lined up with wide blocks.
+   * Use wide only when the section’s content is wide, like a wide Grid of
+   * cards or a Gallery. Either way, the heading and intro are never wider
+   * than the content column, and the blocks keep their own widths.
+   */
+  width?: 'column' | 'wide';
 }
 
 // A <section> named by its heading. Like Container, it centers its content in
 // one column with room for wide blocks; the header sits in the column too, so
-// the heading lines up with the blocks below it.
-export function Section({ heading, headingLevel = 2, intro, children }: SectionProps) {
+// the heading lines up with the blocks below it. With width="wide", the header
+// starts at the wide edge instead, to line up with wide blocks.
+export function Section({ heading, headingLevel = 2, intro, width = 'column', children }: SectionProps) {
   // A unique id for the heading on this page, so the section can point to it
   const headingId = useId();
   return (
-    <section aria-labelledby={headingId} className={styles.section}>
+    <section aria-labelledby={headingId} className={styles.section} data-width={width}>
       <div className={styles.header}>
         <Heading level={headingLevel} id={headingId}>
           {heading}

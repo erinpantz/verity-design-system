@@ -1,7 +1,8 @@
 /* The same column as Container: space, the content column, and space. The
-   header sits in the column; the content spans all three tracks and lines its
-   blocks up on the same tracks (subgrid), so each block sits in the column
-   and a block marked data-width="wide" spans the full width. */
+   header sits in the column (or, with data-width="wide", starts at the wide
+   edge); the content spans all three tracks and lines its blocks up on the
+   same tracks (subgrid), so each block sits in the column and a block marked
+   data-width="wide" spans the full width. */
 
 .section {
   display: grid;
@@ -24,6 +25,14 @@
   flex-direction: column;
   gap: var(--verity-spacing-sm);
   min-inline-size: 0;
+}
+
+/* Wide: the header starts at the wide edge, the same edge as wide blocks, and
+   is still never wider than the content column, so the intro keeps a
+   readable measure */
+.section[data-width='wide'] > .header {
+  grid-column: wide;
+  max-inline-size: var(--verity-content-column-width);
 }
 
 /* The blocks, with spacing/xl between them, wider than any stack gap */
