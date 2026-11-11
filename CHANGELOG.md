@@ -4,6 +4,13 @@ Every release of Verity, newest first. The format follows [Keep a Changelog](htt
 
 Sites install Verity by tag (for example `github:erinpantz/verity-design-system#v0.3.0`), so a site only changes when it moves to a new tag on purpose.
 
+## [0.6.1] – 2026-11-11
+
+### Added
+
+- **VideoEmbed:** a video hosted elsewhere (Vimeo for now), with sound, the provider’s own controls, and full screen. Click to load: at first only a poster and a play button, with no request to Vimeo; pressing play swaps in Vimeo’s player (`autoplay=1&dnt=1`, with autoplay, full screen, picture-in-picture, and encrypted media allowed) in the same box and moves focus into it. The whole poster is one button, named “Play” plus the `title`, with the shared focus ring around it. Props: `provider`, `videoId`, `title`, `poster`, `alt`, and `aspectRatio` (`16:9` by default, like Image). For short, silent clips we host, `Video` is still the one to use.
+- **IconButton:** `as="span"`, its look without a button, for inside another button or link, like VideoEmbed’s play button. It follows the parent’s hover, focus, and press, with no tooltip or ring of its own, and is hidden from screen readers.
+
 ## [0.6.0] – 2026-11-11
 
 ### Added
@@ -315,6 +322,7 @@ The first library release: everything in the Figma library except Animation, wit
 - **Theme helpers:** `themeScript`, `useTheme`, and `setTheme`, so a site applies the saved theme before the first paint.
 - **The library build:** one entry point with every component and its prop types, one stylesheet (`verity-design-system/styles.css`) with the fonts inside it, and `npm run build:watch` for working with a linked copy.
 
+[0.6.1]: https://github.com/erinpantz/verity-design-system/compare/v0.6.0...v0.6.1
 [0.6.0]: https://github.com/erinpantz/verity-design-system/compare/v0.5.3...v0.6.0
 [0.5.3]: https://github.com/erinpantz/verity-design-system/compare/v0.5.2...v0.5.3
 [0.5.2]: https://github.com/erinpantz/verity-design-system/compare/v0.5.1...v0.5.2
