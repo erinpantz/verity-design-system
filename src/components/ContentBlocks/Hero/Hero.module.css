@@ -6,24 +6,29 @@
    The body and the media share a row that wraps, like Figma's auto layout:
    the body takes at least hero/text-min-width and fills the rest, the media
    keeps its own size, and when both don't fit the media wraps under the
-   text. No breakpoint needed. Without media, the body is alone in the row. */
+   text. No breakpoint needed. Without media, the body is alone in the row.
+
+   Padding comes from the background: brand and knockout are visible bands
+   and keep padding/lg; default has no visible band, so it has none, and its
+   text lines up with the blocks above and below it. */
 
 .hero {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   gap: var(--verity-spacing-lg);
-  padding: var(--verity-padding-lg);
+  padding: var(--padding);
   background: var(--background);
   color: var(--content);
   /* Always rounded: Verity has no edge-to-edge layouts */
   border-radius: var(--verity-border-radius-md);
 }
 
-/* Each background sets the text color, and the focus ring color for the
-   buttons on it (see Button.module.css), since some buttons' own colors
-   don't match the band */
+/* Each background sets the padding, the text color, and the focus ring
+   color for the buttons on it (see Button.module.css), since some buttons'
+   own colors don't match the band */
 .default {
+  --padding: var(--verity-padding-none);
   --background: var(--verity-color-background-default);
   --content: var(--verity-color-content-default);
   --intro: var(--verity-color-content-subtle);
@@ -31,6 +36,7 @@
 }
 
 .knockout {
+  --padding: var(--verity-padding-lg);
   --background: var(--verity-color-background-knockout);
   --content: var(--verity-color-content-knockout);
   --intro: var(--verity-color-content-knockout);
@@ -38,6 +44,7 @@
 }
 
 .brand {
+  --padding: var(--verity-padding-lg);
   --background: var(--verity-color-background-brand);
   --content: var(--verity-color-content-default);
   --intro: var(--verity-color-content-subtle);

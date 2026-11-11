@@ -41,12 +41,14 @@ export const Brand: Story = {
 };
 
 // Wide: the band breaks out of the Container's column to the wide width,
-// and the text still wraps at the column's width. Shown in a Container, as
-// on a page.
+// and the text still wraps at the column's width. Shown in a Container, with
+// the page's side margins (Shell's main/padding-inline), as on a page.
 const inContainer = (Story: () => React.ReactElement) => (
-  <Container>
-    <Story />
-  </Container>
+  <div style={{ paddingInline: 'var(--verity-main-padding-inline)' }}>
+    <Container>
+      <Story />
+    </Container>
+  </div>
 );
 
 export const Wide: Story = {
@@ -128,7 +130,15 @@ export const InContext: StoryObj = {
   name: 'In context',
   parameters: { layout: 'fullscreen' },
   render: () => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--verity-main-spacing-section-gap)' }}>
+    // Stands in for Main: the space between blocks and the page's side margins
+    <div
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+        gap: 'var(--verity-main-spacing-section-gap)',
+        paddingInline: 'var(--verity-main-padding-inline)',
+      }}
+    >
       <Hero
         background="brand"
         heading="I design tools that give people their time back"
