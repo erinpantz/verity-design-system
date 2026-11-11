@@ -23,6 +23,7 @@ const meta = {
     width: { control: 'inline-radio', options: ['column', 'wide'] },
     itemWidth: { control: 'inline-radio', options: ['sm', 'md', 'lg', 'xl'] },
     gap: { control: 'inline-radio', options: ['md', 'lg'] },
+    fillRows: { control: 'boolean' },
     // A list needs <li> items, so it's chosen in code, not here
     as: { control: false },
     children: { control: false },
@@ -90,3 +91,40 @@ export const InContext: Story = {
     </Container>
   ),
 };
+
+// Three items, filling their rows, at three widths: wide enough for three
+// across, then two plus one (the third takes the full width), then one per
+// row. The widths are made from the tokens: three md items and two gaps, the
+// content column, and the lg item width.
+const three = sizes.slice(0, 3).map((size, i) => (
+  <Placeholder key={i} size={size}>{`Item ${i + 1}`}</Placeholder>
+));
+
+export const FillRows: StoryObj = {
+  name: 'Fill rows',
+  render: () => (
+    <VerticalStack gap="xl">
+      <div style={{ maxInlineSize: 'calc(3 * var(--verity-grid-item-min-width-md) + 2 * var(--verity-spacing-md))' }}>
+        <Grid fillRows>{three}</Grid>
+      </div>
+      <div style={{ maxInlineSize: 'var(--verity-content-column-width)' }}>
+        <Grid fillRows>{three}</Grid>
+      </div>
+      <div style={{ maxInlineSize: 'var(--verity-grid-item-min-width-lg)' }}>
+        <Grid fillRows>{three}</Grid>
+      </div>
+    </VerticalStack>
+  ),
+};
+
+// The same three items without fillRows, at the content column's width: the
+// third keeps its column, and the last row has empty space
+export const FillRowsOff: StoryObj = {
+  name: 'Fill rows off, for comparison',
+  render: () => (
+    <div style={{ maxInlineSize: 'var(--verity-content-column-width)' }}>
+      <Grid>{three}</Grid>
+    </div>
+  ),
+};
+

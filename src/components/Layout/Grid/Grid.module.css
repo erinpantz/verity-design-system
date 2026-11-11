@@ -14,6 +14,23 @@
   list-style: none;
 }
 
+/* Fill rows: a wrapping flex row instead of columns. Each item grows from
+   its min width (never wider than the Grid) to share its row, so the last
+   row has no empty space: three items go three across, then two plus one,
+   then one. Items in a row stretch to the same height. */
+.fillRows {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.fillRows > * {
+  /* The min width includes the item's own padding and border, as a grid
+     column would, so every item starts from the same width */
+  box-sizing: border-box;
+  flex: 1 1 var(--item-min-width);
+  min-inline-size: min(var(--item-min-width), 100%);
+}
+
 /* In a list, each <li> is the grid item, so it stretches to the row's
    height. Making it a one-cell grid stretches the card inside it too. */
 .grid > li {

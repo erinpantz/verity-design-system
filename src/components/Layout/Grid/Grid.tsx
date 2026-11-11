@@ -23,12 +23,26 @@ export interface GridProps {
    * when it isn’t a list. With ul or ol, write each item as an <li>.
    */
   as?: 'div' | 'ul' | 'ol' | 'dl';
+  /**
+   * Whether items grow to fill their row. Off: items line up in columns, and
+   * the last row can have empty space. On: items still wrap at their min
+   * width, but share each row, so an item alone on the last row takes the
+   * full width.
+   */
+  fillRows?: boolean;
 }
 
-export function Grid({ children, itemWidth = 'md', gap = 'md', width = 'column', as: Element = 'div' }: GridProps) {
+export function Grid({
+  children,
+  itemWidth = 'md',
+  gap = 'md',
+  width = 'column',
+  as: Element = 'div',
+  fillRows = false,
+}: GridProps) {
   return (
     <Element
-      className={`${styles.grid} ${styles[itemWidth]} ${styles[`gap-${gap}`]}`}
+      className={`${styles.grid} ${fillRows ? styles.fillRows : ''} ${styles[itemWidth]} ${styles[`gap-${gap}`]}`}
       data-width={width}
       // Safari stops announcing a list once its bullets are removed, unless it has role="list".
       // A dl keeps its own role.

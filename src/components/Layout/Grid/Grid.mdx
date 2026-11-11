@@ -46,6 +46,19 @@ The narrowest an item can get before the row wraps. Items fill the row evenly an
 
 <Canvas of={GridStories.ItemWidthXl} />
 
+## Fill rows
+
+By default, items line up in columns, and the last row can end with empty space. With `fillRows`, items still wrap at their `itemWidth` and match heights within a row, but they grow to share their row, so the last row is always full: three items go three across, then two plus one (the third takes the full width), then one per row.
+
+- **Use it for a few items that should always fill the space,** like Home’s featured cards, where an empty gap at the end of a row looks unfinished.
+- **Not for sets of equal items whose columns should line up across rows,** like stat cards or a case study’s facts. There, a full-width last item would read as more important than the rest.
+
+Gaps, `as`, and `width` work the same either way.
+
+<Canvas of={GridStories.FillRows} />
+
+<Canvas of={GridStories.FillRowsOff} />
+
 ## Gap
 
 The space between items and between rows, the same at every item width.
@@ -73,6 +86,7 @@ In a `Section` or `Container`, every block sits in the content column, `--verity
 |---|---|
 | Component `Grid` | `<Grid />` |
 | Property `Item width` | `itemWidth` |
+| Property `Fill rows` | `fillRows`. Off is the default in both. |
 | Property `Gap` | `gap` |
 | Property `Width` | `width`. `column` is the default in both. |
 | Slot `Content` | `children` |
