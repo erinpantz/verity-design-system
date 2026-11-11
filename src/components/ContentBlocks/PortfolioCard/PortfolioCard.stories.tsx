@@ -12,7 +12,7 @@ const CASE_STUDY = {
   type: 'case-study' as const,
   href: '#laguna-companion',
   heading: 'Designing AI that care teams trust',
-  project: 'Laguna Companion',
+  company: 'Laguna',
   year: '2024–2025',
   thumbnail: screenshot,
 };
@@ -35,7 +35,7 @@ const meta = {
     href: { control: 'text' },
     heading: { control: 'text' },
     headingLevel: { control: 'inline-radio', options: [2, 3] },
-    project: { control: 'text' },
+    company: { control: 'text' },
     year: { control: 'text' },
     thumbnail: { control: false },
     thumbnails: { control: false },
@@ -112,7 +112,7 @@ export const InAGrid: StoryObj = {
         {...CASE_STUDY}
         href="#setup"
         heading="Making setup make sense"
-        project="Ledgerly onboarding"
+        company="Navio"
         year="2023"
         thumbnail={landscape}
       />
@@ -132,7 +132,7 @@ export const InAStack: StoryObj = {
         {...CASE_STUDY}
         href="#setup"
         heading="Making setup make sense"
-        project="Ledgerly onboarding"
+        company="Vim"
         year="2023"
         thumbnail={landscape}
       />
@@ -157,7 +157,7 @@ const SETUP = {
   ...CASE_STUDY,
   href: '#setup',
   heading: 'Making setup make sense',
-  project: 'Ledgerly onboarding',
+  company: 'Navio',
   year: '2023',
   thumbnail: landscape,
 };

@@ -84,7 +84,7 @@ export const Wide: Story = {
           type="case-study"
           href="#laguna-companion"
           heading="Designing AI that care teams trust"
-          project="Laguna Companion"
+          company="Laguna"
           year="2024–2025"
           thumbnail={screenshot}
         />

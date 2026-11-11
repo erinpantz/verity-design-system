@@ -74,7 +74,7 @@
   text-transform: var(--verity-viewport-typography-display-sm-text-transform);
 }
 
-/* The project and year, then the type label, which keeps its own width */
+/* The company and year, then the type label, which keeps its own width */
 .details {
   display: flex;
   flex-direction: column;
@@ -82,7 +82,7 @@
   gap: var(--verity-spacing-sm);
 }
 
-.projectInfo {
+.facts {
   display: flex;
   flex-direction: column;
   gap: var(--verity-spacing-xxs);
@@ -94,7 +94,7 @@
   text-transform: var(--verity-viewport-typography-body-default-text-transform);
 }
 
-.projectInfo > p {
+.facts > p {
   margin: 0;
 }
 
@@ -165,8 +165,8 @@
   text-transform: var(--verity-viewport-typography-title-lg-text-transform);
 }
 
-/* The project and year sit right together, as in Figma's sm */
-.size-sm .projectInfo {
+/* The company and year sit right together, as in Figma's sm */
+.size-sm .facts {
   gap: var(--verity-spacing-none);
 }
 

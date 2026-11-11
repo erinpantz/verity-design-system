@@ -17,8 +17,11 @@ export interface PortfolioCardProps {
   heading: string;
   /** The heading’s level in the page’s outline: 2 in a page’s grid of cards, 3 under a Section’s heading */
   headingLevel?: 2 | 3;
-  /** Case studies only: the project’s name, like the case study page’s title */
-  project?: string;
+  /**
+   * Case studies only: the company the work was for, like “Laguna,” from
+   * the case study’s Company fact
+   */
+  company?: string;
   /** The years of the work, like “2024–2025” */
   year: string;
   /** Case studies only: the URL of one thumbnail, shown at 3:2 */
@@ -34,7 +37,7 @@ const LABEL = {
 } as const;
 
 // A link to one piece of work: the whole card is one <a>. Its name is the
-// heading, and the project, year, and type label describe it, so a screen reader
+// heading, and the company, year, and type label describe it, so a screen reader
 // hears “Designing AI that care teams trust, link,” then the details, not
 // the pictures, which are decorative. The text and the pictures sit side by
 // side, and the pictures wrap below when the card is narrow.
@@ -44,7 +47,7 @@ export function PortfolioCard({
   href,
   heading,
   headingLevel = 2,
-  project,
+  company,
   year,
   thumbnail,
   thumbnails,
@@ -64,8 +67,8 @@ export function PortfolioCard({
           {heading}
         </Heading>
         <div className={styles.details} id={detailsId}>
-          <div className={styles.projectInfo}>
-            {type === 'case-study' && project && <p>{project}</p>}
+          <div className={styles.facts}>
+            {type === 'case-study' && company && <p>{company}</p>}
             <p>{year}</p>
           </div>
           {/* Looks like a secondary Button and follows the card's state,

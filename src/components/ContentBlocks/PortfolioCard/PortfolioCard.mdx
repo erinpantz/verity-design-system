@@ -9,7 +9,7 @@ import * as PortfolioCardStories from './PortfolioCard.stories';
 
 # PortfolioCard
 
-A link to one piece of work, for the Portfolio and Home pages: the heading, the project and years, a label for the type that looks like a button, and its pictures. The whole card is one link.
+A link to one piece of work, for the Portfolio and Home pages: the heading, the company and years, a label for the type that looks like a button, and its pictures. The whole card is one link.
 
 <Canvas of={PortfolioCardStories.Default} />
 
@@ -25,7 +25,7 @@ A link to one piece of work, for the Portfolio and Home pages: the heading, the 
 A PortfolioCard renders one `<a href>` around everything, so the whole card is one stop for the keyboard and one link for screen readers.
 
 - **Its name is the heading** (`aria-labelledby`), so a screen reader hears “Designing AI that care teams trust, link,” not everything inside the card.
-- **The project, years, and type describe it** (`aria-describedby`), read after the name: “Laguna Companion, 2024–2025, Case study.”
+- **The company, years, and type describe it** (`aria-describedby`), read after the name: “Laguna, 2024–2025, Case study.”
 - **The type label looks like a button but isn’t one:** it’s a plain `<span>` (`Button` with `as="span"`), because the whole card is already the link, and a link can’t hold another link or button. It has no focus of its own, and it’s read as part of the description.
 - **The pictures are decorative** (`alt=""`): the heading already says where the link goes, and descriptions of thumbnails would make the link’s name long.
 - **The heading is a real `<h2>` or `<h3>`,** so people who move by headings find each card. `headingLevel` sets it: 2 on a page of cards, 3 under a Section’s heading.
@@ -40,8 +40,10 @@ A PortfolioCard renders one `<a href>` around everything, so the whole card is o
 
 | `type` | Pictures | Label |
 |---|---|---|
-| `case-study` | The default. One `thumbnail`, at 3:2. Shows the `project`. | “Case study” |
+| `case-study` | The default. One `thumbnail`, at 3:2. Shows the `company`. | “Case study” |
 | `brand-gallery` | Exactly three `thumbnails`, at 1:1, in one row | “Brand gallery” |
+
+A case study’s `company` is the company the work was for, from the case study’s Company fact, like “Laguna,” not the project’s name. A brand gallery shows no company: its heading is already the brand’s name.
 
 The label looks exactly like a secondary `Button` (`color="default"`, size `md`) with the `forward` arrow at its end, so the card reads as something to open. It follows the card’s state: the button’s hover look while the card is hovered or focused, and its active look while it’s pressed. It never shows a focus ring of its own; the card has it.
 
@@ -125,9 +127,9 @@ Raised, a card grows about 1% on each side and moves up 8px, so in a stack with 
 | Inside the card | `--verity-padding-lg`; `--verity-padding-md` for `sm` |
 | Between the text and the pictures, side by side or stacked | `--verity-spacing-lg`; `--verity-spacing-md` for `sm` |
 | Between the heading and the details, and between the details and the label | `--verity-spacing-sm` |
-| Between the project and the year | `--verity-spacing-xxs` |
+| Between the company and the year | `--verity-spacing-xxs` |
 | Between a brand gallery’s thumbnails | `--verity-spacing-md`; `--verity-spacing-sm` for `sm` |
-| Between the project and the year, `sm` | None, as in Figma |
+| Between the company and the year, `sm` | None, as in Figma |
 | Where `sm` switches from stacked to side by side, measured on the card | `--verity-portfolio-card-stack-width` (640) |
 | Corners and border | `--verity-border-radius-md`, `--verity-border-width-sm` |
 
@@ -154,7 +156,7 @@ Each brand border is one step lighter than its fill, so the card’s edge shows 
 | Property `State` | Not a prop: hover, focus, and active come from the browser |
 | The pictures cropped to 105% in hover, focus, and active | The zoom, `--verity-portfolio-card-image-scale-hover`, animated in code |
 | The focus ring, with `border/radius/sm` corners | An outline that follows the card’s `md` corners |
-| The TextBlock, Heading, and text layers | `heading`, `project`, and `year`. The heading is in `display-sm`, a real `<h2>` or `<h3>`. |
+| The TextBlock, Heading, and text layers, including `Company` | `heading`, `company`, and `year`. The heading is in `display-sm`, a real `<h2>` or `<h3>`. |
 | The thumbnails | `thumbnail` for a case study, `thumbnails` (three) for a brand gallery |
 | The Button-style label, with the `forward` icon | Set by `type`, with nothing to choose. In code it’s `Button` with `as="span"`, not a second link. |
 | Sample text and pictures | Placeholders: the site passes its own |
