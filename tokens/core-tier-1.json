@@ -632,6 +632,22 @@
             ]
           }
         }
+      },
+      "44": {
+        "$type": "dimension",
+        "$value": "44px",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "FONT_WEIGHT",
+              "FONT_SIZE",
+              "LINE_HEIGHT",
+              "LETTER_SPACING",
+              "PARAGRAPH_SPACING",
+              "PARAGRAPH_INDENT"
+            ]
+          }
+        }
       }
     },
     "text-transform": {
@@ -1002,6 +1018,22 @@
       "104": {
         "$type": "dimension",
         "$value": "104px",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "FONT_WEIGHT",
+              "FONT_SIZE",
+              "LINE_HEIGHT",
+              "LETTER_SPACING",
+              "PARAGRAPH_SPACING",
+              "PARAGRAPH_INDENT"
+            ]
+          }
+        }
+      },
+      "52": {
+        "$type": "dimension",
+        "$value": "52px",
         "$extensions": {
           "com.figma": {
             "scopes": [

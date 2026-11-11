@@ -111,6 +111,7 @@
   --verity-typography-font-size-28: 28px;
   --verity-typography-font-size-32: 32px;
   --verity-typography-font-size-40: 40px;
+  --verity-typography-font-size-44: 44px;
   --verity-typography-font-size-48: 48px;
   --verity-typography-font-size-56: 56px;
   --verity-typography-font-size-64: 64px;
@@ -136,6 +137,7 @@
   --verity-typography-line-height-36: 36px;
   --verity-typography-line-height-40: 40px;
   --verity-typography-line-height-48: 48px;
+  --verity-typography-line-height-52: 52px;
   --verity-typography-line-height-56: 56px;
   --verity-typography-line-height-64: 64px;
   --verity-typography-line-height-72: 72px;
@@ -302,9 +304,9 @@
   --verity-typography-title-default-font-size: var(--verity-typography-font-size-28);
   --verity-typography-display-default-mobile-font-weight: var(--verity-typography-font-weight-800);
   --verity-typography-display-default-mobile-font-family: var(--verity-typography-font-family-schibsted-grotesk);
-  --verity-typography-display-default-mobile-font-size: var(--verity-typography-font-size-48);
+  --verity-typography-display-default-mobile-font-size: var(--verity-typography-font-size-44);
   --verity-typography-display-default-mobile-letter-spacing: var(--verity-typography-letter-spacing-minus-1-half);
-  --verity-typography-display-default-mobile-line-height: var(--verity-typography-line-height-56);
+  --verity-typography-display-default-mobile-line-height: var(--verity-typography-line-height-52);
   --verity-typography-title-lg-mobile-letter-spacing: var(--verity-typography-letter-spacing-minus-half);
   --verity-typography-title-lg-mobile-font-size: var(--verity-typography-font-size-28);
   --verity-typography-title-lg-mobile-font-weight: var(--verity-typography-font-weight-700);
@@ -388,10 +390,10 @@
   --verity-typography-body-lg-font-weight: var(--verity-typography-font-weight-400);
   --verity-typography-body-lg-text-transform: var(--verity-typography-text-transform-none);
   --verity-typography-display-sm-mobile-letter-spacing: var(--verity-typography-letter-spacing-minus-1);
-  --verity-typography-display-sm-mobile-font-size: var(--verity-typography-font-size-48);
+  --verity-typography-display-sm-mobile-font-size: var(--verity-typography-font-size-44);
   --verity-typography-display-sm-mobile-font-family: var(--verity-typography-font-family-schibsted-grotesk);
   --verity-typography-display-sm-mobile-font-weight: var(--verity-typography-font-weight-800);
-  --verity-typography-display-sm-mobile-line-height: var(--verity-typography-line-height-56);
+  --verity-typography-display-sm-mobile-line-height: var(--verity-typography-line-height-52);
   --verity-typography-meta-sm-letter-spacing: var(--verity-typography-letter-spacing-2);
   --verity-typography-meta-sm-line-height: var(--verity-typography-line-height-16);
   --verity-typography-meta-sm-font-weight: var(--verity-typography-font-weight-700);
@@ -842,6 +844,7 @@
   --verity-control-padding-x-lg: var(--verity-spacing-24); /** Left and right padding inside controls, so text lines up across buttons and inputs of the same size. */
   --verity-control-padding-x-xl: var(--verity-spacing-24); /** Left and right padding inside controls, so text lines up across buttons and inputs of the same size. */
   --verity-control-gap: var(--verity-spacing-8); /** Space between an icon and the label inside a control. */
+  --verity-main-padding-top: var(--verity-main-spacing-section-gap); /** Space above Main on default pages, set by Shell, so the page’s first block has room at the top. Points to main/spacing/section-gap, so the top of the page and the space between its blocks match. Focused mode uses main/padding-top-focused instead. */
 }
 
 /* Small: Responsive Tier 3 */
@@ -863,7 +866,7 @@
   --verity-media-text-stack-width: 800px; /** Below this width, a row MediaText stacks its text above its media (800px). Measured on MediaText itself, not the screen. */
   --verity-portfolio-card-image-scale-hover: 1.05; /** How much a PortfolioCard image grows inside its frame on hover, focus, and active. Code only (no Figma field takes a scale); Figma shows it by cropping the image to 105%. */
   --verity-portfolio-card-text-max-width: 400px; /** The widest PortfolioCard’s text gets in the brand gallery type, so the thumbnails get the rest. */
-  --verity-portfolio-card-content-min-width: 180px; /** Min width of a small PortfolioCard’s image and of its text. They sit side by side when both fit, and stack (image on top) when they don’t. */
+  --verity-portfolio-card-stack-width: 640px; /** Below this width, a small PortfolioCard stacks its image above its text; at or above it, they sit side by side (640px). Measured on the card itself, not the screen, like media-text/stack-width. In Figma, pick Layout=stacked or row to match the card’s width. */
   --verity-nav-card-size: 144px; /** Width and height of a NavCard (it’s square): 200, and 144 on Small so two overlapping cards fit a phone. */
   --verity-nav-card-tilt: 4; /** How far a tilted NavCard turns at rest, in degrees (left or right by its Tilt property). It straightens on hover and focus. Code only. */
   --verity-nav-card-group-gap: -24px; /** Space between the NavCards in a NavCardGroup. Negative, so each card overlaps the one before it by 24px. Stored as the negative gap because Figma can’t bind a gap to a negated token. */
@@ -1075,7 +1078,7 @@
     --verity-spacing-xxs: var(--verity-spacing-4);
     --verity-spacing-xl: var(--verity-spacing-40);
     --verity-main-spacing-section-gap: var(--verity-spacing-64);
-    --verity-main-padding-inline: var(--verity-spacing-24); /** Space between the page’s content and its edges, on both sides, set by Shell on Main and the Footer. Containers and other components have no side margins of their own. */
+    --verity-main-padding-inline: var(--verity-spacing-32); /** Space between the page’s content and its edges, on both sides, set by Shell on Main and the Footer. Containers and other components have no side margins of their own. */
     --verity-main-padding-top-focused: var(--verity-spacing-72); /** Space above Main in Shell’s focused mode, so the page’s title clears the floating BackLink: the link’s inset (spacing/md) plus its height (control/size/md), rounded to the spacing scale. */
     --verity-padding-lg: var(--verity-spacing-48);
     --verity-padding-md: var(--verity-spacing-24);
@@ -1092,6 +1095,7 @@
     --verity-control-padding-x-lg: var(--verity-spacing-24); /** Left and right padding inside controls, so text lines up across buttons and inputs of the same size. */
     --verity-control-padding-x-xl: var(--verity-spacing-24); /** Left and right padding inside controls, so text lines up across buttons and inputs of the same size. */
     --verity-control-gap: var(--verity-spacing-8); /** Space between an icon and the label inside a control. */
+    --verity-main-padding-top: var(--verity-main-spacing-section-gap); /** Space above Main on default pages, set by Shell, so the page’s first block has room at the top. Points to main/spacing/section-gap, so the top of the page and the space between its blocks match. Focused mode uses main/padding-top-focused instead. */
   }
 
   /* Medium: Responsive Tier 3 */
@@ -1113,7 +1117,7 @@
     --verity-media-text-stack-width: 800px; /** Below this width, a row MediaText stacks its text above its media (800px). Measured on MediaText itself, not the screen. */
     --verity-portfolio-card-image-scale-hover: 1.05; /** How much a PortfolioCard image grows inside its frame on hover, focus, and active. Code only (no Figma field takes a scale); Figma shows it by cropping the image to 105%. */
     --verity-portfolio-card-text-max-width: 400px; /** The widest PortfolioCard’s text gets in the brand gallery type, so the thumbnails get the rest. */
-    --verity-portfolio-card-content-min-width: 180px; /** Min width of a small PortfolioCard’s image and of its text. They sit side by side when both fit, and stack (image on top) when they don’t. */
+    --verity-portfolio-card-stack-width: 640px; /** Below this width, a small PortfolioCard stacks its image above its text; at or above it, they sit side by side (640px). Measured on the card itself, not the screen, like media-text/stack-width. In Figma, pick Layout=stacked or row to match the card’s width. */
     --verity-nav-card-size: 200px; /** Width and height of a NavCard (it’s square): 200, and 144 on Small so two overlapping cards fit a phone. */
     --verity-nav-card-tilt: 4; /** How far a tilted NavCard turns at rest, in degrees (left or right by its Tilt property). It straightens on hover and focus. Code only. */
     --verity-nav-card-group-gap: -24px; /** Space between the NavCards in a NavCardGroup. Negative, so each card overlaps the one before it by 24px. Stored as the negative gap because Figma can’t bind a gap to a negated token. */
@@ -1326,7 +1330,7 @@
     --verity-spacing-xxs: var(--verity-spacing-4);
     --verity-spacing-xl: var(--verity-spacing-56);
     --verity-main-spacing-section-gap: var(--verity-spacing-72);
-    --verity-main-padding-inline: var(--verity-spacing-40); /** Space between the page’s content and its edges, on both sides, set by Shell on Main and the Footer. Containers and other components have no side margins of their own. */
+    --verity-main-padding-inline: var(--verity-spacing-56); /** Space between the page’s content and its edges, on both sides, set by Shell on Main and the Footer. Containers and other components have no side margins of their own. */
     --verity-main-padding-top-focused: var(--verity-spacing-72); /** Space above Main in Shell’s focused mode, so the page’s title clears the floating BackLink: the link’s inset (spacing/md) plus its height (control/size/md), rounded to the spacing scale. */
     --verity-padding-lg: var(--verity-spacing-80);
     --verity-padding-md: var(--verity-spacing-32);
@@ -1343,6 +1347,7 @@
     --verity-control-padding-x-lg: var(--verity-spacing-24); /** Left and right padding inside controls, so text lines up across buttons and inputs of the same size. */
     --verity-control-padding-x-xl: var(--verity-spacing-24); /** Left and right padding inside controls, so text lines up across buttons and inputs of the same size. */
     --verity-control-gap: var(--verity-spacing-8); /** Space between an icon and the label inside a control. */
+    --verity-main-padding-top: var(--verity-main-spacing-section-gap); /** Space above Main on default pages, set by Shell, so the page’s first block has room at the top. Points to main/spacing/section-gap, so the top of the page and the space between its blocks match. Focused mode uses main/padding-top-focused instead. */
   }
 
   /* Large: Responsive Tier 3 */
@@ -1364,7 +1369,7 @@
     --verity-media-text-stack-width: 800px; /** Below this width, a row MediaText stacks its text above its media (800px). Measured on MediaText itself, not the screen. */
     --verity-portfolio-card-image-scale-hover: 1.05; /** How much a PortfolioCard image grows inside its frame on hover, focus, and active. Code only (no Figma field takes a scale); Figma shows it by cropping the image to 105%. */
     --verity-portfolio-card-text-max-width: 400px; /** The widest PortfolioCard’s text gets in the brand gallery type, so the thumbnails get the rest. */
-    --verity-portfolio-card-content-min-width: 180px; /** Min width of a small PortfolioCard’s image and of its text. They sit side by side when both fit, and stack (image on top) when they don’t. */
+    --verity-portfolio-card-stack-width: 640px; /** Below this width, a small PortfolioCard stacks its image above its text; at or above it, they sit side by side (640px). Measured on the card itself, not the screen, like media-text/stack-width. In Figma, pick Layout=stacked or row to match the card’s width. */
     --verity-nav-card-size: 200px; /** Width and height of a NavCard (it’s square): 200, and 144 on Small so two overlapping cards fit a phone. */
     --verity-nav-card-tilt: 4; /** How far a tilted NavCard turns at rest, in degrees (left or right by its Tilt property). It straightens on hover and focus. Code only. */
     --verity-nav-card-group-gap: -24px; /** Space between the NavCards in a NavCardGroup. Negative, so each card overlaps the one before it by 24px. Stored as the negative gap because Figma can’t bind a gap to a negated token. */
@@ -1577,7 +1582,7 @@
     --verity-spacing-xxs: var(--verity-spacing-4);
     --verity-spacing-xl: var(--verity-spacing-56);
     --verity-main-spacing-section-gap: var(--verity-spacing-72);
-    --verity-main-padding-inline: var(--verity-spacing-48); /** Space between the page’s content and its edges, on both sides, set by Shell on Main and the Footer. Containers and other components have no side margins of their own. */
+    --verity-main-padding-inline: var(--verity-spacing-72); /** Space between the page’s content and its edges, on both sides, set by Shell on Main and the Footer. Containers and other components have no side margins of their own. */
     --verity-main-padding-top-focused: var(--verity-spacing-72); /** Space above Main in Shell’s focused mode, so the page’s title clears the floating BackLink: the link’s inset (spacing/md) plus its height (control/size/md), rounded to the spacing scale. */
     --verity-padding-lg: var(--verity-spacing-80);
     --verity-padding-md: var(--verity-spacing-48);
@@ -1594,6 +1599,7 @@
     --verity-control-padding-x-lg: var(--verity-spacing-24); /** Left and right padding inside controls, so text lines up across buttons and inputs of the same size. */
     --verity-control-padding-x-xl: var(--verity-spacing-24); /** Left and right padding inside controls, so text lines up across buttons and inputs of the same size. */
     --verity-control-gap: var(--verity-spacing-8); /** Space between an icon and the label inside a control. */
+    --verity-main-padding-top: var(--verity-main-spacing-section-gap); /** Space above Main on default pages, set by Shell, so the page’s first block has room at the top. Points to main/spacing/section-gap, so the top of the page and the space between its blocks match. Focused mode uses main/padding-top-focused instead. */
   }
 
   /* XL: Responsive Tier 3 */
@@ -1615,7 +1621,7 @@
     --verity-media-text-stack-width: 800px; /** Below this width, a row MediaText stacks its text above its media (800px). Measured on MediaText itself, not the screen. */
     --verity-portfolio-card-image-scale-hover: 1.05; /** How much a PortfolioCard image grows inside its frame on hover, focus, and active. Code only (no Figma field takes a scale); Figma shows it by cropping the image to 105%. */
     --verity-portfolio-card-text-max-width: 400px; /** The widest PortfolioCard’s text gets in the brand gallery type, so the thumbnails get the rest. */
-    --verity-portfolio-card-content-min-width: 180px; /** Min width of a small PortfolioCard’s image and of its text. They sit side by side when both fit, and stack (image on top) when they don’t. */
+    --verity-portfolio-card-stack-width: 640px; /** Below this width, a small PortfolioCard stacks its image above its text; at or above it, they sit side by side (640px). Measured on the card itself, not the screen, like media-text/stack-width. In Figma, pick Layout=stacked or row to match the card’s width. */
     --verity-nav-card-size: 200px; /** Width and height of a NavCard (it’s square): 200, and 144 on Small so two overlapping cards fit a phone. */
     --verity-nav-card-tilt: 4; /** How far a tilted NavCard turns at rest, in degrees (left or right by its Tilt property). It straightens on hover and focus. Code only. */
     --verity-nav-card-group-gap: -24px; /** Space between the NavCards in a NavCardGroup. Negative, so each card overlaps the one before it by 24px. Stored as the negative gap because Figma can’t bind a gap to a negated token. */

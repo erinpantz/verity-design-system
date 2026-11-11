@@ -249,7 +249,7 @@
       },
       "font-size": {
         "$type": "dimension",
-        "$value": "{typography.font-size.48}",
+        "$value": "{typography.font-size.44}",
         "$extensions": {
           "com.figma": {
             "scopes": [
@@ -281,7 +281,7 @@
       },
       "line-height": {
         "$type": "dimension",
-        "$value": "{typography.line-height.56}",
+        "$value": "{typography.line-height.52}",
         "$extensions": {
           "com.figma": {
             "scopes": [
@@ -1355,7 +1355,7 @@
       },
       "font-size": {
         "$type": "dimension",
-        "$value": "{typography.font-size.48}",
+        "$value": "{typography.font-size.44}",
         "$extensions": {
           "com.figma": {
             "scopes": [
@@ -1391,7 +1391,7 @@
       },
       "line-height": {
         "$type": "dimension",
-        "$value": "{typography.line-height.56}",
+        "$value": "{typography.line-height.52}",
         "$extensions": {
           "com.figma": {
             "scopes": [

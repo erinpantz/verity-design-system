@@ -417,10 +417,10 @@
         }
       }
     },
-    "content-min-width": {
+    "stack-width": {
       "$type": "dimension",
-      "$value": "180px",
-      "$description": "Min width of a small PortfolioCard’s image and of its text. They sit side by side when both fit, and stack (image on top) when they don’t.",
+      "$value": "640px",
+      "$description": "Below this width, a small PortfolioCard stacks its image above its text; at or above it, they sit side by side (640px). Measured on the card itself, not the screen, like media-text/stack-width. In Figma, pick Layout=stacked or row to match the card’s width.",
       "$extensions": {
         "com.figma": {
           "scopes": [

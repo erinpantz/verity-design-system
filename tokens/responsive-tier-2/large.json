@@ -8,7 +8,7 @@
     },
     "padding-inline": {
       "$type": "dimension",
-      "$value": "{spacing.40}",
+      "$value": "{spacing.56}",
       "$description": "Space between the page’s content and its edges, on both sides, set by Shell on Main and the Footer. Containers and other components have no side margins of their own.",
       "$extensions": {
         "com.figma": {
@@ -22,6 +22,18 @@
       "$type": "dimension",
       "$value": "{spacing.72}",
       "$description": "Space above Main in Shell’s focused mode, so the page’s title clears the floating BackLink: the link’s inset (spacing/md) plus its height (control/size/md), rounded to the spacing scale.",
+      "$extensions": {
+        "com.figma": {
+          "scopes": [
+            "GAP"
+          ]
+        }
+      }
+    },
+    "padding-top": {
+      "$type": "dimension",
+      "$value": "{main.spacing.section-gap}",
+      "$description": "Space above Main on default pages, set by Shell, so the page’s first block has room at the top. Points to main/spacing/section-gap, so the top of the page and the space between its blocks match. Focused mode uses main/padding-top-focused instead.",
       "$extensions": {
         "com.figma": {
           "scopes": [

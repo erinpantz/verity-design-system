@@ -29,6 +29,18 @@
           ]
         }
       }
+    },
+    "padding-top": {
+      "$type": "dimension",
+      "$value": "{main.spacing.section-gap}",
+      "$description": "Space above Main on default pages, set by Shell, so the page’s first block has room at the top. Points to main/spacing/section-gap, so the top of the page and the space between its blocks match. Focused mode uses main/padding-top-focused instead.",
+      "$extensions": {
+        "com.figma": {
+          "scopes": [
+            "GAP"
+          ]
+        }
+      }
     }
   },
   "padding": {
