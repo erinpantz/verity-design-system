@@ -4,6 +4,12 @@ Every release of Verity, newest first. The format follows [Keep a Changelog](htt
 
 Sites install Verity by tag (for example `github:erinpantz/verity-design-system#v0.3.0`), so a site only changes when it moves to a new tag on purpose.
 
+## [0.7.2] – 2026-11-12
+
+### Changed
+
+- **PortfolioCard:** a deeper fill at rest, `color/background/brand-active` (was `brand`), and no border in any state. Hover and focus keep `brand-hover`; press keeps `brand-active`, with the card settling back down. A small card still switches to side by side at exactly 640.
+
 ## [0.7.1] – 2026-11-12
 
 ### Changed
@@ -335,6 +341,7 @@ The first library release: everything in the Figma library except Animation, wit
 - **Theme helpers:** `themeScript`, `useTheme`, and `setTheme`, so a site applies the saved theme before the first paint.
 - **The library build:** one entry point with every component and its prop types, one stylesheet (`verity-design-system/styles.css`) with the fonts inside it, and `npm run build:watch` for working with a linked copy.
 
+[0.7.2]: https://github.com/erinpantz/verity-design-system/compare/v0.7.1...v0.7.2
 [0.7.1]: https://github.com/erinpantz/verity-design-system/compare/v0.7.0...v0.7.1
 [0.7.0]: https://github.com/erinpantz/verity-design-system/compare/v0.6.1...v0.7.0
 [0.6.1]: https://github.com/erinpantz/verity-design-system/compare/v0.6.0...v0.6.1
