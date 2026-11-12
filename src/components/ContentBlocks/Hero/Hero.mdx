@@ -90,11 +90,12 @@ The media comes after the text in the reading order, and the Hero is still the p
 
 ## Space
 
-A Hero fills the width it’s given and adds no space outside itself. Its padding is there for its background, so only a visible band has it: on `default`, where there’s no band to see, the text lines up with the blocks above and below it.
+A Hero fills the width it’s given and adds no space outside itself. On `knockout` and `brand`, its padding is there for the band, on every side. On `default`, there’s no band to see: the padding is on the top and bottom only, to give the page’s opening more room, and the sides have none, so the text lines up with the column.
 
 | Space | Token |
 |---|---|
-| Inside, on every side | `--verity-padding-lg` on `knockout` and `brand`. `--verity-padding-none` on `default`. |
+| Inside, on `knockout` and `brand` | `--verity-padding-lg` on every side |
+| Inside, on `default` | `--verity-padding-lg` on the top and bottom; `--verity-padding-none` on the sides |
 | Between the headline and the intro, inside the text group | `--verity-spacing-sm` |
 | Between the text group and the actions | `--verity-spacing-lg` |
 | Between the body and the media, side by side or wrapped | `--verity-spacing-lg` |

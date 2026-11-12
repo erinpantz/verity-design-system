@@ -9,8 +9,9 @@
    text. No breakpoint needed. Without media, the body is alone in the row.
 
    Padding comes from the background: brand and knockout are visible bands
-   and keep padding/lg; default has no visible band, so it has none, and its
-   text lines up with the blocks above and below it. */
+   and keep padding/lg on every side. Default has no visible band: it has
+   padding/lg on the top and bottom only, to give the page's opening more
+   room, and none on the sides, so its text lines up with the column. */
 
 .hero {
   display: flex;
@@ -28,7 +29,7 @@
    color for the buttons on it (see Button.module.css), since some buttons'
    own colors don't match the band */
 .default {
-  --padding: var(--verity-padding-none);
+  --padding: var(--verity-padding-lg) var(--verity-padding-none);
   --background: var(--verity-color-background-default);
   --content: var(--verity-color-content-default);
   --intro: var(--verity-color-content-subtle);

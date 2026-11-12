@@ -29,7 +29,7 @@ Each level of a page owns one kind of space. When something looks too close or t
 
 | What | Rule | Examples |
 |---|---|---|
-| No outside space | A component’s root has no space before, margin, or padding that pushes other things away. Root padding is only for a visible background, a border, or a tap area. | `Grid`, `TextBlock`, and `MediaBlock` have no space before. `Hero` has padding because it has a background. |
+| No outside space | A component’s root has no space before, margin, or padding that pushes other things away. Root padding is only for a visible background, a border, or a tap area. | `Grid`, `TextBlock`, and `MediaBlock` have no space before. `Hero` has padding because it has a background. The one deliberate exception: a default `Hero` has top and bottom padding with no visible background, for room around the page’s opening. |
 | Gaps, not spacers | Space between siblings comes from the parent’s gap. Don’t add empty frames or extra padding to push things apart. | `ProseItem`’s space before is the only spacer, because each type of text needs different space above it. |
 | Every value is a token | Gaps, padding, and control sizes are bound to variables. Never type a number. | `Hero` Actions gap → `spacing/xs`, not 8. |
 | Choose the right tier | Use Tier 2 tokens for general spacing. Use a Tier 3 token when the value belongs to one component. Never bind Core Tier 1 tokens directly. | `spacing/xl` between Section blocks. `nav-item/padding` inside `NavItem`. Not `spacing/8`. |
