@@ -4,6 +4,23 @@ Every release of Verity, newest first. The format follows [Keep a Changelog](htt
 
 Sites install Verity by tag (for example `github:erinpantz/verity-design-system#v0.3.0`), so a site only changes when it moves to a new tag on purpose.
 
+## [0.8.6] – 2026-11-12
+
+Home’s Hero is now on the default background, with no band, so the Reel’s cards swing out across the page. Cards away from their spot now dim, so they read as further back and never put a bright screenshot behind the headline, and they pass behind the rest of the page instead of over it.
+
+### Added
+
+- **Tokens:** `reel/scrim-opacity` (0.7).
+- **Reel:** a scrim on each card, `color/background/default` at an opacity that follows the card’s distance from its spot: none as far as a turn carries a card (13.9° for five, so the dip, the overshoot, and the settle stay bright), rising smoothly to `reel/scrim-opacity` by half the spacing between images (36° for five). No scrim with reduce motion on.
+- **Shell:** a Home story: a wide default Hero with a Reel, then the page.
+
+### Changed
+
+- **Tokens:** `reel/angle/dip`, `reel/angle/settle`, and `reel/radius` changed type: they’re plain numbers now (10, 3, 1.7), not dimensions (`10px`, `3px`, `1.7px`). Reel reads them as numbers; the turn is the same.
+- **Hero:** on `default`, moving media passes behind the page: a Reel’s cards go behind MainNav, the content after the Hero, the Footer, ThemeToggle, and BackLink, as well as the Hero’s own text. A default Hero has no fill now (the page shows through), and sets `--media-moving-layer`, which Reel reads. On `subtle`, `knockout`, and `brand`, nothing changes: the band clips the cards.
+- **Shell:** the page is one layer (`isolation`), so moving media behind it stays above Shell’s background, and the page column clips sideways only (`overflow-x: clip`), so a card past the window’s edge never makes the page scroll sideways.
+- **Reel:** the cards never take the pointer, so they never block a click on what they pass behind or over. The pause button, and holding on hover and keyboard focus, work as before.
+
 ## [0.8.5] – 2026-11-12
 
 A Hero’s media now sits beside its text in more cases, and a Reel and a photo in a Hero are always the same size.
@@ -453,6 +470,7 @@ The first library release: everything in the Figma library except Animation, wit
 - **Theme helpers:** `themeScript`, `useTheme`, and `setTheme`, so a site applies the saved theme before the first paint.
 - **The library build:** one entry point with every component and its prop types, one stylesheet (`verity-design-system/styles.css`) with the fonts inside it, and `npm run build:watch` for working with a linked copy.
 
+[0.8.6]: https://github.com/erinpantz/verity-design-system/compare/v0.8.5...v0.8.6
 [0.8.5]: https://github.com/erinpantz/verity-design-system/compare/v0.8.4...v0.8.5
 [0.8.4]: https://github.com/erinpantz/verity-design-system/compare/v0.8.3...v0.8.4
 [0.8.3]: https://github.com/erinpantz/verity-design-system/compare/v0.8.2...v0.8.3
