@@ -1,0 +1,17 @@
+/* A round brand-colored badge, padded on every side around the mark, which is
+   an icon's size. It hugs its contents: 24 + 2 × 8 = 40px. */
+
+.badge {
+  display: inline-flex;
+  flex-shrink: 0;
+  padding: var(--verity-padding-xxs);
+  border-radius: var(--verity-border-radius-round);
+  background-color: var(--verity-color-background-brand);
+  color: var(--verity-color-content-default);
+}
+
+.mark {
+  display: block;
+  inline-size: var(--verity-icon-size-md);
+  block-size: var(--verity-icon-size-md);
+}

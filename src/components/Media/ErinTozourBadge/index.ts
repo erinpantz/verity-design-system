@@ -1,0 +1,1 @@
+export { ErinTozourBadge } from './ErinTozourBadge';

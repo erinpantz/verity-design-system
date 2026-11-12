@@ -1,0 +1,55 @@
+import { Meta, Canvas } from '@storybook/addon-docs/blocks';
+import { VerityDocs } from '../../../foundations/VerityDocs';
+import * as ErinTozourBadgeStories from './ErinTozourBadge.stories';
+
+<Meta of={ErinTozourBadgeStories} />
+
+<VerityDocs>
+
+# ErinTozourBadge
+
+The “e” mark, the logo’s first letter, on a round brand-colored badge. It keeps the brand in view where the logo isn’t shown, like NavOverlay, which covers the page and its logo.
+
+<Canvas of={ErinTozourBadgeStories.Default} />
+
+## When to use
+
+- **Where the logo is covered or there’s only room for a square,** like NavOverlay’s header, opposite the back button.
+- **Not as the site title or a link home.** Use ErinTozourLogo, which has a name screen readers hear. The badge is decorative.
+- **Not next to the logo.** The two say the same thing; show one.
+
+## Accessibility
+
+The badge is a `<span>` with `aria-hidden="true"`, so screen readers skip it, and it can’t take focus. It adds no information: wherever it appears, the page already names the site.
+
+| Situation | What to do | Example |
+|---|---|---|
+| The badge is the only sign of whose site it is | Use ErinTozourLogo instead, so screen readers hear “Erin Tozour” | A page with no MainNav |
+| Something needs to happen when it’s pressed | Don’t make the badge a link or button. Use a link or IconButton with its own name. | NavOverlay’s back button, not the badge, closes the menu |
+
+## Size
+
+It has one size at every breakpoint: the mark at an icon’s size, with the extra-extra-small padding around it, 40px in all.
+
+| Part | Token | Value |
+|---|---|---|
+| Mark | `--verity-icon-size-md` | 24px |
+| Padding, every side | `--verity-padding-xxs` | 8px |
+| Corners | `--verity-border-radius-round` | Round |
+
+## Color
+
+The mark is `--verity-color-content-default` on `--verity-color-background-brand`, so it follows the theme: 8.6:1 in Blue and 5.3:1 in Red.
+
+## Props
+
+ErinTozourBadge has no props: its mark, size, and colors are fixed.
+
+## In Figma
+
+| Figma | Code |
+|---|---|
+| Component `ErinTozourBadge`, on the Branding page | `<ErinTozourBadge />` |
+| Its `ErinTozourMark` instance, the “e” | The logo file’s first shape, `brand/erin-tozour-logo.svg`, cropped to a square in `ErinTozourLogo/logoGlyphs.ts` |
+
+</VerityDocs>

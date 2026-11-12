@@ -61,6 +61,7 @@ export type { VerticalStackProps } from './components/Layout/VerticalStack';
 // Media
 export { Animation } from './components/Media/Animation';
 export type { AnimationProps } from './components/Media/Animation';
+export { ErinTozourBadge } from './components/Media/ErinTozourBadge';
 export { ErinTozourLogo } from './components/Media/ErinTozourLogo';
 export type { ErinTozourLogoProps } from './components/Media/ErinTozourLogo';
 export { Gallery } from './components/Media/Gallery';
