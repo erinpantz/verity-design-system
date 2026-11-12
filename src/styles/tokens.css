@@ -468,7 +468,7 @@
   --verity-typography-body-xl-mobile-font-family: var(--verity-typography-font-family-plus-jakarta-sans);
   --verity-typography-body-xl-mobile-font-weight: var(--verity-typography-font-weight-400);
   --verity-typography-body-xl-mobile-font-size: var(--verity-typography-font-size-24);
-  --verity-typography-body-xl-mobile-line-height: var(--verity-typography-line-height-32);
+  --verity-typography-body-xl-mobile-line-height: var(--verity-typography-line-height-36);
   --verity-typography-body-xl-mobile-letter-spacing: var(--verity-typography-letter-spacing-0);
   --verity-typography-body-xl-mobile-text-transform: var(--verity-typography-text-transform-none);
   --verity-typography-display-default-mobile-text-transform: var(--verity-typography-display-default-text-transform);
@@ -874,14 +874,13 @@
   --verity-nav-card-size: 144px; /** Width and height of a NavCard (it’s square): 200, and 144 on Small so two overlapping cards fit a phone. */
   --verity-nav-card-tilt: 4; /** How far a tilted NavCard turns at rest, in degrees (left or right by its Tilt property). It straightens on hover and focus. Code only. */
   --verity-nav-card-group-gap: -24px; /** Space between the NavCards in a NavCardGroup. Negative, so each card overlaps the one before it by 24px. Stored as the negative gap because Figma can’t bind a gap to a negated token. */
-  --verity-hero-text-min-width: 200px; /** The narrowest a Hero’s text (Body) gets beside media: 560 on XL and Large, 400 on Medium, 200 on Small. When the text and the media don’t both fit, the media wraps under the text. */
-  --verity-hero-media-width: 320px; /** The widest a Hero’s media gets: 560 on XL, 480 on Large, 400 on Medium, 320 on Small, and never more than 100% of its space. A photo fills it (in Figma, set the Image’s width to this variable); media with its own size, like a Reel (reel/size, 420), keeps that size. */
+  --verity-hero-text-min-width: 200px; /** The narrowest a Hero’s text (Body) gets beside media: 460 on XL and Large, 300 on Medium, 200 on Small. When the text and the media don’t both fit, the media wraps under the text. Lowered (Nov 12) so the media sits beside the text in more cases: from 1388px on XL, 1116px on Large, and 768px on Medium. */
+  --verity-hero-media-width: 280px; /** The widest a Hero’s media gets: 560 on XL, 320 on Large, 260 on Medium, 280 on Small, and never more than 100% of its space. A photo fills it (in Figma, set the Image’s width to this variable), and reel/size points to it, so a Reel is the same size. Smaller on Large and Medium so the media sits beside the text in more cases. */
   --verity-reel-easing-rise: cubic-bezier(0.34, 1.78, 0.64, 1); /** The rise curve, cubic-bezier(0.34, 1.78, 0.64, 1): a stronger overshoot than motion/easing/playful (1.56), for a whole disc turning. Only its first 52.5% is used, up to its peak, 17% past the target. */
   --verity-reel-angle-dip: 10px; /** How far the disc turns the wrong way before it turns, in degrees. Code only. */
   --verity-reel-angle-settle: 3px; /** How far the card sinks below its spot after the overshoot, in degrees. About a third of the overshoot, like a spring winding down. Code only. */
   --verity-reel-tilt: 0.6; /** How much the cards turn with the disc: 1 is a rigid disc, 0 keeps them upright. Code only. */
   --verity-reel-radius: 1.7px; /** The disc’s radius, as a multiple of the card’s width. The pivot is to the right of the card, so cards arc up and to the right, and the next rises from below. Code only. */
-  --verity-reel-size: 320px; /** Width and height of a Reel card (it’s square): 420 on XL and Large, 360 on Medium, 320 on Small. In code it’s also at most 100% of its space. */
   --verity-main-nav-logo-offset: var(--verity-spacing-8); /** Bottom padding under the MainNav logo. Lifts the logo so its lowercase letters line up with the NavItem labels beside it. */
   --verity-main-nav-logo-height: var(--verity-size-24); /** Height of the Erin Tozour logo in MainNav: 32 on XL and Large, 24 on Medium and Small. Its width follows, so the logo keeps its proportions. */
   --verity-nav-item-padding: var(--verity-spacing-8); /** Padding on all sides of a NavItem (its tap area). */
@@ -900,6 +899,7 @@
   --verity-reel-duration-fall: var(--verity-duration-300); /** From the top of the overshoot back through the resting spot to just below it (reel/angle/settle), in milliseconds. */
   --verity-reel-duration-settle: var(--verity-duration-260); /** From just below the resting spot up to rest, in milliseconds. */
   --verity-reel-duration-entrance-delay: var(--verity-duration-600); /** The entrance: the Reel opens on its last image, then this long after the page loads it turns once to the first, so a visitor scanning the page sees it move right away. Then the normal holds start. No entrance with reduce motion. */
+  --verity-reel-size: var(--verity-hero-media-width); /** Width and height of a Reel card (it’s square). Points to hero/media-width, so a Reel and a photo in a Hero are always the same size: 560, 320, 260, 280. In code it’s also at most 100% of its space. */
   --verity-main-nav-link-gap: var(--verity-spacing-sm); /** Space between the NavItems in MainNav, in a row on the page and in a column in NavOverlay. */
   --verity-main-nav-gap: var(--verity-spacing-md); /** The least space between the logo and the NavItems in MainNav. The logo’s frame fills the rest, so the links sit at the end. */
   --verity-nav-overlay-padding: var(--verity-padding-sm); /** Padding on all sides of NavOverlay. */
@@ -1132,14 +1132,13 @@
     --verity-nav-card-size: 200px; /** Width and height of a NavCard (it’s square): 200, and 144 on Small so two overlapping cards fit a phone. */
     --verity-nav-card-tilt: 4; /** How far a tilted NavCard turns at rest, in degrees (left or right by its Tilt property). It straightens on hover and focus. Code only. */
     --verity-nav-card-group-gap: -24px; /** Space between the NavCards in a NavCardGroup. Negative, so each card overlaps the one before it by 24px. Stored as the negative gap because Figma can’t bind a gap to a negated token. */
-    --verity-hero-text-min-width: 400px; /** The narrowest a Hero’s text (Body) gets beside media: 560 on XL and Large, 400 on Medium, 200 on Small. When the text and the media don’t both fit, the media wraps under the text. */
-    --verity-hero-media-width: 400px; /** The widest a Hero’s media gets: 560 on XL, 480 on Large, 400 on Medium, 320 on Small, and never more than 100% of its space. A photo fills it (in Figma, set the Image’s width to this variable); media with its own size, like a Reel (reel/size, 420), keeps that size. */
+    --verity-hero-text-min-width: 300px; /** The narrowest a Hero’s text (Body) gets beside media: 460 on XL and Large, 300 on Medium, 200 on Small. When the text and the media don’t both fit, the media wraps under the text. Lowered (Nov 12) so the media sits beside the text in more cases: from 1388px on XL, 1116px on Large, and 768px on Medium. */
+    --verity-hero-media-width: 260px; /** The widest a Hero’s media gets: 560 on XL, 320 on Large, 260 on Medium, 280 on Small, and never more than 100% of its space. A photo fills it (in Figma, set the Image’s width to this variable), and reel/size points to it, so a Reel is the same size. Smaller on Large and Medium so the media sits beside the text in more cases. */
     --verity-reel-easing-rise: cubic-bezier(0.34, 1.78, 0.64, 1); /** The rise curve, cubic-bezier(0.34, 1.78, 0.64, 1): a stronger overshoot than motion/easing/playful (1.56), for a whole disc turning. Only its first 52.5% is used, up to its peak, 17% past the target. */
     --verity-reel-angle-dip: 10px; /** How far the disc turns the wrong way before it turns, in degrees. Code only. */
     --verity-reel-angle-settle: 3px; /** How far the card sinks below its spot after the overshoot, in degrees. About a third of the overshoot, like a spring winding down. Code only. */
     --verity-reel-tilt: 0.6; /** How much the cards turn with the disc: 1 is a rigid disc, 0 keeps them upright. Code only. */
     --verity-reel-radius: 1.7px; /** The disc’s radius, as a multiple of the card’s width. The pivot is to the right of the card, so cards arc up and to the right, and the next rises from below. Code only. */
-    --verity-reel-size: 360px; /** Width and height of a Reel card (it’s square): 420 on XL and Large, 360 on Medium, 320 on Small. In code it’s also at most 100% of its space. */
     --verity-main-nav-logo-offset: var(--verity-spacing-8); /** Bottom padding under the MainNav logo. Lifts the logo so its lowercase letters line up with the NavItem labels beside it. */
     --verity-main-nav-logo-height: var(--verity-size-24); /** Height of the Erin Tozour logo in MainNav: 32 on XL and Large, 24 on Medium and Small. Its width follows, so the logo keeps its proportions. */
     --verity-nav-item-padding: var(--verity-spacing-8); /** Padding on all sides of a NavItem (its tap area). */
@@ -1158,6 +1157,7 @@
     --verity-reel-duration-fall: var(--verity-duration-300); /** From the top of the overshoot back through the resting spot to just below it (reel/angle/settle), in milliseconds. */
     --verity-reel-duration-settle: var(--verity-duration-260); /** From just below the resting spot up to rest, in milliseconds. */
     --verity-reel-duration-entrance-delay: var(--verity-duration-600); /** The entrance: the Reel opens on its last image, then this long after the page loads it turns once to the first, so a visitor scanning the page sees it move right away. Then the normal holds start. No entrance with reduce motion. */
+    --verity-reel-size: var(--verity-hero-media-width); /** Width and height of a Reel card (it’s square). Points to hero/media-width, so a Reel and a photo in a Hero are always the same size: 560, 320, 260, 280. In code it’s also at most 100% of its space. */
     --verity-main-nav-link-gap: var(--verity-spacing-sm); /** Space between the NavItems in MainNav, in a row on the page and in a column in NavOverlay. */
     --verity-main-nav-gap: var(--verity-spacing-md); /** The least space between the logo and the NavItems in MainNav. The logo’s frame fills the rest, so the links sit at the end. */
     --verity-nav-overlay-padding: var(--verity-padding-sm); /** Padding on all sides of NavOverlay. */
@@ -1391,14 +1391,13 @@
     --verity-nav-card-size: 200px; /** Width and height of a NavCard (it’s square): 200, and 144 on Small so two overlapping cards fit a phone. */
     --verity-nav-card-tilt: 4; /** How far a tilted NavCard turns at rest, in degrees (left or right by its Tilt property). It straightens on hover and focus. Code only. */
     --verity-nav-card-group-gap: -24px; /** Space between the NavCards in a NavCardGroup. Negative, so each card overlaps the one before it by 24px. Stored as the negative gap because Figma can’t bind a gap to a negated token. */
-    --verity-hero-text-min-width: 560px; /** The narrowest a Hero’s text (Body) gets beside media: 560 on XL and Large, 400 on Medium, 200 on Small. When the text and the media don’t both fit, the media wraps under the text. */
-    --verity-hero-media-width: 480px; /** The widest a Hero’s media gets: 560 on XL, 480 on Large, 400 on Medium, 320 on Small, and never more than 100% of its space. A photo fills it (in Figma, set the Image’s width to this variable); media with its own size, like a Reel (reel/size, 420), keeps that size. */
+    --verity-hero-text-min-width: 460px; /** The narrowest a Hero’s text (Body) gets beside media: 460 on XL and Large, 300 on Medium, 200 on Small. When the text and the media don’t both fit, the media wraps under the text. Lowered (Nov 12) so the media sits beside the text in more cases: from 1388px on XL, 1116px on Large, and 768px on Medium. */
+    --verity-hero-media-width: 320px; /** The widest a Hero’s media gets: 560 on XL, 320 on Large, 260 on Medium, 280 on Small, and never more than 100% of its space. A photo fills it (in Figma, set the Image’s width to this variable), and reel/size points to it, so a Reel is the same size. Smaller on Large and Medium so the media sits beside the text in more cases. */
     --verity-reel-easing-rise: cubic-bezier(0.34, 1.78, 0.64, 1); /** The rise curve, cubic-bezier(0.34, 1.78, 0.64, 1): a stronger overshoot than motion/easing/playful (1.56), for a whole disc turning. Only its first 52.5% is used, up to its peak, 17% past the target. */
     --verity-reel-angle-dip: 10px; /** How far the disc turns the wrong way before it turns, in degrees. Code only. */
     --verity-reel-angle-settle: 3px; /** How far the card sinks below its spot after the overshoot, in degrees. About a third of the overshoot, like a spring winding down. Code only. */
     --verity-reel-tilt: 0.6; /** How much the cards turn with the disc: 1 is a rigid disc, 0 keeps them upright. Code only. */
     --verity-reel-radius: 1.7px; /** The disc’s radius, as a multiple of the card’s width. The pivot is to the right of the card, so cards arc up and to the right, and the next rises from below. Code only. */
-    --verity-reel-size: 420px; /** Width and height of a Reel card (it’s square): 420 on XL and Large, 360 on Medium, 320 on Small. In code it’s also at most 100% of its space. */
     --verity-main-nav-logo-offset: var(--verity-spacing-16); /** Bottom padding under the MainNav logo. Lifts the logo so its lowercase letters line up with the NavItem labels beside it. */
     --verity-main-nav-logo-height: var(--verity-size-32); /** Height of the Erin Tozour logo in MainNav: 32 on XL and Large, 24 on Medium and Small. Its width follows, so the logo keeps its proportions. */
     --verity-nav-item-padding: var(--verity-spacing-8); /** Padding on all sides of a NavItem (its tap area). */
@@ -1417,6 +1416,7 @@
     --verity-reel-duration-fall: var(--verity-duration-300); /** From the top of the overshoot back through the resting spot to just below it (reel/angle/settle), in milliseconds. */
     --verity-reel-duration-settle: var(--verity-duration-260); /** From just below the resting spot up to rest, in milliseconds. */
     --verity-reel-duration-entrance-delay: var(--verity-duration-600); /** The entrance: the Reel opens on its last image, then this long after the page loads it turns once to the first, so a visitor scanning the page sees it move right away. Then the normal holds start. No entrance with reduce motion. */
+    --verity-reel-size: var(--verity-hero-media-width); /** Width and height of a Reel card (it’s square). Points to hero/media-width, so a Reel and a photo in a Hero are always the same size: 560, 320, 260, 280. In code it’s also at most 100% of its space. */
     --verity-main-nav-link-gap: var(--verity-spacing-sm); /** Space between the NavItems in MainNav, in a row on the page and in a column in NavOverlay. */
     --verity-main-nav-gap: var(--verity-spacing-md); /** The least space between the logo and the NavItems in MainNav. The logo’s frame fills the rest, so the links sit at the end. */
     --verity-nav-overlay-padding: var(--verity-padding-sm); /** Padding on all sides of NavOverlay. */
@@ -1650,14 +1650,13 @@
     --verity-nav-card-size: 200px; /** Width and height of a NavCard (it’s square): 200, and 144 on Small so two overlapping cards fit a phone. */
     --verity-nav-card-tilt: 4; /** How far a tilted NavCard turns at rest, in degrees (left or right by its Tilt property). It straightens on hover and focus. Code only. */
     --verity-nav-card-group-gap: -24px; /** Space between the NavCards in a NavCardGroup. Negative, so each card overlaps the one before it by 24px. Stored as the negative gap because Figma can’t bind a gap to a negated token. */
-    --verity-hero-text-min-width: 560px; /** The narrowest a Hero’s text (Body) gets beside media: 560 on XL and Large, 400 on Medium, 200 on Small. When the text and the media don’t both fit, the media wraps under the text. */
-    --verity-hero-media-width: 560px; /** The widest a Hero’s media gets: 560 on XL, 480 on Large, 400 on Medium, 320 on Small, and never more than 100% of its space. A photo fills it (in Figma, set the Image’s width to this variable); media with its own size, like a Reel (reel/size, 420), keeps that size. */
+    --verity-hero-text-min-width: 460px; /** The narrowest a Hero’s text (Body) gets beside media: 460 on XL and Large, 300 on Medium, 200 on Small. When the text and the media don’t both fit, the media wraps under the text. Lowered (Nov 12) so the media sits beside the text in more cases: from 1388px on XL, 1116px on Large, and 768px on Medium. */
+    --verity-hero-media-width: 560px; /** The widest a Hero’s media gets: 560 on XL, 320 on Large, 260 on Medium, 280 on Small, and never more than 100% of its space. A photo fills it (in Figma, set the Image’s width to this variable), and reel/size points to it, so a Reel is the same size. Smaller on Large and Medium so the media sits beside the text in more cases. */
     --verity-reel-easing-rise: cubic-bezier(0.34, 1.78, 0.64, 1); /** The rise curve, cubic-bezier(0.34, 1.78, 0.64, 1): a stronger overshoot than motion/easing/playful (1.56), for a whole disc turning. Only its first 52.5% is used, up to its peak, 17% past the target. */
     --verity-reel-angle-dip: 10px; /** How far the disc turns the wrong way before it turns, in degrees. Code only. */
     --verity-reel-angle-settle: 3px; /** How far the card sinks below its spot after the overshoot, in degrees. About a third of the overshoot, like a spring winding down. Code only. */
     --verity-reel-tilt: 0.6; /** How much the cards turn with the disc: 1 is a rigid disc, 0 keeps them upright. Code only. */
     --verity-reel-radius: 1.7px; /** The disc’s radius, as a multiple of the card’s width. The pivot is to the right of the card, so cards arc up and to the right, and the next rises from below. Code only. */
-    --verity-reel-size: 420px; /** Width and height of a Reel card (it’s square): 420 on XL and Large, 360 on Medium, 320 on Small. In code it’s also at most 100% of its space. */
     --verity-main-nav-logo-offset: var(--verity-spacing-16); /** Bottom padding under the MainNav logo. Lifts the logo so its lowercase letters line up with the NavItem labels beside it. */
     --verity-main-nav-logo-height: var(--verity-size-32); /** Height of the Erin Tozour logo in MainNav: 32 on XL and Large, 24 on Medium and Small. Its width follows, so the logo keeps its proportions. */
     --verity-nav-item-padding: var(--verity-spacing-8); /** Padding on all sides of a NavItem (its tap area). */
@@ -1676,6 +1675,7 @@
     --verity-reel-duration-fall: var(--verity-duration-300); /** From the top of the overshoot back through the resting spot to just below it (reel/angle/settle), in milliseconds. */
     --verity-reel-duration-settle: var(--verity-duration-260); /** From just below the resting spot up to rest, in milliseconds. */
     --verity-reel-duration-entrance-delay: var(--verity-duration-600); /** The entrance: the Reel opens on its last image, then this long after the page loads it turns once to the first, so a visitor scanning the page sees it move right away. Then the normal holds start. No entrance with reduce motion. */
+    --verity-reel-size: var(--verity-hero-media-width); /** Width and height of a Reel card (it’s square). Points to hero/media-width, so a Reel and a photo in a Hero are always the same size: 560, 320, 260, 280. In code it’s also at most 100% of its space. */
     --verity-main-nav-link-gap: var(--verity-spacing-sm); /** Space between the NavItems in MainNav, in a row on the page and in a column in NavOverlay. */
     --verity-main-nav-gap: var(--verity-spacing-md); /** The least space between the logo and the NavItems in MainNav. The logo’s frame fills the rest, so the links sit at the end. */
     --verity-nav-overlay-padding: var(--verity-padding-sm); /** Padding on all sides of NavOverlay. */

@@ -414,8 +414,8 @@
   "hero": {
     "text-min-width": {
       "$type": "dimension",
-      "$value": "560px",
-      "$description": "The narrowest a Hero’s text (Body) gets beside media: 560 on XL and Large, 400 on Medium, 200 on Small. When the text and the media don’t both fit, the media wraps under the text.",
+      "$value": "460px",
+      "$description": "The narrowest a Hero’s text (Body) gets beside media: 460 on XL and Large, 300 on Medium, 200 on Small. When the text and the media don’t both fit, the media wraps under the text. Lowered (Nov 12) so the media sits beside the text in more cases: from 1388px on XL, 1116px on Large, and 768px on Medium.",
       "$extensions": {
         "com.figma": {
           "scopes": [
@@ -427,7 +427,7 @@
     "media-width": {
       "$type": "dimension",
       "$value": "560px",
-      "$description": "The widest a Hero’s media gets: 560 on XL, 480 on Large, 400 on Medium, 320 on Small, and never more than 100% of its space. A photo fills it (in Figma, set the Image’s width to this variable); media with its own size, like a Reel (reel/size, 420), keeps that size.",
+      "$description": "The widest a Hero’s media gets: 560 on XL, 320 on Large, 260 on Medium, 280 on Small, and never more than 100% of its space. A photo fills it (in Figma, set the Image’s width to this variable), and reel/size points to it, so a Reel is the same size. Smaller on Large and Medium so the media sits beside the text in more cases.",
       "$extensions": {
         "com.figma": {
           "scopes": [
@@ -506,8 +506,8 @@
     },
     "size": {
       "$type": "dimension",
-      "$value": "420px",
-      "$description": "Width and height of a Reel card (it’s square): 420 on XL and Large, 360 on Medium, 320 on Small. In code it’s also at most 100% of its space.",
+      "$value": "{hero.media-width}",
+      "$description": "Width and height of a Reel card (it’s square). Points to hero/media-width, so a Reel and a photo in a Hero are always the same size: 560, 320, 260, 280. In code it’s also at most 100% of its space.",
       "$extensions": {
         "com.figma": {
           "scopes": [

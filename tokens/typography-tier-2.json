@@ -2259,7 +2259,7 @@
       },
       "line-height": {
         "$type": "dimension",
-        "$value": "{typography.line-height.32}",
+        "$value": "{typography.line-height.36}",
         "$extensions": {
           "com.figma": {
             "scopes": [
