@@ -4,6 +4,23 @@ Every release of Verity, newest first. The format follows [Keep a Changelog](htt
 
 Sites install Verity by tag (for example `github:erinpantz/verity-design-system#v0.3.0`), so a site only changes when it moves to a new tag on purpose.
 
+## [0.8.2] – 2026-11-12
+
+At 2.5 seconds, someone scanning the page could read the Reel as a still image and move on before it ever turned. Motion gets noticed when it starts, so the Reel now turns once as the page loads, and the holds are a little shorter.
+
+### Added
+
+- **Reel:** an entrance. It opens on its last image at rest (the first paint, from CSS alone, and what shows without JavaScript), then `reel/duration/entrance-delay` after the page loads it does one normal turn to the first image, and the usual holds and turns continue from there. The entrance waits on the same things as any turn: hover, keyboard focus, off screen, or a hidden tab. The last image is now the one that loads right away at high priority. With reduce motion on, there’s no entrance: it opens on the first image and crossfades as before. A new Entrance story replays it, and Slow motion includes it.
+- **Tokens:** `reel/duration/entrance-delay` (600ms, Core `duration/600`).
+
+### Changed
+
+- **Tokens:** `reel/duration/hold` is 2000ms (Core `duration/2000`), was 2500ms.
+
+### Removed
+
+- **Tokens:** Core `duration/2500`. Nothing else used it.
+
 ## [0.8.1] – 2026-11-12
 
 Home’s Hero says “Product designer with a creative toolkit.” Reel shows it: a View-Master-style reel of design screenshots that turns on its own, in place of the NavCards, which repeated the nav.
@@ -404,6 +421,7 @@ The first library release: everything in the Figma library except Animation, wit
 - **Theme helpers:** `themeScript`, `useTheme`, and `setTheme`, so a site applies the saved theme before the first paint.
 - **The library build:** one entry point with every component and its prop types, one stylesheet (`verity-design-system/styles.css`) with the fonts inside it, and `npm run build:watch` for working with a linked copy.
 
+[0.8.2]: https://github.com/erinpantz/verity-design-system/compare/v0.8.1...v0.8.2
 [0.8.1]: https://github.com/erinpantz/verity-design-system/compare/v0.8.0...v0.8.1
 [0.8.0]: https://github.com/erinpantz/verity-design-system/compare/v0.7.5...v0.8.0
 [0.7.5]: https://github.com/erinpantz/verity-design-system/compare/v0.7.4...v0.7.5
