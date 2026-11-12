@@ -1,12 +1,13 @@
 // Storybook's interface (sidebar, toolbar, and addon panel), as opposed to
-// the preview where stories and docs render. It uses the Blue theme; the
-// Theme menu only switches what's in the preview.
+// the preview where stories and docs render. It starts in the Blue theme and
+// follows the toolbar's Theme menu, so the interface matches the preview.
 
 import plexMono from '@fontsource/ibm-plex-mono/files/ibm-plex-mono-latin-400-normal.woff2'
 import plusJakartaSans from '@fontsource-variable/plus-jakarta-sans/files/plus-jakarta-sans-latin-wght-normal.woff2'
+import { GLOBALS_UPDATED, SET_GLOBALS } from 'storybook/internal/core-events'
 import { addons } from 'storybook/manager-api'
 import logo from '../brand/verity-logo.svg'
-import { verityTheme } from './verityTheme'
+import { isVerityThemeName, verityTheme } from './verityTheme'
 
 // The interface can't load CSS files, so the fonts are registered directly,
 // under the names the token font stacks use (see FONT_STACKS in build-tokens.ts).
@@ -22,4 +23,16 @@ for (const [family, file, weight] of FONTS) {
 
 addons.setConfig({
   theme: verityTheme('blue', logo),
+})
+
+// When the Theme menu changes (or a story's ThemeToggle moves it), restyle the
+// interface with that theme. SET_GLOBALS is the first value, when a story or
+// docs page loads; GLOBALS_UPDATED is every change after that.
+addons.register('verity/theme', (api) => {
+  const followTheme = ({ globals }: { globals?: Record<string, unknown> }) => {
+    const name = globals?.theme
+    if (isVerityThemeName(name)) api.setOptions({ theme: verityTheme(name, logo) })
+  }
+  api.on(SET_GLOBALS, followTheme)
+  api.on(GLOBALS_UPDATED, followTheme)
 })
