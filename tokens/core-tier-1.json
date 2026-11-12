@@ -1711,6 +1711,22 @@
       "$type": "duration",
       "$value": "6000ms",
       "$description": "Duration in milliseconds."
+    },
+    "260": {
+      "$type": "duration",
+      "$value": "260ms"
+    },
+    "340": {
+      "$type": "duration",
+      "$value": "340ms"
+    },
+    "525": {
+      "$type": "duration",
+      "$value": "525ms"
+    },
+    "2500": {
+      "$type": "duration",
+      "$value": "2500ms"
     }
   }
 }

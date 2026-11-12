@@ -194,8 +194,12 @@
   --verity-size-64: 64px;
   --verity-size-96: 96px;
   --verity-duration-150: 150ms; /** Duration in milliseconds. */
+  --verity-duration-260: 260ms;
   --verity-duration-300: 300ms; /** Duration in milliseconds. */
+  --verity-duration-340: 340ms;
+  --verity-duration-525: 525ms;
   --verity-duration-1500: 1500ms; /** Duration in milliseconds. */
+  --verity-duration-2500: 2500ms;
   --verity-duration-6000: 6000ms; /** Duration in milliseconds. */
   --verity-shadow-sm-color: var(--verity-color-background-transparent-50);
   --verity-shadow-md-color: var(--verity-color-background-transparent-50);
@@ -870,6 +874,12 @@
   --verity-nav-card-tilt: 4; /** How far a tilted NavCard turns at rest, in degrees (left or right by its Tilt property). It straightens on hover and focus. Code only. */
   --verity-nav-card-group-gap: -24px; /** Space between the NavCards in a NavCardGroup. Negative, so each card overlaps the one before it by 24px. Stored as the negative gap because Figma can’t bind a gap to a negated token. */
   --verity-hero-text-min-width: 200px; /** The narrowest a Hero’s text (Body) gets beside media: 560 on XL and Large, 400 on Medium, 200 on Small. When the text and the media don’t both fit, the media wraps under the text. */
+  --verity-reel-easing-rise: cubic-bezier(0.34, 1.78, 0.64, 1); /** The rise curve, cubic-bezier(0.34, 1.78, 0.64, 1): a stronger overshoot than motion/easing/playful (1.56), for a whole disc turning. Only its first 52.5% is used, up to its peak, 17% past the target. */
+  --verity-reel-angle-dip: 10px; /** How far the disc turns the wrong way before it turns, in degrees. Code only. */
+  --verity-reel-angle-settle: 3px; /** How far the card sinks below its spot after the overshoot, in degrees. About a third of the overshoot, like a spring winding down. Code only. */
+  --verity-reel-tilt: 0.6; /** How much the cards turn with the disc: 1 is a rigid disc, 0 keeps them upright. Code only. */
+  --verity-reel-radius: 1.7px; /** The disc’s radius, as a multiple of the card’s width. The pivot is to the right of the card, so cards arc up and to the right, and the next rises from below. Code only. */
+  --verity-reel-size: 320px; /** Width and height of a Reel card (it’s square): 420 on XL and Large, 360 on Medium, 320 on Small. In code it’s also at most 100% of its space. */
   --verity-main-nav-logo-offset: var(--verity-spacing-8); /** Bottom padding under the MainNav logo. Lifts the logo so its lowercase letters line up with the NavItem labels beside it. */
   --verity-main-nav-logo-height: var(--verity-size-24); /** Height of the Erin Tozour logo in MainNav: 32 on XL and Large, 24 on Medium and Small. Its width follows, so the logo keeps its proportions. */
   --verity-nav-item-padding: var(--verity-spacing-8); /** Padding on all sides of a NavItem (its tap area). */
@@ -882,6 +892,11 @@
   --verity-theme-toggle-duration-rotation: var(--verity-duration-6000); /** Time for one full turn of the ThemeToggle star while hovered, in milliseconds. */
   --verity-theme-toggle-glow-blur: var(--verity-shadow-glow-blur); /** Blur of the glow behind the ThemeToggle star. */
   --verity-nav-card-icon-size: var(--verity-size-64); /** Width and height of the nav icon on a NavCard. */
+  --verity-reel-duration-hold: var(--verity-duration-2500); /** How long each image rests before the Reel turns, in milliseconds. Every image holds the same time. */
+  --verity-reel-duration-dip: var(--verity-duration-340); /** The anticipation: the disc turns the wrong way (the card dips) before it turns, in milliseconds. */
+  --verity-reel-duration-rise: var(--verity-duration-525); /** From the bottom of the dip to the top of the overshoot, on reel/easing/rise, in milliseconds. Only the curve up to its peak is used, so there’s no slow creep back. */
+  --verity-reel-duration-fall: var(--verity-duration-300); /** From the top of the overshoot back through the resting spot to just below it (reel/angle/settle), in milliseconds. */
+  --verity-reel-duration-settle: var(--verity-duration-260); /** From just below the resting spot up to rest, in milliseconds. */
   --verity-main-nav-link-gap: var(--verity-spacing-sm); /** Space between the NavItems in MainNav, in a row on the page and in a column in NavOverlay. */
   --verity-main-nav-gap: var(--verity-spacing-md); /** The least space between the logo and the NavItems in MainNav. The logo’s frame fills the rest, so the links sit at the end. */
   --verity-nav-overlay-padding: var(--verity-padding-sm); /** Padding on all sides of NavOverlay. */
@@ -1115,6 +1130,12 @@
     --verity-nav-card-tilt: 4; /** How far a tilted NavCard turns at rest, in degrees (left or right by its Tilt property). It straightens on hover and focus. Code only. */
     --verity-nav-card-group-gap: -24px; /** Space between the NavCards in a NavCardGroup. Negative, so each card overlaps the one before it by 24px. Stored as the negative gap because Figma can’t bind a gap to a negated token. */
     --verity-hero-text-min-width: 400px; /** The narrowest a Hero’s text (Body) gets beside media: 560 on XL and Large, 400 on Medium, 200 on Small. When the text and the media don’t both fit, the media wraps under the text. */
+    --verity-reel-easing-rise: cubic-bezier(0.34, 1.78, 0.64, 1); /** The rise curve, cubic-bezier(0.34, 1.78, 0.64, 1): a stronger overshoot than motion/easing/playful (1.56), for a whole disc turning. Only its first 52.5% is used, up to its peak, 17% past the target. */
+    --verity-reel-angle-dip: 10px; /** How far the disc turns the wrong way before it turns, in degrees. Code only. */
+    --verity-reel-angle-settle: 3px; /** How far the card sinks below its spot after the overshoot, in degrees. About a third of the overshoot, like a spring winding down. Code only. */
+    --verity-reel-tilt: 0.6; /** How much the cards turn with the disc: 1 is a rigid disc, 0 keeps them upright. Code only. */
+    --verity-reel-radius: 1.7px; /** The disc’s radius, as a multiple of the card’s width. The pivot is to the right of the card, so cards arc up and to the right, and the next rises from below. Code only. */
+    --verity-reel-size: 360px; /** Width and height of a Reel card (it’s square): 420 on XL and Large, 360 on Medium, 320 on Small. In code it’s also at most 100% of its space. */
     --verity-main-nav-logo-offset: var(--verity-spacing-8); /** Bottom padding under the MainNav logo. Lifts the logo so its lowercase letters line up with the NavItem labels beside it. */
     --verity-main-nav-logo-height: var(--verity-size-24); /** Height of the Erin Tozour logo in MainNav: 32 on XL and Large, 24 on Medium and Small. Its width follows, so the logo keeps its proportions. */
     --verity-nav-item-padding: var(--verity-spacing-8); /** Padding on all sides of a NavItem (its tap area). */
@@ -1127,6 +1148,11 @@
     --verity-theme-toggle-duration-rotation: var(--verity-duration-6000); /** Time for one full turn of the ThemeToggle star while hovered, in milliseconds. */
     --verity-theme-toggle-glow-blur: var(--verity-shadow-glow-blur); /** Blur of the glow behind the ThemeToggle star. */
     --verity-nav-card-icon-size: var(--verity-size-96); /** Width and height of the nav icon on a NavCard. */
+    --verity-reel-duration-hold: var(--verity-duration-2500); /** How long each image rests before the Reel turns, in milliseconds. Every image holds the same time. */
+    --verity-reel-duration-dip: var(--verity-duration-340); /** The anticipation: the disc turns the wrong way (the card dips) before it turns, in milliseconds. */
+    --verity-reel-duration-rise: var(--verity-duration-525); /** From the bottom of the dip to the top of the overshoot, on reel/easing/rise, in milliseconds. Only the curve up to its peak is used, so there’s no slow creep back. */
+    --verity-reel-duration-fall: var(--verity-duration-300); /** From the top of the overshoot back through the resting spot to just below it (reel/angle/settle), in milliseconds. */
+    --verity-reel-duration-settle: var(--verity-duration-260); /** From just below the resting spot up to rest, in milliseconds. */
     --verity-main-nav-link-gap: var(--verity-spacing-sm); /** Space between the NavItems in MainNav, in a row on the page and in a column in NavOverlay. */
     --verity-main-nav-gap: var(--verity-spacing-md); /** The least space between the logo and the NavItems in MainNav. The logo’s frame fills the rest, so the links sit at the end. */
     --verity-nav-overlay-padding: var(--verity-padding-sm); /** Padding on all sides of NavOverlay. */
@@ -1361,6 +1387,12 @@
     --verity-nav-card-tilt: 4; /** How far a tilted NavCard turns at rest, in degrees (left or right by its Tilt property). It straightens on hover and focus. Code only. */
     --verity-nav-card-group-gap: -24px; /** Space between the NavCards in a NavCardGroup. Negative, so each card overlaps the one before it by 24px. Stored as the negative gap because Figma can’t bind a gap to a negated token. */
     --verity-hero-text-min-width: 560px; /** The narrowest a Hero’s text (Body) gets beside media: 560 on XL and Large, 400 on Medium, 200 on Small. When the text and the media don’t both fit, the media wraps under the text. */
+    --verity-reel-easing-rise: cubic-bezier(0.34, 1.78, 0.64, 1); /** The rise curve, cubic-bezier(0.34, 1.78, 0.64, 1): a stronger overshoot than motion/easing/playful (1.56), for a whole disc turning. Only its first 52.5% is used, up to its peak, 17% past the target. */
+    --verity-reel-angle-dip: 10px; /** How far the disc turns the wrong way before it turns, in degrees. Code only. */
+    --verity-reel-angle-settle: 3px; /** How far the card sinks below its spot after the overshoot, in degrees. About a third of the overshoot, like a spring winding down. Code only. */
+    --verity-reel-tilt: 0.6; /** How much the cards turn with the disc: 1 is a rigid disc, 0 keeps them upright. Code only. */
+    --verity-reel-radius: 1.7px; /** The disc’s radius, as a multiple of the card’s width. The pivot is to the right of the card, so cards arc up and to the right, and the next rises from below. Code only. */
+    --verity-reel-size: 420px; /** Width and height of a Reel card (it’s square): 420 on XL and Large, 360 on Medium, 320 on Small. In code it’s also at most 100% of its space. */
     --verity-main-nav-logo-offset: var(--verity-spacing-16); /** Bottom padding under the MainNav logo. Lifts the logo so its lowercase letters line up with the NavItem labels beside it. */
     --verity-main-nav-logo-height: var(--verity-size-32); /** Height of the Erin Tozour logo in MainNav: 32 on XL and Large, 24 on Medium and Small. Its width follows, so the logo keeps its proportions. */
     --verity-nav-item-padding: var(--verity-spacing-8); /** Padding on all sides of a NavItem (its tap area). */
@@ -1373,6 +1405,11 @@
     --verity-theme-toggle-duration-rotation: var(--verity-duration-6000); /** Time for one full turn of the ThemeToggle star while hovered, in milliseconds. */
     --verity-theme-toggle-glow-blur: var(--verity-shadow-glow-blur); /** Blur of the glow behind the ThemeToggle star. */
     --verity-nav-card-icon-size: var(--verity-size-96); /** Width and height of the nav icon on a NavCard. */
+    --verity-reel-duration-hold: var(--verity-duration-2500); /** How long each image rests before the Reel turns, in milliseconds. Every image holds the same time. */
+    --verity-reel-duration-dip: var(--verity-duration-340); /** The anticipation: the disc turns the wrong way (the card dips) before it turns, in milliseconds. */
+    --verity-reel-duration-rise: var(--verity-duration-525); /** From the bottom of the dip to the top of the overshoot, on reel/easing/rise, in milliseconds. Only the curve up to its peak is used, so there’s no slow creep back. */
+    --verity-reel-duration-fall: var(--verity-duration-300); /** From the top of the overshoot back through the resting spot to just below it (reel/angle/settle), in milliseconds. */
+    --verity-reel-duration-settle: var(--verity-duration-260); /** From just below the resting spot up to rest, in milliseconds. */
     --verity-main-nav-link-gap: var(--verity-spacing-sm); /** Space between the NavItems in MainNav, in a row on the page and in a column in NavOverlay. */
     --verity-main-nav-gap: var(--verity-spacing-md); /** The least space between the logo and the NavItems in MainNav. The logo’s frame fills the rest, so the links sit at the end. */
     --verity-nav-overlay-padding: var(--verity-padding-sm); /** Padding on all sides of NavOverlay. */
@@ -1607,6 +1644,12 @@
     --verity-nav-card-tilt: 4; /** How far a tilted NavCard turns at rest, in degrees (left or right by its Tilt property). It straightens on hover and focus. Code only. */
     --verity-nav-card-group-gap: -24px; /** Space between the NavCards in a NavCardGroup. Negative, so each card overlaps the one before it by 24px. Stored as the negative gap because Figma can’t bind a gap to a negated token. */
     --verity-hero-text-min-width: 560px; /** The narrowest a Hero’s text (Body) gets beside media: 560 on XL and Large, 400 on Medium, 200 on Small. When the text and the media don’t both fit, the media wraps under the text. */
+    --verity-reel-easing-rise: cubic-bezier(0.34, 1.78, 0.64, 1); /** The rise curve, cubic-bezier(0.34, 1.78, 0.64, 1): a stronger overshoot than motion/easing/playful (1.56), for a whole disc turning. Only its first 52.5% is used, up to its peak, 17% past the target. */
+    --verity-reel-angle-dip: 10px; /** How far the disc turns the wrong way before it turns, in degrees. Code only. */
+    --verity-reel-angle-settle: 3px; /** How far the card sinks below its spot after the overshoot, in degrees. About a third of the overshoot, like a spring winding down. Code only. */
+    --verity-reel-tilt: 0.6; /** How much the cards turn with the disc: 1 is a rigid disc, 0 keeps them upright. Code only. */
+    --verity-reel-radius: 1.7px; /** The disc’s radius, as a multiple of the card’s width. The pivot is to the right of the card, so cards arc up and to the right, and the next rises from below. Code only. */
+    --verity-reel-size: 420px; /** Width and height of a Reel card (it’s square): 420 on XL and Large, 360 on Medium, 320 on Small. In code it’s also at most 100% of its space. */
     --verity-main-nav-logo-offset: var(--verity-spacing-16); /** Bottom padding under the MainNav logo. Lifts the logo so its lowercase letters line up with the NavItem labels beside it. */
     --verity-main-nav-logo-height: var(--verity-size-32); /** Height of the Erin Tozour logo in MainNav: 32 on XL and Large, 24 on Medium and Small. Its width follows, so the logo keeps its proportions. */
     --verity-nav-item-padding: var(--verity-spacing-8); /** Padding on all sides of a NavItem (its tap area). */
@@ -1619,6 +1662,11 @@
     --verity-theme-toggle-duration-rotation: var(--verity-duration-6000); /** Time for one full turn of the ThemeToggle star while hovered, in milliseconds. */
     --verity-theme-toggle-glow-blur: var(--verity-shadow-glow-blur); /** Blur of the glow behind the ThemeToggle star. */
     --verity-nav-card-icon-size: var(--verity-size-96); /** Width and height of the nav icon on a NavCard. */
+    --verity-reel-duration-hold: var(--verity-duration-2500); /** How long each image rests before the Reel turns, in milliseconds. Every image holds the same time. */
+    --verity-reel-duration-dip: var(--verity-duration-340); /** The anticipation: the disc turns the wrong way (the card dips) before it turns, in milliseconds. */
+    --verity-reel-duration-rise: var(--verity-duration-525); /** From the bottom of the dip to the top of the overshoot, on reel/easing/rise, in milliseconds. Only the curve up to its peak is used, so there’s no slow creep back. */
+    --verity-reel-duration-fall: var(--verity-duration-300); /** From the top of the overshoot back through the resting spot to just below it (reel/angle/settle), in milliseconds. */
+    --verity-reel-duration-settle: var(--verity-duration-260); /** From just below the resting spot up to rest, in milliseconds. */
     --verity-main-nav-link-gap: var(--verity-spacing-sm); /** Space between the NavItems in MainNav, in a row on the page and in a column in NavOverlay. */
     --verity-main-nav-gap: var(--verity-spacing-md); /** The least space between the logo and the NavItems in MainNav. The logo’s frame fills the rest, so the links sit at the end. */
     --verity-nav-overlay-padding: var(--verity-padding-sm); /** Padding on all sides of NavOverlay. */

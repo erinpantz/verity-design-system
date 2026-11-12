@@ -424,5 +424,80 @@
         }
       }
     }
+  },
+  "reel": {
+    "duration": {
+      "hold": {
+        "$type": "duration",
+        "$value": "{duration.2500}",
+        "$description": "How long each image rests before the Reel turns, in milliseconds. Every image holds the same time."
+      },
+      "dip": {
+        "$type": "duration",
+        "$value": "{duration.340}",
+        "$description": "The anticipation: the disc turns the wrong way (the card dips) before it turns, in milliseconds."
+      },
+      "rise": {
+        "$type": "duration",
+        "$value": "{duration.525}",
+        "$description": "From the bottom of the dip to the top of the overshoot, on reel/easing/rise, in milliseconds. Only the curve up to its peak is used, so there’s no slow creep back."
+      },
+      "fall": {
+        "$type": "duration",
+        "$value": "{duration.300}",
+        "$description": "From the top of the overshoot back through the resting spot to just below it (reel/angle/settle), in milliseconds."
+      },
+      "settle": {
+        "$type": "duration",
+        "$value": "{duration.260}",
+        "$description": "From just below the resting spot up to rest, in milliseconds."
+      }
+    },
+    "easing": {
+      "rise": {
+        "$type": "cubicBezier",
+        "$value": [
+          0.34,
+          1.78,
+          0.64,
+          1
+        ],
+        "$description": "The rise curve, cubic-bezier(0.34, 1.78, 0.64, 1): a stronger overshoot than motion/easing/playful (1.56), for a whole disc turning. Only its first 52.5% is used, up to its peak, 17% past the target."
+      }
+    },
+    "angle": {
+      "dip": {
+        "$type": "dimension",
+        "$value": "10px",
+        "$description": "How far the disc turns the wrong way before it turns, in degrees. Code only."
+      },
+      "settle": {
+        "$type": "dimension",
+        "$value": "3px",
+        "$description": "How far the card sinks below its spot after the overshoot, in degrees. About a third of the overshoot, like a spring winding down. Code only."
+      }
+    },
+    "tilt": {
+      "$type": "number",
+      "$value": 0.6,
+      "$description": "How much the cards turn with the disc: 1 is a rigid disc, 0 keeps them upright. Code only."
+    },
+    "radius": {
+      "$type": "dimension",
+      "$value": "1.7px",
+      "$description": "The disc’s radius, as a multiple of the card’s width. The pivot is to the right of the card, so cards arc up and to the right, and the next rises from below. Code only."
+    },
+    "size": {
+      "$type": "dimension",
+      "$value": "320px",
+      "$description": "Width and height of a Reel card (it’s square): 420 on XL and Large, 360 on Medium, 320 on Small. In code it’s also at most 100% of its space.",
+      "$extensions": {
+        "com.figma": {
+          "scopes": [
+            "WIDTH_HEIGHT"
+          ]
+        }
+      }
+    }
   }
 }
