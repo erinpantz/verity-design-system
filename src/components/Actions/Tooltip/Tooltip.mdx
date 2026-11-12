@@ -34,7 +34,7 @@ The trigger has to point to the tooltip by its `id`, so screen readers read it:
 |---|---|---|
 | The tooltip adds a hint | Point to it with `aria-describedby`. Screen readers read the trigger’s name, then the hint. | A disabled Link: “Case studies, Coming soon” |
 | The tooltip is the trigger’s only name | Point to it with `aria-labelledby`, so its text is the name and isn’t read twice. | An IconButton: “Collapse navigation” |
-| The tooltip repeats a name screen readers already get, like a visually hidden label | Set `visualOnly`. The tooltip is hidden from screen readers, so they don’t hear the name twice. | A NavItem in the collapsed rail: “Portfolio” |
+| The tooltip repeats a name screen readers already get, like a visually hidden label | Set `visualOnly`. The tooltip is hidden from screen readers, so they don’t hear the name twice. | An icon-only link whose name is hidden text: “Portfolio” |
 | The text matters on a phone | Don’t use a tooltip. Touch screens have no hover. | Instructions for a form field |
 
 ## Placement
@@ -73,7 +73,7 @@ The tooltip uses the knockout colors, the opposite of the page: `--verity-color-
 | Not in Figma | `placement`: Figma places each tooltip by hand, above a Link, above and lined up with the end in an Animation, and beside an IconButton. Opening below at the screen’s edge happens on its own. |
 | Not in Figma | `children`: the trigger the tooltip belongs to |
 | Not in Figma | `visualOnly`, for a tooltip that repeats a name screen readers already have |
-| Not in Figma | `--tooltip-display`: a parent can set it to `none` to keep the tooltip from showing, as NavItem does while its label shows |
+| Not in Figma | `--tooltip-display`: a parent can set it to `none` to keep the tooltip from showing, for example while the same text is already on screen |
 | Turning a tooltip on in a mockup, such as Link’s `Show tooltip` | Not needed: in code, the tooltip appears on hover and focus |
 
 </VerityDocs>

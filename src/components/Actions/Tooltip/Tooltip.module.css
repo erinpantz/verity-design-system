@@ -41,8 +41,7 @@
 /* Shown on keyboard focus of the trigger (not after a mouse click), and on
    hover on devices with a real pointer. Touch screens have no hover: a tap
    would leave the tooltip stuck on screen. A parent can turn it off by
-   setting --tooltip-display: none, as NavItem does while its label is
-   showing. */
+   setting --tooltip-display: none. */
 .anchor:has(:focus-visible) > .tooltip {
   display: var(--tooltip-display, block);
 }

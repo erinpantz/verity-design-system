@@ -1,4 +1,4 @@
-import type { Decorator, Meta, StoryObj } from '@storybook/react-vite';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import { NavItem } from './NavItem';
 
 const meta = {
@@ -9,23 +9,13 @@ const meta = {
     label: 'Portfolio',
     href: '#portfolio',
     current: false,
-    showLabel: true,
   },
   argTypes: {
     icon: { control: 'inline-radio', options: ['portfolio', 'playground', 'profile', 'resume'] },
     label: { control: 'text' },
     href: { control: 'text' },
     current: { control: 'boolean' },
-    showLabel: { control: 'boolean' },
   },
-  // As wide as the links in the full menu, so the item fills it as it does there
-  decorators: [
-    (Story) => (
-      <div style={{ inlineSize: 'calc(var(--verity-nav-overlay-thickness) - 2 * var(--verity-nav-overlay-padding))' }}>
-        <Story />
-      </div>
-    ),
-  ],
 } satisfies Meta<typeof NavItem>;
 
 export default meta;
@@ -52,28 +42,46 @@ export const Current: Story = {
   args: { current: true },
 };
 
-// The collapsed rail's version: hover or focus it to see the label in a tooltip
-const rail: Decorator = (Story) => (
-  <div style={{ inlineSize: 'var(--verity-control-size-md)' }}>
-    <Story />
-  </div>
-);
+// The states below are held on with the pseudo-states addon. They're story
+// globals, so the state doesn't stay on for every story opened afterwards.
 
-export const WithoutLabel: Story = {
-  name: 'Without label',
-  args: { showLabel: false },
-  decorators: [rail],
+export const Hover: Story = {
+  globals: { pseudo: { hover: true } },
 };
 
-// The nav's links, with Portfolio as the current page
+export const Focus: Story = {
+  globals: { pseudo: { focusVisible: true } },
+};
+
+export const Active: Story = {
+  globals: { pseudo: { active: true } },
+};
+
+// MainNav's links, in a row, with Portfolio as the current page. Each item
+// hugs its contents.
 export const InContext: StoryObj = {
   name: 'In context',
   render: () => (
-    <nav aria-label="Main" style={{ display: 'flex', flexDirection: 'column', gap: 'var(--verity-main-nav-link-gap)' }}>
-      <NavItem icon="portfolio" label="Portfolio" href="#portfolio" current />
-      <NavItem icon="playground" label="Playground" href="#playground" />
-      <NavItem icon="profile" label="Profile" href="#profile" />
-      <NavItem icon="resume" label="Resume" href="#resume.pdf" />
+    <nav aria-label="Main">
+      <ul
+        style={{
+          display: 'flex',
+          gap: 'var(--verity-main-nav-link-gap)',
+          margin: 0,
+          padding: 0,
+          listStyle: 'none',
+        }}
+      >
+        <li>
+          <NavItem icon="portfolio" label="Portfolio" href="#portfolio" current />
+        </li>
+        <li>
+          <NavItem icon="profile" label="Profile" href="#profile" />
+        </li>
+        <li>
+          <NavItem icon="playground" label="Playground" href="#playground" />
+        </li>
+      </ul>
     </nav>
   ),
 };

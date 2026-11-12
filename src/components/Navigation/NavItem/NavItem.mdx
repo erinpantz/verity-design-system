@@ -26,7 +26,6 @@ A NavItem renders a link (`<a>`) with its `label` as the link’s text. The icon
 | Situation | What to do | Example |
 |---|---|---|
 | It’s the page someone is on | Set `current`. The link gets `aria-current="page"`, so screen readers say “current page.” | Portfolio, on the portfolio page |
-| The label is hidden, in the collapsed rail | Still set `label`. It stays in the link as text that only screen readers read, so it’s the link’s name. It also shows in a tooltip on hover and focus, which screen readers skip, so they don’t hear “Profile, Profile.” | `showLabel={false}` with `label="Profile"` |
 | It links to the resume | Link to the PDF. It opens in the browser; there’s no `download` attribute, so nothing is saved without asking. | `href="/erin-tozour-resume.pdf"` |
 
 Keyboard: Tab reaches each NavItem, and Enter follows the link.
@@ -45,15 +44,6 @@ Keyboard: Tab reaches each NavItem, and Enter follows the link.
 <Canvas of={NavItemStories.Profile} />
 
 <Canvas of={NavItemStories.Resume} />
-
-## Label
-
-| `showLabel` | What it shows | Use for |
-|---|---|---|
-| `true` | The default. The icon and the label, filling the width it’s given. | The expanded nav and NavOverlay |
-| `false` | A square with the icon. The label shows in a tooltip, at the end, on hover and focus. | A NavItem used on its own. In MainNav, the nav hides labels itself at the widths where it’s a rail, so you don’t set this. |
-
-<Canvas of={NavItemStories.WithoutLabel} />
 
 ## States
 
@@ -93,10 +83,8 @@ The icon takes its accent colors (`--icon-accent-brand`, `--icon-accent-three`, 
 | Component `NavItem` | `<NavItem />` |
 | Property `Icon` | `icon` |
 | Property `Label` | `label` |
-| Property `Show label` | `showLabel`. On in both by default. |
 | Property `State`: `default`, `hover`, `focus` | The link’s own states, from CSS. There’s no prop. |
 | Property `State`: `current` | `current` |
-| Property `Show tooltip` | Not in code. It’s for mockups; in code, the tooltip shows on hover and focus whenever the label is hidden. |
 | Nav icon variants `State=hover` and `State=active` | The hover and active poses, animated with CSS |
 | Not in Figma | `href`, and the pressed state |
 
