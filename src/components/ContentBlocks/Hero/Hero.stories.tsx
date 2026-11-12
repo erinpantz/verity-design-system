@@ -1,8 +1,12 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { Container } from '../../Layout/Container';
 import { Section } from '../../Layout/Section';
-import { NavCard } from '../../Navigation/NavCard';
-import { NavCardGroup } from '../../Navigation/NavCardGroup';
+import reel1 from '../../../foundations/sample-images/reel-1.png';
+import reel2 from '../../../foundations/sample-images/reel-2.png';
+import reel3 from '../../../foundations/sample-images/reel-3.png';
+import reel4 from '../../../foundations/sample-images/reel-4.png';
+import reel5 from '../../../foundations/sample-images/reel-5.png';
+import { Reel } from '../../Media/Reel';
 import { StatCard } from '../StatCard';
 import { Grid } from '../../Layout/Grid';
 import { Hero } from './Hero';
@@ -86,37 +90,37 @@ export const NoActions: Story = {
   args: { primaryAction: undefined, secondaryAction: undefined },
 };
 
-// Home's two ways in, as the Hero's media
-const homeCards = (
-  <NavCardGroup>
-    <NavCard page="portfolio" label="Portfolio" href="#portfolio" />
-    <NavCard page="profile" label="Profile" href="#profile" />
-  </NavCardGroup>
+// Home's Reel, with placeholder screens, as the Hero's media
+const homeReel = (
+  <Reel images={[{ src: reel1 }, { src: reel2 }, { src: reel3 }, { src: reel4 }, { src: reel5 }]} />
 );
 
-// The Home layout: a wide Hero with no actions, and a NavCardGroup beside
-// the text. Hover the cards: they shuffle and lift inside the band.
+// The Home layout: a wide, subtle Hero with no actions, and a Reel beside
+// the text. Its cards pass behind the text and out of sight at the band's
+// edges.
 export const WithMedia: Story = {
   name: 'With media',
   args: {
+    background: 'subtle',
     width: 'wide',
     primaryAction: undefined,
     secondaryAction: undefined,
-    media: homeCards,
+    media: homeReel,
   },
   argTypes: { media: { control: false } },
   parameters: { layout: 'fullscreen' },
   decorators: [inContainer],
 };
 
-// Narrower than the text's minimum plus the cards, so the cards wrap under
+// Narrower than the text's minimum plus the Reel, so the Reel wraps under
 // the text, at the start
 export const WithMediaWrapped: Story = {
   name: 'With media, wrapped',
   args: {
+    background: 'subtle',
     primaryAction: undefined,
     secondaryAction: undefined,
-    media: homeCards,
+    media: homeReel,
   },
   argTypes: { media: { control: false } },
   decorators: [

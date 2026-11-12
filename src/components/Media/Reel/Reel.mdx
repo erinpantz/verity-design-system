@@ -1,0 +1,105 @@
+import { Meta, Canvas } from '@storybook/addon-docs/blocks';
+import { VerityDocs } from '../../../foundations/VerityDocs';
+import { PropsTable } from '../../../foundations/PropsTable';
+import * as ReelStories from './Reel.stories';
+
+<Meta of={ReelStories} />
+
+<VerityDocs>
+
+# Reel
+
+A set of square images on a disc, like a View-Master reel. One shows at a time; after a hold, the disc turns: the current image arcs up and out, and the next rises from below.
+
+<Canvas of={ReelStories.Default} />
+
+## When to use
+
+- **As a Hero’s media, to show the kind of work a page is about,** as on Home, where five design screenshots back up “Product designer with a creative toolkit.”
+- **On a band that clips,** like a Hero with `background="subtle"`, `"knockout"`, or `"brand"`. The cards move past the Reel’s own edges, and the band hides them at its edges.
+- **Not for images people need to study or compare.** Each one is gone in a few seconds. Use `Gallery`, or an `Image` in a `MediaBlock` with a caption.
+- **Not for content.** The images are decorative; what they show should also be on the page, like the case studies below Home’s Hero.
+
+## Accessibility
+
+A Reel is a group (`role="group"`) named by `label`, “Examples of my design work” by default, so screen readers hear what the images are once. Each image is decorative (`alt=""`), and changing images isn’t announced: there’s no live region.
+
+| Situation | What to do | Example |
+|---|---|---|
+| Naming the group | Say what the images are examples of, in sentence case | “Examples of my design work” |
+| Choosing images | Square images of real work, five of them. At least two; with one, there’s nothing to turn. | Five case study screenshots |
+| Saying what the work is | In the page, not the images: they have no alt text | The case studies below the Hero |
+
+**Pausing (WCAG 2.2.2).** It moves on its own for more than five seconds, so it has a pause button: an `IconButton` (`md`, `background="scrim"`) with the `pause` icon, “Pause the reel,” which becomes `play`, “Play the reel.” The visitor’s choice sticks. It also holds, without anyone pressing anything:
+
+| While | Why |
+|---|---|
+| The pointer is over the Reel | To look at an image, or to reach the button |
+| Keyboard focus is inside it | So the button stays put while someone tabs to it. Only keyboard focus: pressing the button with a mouse leaves focus on it, and the Reel still plays. |
+| It’s off screen | Nobody’s watching |
+| The tab is hidden | The same |
+
+A turn that has started finishes, then it holds. When it plays again, the hold picks up where it stopped.
+
+## Motion
+
+Every image holds for `--verity-reel-duration-hold` (2.5 seconds), then the disc turns, in four phases with no pause between them:
+
+| Phase | Movement | Duration | Easing |
+|---|---|---|---|
+| Dip | The disc turns back by `--verity-reel-angle-dip` (10°): the current image sinks | `--verity-reel-duration-dip` (340ms) | In and out |
+| Rise | Up past the next image’s spot, to the curve’s peak | `--verity-reel-duration-rise` (525ms) | `--verity-reel-easing-rise`, up to its peak only |
+| Fall | Back through the spot to `--verity-reel-angle-settle` (3°) below it | `--verity-reel-duration-fall` (300ms) | In and out |
+| Settle | Up to rest | `--verity-reel-duration-settle` (260ms) | In and out |
+
+The rise uses only the part of `--verity-reel-easing-rise`, `cubic-bezier(0.34, 1.78, 0.64, 1)`, up to its overshoot peak (at 52.5% of its time, 17% past the target), stretched to fill the rise’s duration. The code finds the peak from the curve, so a new curve needs no other change. The curve’s own tail creeps back slowly, which would read as a pause; the fall and settle replace it.
+
+<Canvas of={ReelStories.SlowMotion} />
+
+### The disc
+
+The images sit 360° / count apart on a disc (72° for five). Its pivot is `--verity-reel-radius` (1.7) card widths to the right of the resting card’s center, so the cards arc up and to the right, and the next rises from below. A card `d` degrees from its resting spot (positive is past it, up and out) moves `translate(R·(1 − cos d), −R·sin d)`, with R the radius times the card’s width, and turns `d × --verity-reel-tilt` (0.6): 1 would be a rigid disc, 0 would keep the cards upright.
+
+Cards more than 120° from their spot aren’t drawn, and the card nearest its spot is on top.
+
+### Reduce motion
+
+With reduce motion on, nothing moves: each turn is a crossfade in place, over `--verity-reel-duration-rise`, with the same hold and the same pausing.
+
+<Canvas of={ReelStories.ReduceMotion} />
+
+## Size
+
+| Part | Token |
+|---|---|
+| Each card, square | `--verity-reel-size` (420 on XL and Large, 360 on Medium, 320 on Small), and never wider than its space |
+| Corners | `--verity-border-radius-md` |
+| The pause button, from the bottom and right edges | `--verity-spacing-xs` |
+
+The button stays in the corner while the cards move. The images are cropped to fill the square (`object-fit: cover`).
+
+## Loading
+
+Before the script runs, the first image shows at rest, from the CSS alone. It loads right away, ahead of other images (`fetchpriority="high"`), since it’s likely the page’s largest image. The others wait until the page has loaded. Each card shows a `Skeleton` until its image arrives.
+
+## In a Hero
+
+The Reel goes in a Hero’s `media`. The Hero keeps the text above it, so the cards pass behind the text and never cover it, and a visible band clips the cards at its edges and rounded corners.
+
+<Canvas of={ReelStories.InAHero} />
+
+## Props
+
+<PropsTable of={ReelStories} />
+
+## In Figma
+
+| Figma | Code |
+|---|---|
+| Component `Reel` | `<Reel />` |
+| The Image instance | The first of `images`, at rest. Figma has no variants: it shows the resting state. |
+| The Pause button instance | The pause and play button, made by Reel |
+| `reel/size` | The card’s width and height |
+| Not in Figma | `images` and `label`, the turn, pausing, and reduce motion. The tokens marked “Code only” (`reel/angle/*`, `reel/radius`, `reel/tilt`) are used only here. |
+
+</VerityDocs>

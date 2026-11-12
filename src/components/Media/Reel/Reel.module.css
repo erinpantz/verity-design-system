@@ -1,0 +1,136 @@
+/* A square reel of images, one showing at a time. The cards sit on top of
+   each other; Reel.tsx moves them by setting --x, --y, --rotate, --z, and
+   --opacity on each card, from the formula in turn.ts. Before the script
+   runs, only the first card shows, at rest, from this file alone.
+
+   The cards move past the reel's own edges (up and out, and up from
+   below), so the reel doesn't clip them: its parent does, like a Hero's
+   band. */
+
+/* The tokens the script reads, registered by type, so the browser hands it
+   resolved values: a calc() becomes one time, and a var() its value */
+@property --reel-hold {
+  syntax: '<time>';
+  inherits: false;
+  initial-value: 0s;
+}
+
+@property --reel-dip {
+  syntax: '<time>';
+  inherits: false;
+  initial-value: 0s;
+}
+
+@property --reel-rise {
+  syntax: '<time>';
+  inherits: false;
+  initial-value: 0s;
+}
+
+@property --reel-fall {
+  syntax: '<time>';
+  inherits: false;
+  initial-value: 0s;
+}
+
+@property --reel-settle {
+  syntax: '<time>';
+  inherits: false;
+  initial-value: 0s;
+}
+
+/* The angles and the radius are lengths in the tokens (Figma exports them as
+   dimensions); the script uses only the number */
+@property --reel-angle-dip {
+  syntax: '<length>';
+  inherits: false;
+  initial-value: 0px;
+}
+
+@property --reel-angle-settle {
+  syntax: '<length>';
+  inherits: false;
+  initial-value: 0px;
+}
+
+@property --reel-radius {
+  syntax: '<length>';
+  inherits: false;
+  initial-value: 0px;
+}
+
+@property --reel-tilt {
+  syntax: '<number>';
+  inherits: false;
+  initial-value: 0;
+}
+
+/* reel/size square, and at most the width of its space */
+.reel {
+  --reel-hold: var(--verity-reel-duration-hold);
+  --reel-dip: var(--verity-reel-duration-dip);
+  --reel-rise: var(--verity-reel-duration-rise);
+  --reel-fall: var(--verity-reel-duration-fall);
+  --reel-settle: var(--verity-reel-duration-settle);
+  --reel-angle-dip: var(--verity-reel-angle-dip);
+  --reel-angle-settle: var(--verity-reel-angle-settle);
+  --reel-radius: var(--verity-reel-radius);
+  --reel-tilt: var(--verity-reel-tilt);
+
+  position: relative;
+  inline-size: var(--verity-reel-size);
+  max-inline-size: 100%;
+  aspect-ratio: 1;
+}
+
+/* The cards' own layer, under the button */
+.disc {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+/* Each card fills the reel, with rounded corners, and moves from there */
+.card {
+  position: absolute;
+  inset: 0;
+  z-index: var(--z, 0);
+  display: grid;
+  grid-template: minmax(0, 1fr) / minmax(0, 1fr);
+  overflow: hidden;
+  border-radius: var(--verity-border-radius-md);
+  opacity: var(--opacity, 1);
+  translate: var(--x, 0) var(--y, 0);
+  rotate: var(--rotate, 0deg);
+}
+
+/* The Skeleton and the picture share the cell; the picture is on top */
+.card > * {
+  grid-area: 1 / 1;
+}
+
+.image {
+  display: block;
+  inline-size: 100%;
+  block-size: 100%;
+  object-fit: cover;
+}
+
+/* Too far round the disc to see */
+.card[data-hidden] {
+  visibility: hidden;
+}
+
+/* Before the script runs, only the first card shows, at rest */
+.reel:not([data-ready]) .card + .card {
+  visibility: hidden;
+}
+
+/* The pause and play button, in the bottom-right corner. It stays put while
+   the cards move. */
+.control {
+  position: absolute;
+  inset-block-end: var(--verity-spacing-xs);
+  inset-inline-end: var(--verity-spacing-xs);
+  z-index: 1;
+}
