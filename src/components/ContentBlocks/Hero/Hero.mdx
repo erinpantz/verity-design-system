@@ -81,10 +81,10 @@ With no `primaryAction`, there are no actions at all, and no space for them: the
 
 `media` is optional: something beside the text, like the `Reel` on Home. Without it, the Hero is text only.
 
-With it, the headline, intro, and actions stay one group, the body, on the left, still at most `--verity-content-column-width` wide, and the media sits to its right, `--verity-spacing-lg` apart, vertically centered against the text, with its own contents centered. The two share a row that wraps:
+With it, the headline, intro, and actions stay one group, the body, on the left, still at most `--verity-content-column-width` wide, and the media sits at the end of the row, at least `--verity-spacing-lg` away, vertically centered against the text, with its own contents centered. The two share a row that wraps:
 
 - **The body** is at least `--verity-hero-text-min-width` wide (560 on XL and Large, 400 on Medium, 200 on Small), never wider than the Hero, and fills the rest of the row.
-- **The media** keeps its own size.
+- **The media** keeps its own size, and sits at the end of the row, against the band’s padding. When the body has grown as wide as it gets, the space left over goes between the text and the media, never after the media.
 - **When both don’t fit,** the media wraps under the text, at the start, with `--verity-spacing-lg` between them. No breakpoint decides it: the wrap does.
 
 The media comes after the text in the reading order, and the Hero is still the page’s `<header>` with its `<h1>`.

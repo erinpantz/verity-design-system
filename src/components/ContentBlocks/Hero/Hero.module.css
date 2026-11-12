@@ -4,9 +4,12 @@
    there for the background, so it adds no space outside itself.
 
    The body and the media share a row that wraps, like Figma's auto layout:
-   the body takes at least hero/text-min-width and fills the rest, the media
-   keeps its own size, and when both don't fit the media wraps under the
-   text. No breakpoint needed. Without media, the body is alone in the row.
+   the body takes at least hero/text-min-width and grows up to the content
+   column, the media keeps its own size, and when both don't fit the media
+   wraps under the text. No breakpoint needed. Beside the text, the media
+   sits at the end, against the band's padding, and any space left over goes
+   between the two (space-between). Wrapped, or with no media, each sits
+   alone at the start.
 
    Padding comes from the background: subtle, brand, and knockout are
    visible bands and keep padding/lg on every side. Default has no visible
@@ -23,6 +26,9 @@
   display: flex;
   flex-wrap: wrap;
   align-items: center;
+  /* Leftover space between the body and the media, so the media sits at
+     the end; a line with one item keeps it at the start */
+  justify-content: space-between;
   gap: var(--verity-spacing-lg);
   padding: var(--padding);
   background: var(--background);
