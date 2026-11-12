@@ -4,6 +4,21 @@ Every release of Verity, newest first. The format follows [Keep a Changelog](htt
 
 Sites install Verity by tag (for example `github:erinpantz/verity-design-system#v0.3.0`), so a site only changes when it moves to a new tag on purpose.
 
+## [0.8.1] – 2026-11-12
+
+Home’s Hero says “Product designer with a creative toolkit.” Reel shows it: a View-Master-style reel of design screenshots that turns on its own, in place of the NavCards, which repeated the nav.
+
+### Added
+
+- **Reel,** in Media: square images on a disc, one at a time, `reel/size` square (420, 420, 360, 320) and at most its space. Each holds for `reel/duration/hold`, then the disc turns: a dip, a rise past the spot on `reel/easing/rise` (only up to the curve’s peak), a fall just below it, and a settle, with no pause between them. A pause button (“Pause the reel”) sits in the bottom-right corner, shown only when it’s needed, by the same rule as Animation and Video: hidden while it plays, until hover or keyboard focus; always while paused, and on touch screens. The Reel also holds on hover, on keyboard focus, off screen, and in a hidden tab. With reduce motion on, the images crossfade in place. Props: `images` (at least two) and `label`, the group’s name (“Examples of my design work”). The first image loads right away at high priority; the rest load after the page.
+- **Hero:** `background="subtle"`, a quieter band (`color/background/subtle`) with `padding/lg` on every side, and the default background’s button colors and focus ring.
+- **Tokens:** Core `duration/260`, `340`, `525`, and `2500`, and eleven `reel/*` tokens: `duration/hold`, `duration/dip`, `duration/rise`, `duration/fall`, `duration/settle`, `easing/rise`, `angle/dip`, `angle/settle`, `tilt`, `radius`, and `size`.
+
+### Changed
+
+- **Hero:** the text is always drawn above the media, on every background, so moving media passes behind it and never covers it. On a visible band (`subtle`, `knockout`, and `brand`), the band clips what moves past its edges, keeping its rounded corners, so a NavCardGroup’s lifted cards are now clipped there too. The media is never wider than the band, and beside the text it sits at the end of the row, against the band’s padding, with any leftover space between the text and the media (it used to collect after the media at Large and XL). Wrapped under the text, it stays at the start. Its With media stories show a Reel on subtle.
+- **Animation and Video:** the rule that hides the pause button while playing moved into a shared file, `fadingControl.module.css`, which Reel uses too. Nothing changes in how it looks.
+
 ## [0.8.0] – 2026-11-12
 
 The nav moves to the top of the page. The side nav took horizontal room and pulled the eye first; a simple bar across the top lets the page’s content be the focus.
@@ -389,6 +404,7 @@ The first library release: everything in the Figma library except Animation, wit
 - **Theme helpers:** `themeScript`, `useTheme`, and `setTheme`, so a site applies the saved theme before the first paint.
 - **The library build:** one entry point with every component and its prop types, one stylesheet (`verity-design-system/styles.css`) with the fonts inside it, and `npm run build:watch` for working with a linked copy.
 
+[0.8.1]: https://github.com/erinpantz/verity-design-system/compare/v0.8.0...v0.8.1
 [0.8.0]: https://github.com/erinpantz/verity-design-system/compare/v0.7.5...v0.8.0
 [0.7.5]: https://github.com/erinpantz/verity-design-system/compare/v0.7.4...v0.7.5
 [0.7.4]: https://github.com/erinpantz/verity-design-system/compare/v0.7.3...v0.7.4
