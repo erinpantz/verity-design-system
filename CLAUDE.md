@@ -21,7 +21,7 @@ The Figma source of truth is the **Verity Library** file: https://www.figma.com/
 
 Commands are added here as they're set up.
 
-- `npm run tokens`: build `src/styles/tokens.css` from `tokens/` (run after each Figma export). It also writes `.storybook/theme-tokens.generated.ts`, the final token values for Storybook's theme, and the breakpoint widths, from the `viewport/min-width` tokens: `src/styles/breakpoints.generated.module.css` for media queries and `src/styles/breakpoints.generated.ts` for code.
+- `npm run tokens`: build `src/styles/tokens.css` from `tokens/` (run after each Figma export). It also writes `.storybook/theme-tokens.generated.ts`, the final token values for Storybook's theme, and the breakpoint widths, from the `viewport/min-width` tokens: `src/styles/breakpoints.generated.module.css` for media queries and `src/styles/breakpoints.generated.ts` for code. It also writes `src/styles/container-widths.generated.module.css`, the widths components compare their own width to in container queries (the tokens listed in `CONTAINER_WIDTHS` in `build-tokens.ts`), one per breakpoint.
 - `npm run icons`: build `src/icons/icons.generated.ts` from the SVGs in `icons/` (run after each icon export)
 - `npm run storybook`: start Storybook at http://localhost:6006
 - `npm run build-storybook`: build the static Storybook site into `storybook-static/`
@@ -42,8 +42,8 @@ src/
   index.ts                 the library's public exports: every component and its prop types,
                            and the hooks and helpers a site needs
   library.ts               where the library build starts: index.ts plus the global styles
-  styles/                  generated token CSS and breakpoints, global styles (global.css),
-                           the fonts (fonts.css), the useBreakpoint hook, and theme.ts
+  styles/                  generated token CSS, breakpoints, and container widths, global
+                           styles (global.css), the fonts (fonts.css), and theme.ts
                            (useTheme, setTheme, and the <head> script that applies the
                            saved theme)
   icons/                   generated icon markup and the IconName type, from icons/
@@ -109,7 +109,8 @@ To change a rule, change it on its guideline page, not here. If something in thi
 - Never hard-code a color, size, space, radius, or font value. Use a `--verity-` custom property. If a token is missing, stop and ask; don't invent a value.
 - **Tiers:** Core Tier 1 holds raw values and is never used directly in components. Tier 2 (themes, `spacing/*`, `padding/*`) is what components normally use. Tier 3 tokens are named after one component (`button/…`, `nav-item/…`, `container/…`).
 - **Themes:** Blue and Red, switched with a `data-theme` attribute. Figma's Responsive modes (XL, Large, Medium, Small) become breakpoints.
-- **Media queries:** only page-level layout (Shell, MainNav, NavContainer) uses them, and only with the generated breakpoint values: `@value medium from '…/breakpoints.generated.module.css';`, then `@media medium { … }`. Never type a breakpoint width by hand. Content components respond to their own width instead, like Gallery. For behavior that changes by breakpoint (what a button does), use the `useBreakpoint` hook; for how things look, use CSS, so the page is right before JavaScript runs.
+- **Media queries:** only with the generated breakpoint values: `@value medium from '…/breakpoints.generated.module.css';`, then `@media medium { … }`. Never type a breakpoint width by hand. Components respond to their own width instead, like Gallery and MainNav, so they're right wherever they're placed. For how things look, use CSS, so the page is right before JavaScript runs.
+- **Container queries with a token's width:** `@container` can't read a custom property either. Add the token to `CONTAINER_WIDTHS` in `build-tokens.ts`, run `npm run tokens`, and import its generated value for each breakpoint from `container-widths.generated.module.css`, with each `@container` rule inside that breakpoint's `@media` rule (see `MainNav.module.css`). Never type the width by hand.
 - **Code text** comes in the same sizes as body text: code inside `body-*` text uses the matching `code-*` tokens (`code-xl`, `code-lg`, `code-default`, `code-sm`).
 - **Color** scales use OKLCH. Accents are positional (`accent-one`, `accent-two`, …) because they map to different hues in each theme.
 

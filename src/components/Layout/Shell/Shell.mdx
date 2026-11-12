@@ -9,7 +9,7 @@ import * as ShellStories from './Shell.stories';
 
 # Shell
 
-The page frame: the site’s nav, the theme toggle in the screen’s bottom-right corner, and the page column with Main and the Footer. Every page of the site uses it. In focused mode, for reading one piece of work, a link back replaces the nav.
+The page frame, in one column: the site’s nav across the top, then the page column with Main and the Footer, and the theme toggle in the screen’s bottom-right corner. Every page of the site uses it. In focused mode, for reading one piece of work, a link back replaces the nav.
 
 <Canvas of={ShellStories.Large} />
 
@@ -29,23 +29,21 @@ The page frame: the site’s nav, the theme toggle in the screen’s bottom-righ
 | Theme toggle | `ThemeToggle`, a `<button>` | Right after the nav and before Main in the tab order, so it’s reached early on every page without being part of the navigation |
 | Main | `<main>` | The main landmark, with the page’s content. It can take focus from the skip link (`tabIndex={-1}`), but it isn’t in the tab order. |
 | Footer | The `Footer`’s `<footer>` | The footer landmark (`contentinfo`) |
-| Menu | `NavOverlay` | The full menu on Small and Medium, as a dialog. Not in focused mode. |
+| Menu | `NavOverlay`, inside MainNav | The links, as a dialog, when the nav is too narrow for them. MainNav opens it; Shell sets nothing up. Not in focused mode. |
 
 The skip link works the same in both modes: it moves focus to Main.
 
-On Small, the top bar is pinned, so whatever a link jumps to, like Main from the skip link or a heading in the page, stops just below it (`scroll-padding-top` from `--verity-nav-container-thickness-collapsed`).
-
 ## Width
 
-How Shell is laid out follows the screen width, in CSS with the generated breakpoints, so it’s right before JavaScript runs. What the menu button does is MainNav’s.
+Shell is one column at every width: MainNav, then Main, then the Footer. The nav isn’t pinned; it scrolls away with the page. Shell has no breakpoints of its own: MainNav picks its layout from its own width.
 
-| Width | Nav | Page column |
-|---|---|---|
-| XL and Large | On the left, full height, staying put. Expanded when the page opens; the menu button collapses it to the rail. | Beside the nav, scrolling |
-| Medium | The rail, on the left, full height, staying put. The menu button opens the full menu. | Beside the rail, scrolling |
-| Small | The top bar, pinned while the page scrolls. The menu button opens the full menu. | Below the bar, scrolling |
+| Screen | Nav |
+|---|---|
+| XL, Large, and Medium from 624 | The full logo and the links |
+| Medium under 624, and Small from 488 | “erin” and the links |
+| Small under 488 | The full logo and the menu button, which opens the links in NavOverlay |
 
-The nav always opens expanded on XL and Large, and doesn’t remember the toggle between visits.
+See **Navigation › MainNav** for how it decides.
 
 ## Mode
 
@@ -53,7 +51,7 @@ The nav always opens expanded on XL and Large, and doesn’t remember the toggle
 
 | `mode` | What it shows | Use for |
 |---|---|---|
-| `default` | The site’s nav: MainNav docked on the left, or the top bar on Small, with NavOverlay for the full menu | Pages people move between: the portfolio, the playground, the profile |
+| `default` | The site’s nav, MainNav, across the top | Pages people move between: the portfolio, the playground, the profile |
 | `focused` | No nav. A `BackLink` floats in the top-left corner, and ThemeToggle stays in the bottom-right. | One piece of work read from start to end, like a case study |
 
 **Why focused mode:** a case study is long, and people read it start to end. With the nav gone, the page gets the whole width at every breakpoint and nothing beside it competes with the work. The way out stays in one place: the back link, always in reach in the corner, names the page it goes back to.
@@ -73,7 +71,7 @@ In focused mode:
 
 ## Theme toggle
 
-Shell renders `ThemeToggle` and fixes it to the screen’s bottom-right corner, at every width. It used to sit in the nav, at the bottom of the rail and at the end of the Small top bar. In the corner it’s in the same place on every screen, it’s always in reach while the page scrolls, and the nav holds only places to go.
+Shell renders `ThemeToggle` and fixes it to the screen’s bottom-right corner, at every width. In the corner it’s in the same place on every screen, it’s always in reach while the page scrolls, and the nav holds only places to go.
 
 | What | How |
 |---|---|
@@ -113,12 +111,11 @@ Shell owns the page’s side margins, so nothing inside Main needs its own. Cont
 | Component `Shell` | `<Shell />` |
 | Slot `Main` | `children`: the page’s content, inside `<main>` |
 | The Footer instance | `footer`: the site’s `<Footer />` |
-| Property `Breakpoint` | Not a prop: a preview of each width. In code, the screen width decides. |
-| Property `Nav state` | Not a prop: a preview. In code, the nav opens expanded on XL and Large, and its menu button toggles it. |
+| Property `Breakpoint` | Not a prop: a preview of each width. In code, the screen width decides, and MainNav picks its layout from its own width. |
 | Property `Mode` | `mode`. `default` is the default in both. |
 | The BackLink instance (focused) | Made by Shell. `backLink` sets where it goes and what it says. |
-| The NavContainer and MainNav instances | Made by Shell. `current` and `hrefs` pass through to MainNav. |
+| The MainNav instance | Made by Shell. `current` and `hrefs` pass through to MainNav, which picks its own `Layout`. |
 | The ThemeToggle instance, in the bottom-right corner | Made by Shell, with nothing to set |
-| Not in Figma | The skip link, NavOverlay, and `current`, `hrefs`, and `backLink` |
+| Not in Figma | The skip link, and `current`, `hrefs`, and `backLink` |
 
 </VerityDocs>

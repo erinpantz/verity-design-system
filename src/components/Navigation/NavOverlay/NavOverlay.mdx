@@ -9,14 +9,13 @@ import * as NavOverlayStories from './NavOverlay.stories';
 
 # NavOverlay
 
-The full menu, over the page, on Small and Medium. MainNav’s menu button opens it.
+The full menu, covering the screen, for when MainNav shows its menu button. It slides in from the right edge, with a back button to close it, the ErinTozourBadge, and a link to each page.
 
-This page’s examples would be wider than Medium, where the overlay closes, so try it in its stories instead: **Open** shows it at a phone’s width, and **On Medium** at a tablet’s. Each opens in Storybook’s viewport for that size.
+Try it in its stories, which open at a phone’s width: **Default** has a button to open it, **Open** slides in as it loads, and **Slow motion** plays the slide five times slower, to see it move.
 
 ## When to use
 
-- **Once per page, next to `NavContainer`,** with a `MainNav` inside it set to `placement="overlay"`. The page’s MainNav opens it, and the overlay’s MainNav closes it.
-- **Not on Large and XL.** The nav sits beside the page there, so the overlay closes if the screen widens.
+- **Only inside MainNav,** which renders it, opens it from its menu button, and passes it the links. You don’t place it yourself.
 - **Not for other dialogs.** It’s only for the site’s menu.
 
 ## Accessibility
@@ -25,24 +24,39 @@ NavOverlay is a modal `<dialog>` named “Menu.” It behaves like any dialog:
 
 | When | What happens |
 |---|---|
-| It opens | Focus moves into it, to its first link. The page behind it can’t be reached with Tab or a screen reader until it closes. |
-| Someone presses Tab | Focus moves through the menu and stays in it |
-| Someone presses Escape, the close button, or the dimmed page around it | It closes, and focus returns to the menu button that opened it |
-| The screen widens to Large | It closes, and focus returns to the menu button, which now collapses and expands the nav |
+| It opens | Focus moves to the back button, “Close menu.” The page behind it can’t be reached with Tab or a screen reader until it closes. |
+| Someone presses Tab | Focus moves through the back button and the links, and stays in the menu |
+| Someone presses the back button or Escape | It slides out, and focus returns to the menu button that opened it |
+| Someone follows one of its links | It closes, so it isn’t still open when the site shows the new page |
+| The nav widens past its menu layout | It closes, because the links are back in the bar. Focus moves to the logo link, since the menu button is gone. MainNav detects this from its own layout, not the screen’s breakpoint. |
 
-The page’s menu button says whether the overlay is open (`aria-expanded`) and that it opens a dialog (`aria-haspopup="dialog"`).
+The badge is decorative and hidden from screen readers. The menu button says whether the overlay is open (`aria-expanded`) and that it opens a dialog (`aria-haspopup="dialog"`).
 
-## Size
+## Layout
 
-| Part | Token |
-|---|---|
-| Width, against the start edge, the height of the screen | `--verity-nav-overlay-thickness` |
-| Padding on all sides | `--verity-nav-overlay-padding` |
-| Shadow | `--verity-shadow-sm-*` |
+| Part | How | Token |
+|---|---|---|
+| The overlay | The whole screen: full width and the screen’s height (`100dvh`) | |
+| Padding, on all sides | | `--verity-nav-overlay-padding` |
+| The header | The back button (`IconButton`, `back` icon) at the start, `ErinTozourBadge` at the end | |
+| Between the header and the links | | `--verity-spacing-sm` |
+| The links | A column of NavItems, each hugging its contents | `--verity-main-nav-link-gap` between them |
+
+## Motion
+
+| Change | Movement | Duration | Easing |
+|---|---|---|---|
+| Opening | Slides in from the right edge | `--verity-motion-duration-playful` (300ms) | `--verity-motion-easing-standard` |
+| Closing | Slides back out to the right, the same way | `--verity-motion-duration-playful` (300ms) | `--verity-motion-easing-standard` |
+| With reduce motion on | Appears and disappears at once, with no slide | None | None |
+
+While it moves, `shadow-md` gives its edge something to stand against on the page. There’s no dimmed backdrop: once it’s in, it covers the page.
+
+The dialog stays open until the slide out ends, then closes, so focus and the page behind stay put while it moves.
 
 ## Color
 
-The menu has the page’s background, `--verity-color-background-default`. The page behind it is dimmed with `--verity-color-background-scrim`. Figma’s NavOverlay has no fill or scrim.
+The menu has the page’s background, `--verity-color-background-default`, and the content color, `--verity-color-content-default`. Its shadow is `--verity-shadow-md-*`.
 
 ## Props
 
@@ -52,8 +66,11 @@ The menu has the page’s background, `--verity-color-background-default`. The p
 
 | Figma | Code |
 |---|---|
-| Component `NavOverlay` | `<NavOverlay />` with a `<MainNav placement="overlay" />` inside |
-| The shadow, `shadow/sm` | The same shadow, from the `shadow-sm` tokens |
-| Not in Figma | `open` and `onClose`, the background color, and the dimmed page behind it |
+| Component `NavOverlay` | `<NavOverlay />`, rendered by MainNav |
+| The Back button instance | An `IconButton` with the `back` icon, labeled “Close menu” |
+| The ErinTozourBadge instance | `<ErinTozourBadge />` |
+| The Links frame | `children`: MainNav passes its NavItems, in a column |
+| `shadow/md` | The same shadow, from the `shadow-md` tokens |
+| Not in Figma | `open` and `onClose`, and the slide |
 
 </VerityDocs>

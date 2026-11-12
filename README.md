@@ -51,7 +51,7 @@ The theme is the `data-theme` attribute on `<html>`:
 
 - **Blue** is the default, with nothing to set.
 - **Red** as a project’s default: write `<html data-theme="red">` in the page template.
-- **The visitor’s choice:** `ThemeToggle` (already in `MainNav`) switches the theme and saves it in localStorage under `verity-theme`.
+- **The visitor’s choice:** `ThemeToggle` (already in `Shell`, in the bottom-right corner) switches the theme and saves it in localStorage under `verity-theme`.
 
 To apply a saved choice before the page is painted, so a Red visitor never sees a flash of Blue, put `themeScript` inline as the first thing in `<head>`. It has to be inline, in the HTML: a separate script file would load too late. In plain HTML:
 
@@ -79,7 +79,7 @@ Page-level layout uses media queries with Verity’s breakpoints only. In a CSS 
 }
 ```
 
-For behavior, use `useBreakpoint()`, or `BREAKPOINTS` for the widths in pixels.
+For behavior, use `BREAKPOINTS`, the widths in pixels, for example with `window.matchMedia`.
 
 ### Developing Verity and a site together
 

@@ -9,68 +9,78 @@ import * as MainNavStories from './MainNav.stories';
 
 # MainNav
 
-The site’s main navigation: the menu button, the site title, a link to each page, and Resume. In the side nav, a thin line sets Resume apart from the pages, because it opens a PDF rather than a page on the site. MainNav changes with the screen width, from a top bar on phones to a side nav on wide screens. The theme toggle isn’t in the nav: `Shell` floats it in the screen’s bottom-right corner.
+The site’s main navigation, a bar across the top of the page: the logo, linking home, then a link to each page, Portfolio, Profile, and Playground. It scrolls away with the page, so the page’s content gets the screen. Where the links don’t fit, a menu button opens them in `NavOverlay`.
 
 <Canvas of={MainNavStories.Full} />
 
 ## When to use
 
-- **Once per page, inside `NavContainer`,** which docks it to the side or the top.
-- **Inside `NavOverlay`,** with `placement="overlay"`, for the full menu on Small and Medium.
-- **Not for links within a page or in the footer.** Use `Link`, or `LinkGroup` for a group of them.
+- **Once per page, at the top.** `Shell` places it; pass `current` and `hrefs` to Shell.
+- **Not for links within a page or in the footer.** Use `Link`, or `LinkGroup` for a group of them. Resume isn’t in the nav: it’s in the site’s `Footer`.
+- **Not pinned to the top.** It scrolls away with the page. Don’t wrap it in a sticky container.
 
 ## Accessibility
 
 MainNav renders a `<nav aria-label="Main">`, so screen readers list it as the main navigation landmark. Inside it:
 
-- **The site title** is a link home whose only content is the logo, so its name is the logo’s: “Erin Tozour.”
-- **The pages and Resume** are a list (`<ul>`) of four `NavItem` links, so screen readers say how many there are and read them in a row. The current page has `aria-current="page"`.
-- **The line above Resume** is a CSS border. It only groups the links for the eye, so screen readers don’t announce it: it isn’t an `<hr>` or `role="separator"`.
-- **The menu button** is an `IconButton`. What it does, and what it tells screen readers, depends on the width:
+- **The site title** is a link home whose only content is the logo, so its name is the logo’s: “Erin Tozour.” It’s the same name whether the full logo or “erin” shows. The logo that isn’t showing is `display: none`, so screen readers skip it too and hear the name once.
+- **The pages** are a list (`<ul>`) of three `NavItem` links, so screen readers say how many there are. The current page has `aria-current="page"`.
+- **In the menu layout,** the links in the bar are `display: none`, hidden from screen readers as well as from sight, and the menu button shows. It’s an `IconButton` named “Open menu,” and tells screen readers that it opens a dialog (`aria-haspopup="dialog"`) and whether it’s open (`aria-expanded`). In the other layouts, the menu button is `display: none`.
 
-| Width | The menu button | Screen readers hear |
-|---|---|---|
-| Large and XL | Collapses the nav to the rail, or expands it | “Collapse navigation, expanded,” or “Expand navigation, collapsed” (`aria-expanded`) |
-| Small and Medium | Opens `NavOverlay` | “Open menu,” that it opens a dialog (`aria-haspopup="dialog"`), and whether it’s open (`aria-expanded`) |
-| In NavOverlay | Closes the overlay | “Close menu” |
+## Layout
 
-In the rail, each NavItem’s label is hidden from sight but stays in the link, so the link keeps its name. The label also shows in a tooltip, which screen readers skip.
+MainNav’s own width picks one of three layouts, not the screen’s width. It measures its content, inside its side padding, against two tokens:
 
-## Width
-
-How MainNav looks is all CSS, keyed to the generated breakpoints, so it’s right before JavaScript runs. What the menu button does comes from the `useBreakpoint` hook, with the same values.
-
-| Width | Layout | Figma |
-|---|---|---|
-| Small (under 560px) | A top bar: the menu button, then the logo. The pages are in NavOverlay. | `State=collapsed, Dock=top` |
-| Medium (560 to 959px) | The rail: the menu button, each page’s icon, then Resume. It ends there. No logo. | `State=collapsed, Dock=left` |
-| Large and XL (960px and up) | Expanded, as `state` starts it: the logo and menu button, each page with its label, then Resume. The menu button switches to the rail and back. | `State=expanded, Dock=left` and `State=collapsed, Dock=left` |
+| Content width | Layout | Logo | At the end |
+|---|---|---|---|
+| At least `--verity-main-nav-short-logo-width` | `full` | The full logo | The links |
+| Under that, but at least `--verity-main-nav-menu-width` | `short` | “erin” (`ErinTozourLogo name="first"`) | The links |
+| Under `--verity-main-nav-menu-width` | `menu` | The full logo | The menu button, which opens the links in `NavOverlay` |
 
 <Canvas of={MainNavStories.Short} />
 
-Resize the window to see each layout; NavContainer’s stories show it docked.
-
-## Placement
-
-| `placement` | What it does | Use for |
-|---|---|---|
-| `page` | The default. The layout follows the width, as above. | The nav in NavContainer |
-| `overlay` | Always expanded, and the menu button closes the menu | The nav in NavOverlay |
-
 <Canvas of={MainNavStories.Menu} />
+
+### The two widths
+
+Each is the space the layout above it needs, rounded up: the logo, `--verity-main-nav-gap`, and the three NavItems with the link gaps between them. They change with the breakpoint, because the logo, the gaps, and the NavItems do. If a nav label changes, recompute them in Figma.
+
+| Token | XL and Large | Medium and Small | Made of |
+|---|---|---|---|
+| `--verity-main-nav-short-logo-width` | 620 | 544 | The full logo, the gap, and the links: 212 + 32 + 374, or 159 + 24 + 358 |
+| `--verity-main-nav-menu-width` | 484 | 440 | “erin,” the gap, and the links: 75 + 32 + 374, or 56 + 24 + 358 |
+
+### On screens
+
+In Shell, the nav spans the screen, so its content is the screen’s width less the page’s side margins (`--verity-main-padding-inline`, twice). That puts the switches at these screen widths:
+
+| Screen | Layout |
+|---|---|
+| XL and Large (960 and up) | Always `full` |
+| Medium, 624 and up | `full` |
+| Medium, 560 to 623 | `short` |
+| Small, 488 to 559 | `short` |
+| Small, under 488 | `menu` |
+
+The width is measured on the nav, not the screen, so the nav picks the right layout wherever it’s placed, as in the stories above, where it sits in a narrower box.
+
+### How it works in code
+
+It’s all CSS, so the first paint is right before JavaScript runs. MainNav is a container (`container: main-nav / inline-size`), and `@container` rules switch the layout. A container query can’t read a CSS custom property, so `npm run tokens` writes the two widths for each breakpoint into `src/styles/container-widths.generated.module.css`, and each `@container` rule sits inside its breakpoint’s `@media` rule. The tokens stay the only source: change them in Figma, export, and run `npm run tokens`.
 
 ## Space
 
 | Space | Token |
 |---|---|
-| Between the menu bar and the pages | `--verity-main-nav-group-gap` |
-| Between pages | `--verity-main-nav-link-gap` |
-| From the pages to the line above Resume, and from the line to Resume | `--verity-main-nav-group-gap`, on both sides |
-| The line’s width and color | `--verity-border-width-sm`, `--verity-color-border-divider` |
-| Between the site title and the menu button | `--verity-spacing-xxs` |
-| Before the logo | `--verity-main-nav-site-title-padding` |
-| Under the logo, which lifts it so its lowercase letters line up with the center of the menu icon | `--verity-main-nav-logo-offset` |
+| Above the nav | `--verity-padding-md` |
+| Below the nav | `--verity-padding-xs` |
+| The sides, so the logo lines up with the page’s content | `--verity-main-padding-inline` |
+| The least space between the site title and the links or menu button. The site title fills the rest of the row, so the links sit at the end. | `--verity-main-nav-gap` |
+| Between the links | `--verity-main-nav-link-gap` |
+| Under the logo, which lifts it so its lowercase letters line up with the link labels | `--verity-main-nav-logo-offset` |
 | The logo’s height; its width follows | `--verity-main-nav-logo-height` |
+
+The links and menu button are centered vertically against the site title.
 
 ## Props
 
@@ -81,12 +91,10 @@ Resize the window to see each layout; NavContainer’s stories show it docked.
 | Figma | Code |
 |---|---|
 | Component `MainNav` | `<MainNav />` |
-| Property `State` | `state`, on Large and XL. `expanded` is the default in both. On Medium and Small, the width decides. |
-| Property `Dock` | Not a prop: the width decides. Top on Small, left from Medium up. |
-| The NavItem instances | One per page, plus Resume, made by MainNav. `current` sets which one is the current page. |
-| The Primary Links and Secondary Links groups | The pages, then Resume, in one list; the line is Resume’s top border |
-| The site title (ErinTozourLogo) | A link home with the `ErinTozourLogo` |
-| The menu button’s tooltip | Its label, which changes with what the button does |
-| Not in Figma | `hrefs`, `placement`, `menuOpen`, and `onMenuOpenChange` |
+| Property `Layout`: `full`, `short`, `menu` | Not a prop: a preview. In code, the nav’s own width picks it. |
+| The NavItem instances | One per page, made by MainNav. `current` sets which one is the current page. |
+| The site title (ErinTozourLogo) | A link home with `ErinTozourLogo`, full or `name="first"` |
+| The menu button | An `IconButton` with the `dock-to-left` icon, labeled “Open menu” |
+| Not in Figma | `hrefs`, and `NavOverlay`, which MainNav renders and opens |
 
 </VerityDocs>
