@@ -1,10 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import type { CSSProperties, ReactElement } from 'react';
+import { useState, type CSSProperties, type ReactElement } from 'react';
 import reel1 from '../../../foundations/sample-images/reel-1.png';
 import reel2 from '../../../foundations/sample-images/reel-2.png';
 import reel3 from '../../../foundations/sample-images/reel-3.png';
 import reel4 from '../../../foundations/sample-images/reel-4.png';
 import reel5 from '../../../foundations/sample-images/reel-5.png';
+import { Button } from '../../Actions/Button';
 import { Hero } from '../../ContentBlocks/Hero';
 import { Container } from '../../Layout/Container';
 import { ReducedMotionOverride } from '../Playback/useReducedMotion';
@@ -37,6 +38,29 @@ const onBand = (Story: () => ReactElement) => (
   </div>
 );
 
+// A button below the story that starts the Reel over, as a page load would:
+// it opens on its last image again, and turns to the first after
+// reel/duration/entrance-delay. Story-only.
+function Replay({ children }: { children: ReactElement }) {
+  const [run, setRun] = useState(0);
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: 'var(--verity-spacing-md)' }}>
+      <div key={run} style={{ alignSelf: 'stretch' }}>
+        {children}
+      </div>
+      <Button variant="secondary" onClick={() => setRun(run + 1)}>
+        Replay the entrance
+      </Button>
+    </div>
+  );
+}
+
+const replay = (Story: () => ReactElement) => (
+  <Replay>
+    <Story />
+  </Replay>
+);
+
 const meta = {
   title: 'Media/Reel',
   component: Reel,
@@ -53,6 +77,13 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   decorators: [onBand],
+};
+
+// The entrance: it opens on the last image, then, shortly after the page
+// loads, turns once to the first, before the usual holds. Replay it with the
+// button.
+export const Entrance: Story = {
+  decorators: [onBand, replay],
 };
 
 // Home's layout: a wide, subtle Hero with no actions and the Reel as its
@@ -91,12 +122,14 @@ export const ReduceMotion: Story = {
 };
 
 // The turn four times slower, to review it: the dip, the rise past the spot,
-// the fall just below it, and the settle. The hold stays the same.
+// the fall just below it, and the settle, starting with the entrance (replay
+// it with the button). The entrance delay and the hold stay the same.
 // Story-only: the Reel itself always uses the reel/duration tokens.
 export const SlowMotion: Story = {
   name: 'Slow motion',
   decorators: [
     onBand,
+    replay,
     (Story) => (
       <div
         style={

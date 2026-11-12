@@ -1,7 +1,9 @@
 /* A square reel of images, one showing at a time. The cards sit on top of
    each other; Reel.tsx moves them by setting --x, --y, --rotate, --z, and
    --opacity on each card, from the formula in turn.ts. Before the script
-   runs, only the first card shows, at rest, from this file alone.
+   runs, only the last card shows, at rest, from this file alone: the
+   entrance turns from it to the first. With reduce motion, there's no
+   entrance, so the first card shows instead.
 
    The cards move past the reel's own edges (up and out, and up from
    below), so the reel doesn't clip them: its parent does, like a Hero's
@@ -10,6 +12,12 @@
 /* The tokens the script reads, registered by type, so the browser hands it
    resolved values: a calc() becomes one time, and a var() its value */
 @property --reel-hold {
+  syntax: '<time>';
+  inherits: false;
+  initial-value: 0s;
+}
+
+@property --reel-entrance-delay {
   syntax: '<time>';
   inherits: false;
   initial-value: 0s;
@@ -72,6 +80,7 @@
   composes: frame from '../Playback/fadingControl.module.css';
 
   --reel-hold: var(--verity-reel-duration-hold);
+  --reel-entrance-delay: var(--verity-reel-duration-entrance-delay);
   --reel-dip: var(--verity-reel-duration-dip);
   --reel-rise: var(--verity-reel-duration-rise);
   --reel-fall: var(--verity-reel-duration-fall);
@@ -124,9 +133,21 @@
   visibility: hidden;
 }
 
-/* Before the script runs, only the first card shows, at rest */
-.reel:not([data-ready]) .card + .card {
+/* Before the script runs, only the last card shows, at rest: the entrance
+   turns from it to the first */
+.reel:not([data-ready]) .card:not(:last-child) {
   visibility: hidden;
+}
+
+/* With reduce motion there's no entrance, so the first card shows instead */
+@media (prefers-reduced-motion: reduce) {
+  .reel:not([data-ready]) .card:first-child {
+    visibility: visible;
+  }
+
+  .reel:not([data-ready]) .card:last-child {
+    visibility: hidden;
+  }
 }
 
 /* The pause and play button, in the bottom-right corner. It stays put while

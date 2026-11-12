@@ -9,7 +9,7 @@ import * as ReelStories from './Reel.stories';
 
 # Reel
 
-A set of square images on a disc, like a View-Master reel. One shows at a time; after a hold, the disc turns: the current image arcs up and out, and the next rises from below.
+A set of square images on a disc, like a View-Master reel. One shows at a time; after a hold, the disc turns: the current image arcs up and out, and the next rises from below. It turns once as the page loads, so someone scanning the page sees it move.
 
 <Canvas of={ReelStories.Default} />
 
@@ -55,10 +55,16 @@ Hidden only means see-through: keyboard users can still tab to it. The button’
 
 ## Motion
 
-Every image holds for `--verity-reel-duration-hold` (2.5 seconds), then the disc turns, in four phases with no pause between them:
+**The entrance.** The Reel opens on its last image, at rest. `--verity-reel-duration-entrance-delay` (600ms) after the page loads, it turns once to the first image, a normal turn, then the holds and turns below continue from there. Motion gets noticed when it starts: a Reel that waited a full hold could pass for a still image to someone scanning the page. The entrance follows the same pausing rules as any turn: if the pointer or keyboard focus is on the Reel, it’s off screen, or the tab is hidden, it waits, and turns once nothing’s holding it.
+
+<Canvas of={ReelStories.Entrance} />
+
+**Each turn.** Every image holds for `--verity-reel-duration-hold` (2 seconds), then the disc turns, in four phases with no pause between them:
 
 | Phase | Movement | Duration | Easing |
 |---|---|---|---|
+| Entrance delay | Only before the first turn: the last image rests, after the page loads | `--verity-reel-duration-entrance-delay` (600ms) | None |
+| Hold | Every image rests, after each turn | `--verity-reel-duration-hold` (2s) | None |
 | Dip | The disc turns back by `--verity-reel-angle-dip` (10°): the current image sinks | `--verity-reel-duration-dip` (340ms) | In and out |
 | Rise | Up past the next image’s spot, to the curve’s peak | `--verity-reel-duration-rise` (525ms) | `--verity-reel-easing-rise`, up to its peak only |
 | Fall | Back through the spot to `--verity-reel-angle-settle` (3°) below it | `--verity-reel-duration-fall` (300ms) | In and out |
@@ -76,7 +82,7 @@ Cards more than 120° from their spot aren’t drawn, and the card nearest its s
 
 ### Reduce motion
 
-With reduce motion on, nothing moves: each turn is a crossfade in place, over `--verity-reel-duration-rise`, with the same hold and the same pausing.
+With reduce motion on, nothing moves, and there’s no entrance: the Reel opens on the first image. Each turn is a crossfade in place, over `--verity-reel-duration-rise`, with the same hold and the same pausing.
 
 <Canvas of={ReelStories.ReduceMotion} />
 
@@ -92,7 +98,7 @@ The button stays in the corner while the cards move, and shows when it’s neede
 
 ## Loading
 
-Before the script runs, the first image shows at rest, from the CSS alone. It loads right away, ahead of other images (`fetchpriority="high"`), since it’s likely the page’s largest image. The others wait until the page has loaded. Each card shows a `Skeleton` until its image arrives.
+Before the script runs, the last image shows at rest, from the CSS alone, and that’s what shows without JavaScript. With reduce motion on, it’s the first image instead, since there’s no entrance. Whichever paints first loads right away, ahead of other images (`fetchpriority="high"`), since it’s likely the page’s largest image. The others wait until the page has loaded. Each card shows a `Skeleton` until its image arrives.
 
 ## In a Hero
 
@@ -109,9 +115,9 @@ The Reel goes in a Hero’s `media`. The Hero keeps the text above it, so the ca
 | Figma | Code |
 |---|---|
 | Component `Reel` | `<Reel />` |
-| The Image instance | The first of `images`, at rest. Figma has no variants: it shows the resting state. |
+| The Image instance | The first of `images`, at rest, as it is after the entrance. Figma has no variants: it shows the resting state. |
 | The Pause button instance | The pause and play button, made by Reel. Figma shows it; in code it’s hidden while the Reel plays, until hover or keyboard focus (see States). |
 | `reel/size` | The card’s width and height |
-| Not in Figma | `images` and `label`, the turn, pausing, and reduce motion. The tokens marked “Code only” (`reel/angle/*`, `reel/radius`, `reel/tilt`) are used only here. |
+| Not in Figma | `images` and `label`, the entrance, the turn, pausing, and reduce motion. The tokens marked “Code only” (`reel/angle/*`, `reel/radius`, `reel/tilt`) are used only here. |
 
 </VerityDocs>

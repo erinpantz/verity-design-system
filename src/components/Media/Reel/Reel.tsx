@@ -22,10 +22,13 @@ export interface ReelProps {
 }
 
 // A View-Master-style reel of square images that turns on its own: one shows
-// at a time, holds, then the disc turns and the next rises from below. A
+// at a time, holds, then the disc turns and the next rises from below. It
+// opens on its last image and, shortly after the page loads, turns once to
+// the first (the entrance), so a visitor scanning the page sees it move. A
 // button pauses it (WCAG 2.2.2), and it also holds while the pointer is over
 // it, while it has keyboard focus, while it's off screen, and while the tab
-// is hidden. With reduce motion on, the images crossfade in place instead.
+// is hidden. With reduce motion on, there's no entrance: it opens on the
+// first image, and the images crossfade in place instead.
 export function Reel(props: ReelProps) {
   // New images start over
   return <ReelPlayer key={props.images.map((image) => image.src).join(' ')} {...props} />;
@@ -50,8 +53,11 @@ function ReelPlayer({ images, label = 'Examples of my design work' }: ReelProps)
   const reducedMotion = useReducedMotion();
   const reducedRef = useRef(reducedMotion);
 
-  // The images after the first load once the page has, so the first image,
-  // likely the page's largest, isn't kept waiting
+  // The image that paints first: the last, which the entrance turns away
+  // from, or with reduce motion, the first. It loads right away; the others
+  // load once the page has, so it, likely the page's largest image, isn't
+  // kept waiting.
+  const firstPainted = reducedMotion ? 0 : count - 1;
   const [loadRest, setLoadRest] = useState(false);
   useEffect(() => {
     const onLoad = () => setLoadRest(true);
@@ -89,7 +95,17 @@ function ReelPlayer({ images, label = 'Examples of my design work' }: ReelProps)
     const reel = reelRef.current;
     if (!reel || !turns) return;
 
-    let current = 0;
+    // The entrance: it opens on the last image and turns once to the first,
+    // after entrance-delay, once the page has loaded. With reduce motion, it
+    // opens on the first and there's no entrance.
+    let entrance = !reducedRef.current;
+    let current = entrance ? count - 1 : 0;
+    let pageLoaded = document.readyState === 'complete';
+    const onLoad = () => {
+      pageLoaded = true;
+      update();
+    };
+    if (!pageLoaded) window.addEventListener('load', onLoad);
     // In a hold: the time already spent in it, and the timer that ends it
     let holdSpent = 0;
     let holdStartedAt = 0;
@@ -113,6 +129,7 @@ function ReelPlayer({ images, label = 'Examples of my design work' }: ReelProps)
       const curve: Bezier = bezier?.length === 4 ? (bezier as Bezier) : [0, 0, 1, 1];
       return {
         hold: time('--reel-hold'),
+        entranceDelay: time('--reel-entrance-delay'),
         timing: {
           dip: time('--reel-dip'),
           rise: time('--reel-rise'),
@@ -177,6 +194,7 @@ function ReelPlayer({ images, label = 'Examples of my design work' }: ReelProps)
         if (elapsed >= length) {
           frame = undefined;
           current = (current + 1) % count;
+          entrance = false;
           drawRest();
           holdSpent = 0;
           update();
@@ -191,9 +209,11 @@ function ReelPlayer({ images, label = 'Examples of my design work' }: ReelProps)
 
     // Hold or carry on. A turn that has started finishes first; the hold
     // after it waits until nothing's holding the reel, and picks up where
-    // it stopped.
+    // it stopped. The entrance's hold is entrance-delay, and starts only once
+    // the page has loaded; it waits for the same things as any other.
     function update() {
       if (frame !== undefined) return;
+      if (entrance && !pageLoaded) return;
       if (heldRef.current) {
         if (holdTimer !== undefined) {
           clearTimeout(holdTimer);
@@ -202,14 +222,23 @@ function ReelPlayer({ images, label = 'Examples of my design work' }: ReelProps)
         }
       } else if (holdTimer === undefined) {
         holdStartedAt = performance.now();
-        holdTimer = window.setTimeout(turn, Math.max(0, read().hold - holdSpent));
+        const { hold, entranceDelay } = read();
+        holdTimer = window.setTimeout(turn, Math.max(0, (entrance ? entranceDelay : hold) - holdSpent));
       }
     }
 
     // A change to reduce motion redraws the rest, unless a turn is running:
-    // it finishes the way it started
+    // it finishes the way it started. Reduce motion turning on before the
+    // entrance has run skips it: back to the first image.
     controlRef.current = {
       update: () => {
+        if (entrance && reducedRef.current && frame === undefined) {
+          entrance = false;
+          current = 0;
+          clearTimeout(holdTimer);
+          holdTimer = undefined;
+          holdSpent = 0;
+        }
         if (frame === undefined) drawRest();
         update();
       },
@@ -221,6 +250,7 @@ function ReelPlayer({ images, label = 'Examples of my design work' }: ReelProps)
     return () => {
       if (frame !== undefined) cancelAnimationFrame(frame);
       clearTimeout(holdTimer);
+      window.removeEventListener('load', onLoad);
       controlRef.current = null;
       delete reel.dataset.ready;
     };
@@ -266,8 +296,8 @@ function ReelPlayer({ images, label = 'Examples of my design work' }: ReelProps)
             ref={(card) => {
               cardRefs.current[i] = card;
             }}
-            src={i === 0 || loadRest ? image.src : undefined}
-            first={i === 0}
+            src={i === firstPainted || loadRest ? image.src : undefined}
+            priority={i === firstPainted}
           />
         ))}
       </div>
@@ -291,7 +321,7 @@ type Status = 'loading' | 'loaded' | 'error';
 
 // One card: its picture over a Skeleton until it loads. The picture is
 // decorative (alt=""): the group's label says what the images are.
-function Card({ ref, src, first }: { ref: Ref<HTMLDivElement>; src: string | undefined; first: boolean }) {
+function Card({ ref, src, priority }: { ref: Ref<HTMLDivElement>; src: string | undefined; priority: boolean }) {
   const [status, setStatus] = useState<Status>('loading');
   const imgRef = useRef<HTMLImageElement>(null);
 
@@ -311,9 +341,9 @@ function Card({ ref, src, first }: { ref: Ref<HTMLDivElement>; src: string | und
           className={styles.image}
           src={src}
           alt=""
-          // The first loads right away, ahead of other images; the rest wait
-          // for the page (see loadRest)
-          fetchPriority={first ? 'high' : 'auto'}
+          // The one that paints first loads right away, ahead of other
+          // images; the rest wait for the page (see loadRest)
+          fetchPriority={priority ? 'high' : 'auto'}
           decoding="async"
           onLoad={() => setStatus('loaded')}
           onError={() => setStatus('error')}
