@@ -1,13 +1,12 @@
-/* A card that's one link: the text, then the pictures, side by side, on the
-   brand background. Its layout follows its own width, not the screen's. The
+/* A card that's one link: the text, then the pictures, side by side, on a
+   deep brand fill (brand-active), with no border. Its layout follows its own width, not the screen's. The
    large card: the text and the pictures each have a minimum width, and the
    pictures wrap below the text when both don't fit. The small card: see
    .size-sm. Every value is a token. */
 
 .portfolioCard {
   /* The colors and shadow for each state, set below */
-  --fill: var(--verity-color-background-brand);
-  --border: var(--verity-color-border-brand);
+  --fill: var(--verity-color-background-brand-active);
   --content: var(--verity-color-content-default);
   --shadow-x: var(--verity-shadow-sm-x);
   --shadow-y: var(--verity-shadow-sm-y);
@@ -23,7 +22,6 @@
   gap: var(--verity-spacing-lg);
   box-sizing: border-box;
   padding: var(--verity-padding-lg);
-  border: var(--verity-border-width-sm) solid var(--border);
   border-radius: var(--verity-border-radius-md);
   background-color: var(--fill);
   box-shadow: var(--shadow-x) var(--shadow-y) var(--shadow-blur) var(--shadow-spread) var(--shadow-color);
@@ -34,7 +32,6 @@
      zoom's pace */
   transition:
     background-color var(--verity-motion-duration-fast) var(--verity-motion-easing-standard),
-    border-color var(--verity-motion-duration-fast) var(--verity-motion-easing-standard),
     color var(--verity-motion-duration-fast) var(--verity-motion-easing-standard),
     box-shadow var(--verity-motion-duration-fast) var(--verity-motion-easing-standard),
     scale var(--verity-motion-duration-playful) var(--verity-motion-easing-standard),
@@ -117,7 +114,7 @@
    width, not the screen's, with no breakpoint.
 
    How it works: each column is at least --column-min, half of what's left
-   of the stack width after the padding, the borders, and the gap. So two
+   of the stack width after the padding and the gap. So two
    columns fit exactly when the card is at least the stack width; below it,
    the grid makes one (auto-fit). min(…, 100%) keeps a column from being
    wider than a narrow card.
@@ -132,7 +129,6 @@
     (
       var(--verity-portfolio-card-stack-width)
       - 2 * var(--verity-padding-md)
-      - 2 * var(--verity-border-width-sm)
       - var(--verity-spacing-md)
     ) / 2
   );
@@ -198,7 +194,6 @@
 @media (hover: hover) {
   .portfolioCard:hover {
     --fill: var(--verity-color-background-brand-hover);
-    --border: var(--verity-color-border-brand-hover);
     --content: var(--verity-color-content-default-hover);
     --shadow-x: var(--verity-shadow-lg-x);
     --shadow-y: var(--verity-shadow-lg-y);
@@ -217,7 +212,6 @@
 
 .portfolioCard:focus-visible {
   --fill: var(--verity-color-background-brand-hover);
-  --border: var(--verity-color-border-brand-hover);
   --content: var(--verity-color-content-default-hover);
   --shadow-x: var(--verity-shadow-lg-x);
   --shadow-y: var(--verity-shadow-lg-y);
@@ -237,12 +231,12 @@
   scale: var(--verity-portfolio-card-image-scale-hover);
 }
 
-/* Pressed: darker, and the card settles back down, with no growth and the
-   small shadow, so pressing reads as pushing it in. The pictures stay
+/* Pressed: back to the resting fill, darker than hover, and the card
+   settles back down, with no growth and the small shadow, so pressing reads
+   as pushing it in. The pictures stay
    zoomed, so they don't jump back. */
 .portfolioCard:active {
   --fill: var(--verity-color-background-brand-active);
-  --border: var(--verity-color-border-brand-active);
   --content: var(--verity-color-content-default-hover);
   --shadow-x: var(--verity-shadow-sm-x);
   --shadow-y: var(--verity-shadow-sm-y);

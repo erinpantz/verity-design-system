@@ -91,11 +91,11 @@ Everything else is the same as `lg`: colors, the button-look label, focus ring, 
 
 | State | What changes | Tokens |
 |---|---|---|
-| Default | The brand fill and border, the default text color, and a small shadow | `--verity-color-background-brand`, `--verity-color-border-brand`, `--verity-color-content-default`, `--verity-shadow-sm-*` |
-| Hover | The card rises and grows a little, with a large shadow; a lighter fill and border, brighter text, and the pictures zoom. Devices with a real pointer only, so a tap on a phone doesn’t leave a card raised. | `--verity-motion-lift-md` (8), `--verity-motion-scale-hover` (1.02), `--verity-shadow-lg-*`, `--verity-color-background-brand-hover`, `--verity-color-border-brand-hover`, `--verity-color-content-default-hover` |
+| Default | The deeper brand fill, with no border, the default text color, and a small shadow | `--verity-color-background-brand-active`, `--verity-color-content-default`, `--verity-shadow-sm-*` |
+| Hover | The card rises and grows a little, with a large shadow; a lighter fill, brighter text, and the pictures zoom. Devices with a real pointer only, so a tap on a phone doesn’t leave a card raised. | `--verity-motion-lift-md` (8), `--verity-motion-scale-hover` (1.02), `--verity-shadow-lg-*`, `--verity-color-background-brand-hover`, `--verity-color-content-default-hover` |
 | Focus | The hover look, raised and grown, plus the shared focus ring outside the card, following its corners. The ring moves and grows with the card. Keyboard focus only, on every device. | `--verity-focus-ring-width`, `--verity-focus-ring-offset`, `--verity-color-border-focus` |
 | Label | Follows the card: the secondary Button’s default look at rest, its hover look on the card’s hover and focus, and its active look on press. Paired that way, it reaches 4.5:1 in both themes; the closest is Red’s hover, at 4.63:1. | `--verity-button-secondary-color-*` |
-| Active | The card settles back down, with no lift or growth and the small shadow, so pressing reads as pushing it in. A darker fill and border, and brighter text. The pictures stay zoomed, so they don’t jump back. | `--verity-color-background-brand-active`, `--verity-color-border-brand-active`, `--verity-shadow-sm-*` |
+| Active | The card settles back down, with no lift or growth and the small shadow, so pressing reads as pushing it in. The resting fill again, darker than hover, and brighter text. The pictures stay zoomed, so they don’t jump back. | `--verity-color-background-brand-active`, `--verity-shadow-sm-*` |
 | Visited | No change: a card looks the same once visited | — |
 | Disabled | None: a card always goes somewhere | — |
 
@@ -109,7 +109,7 @@ Everything else is the same as `lg`: colors, the button-look label, focus ring, 
 
 | What | How | Tokens |
 |---|---|---|
-| Fill, border, text color, and shadow | Fade between states | `--verity-motion-duration-fast`, `--verity-motion-easing-standard` |
+| Fill, text color, and shadow | Fade between states | `--verity-motion-duration-fast`, `--verity-motion-easing-standard` |
 | The lift and growth | The card moves up and grows on hover and focus, and settles back on mouse out, blur, or press | `--verity-motion-lift-md`, `--verity-motion-scale-hover`, `--verity-motion-duration-playful`, `--verity-motion-easing-standard` |
 | The zoom | Each picture grows to 105% inside its own frame, clipped by the frame’s rounded corners, and eases back on mouse out | `--verity-portfolio-card-image-scale-hover` (1.05), `--verity-motion-duration-playful`, `--verity-motion-easing-standard` |
 | Reduce motion is on | No lift, growth, or zoom. The color and shadow fades stay, since they don’t move anything. | — |
@@ -131,15 +131,15 @@ Raised, a card grows about 1% on each side and moves up 8px, so in a stack with 
 | Between a brand gallery’s thumbnails | `--verity-spacing-md`; `--verity-spacing-sm` for `sm` |
 | Between the company and the year, `sm` | None, as in Figma |
 | Where `sm` switches from stacked to side by side, measured on the card | `--verity-portfolio-card-stack-width` (640) |
-| Corners and border | `--verity-border-radius-md`, `--verity-border-width-sm` |
+| Corners | `--verity-border-radius-md` |
 
 It adds no space outside itself: the stack or Grid it’s in sets that.
 
 ## Color
 
-The heading in `display-sm` and the details in `body-default` use `--verity-color-content-default`, then `--verity-color-content-default-hover` on hover, focus, and press. Every pair passes 4.5:1 in both themes; the closest is the hover fill in Red, at about 4.6:1.
+The heading in `display-sm` and the details in `body-default` use `--verity-color-content-default`, then `--verity-color-content-default-hover` on hover, focus, and press. Every pair passes 4.5:1 in both themes; the closest is the hover fill in Red, at about 4.6:1. At rest, the text is about 11.6:1 in Blue and 7.8:1 in Red.
 
-Each brand border is one step lighter than its fill, so the card’s edge shows on the page’s dark background.
+There’s no border: the card’s edge comes from its fill and its shadow. The resting fill is only a little lighter than the page (about 1.3:1 in Blue and 1.9:1 in Red), which is fine for a card: its text says what it is, so the edge doesn’t need 3:1.
 
 ## Props
 
