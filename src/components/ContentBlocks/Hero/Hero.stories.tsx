@@ -17,7 +17,7 @@ const meta = {
     secondaryAction: { label: 'Book a call', href: '#contact' },
   },
   argTypes: {
-    background: { control: 'inline-radio', options: ['default', 'knockout', 'brand'] },
+    background: { control: 'inline-radio', options: ['default', 'subtle', 'knockout', 'brand'] },
     heading: { control: 'text' },
     intro: { control: 'text' },
     primaryAction: { control: 'object' },
@@ -31,6 +31,10 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {};
+
+export const Subtle: Story = {
+  args: { background: 'subtle' },
+};
 
 export const Knockout: Story = {
   args: { background: 'knockout' },

@@ -29,7 +29,7 @@ A Hero renders a `<header>`: the page’s introduction. Its headline is the page
 | Writing the headline | Say what the page is about in one short sentence, in sentence case. It’s the page’s title for screen readers. | “I design tools that give people their time back” |
 | Writing the actions | Start each label with a verb that says where it goes. Put the main one in `primaryAction`. | “View my work,” then “Book a call” |
 | Only one thing to do | Leave out `secondaryAction`. | — |
-| Choosing a background | Pick any of the three. The text and buttons follow it, and meet the 4.5:1 contrast ratio in both themes. | `background="brand"` |
+| Choosing a background | Pick any of the four. The text and buttons follow it, and meet the 4.5:1 contrast ratio in both themes. | `background="brand"` |
 
 Every focus ring follows the background, not the button, so it keeps a 3:1 contrast ratio on every background in both themes. Some buttons’ colors don’t match the band. For example, on knockout the primary button is default, so Hero sets its ring to `--verity-color-border-focus-knockout`.
 
@@ -38,10 +38,15 @@ Every focus ring follows the background, not the button, so it keeps a 3:1 contr
 | `background` | Fill | Headline | Intro | Primary button | Secondary button | Focus ring |
 |---|---|---|---|---|---|---|
 | `default` | `--verity-color-background-default` | `--verity-color-content-default` | `--verity-color-content-subtle` | `default` | `default` | `--verity-color-border-focus` |
+| `subtle` | `--verity-color-background-subtle` | `--verity-color-content-default` | `--verity-color-content-subtle` | `default` | `default` | `--verity-color-border-focus` |
 | `knockout` | `--verity-color-background-knockout` | `--verity-color-content-knockout` | `--verity-color-content-knockout` | `default` | `knockout` | `--verity-color-border-focus-knockout` |
 | `brand` | `--verity-color-background-brand` | `--verity-color-content-default` | `--verity-color-content-subtle` | `brand` | `default` | `--verity-color-border-focus-brand` |
 
-The intro is quieter than the headline on `default` and `brand`; on `knockout` both use the knockout text color. The intro is `body-xl` (32 on Large and XL, 24 on Medium and Small), large text at every size, so it needs 3:1: subtle on the Red brand band is about 3.05:1, the closest pair. Button has no brand secondary, so on `brand` the secondary button is `default`. Use `default` on most pages, and `knockout` or `brand` to make a page’s opening stand out.
+The intro is quieter than the headline on `default`, `subtle`, and `brand`; on `knockout` both use the knockout text color. The intro is `body-xl` (32 on Large and XL, 24 on Medium and Small), large text at every size, so it needs 3:1: subtle on the Red brand band is about 3.05:1, the closest pair. Button has no brand secondary, so on `brand` the secondary button is `default`. On `subtle`, the primary button’s fill (brand 700) is close to the band’s color (brand 800), so the button’s edge is faint; its label still passes.
+
+Use `default` on most pages, `subtle` for a quieter band, as on Home with its Reel, and `knockout` or `brand` to make a page’s opening stand out.
+
+<Canvas of={HeroStories.Subtle} />
 
 <Canvas of={HeroStories.Knockout} />
 
@@ -74,7 +79,7 @@ With no `primaryAction`, there are no actions at all, and no space for them: the
 
 ## Media
 
-`media` is optional: something beside the text, like the `NavCardGroup` on Home. Without it, the Hero is text only.
+`media` is optional: something beside the text, like the `Reel` on Home. Without it, the Hero is text only.
 
 With it, the headline, intro, and actions stay one group, the body, on the left, still at most `--verity-content-column-width` wide, and the media sits to its right, `--verity-spacing-lg` apart, vertically centered against the text, with its own contents centered. The two share a row that wraps:
 
@@ -82,7 +87,11 @@ With it, the headline, intro, and actions stay one group, the body, on the left,
 - **The media** keeps its own size.
 - **When both don’t fit,** the media wraps under the text, at the start, with `--verity-spacing-lg` between them. No breakpoint decides it: the wrap does.
 
-The media comes after the text in the reading order, and the Hero is still the page’s `<header>` with its `<h1>`. A NavCardGroup’s shuffle and lifted cards aren’t clipped by the band.
+The media comes after the text in the reading order, and the Hero is still the page’s `<header>` with its `<h1>`.
+
+**The text is always on top.** The body and the media each have their own stacking layer, and the body’s is above the media’s, on every background. So media that moves, like a Reel’s turning cards, passes behind the text and never covers it.
+
+**A visible band clips.** On `subtle`, `knockout`, and `brand`, the band clips anything that moves past its edges, keeping its rounded corners, so a Reel’s cards slide out of sight at the band’s edge and the page never scrolls sideways. On `default` there’s no band to clip to, so put moving media like a Reel on a visible band.
 
 <Canvas of={HeroStories.WithMedia} />
 
@@ -90,11 +99,11 @@ The media comes after the text in the reading order, and the Hero is still the p
 
 ## Space
 
-A Hero fills the width it’s given and adds no space outside itself. On `knockout` and `brand`, its padding is there for the band, on every side. On `default`, there’s no band to see: the padding is on the top and bottom only, to give the page’s opening more room, and the sides have none, so the text lines up with the column.
+A Hero fills the width it’s given and adds no space outside itself. On `subtle`, `knockout`, and `brand`, its padding is there for the band, on every side. On `default`, there’s no band to see: the padding is on the top and bottom only, to give the page’s opening more room, and the sides have none, so the text lines up with the column.
 
 | Space | Token |
 |---|---|
-| Inside, on `knockout` and `brand` | `--verity-padding-lg` on every side |
+| Inside, on `subtle`, `knockout`, and `brand` | `--verity-padding-lg` on every side |
 | Inside, on `default` | `--verity-padding-lg` on the top and bottom; `--verity-padding-none` on the sides |
 | Between the headline and the intro, inside the text group | `--verity-spacing-sm` |
 | Between the text group and the actions | `--verity-spacing-lg` |
@@ -125,7 +134,7 @@ A Hero fills the width it’s given and adds no space outside itself. On `knocko
 | Property `Show secondary action` | Not a prop: set `secondaryAction` to show it, or leave it out |
 | Property `Width` | `width`. `column` is the default in both. |
 | Frame `Body` | The headline, intro, and actions, as one group: at least `hero/text-min-width`, at most `content/column-width` |
-| The media beside Body | `media`, any content, like a `NavCardGroup` |
+| The media beside Body | `media`, any content, like a `Reel` |
 | Frame `Text` | The headline and intro group: `spacing/sm` between them, at most `content/column-width` wide |
 | The fixed width | Not in code: the Hero fills the width it’s given, the column or the wide width |
 

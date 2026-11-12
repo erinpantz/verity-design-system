@@ -8,10 +8,16 @@
    keeps its own size, and when both don't fit the media wraps under the
    text. No breakpoint needed. Without media, the body is alone in the row.
 
-   Padding comes from the background: brand and knockout are visible bands
-   and keep padding/lg on every side. Default has no visible band: it has
-   padding/lg on the top and bottom only, to give the page's opening more
-   room, and none on the sides, so its text lines up with the column. */
+   Padding comes from the background: subtle, brand, and knockout are
+   visible bands and keep padding/lg on every side. Default has no visible
+   band: it has padding/lg on the top and bottom only, to give the page's
+   opening more room, and none on the sides, so its text lines up with the
+   column.
+
+   The body is always drawn above the media: each is its own stacking layer,
+   the body's above the media's, so moving media (a Reel's cards) passes
+   behind the text but never covers it. A visible band clips what moves past
+   its edges, keeping its rounded corners. */
 
 .hero {
   display: flex;
@@ -23,6 +29,17 @@
   color: var(--content);
   /* Always rounded: Verity has no edge-to-edge layouts */
   border-radius: var(--verity-border-radius-md);
+  /* The body's and the media's layers stay inside the Hero, so they don't
+     reach anything else on the page */
+  isolation: isolate;
+}
+
+/* A visible band clips what moves past its edges, like a Reel's cards, to
+   its rounded corners. clip, not hidden, so the band never scrolls. */
+.subtle,
+.knockout,
+.brand {
+  overflow: clip;
 }
 
 /* Each background sets the padding, the text color, and the focus ring
@@ -31,6 +48,14 @@
 .default {
   --padding: var(--verity-padding-lg) var(--verity-padding-none);
   --background: var(--verity-color-background-default);
+  --content: var(--verity-color-content-default);
+  --intro: var(--verity-color-content-subtle);
+  --background-focus-ring: var(--verity-color-border-focus);
+}
+
+.subtle {
+  --padding: var(--verity-padding-lg);
+  --background: var(--verity-color-background-subtle);
   --content: var(--verity-color-content-default);
   --intro: var(--verity-color-content-subtle);
   --background-focus-ring: var(--verity-color-border-focus);
@@ -78,8 +103,10 @@
 
 /* The headline, intro, and actions (Figma's Body): at least the text min
    width, never wider than the band or the content column, and filling the
-   rest of the row */
+   rest of the row. Drawn above the media. */
 .body {
+  position: relative;
+  z-index: 1;
   display: flex;
   flex: 1 1 var(--verity-hero-text-min-width);
   flex-direction: column;
@@ -90,11 +117,17 @@
 }
 
 /* The media, beside the body or wrapped under it at the start, with its own
-   contents centered */
+   contents centered. Its own layer, under the body's, holds whatever moves
+   in it. */
 .media {
+  position: relative;
+  z-index: 0;
   display: flex;
   align-items: center;
   justify-content: center;
+  /* Never wider than the band: media that can shrink, like a Reel, does */
+  min-inline-size: 0;
+  max-inline-size: 100%;
 }
 
 /* The headline and the intro, as one group, never wider than the content

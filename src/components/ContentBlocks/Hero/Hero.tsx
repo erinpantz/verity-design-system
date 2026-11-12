@@ -12,11 +12,11 @@ export interface HeroAction {
 
 export interface HeroProps {
   /**
-   * The band’s background: default for the site’s background, knockout for a
-   * light band, or brand for a brand-colored band. The text and buttons
-   * follow it.
+   * The band’s background: default for the site’s background, subtle for a
+   * quieter band, knockout for a light band, or brand for a brand-colored
+   * band. The text and buttons follow it.
    */
-  background?: 'default' | 'knockout' | 'brand';
+  background?: 'default' | 'subtle' | 'knockout' | 'brand';
   /** The headline. It’s the page’s <h1>, so a page has one Hero at most. */
   heading: string;
   /** A sentence or two below the headline */
@@ -32,8 +32,9 @@ export interface HeroProps {
    */
   width?: 'column' | 'wide';
   /**
-   * Something beside the text, like a NavCardGroup on Home. It sits to the
-   * right of the text, centered, and wraps under it when there isn’t room.
+   * Something beside the text, like a Reel on Home. It sits to the right of
+   * the text, centered, and wraps under it when there isn’t room. It’s
+   * always under the text, so anything moving in it passes behind the text.
    * Leave it out for text only.
    */
   media?: ReactNode;
@@ -43,6 +44,7 @@ export interface HeroProps {
 // brand the secondary button is default.
 const BUTTON_COLORS = {
   default: { primary: 'default', secondary: 'default' },
+  subtle: { primary: 'default', secondary: 'default' },
   knockout: { primary: 'default', secondary: 'knockout' },
   brand: { primary: 'brand', secondary: 'default' },
 } as const;
@@ -53,6 +55,8 @@ const BUTTON_COLORS = {
 // text group stays at the column's width so it keeps a readable measure.
 // The headline, intro, and actions are one group (Body); optional media sits
 // beside it, after it in the reading order, and wraps under it when needed.
+// The body is always drawn above the media, and a visible band clips what
+// moves past its edges (see Hero.module.css).
 export function Hero({
   background = 'default',
   heading,
