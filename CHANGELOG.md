@@ -4,6 +4,34 @@ Every release of Verity, newest first. The format follows [Keep a Changelog](htt
 
 Sites install Verity by tag (for example `github:erinpantz/verity-design-system#v0.3.0`), so a site only changes when it moves to a new tag on purpose.
 
+## [0.8.0] – 2026-11-12
+
+The nav moves to the top of the page. The side nav took horizontal room and pulled the eye first; a simple bar across the top lets the page’s content be the focus.
+
+### Breaking
+
+- **NavContainer** is removed: the component, its stories, its docs, and its export. MainNav sits directly in Shell.
+- **MainNav:** `state`, `placement`, `menuOpen`, and `onMenuOpenChange` are removed, and so is the `resume` href. MainNav now owns NavOverlay and whether it’s open. A site that passes `resume` in `hrefs` (or checks an hrefs object against `ShellProps['hrefs']` with `resume` in it) needs to keep the resume link’s address somewhere else; the Footer still links to it.
+- **NavItem:** `showLabel` is removed, with its tooltip. The label always shows.
+- **useBreakpoint** is removed from the exports. Nothing in Verity used it after this change. `BREAKPOINTS` stays.
+- **Tokens:** nine are removed: all six `nav-container/*`, `main-nav/group-gap`, `main-nav/site-title-padding`, and `nav-overlay/thickness`.
+
+### Added
+
+- **ErinTozourBadge,** in Media: the “e” mark, the logo’s own first letter, at `icon/size/md` on a round `color/background/brand` badge with `padding/xxs` (40px in all). It’s decorative and hidden from screen readers. NavOverlay shows it opposite the back button.
+- **ErinTozourLogo:** `name`, `full` (the default) or `first`, which draws only “erin,” using the full logo’s own shapes, so the two match exactly at the same height. Screen readers hear “Erin Tozour” either way.
+- **Tokens:** `main-nav/gap` (`spacing/md`, the least space between the logo and the links), `main-nav/short-logo-width` (620, 620, 544, 544 on XL, Large, Medium, and Small), and `main-nav/menu-width` (484, 484, 440, 440).
+- **`npm run tokens`** also writes `src/styles/container-widths.generated.module.css`: a token’s width per breakpoint, for container queries, which can’t read custom properties.
+
+### Changed
+
+- **Tokens:** `main-nav/logo-height` is 32, 32, 24, 24 (was 22 everywhere); `main-nav/logo-offset` is 16, 16, 8, 8; `main-nav/link-gap` points to `spacing/sm`; `nav-overlay/padding` points to `padding/sm`.
+- **NavItem:** it hugs its contents, as wide as its icon, gap, and label, instead of filling its parent. Its look, states, and icon animations are unchanged.
+- **MainNav:** a bar across the top of the page: the logo, linking home, then Portfolio, Profile, and Playground at the end. Resume isn’t in the nav anymore; it stays in the Footer. It scrolls away with the page. Its own width, not the screen’s, picks one of three layouts: the full logo and the links; “erin” and the links, below `main-nav/short-logo-width`; or the full logo and a menu button, below `main-nav/menu-width`. It’s all CSS, so the first paint is right.
+- **NavOverlay:** covers the whole screen and slides in from the right edge over `motion/duration/playful`, and back out the same way, with `shadow-md` and no dimmed backdrop. With reduce motion on, it appears and disappears at once. The header has the back button (“Close menu”) and ErinTozourBadge, then the links in a column. It closes on the back button, Escape, following a link, or when the nav widens past its menu layout; focus moves to the back button when it opens and back to the menu button when it closes.
+- **Shell:** one column at every width: MainNav, then Main, then the Footer. The skip link, ThemeToggle in the bottom-right corner, and focused mode are unchanged.
+- **Docs:** MainNav, NavItem, NavOverlay, Shell, and ErinTozourLogo describe the top nav, and Spacing and rhythm lists `main-nav/*` and `nav-overlay/*` in place of `nav-container/*`.
+
 ## [0.7.5] – 2026-11-12
 
 ### Changed
@@ -361,6 +389,7 @@ The first library release: everything in the Figma library except Animation, wit
 - **Theme helpers:** `themeScript`, `useTheme`, and `setTheme`, so a site applies the saved theme before the first paint.
 - **The library build:** one entry point with every component and its prop types, one stylesheet (`verity-design-system/styles.css`) with the fonts inside it, and `npm run build:watch` for working with a linked copy.
 
+[0.8.0]: https://github.com/erinpantz/verity-design-system/compare/v0.7.5...v0.8.0
 [0.7.5]: https://github.com/erinpantz/verity-design-system/compare/v0.7.4...v0.7.5
 [0.7.4]: https://github.com/erinpantz/verity-design-system/compare/v0.7.3...v0.7.4
 [0.7.3]: https://github.com/erinpantz/verity-design-system/compare/v0.7.2...v0.7.3
