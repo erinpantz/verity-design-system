@@ -429,8 +429,8 @@
     "duration": {
       "hold": {
         "$type": "duration",
-        "$value": "{duration.2500}",
-        "$description": "How long each image rests before the Reel turns, in milliseconds. Every image holds the same time."
+        "$value": "{duration.2000}",
+        "$description": "How long each image rests before the Reel turns, in milliseconds (2 s). Every image holds the same time."
       },
       "dip": {
         "$type": "duration",
@@ -451,6 +451,11 @@
         "$type": "duration",
         "$value": "{duration.260}",
         "$description": "From just below the resting spot up to rest, in milliseconds."
+      },
+      "entrance-delay": {
+        "$type": "duration",
+        "$value": "{duration.600}",
+        "$description": "The entrance: the Reel opens on its last image, then this long after the page loads it turns once to the first, so a visitor scanning the page sees it move right away. Then the normal holds start. No entrance with reduce motion."
       }
     },
     "easing": {

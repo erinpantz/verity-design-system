@@ -198,8 +198,9 @@
   --verity-duration-300: 300ms; /** Duration in milliseconds. */
   --verity-duration-340: 340ms;
   --verity-duration-525: 525ms;
+  --verity-duration-600: 600ms;
   --verity-duration-1500: 1500ms; /** Duration in milliseconds. */
-  --verity-duration-2500: 2500ms;
+  --verity-duration-2000: 2000ms;
   --verity-duration-6000: 6000ms; /** Duration in milliseconds. */
   --verity-shadow-sm-color: var(--verity-color-background-transparent-50);
   --verity-shadow-md-color: var(--verity-color-background-transparent-50);
@@ -892,11 +893,12 @@
   --verity-theme-toggle-duration-rotation: var(--verity-duration-6000); /** Time for one full turn of the ThemeToggle star while hovered, in milliseconds. */
   --verity-theme-toggle-glow-blur: var(--verity-shadow-glow-blur); /** Blur of the glow behind the ThemeToggle star. */
   --verity-nav-card-icon-size: var(--verity-size-64); /** Width and height of the nav icon on a NavCard. */
-  --verity-reel-duration-hold: var(--verity-duration-2500); /** How long each image rests before the Reel turns, in milliseconds. Every image holds the same time. */
+  --verity-reel-duration-hold: var(--verity-duration-2000); /** How long each image rests before the Reel turns, in milliseconds (2 s). Every image holds the same time. */
   --verity-reel-duration-dip: var(--verity-duration-340); /** The anticipation: the disc turns the wrong way (the card dips) before it turns, in milliseconds. */
   --verity-reel-duration-rise: var(--verity-duration-525); /** From the bottom of the dip to the top of the overshoot, on reel/easing/rise, in milliseconds. Only the curve up to its peak is used, so there’s no slow creep back. */
   --verity-reel-duration-fall: var(--verity-duration-300); /** From the top of the overshoot back through the resting spot to just below it (reel/angle/settle), in milliseconds. */
   --verity-reel-duration-settle: var(--verity-duration-260); /** From just below the resting spot up to rest, in milliseconds. */
+  --verity-reel-duration-entrance-delay: var(--verity-duration-600); /** The entrance: the Reel opens on its last image, then this long after the page loads it turns once to the first, so a visitor scanning the page sees it move right away. Then the normal holds start. No entrance with reduce motion. */
   --verity-main-nav-link-gap: var(--verity-spacing-sm); /** Space between the NavItems in MainNav, in a row on the page and in a column in NavOverlay. */
   --verity-main-nav-gap: var(--verity-spacing-md); /** The least space between the logo and the NavItems in MainNav. The logo’s frame fills the rest, so the links sit at the end. */
   --verity-nav-overlay-padding: var(--verity-padding-sm); /** Padding on all sides of NavOverlay. */
@@ -1148,11 +1150,12 @@
     --verity-theme-toggle-duration-rotation: var(--verity-duration-6000); /** Time for one full turn of the ThemeToggle star while hovered, in milliseconds. */
     --verity-theme-toggle-glow-blur: var(--verity-shadow-glow-blur); /** Blur of the glow behind the ThemeToggle star. */
     --verity-nav-card-icon-size: var(--verity-size-96); /** Width and height of the nav icon on a NavCard. */
-    --verity-reel-duration-hold: var(--verity-duration-2500); /** How long each image rests before the Reel turns, in milliseconds. Every image holds the same time. */
+    --verity-reel-duration-hold: var(--verity-duration-2000); /** How long each image rests before the Reel turns, in milliseconds (2 s). Every image holds the same time. */
     --verity-reel-duration-dip: var(--verity-duration-340); /** The anticipation: the disc turns the wrong way (the card dips) before it turns, in milliseconds. */
     --verity-reel-duration-rise: var(--verity-duration-525); /** From the bottom of the dip to the top of the overshoot, on reel/easing/rise, in milliseconds. Only the curve up to its peak is used, so there’s no slow creep back. */
     --verity-reel-duration-fall: var(--verity-duration-300); /** From the top of the overshoot back through the resting spot to just below it (reel/angle/settle), in milliseconds. */
     --verity-reel-duration-settle: var(--verity-duration-260); /** From just below the resting spot up to rest, in milliseconds. */
+    --verity-reel-duration-entrance-delay: var(--verity-duration-600); /** The entrance: the Reel opens on its last image, then this long after the page loads it turns once to the first, so a visitor scanning the page sees it move right away. Then the normal holds start. No entrance with reduce motion. */
     --verity-main-nav-link-gap: var(--verity-spacing-sm); /** Space between the NavItems in MainNav, in a row on the page and in a column in NavOverlay. */
     --verity-main-nav-gap: var(--verity-spacing-md); /** The least space between the logo and the NavItems in MainNav. The logo’s frame fills the rest, so the links sit at the end. */
     --verity-nav-overlay-padding: var(--verity-padding-sm); /** Padding on all sides of NavOverlay. */
@@ -1405,11 +1408,12 @@
     --verity-theme-toggle-duration-rotation: var(--verity-duration-6000); /** Time for one full turn of the ThemeToggle star while hovered, in milliseconds. */
     --verity-theme-toggle-glow-blur: var(--verity-shadow-glow-blur); /** Blur of the glow behind the ThemeToggle star. */
     --verity-nav-card-icon-size: var(--verity-size-96); /** Width and height of the nav icon on a NavCard. */
-    --verity-reel-duration-hold: var(--verity-duration-2500); /** How long each image rests before the Reel turns, in milliseconds. Every image holds the same time. */
+    --verity-reel-duration-hold: var(--verity-duration-2000); /** How long each image rests before the Reel turns, in milliseconds (2 s). Every image holds the same time. */
     --verity-reel-duration-dip: var(--verity-duration-340); /** The anticipation: the disc turns the wrong way (the card dips) before it turns, in milliseconds. */
     --verity-reel-duration-rise: var(--verity-duration-525); /** From the bottom of the dip to the top of the overshoot, on reel/easing/rise, in milliseconds. Only the curve up to its peak is used, so there’s no slow creep back. */
     --verity-reel-duration-fall: var(--verity-duration-300); /** From the top of the overshoot back through the resting spot to just below it (reel/angle/settle), in milliseconds. */
     --verity-reel-duration-settle: var(--verity-duration-260); /** From just below the resting spot up to rest, in milliseconds. */
+    --verity-reel-duration-entrance-delay: var(--verity-duration-600); /** The entrance: the Reel opens on its last image, then this long after the page loads it turns once to the first, so a visitor scanning the page sees it move right away. Then the normal holds start. No entrance with reduce motion. */
     --verity-main-nav-link-gap: var(--verity-spacing-sm); /** Space between the NavItems in MainNav, in a row on the page and in a column in NavOverlay. */
     --verity-main-nav-gap: var(--verity-spacing-md); /** The least space between the logo and the NavItems in MainNav. The logo’s frame fills the rest, so the links sit at the end. */
     --verity-nav-overlay-padding: var(--verity-padding-sm); /** Padding on all sides of NavOverlay. */
@@ -1662,11 +1666,12 @@
     --verity-theme-toggle-duration-rotation: var(--verity-duration-6000); /** Time for one full turn of the ThemeToggle star while hovered, in milliseconds. */
     --verity-theme-toggle-glow-blur: var(--verity-shadow-glow-blur); /** Blur of the glow behind the ThemeToggle star. */
     --verity-nav-card-icon-size: var(--verity-size-96); /** Width and height of the nav icon on a NavCard. */
-    --verity-reel-duration-hold: var(--verity-duration-2500); /** How long each image rests before the Reel turns, in milliseconds. Every image holds the same time. */
+    --verity-reel-duration-hold: var(--verity-duration-2000); /** How long each image rests before the Reel turns, in milliseconds (2 s). Every image holds the same time. */
     --verity-reel-duration-dip: var(--verity-duration-340); /** The anticipation: the disc turns the wrong way (the card dips) before it turns, in milliseconds. */
     --verity-reel-duration-rise: var(--verity-duration-525); /** From the bottom of the dip to the top of the overshoot, on reel/easing/rise, in milliseconds. Only the curve up to its peak is used, so there’s no slow creep back. */
     --verity-reel-duration-fall: var(--verity-duration-300); /** From the top of the overshoot back through the resting spot to just below it (reel/angle/settle), in milliseconds. */
     --verity-reel-duration-settle: var(--verity-duration-260); /** From just below the resting spot up to rest, in milliseconds. */
+    --verity-reel-duration-entrance-delay: var(--verity-duration-600); /** The entrance: the Reel opens on its last image, then this long after the page loads it turns once to the first, so a visitor scanning the page sees it move right away. Then the normal holds start. No entrance with reduce motion. */
     --verity-main-nav-link-gap: var(--verity-spacing-sm); /** Space between the NavItems in MainNav, in a row on the page and in a column in NavOverlay. */
     --verity-main-nav-gap: var(--verity-spacing-md); /** The least space between the logo and the NavItems in MainNav. The logo’s frame fills the rest, so the links sit at the end. */
     --verity-nav-overlay-padding: var(--verity-padding-sm); /** Padding on all sides of NavOverlay. */

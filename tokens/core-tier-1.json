@@ -1724,9 +1724,13 @@
       "$type": "duration",
       "$value": "525ms"
     },
-    "2500": {
+    "2000": {
       "$type": "duration",
-      "$value": "2500ms"
+      "$value": "2000ms"
+    },
+    "600": {
+      "$type": "duration",
+      "$value": "600ms"
     }
   }
 }
