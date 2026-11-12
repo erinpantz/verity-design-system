@@ -136,7 +136,8 @@ export const WithMediaWrapped: Story = {
 
 // A photo as the media, as on Profile: an Image, 1:1. It fills
 // hero/media-width (560 on XL), against the band's right padding, and wraps
-// under the text when the two don't fit.
+// under the text when the two don't fit: at the same widths as With media,
+// since a Reel is the same size.
 export const WithAPhoto: Story = {
   name: 'With a photo',
   args: {
