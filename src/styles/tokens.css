@@ -488,7 +488,7 @@
   --verity-color-brand-neutral-700: #1c3da8;
   --verity-color-brand-neutral-800: #10287b;
   --verity-color-brand-neutral-900: #051239;
-  --verity-scrim: #02006abf;
+  --verity-scrim: #010035bf;
 }
 
 /* Blue theme: Themes Tier 2 */
@@ -657,7 +657,7 @@
   --verity-color-brand-neutral-700: #793028;
   --verity-color-brand-neutral-800: #571f18;
   --verity-color-brand-neutral-900: #280c09;
-  --verity-scrim: #3c0000bf;
+  --verity-scrim: #210000bf;
 }
 
 /* Red theme: Themes Tier 2 */

@@ -61,6 +61,6 @@
   },
   "scrim": {
     "$type": "color",
-    "$value": "#3c0000bf"
+    "$value": "#210000bf"
   }
 }
