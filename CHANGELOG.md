@@ -4,6 +4,13 @@ Every release of Verity, newest first. The format follows [Keep a Changelog](htt
 
 Sites install Verity by tag (for example `github:erinpantz/verity-design-system#v0.3.0`), so a site only changes when it moves to a new tag on purpose.
 
+## [0.7.1] – 2026-11-12
+
+### Changed
+
+- **Tokens:** the themes use their brand colors instead of the tinted neutrals. `color/background/default`, `subtle`, `knockout`, and `disabled`; `color/content/knockout` and `disabled`; `color/border/knockout` and `divider`; and `skeleton/color/shine` now point to each theme’s brand ramp (blue or red). White is unchanged. The page’s side margins, `main/padding-inline`, are 80, 64, 40, and 24 on XL, Large, Medium, and Small (were 72, 56, 32, and 24). `display-default`’s letter spacing is `minus-1-half` (was `minus-2`).
+- **Hero:** on the default background, `padding/lg` on the top and bottom, to give the page’s opening more room, and still none on the sides, so the text lines up with the column. Brand and knockout are unchanged.
+
 ## [0.7.0] – 2026-11-11
 
 ### Changed
@@ -328,6 +335,7 @@ The first library release: everything in the Figma library except Animation, wit
 - **Theme helpers:** `themeScript`, `useTheme`, and `setTheme`, so a site applies the saved theme before the first paint.
 - **The library build:** one entry point with every component and its prop types, one stylesheet (`verity-design-system/styles.css`) with the fonts inside it, and `npm run build:watch` for working with a linked copy.
 
+[0.7.1]: https://github.com/erinpantz/verity-design-system/compare/v0.7.0...v0.7.1
 [0.7.0]: https://github.com/erinpantz/verity-design-system/compare/v0.6.1...v0.7.0
 [0.6.1]: https://github.com/erinpantz/verity-design-system/compare/v0.6.0...v0.6.1
 [0.6.0]: https://github.com/erinpantz/verity-design-system/compare/v0.5.3...v0.6.0
