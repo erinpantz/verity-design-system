@@ -1,8 +1,10 @@
 /* A link that looks like a small button: the back arrow, then the label, on a
    scrim. The link itself is the hit area and never moves. The surface inside
-   it is what you see: the scrim, the fills, and the focus ring. On hover and
-   focus the surface lifts, with no shadow: on something this small, a
-   blurred shadow looks fuzzy, and the lift alone shows it responds. The hit
+   it is what you see: the scrim, the press fill, and the focus ring. On
+   hover and focus the surface lifts, with no shadow and no change of fill:
+   on something this small, a blurred shadow looks fuzzy, and on the
+   brand-colored page a hover fill over the scrim came out almost the page's
+   color, so the surface vanished. The lift alone shows it responds. The hit
    area staying still means the pointer can't slip off the edge as it rises,
    end the hover, and make it flicker. */
 
@@ -35,18 +37,12 @@
   transition: translate var(--verity-motion-duration-playful) var(--verity-motion-easing-standard);
 }
 
-/* Hover and focus: the surface lifts. Hover only on
-   devices with a real pointer, so a tap doesn't leave it raised. Hover and
-   press add a fill on top of the scrim, as an image layer over the
-   background color, like IconButton's background="scrim": a gradient from a
-   color to itself is a solid layer of that color. */
+/* Hover and focus: the surface lifts, on the scrim alone, the same as at
+   rest. Hover only on devices with a real pointer, so a tap doesn't leave it
+   raised. */
 @media (hover: hover) {
   .backLink:hover .surface {
     translate: 0 calc(-1 * var(--verity-motion-lift-sm));
-    background-image: linear-gradient(
-      var(--verity-color-background-transparent-medium),
-      var(--verity-color-background-transparent-medium)
-    );
   }
 }
 
@@ -63,7 +59,9 @@
 }
 
 /* Pressed: it settles back down, so pressing reads as pushing it in, and a
-   stronger fill */
+   fill on top of the scrim, as an image layer over the background color, like
+   IconButton's background="scrim": a gradient from a color to itself is a
+   solid layer of that color. */
 .backLink:active .surface {
   translate: none;
   background-image: linear-gradient(
@@ -72,7 +70,7 @@
   );
 }
 
-/* Reduce motion: no lift. The fills still switch, since they don't move
+/* Reduce motion: no lift. The press fill still shows, since it doesn't move
    anything. */
 @media (prefers-reduced-motion: reduce) {
   .backLink:hover .surface,
