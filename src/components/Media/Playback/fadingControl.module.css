@@ -1,0 +1,31 @@
+/* The pause and play button's rule, shared by PlaybackFrame (Animation and
+   Video) and Reel, so it's written once. Each composes .frame onto the box
+   that holds the media and the button, and .control onto the button's
+   wrapper, and sets data-playing on the frame while it plays.
+
+   While it plays, the button fades out of the way, and back in on hover over
+   the frame or keyboard focus on the button. It's only see-through, so
+   keyboard users can still reach it. While paused, it always shows, and on
+   touch screens, which have no hover, it always shows too.
+   Written as hide, then show, with no :hover inside :not(): Storybook's
+   pseudo-states addon rewrites :not(:hover) into a rule that always matches. */
+
+.frame {
+  /* The button is placed against this box */
+  position: relative;
+}
+
+.control {
+  transition: opacity var(--verity-motion-duration-fast) var(--verity-motion-easing-standard);
+}
+
+@media (hover: hover) {
+  .frame[data-playing] .control {
+    opacity: 0;
+  }
+
+  .frame[data-playing]:hover .control,
+  .frame[data-playing] .control:has(:focus-visible) {
+    opacity: 1;
+  }
+}

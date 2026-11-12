@@ -41,6 +41,18 @@ A Reel is a group (`role="group"`) named by `label`, “Examples of my design wo
 
 A turn that has started finishes, then it holds. When it plays again, the hold picks up where it stopped.
 
+## States
+
+The pause button shows only when it’s needed, by the same rule as Animation’s and Video’s:
+
+| State | The button | Why |
+|---|---|---|
+| Playing | Hidden (see-through), fading in over `--verity-motion-duration-fast` on hover over the Reel or keyboard focus on the button | Out of the way of the images. Hovering also holds the Reel, so the button appears exactly when it stops. |
+| Paused | Always shows, with the `play` icon | So the way to start it again is always there |
+| On a touch screen | Always shows | There’s no hover to bring it back |
+
+Hidden only means see-through: keyboard users can still tab to it. The button’s own hover, focus, and press states are `IconButton`’s, with `background="scrim"`.
+
 ## Motion
 
 Every image holds for `--verity-reel-duration-hold` (2.5 seconds), then the disc turns, in four phases with no pause between them:
@@ -76,7 +88,7 @@ With reduce motion on, nothing moves: each turn is a crossfade in place, over `-
 | Corners | `--verity-border-radius-md` |
 | The pause button, from the bottom and right edges | `--verity-spacing-xs` |
 
-The button stays in the corner while the cards move. The images are cropped to fill the square (`object-fit: cover`).
+The button stays in the corner while the cards move, and shows when it’s needed (see States). The images are cropped to fill the square (`object-fit: cover`).
 
 ## Loading
 
@@ -98,7 +110,7 @@ The Reel goes in a Hero’s `media`. The Hero keeps the text above it, so the ca
 |---|---|
 | Component `Reel` | `<Reel />` |
 | The Image instance | The first of `images`, at rest. Figma has no variants: it shows the resting state. |
-| The Pause button instance | The pause and play button, made by Reel |
+| The Pause button instance | The pause and play button, made by Reel. Figma shows it; in code it’s hidden while the Reel plays, until hover or keyboard focus (see States). |
 | `reel/size` | The card’s width and height |
 | Not in Figma | `images` and `label`, the turn, pausing, and reduce motion. The tokens marked “Code only” (`reel/angle/*`, `reel/radius`, `reel/tilt`) are used only here. |
 

@@ -251,6 +251,7 @@ function ReelPlayer({ images, label = 'Examples of my design work' }: ReelProps)
     <div
       ref={reelRef}
       className={styles.reel}
+      data-playing={playing || undefined}
       role="group"
       aria-label={label}
       onPointerEnter={onPointerEnter}

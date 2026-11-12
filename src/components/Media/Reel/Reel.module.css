@@ -65,8 +65,12 @@
   initial-value: 0;
 }
 
-/* reel/size square, and at most the width of its space */
+/* reel/size square, and at most the width of its space. The pause
+   button's show and hide rule is shared with Animation and Video, in
+   fadingControl.module.css. */
 .reel {
+  composes: frame from '../Playback/fadingControl.module.css';
+
   --reel-hold: var(--verity-reel-duration-hold);
   --reel-dip: var(--verity-reel-duration-dip);
   --reel-rise: var(--verity-reel-duration-rise);
@@ -77,7 +81,6 @@
   --reel-radius: var(--verity-reel-radius);
   --reel-tilt: var(--verity-reel-tilt);
 
-  position: relative;
   inline-size: var(--verity-reel-size);
   max-inline-size: 100%;
   aspect-ratio: 1;
@@ -127,8 +130,9 @@
 }
 
 /* The pause and play button, in the bottom-right corner. It stays put while
-   the cards move. */
+   the cards move, and fades while the reel plays. */
 .control {
+  composes: control from '../Playback/fadingControl.module.css';
   position: absolute;
   inset-block-end: var(--verity-spacing-xs);
   inset-inline-end: var(--verity-spacing-xs);

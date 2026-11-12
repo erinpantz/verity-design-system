@@ -5,9 +5,10 @@
    when it's ready. The media brings its own background, so there's no color
    here. */
 
+/* Holds the media and the button. The button's show and hide rule is
+   shared with Reel, in fadingControl.module.css. */
 .frame {
-  /* The button is placed against this box */
-  position: relative;
+  composes: frame from './fadingControl.module.css';
 }
 
 /* The poster and the media share one cell; the media is on top */
@@ -33,27 +34,11 @@
   visibility: visible;
 }
 
-/* The pause and play button, in the bottom-right corner */
+/* The pause and play button, in the bottom-right corner. It fades while
+   the media plays (see fadingControl.module.css). */
 .control {
+  composes: control from './fadingControl.module.css';
   position: absolute;
   inset-block-end: var(--verity-padding-xs);
   inset-inline-end: var(--verity-padding-xs);
-  transition: opacity var(--verity-motion-duration-fast) var(--verity-motion-easing-standard);
-}
-
-/* While it plays, the button fades out of the way, and back in on hover over
-   the media or keyboard focus on the button. It's only see-through, so
-   keyboard users can still reach it. While paused, it always shows, and on
-   touch screens, which have no hover, it always shows too.
-   Written as hide, then show, with no :hover inside :not(): Storybook's
-   pseudo-states addon rewrites :not(:hover) into a rule that always matches. */
-@media (hover: hover) {
-  .frame[data-playing] .control {
-    opacity: 0;
-  }
-
-  .frame[data-playing]:hover .control,
-  .frame[data-playing] .control:has(:focus-visible) {
-    opacity: 1;
-  }
 }
