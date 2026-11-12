@@ -282,6 +282,9 @@ function ReelPlayer({ images, label = 'Examples of my design work' }: ReelProps)
       ref={reelRef}
       className={styles.reel}
       data-playing={playing || undefined}
+      // It has its own size (reel/size), so a Hero's media hugs it instead
+      // of stretching to hero/media-width
+      data-own-size=""
       role="group"
       aria-label={label}
       onPointerEnter={onPointerEnter}

@@ -79,12 +79,12 @@ With no `primaryAction`, there are no actions at all, and no space for them: the
 
 ## Media
 
-`media` is optional: something beside the text, like the `Reel` on Home. Without it, the Hero is text only.
+`media` is optional: something beside the text, like the `Reel` on Home or a photo on Profile. Without it, the Hero is text only.
 
 With it, the headline, intro, and actions stay one group, the body, on the left, still at most `--verity-content-column-width` wide, and the media sits at the end of the row, at least `--verity-spacing-lg` away, vertically centered against the text, with its own contents centered. The two share a row that wraps:
 
 - **The body** is at least `--verity-hero-text-min-width` wide (560 on XL and Large, 400 on Medium, 200 on Small), never wider than the Hero, and fills the rest of the row.
-- **The media** keeps its own size, and sits at the end of the row, against the band’s padding. When the body has grown as wide as it gets, the space left over goes between the text and the media, never after the media.
+- **The media** is at most `--verity-hero-media-width` wide (560 on XL, 480 on Large, 400 on Medium, 320 on Small), and never wider than the Hero. It’s a maximum, not a fixed width: media that fills its space, like an `Image`, grows to it and keeps its aspect ratio; media with its own size, like a `Reel` (`--verity-reel-size`, 420 on XL), keeps that size. It sits at the end of the row, against the band’s padding. When the body has grown as wide as it gets, the space left over goes between the text and the media, never after the media.
 - **When both don’t fit,** the media wraps under the text, at the start, with `--verity-spacing-lg` between them. No breakpoint decides it: the wrap does.
 
 The media comes after the text in the reading order, and the Hero is still the page’s `<header>` with its `<h1>`.
@@ -96,6 +96,10 @@ The media comes after the text in the reading order, and the Hero is still the p
 <Canvas of={HeroStories.WithMedia} />
 
 <Canvas of={HeroStories.WithMediaWrapped} />
+
+**A photo goes in as an `Image`,** not a `MediaBlock`. A `MediaBlock` is a body block, with its own widths and a caption, for the page below the Hero. Choose the Image’s `aspectRatio`, give it `alt` text if it shows something the page doesn’t say (or `alt=""` if it doesn’t), and `loading="eager"`, since it’s at the top of the page.
+
+<Canvas of={HeroStories.WithAPhoto} />
 
 ## Space
 
@@ -109,6 +113,7 @@ A Hero fills the width it’s given and adds no space outside itself. On `subtle
 | Between the text group and the actions | `--verity-spacing-lg` |
 | Between the body and the media, side by side or wrapped | `--verity-spacing-lg` |
 | The body’s narrowest width beside media | `--verity-hero-text-min-width` |
+| The media’s widest | `--verity-hero-media-width`, and never wider than the Hero |
 | Between the buttons | `--verity-spacing-xs` |
 | Corners | `--verity-border-radius-md`, always (Verity has no edge-to-edge layouts) |
 | Text | The headline in `display-default`; the intro in `body-xl` |
@@ -134,7 +139,7 @@ A Hero fills the width it’s given and adds no space outside itself. On `subtle
 | Property `Show secondary action` | Not a prop: set `secondaryAction` to show it, or leave it out |
 | Property `Width` | `width`. `column` is the default in both. |
 | Frame `Body` | The headline, intro, and actions, as one group: at least `hero/text-min-width`, at most `content/column-width` |
-| The media beside Body | `media`, any content, like a `Reel` |
+| The media beside Body | `media`, any content, like a `Reel` or an `Image`. In Figma, an Image’s width is set to `hero/media-width`; in code, the media is at most that wide, and an Image fills it. |
 | Frame `Text` | The headline and intro group: `spacing/sm` between them, at most `content/column-width` wide |
 | The fixed width | Not in code: the Hero fills the width it’s given, the column or the wide width |
 

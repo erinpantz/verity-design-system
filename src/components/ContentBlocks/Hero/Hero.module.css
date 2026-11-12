@@ -5,7 +5,8 @@
 
    The body and the media share a row that wraps, like Figma's auto layout:
    the body takes at least hero/text-min-width and grows up to the content
-   column, the media keeps its own size, and when both don't fit the media
+   column, the media is at most hero/media-width (a photo fills it; a Reel
+   keeps its own size), and when both don't fit the media
    wraps under the text. No breakpoint needed. Beside the text, the media
    sits at the end, against the band's padding, and any space left over goes
    between the two (space-between). Wrapped, or with no media, each sits
@@ -124,16 +125,28 @@
 
 /* The media, beside the body or wrapped under it at the start, with its own
    contents centered. Its own layer, under the body's, holds whatever moves
-   in it. */
+   in it.
+
+   hero/media-width is a maximum, not a fixed width. Media that fills its
+   space, like an Image, fills this width: hero/media-width, or less when
+   there's less room, never more than the band. */
 .media {
   position: relative;
   z-index: 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  /* Never wider than the band: media that can shrink, like a Reel, does */
+  inline-size: var(--verity-hero-media-width);
   min-inline-size: 0;
   max-inline-size: 100%;
+}
+
+/* Media with its own size, like a Reel (reel/size), keeps it: the media
+   hugs it, up to the same maximum, so it sits exactly where it would on
+   its own. A Reel marks itself with data-own-size. */
+.media:has(> [data-own-size]) {
+  inline-size: auto;
+  max-inline-size: min(100%, var(--verity-hero-media-width));
 }
 
 /* The headline and the intro, as one group, never wider than the content

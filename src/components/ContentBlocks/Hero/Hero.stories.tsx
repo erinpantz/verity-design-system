@@ -6,6 +6,8 @@ import reel2 from '../../../foundations/sample-images/reel-2.png';
 import reel3 from '../../../foundations/sample-images/reel-3.png';
 import reel4 from '../../../foundations/sample-images/reel-4.png';
 import reel5 from '../../../foundations/sample-images/reel-5.png';
+import landscape from '../../../foundations/sample-images/landscape.jpg';
+import { Image } from '../../Media/Image';
 import { Reel } from '../../Media/Reel';
 import { StatCard } from '../StatCard';
 import { Grid } from '../../Layout/Grid';
@@ -130,6 +132,23 @@ export const WithMediaWrapped: Story = {
       </div>
     ),
   ],
+};
+
+// A photo as the media, as on Profile: an Image, 1:1. It fills
+// hero/media-width (560 on XL), against the band's right padding, and wraps
+// under the text when the two don't fit.
+export const WithAPhoto: Story = {
+  name: 'With a photo',
+  args: {
+    background: 'subtle',
+    width: 'wide',
+    primaryAction: undefined,
+    secondaryAction: undefined,
+    media: <Image src={landscape} alt="" aspectRatio="1:1" loading="eager" />,
+  },
+  argTypes: { media: { control: false } },
+  parameters: { layout: 'fullscreen' },
+  decorators: [inContainer],
 };
 
 // The top of a home page: a Hero, then the first Section, with Main's gap

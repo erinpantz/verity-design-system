@@ -102,7 +102,7 @@ Before the script runs, the last image shows at rest, from the CSS alone, and th
 
 ## In a Hero
 
-The Reel goes in a Hero’s `media`. The Hero keeps the text above it, so the cards pass behind the text and never cover it, and a visible band clips the cards at its edges and rounded corners.
+The Reel goes in a Hero’s `media`. It keeps its own size there (`--verity-reel-size`, under the Hero’s `--verity-hero-media-width`): it marks itself with `data-own-size`, so the Hero’s media hugs it instead of stretching to the maximum, as a photo does. The Hero keeps the text above it, so the cards pass behind the text and never cover it, and a visible band clips the cards at its edges and rounded corners.
 
 <Canvas of={ReelStories.InAHero} />
 
