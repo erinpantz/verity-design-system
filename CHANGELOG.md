@@ -4,6 +4,14 @@ Every release of Verity, newest first. The format follows [Keep a Changelog](htt
 
 Sites install Verity by tag (for example `github:erinpantz/verity-design-system#v0.3.0`), so a site only changes when it moves to a new tag on purpose.
 
+## [0.7.3] – 2026-11-12
+
+### Changed
+
+- **Tokens:** `scrim` is darker in both themes: Blue `#010035bf` (was `#02006abf`), Red `#210000bf` (was `#3c0000bf`), still 75% opacity. The old scrim was the same color as the page’s background, so it vanished behind ThemeToggle, BackLink, and IconButton’s `background="scrim"`.
+- **Footer:** the fill is `color/background/subtle` (brand 800, was `brand-dark`, now the page’s own color). On it, the usual link color is below 4.5:1, so the Footer’s links use `color/content/default` at rest and when visited, and `content/default-hover` on hover and press, still underlined. Disabled links and links anywhere else are unchanged.
+- **Link:** a parent surface can set its links’ colors with `--background-link`, `--background-link-visited`, `--background-link-hover`, and `--background-link-active`, like Hero sets its buttons’ focus ring. The Footer uses them; there’s no new prop.
+
 ## [0.7.2] – 2026-11-12
 
 ### Changed
@@ -341,6 +349,7 @@ The first library release: everything in the Figma library except Animation, wit
 - **Theme helpers:** `themeScript`, `useTheme`, and `setTheme`, so a site applies the saved theme before the first paint.
 - **The library build:** one entry point with every component and its prop types, one stylesheet (`verity-design-system/styles.css`) with the fonts inside it, and `npm run build:watch` for working with a linked copy.
 
+[0.7.3]: https://github.com/erinpantz/verity-design-system/compare/v0.7.2...v0.7.3
 [0.7.2]: https://github.com/erinpantz/verity-design-system/compare/v0.7.1...v0.7.2
 [0.7.1]: https://github.com/erinpantz/verity-design-system/compare/v0.7.0...v0.7.1
 [0.7.0]: https://github.com/erinpantz/verity-design-system/compare/v0.6.1...v0.7.0
