@@ -4,6 +4,14 @@ Every release of Verity, newest first. The format follows [Keep a Changelog](htt
 
 Sites install Verity by tag (for example `github:erinpantz/verity-design-system#v0.3.0`), so a site only changes when it moves to a new tag on purpose.
 
+## [0.8.4] – 2026-11-12
+
+In the Profile mockup, the intro reads more easily with more space between its lines.
+
+### Changed
+
+- **Tokens:** `typography/body-xl/line-height` is 40 again (v0.8.3 set it to 36), so body-xl is 28/40 on XL and Large. The mobile size is unchanged at 24/32.
+
 ## [0.8.3] – 2026-11-12
 
 On Profile, a photo in the Hero’s media came out at its full size, because nothing told it how wide to be: Hero said how wide its text was, but not its media. The text is also brighter.
@@ -434,6 +442,7 @@ The first library release: everything in the Figma library except Animation, wit
 - **Theme helpers:** `themeScript`, `useTheme`, and `setTheme`, so a site applies the saved theme before the first paint.
 - **The library build:** one entry point with every component and its prop types, one stylesheet (`verity-design-system/styles.css`) with the fonts inside it, and `npm run build:watch` for working with a linked copy.
 
+[0.8.4]: https://github.com/erinpantz/verity-design-system/compare/v0.8.3...v0.8.4
 [0.8.3]: https://github.com/erinpantz/verity-design-system/compare/v0.8.2...v0.8.3
 [0.8.2]: https://github.com/erinpantz/verity-design-system/compare/v0.8.1...v0.8.2
 [0.8.1]: https://github.com/erinpantz/verity-design-system/compare/v0.8.0...v0.8.1
