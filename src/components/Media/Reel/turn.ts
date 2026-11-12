@@ -131,6 +131,8 @@ export interface CardPlace {
   z: number;
   /** More than 120° from its spot, so it isn't drawn */
   hidden: boolean;
+  /** How far it is from its resting spot, in degrees (positive is past it) */
+  offset: number;
 }
 
 /**
@@ -169,6 +171,29 @@ export function placeCards(
       rotate: d * tilt,
       z: z[i],
       hidden: Math.abs(d) > 120,
+      offset: d,
     };
   });
+}
+
+/**
+ * How far a turn ever carries a card from its spot and back, in degrees:
+ * the dip before it (the current card sinks), or the overshoot past it (the
+ * next card rises past its spot), whichever is more. 13.9° for five cards
+ * with the reel tokens: the overshoot.
+ */
+export function restingReach(step: number, angles: TurnAngles, peak: { progress: number }): number {
+  return Math.max(angles.dip, (step + angles.dip) * (peak.progress - 1), angles.settle);
+}
+
+/**
+ * How dark a card's scrim is, from 0 to 1 (Reel.module.css multiplies it by
+ * reel/scrim-opacity), from its distance to its resting spot: 0 out to
+ * `bright` degrees, so the dip, the overshoot, and the settle stay bright,
+ * then rising smoothly (a smoothstep) to 1 by `dim` degrees, half the
+ * spacing between images, and 1 beyond.
+ */
+export function scrimLevel(offset: number, bright: number, dim: number): number {
+  const t = Math.min(1, Math.max(0, (Math.abs(offset) - bright) / (dim - bright)));
+  return t * t * (3 - 2 * t);
 }

@@ -51,6 +51,8 @@ The pause button shows only when it’s needed, by the same rule as Animation’
 | Paused | Always shows, with the `play` icon | So the way to start it again is always there |
 | On a touch screen | Always shows | There’s no hover to bring it back |
 
+The cards have no states of their own. A card’s scrim shows only how far it is from its spot (see Motion), not hover or focus.
+
 Hidden only means see-through: keyboard users can still tab to it. The button’s own hover, focus, and press states are `IconButton`’s, with `background="scrim"`.
 
 ## Motion
@@ -80,9 +82,21 @@ The images sit 360° / count apart on a disc (72° for five). Its pivot is `--ve
 
 Cards more than 120° from their spot aren’t drawn, and the card nearest its spot is on top.
 
+### The scrim
+
+Each card has a scrim over it: `--verity-color-background-default` at an opacity that follows the card’s distance from its resting spot, the same distance the motion uses. So a card away from its spot reads as further back, and never puts a bright picture behind the text it passes.
+
+| Distance from its spot | Scrim |
+|---|---|
+| Up to as far as a turn carries a card from its spot and back (13.9° for five cards: the overshoot) | None, so the dip, the overshoot, and the settle stay bright |
+| From there to half the spacing between images (36° for five) | Rising smoothly (a smoothstep) |
+| Beyond | `--verity-reel-scrim-opacity` (0.7) |
+
+The code works out the clear range from the dip and the overshoot, so new angles or a new curve need no other change.
+
 ### Reduce motion
 
-With reduce motion on, nothing moves, and there’s no entrance: the Reel opens on the first image. Each turn is a crossfade in place, over `--verity-reel-duration-rise`, with the same hold and the same pausing.
+With reduce motion on, nothing moves, there’s no entrance, and there’s no scrim: the Reel opens on the first image. Each turn is a crossfade in place, over `--verity-reel-duration-rise`, with the same hold and the same pausing.
 
 <Canvas of={ReelStories.ReduceMotion} />
 

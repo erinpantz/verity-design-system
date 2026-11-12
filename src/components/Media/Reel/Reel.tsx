@@ -2,7 +2,7 @@ import { useEffect, useRef, useState, type FocusEvent, type PointerEvent, type R
 import { IconButton } from '../../Actions/IconButton';
 import { Skeleton } from '../../FeedbackAndStatus/Skeleton';
 import { useReducedMotion } from '../Playback/useReducedMotion';
-import { bezierPeak, placeCards, turnAngle, turnLength, type Bezier } from './turn';
+import { bezierPeak, placeCards, restingReach, scrimLevel, turnAngle, turnLength, type Bezier } from './turn';
 import styles from './Reel.module.css';
 
 /** One image in a Reel */
@@ -115,7 +115,7 @@ function ReelPlayer({ images, label = 'Examples of my design work' }: ReelProps)
 
     // The tokens, read fresh at each turn, so a change (like the slow-motion
     // story's) applies to the next one. Reel.module.css registers each as a
-    // time, length, or number, so the browser hands back resolved values.
+    // time or a number, so the browser hands back resolved values.
     function read() {
       const style = getComputedStyle(reel!);
       const time = (name: string) => {
@@ -136,8 +136,7 @@ function ReelPlayer({ images, label = 'Examples of my design work' }: ReelProps)
           fall: time('--reel-fall'),
           settle: time('--reel-settle'),
         },
-        // The angles and the radius are lengths in the tokens (Figma exports
-        // them as dimensions), so only the number counts
+        // The angles in degrees, and the radius in card widths
         angles: { dip: number('--reel-angle-dip'), settle: number('--reel-angle-settle') },
         radius: number('--reel-radius'),
         tilt: number('--reel-tilt'),
@@ -145,9 +144,19 @@ function ReelPlayer({ images, label = 'Examples of my design work' }: ReelProps)
       };
     }
 
-    function setCard(i: number, x: number, y: number, rotate: number, z: number, opacity: number, hidden: boolean) {
+    function setCard(
+      i: number,
+      x: number,
+      y: number,
+      rotate: number,
+      z: number,
+      opacity: number,
+      hidden: boolean,
+      scrim = 0,
+    ) {
       const card = cardRefs.current[i];
       if (!card) return;
+      card.style.setProperty('--scrim', `${scrim}`);
       card.style.setProperty('--x', `${x}%`);
       card.style.setProperty('--y', `${y}%`);
       card.style.setProperty('--rotate', `${rotate}deg`);
@@ -156,14 +165,25 @@ function ReelPlayer({ images, label = 'Examples of my design work' }: ReelProps)
       card.toggleAttribute('data-hidden', hidden);
     }
 
-    // Moving: every card on the disc, at `angle` from the next image's spot
-    function drawDisc(angle: number, radius: number, tilt: number) {
+    // Moving: every card on the disc, at `angle` from the next image's spot.
+    // A card dims as it moves away from its spot: its scrim is clear as far
+    // as a turn carries it from its spot and back (`bright`), and full by
+    // half the spacing between images.
+    function drawDisc(angle: number, { radius, tilt, bright }: { radius: number; tilt: number; bright: number }) {
+      const dim = 180 / count;
       placeCards(count, (current + 1) % count, angle, radius, tilt).forEach((place, i) =>
-        setCard(i, place.x, place.y, place.rotate, place.z, 1, place.hidden),
+        setCard(i, place.x, place.y, place.rotate, place.z, 1, place.hidden, scrimLevel(place.offset, bright, dim)),
       );
     }
 
-    // Reduce motion: every card at rest, the next fading in over the current
+    // The disc's shape, and how far a turn carries a card from its spot
+    function readDisc() {
+      const { angles, radius, tilt, curve } = read();
+      return { radius, tilt, bright: restingReach(360 / count, angles, bezierPeak(curve)) };
+    }
+
+    // Reduce motion: every card at rest, with no scrim, the next fading in
+    // over the current
     function drawFade(progress: number) {
       const next = (current + 1) % count;
       for (let i = 0; i < count; i++) {
@@ -175,15 +195,13 @@ function ReelPlayer({ images, label = 'Examples of my design work' }: ReelProps)
     // At rest, between turns
     function drawRest() {
       if (reducedRef.current) drawFade(0);
-      else {
-        const { radius, tilt } = read();
-        drawDisc(-360 / count, radius, tilt);
-      }
+      else drawDisc(-360 / count, readDisc());
     }
 
     function turn() {
       holdTimer = undefined;
-      const { timing, angles, radius, tilt, curve } = read();
+      const { timing, angles, curve } = read();
+      const disc = readDisc();
       const reduced = reducedRef.current;
       const peak = bezierPeak(curve);
       const length = reduced ? timing.rise : turnLength(timing);
@@ -201,7 +219,7 @@ function ReelPlayer({ images, label = 'Examples of my design work' }: ReelProps)
           return;
         }
         if (reduced) drawFade(elapsed / length);
-        else drawDisc(turnAngle(elapsed, step, timing, angles, curve, peak), radius, tilt);
+        else drawDisc(turnAngle(elapsed, step, timing, angles, curve, peak), disc);
         frame = requestAnimationFrame(tick);
       };
       frame = requestAnimationFrame(tick);
@@ -338,6 +356,8 @@ function Card({ ref, src, priority }: { ref: Ref<HTMLDivElement>; src: string | 
   return (
     <div ref={ref} className={styles.card}>
       {status !== 'loaded' && <Skeleton showShine={status === 'loading'} />}
+      {/* Over the picture: the page color, darker the further the card is
+          from its spot (Reel.module.css) */}
       {src && (
         <img
           ref={imgRef}
@@ -352,6 +372,7 @@ function Card({ ref, src, priority }: { ref: Ref<HTMLDivElement>; src: string | 
           onError={() => setStatus('error')}
         />
       )}
+      <div className={styles.scrim} />
     </div>
   );
 }

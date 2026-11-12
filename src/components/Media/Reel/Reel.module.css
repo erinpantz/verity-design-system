@@ -115,7 +115,7 @@
   rotate: var(--rotate, 0deg);
 }
 
-/* The Skeleton and the picture share the cell; the picture is on top */
+/* The Skeleton, the picture, and the scrim share the cell, in that order */
 .card > * {
   grid-area: 1 / 1;
 }
@@ -125,6 +125,16 @@
   inline-size: 100%;
   block-size: 100%;
   object-fit: cover;
+}
+
+/* The scrim: the page color over the card, so a card away from its spot
+   reads as further back, and never puts a bright picture behind the text
+   it passes. Reel.tsx sets --scrim, from 0 at rest to 1 by half the spacing
+   between images; this file scales it to reel/scrim-opacity. */
+.scrim {
+  background: var(--verity-color-background-default);
+  opacity: calc(var(--scrim, 0) * var(--verity-reel-scrim-opacity));
+  pointer-events: none;
 }
 
 /* Too far round the disc to see */
