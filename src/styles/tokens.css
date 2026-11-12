@@ -851,14 +851,13 @@
 :root {
   --verity-content-column-width: 880px; /** The width of the content column: every block on a page (text, MediaText, quotes, lists) is this wide at most, centered, so all blocks share left and right edges. MediaBlock, Gallery, Grid, and the stacks can opt out with Width=wide. */
   --verity-content-wide-width: 1824px; /** The widest a page’s content gets: Sections and Containers span up to this width, and MediaBlock, Gallery, Grid, and stacks set to Width=wide fill it. */
-  --verity-nav-container-thickness-expanded: 0px;
-  --verity-nav-container-thickness-collapsed: 56px;
   --verity-grid-columns: 4;
   --verity-grid-item-min-width-sm: 200px; /** Minimum width of a Grid item before the row wraps, when Item width is sm (200px). */
   --verity-grid-item-min-width-md: 280px; /** Minimum width of a Grid item before the row wraps, when Item width is md (280px). */
   --verity-grid-item-min-width-lg: 300px; /** Minimum width of a Grid item before the row wraps, when Item width is lg (400px; 300px on Medium and Small). */
   --verity-grid-item-min-width-xl: 400px; /** Minimum width of a Grid item before the row wraps, when Item width is xl (600px; 400px on Medium and Small). */
-  --verity-nav-overlay-thickness: 240px;
+  --verity-main-nav-short-logo-width: 544px; /** Below this width (MainNav’s content, inside its side padding), the logo shows only “erin,” so the NavItems still fit. The full logo + main-nav/gap + the three NavItems, rounded up: 212 + 32 + 374 on XL and Large, 159 + 24 + 358 on Medium and Small. On screens, the full logo shows from 624 wide on Medium, and “erin” from 560 to 623. Recompute if a nav label changes. */
+  --verity-main-nav-menu-width: 440px; /** Below this width (MainNav’s content, inside its side padding), the NavItems move into NavOverlay, opened from the menu button. “erin” + main-nav/gap + the three NavItems, rounded up: 75 + 32 + 374 on XL and Large, 56 + 24 + 358 on Medium and Small. On screens, Small shows “erin” and the links from 488 wide, and the menu button below that. Recompute if a nav label changes. */
   --verity-gallery-item-min-width: 200px; /** Minimum width of a Gallery item before the Gallery stacks into one column (200px). */
   --verity-footer-call-to-action-min-width: 240px; /** Narrowest the Footer call to action gets before the links wrap below it: 300 on Large and XL (side by side), 320 on Medium and 240 on Small (stacked). */
   --verity-footer-call-to-action-max-width: 400px; /** Widest the Footer call to action gets, so its text keeps a comfortable line length (400px). */
@@ -871,15 +870,8 @@
   --verity-nav-card-tilt: 4; /** How far a tilted NavCard turns at rest, in degrees (left or right by its Tilt property). It straightens on hover and focus. Code only. */
   --verity-nav-card-group-gap: -24px; /** Space between the NavCards in a NavCardGroup. Negative, so each card overlaps the one before it by 24px. Stored as the negative gap because Figma can’t bind a gap to a negated token. */
   --verity-hero-text-min-width: 200px; /** The narrowest a Hero’s text (Body) gets beside media: 560 on XL and Large, 400 on Medium, 200 on Small. When the text and the media don’t both fit, the media wraps under the text. */
-  --verity-nav-container-padding-x-expanded: var(--verity-spacing-16); /** Left and right padding of the expanded NavContainer. */
-  --verity-nav-container-padding-x-collapsed: var(--verity-spacing-8); /** Left and right padding of the collapsed, top-docked NavContainer. */
-  --verity-nav-container-padding-bottom: var(--verity-spacing-16); /** Bottom padding of the expanded NavContainer. */
-  --verity-nav-overlay-padding: var(--verity-spacing-16); /** Padding on all sides of NavOverlay. */
-  --verity-main-nav-link-gap: var(--verity-spacing-8); /** Space between the primary links in MainNav. */
-  --verity-main-nav-group-gap: var(--verity-spacing-16); /** Space between the menu bar and the primary links in MainNav. */
-  --verity-main-nav-site-title-padding: var(--verity-spacing-8); /** Left inset of the site title in MainNav. */
-  --verity-main-nav-logo-offset: var(--verity-spacing-8); /** Bottom padding under the MainNav logo. Lifts the logo so its lowercase letters, not its tallest letters, line up with the center of the menu icon. */
-  --verity-main-nav-logo-height: var(--verity-size-22); /** Height of the Erin Tozour logo in MainNav. Its width follows, so the logo keeps its proportions. */
+  --verity-main-nav-logo-offset: var(--verity-spacing-8); /** Bottom padding under the MainNav logo. Lifts the logo so its lowercase letters line up with the NavItem labels beside it. */
+  --verity-main-nav-logo-height: var(--verity-size-24); /** Height of the Erin Tozour logo in MainNav: 32 on XL and Large, 24 on Medium and Small. Its width follows, so the logo keeps its proportions. */
   --verity-nav-item-padding: var(--verity-spacing-8); /** Padding on all sides of a NavItem (its tap area). */
   --verity-nav-item-gap: var(--verity-spacing-8); /** Space between a NavItem icon and its label. */
   --verity-tooltip-padding-x: var(--verity-spacing-8); /** Left and right padding inside a Tooltip. */
@@ -890,7 +882,9 @@
   --verity-theme-toggle-duration-rotation: var(--verity-duration-6000); /** Time for one full turn of the ThemeToggle star while hovered, in milliseconds. */
   --verity-theme-toggle-glow-blur: var(--verity-shadow-glow-blur); /** Blur of the glow behind the ThemeToggle star. */
   --verity-nav-card-icon-size: var(--verity-size-64); /** Width and height of the nav icon on a NavCard. */
-  --verity-nav-container-padding-top: var(--verity-spacing-md); /** Top padding of the left-docked NavContainer. */
+  --verity-main-nav-link-gap: var(--verity-spacing-sm); /** Space between the NavItems in MainNav, in a row on the page and in a column in NavOverlay. */
+  --verity-main-nav-gap: var(--verity-spacing-md); /** The least space between the logo and the NavItems in MainNav. The logo’s frame fills the rest, so the links sit at the end. */
+  --verity-nav-overlay-padding: var(--verity-padding-sm); /** Padding on all sides of NavOverlay. */
 }
 
 /* Small: Typography Styles */
@@ -1102,14 +1096,13 @@
   :root {
     --verity-content-column-width: 880px; /** The width of the content column: every block on a page (text, MediaText, quotes, lists) is this wide at most, centered, so all blocks share left and right edges. MediaBlock, Gallery, Grid, and the stacks can opt out with Width=wide. */
     --verity-content-wide-width: 1824px; /** The widest a page’s content gets: Sections and Containers span up to this width, and MediaBlock, Gallery, Grid, and stacks set to Width=wide fill it. */
-    --verity-nav-container-thickness-expanded: 0px;
-    --verity-nav-container-thickness-collapsed: 56px;
     --verity-grid-columns: 8;
     --verity-grid-item-min-width-sm: 200px; /** Minimum width of a Grid item before the row wraps, when Item width is sm (200px). */
     --verity-grid-item-min-width-md: 280px; /** Minimum width of a Grid item before the row wraps, when Item width is md (280px). */
     --verity-grid-item-min-width-lg: 300px; /** Minimum width of a Grid item before the row wraps, when Item width is lg (400px; 300px on Medium and Small). */
     --verity-grid-item-min-width-xl: 400px; /** Minimum width of a Grid item before the row wraps, when Item width is xl (600px; 400px on Medium and Small). */
-    --verity-nav-overlay-thickness: 240px;
+    --verity-main-nav-short-logo-width: 544px; /** Below this width (MainNav’s content, inside its side padding), the logo shows only “erin,” so the NavItems still fit. The full logo + main-nav/gap + the three NavItems, rounded up: 212 + 32 + 374 on XL and Large, 159 + 24 + 358 on Medium and Small. On screens, the full logo shows from 624 wide on Medium, and “erin” from 560 to 623. Recompute if a nav label changes. */
+    --verity-main-nav-menu-width: 440px; /** Below this width (MainNav’s content, inside its side padding), the NavItems move into NavOverlay, opened from the menu button. “erin” + main-nav/gap + the three NavItems, rounded up: 75 + 32 + 374 on XL and Large, 56 + 24 + 358 on Medium and Small. On screens, Small shows “erin” and the links from 488 wide, and the menu button below that. Recompute if a nav label changes. */
     --verity-gallery-item-min-width: 200px; /** Minimum width of a Gallery item before the Gallery stacks into one column (200px). */
     --verity-footer-call-to-action-min-width: 320px; /** Narrowest the Footer call to action gets before the links wrap below it: 300 on Large and XL (side by side), 320 on Medium and 240 on Small (stacked). */
     --verity-footer-call-to-action-max-width: 400px; /** Widest the Footer call to action gets, so its text keeps a comfortable line length (400px). */
@@ -1122,15 +1115,8 @@
     --verity-nav-card-tilt: 4; /** How far a tilted NavCard turns at rest, in degrees (left or right by its Tilt property). It straightens on hover and focus. Code only. */
     --verity-nav-card-group-gap: -24px; /** Space between the NavCards in a NavCardGroup. Negative, so each card overlaps the one before it by 24px. Stored as the negative gap because Figma can’t bind a gap to a negated token. */
     --verity-hero-text-min-width: 400px; /** The narrowest a Hero’s text (Body) gets beside media: 560 on XL and Large, 400 on Medium, 200 on Small. When the text and the media don’t both fit, the media wraps under the text. */
-    --verity-nav-container-padding-x-expanded: var(--verity-spacing-16); /** Left and right padding of the expanded NavContainer. */
-    --verity-nav-container-padding-x-collapsed: var(--verity-spacing-8); /** Left and right padding of the collapsed, top-docked NavContainer. */
-    --verity-nav-container-padding-bottom: var(--verity-spacing-16); /** Bottom padding of the expanded NavContainer. */
-    --verity-nav-overlay-padding: var(--verity-spacing-16); /** Padding on all sides of NavOverlay. */
-    --verity-main-nav-link-gap: var(--verity-spacing-8); /** Space between the primary links in MainNav. */
-    --verity-main-nav-group-gap: var(--verity-spacing-16); /** Space between the menu bar and the primary links in MainNav. */
-    --verity-main-nav-site-title-padding: var(--verity-spacing-8); /** Left inset of the site title in MainNav. */
-    --verity-main-nav-logo-offset: var(--verity-spacing-8); /** Bottom padding under the MainNav logo. Lifts the logo so its lowercase letters, not its tallest letters, line up with the center of the menu icon. */
-    --verity-main-nav-logo-height: var(--verity-size-22); /** Height of the Erin Tozour logo in MainNav. Its width follows, so the logo keeps its proportions. */
+    --verity-main-nav-logo-offset: var(--verity-spacing-8); /** Bottom padding under the MainNav logo. Lifts the logo so its lowercase letters line up with the NavItem labels beside it. */
+    --verity-main-nav-logo-height: var(--verity-size-24); /** Height of the Erin Tozour logo in MainNav: 32 on XL and Large, 24 on Medium and Small. Its width follows, so the logo keeps its proportions. */
     --verity-nav-item-padding: var(--verity-spacing-8); /** Padding on all sides of a NavItem (its tap area). */
     --verity-nav-item-gap: var(--verity-spacing-8); /** Space between a NavItem icon and its label. */
     --verity-tooltip-padding-x: var(--verity-spacing-8); /** Left and right padding inside a Tooltip. */
@@ -1141,7 +1127,9 @@
     --verity-theme-toggle-duration-rotation: var(--verity-duration-6000); /** Time for one full turn of the ThemeToggle star while hovered, in milliseconds. */
     --verity-theme-toggle-glow-blur: var(--verity-shadow-glow-blur); /** Blur of the glow behind the ThemeToggle star. */
     --verity-nav-card-icon-size: var(--verity-size-96); /** Width and height of the nav icon on a NavCard. */
-    --verity-nav-container-padding-top: var(--verity-spacing-md); /** Top padding of the left-docked NavContainer. */
+    --verity-main-nav-link-gap: var(--verity-spacing-sm); /** Space between the NavItems in MainNav, in a row on the page and in a column in NavOverlay. */
+    --verity-main-nav-gap: var(--verity-spacing-md); /** The least space between the logo and the NavItems in MainNav. The logo’s frame fills the rest, so the links sit at the end. */
+    --verity-nav-overlay-padding: var(--verity-padding-sm); /** Padding on all sides of NavOverlay. */
   }
 
   /* Medium: Typography Styles */
@@ -1354,14 +1342,13 @@
   :root {
     --verity-content-column-width: 880px; /** The width of the content column: every block on a page (text, MediaText, quotes, lists) is this wide at most, centered, so all blocks share left and right edges. MediaBlock, Gallery, Grid, and the stacks can opt out with Width=wide. */
     --verity-content-wide-width: 1824px; /** The widest a page’s content gets: Sections and Containers span up to this width, and MediaBlock, Gallery, Grid, and stacks set to Width=wide fill it. */
-    --verity-nav-container-thickness-expanded: 240px;
-    --verity-nav-container-thickness-collapsed: 72px;
     --verity-grid-columns: 12;
     --verity-grid-item-min-width-sm: 200px; /** Minimum width of a Grid item before the row wraps, when Item width is sm (200px). */
     --verity-grid-item-min-width-md: 280px; /** Minimum width of a Grid item before the row wraps, when Item width is md (280px). */
     --verity-grid-item-min-width-lg: 400px; /** Minimum width of a Grid item before the row wraps, when Item width is lg (400px; 300px on Medium and Small). */
     --verity-grid-item-min-width-xl: 600px; /** Minimum width of a Grid item before the row wraps, when Item width is xl (600px; 400px on Medium and Small). */
-    --verity-nav-overlay-thickness: 240px;
+    --verity-main-nav-short-logo-width: 620px; /** Below this width (MainNav’s content, inside its side padding), the logo shows only “erin,” so the NavItems still fit. The full logo + main-nav/gap + the three NavItems, rounded up: 212 + 32 + 374 on XL and Large, 159 + 24 + 358 on Medium and Small. On screens, the full logo shows from 624 wide on Medium, and “erin” from 560 to 623. Recompute if a nav label changes. */
+    --verity-main-nav-menu-width: 484px; /** Below this width (MainNav’s content, inside its side padding), the NavItems move into NavOverlay, opened from the menu button. “erin” + main-nav/gap + the three NavItems, rounded up: 75 + 32 + 374 on XL and Large, 56 + 24 + 358 on Medium and Small. On screens, Small shows “erin” and the links from 488 wide, and the menu button below that. Recompute if a nav label changes. */
     --verity-gallery-item-min-width: 200px; /** Minimum width of a Gallery item before the Gallery stacks into one column (200px). */
     --verity-footer-call-to-action-min-width: 300px; /** Narrowest the Footer call to action gets before the links wrap below it: 300 on Large and XL (side by side), 320 on Medium and 240 on Small (stacked). */
     --verity-footer-call-to-action-max-width: 400px; /** Widest the Footer call to action gets, so its text keeps a comfortable line length (400px). */
@@ -1374,15 +1361,8 @@
     --verity-nav-card-tilt: 4; /** How far a tilted NavCard turns at rest, in degrees (left or right by its Tilt property). It straightens on hover and focus. Code only. */
     --verity-nav-card-group-gap: -24px; /** Space between the NavCards in a NavCardGroup. Negative, so each card overlaps the one before it by 24px. Stored as the negative gap because Figma can’t bind a gap to a negated token. */
     --verity-hero-text-min-width: 560px; /** The narrowest a Hero’s text (Body) gets beside media: 560 on XL and Large, 400 on Medium, 200 on Small. When the text and the media don’t both fit, the media wraps under the text. */
-    --verity-nav-container-padding-x-expanded: var(--verity-spacing-16); /** Left and right padding of the expanded NavContainer. */
-    --verity-nav-container-padding-x-collapsed: var(--verity-spacing-8); /** Left and right padding of the collapsed, top-docked NavContainer. */
-    --verity-nav-container-padding-bottom: var(--verity-spacing-16); /** Bottom padding of the expanded NavContainer. */
-    --verity-nav-overlay-padding: var(--verity-spacing-16); /** Padding on all sides of NavOverlay. */
-    --verity-main-nav-link-gap: var(--verity-spacing-8); /** Space between the primary links in MainNav. */
-    --verity-main-nav-group-gap: var(--verity-spacing-16); /** Space between the menu bar and the primary links in MainNav. */
-    --verity-main-nav-site-title-padding: var(--verity-spacing-8); /** Left inset of the site title in MainNav. */
-    --verity-main-nav-logo-offset: var(--verity-spacing-8); /** Bottom padding under the MainNav logo. Lifts the logo so its lowercase letters, not its tallest letters, line up with the center of the menu icon. */
-    --verity-main-nav-logo-height: var(--verity-size-22); /** Height of the Erin Tozour logo in MainNav. Its width follows, so the logo keeps its proportions. */
+    --verity-main-nav-logo-offset: var(--verity-spacing-16); /** Bottom padding under the MainNav logo. Lifts the logo so its lowercase letters line up with the NavItem labels beside it. */
+    --verity-main-nav-logo-height: var(--verity-size-32); /** Height of the Erin Tozour logo in MainNav: 32 on XL and Large, 24 on Medium and Small. Its width follows, so the logo keeps its proportions. */
     --verity-nav-item-padding: var(--verity-spacing-8); /** Padding on all sides of a NavItem (its tap area). */
     --verity-nav-item-gap: var(--verity-spacing-8); /** Space between a NavItem icon and its label. */
     --verity-tooltip-padding-x: var(--verity-spacing-8); /** Left and right padding inside a Tooltip. */
@@ -1393,7 +1373,9 @@
     --verity-theme-toggle-duration-rotation: var(--verity-duration-6000); /** Time for one full turn of the ThemeToggle star while hovered, in milliseconds. */
     --verity-theme-toggle-glow-blur: var(--verity-shadow-glow-blur); /** Blur of the glow behind the ThemeToggle star. */
     --verity-nav-card-icon-size: var(--verity-size-96); /** Width and height of the nav icon on a NavCard. */
-    --verity-nav-container-padding-top: var(--verity-spacing-md); /** Top padding of the left-docked NavContainer. */
+    --verity-main-nav-link-gap: var(--verity-spacing-sm); /** Space between the NavItems in MainNav, in a row on the page and in a column in NavOverlay. */
+    --verity-main-nav-gap: var(--verity-spacing-md); /** The least space between the logo and the NavItems in MainNav. The logo’s frame fills the rest, so the links sit at the end. */
+    --verity-nav-overlay-padding: var(--verity-padding-sm); /** Padding on all sides of NavOverlay. */
   }
 
   /* Large: Typography Styles */
@@ -1606,14 +1588,13 @@
   :root {
     --verity-content-column-width: 880px; /** The width of the content column: every block on a page (text, MediaText, quotes, lists) is this wide at most, centered, so all blocks share left and right edges. MediaBlock, Gallery, Grid, and the stacks can opt out with Width=wide. */
     --verity-content-wide-width: 1824px; /** The widest a page’s content gets: Sections and Containers span up to this width, and MediaBlock, Gallery, Grid, and stacks set to Width=wide fill it. */
-    --verity-nav-container-thickness-expanded: 240px;
-    --verity-nav-container-thickness-collapsed: 72px;
     --verity-grid-columns: 12;
     --verity-grid-item-min-width-sm: 200px; /** Minimum width of a Grid item before the row wraps, when Item width is sm (200px). */
     --verity-grid-item-min-width-md: 280px; /** Minimum width of a Grid item before the row wraps, when Item width is md (280px). */
     --verity-grid-item-min-width-lg: 400px; /** Minimum width of a Grid item before the row wraps, when Item width is lg (400px; 300px on Medium and Small). */
     --verity-grid-item-min-width-xl: 600px; /** Minimum width of a Grid item before the row wraps, when Item width is xl (600px; 400px on Medium and Small). */
-    --verity-nav-overlay-thickness: 240px;
+    --verity-main-nav-short-logo-width: 620px; /** Below this width (MainNav’s content, inside its side padding), the logo shows only “erin,” so the NavItems still fit. The full logo + main-nav/gap + the three NavItems, rounded up: 212 + 32 + 374 on XL and Large, 159 + 24 + 358 on Medium and Small. On screens, the full logo shows from 624 wide on Medium, and “erin” from 560 to 623. Recompute if a nav label changes. */
+    --verity-main-nav-menu-width: 484px; /** Below this width (MainNav’s content, inside its side padding), the NavItems move into NavOverlay, opened from the menu button. “erin” + main-nav/gap + the three NavItems, rounded up: 75 + 32 + 374 on XL and Large, 56 + 24 + 358 on Medium and Small. On screens, Small shows “erin” and the links from 488 wide, and the menu button below that. Recompute if a nav label changes. */
     --verity-gallery-item-min-width: 200px; /** Minimum width of a Gallery item before the Gallery stacks into one column (200px). */
     --verity-footer-call-to-action-min-width: 300px; /** Narrowest the Footer call to action gets before the links wrap below it: 300 on Large and XL (side by side), 320 on Medium and 240 on Small (stacked). */
     --verity-footer-call-to-action-max-width: 400px; /** Widest the Footer call to action gets, so its text keeps a comfortable line length (400px). */
@@ -1626,15 +1607,8 @@
     --verity-nav-card-tilt: 4; /** How far a tilted NavCard turns at rest, in degrees (left or right by its Tilt property). It straightens on hover and focus. Code only. */
     --verity-nav-card-group-gap: -24px; /** Space between the NavCards in a NavCardGroup. Negative, so each card overlaps the one before it by 24px. Stored as the negative gap because Figma can’t bind a gap to a negated token. */
     --verity-hero-text-min-width: 560px; /** The narrowest a Hero’s text (Body) gets beside media: 560 on XL and Large, 400 on Medium, 200 on Small. When the text and the media don’t both fit, the media wraps under the text. */
-    --verity-nav-container-padding-x-expanded: var(--verity-spacing-16); /** Left and right padding of the expanded NavContainer. */
-    --verity-nav-container-padding-x-collapsed: var(--verity-spacing-8); /** Left and right padding of the collapsed, top-docked NavContainer. */
-    --verity-nav-container-padding-bottom: var(--verity-spacing-16); /** Bottom padding of the expanded NavContainer. */
-    --verity-nav-overlay-padding: var(--verity-spacing-16); /** Padding on all sides of NavOverlay. */
-    --verity-main-nav-link-gap: var(--verity-spacing-8); /** Space between the primary links in MainNav. */
-    --verity-main-nav-group-gap: var(--verity-spacing-16); /** Space between the menu bar and the primary links in MainNav. */
-    --verity-main-nav-site-title-padding: var(--verity-spacing-8); /** Left inset of the site title in MainNav. */
-    --verity-main-nav-logo-offset: var(--verity-spacing-8); /** Bottom padding under the MainNav logo. Lifts the logo so its lowercase letters, not its tallest letters, line up with the center of the menu icon. */
-    --verity-main-nav-logo-height: var(--verity-size-22); /** Height of the Erin Tozour logo in MainNav. Its width follows, so the logo keeps its proportions. */
+    --verity-main-nav-logo-offset: var(--verity-spacing-16); /** Bottom padding under the MainNav logo. Lifts the logo so its lowercase letters line up with the NavItem labels beside it. */
+    --verity-main-nav-logo-height: var(--verity-size-32); /** Height of the Erin Tozour logo in MainNav: 32 on XL and Large, 24 on Medium and Small. Its width follows, so the logo keeps its proportions. */
     --verity-nav-item-padding: var(--verity-spacing-8); /** Padding on all sides of a NavItem (its tap area). */
     --verity-nav-item-gap: var(--verity-spacing-8); /** Space between a NavItem icon and its label. */
     --verity-tooltip-padding-x: var(--verity-spacing-8); /** Left and right padding inside a Tooltip. */
@@ -1645,6 +1619,8 @@
     --verity-theme-toggle-duration-rotation: var(--verity-duration-6000); /** Time for one full turn of the ThemeToggle star while hovered, in milliseconds. */
     --verity-theme-toggle-glow-blur: var(--verity-shadow-glow-blur); /** Blur of the glow behind the ThemeToggle star. */
     --verity-nav-card-icon-size: var(--verity-size-96); /** Width and height of the nav icon on a NavCard. */
-    --verity-nav-container-padding-top: var(--verity-spacing-md); /** Top padding of the left-docked NavContainer. */
+    --verity-main-nav-link-gap: var(--verity-spacing-sm); /** Space between the NavItems in MainNav, in a row on the page and in a column in NavOverlay. */
+    --verity-main-nav-gap: var(--verity-spacing-md); /** The least space between the logo and the NavItems in MainNav. The logo’s frame fills the rest, so the links sit at the end. */
+    --verity-nav-overlay-padding: var(--verity-padding-sm); /** Padding on all sides of NavOverlay. */
   }
 }

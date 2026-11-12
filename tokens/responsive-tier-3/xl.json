@@ -25,64 +25,6 @@
       }
     }
   },
-  "nav-container": {
-    "thickness-expanded": {
-      "$type": "dimension",
-      "$value": "240px"
-    },
-    "thickness-collapsed": {
-      "$type": "dimension",
-      "$value": "72px"
-    },
-    "padding-x-expanded": {
-      "$type": "dimension",
-      "$value": "{spacing.16}",
-      "$description": "Left and right padding of the expanded NavContainer.",
-      "$extensions": {
-        "com.figma": {
-          "scopes": [
-            "GAP"
-          ]
-        }
-      }
-    },
-    "padding-x-collapsed": {
-      "$type": "dimension",
-      "$value": "{spacing.8}",
-      "$description": "Left and right padding of the collapsed, top-docked NavContainer.",
-      "$extensions": {
-        "com.figma": {
-          "scopes": [
-            "GAP"
-          ]
-        }
-      }
-    },
-    "padding-bottom": {
-      "$type": "dimension",
-      "$value": "{spacing.16}",
-      "$description": "Bottom padding of the expanded NavContainer.",
-      "$extensions": {
-        "com.figma": {
-          "scopes": [
-            "GAP"
-          ]
-        }
-      }
-    },
-    "padding-top": {
-      "$type": "dimension",
-      "$value": "{spacing.md}",
-      "$description": "Top padding of the left-docked NavContainer.",
-      "$extensions": {
-        "com.figma": {
-          "scopes": [
-            "GAP"
-          ]
-        }
-      }
-    }
-  },
   "grid": {
     "columns": {
       "$type": "number",
@@ -139,53 +81,11 @@
       }
     }
   },
-  "nav-overlay": {
-    "thickness": {
-      "$type": "dimension",
-      "$value": "240px"
-    },
-    "padding": {
-      "$type": "dimension",
-      "$value": "{spacing.16}",
-      "$description": "Padding on all sides of NavOverlay.",
-      "$extensions": {
-        "com.figma": {
-          "scopes": [
-            "GAP"
-          ]
-        }
-      }
-    }
-  },
   "main-nav": {
     "link-gap": {
       "$type": "dimension",
-      "$value": "{spacing.8}",
-      "$description": "Space between the primary links in MainNav.",
-      "$extensions": {
-        "com.figma": {
-          "scopes": [
-            "GAP"
-          ]
-        }
-      }
-    },
-    "group-gap": {
-      "$type": "dimension",
-      "$value": "{spacing.16}",
-      "$description": "Space between the menu bar and the primary links in MainNav.",
-      "$extensions": {
-        "com.figma": {
-          "scopes": [
-            "GAP"
-          ]
-        }
-      }
-    },
-    "site-title-padding": {
-      "$type": "dimension",
-      "$value": "{spacing.8}",
-      "$description": "Left inset of the site title in MainNav.",
+      "$value": "{spacing.sm}",
+      "$description": "Space between the NavItems in MainNav, in a row on the page and in a column in NavOverlay.",
       "$extensions": {
         "com.figma": {
           "scopes": [
@@ -196,8 +96,8 @@
     },
     "logo-offset": {
       "$type": "dimension",
-      "$value": "{spacing.8}",
-      "$description": "Bottom padding under the MainNav logo. Lifts the logo so its lowercase letters, not its tallest letters, line up with the center of the menu icon.",
+      "$value": "{spacing.16}",
+      "$description": "Bottom padding under the MainNav logo. Lifts the logo so its lowercase letters line up with the NavItem labels beside it.",
       "$extensions": {
         "com.figma": {
           "scopes": [
@@ -208,8 +108,8 @@
     },
     "logo-height": {
       "$type": "dimension",
-      "$value": "{size.22}",
-      "$description": "Height of the Erin Tozour logo in MainNav. Its width follows, so the logo keeps its proportions.",
+      "$value": "{size.32}",
+      "$description": "Height of the Erin Tozour logo in MainNav: 32 on XL and Large, 24 on Medium and Small. Its width follows, so the logo keeps its proportions.",
       "$extensions": {
         "com.figma": {
           "scopes": [
@@ -217,6 +117,28 @@
           ]
         }
       }
+    },
+    "gap": {
+      "$type": "dimension",
+      "$value": "{spacing.md}",
+      "$description": "The least space between the logo and the NavItems in MainNav. The logo’s frame fills the rest, so the links sit at the end.",
+      "$extensions": {
+        "com.figma": {
+          "scopes": [
+            "GAP"
+          ]
+        }
+      }
+    },
+    "short-logo-width": {
+      "$type": "dimension",
+      "$value": "620px",
+      "$description": "Below this width (MainNav’s content, inside its side padding), the logo shows only “erin,” so the NavItems still fit. The full logo + main-nav/gap + the three NavItems, rounded up: 212 + 32 + 374 on XL and Large, 159 + 24 + 358 on Medium and Small. On screens, the full logo shows from 624 wide on Medium, and “erin” from 560 to 623. Recompute if a nav label changes."
+    },
+    "menu-width": {
+      "$type": "dimension",
+      "$value": "484px",
+      "$description": "Below this width (MainNav’s content, inside its side padding), the NavItems move into NavOverlay, opened from the menu button. “erin” + main-nav/gap + the three NavItems, rounded up: 75 + 32 + 374 on XL and Large, 56 + 24 + 358 on Medium and Small. On screens, Small shows “erin” and the links from 488 wide, and the menu button below that. Recompute if a nav label changes."
     }
   },
   "nav-item": {
@@ -236,6 +158,20 @@
       "$type": "dimension",
       "$value": "{spacing.8}",
       "$description": "Space between a NavItem icon and its label.",
+      "$extensions": {
+        "com.figma": {
+          "scopes": [
+            "GAP"
+          ]
+        }
+      }
+    }
+  },
+  "nav-overlay": {
+    "padding": {
+      "$type": "dimension",
+      "$value": "{padding.sm}",
+      "$description": "Padding on all sides of NavOverlay.",
       "$extensions": {
         "com.figma": {
           "scopes": [
