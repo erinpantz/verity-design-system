@@ -47,24 +47,23 @@
   initial-value: 0s;
 }
 
-/* The angles and the radius are lengths in the tokens (Figma exports them as
-   dimensions); the script uses only the number */
+/* The angles (in degrees) and the radius (in card widths) are plain numbers */
 @property --reel-angle-dip {
-  syntax: '<length>';
+  syntax: '<number>';
   inherits: false;
-  initial-value: 0px;
+  initial-value: 0;
 }
 
 @property --reel-angle-settle {
-  syntax: '<length>';
+  syntax: '<number>';
   inherits: false;
-  initial-value: 0px;
+  initial-value: 0;
 }
 
 @property --reel-radius {
-  syntax: '<length>';
+  syntax: '<number>';
   inherits: false;
-  initial-value: 0px;
+  initial-value: 0;
 }
 
 @property --reel-tilt {

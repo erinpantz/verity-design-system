@@ -484,13 +484,13 @@
     },
     "angle": {
       "dip": {
-        "$type": "dimension",
-        "$value": "10px",
+        "$type": "number",
+        "$value": 10,
         "$description": "How far the disc turns the wrong way before it turns, in degrees. Code only."
       },
       "settle": {
-        "$type": "dimension",
-        "$value": "3px",
+        "$type": "number",
+        "$value": 3,
         "$description": "How far the card sinks below its spot after the overshoot, in degrees. About a third of the overshoot, like a spring winding down. Code only."
       }
     },
@@ -500,8 +500,8 @@
       "$description": "How much the cards turn with the disc: 1 is a rigid disc, 0 keeps them upright. Code only."
     },
     "radius": {
-      "$type": "dimension",
-      "$value": "1.7px",
+      "$type": "number",
+      "$value": 1.7,
       "$description": "The disc’s radius, as a multiple of the card’s width. The pivot is to the right of the card, so cards arc up and to the right, and the next rises from below. Code only."
     },
     "size": {
@@ -515,6 +515,11 @@
           ]
         }
       }
+    },
+    "scrim-opacity": {
+      "$type": "number",
+      "$value": 0.7,
+      "$description": "How dark a Reel card gets away from its resting spot: the page color (color/background/default) at this opacity over the card. 0 when it’s settled, rising to 0.7 by halfway between spots, so cards read as further back on the disc and never put a bright image behind a Hero’s headline. Code only."
     }
   }
 }
