@@ -1,11 +1,17 @@
 /* A text link. It takes its font from the text around it: inside a paragraph
    it matches the paragraph, and on its own it gets the page's base text style,
    body-default (set in global.css), which is Figma's link/default. Prose's
-   link styles use the same tokens, so a link looks the same everywhere. */
+   link styles use the same tokens, so a link looks the same everywhere.
+
+   A surface whose fill doesn't suit the link colors can set its own, like
+   Hero sets --background-focus-ring for its buttons: --background-link,
+   --background-link-visited, --background-link-hover, and
+   --background-link-active. Link uses them when they're set, and its own
+   colors otherwise. Footer does this. Disabled keeps Link's own color. */
 
 .link {
   border-radius: var(--verity-border-radius-xs);
-  color: var(--link);
+  color: var(--background-link, var(--link));
   font: inherit;
   letter-spacing: inherit;
   text-decoration-line: underline;
@@ -45,15 +51,15 @@
 /* States. The browser applies visited; the rest follow the pointer and keyboard. */
 
 .link:visited {
-  color: var(--link-visited);
+  color: var(--background-link-visited, var(--link-visited));
 }
 
 .link:hover {
-  color: var(--link-hover);
+  color: var(--background-link-hover, var(--link-hover));
 }
 
 .link:active {
-  color: var(--link-active);
+  color: var(--background-link-active, var(--link-active));
 }
 
 .link:focus-visible {

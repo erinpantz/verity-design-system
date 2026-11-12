@@ -48,6 +48,8 @@ Choose the color by the background the link sits on.
 
 <Canvas of={LinkStories.Knockout} />
 
+**A parent surface can set its link colors.** When a surface’s fill doesn’t suit any of these, it sets `--background-link`, `--background-link-visited`, `--background-link-hover`, and `--background-link-active`, and every Link inside uses them instead, with nothing passed in. `Footer` does this (see **Layout › Footer**). Disabled links keep their own color.
+
 ## States
 
 | State | What changes | Tokens |

@@ -48,7 +48,15 @@ Side by side, the call to action sits at the start and the link groups at the en
 
 ## Color
 
-The block’s background is `--verity-color-background-brand-dark`: brand 900 in each theme, so the Footer stands apart from the page’s content without a divider, and follows the theme. Its text uses the usual content colors.
+The block’s background is `--verity-color-background-subtle`: brand 800 in each theme, one step lighter than the page, so the Footer stands apart from the page’s content without a divider, and follows the theme. Its text uses the usual content colors.
+
+**The links use the body text colors.** On this fill, the usual link color is below 4.5:1 (4.47:1 in Blue, 4.11:1 in Red). So the Footer tells the Links inside it to use `--verity-color-content-default` at rest and when visited, and `--verity-color-content-default-hover` on hover and press: 11.6:1 and up. The underline still marks them as links. Disabled links keep their own color. The site passes nothing: the Footer sets the colors (see **Actions › Link**).
+
+| Link state | Token |
+|---|---|
+| Default and visited | `--verity-color-content-default` |
+| Hover and active | `--verity-color-content-default-hover` |
+| Disabled | `--verity-link-color-content-disabled` |
 
 ## Space
 

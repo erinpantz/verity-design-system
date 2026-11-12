@@ -1,6 +1,7 @@
-/* The footer: a deep brand-colored block holding the call to action beside
-   the link groups, then the copyright line. The background sets it apart from
-   the page's content, so it needs no divider. It's wide (data-width="wide"),
+/* The footer: a brand-colored block holding the call to action beside the
+   link groups, then the copyright line. Its fill (background/subtle, one step
+   lighter than the page) sets it apart from the page's content, so it needs
+   no divider. It's wide (data-width="wide"),
    so Container lets it span the page up to content/wide-width, like a wide
    image. It adds no space outside itself. */
 
@@ -10,7 +11,15 @@
   gap: var(--verity-spacing-lg);
   padding: var(--verity-padding-md);
   border-radius: var(--verity-border-radius-md);
-  background: var(--verity-color-background-brand-dark);
+  background: var(--verity-color-background-subtle);
+
+  /* The links inside use the body text colors: the usual link color is below
+     4.5:1 on this fill. The underline still marks them as links. Link reads
+     these (see Link.module.css); disabled links keep their own color. */
+  --background-link: var(--verity-color-content-default);
+  --background-link-visited: var(--verity-color-content-default);
+  --background-link-hover: var(--verity-color-content-default-hover);
+  --background-link-active: var(--verity-color-content-default-hover);
 }
 
 /* The call to action and the link groups sit side by side. The call to action
