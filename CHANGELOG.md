@@ -4,6 +4,19 @@ Every release of Verity, newest first. The format follows [Keep a Changelog](htt
 
 Sites install Verity by tag (for example `github:erinpantz/verity-design-system#v0.3.0`), so a site only changes when it moves to a new tag on purpose.
 
+## [0.8.3] – 2026-11-12
+
+On Profile, a photo in the Hero’s media came out at its full size, because nothing told it how wide to be: Hero said how wide its text was, but not its media. The text is also brighter.
+
+### Added
+
+- **Tokens:** `hero/media-width` (560, 480, 400, 320 on XL, Large, Medium, Small).
+
+### Changed
+
+- **Tokens:** body text is now white. `color/content/default` is `color/neutral/white` in both themes (was brand 100), and `color/content/subtle` is brand 200 (was brand 300), so subtle text has more contrast too. `typography/body-xl` is 28/36 on XL and Large (was 32/40); the mobile size is unchanged at 24/32.
+- **Hero:** its media is at most `hero/media-width`, and never wider than the Hero. It’s a maximum, not a fixed width: a photo (an `Image`) grows to it and keeps its aspect ratio; a `Reel` keeps its own size, so Home’s Hero doesn’t move. A new story, With a photo, shows a 1:1 Image as the media, and the docs say a photo goes in as an `Image`, not a `MediaBlock`.
+
 ## [0.8.2] – 2026-11-12
 
 At 2.5 seconds, someone scanning the page could read the Reel as a still image and move on before it ever turned. Motion gets noticed when it starts, so the Reel now turns once as the page loads, and the holds are a little shorter.
@@ -421,6 +434,7 @@ The first library release: everything in the Figma library except Animation, wit
 - **Theme helpers:** `themeScript`, `useTheme`, and `setTheme`, so a site applies the saved theme before the first paint.
 - **The library build:** one entry point with every component and its prop types, one stylesheet (`verity-design-system/styles.css`) with the fonts inside it, and `npm run build:watch` for working with a linked copy.
 
+[0.8.3]: https://github.com/erinpantz/verity-design-system/compare/v0.8.2...v0.8.3
 [0.8.2]: https://github.com/erinpantz/verity-design-system/compare/v0.8.1...v0.8.2
 [0.8.1]: https://github.com/erinpantz/verity-design-system/compare/v0.8.0...v0.8.1
 [0.8.0]: https://github.com/erinpantz/verity-design-system/compare/v0.7.5...v0.8.0
