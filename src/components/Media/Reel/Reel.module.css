@@ -94,11 +94,16 @@
   aspect-ratio: 1;
 }
 
-/* The cards' own layer, under the button */
+/* The cards' own layer, under the button. A parent can move it behind the
+   page with --media-moving-layer: a default Hero does, so the cards pass
+   behind everything else on the page. The cards never take the pointer, so
+   they never block a click on what they pass over or behind; the reel's own
+   square still holds it on hover. */
 .disc {
   position: absolute;
   inset: 0;
-  z-index: 0;
+  z-index: var(--media-moving-layer, 0);
+  pointer-events: none;
 }
 
 /* Each card fills the reel, with rounded corners, and moves from there */

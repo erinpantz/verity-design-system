@@ -2,10 +2,17 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import landscape from '../../../foundations/sample-images/landscape.jpg';
 import screenshot from '../../../foundations/sample-images/screenshot.png';
 import shapes from '../../../foundations/sample-images/shapes.jpg';
+import reel1 from '../../../foundations/sample-images/reel-1.png';
+import reel2 from '../../../foundations/sample-images/reel-2.png';
+import reel3 from '../../../foundations/sample-images/reel-3.png';
+import reel4 from '../../../foundations/sample-images/reel-4.png';
+import reel5 from '../../../foundations/sample-images/reel-5.png';
 import { CaseStudyHeader } from '../../ContentBlocks/CaseStudyHeader';
+import { Hero } from '../../ContentBlocks/Hero';
 import { Gallery } from '../../Media/Gallery';
 import { Image } from '../../Media/Image';
 import { MediaBlock } from '../../Media/MediaBlock';
+import { Reel } from '../../Media/Reel';
 import { Prose } from '../../Text/Prose';
 import { UnorderedList, UnorderedListItem } from '../../Text/UnorderedList';
 import { Container } from '../Container';
@@ -63,6 +70,33 @@ const page = (
           one tap away.
         </p>
       </Prose>
+    </Section>
+  </>
+);
+
+// Home, as Main: a wide Hero on the default background, with a Reel as its
+// media, then the page. With no band, the Reel's cards swing out across the
+// page, dimmed away from their spot, behind the nav, the text, the content
+// after the Hero, and the Footer, and are clipped at the window's sides.
+const home = (
+  <>
+    <Container>
+      <Hero
+        width="wide"
+        heading="Product designer with a creative toolkit"
+        intro="I’m a senior product designer. I turn messy, high-stakes work into products people trust."
+        media={<Reel images={[{ src: reel1 }, { src: reel2 }, { src: reel3 }, { src: reel4 }, { src: reel5 }]} />}
+      />
+    </Container>
+    <Section heading="How I work">
+      <UnorderedList>
+        <UnorderedListItem title="Start with the people">
+          I talk to the people who use a product before I change it, and again after.
+        </UnorderedListItem>
+        <UnorderedListItem title="Design the system, not just the screen">
+          Each decision becomes a token, a component, or a rule, so the next screen is faster.
+        </UnorderedListItem>
+      </UnorderedList>
     </Section>
   </>
 );
@@ -181,4 +215,13 @@ export const FocusedSmall: Story = {
   name: 'Focused, Small',
   args: focused,
   globals: { viewport: { value: 'sm' } },
+};
+
+// Home: a wide default Hero with a Reel, then the page. Mid-turn, the
+// outgoing card dims as it rises behind the nav, and the incoming one
+// brightens as it settles; both pass behind the content after the Hero.
+// Resize to see it at any width: nothing scrolls sideways.
+export const Home: Story = {
+  args: { children: home, current: undefined },
+  globals: { viewport: { value: 'xl' } },
 };

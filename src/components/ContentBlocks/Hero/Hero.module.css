@@ -18,10 +18,12 @@
    opening more room, and none on the sides, so its text lines up with the
    column.
 
-   The body is always drawn above the media: each is its own stacking layer,
-   the body's above the media's, so moving media (a Reel's cards) passes
-   behind the text but never covers it. A visible band clips what moves past
-   its edges, keeping its rounded corners. */
+   The body is always drawn above the media, so moving media (a Reel's
+   cards) passes behind the text but never covers it. On a visible band, the
+   body and the media are each a layer inside the Hero, and the band clips
+   what moves past its edges, keeping its rounded corners. On default,
+   there's no band: the media's moving layer goes behind the whole page
+   (see .default .media). */
 
 .hero {
   display: flex;
@@ -36,17 +38,17 @@
   color: var(--content);
   /* Always rounded: Verity has no edge-to-edge layouts */
   border-radius: var(--verity-border-radius-md);
-  /* The body's and the media's layers stay inside the Hero, so they don't
-     reach anything else on the page */
-  isolation: isolate;
 }
 
 /* A visible band clips what moves past its edges, like a Reel's cards, to
-   its rounded corners. clip, not hidden, so the band never scrolls. */
+   its rounded corners (clip, not hidden, so the band never scrolls). The
+   body's and the media's layers stay inside it, so they don't reach
+   anything else on the page. */
 .subtle,
 .knockout,
 .brand {
   overflow: clip;
+  isolation: isolate;
 }
 
 /* Each background sets the padding, the text color, and the focus ring
@@ -54,7 +56,9 @@
    own colors don't match the band */
 .default {
   --padding: var(--verity-padding-lg) var(--verity-padding-none);
-  --background: var(--verity-color-background-default);
+  /* No band: the page shows through, so moving media behind the Hero, and
+     behind the page, stays in sight */
+  --background: transparent;
   --content: var(--verity-color-content-default);
   --intro: var(--verity-color-content-subtle);
   --background-focus-ring: var(--verity-color-border-focus);
@@ -139,6 +143,19 @@
   inline-size: var(--verity-hero-media-width);
   min-inline-size: 0;
   max-inline-size: 100%;
+}
+
+/* On default, with no band to clip to, moving media swings out across the
+   page. The media isn't a layer of its own, and it tells what's in it to put
+   its moving layer behind the page (--media-moving-layer, which Reel reads):
+   behind MainNav, the content after the Hero, the Footer, ThemeToggle, and
+   BackLink, as well as the Hero's own text. Shell makes the page one layer
+   (isolation) so this stays above the page's background, and clips it at
+   the window's sides. Anything that stays put in the media, like a Reel's
+   pause button, stays above the page and can still be pressed. */
+.default .media {
+  z-index: auto;
+  --media-moving-layer: -1;
 }
 
 /* Media with its own size, like a Reel (reel/size), keeps it: the media

@@ -3,10 +3,13 @@
    MainNav picks its own layout from its width, so Shell needs no media
    queries. */
 
+/* One layer for the whole page (isolation), so moving media a default Hero
+   puts behind the page (see Hero.module.css) stays above this background */
 .shell {
   display: flex;
   flex-direction: column;
   min-block-size: 100dvh;
+  isolation: isolate;
   background: var(--verity-color-background-default);
   color: var(--verity-color-content-default);
 }
@@ -22,6 +25,10 @@
   gap: var(--verity-main-spacing-section-gap);
   padding-block-end: var(--verity-spacing-lg);
   padding-inline: var(--verity-main-padding-inline);
+  /* Moving media that swings past the window's sides, like a Reel's cards
+     in a default Hero, is clipped there, so the page never scrolls
+     sideways. Sideways only: the cards can still rise toward the nav. */
+  overflow-x: clip;
 }
 
 /* Main: the page's sections, with a section's space between them and the

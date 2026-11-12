@@ -37,14 +37,14 @@ Every focus ring follows the background, not the button, so it keeps a 3:1 contr
 
 | `background` | Fill | Headline | Intro | Primary button | Secondary button | Focus ring |
 |---|---|---|---|---|---|---|
-| `default` | `--verity-color-background-default` | `--verity-color-content-default` | `--verity-color-content-subtle` | `default` | `default` | `--verity-color-border-focus` |
+| `default` | None: the page shows through, which is `--verity-color-background-default` in `Shell`. Moving media passes behind the page (see Media). | `--verity-color-content-default` | `--verity-color-content-subtle` | `default` | `default` | `--verity-color-border-focus` |
 | `subtle` | `--verity-color-background-subtle` | `--verity-color-content-default` | `--verity-color-content-subtle` | `default` | `default` | `--verity-color-border-focus` |
 | `knockout` | `--verity-color-background-knockout` | `--verity-color-content-knockout` | `--verity-color-content-knockout` | `default` | `knockout` | `--verity-color-border-focus-knockout` |
 | `brand` | `--verity-color-background-brand` | `--verity-color-content-default` | `--verity-color-content-subtle` | `brand` | `default` | `--verity-color-border-focus-brand` |
 
-The intro is quieter than the headline on `default`, `subtle`, and `brand`; on `knockout` both use the knockout text color. The intro is `body-xl` (32 on Large and XL, 24 on Medium and Small), large text at every size, so it needs 3:1: subtle on the Red brand band is about 3.05:1, the closest pair. Button has no brand secondary, so on `brand` the secondary button is `default`. On `subtle`, the primary button’s fill (brand 700) is close to the band’s color (brand 800), so the button’s edge is faint; its label still passes.
+The intro is quieter than the headline on `default`, `subtle`, and `brand`; on `knockout` both use the knockout text color. The intro is `body-xl` (28 on Large and XL, 24 on Medium and Small), large text at every size, so it needs 3:1: subtle on the Red brand band is about 3.05:1, the closest pair. Button has no brand secondary, so on `brand` the secondary button is `default`. On `subtle`, the primary button’s fill (brand 700) is close to the band’s color (brand 800), so the button’s edge is faint; its label still passes.
 
-Use `default` on most pages, `subtle` for a quieter band, as on Home with its Reel, and `knockout` or `brand` to make a page’s opening stand out.
+Use `default` on most pages, as on Home with its Reel, `subtle` for a quieter band, and `knockout` or `brand` to make a page’s opening stand out.
 
 <Canvas of={HeroStories.Subtle} />
 
@@ -102,7 +102,13 @@ The media comes after the text in the reading order, and the Hero is still the p
 
 **The text is always on top.** The body and the media each have their own stacking layer, and the body’s is above the media’s, on every background. So media that moves, like a Reel’s turning cards, passes behind the text and never covers it.
 
-**A visible band clips.** On `subtle`, `knockout`, and `brand`, the band clips anything that moves past its edges, keeping its rounded corners, so a Reel’s cards slide out of sight at the band’s edge and the page never scrolls sideways. On `default` there’s no band to clip to, so put moving media like a Reel on a visible band.
+**A visible band clips.** On `subtle`, `knockout`, and `brand`, the band clips anything that moves past its edges, keeping its rounded corners, so a Reel’s cards slide out of sight at the band’s edge and the page never scrolls sideways. On `default` there’s no band to clip to, so the media opens out across the page instead (next).
+
+**On `default`, moving media passes behind the page.** A Reel’s cards swing out freely, behind everything else on the page: MainNav, the content after the Hero, the Footer, ThemeToggle, and BackLink, as well as the Hero’s own text. The Hero has no fill there, and it sets `--media-moving-layer` for what’s in its media, which Reel reads to put its cards behind the page. `Shell` keeps the page one layer, so the cards stay above its background, and clips them sideways at the window’s edges, so the page never scrolls sideways, while they can still rise toward the nav.
+
+- **Nothing they pass behind is blocked.** The cards never take the pointer, so links and buttons they pass behind work as usual. What stays put, like a Reel’s pause button, stays above the page, and hovering over or focusing the Reel still holds it.
+- **The nav has no background,** so a passing card shows through behind its text, dimmed by the Reel’s scrim. That’s intended.
+- **Only in `Shell`.** Outside it, nothing keeps the cards above the page’s background or clips them at the window’s sides. See it in **Layout › Shell › Home**.
 
 <Canvas of={HeroStories.WithMedia} />
 

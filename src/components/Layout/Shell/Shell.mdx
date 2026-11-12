@@ -45,6 +45,10 @@ Shell is one column at every width: MainNav, then Main, then the Footer. The nav
 
 See **Navigation › MainNav** for how it decides.
 
+The page is one layer, over Shell’s background. Moving media that a default `Hero` puts behind the page, like a Reel’s cards, passes behind the nav, Main, the Footer, ThemeToggle, and BackLink, and stays in sight above the background. The page column clips sideways only, so a card swinging past the window’s edge never makes the page scroll sideways, and cards can still rise toward the nav (see **Content blocks › Hero**, Media).
+
+<Canvas of={ShellStories.Home} />
+
 ## Mode
 
 `mode` is a real choice between two ways to read the site, not a preview.
