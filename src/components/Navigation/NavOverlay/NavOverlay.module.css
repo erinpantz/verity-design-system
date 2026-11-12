@@ -1,31 +1,64 @@
-/* The full menu, against the start edge, the height of the screen, over a
-   dimmed page. The browser's own dialog styles (centered, with a border and
-   padding) are replaced. */
+/* The full menu, covering the whole screen, on the page's background: the
+   header (the back button and the badge), then the links. The browser's own
+   dialog styles (centered, with a border and padding) are replaced. There's
+   no dimmed backdrop: the menu covers the page. */
 
 .navOverlay {
   box-sizing: border-box;
-  inline-size: var(--verity-nav-overlay-thickness);
+  inline-size: 100%;
   max-inline-size: 100%;
   block-size: 100dvh;
   max-block-size: 100dvh;
   margin: 0;
-  padding: 0;
+  padding: var(--verity-nav-overlay-padding);
   border: none;
   background: var(--verity-color-background-default);
-  box-shadow: var(--verity-shadow-sm-x) var(--verity-shadow-sm-y) var(--verity-shadow-sm-blur)
-    var(--verity-shadow-sm-spread) var(--verity-shadow-sm-color);
+  /* An edge against the page while it slides */
+  box-shadow: var(--verity-shadow-md-x) var(--verity-shadow-md-y) var(--verity-shadow-md-blur)
+    var(--verity-shadow-md-spread) var(--verity-shadow-md-color);
   color: var(--verity-color-content-default);
 }
 
-/* The page behind it */
-.navOverlay::backdrop {
-  background: var(--verity-color-background-scrim);
+/* Only while open, so the browser's display: none still hides it when closed */
+.navOverlay[open] {
+  display: flex;
+  flex-direction: column;
+  gap: var(--verity-spacing-sm);
 }
 
-/* The padding is on the menu, not the dialog, so a click on the dialog
-   itself is always a click outside the menu */
-.menu {
-  box-sizing: border-box;
-  block-size: 100%;
-  padding: var(--verity-nav-overlay-padding);
+.navOverlay::backdrop {
+  background: transparent;
+}
+
+/* The back button at the start, the badge at the end */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* The slide: in from the right edge when it opens, and back out to the right
+   when it closes (NavOverlay.tsx sets data-closing, then closes the dialog
+   when the slide ends). Only when motion is allowed: with reduce motion on,
+   there's no animation, so it appears and disappears at once. */
+@media (prefers-reduced-motion: no-preference) {
+  .navOverlay[open] {
+    animation: slide-in var(--verity-motion-duration-playful) var(--verity-motion-easing-standard);
+  }
+
+  .navOverlay[open][data-closing] {
+    animation: slide-out var(--verity-motion-duration-playful) var(--verity-motion-easing-standard) forwards;
+  }
+}
+
+@keyframes slide-in {
+  from {
+    translate: 100% 0;
+  }
+}
+
+@keyframes slide-out {
+  to {
+    translate: 100% 0;
+  }
 }

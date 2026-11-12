@@ -1,27 +1,50 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { useState } from 'react';
+import { useState, type CSSProperties } from 'react';
+import { IconButton } from '../../Actions/IconButton';
 import { Prose } from '../../Text/Prose';
-import { MainNav } from '../MainNav';
-import { NavContainer } from '../NavContainer';
+import { NavItem } from '../NavItem';
 import { NavOverlay } from './NavOverlay';
 
-// The page's nav and the overlay, wired together the way Shell will: the
-// page's menu button opens the overlay, and the overlay's closes it
+// The links, in a column, as MainNav passes them
+const links = (
+  <ul
+    style={{
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'flex-start',
+      gap: 'var(--verity-main-nav-link-gap)',
+      margin: 0,
+      padding: 0,
+      listStyle: 'none',
+    }}
+  >
+    <li>
+      <NavItem icon="portfolio" label="Portfolio" href="#portfolio" />
+    </li>
+    <li>
+      <NavItem icon="profile" label="Profile" href="#profile" current />
+    </li>
+    <li>
+      <NavItem icon="playground" label="Playground" href="#playground" />
+    </li>
+  </ul>
+);
+
+// A page with a button that opens the menu, the way MainNav's menu button does
 function Page({ startOpen = false }: { startOpen?: boolean }) {
   const [open, setOpen] = useState(startOpen);
   return (
-    <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'flex-start' }}>
-      <NavContainer>
-        <MainNav current="profile" menuOpen={open} onMenuOpenChange={setOpen} />
-      </NavContainer>
-      <main style={{ flex: '1 1 0', minInlineSize: 0, padding: 'var(--verity-padding-lg)' }}>
-        <Prose>
-          <h1>Profile</h1>
-          <p>Open the menu with the button in the nav. Escape, the close button, or a click outside the menu closes it.</p>
-        </Prose>
-      </main>
+    <div style={{ padding: 'var(--verity-padding-md)' }}>
+      <IconButton icon="dock-to-left" label="Open menu" expanded={open} hasPopup="dialog" onClick={() => setOpen(true)} />
+      <Prose>
+        <h1>Profile</h1>
+        <p>
+          Open the menu with the button above. It slides in from the right. The back button, Escape, or one of its
+          links slides it back out, and focus returns to the button.
+        </p>
+      </Prose>
       <NavOverlay open={open} onClose={() => setOpen(false)}>
-        <MainNav current="profile" placement="overlay" menuOpen={open} onMenuOpenChange={setOpen} />
+        {links}
       </NavOverlay>
     </div>
   );
@@ -30,27 +53,32 @@ function Page({ startOpen = false }: { startOpen?: boolean }) {
 const meta = {
   title: 'Navigation/NavOverlay',
   component: NavOverlay,
-  // The overlay is for Small and Medium, so the stories open at a phone's
-  // width. On Large and up it closes, because the nav is beside the page.
+  // The overlay is for narrow screens, where MainNav shows its menu button,
+  // so the stories open at a phone's width
   parameters: { layout: 'fullscreen', docs: { story: { inline: false, height: '36rem' } } },
   globals: { viewport: { value: 'mobile2' } },
 } satisfies Meta<typeof NavOverlay>;
 
 export default meta;
 
-// On Small: tap the menu button in the top bar
+// Closed: press the button to open it
 export const Default: StoryObj = {
   render: () => <Page />,
 };
 
-// Open from the start, to see it over the page
+// Open from the start: it slides in as the story loads
 export const Open: StoryObj = {
   render: () => <Page startOpen />,
 };
 
-// On Medium, the rail's menu button opens it too
-export const OnMedium: StoryObj = {
-  name: 'On Medium',
-  render: () => <Page />,
-  globals: { viewport: { value: 'tablet' } },
+// The same, with the slide five times slower (1.5 seconds instead of 300ms),
+// to see it move: open it, then close it. Story-only: the menu itself always
+// uses motion/duration/playful.
+export const SlowMotion: StoryObj = {
+  name: 'Slow motion',
+  render: () => (
+    <div style={{ '--verity-motion-duration-playful': 'var(--verity-duration-1500)' } as CSSProperties}>
+      <Page />
+    </div>
+  ),
 };

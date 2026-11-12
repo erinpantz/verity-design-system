@@ -88,8 +88,6 @@ export { NavCard } from './components/Navigation/NavCard';
 export type { NavCardProps } from './components/Navigation/NavCard';
 export { NavCardGroup } from './components/Navigation/NavCardGroup';
 export type { NavCardGroupProps } from './components/Navigation/NavCardGroup';
-export { NavContainer } from './components/Navigation/NavContainer';
-export type { NavContainerProps } from './components/Navigation/NavContainer';
 export { NavItem } from './components/Navigation/NavItem';
 export type { NavItemProps } from './components/Navigation/NavItem';
 export { NavOverlay } from './components/Navigation/NavOverlay';
@@ -112,7 +110,6 @@ export type { IconName } from './icons/icons.generated';
 
 // Breakpoints, for behavior that changes with the screen width. For how things
 // look, use the media queries in 'verity-design-system/breakpoints.module.css'.
-export { useBreakpoint, type Breakpoint } from './styles/useBreakpoint';
 export { BREAKPOINTS } from './styles/breakpoints.generated';
 
 // Themes: the current theme, switching it, and the <head> script that applies

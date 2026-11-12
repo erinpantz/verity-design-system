@@ -1,122 +1,98 @@
-import { useState } from 'react';
-import { useBreakpoint } from '../../../styles/useBreakpoint';
+import { useEffect, useRef, useState } from 'react';
 import { IconButton } from '../../Actions/IconButton';
 import { ErinTozourLogo } from '../../Media/ErinTozourLogo';
 import { NavItem } from '../NavItem';
+import { NavOverlay } from '../NavOverlay';
 import styles from './MainNav.module.css';
 
-type Page = 'portfolio' | 'playground' | 'profile';
+type Page = 'portfolio' | 'profile' | 'playground';
 
 export interface MainNavProps {
   /** The page someone is on, if it’s one of the nav’s pages */
   current?: Page;
   /** Where each link goes. Any you leave out use the defaults. */
-  hrefs?: Partial<Record<'home' | Page | 'resume', string>>;
-  /**
-   * How it starts on Large and XL: expanded, with labels, or collapsed to the
-   * icon-only rail. The menu button switches between them. On Medium it’s
-   * always the rail, and on Small, a top bar.
-   */
-  state?: 'expanded' | 'collapsed';
-  /**
-   * Where it sits: on the page, where its layout follows the screen width, or
-   * in NavOverlay, where it’s always expanded and its menu button closes the
-   * menu
-   */
-  placement?: 'page' | 'overlay';
-  /** Whether NavOverlay is open, so the menu button can say so */
-  menuOpen?: boolean;
-  /**
-   * Called when the menu button opens NavOverlay (on Small and Medium) or
-   * closes it (in the overlay)
-   */
-  onMenuOpenChange?: (open: boolean) => void;
+  hrefs?: Partial<Record<'home' | Page, string>>;
 }
 
 const DEFAULT_HREFS = {
   home: '/',
   portfolio: '/',
-  playground: '/playground',
   profile: '/profile',
-  resume: '/erin-tozour-resume.pdf',
+  playground: '/playground',
 };
 
 const PAGES = [
   { page: 'portfolio', label: 'Portfolio' },
-  { page: 'playground', label: 'Playground' },
   { page: 'profile', label: 'Profile' },
+  { page: 'playground', label: 'Playground' },
 ] as const;
 
-// The site's main navigation: the menu button, the site title, a NavItem per
-// page, and Resume under a line. ThemeToggle isn't in the nav: Shell floats
-// it in the screen's corner. How it looks at each width is all CSS (see
-// MainNav.module.css), so it's right before JavaScript runs. What the menu
-// button does depends on the width too, and that comes from useBreakpoint.
-export function MainNav({
-  current,
-  hrefs = {},
-  state = 'expanded',
-  placement = 'page',
-  menuOpen = false,
-  onMenuOpenChange,
-}: MainNavProps) {
+// The site's main navigation, a bar across the top of the page: the logo,
+// linking home, then a NavItem per page. Its own width picks its layout, in
+// CSS (see MainNav.module.css), so it's right before JavaScript runs: the full
+// logo and the links, "erin" and the links, or the full logo and a menu
+// button that opens the links in NavOverlay. MainNav owns the overlay and
+// whether it's open.
+export function MainNav({ current, hrefs = {} }: MainNavProps) {
   const links = { ...DEFAULT_HREFS, ...hrefs };
-  const breakpoint = useBreakpoint();
+  const [menuOpen, setMenuOpen] = useState(false);
+  const menuButtonRef = useRef<HTMLSpanElement>(null);
 
-  // Expanded or collapsed, on Large and XL. It starts from the state prop,
-  // and starts over if that prop changes.
-  const [navState, setNavState] = useState(state);
-  const [startingState, setStartingState] = useState(state);
-  if (state !== startingState) {
-    setStartingState(state);
-    setNavState(state);
-  }
+  // When the nav widens past the menu layout, its CSS hides the menu button
+  // and shows the links, so the overlay isn't needed: close it. This follows
+  // the nav's own layout, not the screen's: a hidden button measures 0 wide.
+  useEffect(() => {
+    const menuButton = menuButtonRef.current;
+    if (!menuOpen || !menuButton) return;
+    const observer = new ResizeObserver(([entry]) => {
+      if (entry.contentRect.width === 0) setMenuOpen(false);
+    });
+    observer.observe(menuButton);
+    return () => observer.disconnect();
+  }, [menuOpen]);
 
-  // What the menu button does: close the overlay, toggle the nav (Large and
-  // XL), or open the overlay (Small and Medium). Before the screen width is
-  // known (on a server), it's the toggle, which matches the default layout.
-  const toggles = breakpoint === null || breakpoint === 'large' || breakpoint === 'xl';
-  const menuButton =
-    placement === 'overlay'
-      ? { label: 'Close menu', onClick: () => onMenuOpenChange?.(false) }
-      : toggles
-        ? {
-            label: navState === 'expanded' ? 'Collapse navigation' : 'Expand navigation',
-            expanded: navState === 'expanded',
-            onClick: () => setNavState(navState === 'expanded' ? 'collapsed' : 'expanded'),
-          }
-        : {
-            label: 'Open menu',
-            expanded: menuOpen,
-            hasPopup: 'dialog' as const,
-            onClick: () => onMenuOpenChange?.(true),
-          };
+  // The pages: a row in the bar, and a column in the overlay
+  const pageLinks = (direction: 'row' | 'column') => (
+    <ul className={`${styles.links} ${styles[direction]}`}>
+      {PAGES.map(({ page, label }) => (
+        <li key={page}>
+          <NavItem icon={page} label={label} href={links[page]} current={current === page} />
+        </li>
+      ))}
+    </ul>
+  );
 
   return (
-    <nav className={`${styles.mainNav} ${styles[placement]}`} aria-label="Main" data-state={navState}>
-      <div className={styles.menuBar}>
-        {/* The site title: the logo, linking home. Its name is the logo's, “Erin Tozour.” */}
-        <a className={styles.siteTitle} href={links.home}>
-          <ErinTozourLogo />
-        </a>
-        <span className={styles.menuButton}>
-          <IconButton icon="dock-to-left" {...menuButton} />
+    <nav className={styles.mainNav} aria-label="Main">
+      <div className={styles.bar}>
+        {/* The site title fills the rest of the row, so the links sit at the
+            end. The link inside it hugs the logo. Both logos are in the
+            link, and CSS shows one: the hidden one is display: none, so
+            screen readers hear only the shown one's name, “Erin Tozour.” */}
+        <div className={styles.siteTitle}>
+          <a className={styles.homeLink} href={links.home}>
+            <span className={styles.fullLogo}>
+              <ErinTozourLogo />
+            </span>
+            <span className={styles.firstLogo}>
+              <ErinTozourLogo name="first" />
+            </span>
+          </a>
+        </div>
+        {pageLinks('row')}
+        <span className={styles.menuButton} ref={menuButtonRef}>
+          <IconButton
+            icon="dock-to-left"
+            label="Open menu"
+            expanded={menuOpen}
+            hasPopup="dialog"
+            onClick={() => setMenuOpen(true)}
+          />
         </span>
       </div>
-      {/* The links, in one list so screen readers hear them together: the
-          pages, then Resume. Resume opens a PDF rather than a page, so it
-          sits in its own group, under a line drawn in CSS (decorative, so
-          nothing is announced). */}
-      <ul className={styles.links}>
-        {PAGES.map(({ page, label }) => (
-          <li key={page}>
-            <NavItem icon={page} label={label} href={links[page]} current={current === page} />
-          </li>
-        ))}
-        <li className={styles.secondaryLinks}>
-          <NavItem icon="resume" label="Resume" href={links.resume} />
-        </li>
-      </ul>
+      <NavOverlay open={menuOpen} onClose={() => setMenuOpen(false)}>
+        {pageLinks('column')}
+      </NavOverlay>
     </nav>
   );
 }

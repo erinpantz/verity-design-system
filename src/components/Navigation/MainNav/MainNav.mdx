@@ -11,7 +11,7 @@ import * as MainNavStories from './MainNav.stories';
 
 The site’s main navigation: the menu button, the site title, a link to each page, and Resume. In the side nav, a thin line sets Resume apart from the pages, because it opens a PDF rather than a page on the site. MainNav changes with the screen width, from a top bar on phones to a side nav on wide screens. The theme toggle isn’t in the nav: `Shell` floats it in the screen’s bottom-right corner.
 
-<Canvas of={MainNavStories.Default} />
+<Canvas of={MainNavStories.Full} />
 
 ## When to use
 
@@ -46,7 +46,7 @@ How MainNav looks is all CSS, keyed to the generated breakpoints, so it’s righ
 | Medium (560 to 959px) | The rail: the menu button, each page’s icon, then Resume. It ends there. No logo. | `State=collapsed, Dock=left` |
 | Large and XL (960px and up) | Expanded, as `state` starts it: the logo and menu button, each page with its label, then Resume. The menu button switches to the rail and back. | `State=expanded, Dock=left` and `State=collapsed, Dock=left` |
 
-<Canvas of={MainNavStories.Collapsed} />
+<Canvas of={MainNavStories.Short} />
 
 Resize the window to see each layout; NavContainer’s stories show it docked.
 
@@ -57,7 +57,7 @@ Resize the window to see each layout; NavContainer’s stories show it docked.
 | `page` | The default. The layout follows the width, as above. | The nav in NavContainer |
 | `overlay` | Always expanded, and the menu button closes the menu | The nav in NavOverlay |
 
-<Canvas of={MainNavStories.InOverlay} />
+<Canvas of={MainNavStories.Menu} />
 
 ## Space
 

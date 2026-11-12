@@ -59,8 +59,8 @@ const page = (
           exported from Figma, and the docs live in Storybook.
         </p>
         <p>
-          On a phone, the menu is one tap away in the top bar. On a wide screen, the nav sits beside the page; collapse
-          it to the rail for more room.
+          The nav runs across the top of the page and scrolls away with it. On a phone, the links move into a menu,
+          one tap away.
         </p>
       </Prose>
     </Section>
@@ -132,7 +132,7 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-// The nav on the left, expanded. The menu button collapses it to the rail.
+// The nav across the top: the full logo and the links. It scrolls away with the page.
 export const XL: Story = {
   globals: { viewport: { value: 'xl' } },
 };
@@ -141,12 +141,12 @@ export const Large: Story = {
   globals: { viewport: { value: 'lg' } },
 };
 
-// The rail. Its menu button opens the full menu over the page.
+// Still the full logo and the links: at 768 wide, the nav has room for both
 export const Medium: Story = {
   globals: { viewport: { value: 'md' } },
 };
 
-// The top bar, pinned while the page scrolls. Its menu button opens the full menu.
+// The full logo and the menu button, which opens the links in NavOverlay
 export const Small: Story = {
   globals: { viewport: { value: 'sm' } },
 };

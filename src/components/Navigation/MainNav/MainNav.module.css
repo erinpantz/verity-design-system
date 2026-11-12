@@ -1,166 +1,181 @@
-/* The site's main navigation. Its layout follows the screen width, in CSS,
-   so it's right before JavaScript runs. Breakpoints come from the generated
-   values (see CLAUDE.md: only page-level layout uses media queries).
+/* The site's main navigation: a bar across the top of the page, the site
+   title (the logo, linking home), then the links at the end. It scrolls away
+   with the page.
 
-   - Small: a top bar with the menu button and the logo. The pages are in
-     NavOverlay.
-   - Medium: the rail, icons only, with each label in a tooltip.
-   - Large and XL: expanded (data-state="expanded") or the rail ("collapsed").
-   - In NavOverlay (.overlay): always expanded.
+   Its own width picks one of three layouts, measured inside its side padding
+   (the container's content box), not the screen:
+   - full: the full logo and the links. The default, below.
+   - short: below main-nav/short-logo-width, the logo shows only "erin."
+   - menu: below main-nav/menu-width, the full logo and the menu button,
+     which opens the links in NavOverlay.
 
-   The base styles below are the expanded nav. */
+   It's all CSS, so the first paint is right before JavaScript runs. Container
+   queries can't read custom properties, so the two widths come from the
+   generated values, one per breakpoint (npm run tokens writes them from the
+   tokens). Each @container rule sits in the @media rule for its breakpoint,
+   so it uses that breakpoint's value. */
 
-@value medium, large from '../../../styles/breakpoints.generated.module.css';
+@value medium, large, xl from '../../../styles/breakpoints.generated.module.css';
+@value mainNavShortLogoWidthSmall, mainNavMenuWidthSmall, mainNavShortLogoWidthMedium, mainNavMenuWidthMedium from '../../../styles/container-widths.generated.module.css';
+@value mainNavShortLogoWidthLarge, mainNavMenuWidthLarge, mainNavShortLogoWidthXL, mainNavMenuWidthXL from '../../../styles/container-widths.generated.module.css';
 
 .mainNav {
-  display: flex;
-  flex-direction: column;
-  gap: var(--verity-main-nav-group-gap);
+  container: main-nav / inline-size;
   box-sizing: border-box;
-  block-size: 100%;
+  padding-block: var(--verity-padding-md) var(--verity-padding-xs);
+  padding-inline: var(--verity-main-padding-inline);
 }
 
-/* The site title, then the menu button */
-.menuBar {
+/* The row. What each layout shows is set here as display values, and each
+   part reads its own; the layouts below change only these. */
+.bar {
+  --full-logo: flex;
+  --first-logo: none;
+  --row-links: flex;
+  --menu-button: none;
+
   display: flex;
   align-items: center;
-  gap: var(--verity-spacing-xxs);
+  gap: var(--verity-main-nav-gap);
 }
 
-/* The logo link. Its bottom padding lifts the logo, so its lowercase letters
-   line up with the center of the menu icon. */
+/* The site title fills the rest of the row, so the links sit at the end. Its
+   bottom padding lifts the logo, so the logo's lowercase letters line up with
+   the link labels. */
 .siteTitle {
   display: flex;
   flex: 1;
-  align-items: center;
-  align-self: stretch;
   min-inline-size: 0;
-  padding-inline-start: var(--verity-main-nav-site-title-padding);
   padding-block-end: var(--verity-main-nav-logo-offset);
-  border-radius: var(--verity-border-radius-md);
+}
+
+/* The link hugs the logo, so only the logo goes home and the focus ring fits it */
+.homeLink {
+  display: flex;
+  border-radius: var(--verity-border-radius-sm);
   color: var(--verity-color-content-default);
 }
 
-.siteTitle > svg {
-  block-size: var(--verity-main-nav-logo-height);
-  inline-size: auto;
-}
-
-.siteTitle:focus-visible {
+.homeLink:focus-visible {
   outline: var(--verity-focus-ring-width) solid var(--verity-color-border-focus);
   outline-offset: var(--verity-focus-ring-offset);
 }
 
-.menuButton {
-  display: flex;
+/* Each logo is main-nav/logo-height tall, and its width follows */
+.fullLogo,
+.firstLogo {
+  block-size: var(--verity-main-nav-logo-height);
 }
 
-/* The links: the pages, then Resume in its own group. The pages are the link
-   gap apart. */
+.fullLogo {
+  display: var(--full-logo);
+}
+
+.firstLogo {
+  display: var(--first-logo);
+}
+
+.fullLogo > svg,
+.firstLogo > svg {
+  max-inline-size: none;
+}
+
+/* The links: a row in the bar, a column in NavOverlay, link-gap apart. Each
+   NavItem hugs its contents. */
 .links {
   display: flex;
-  flex-direction: column;
+  gap: var(--verity-main-nav-link-gap);
   margin: 0;
   padding: 0;
   list-style: none;
 }
 
-.links > li + li {
-  margin-block-start: var(--verity-main-nav-link-gap);
+.row {
+  display: var(--row-links);
+  flex-shrink: 0;
 }
 
-/* Resume's group, under a line: the group gap above the line, as between
-   the nav's other groups, and the same gap again between the line and
-   Resume. The line is a border, so it's decorative and screen readers skip
-   it. It's as wide as the list, so as wide as the nav items: the full nav
-   when expanded, and the 40px icons in the rail. */
-.links > .secondaryLinks {
-  margin-block-start: var(--verity-main-nav-group-gap);
-  padding-block-start: var(--verity-main-nav-group-gap);
-  border-block-start: var(--verity-border-width-sm) solid var(--verity-color-border-divider);
+.column {
+  flex-direction: column;
+  align-items: flex-start;
 }
 
-/* Small: the top bar: the menu button, then the logo. The pages and Resume
-   are in NavOverlay. */
+.menuButton {
+  display: var(--menu-button);
+}
+
+/* The layouts, per breakpoint. In each, short comes first: the menu
+   layout's width is narrower, so a nav that narrow matches both, and menu,
+   written after, wins and brings the full logo back. */
 
 @media not medium {
-  .page {
-    flex-direction: row;
-    block-size: auto;
+  @container main-nav (width < mainNavShortLogoWidthSmall) {
+    .bar {
+      --full-logo: none;
+      --first-logo: flex;
+    }
   }
 
-  .page .menuBar {
-    flex: 1;
-  }
-
-  .page .menuButton {
-    order: -1;
-  }
-
-  .page .links {
-    display: none;
+  @container main-nav (width < mainNavMenuWidthSmall) {
+    .bar {
+      --full-logo: flex;
+      --first-logo: none;
+      --row-links: none;
+      --menu-button: flex;
+    }
   }
 }
-
-/* The rail: icons only, in a centered column, with no logo. NavItem labels
-   are hidden but still read by screen readers, and show in their tooltips.
-   It's the same on Medium and on Large and up when collapsed, so the two
-   blocks below match. */
 
 @media medium and (not large) {
-  .page {
-    align-items: center;
+  @container main-nav (width < mainNavShortLogoWidthMedium) {
+    .bar {
+      --full-logo: none;
+      --first-logo: flex;
+    }
   }
 
-  .page .siteTitle {
-    display: none;
-  }
-
-  .page [data-nav-item] {
-    --tooltip-display: block;
-
-    align-items: center;
-  }
-
-  .page [data-nav-item-link] {
-    flex: none;
-    inline-size: var(--verity-control-size-md);
-  }
-
-  .page [data-nav-item-label] {
-    position: absolute;
-    overflow: hidden;
-    inline-size: 1px;
-    block-size: 1px;
-    clip-path: inset(50%);
+  @container main-nav (width < mainNavMenuWidthMedium) {
+    .bar {
+      --full-logo: flex;
+      --first-logo: none;
+      --row-links: none;
+      --menu-button: flex;
+    }
   }
 }
 
-@media large {
-  .page[data-state='collapsed'] {
-    align-items: center;
+@media large and (not xl) {
+  @container main-nav (width < mainNavShortLogoWidthLarge) {
+    .bar {
+      --full-logo: none;
+      --first-logo: flex;
+    }
   }
 
-  .page[data-state='collapsed'] .siteTitle {
-    display: none;
+  @container main-nav (width < mainNavMenuWidthLarge) {
+    .bar {
+      --full-logo: flex;
+      --first-logo: none;
+      --row-links: none;
+      --menu-button: flex;
+    }
+  }
+}
+
+@media xl {
+  @container main-nav (width < mainNavShortLogoWidthXL) {
+    .bar {
+      --full-logo: none;
+      --first-logo: flex;
+    }
   }
 
-  .page[data-state='collapsed'] [data-nav-item] {
-    --tooltip-display: block;
-
-    align-items: center;
-  }
-
-  .page[data-state='collapsed'] [data-nav-item-link] {
-    flex: none;
-    inline-size: var(--verity-control-size-md);
-  }
-
-  .page[data-state='collapsed'] [data-nav-item-label] {
-    position: absolute;
-    overflow: hidden;
-    inline-size: 1px;
-    block-size: 1px;
-    clip-path: inset(50%);
+  @container main-nav (width < mainNavMenuWidthXL) {
+    .bar {
+      --full-logo: flex;
+      --first-logo: none;
+      --row-links: none;
+      --menu-button: flex;
+    }
   }
 }

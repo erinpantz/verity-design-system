@@ -1,10 +1,8 @@
-import { useCallback, useId, useState, type ComponentProps, type ReactNode } from 'react';
+import { useId, type ComponentProps, type ReactNode } from 'react';
 import { Button } from '../../Actions/Button';
 import { ThemeToggle } from '../../Actions/ThemeToggle';
 import { BackLink, type BackLinkProps } from '../../Navigation/BackLink';
 import { MainNav } from '../../Navigation/MainNav';
-import { NavContainer } from '../../Navigation/NavContainer';
-import { NavOverlay } from '../../Navigation/NavOverlay';
 import styles from './Shell.module.css';
 
 type MainNavProps = ComponentProps<typeof MainNav>;
@@ -30,12 +28,12 @@ export interface ShellProps {
 // Back to the portfolio, as in Figma
 const DEFAULT_BACK_LINK: BackLinkProps = { href: '/', label: 'Portfolio' };
 
-// The page frame: a skip link, the nav docked in NavContainer, ThemeToggle
-// floating in the bottom-right corner, and the page column with Main and the
-// Footer. In focused mode, a BackLink floats in the top-left corner instead
-// of the nav, for reading one piece of work without the site around it. NavOverlay holds the full menu for Small
-// and Medium. How it's laid out at each width is CSS (Shell.module.css); the
-// nav decides what its menu button does.
+// The page frame, in one column: a skip link, MainNav across the top, then the
+// page column with Main and the Footer. ThemeToggle floats in the
+// bottom-right corner. In focused mode, a BackLink floats in the top-left
+// corner instead of the nav, for reading one piece of work without the site
+// around it. MainNav picks its own layout and owns its menu, so Shell only
+// places it.
 export function Shell({
   children,
   footer,
@@ -45,10 +43,6 @@ export function Shell({
   backLink = DEFAULT_BACK_LINK,
 }: ShellProps) {
   const mainId = useId();
-  // Whether NavOverlay is open. The nav always starts expanded on Large and
-  // XL, and doesn't remember the toggle between visits.
-  const [menuOpen, setMenuOpen] = useState(false);
-  const closeMenu = useCallback(() => setMenuOpen(false), []);
 
   return (
     <div className={styles.shell} data-mode={mode}>
@@ -64,9 +58,7 @@ export function Shell({
           <BackLink href={backLink.href} label={backLink.label} />
         </div>
       ) : (
-        <NavContainer>
-          <MainNav current={current} hrefs={hrefs} menuOpen={menuOpen} onMenuOpenChange={setMenuOpen} />
-        </NavContainer>
+        <MainNav current={current} hrefs={hrefs} />
       )}
       {/* Fixed to the screen's corner at every width, so it's always in
           reach. In the tab order, it comes right after the nav (or the back
@@ -81,17 +73,6 @@ export function Shell({
         </main>
         {footer}
       </div>
-      {mode === 'default' && (
-        <NavOverlay open={menuOpen} onClose={closeMenu}>
-          <MainNav
-            current={current}
-            hrefs={hrefs}
-            placement="overlay"
-            menuOpen={menuOpen}
-            onMenuOpenChange={setMenuOpen}
-          />
-        </NavOverlay>
-      )}
     </div>
   );
 }
