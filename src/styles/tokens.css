@@ -419,8 +419,8 @@
   --verity-typography-label-default-font-size: var(--verity-typography-font-size-18);
   --verity-typography-body-xl-font-family: var(--verity-typography-font-family-plus-jakarta-sans);
   --verity-typography-body-xl-font-weight: var(--verity-typography-font-weight-400);
-  --verity-typography-body-xl-font-size: var(--verity-typography-font-size-32);
-  --verity-typography-body-xl-line-height: var(--verity-typography-line-height-40);
+  --verity-typography-body-xl-font-size: var(--verity-typography-font-size-28);
+  --verity-typography-body-xl-line-height: var(--verity-typography-line-height-36);
   --verity-typography-body-xl-letter-spacing: var(--verity-typography-letter-spacing-0);
   --verity-typography-body-xl-text-transform: var(--verity-typography-text-transform-none);
   --verity-typography-blockquote-font-family: var(--verity-typography-font-family-schibsted-grotesk);
@@ -521,13 +521,13 @@
   --verity-color-background-brand-dark: var(--verity-color-brand-blue-900); /** A deep brand-colored background for a block that should stand apart from the page, like the Footer. Brand 900 in each theme. */
   --verity-color-background-brand-active: var(--verity-color-brand-blue-800);
   --verity-color-background-accent-one-hover: var(--verity-color-brand-yellow-100);
-  --verity-color-content-default: var(--verity-color-brand-blue-100);
+  --verity-color-content-default: var(--verity-color-neutral-white);
   --verity-color-content-default-hover: var(--verity-color-neutral-white);
   --verity-color-content-knockout: var(--verity-color-brand-blue-900);
   --verity-color-content-brand: var(--verity-color-brand-blue-700);
   --verity-color-content-brand-hover: var(--verity-color-brand-blue-600);
   --verity-color-content-disabled: var(--verity-color-brand-blue-300);
-  --verity-color-content-subtle: var(--verity-color-brand-blue-300);
+  --verity-color-content-subtle: var(--verity-color-brand-blue-200);
   --verity-color-content-strong: var(--verity-color-neutral-white);
   --verity-color-content-error: var(--verity-color-brand-red-400);
   --verity-color-content-success: var(--verity-color-brand-green-400);
@@ -689,13 +689,13 @@
   --verity-color-background-brand-dark: var(--verity-color-brand-red-900); /** A deep brand-colored background for a block that should stand apart from the page, like the Footer. Brand 900 in each theme. */
   --verity-color-background-brand-active: var(--verity-color-brand-red-700);
   --verity-color-background-accent-one-hover: var(--verity-color-brand-yellow-100);
-  --verity-color-content-default: var(--verity-color-brand-red-100);
+  --verity-color-content-default: var(--verity-color-neutral-white);
   --verity-color-content-default-hover: var(--verity-color-neutral-white);
   --verity-color-content-knockout: var(--verity-color-brand-red-900);
   --verity-color-content-brand: var(--verity-color-brand-red-700);
   --verity-color-content-brand-hover: var(--verity-color-brand-red-600);
   --verity-color-content-disabled: var(--verity-color-brand-red-300);
-  --verity-color-content-subtle: var(--verity-color-brand-red-300);
+  --verity-color-content-subtle: var(--verity-color-brand-red-200);
   --verity-color-content-strong: var(--verity-color-neutral-white);
   --verity-color-content-error: var(--verity-color-brand-red-400);
   --verity-color-content-success: var(--verity-color-brand-green-400);
@@ -875,6 +875,7 @@
   --verity-nav-card-tilt: 4; /** How far a tilted NavCard turns at rest, in degrees (left or right by its Tilt property). It straightens on hover and focus. Code only. */
   --verity-nav-card-group-gap: -24px; /** Space between the NavCards in a NavCardGroup. Negative, so each card overlaps the one before it by 24px. Stored as the negative gap because Figma can’t bind a gap to a negated token. */
   --verity-hero-text-min-width: 200px; /** The narrowest a Hero’s text (Body) gets beside media: 560 on XL and Large, 400 on Medium, 200 on Small. When the text and the media don’t both fit, the media wraps under the text. */
+  --verity-hero-media-width: 320px; /** The widest a Hero’s media gets: 560 on XL, 480 on Large, 400 on Medium, 320 on Small, and never more than 100% of its space. A photo fills it (in Figma, set the Image’s width to this variable); media with its own size, like a Reel (reel/size, 420), keeps that size. */
   --verity-reel-easing-rise: cubic-bezier(0.34, 1.78, 0.64, 1); /** The rise curve, cubic-bezier(0.34, 1.78, 0.64, 1): a stronger overshoot than motion/easing/playful (1.56), for a whole disc turning. Only its first 52.5% is used, up to its peak, 17% past the target. */
   --verity-reel-angle-dip: 10px; /** How far the disc turns the wrong way before it turns, in degrees. Code only. */
   --verity-reel-angle-settle: 3px; /** How far the card sinks below its spot after the overshoot, in degrees. About a third of the overshoot, like a spring winding down. Code only. */
@@ -1132,6 +1133,7 @@
     --verity-nav-card-tilt: 4; /** How far a tilted NavCard turns at rest, in degrees (left or right by its Tilt property). It straightens on hover and focus. Code only. */
     --verity-nav-card-group-gap: -24px; /** Space between the NavCards in a NavCardGroup. Negative, so each card overlaps the one before it by 24px. Stored as the negative gap because Figma can’t bind a gap to a negated token. */
     --verity-hero-text-min-width: 400px; /** The narrowest a Hero’s text (Body) gets beside media: 560 on XL and Large, 400 on Medium, 200 on Small. When the text and the media don’t both fit, the media wraps under the text. */
+    --verity-hero-media-width: 400px; /** The widest a Hero’s media gets: 560 on XL, 480 on Large, 400 on Medium, 320 on Small, and never more than 100% of its space. A photo fills it (in Figma, set the Image’s width to this variable); media with its own size, like a Reel (reel/size, 420), keeps that size. */
     --verity-reel-easing-rise: cubic-bezier(0.34, 1.78, 0.64, 1); /** The rise curve, cubic-bezier(0.34, 1.78, 0.64, 1): a stronger overshoot than motion/easing/playful (1.56), for a whole disc turning. Only its first 52.5% is used, up to its peak, 17% past the target. */
     --verity-reel-angle-dip: 10px; /** How far the disc turns the wrong way before it turns, in degrees. Code only. */
     --verity-reel-angle-settle: 3px; /** How far the card sinks below its spot after the overshoot, in degrees. About a third of the overshoot, like a spring winding down. Code only. */
@@ -1390,6 +1392,7 @@
     --verity-nav-card-tilt: 4; /** How far a tilted NavCard turns at rest, in degrees (left or right by its Tilt property). It straightens on hover and focus. Code only. */
     --verity-nav-card-group-gap: -24px; /** Space between the NavCards in a NavCardGroup. Negative, so each card overlaps the one before it by 24px. Stored as the negative gap because Figma can’t bind a gap to a negated token. */
     --verity-hero-text-min-width: 560px; /** The narrowest a Hero’s text (Body) gets beside media: 560 on XL and Large, 400 on Medium, 200 on Small. When the text and the media don’t both fit, the media wraps under the text. */
+    --verity-hero-media-width: 480px; /** The widest a Hero’s media gets: 560 on XL, 480 on Large, 400 on Medium, 320 on Small, and never more than 100% of its space. A photo fills it (in Figma, set the Image’s width to this variable); media with its own size, like a Reel (reel/size, 420), keeps that size. */
     --verity-reel-easing-rise: cubic-bezier(0.34, 1.78, 0.64, 1); /** The rise curve, cubic-bezier(0.34, 1.78, 0.64, 1): a stronger overshoot than motion/easing/playful (1.56), for a whole disc turning. Only its first 52.5% is used, up to its peak, 17% past the target. */
     --verity-reel-angle-dip: 10px; /** How far the disc turns the wrong way before it turns, in degrees. Code only. */
     --verity-reel-angle-settle: 3px; /** How far the card sinks below its spot after the overshoot, in degrees. About a third of the overshoot, like a spring winding down. Code only. */
@@ -1648,6 +1651,7 @@
     --verity-nav-card-tilt: 4; /** How far a tilted NavCard turns at rest, in degrees (left or right by its Tilt property). It straightens on hover and focus. Code only. */
     --verity-nav-card-group-gap: -24px; /** Space between the NavCards in a NavCardGroup. Negative, so each card overlaps the one before it by 24px. Stored as the negative gap because Figma can’t bind a gap to a negated token. */
     --verity-hero-text-min-width: 560px; /** The narrowest a Hero’s text (Body) gets beside media: 560 on XL and Large, 400 on Medium, 200 on Small. When the text and the media don’t both fit, the media wraps under the text. */
+    --verity-hero-media-width: 560px; /** The widest a Hero’s media gets: 560 on XL, 480 on Large, 400 on Medium, 320 on Small, and never more than 100% of its space. A photo fills it (in Figma, set the Image’s width to this variable); media with its own size, like a Reel (reel/size, 420), keeps that size. */
     --verity-reel-easing-rise: cubic-bezier(0.34, 1.78, 0.64, 1); /** The rise curve, cubic-bezier(0.34, 1.78, 0.64, 1): a stronger overshoot than motion/easing/playful (1.56), for a whole disc turning. Only its first 52.5% is used, up to its peak, 17% past the target. */
     --verity-reel-angle-dip: 10px; /** How far the disc turns the wrong way before it turns, in degrees. Code only. */
     --verity-reel-angle-settle: 3px; /** How far the card sinks below its spot after the overshoot, in degrees. About a third of the overshoot, like a spring winding down. Code only. */

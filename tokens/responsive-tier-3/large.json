@@ -423,6 +423,18 @@
           ]
         }
       }
+    },
+    "media-width": {
+      "$type": "dimension",
+      "$value": "480px",
+      "$description": "The widest a Hero’s media gets: 560 on XL, 480 on Large, 400 on Medium, 320 on Small, and never more than 100% of its space. A photo fills it (in Figma, set the Image’s width to this variable); media with its own size, like a Reel (reel/size, 420), keeps that size.",
+      "$extensions": {
+        "com.figma": {
+          "scopes": [
+            "WIDTH_HEIGHT"
+          ]
+        }
+      }
     }
   },
   "reel": {

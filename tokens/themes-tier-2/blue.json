@@ -294,7 +294,7 @@
     "content": {
       "default": {
         "$type": "color",
-        "$value": "{color.brand.blue.100}"
+        "$value": "{color.neutral.white}"
       },
       "default-hover": {
         "$type": "color",
@@ -350,7 +350,7 @@
       },
       "subtle": {
         "$type": "color",
-        "$value": "{color.brand.blue.300}"
+        "$value": "{color.brand.blue.200}"
       },
       "strong": {
         "$type": "color",
