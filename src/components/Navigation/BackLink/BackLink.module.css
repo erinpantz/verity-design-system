@@ -1,9 +1,10 @@
 /* A link that looks like a small button: the back arrow, then the label, on a
    scrim. The link itself is the hit area and never moves. The surface inside
-   it is what you see: the scrim, the shadow, the fills, and the focus ring.
-   On hover and focus the surface lifts with a larger shadow, like
-   PortfolioCard; the hit area staying still means the pointer can't slip off
-   the edge as it rises, end the hover, and make it flicker. */
+   it is what you see: the scrim, the fills, and the focus ring. On hover and
+   focus the surface lifts, with no shadow: on something this small, a
+   blurred shadow looks fuzzy, and the lift alone shows it responds. The hit
+   area staying still means the pointer can't slip off the edge as it rises,
+   end the hover, and make it flicker. */
 
 .backLink {
   display: inline-flex;
@@ -15,13 +16,6 @@
 }
 
 .surface {
-  /* The shadow for each state, set below */
-  --shadow-x: var(--verity-shadow-sm-x);
-  --shadow-y: var(--verity-shadow-sm-y);
-  --shadow-blur: var(--verity-shadow-sm-blur);
-  --shadow-spread: var(--verity-shadow-sm-spread);
-  --shadow-color: var(--verity-shadow-sm-color);
-
   display: inline-flex;
   align-items: center;
   gap: var(--verity-control-gap);
@@ -30,7 +24,6 @@
   padding-inline: var(--verity-control-padding-x-md);
   border-radius: var(--verity-border-radius-md);
   background-color: var(--verity-color-background-scrim);
-  box-shadow: var(--shadow-x) var(--shadow-y) var(--shadow-blur) var(--shadow-spread) var(--shadow-color);
   font-family: var(--verity-viewport-typography-label-default-font-family);
   font-size: var(--verity-viewport-typography-label-default-font-size);
   font-weight: var(--verity-viewport-typography-label-default-font-weight);
@@ -38,25 +31,17 @@
   letter-spacing: var(--verity-viewport-typography-label-default-letter-spacing);
   text-transform: var(--verity-viewport-typography-label-default-text-transform);
   white-space: nowrap;
-  /* The shadow fades quickly; the lift moves at PortfolioCard's pace */
-  transition:
-    box-shadow var(--verity-motion-duration-fast) var(--verity-motion-easing-standard),
-    translate var(--verity-motion-duration-playful) var(--verity-motion-easing-standard);
+  /* The lift moves at PortfolioCard's pace; the fills switch at once */
+  transition: translate var(--verity-motion-duration-playful) var(--verity-motion-easing-standard);
 }
 
-/* Hover and focus: the surface lifts, with the large shadow. Hover only on
+/* Hover and focus: the surface lifts. Hover only on
    devices with a real pointer, so a tap doesn't leave it raised. Hover and
    press add a fill on top of the scrim, as an image layer over the
    background color, like IconButton's background="scrim": a gradient from a
    color to itself is a solid layer of that color. */
 @media (hover: hover) {
   .backLink:hover .surface {
-    --shadow-x: var(--verity-shadow-lg-x);
-    --shadow-y: var(--verity-shadow-lg-y);
-    --shadow-blur: var(--verity-shadow-lg-blur);
-    --shadow-spread: var(--verity-shadow-lg-spread);
-    --shadow-color: var(--verity-shadow-lg-color);
-
     translate: 0 calc(-1 * var(--verity-motion-lift-sm));
     background-image: linear-gradient(
       var(--verity-color-background-transparent-medium),
@@ -65,33 +50,21 @@
   }
 }
 
-/* Keyboard focus: the hover lift and shadow, plus the shared focus ring. The
+/* Keyboard focus: the hover lift, plus the shared focus ring. The
    ring is on the surface, not the link, so it moves with it. */
 .backLink:focus-visible {
   outline: none;
 }
 
 .backLink:focus-visible .surface {
-  --shadow-x: var(--verity-shadow-lg-x);
-  --shadow-y: var(--verity-shadow-lg-y);
-  --shadow-blur: var(--verity-shadow-lg-blur);
-  --shadow-spread: var(--verity-shadow-lg-spread);
-  --shadow-color: var(--verity-shadow-lg-color);
-
   translate: 0 calc(-1 * var(--verity-motion-lift-sm));
   outline: var(--verity-focus-ring-width) solid var(--verity-color-border-focus);
   outline-offset: var(--verity-focus-ring-offset);
 }
 
-/* Pressed: it settles back down with the small shadow, so pressing reads as
-   pushing it in, and a stronger fill */
+/* Pressed: it settles back down, so pressing reads as pushing it in, and a
+   stronger fill */
 .backLink:active .surface {
-  --shadow-x: var(--verity-shadow-sm-x);
-  --shadow-y: var(--verity-shadow-sm-y);
-  --shadow-blur: var(--verity-shadow-sm-blur);
-  --shadow-spread: var(--verity-shadow-sm-spread);
-  --shadow-color: var(--verity-shadow-sm-color);
-
   translate: none;
   background-image: linear-gradient(
     var(--verity-color-background-transparent-strong),
@@ -99,7 +72,7 @@
   );
 }
 
-/* Reduce motion: no lift. The shadow fade stays, since it doesn't move
+/* Reduce motion: no lift. The fills still switch, since they don't move
    anything. */
 @media (prefers-reduced-motion: reduce) {
   .backLink:hover .surface,
