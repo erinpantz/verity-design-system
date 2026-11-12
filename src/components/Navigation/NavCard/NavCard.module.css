@@ -1,5 +1,5 @@
 /* A square link to one of the site's pages: the nav icon above the label,
-   centered, on PortfolioCard's surface. On hover and focus it lifts, grows,
+   centered, on a brand fill with a border. On hover and focus it lifts, grows,
    and straightens if tilted, and comes in front of its neighbor. Every value
    is a token. */
 
