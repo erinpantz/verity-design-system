@@ -1,5 +1,6 @@
 import { Meta, Canvas } from '@storybook/addon-docs/blocks';
 import { VerityDocs } from '../../../foundations/VerityDocs';
+import { PropsTable } from '../../../foundations/PropsTable';
 import * as ErinTozourLogoStories from './ErinTozourLogo.stories';
 
 <Meta of={ErinTozourLogoStories} />
@@ -8,7 +9,7 @@ import * as ErinTozourLogoStories from './ErinTozourLogo.stories';
 
 # ErinTozourLogo
 
-Erin Tozour’s name, drawn as a logo. It’s the site title in `MainNav`.
+Erin Tozour’s name, drawn as a logo. It’s the site title in `MainNav`, in full or as just “erin” where space is short.
 
 <Canvas of={ErinTozourLogoStories.Default} />
 
@@ -16,21 +17,34 @@ Erin Tozour’s name, drawn as a logo. It’s the site title in `MainNav`.
 
 - **As the site title,** linking to the home page, as MainNav does.
 - **Anywhere the site signs its name,** like the footer.
+- **The first name (`name="first"`) where the full name doesn’t fit,** like MainNav’s short layout. Where both fit, use the full name.
+- **Not as a small square mark,** like a badge or an avatar. Use ErinTozourBadge, the “e” on a round brand-colored badge.
 - **Not for the Verity design system.** Verity has its own logo, in `brand/verity-logo.svg`.
 - **Not as a heading.** The page’s heading is text, so it can be searched, translated, and resized.
 
 ## Accessibility
 
-The logo renders an `<svg>` with `role="img"` and `aria-label="Erin Tozour"`, so screen readers read it as “Erin Tozour,” the name it shows.
+The logo renders an `<svg>` with `role="img"` and `aria-label="Erin Tozour"`, so screen readers read it as “Erin Tozour.” The first-name version has the same name: it’s the same logo, shortened to fit, and the site’s name doesn’t change with the space it has.
 
 | Situation | What to do | Example |
 |---|---|---|
 | The logo is a link | Put it inside the link with nothing else. The link takes its name from the logo, “Erin Tozour.” | MainNav’s site title, linking home |
 | The name is also written as text right next to it | Show one or the other, so screen readers don’t hear the name twice | A footer with the logo, not the logo and “Erin Tozour” |
 
+## Name
+
+| `name` | Draws | Width at 32px tall | Use for |
+|---|---|---|---|
+| `full` (default) | “erin tozour” | About 210px | Wherever it fits |
+| `first` | “erin” | About 75px | Narrow spaces, where the full name would crowd what’s beside it |
+
+The first-name version uses the full logo’s own shapes, cropped after the n, so at the same height the letters are the same size and sit in the same place. Switching between the two only cuts off or brings back “tozour.”
+
+<Canvas of={ErinTozourLogoStories.Compared} />
+
 ## Size
 
-The logo is as tall as its container, and its width follows, so it keeps its proportions. Set the height on the container, from a token: in MainNav, `--verity-main-nav-logo-height` (22px). In a container with no height, the logo fills the width instead.
+The logo is as tall as its container, and its width follows, so it keeps its proportions. Set the height on the container, from a token: in MainNav, `--verity-main-nav-logo-height` (32px on XL and Large, 24px on Medium and Small). In a container with no height, the logo fills the width instead.
 
 ## Color
 
@@ -40,14 +54,15 @@ The logo is one color, `currentColor`, so it takes the text color of wherever it
 
 ## Props
 
-ErinTozourLogo has no props: its name, shapes, and color come from the logo itself and the text around it.
+<PropsTable of={ErinTozourLogoStories} />
 
 ## In Figma
 
 | Figma | Code |
 |---|---|
 | Component `ErinTozourLogo`, on the Branding page | `<ErinTozourLogo />` |
+| The logo cropped to “erin,” as in MainNav’s `Layout=short` | `<ErinTozourLogo name="first" />` |
 | Its fill, `color/content/default` | `currentColor`: the text color around it |
-| The exported file | `brand/erin-tozour-logo.svg`, never edited by hand |
+| The exported file | `brand/erin-tozour-logo.svg`, never edited by hand. The “erin” crop is made in code, in `logoGlyphs.ts`, from the same file. |
 
 </VerityDocs>
