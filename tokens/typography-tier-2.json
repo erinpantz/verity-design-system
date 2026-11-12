@@ -577,7 +577,7 @@
       },
       "letter-spacing": {
         "$type": "dimension",
-        "$value": "{typography.letter-spacing.minus-2}",
+        "$value": "{typography.letter-spacing.minus-1-half}",
         "$extensions": {
           "com.figma": {
             "scopes": [

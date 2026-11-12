@@ -3,7 +3,7 @@
     "background": {
       "default": {
         "$type": "color",
-        "$value": "{color.brand.neutral.900}",
+        "$value": "{color.brand.blue.900}",
         "$extensions": {
           "com.figma": {
             "scopes": [
@@ -27,7 +27,7 @@
       },
       "knockout": {
         "$type": "color",
-        "$value": "{color.brand.neutral.100}",
+        "$value": "{color.brand.blue.100}",
         "$extensions": {
           "com.figma": {
             "scopes": [
@@ -51,7 +51,7 @@
       },
       "disabled": {
         "$type": "color",
-        "$value": "{color.brand.neutral.500}",
+        "$value": "{color.brand.blue.500}",
         "$extensions": {
           "com.figma": {
             "scopes": [
@@ -171,7 +171,7 @@
       },
       "subtle": {
         "$type": "color",
-        "$value": "{color.brand.neutral.800}"
+        "$value": "{color.brand.blue.800}"
       },
       "transparent-medium": {
         "$type": "color",
@@ -302,7 +302,7 @@
       },
       "knockout": {
         "$type": "color",
-        "$value": "{color.brand.neutral.900}"
+        "$value": "{color.brand.blue.900}"
       },
       "brand": {
         "$type": "color",
@@ -314,7 +314,7 @@
       },
       "disabled": {
         "$type": "color",
-        "$value": "{color.brand.neutral.300}"
+        "$value": "{color.brand.blue.300}"
       },
       "accent-two": {
         "$type": "color",
@@ -420,7 +420,7 @@
       },
       "knockout": {
         "$type": "color",
-        "$value": "{color.brand.neutral.900}",
+        "$value": "{color.brand.blue.900}",
         "$extensions": {
           "com.figma": {
             "scopes": [
@@ -659,7 +659,7 @@
       },
       "divider": {
         "$type": "color",
-        "$value": "{color.brand.neutral.800}",
+        "$value": "{color.brand.blue.800}",
         "$description": "Decorative lines that separate groups, such as the line above Resume in MainNav. Low contrast on purpose: a divider that only groups items needn’t meet 3:1. Use color/border/subtle for borders that show a control’s edge.",
         "$extensions": {
           "com.figma": {

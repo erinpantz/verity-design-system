@@ -270,7 +270,7 @@
     "color": {
       "shine": {
         "$type": "color",
-        "$value": "{color.brand.neutral.700}",
+        "$value": "{color.brand.red.700}",
         "$description": "The lighter end of the Skeleton pulse while media loads. The other end is color/background/subtle.",
         "$extensions": {
           "com.figma": {

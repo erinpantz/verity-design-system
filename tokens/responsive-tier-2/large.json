@@ -8,7 +8,7 @@
     },
     "padding-inline": {
       "$type": "dimension",
-      "$value": "{spacing.56}",
+      "$value": "{spacing.64}",
       "$description": "Space between the page’s content and its edges, on both sides, set by Shell on Main and the Footer. Containers and other components have no side margins of their own.",
       "$extensions": {
         "com.figma": {

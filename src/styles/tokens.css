@@ -328,7 +328,7 @@
   --verity-typography-display-default-font-size: var(--verity-typography-font-size-80);
   --verity-typography-display-default-font-weight: var(--verity-typography-font-weight-800);
   --verity-typography-display-default-font-family: var(--verity-typography-font-family-schibsted-grotesk);
-  --verity-typography-display-default-letter-spacing: var(--verity-typography-letter-spacing-minus-2);
+  --verity-typography-display-default-letter-spacing: var(--verity-typography-letter-spacing-minus-1-half);
   --verity-typography-heading-3-line-height: var(--verity-typography-line-height-40);
   --verity-typography-heading-3-font-size: var(--verity-typography-font-size-32);
   --verity-typography-heading-3-letter-spacing: var(--verity-typography-letter-spacing-half);
@@ -494,17 +494,17 @@
 /* Blue theme: Themes Tier 2 */
 :root,
 [data-theme="blue"] {
-  --verity-color-background-default: var(--verity-color-brand-neutral-900);
+  --verity-color-background-default: var(--verity-color-brand-blue-900);
   --verity-color-background-default-hover: var(--verity-color-neutral-black);
-  --verity-color-background-knockout: var(--verity-color-brand-neutral-100);
+  --verity-color-background-knockout: var(--verity-color-brand-blue-100);
   --verity-color-background-brand-disabled: var(--verity-color-brand-blue-300);
-  --verity-color-background-disabled: var(--verity-color-brand-neutral-500);
+  --verity-color-background-disabled: var(--verity-color-brand-blue-500);
   --verity-color-background-transparent-light: var(--verity-color-brand-transparent-brand-25);
   --verity-color-background-transparent-strong: var(--verity-color-brand-transparent-brand-75);
   --verity-color-background-brand: var(--verity-color-brand-blue-700);
   --verity-color-background-brand-hover: var(--verity-color-brand-blue-600);
   --verity-color-background-white: var(--verity-color-neutral-white);
-  --verity-color-background-subtle: var(--verity-color-brand-neutral-800);
+  --verity-color-background-subtle: var(--verity-color-brand-blue-800);
   --verity-color-background-transparent-medium: var(--verity-color-brand-transparent-brand-25);
   --verity-color-background-scrim: var(--verity-scrim);
   --verity-color-background-error: var(--verity-color-brand-red-700);
@@ -518,10 +518,10 @@
   --verity-color-background-accent-one-hover: var(--verity-color-brand-yellow-100);
   --verity-color-content-default: var(--verity-color-brand-blue-100);
   --verity-color-content-default-hover: var(--verity-color-neutral-white);
-  --verity-color-content-knockout: var(--verity-color-brand-neutral-900);
+  --verity-color-content-knockout: var(--verity-color-brand-blue-900);
   --verity-color-content-brand: var(--verity-color-brand-blue-700);
   --verity-color-content-brand-hover: var(--verity-color-brand-blue-600);
-  --verity-color-content-disabled: var(--verity-color-brand-neutral-300);
+  --verity-color-content-disabled: var(--verity-color-brand-blue-300);
   --verity-color-content-subtle: var(--verity-color-brand-blue-300);
   --verity-color-content-strong: var(--verity-color-neutral-white);
   --verity-color-content-error: var(--verity-color-brand-red-400);
@@ -530,7 +530,7 @@
   --verity-color-content-accent-one-hover: var(--verity-color-brand-yellow-100);
   --verity-color-border-default: var(--verity-color-brand-blue-100);
   --verity-color-border-default-hover: var(--verity-color-brand-blue-200);
-  --verity-color-border-knockout: var(--verity-color-brand-neutral-900);
+  --verity-color-border-knockout: var(--verity-color-brand-blue-900);
   --verity-color-border-brand: var(--verity-color-brand-blue-600);
   --verity-color-border-brand-hover: var(--verity-color-brand-blue-500);
   --verity-color-border-disabled: var(--verity-color-brand-neutral-300);
@@ -544,7 +544,7 @@
   --verity-color-border-focus-brand: var(--verity-color-brand-blue-100); /** Focus ring on a brand background. */
   --verity-color-border-focus-knockout: var(--verity-color-brand-blue-700); /** Focus ring on a knockout (light) background. */
   --verity-color-border-subtle: var(--verity-color-brand-neutral-500);
-  --verity-color-border-divider: var(--verity-color-brand-neutral-800); /** Decorative lines that separate groups, such as the line above Resume in MainNav. Low contrast on purpose: a divider that only groups items needn’t meet 3:1. Use color/border/subtle for borders that show a control’s edge. */
+  --verity-color-border-divider: var(--verity-color-brand-blue-800); /** Decorative lines that separate groups, such as the line above Resume in MainNav. Low contrast on purpose: a divider that only groups items needn’t meet 3:1. Use color/border/subtle for borders that show a control’s edge. */
   --verity-color-border-brand-active: var(--verity-color-brand-blue-700);
   --verity-color-border-accent-one-hover: var(--verity-color-brand-yellow-100);
   --verity-color-background-accent-one: var(--verity-color-accent-yellow);
@@ -628,7 +628,7 @@
   --verity-nav-icon-color-default: var(--verity-color-brand-blue-100);
   --verity-nav-icon-color-accent-three: var(--verity-color-brand-red-500);
   --verity-nav-icon-color-accent-four: var(--verity-color-brand-violet-500);
-  --verity-skeleton-color-shine: var(--verity-color-brand-neutral-700); /** The lighter end of the Skeleton pulse while media loads. The other end is color/background/subtle. */
+  --verity-skeleton-color-shine: var(--verity-color-brand-blue-700); /** The lighter end of the Skeleton pulse while media loads. The other end is color/background/subtle. */
   --verity-theme-toggle-color-current: var(--verity-color-brand-blue-500); /** ThemeToggle star at rest: the current theme’s brand color, step 500 so it reaches 3:1 on the dark background. */
   --verity-theme-toggle-color-next: var(--verity-color-brand-red-500); /** ThemeToggle star on hover and focus: the other theme’s brand color, previewing where a click goes. */
   --verity-theme-toggle-glow-current: var(--verity-color-brand-transparent-blue-500-50); /** Glow behind the ThemeToggle star at rest. */
@@ -662,17 +662,17 @@
 
 /* Red theme: Themes Tier 2 */
 [data-theme="red"] {
-  --verity-color-background-default: var(--verity-color-brand-neutral-900);
+  --verity-color-background-default: var(--verity-color-brand-red-900);
   --verity-color-background-default-hover: var(--verity-color-neutral-black);
-  --verity-color-background-knockout: var(--verity-color-brand-neutral-100);
+  --verity-color-background-knockout: var(--verity-color-brand-red-100);
   --verity-color-background-brand-disabled: var(--verity-color-brand-red-300);
-  --verity-color-background-disabled: var(--verity-color-brand-neutral-500);
+  --verity-color-background-disabled: var(--verity-color-brand-red-300);
   --verity-color-background-transparent-light: var(--verity-color-brand-transparent-brand-25);
   --verity-color-background-transparent-strong: var(--verity-color-brand-transparent-brand-75);
   --verity-color-background-brand: var(--verity-color-brand-red-600);
   --verity-color-background-brand-hover: var(--verity-color-brand-red-500);
   --verity-color-background-white: var(--verity-color-neutral-white);
-  --verity-color-background-subtle: var(--verity-color-brand-neutral-800);
+  --verity-color-background-subtle: var(--verity-color-brand-red-800);
   --verity-color-background-transparent-medium: var(--verity-color-brand-transparent-brand-25);
   --verity-color-background-scrim: var(--verity-scrim);
   --verity-color-background-error: var(--verity-color-brand-red-700);
@@ -686,10 +686,10 @@
   --verity-color-background-accent-one-hover: var(--verity-color-brand-yellow-100);
   --verity-color-content-default: var(--verity-color-brand-red-100);
   --verity-color-content-default-hover: var(--verity-color-neutral-white);
-  --verity-color-content-knockout: var(--verity-color-brand-neutral-900);
+  --verity-color-content-knockout: var(--verity-color-brand-red-900);
   --verity-color-content-brand: var(--verity-color-brand-red-700);
   --verity-color-content-brand-hover: var(--verity-color-brand-red-600);
-  --verity-color-content-disabled: var(--verity-color-brand-neutral-300);
+  --verity-color-content-disabled: var(--verity-color-brand-red-300);
   --verity-color-content-subtle: var(--verity-color-brand-red-300);
   --verity-color-content-strong: var(--verity-color-neutral-white);
   --verity-color-content-error: var(--verity-color-brand-red-400);
@@ -698,7 +698,7 @@
   --verity-color-content-accent-one-hover: var(--verity-color-brand-yellow-100);
   --verity-color-border-default: var(--verity-color-brand-red-100);
   --verity-color-border-default-hover: var(--verity-color-brand-red-200);
-  --verity-color-border-knockout: var(--verity-color-brand-neutral-900);
+  --verity-color-border-knockout: var(--verity-color-brand-red-900);
   --verity-color-border-brand: var(--verity-color-brand-red-500);
   --verity-color-border-brand-hover: var(--verity-color-brand-red-400);
   --verity-color-border-disabled: var(--verity-color-brand-neutral-300);
@@ -712,7 +712,7 @@
   --verity-color-border-focus-brand: var(--verity-color-brand-red-100); /** Focus ring on a brand background. */
   --verity-color-border-focus-knockout: var(--verity-color-brand-red-600); /** Focus ring on a knockout (light) background. */
   --verity-color-border-subtle: var(--verity-color-brand-neutral-500);
-  --verity-color-border-divider: var(--verity-color-brand-neutral-800); /** Decorative lines that separate groups, such as the line above Resume in MainNav. Low contrast on purpose: a divider that only groups items needn’t meet 3:1. Use color/border/subtle for borders that show a control’s edge. */
+  --verity-color-border-divider: var(--verity-color-brand-red-800); /** Decorative lines that separate groups, such as the line above Resume in MainNav. Low contrast on purpose: a divider that only groups items needn’t meet 3:1. Use color/border/subtle for borders that show a control’s edge. */
   --verity-color-border-brand-active: var(--verity-color-brand-red-600);
   --verity-color-border-accent-one-hover: var(--verity-color-brand-yellow-100);
   --verity-color-background-accent-one: var(--verity-color-accent-yellow);
@@ -795,7 +795,7 @@
   --verity-nav-icon-color-default: var(--verity-color-brand-red-100);
   --verity-nav-icon-color-accent-three: var(--verity-color-brand-blue-500);
   --verity-nav-icon-color-accent-four: var(--verity-color-brand-orange-400);
-  --verity-skeleton-color-shine: var(--verity-color-brand-neutral-700); /** The lighter end of the Skeleton pulse while media loads. The other end is color/background/subtle. */
+  --verity-skeleton-color-shine: var(--verity-color-brand-red-700); /** The lighter end of the Skeleton pulse while media loads. The other end is color/background/subtle. */
   --verity-theme-toggle-color-current: var(--verity-color-brand-red-500); /** ThemeToggle star at rest: the current theme’s brand color, step 500 so it reaches 3:1 on the dark background. */
   --verity-theme-toggle-color-next: var(--verity-color-brand-blue-500); /** ThemeToggle star on hover and focus: the other theme’s brand color, previewing where a click goes. */
   --verity-theme-toggle-glow-current: var(--verity-color-brand-transparent-red-500-50); /** Glow behind the ThemeToggle star at rest. */
@@ -1078,7 +1078,7 @@
     --verity-spacing-xxs: var(--verity-spacing-4);
     --verity-spacing-xl: var(--verity-spacing-40);
     --verity-main-spacing-section-gap: var(--verity-spacing-64);
-    --verity-main-padding-inline: var(--verity-spacing-32); /** Space between the page’s content and its edges, on both sides, set by Shell on Main and the Footer. Containers and other components have no side margins of their own. */
+    --verity-main-padding-inline: var(--verity-spacing-40); /** Space between the page’s content and its edges, on both sides, set by Shell on Main and the Footer. Containers and other components have no side margins of their own. */
     --verity-main-padding-top-focused: var(--verity-spacing-72); /** Space above Main in Shell’s focused mode, so the page’s title clears the floating BackLink: the link’s inset (spacing/md) plus its height (control/size/md), rounded to the spacing scale. */
     --verity-padding-lg: var(--verity-spacing-48);
     --verity-padding-md: var(--verity-spacing-24);
@@ -1330,7 +1330,7 @@
     --verity-spacing-xxs: var(--verity-spacing-4);
     --verity-spacing-xl: var(--verity-spacing-56);
     --verity-main-spacing-section-gap: var(--verity-spacing-72);
-    --verity-main-padding-inline: var(--verity-spacing-56); /** Space between the page’s content and its edges, on both sides, set by Shell on Main and the Footer. Containers and other components have no side margins of their own. */
+    --verity-main-padding-inline: var(--verity-spacing-64); /** Space between the page’s content and its edges, on both sides, set by Shell on Main and the Footer. Containers and other components have no side margins of their own. */
     --verity-main-padding-top-focused: var(--verity-spacing-72); /** Space above Main in Shell’s focused mode, so the page’s title clears the floating BackLink: the link’s inset (spacing/md) plus its height (control/size/md), rounded to the spacing scale. */
     --verity-padding-lg: var(--verity-spacing-80);
     --verity-padding-md: var(--verity-spacing-32);
@@ -1582,7 +1582,7 @@
     --verity-spacing-xxs: var(--verity-spacing-4);
     --verity-spacing-xl: var(--verity-spacing-56);
     --verity-main-spacing-section-gap: var(--verity-spacing-72);
-    --verity-main-padding-inline: var(--verity-spacing-72); /** Space between the page’s content and its edges, on both sides, set by Shell on Main and the Footer. Containers and other components have no side margins of their own. */
+    --verity-main-padding-inline: var(--verity-spacing-80); /** Space between the page’s content and its edges, on both sides, set by Shell on Main and the Footer. Containers and other components have no side margins of their own. */
     --verity-main-padding-top-focused: var(--verity-spacing-72); /** Space above Main in Shell’s focused mode, so the page’s title clears the floating BackLink: the link’s inset (spacing/md) plus its height (control/size/md), rounded to the spacing scale. */
     --verity-padding-lg: var(--verity-spacing-80);
     --verity-padding-md: var(--verity-spacing-48);
