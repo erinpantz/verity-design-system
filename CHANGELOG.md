@@ -4,6 +4,19 @@ Every release of Verity, newest first. The format follows [Keep a Changelog](htt
 
 Sites install Verity by tag (for example `github:erinpantz/verity-design-system#v0.3.0`), so a site only changes when it moves to a new tag on purpose.
 
+## [0.8.9] – 2026-11-12
+
+Every card sitting perfectly straight felt a little stiff. Like slides mounted slightly askew on a View-Master reel, each card now leans at its own angle, and the lean rides the disc as it turns.
+
+### Added
+
+- **Tokens:** `reel/angle/rest-tilt` (6), a plain number in degrees, the same at every breakpoint.
+- **Reel:** each card has a resting lean: `reel/angle/rest-tilt` times a fixed factor by its place in the list, in a cycle of five (−1, +0.55, −0.8, +0.35, −0.7, so −6°, +3.3°, −4.8°, +2.1°, −4.2°), alternating left and right. It’s added to the card’s turn everywhere (`d × tilt + lean`), so it rides the disc and never animates on its own; the dip, rise, fall, settle, timing, scrim, and entrance don’t change. With reduce motion on, the cards keep their lean as they crossfade. The pause button stays upright in the corner. At rest, the −6° card’s corners reach about 28px past the Reel’s square at 560.
+
+### Fixed
+
+- **Hero:** on `default` outside `Shell` (like Hero’s own stories with `background` set to `default`), a Reel’s cards were hidden behind the page’s background. A default Hero now puts moving media behind the page only inside Shell, which offers that layer (`--page-back-layer`) and clips at the window’s sides. Elsewhere, the cards stay in the media’s own layer, where they show, and swing out freely; the Hero never clips them, so whatever holds it should clip at the window’s sides (Hero’s stories now do). Inside Shell nothing changes.
+
 ## [0.8.8] – 2026-11-12
 
 On Large, Home’s Reel (440) wrapped under the headline below about 1076px, though the screen is Large down to 960. Rather than move a breakpoint for one component, a Hero’s media now gives up a little width before it wraps, so it stays beside the text across all of Large.
@@ -494,6 +507,7 @@ The first library release: everything in the Figma library except Animation, wit
 - **Theme helpers:** `themeScript`, `useTheme`, and `setTheme`, so a site applies the saved theme before the first paint.
 - **The library build:** one entry point with every component and its prop types, one stylesheet (`verity-design-system/styles.css`) with the fonts inside it, and `npm run build:watch` for working with a linked copy.
 
+[0.8.9]: https://github.com/erinpantz/verity-design-system/compare/v0.8.8...v0.8.9
 [0.8.8]: https://github.com/erinpantz/verity-design-system/compare/v0.8.7...v0.8.8
 [0.8.7]: https://github.com/erinpantz/verity-design-system/compare/v0.8.6...v0.8.7
 [0.8.6]: https://github.com/erinpantz/verity-design-system/compare/v0.8.5...v0.8.6
