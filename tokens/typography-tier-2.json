@@ -1129,7 +1129,7 @@
       },
       "font-size": {
         "$type": "dimension",
-        "$value": "{typography.font-size.64}",
+        "$value": "{typography.font-size.56}",
         "$extensions": {
           "com.figma": {
             "scopes": [
@@ -1169,7 +1169,7 @@
       },
       "line-height": {
         "$type": "dimension",
-        "$value": "{typography.line-height.72}",
+        "$value": "{typography.line-height.64}",
         "$extensions": {
           "com.figma": {
             "scopes": [

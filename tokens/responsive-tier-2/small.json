@@ -46,7 +46,7 @@
   "padding": {
     "lg": {
       "$type": "dimension",
-      "$value": "{spacing.32}"
+      "$value": "{spacing.40}"
     },
     "md": {
       "$type": "dimension",

@@ -591,5 +591,62 @@
         }
       }
     }
+  },
+  "project-card": {
+    "thumbnail": {
+      "scale-hover": {
+        "$type": "number",
+        "$value": 1.05,
+        "$description": "How much a ProjectCard’s thumbnail grows inside its frame on hover, focus, and active (1.05), the same as PortfolioCard’s. Code only: no Figma field takes a scale."
+      },
+      "width-row": {
+        "$type": "dimension",
+        "$value": "200px",
+        "$description": "In a row ProjectCard, the thumbnail’s width (400, 300, 300, 200). It sits flush on the right and fills the card’s height.",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "WIDTH_HEIGHT"
+            ]
+          }
+        }
+      },
+      "height-stacked": {
+        "$type": "dimension",
+        "$value": "200px",
+        "$description": "In a stacked ProjectCard, the thumbnail’s height (400, 300, 300, 200). It sits flush on top and fills the card’s width.",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "WIDTH_HEIGHT"
+            ]
+          }
+        }
+      }
+    },
+    "text-max-width": {
+      "$type": "dimension",
+      "$value": "420px",
+      "$description": "The widest a ProjectCard’s title gets (600, 600, 500, 420), so it keeps a readable line length; the frame around it fills the card.",
+      "$extensions": {
+        "com.figma": {
+          "scopes": [
+            "WIDTH_HEIGHT"
+          ]
+        }
+      }
+    },
+    "stack-width": {
+      "$type": "dimension",
+      "$value": "560px",
+      "$description": "Below this width, a ProjectCard stacks its thumbnail above its title; at or above it, they sit in a row, the thumbnail on the right (960, 820, 660, 560). Measured on the card itself, not the screen, like media-text/stack-width. In Figma, pick Layout to match the card’s width.",
+      "$extensions": {
+        "com.figma": {
+          "scopes": [
+            "WIDTH_HEIGHT"
+          ]
+        }
+      }
+    }
   }
 }

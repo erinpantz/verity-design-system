@@ -381,11 +381,11 @@
   --verity-typography-heading-1-mobile-font-size: var(--verity-typography-font-size-40);
   --verity-typography-heading-1-mobile-font-family: var(--verity-typography-font-family-schibsted-grotesk);
   --verity-typography-display-sm-font-weight: var(--verity-typography-font-weight-800);
-  --verity-typography-display-sm-font-size: var(--verity-typography-font-size-64);
+  --verity-typography-display-sm-font-size: var(--verity-typography-font-size-56);
   --verity-typography-display-sm-letter-spacing: var(--verity-typography-letter-spacing-minus-1-half);
   --verity-typography-display-sm-text-transform: var(--verity-typography-text-transform-none);
   --verity-typography-display-sm-font-family: var(--verity-typography-font-family-schibsted-grotesk);
-  --verity-typography-display-sm-line-height: var(--verity-typography-line-height-72);
+  --verity-typography-display-sm-line-height: var(--verity-typography-line-height-64);
   --verity-typography-heading-1-line-height: var(--verity-typography-line-height-56);
   --verity-typography-heading-1-font-weight: var(--verity-typography-font-weight-700);
   --verity-typography-heading-1-font-family: var(--verity-typography-font-family-schibsted-grotesk);
@@ -838,7 +838,7 @@
   --verity-main-spacing-section-gap: var(--verity-spacing-56);
   --verity-main-padding-inline: var(--verity-spacing-24); /** Space between the page’s content and its edges, on both sides, set by Shell on Main and the Footer. Containers and other components have no side margins of their own. */
   --verity-main-padding-top-focused: var(--verity-spacing-72); /** Space above Main in Shell’s focused mode, so the page’s title clears the floating BackLink: the link’s inset (spacing/md) plus its height (control/size/md), rounded to the spacing scale. */
-  --verity-padding-lg: var(--verity-spacing-32);
+  --verity-padding-lg: var(--verity-spacing-40);
   --verity-padding-md: var(--verity-spacing-24);
   --verity-padding-sm: var(--verity-spacing-16);
   --verity-padding-none: var(--verity-spacing-0);
@@ -888,6 +888,11 @@
   --verity-reel-tilt: 0.6; /** How much the cards turn with the disc: 1 is a rigid disc, 0 keeps them upright. Code only. */
   --verity-reel-radius: 1.7; /** The disc’s radius, as a multiple of the card’s width. The pivot is to the right of the card, so cards arc up and to the right, and the next rises from below. Code only. */
   --verity-reel-scrim-opacity: 0.7; /** How dark a Reel card gets away from its resting spot: the page color (color/background/default) at this opacity over the card. 0 when it’s settled, rising to 0.7 by halfway between spots, so cards read as further back on the disc and never put a bright image behind a Hero’s headline. Code only. */
+  --verity-project-card-thumbnail-scale-hover: 1.05; /** How much a ProjectCard’s thumbnail grows inside its frame on hover, focus, and active (1.05), the same as PortfolioCard’s. Code only: no Figma field takes a scale. */
+  --verity-project-card-thumbnail-width-row: 200px; /** In a row ProjectCard, the thumbnail’s width (400, 300, 300, 200). It sits flush on the right and fills the card’s height. */
+  --verity-project-card-thumbnail-height-stacked: 200px; /** In a stacked ProjectCard, the thumbnail’s height (400, 300, 300, 200). It sits flush on top and fills the card’s width. */
+  --verity-project-card-text-max-width: 420px; /** The widest a ProjectCard’s title gets (600, 600, 500, 420), so it keeps a readable line length; the frame around it fills the card. */
+  --verity-project-card-stack-width: 560px; /** Below this width, a ProjectCard stacks its thumbnail above its title; at or above it, they sit in a row, the thumbnail on the right (960, 820, 660, 560). Measured on the card itself, not the screen, like media-text/stack-width. In Figma, pick Layout to match the card’s width. */
   --verity-main-nav-logo-offset: var(--verity-spacing-8); /** Bottom padding under the MainNav logo. Lifts the logo so its lowercase letters line up with the NavItem labels beside it. */
   --verity-main-nav-logo-height: var(--verity-size-24); /** Height of the Erin Tozour logo in MainNav: 32 on XL and Large, 24 on Medium and Small. Its width follows, so the logo keeps its proportions. */
   --verity-nav-item-padding: var(--verity-spacing-8); /** Padding on all sides of a NavItem (its tap area). */
@@ -1157,6 +1162,11 @@
     --verity-reel-tilt: 0.6; /** How much the cards turn with the disc: 1 is a rigid disc, 0 keeps them upright. Code only. */
     --verity-reel-radius: 1.7; /** The disc’s radius, as a multiple of the card’s width. The pivot is to the right of the card, so cards arc up and to the right, and the next rises from below. Code only. */
     --verity-reel-scrim-opacity: 0.7; /** How dark a Reel card gets away from its resting spot: the page color (color/background/default) at this opacity over the card. 0 when it’s settled, rising to 0.7 by halfway between spots, so cards read as further back on the disc and never put a bright image behind a Hero’s headline. Code only. */
+    --verity-project-card-thumbnail-scale-hover: 1.05; /** How much a ProjectCard’s thumbnail grows inside its frame on hover, focus, and active (1.05), the same as PortfolioCard’s. Code only: no Figma field takes a scale. */
+    --verity-project-card-thumbnail-width-row: 300px; /** In a row ProjectCard, the thumbnail’s width (400, 300, 300, 200). It sits flush on the right and fills the card’s height. */
+    --verity-project-card-thumbnail-height-stacked: 300px; /** In a stacked ProjectCard, the thumbnail’s height (400, 300, 300, 200). It sits flush on top and fills the card’s width. */
+    --verity-project-card-text-max-width: 500px; /** The widest a ProjectCard’s title gets (600, 600, 500, 420), so it keeps a readable line length; the frame around it fills the card. */
+    --verity-project-card-stack-width: 660px; /** Below this width, a ProjectCard stacks its thumbnail above its title; at or above it, they sit in a row, the thumbnail on the right (960, 820, 660, 560). Measured on the card itself, not the screen, like media-text/stack-width. In Figma, pick Layout to match the card’s width. */
     --verity-main-nav-logo-offset: var(--verity-spacing-8); /** Bottom padding under the MainNav logo. Lifts the logo so its lowercase letters line up with the NavItem labels beside it. */
     --verity-main-nav-logo-height: var(--verity-size-24); /** Height of the Erin Tozour logo in MainNav: 32 on XL and Large, 24 on Medium and Small. Its width follows, so the logo keeps its proportions. */
     --verity-nav-item-padding: var(--verity-spacing-8); /** Padding on all sides of a NavItem (its tap area). */
@@ -1427,6 +1437,11 @@
     --verity-reel-tilt: 0.6; /** How much the cards turn with the disc: 1 is a rigid disc, 0 keeps them upright. Code only. */
     --verity-reel-radius: 1.7; /** The disc’s radius, as a multiple of the card’s width. The pivot is to the right of the card, so cards arc up and to the right, and the next rises from below. Code only. */
     --verity-reel-scrim-opacity: 0.7; /** How dark a Reel card gets away from its resting spot: the page color (color/background/default) at this opacity over the card. 0 when it’s settled, rising to 0.7 by halfway between spots, so cards read as further back on the disc and never put a bright image behind a Hero’s headline. Code only. */
+    --verity-project-card-thumbnail-scale-hover: 1.05; /** How much a ProjectCard’s thumbnail grows inside its frame on hover, focus, and active (1.05), the same as PortfolioCard’s. Code only: no Figma field takes a scale. */
+    --verity-project-card-thumbnail-width-row: 300px; /** In a row ProjectCard, the thumbnail’s width (400, 300, 300, 200). It sits flush on the right and fills the card’s height. */
+    --verity-project-card-thumbnail-height-stacked: 300px; /** In a stacked ProjectCard, the thumbnail’s height (400, 300, 300, 200). It sits flush on top and fills the card’s width. */
+    --verity-project-card-text-max-width: 600px; /** The widest a ProjectCard’s title gets (600, 600, 500, 420), so it keeps a readable line length; the frame around it fills the card. */
+    --verity-project-card-stack-width: 820px; /** Below this width, a ProjectCard stacks its thumbnail above its title; at or above it, they sit in a row, the thumbnail on the right (960, 820, 660, 560). Measured on the card itself, not the screen, like media-text/stack-width. In Figma, pick Layout to match the card’s width. */
     --verity-main-nav-logo-offset: var(--verity-spacing-16); /** Bottom padding under the MainNav logo. Lifts the logo so its lowercase letters line up with the NavItem labels beside it. */
     --verity-main-nav-logo-height: var(--verity-size-32); /** Height of the Erin Tozour logo in MainNav: 32 on XL and Large, 24 on Medium and Small. Its width follows, so the logo keeps its proportions. */
     --verity-nav-item-padding: var(--verity-spacing-8); /** Padding on all sides of a NavItem (its tap area). */
@@ -1697,6 +1712,11 @@
     --verity-reel-tilt: 0.6; /** How much the cards turn with the disc: 1 is a rigid disc, 0 keeps them upright. Code only. */
     --verity-reel-radius: 1.7; /** The disc’s radius, as a multiple of the card’s width. The pivot is to the right of the card, so cards arc up and to the right, and the next rises from below. Code only. */
     --verity-reel-scrim-opacity: 0.7; /** How dark a Reel card gets away from its resting spot: the page color (color/background/default) at this opacity over the card. 0 when it’s settled, rising to 0.7 by halfway between spots, so cards read as further back on the disc and never put a bright image behind a Hero’s headline. Code only. */
+    --verity-project-card-thumbnail-scale-hover: 1.05; /** How much a ProjectCard’s thumbnail grows inside its frame on hover, focus, and active (1.05), the same as PortfolioCard’s. Code only: no Figma field takes a scale. */
+    --verity-project-card-thumbnail-width-row: 400px; /** In a row ProjectCard, the thumbnail’s width (400, 300, 300, 200). It sits flush on the right and fills the card’s height. */
+    --verity-project-card-thumbnail-height-stacked: 400px; /** In a stacked ProjectCard, the thumbnail’s height (400, 300, 300, 200). It sits flush on top and fills the card’s width. */
+    --verity-project-card-text-max-width: 600px; /** The widest a ProjectCard’s title gets (600, 600, 500, 420), so it keeps a readable line length; the frame around it fills the card. */
+    --verity-project-card-stack-width: 960px; /** Below this width, a ProjectCard stacks its thumbnail above its title; at or above it, they sit in a row, the thumbnail on the right (960, 820, 660, 560). Measured on the card itself, not the screen, like media-text/stack-width. In Figma, pick Layout to match the card’s width. */
     --verity-main-nav-logo-offset: var(--verity-spacing-16); /** Bottom padding under the MainNav logo. Lifts the logo so its lowercase letters line up with the NavItem labels beside it. */
     --verity-main-nav-logo-height: var(--verity-size-32); /** Height of the Erin Tozour logo in MainNav: 32 on XL and Large, 24 on Medium and Small. Its width follows, so the logo keeps its proportions. */
     --verity-nav-item-padding: var(--verity-spacing-8); /** Padding on all sides of a NavItem (its tap area). */
