@@ -17,11 +17,13 @@
     },
     "min-width": {
       "$type": "dimension",
-      "$value": "960px"
+      "$value": "960px",
+      "$description": "The narrowest screen each breakpoint covers: XL from 1600, Large from 960, Medium from 560, Small from 320. XL moved from 1280 to 1600 (Nov 12), so laptops (1280 to 1536 wide) get Large and XL is for desktop monitors. The code’s media queries are generated from this."
     },
     "max-width": {
       "$type": "dimension",
-      "$value": "1280px"
+      "$value": "1600px",
+      "$description": "The widest screen each breakpoint is designed for: XL to 1920, Large to 1600, Medium to 960, Small to 560."
     }
   }
 }

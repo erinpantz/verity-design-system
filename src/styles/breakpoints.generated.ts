@@ -5,5 +5,5 @@
 export const BREAKPOINTS = {
   "medium": 560,
   "large": 960,
-  "xl": 1280
+  "xl": 1600
 } as const;
