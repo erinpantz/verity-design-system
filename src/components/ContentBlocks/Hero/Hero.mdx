@@ -84,15 +84,15 @@ With no `primaryAction`, there are no actions at all, and no space for them: the
 With it, the headline, intro, and actions stay one group, the body, on the left, still at most `--verity-content-column-width` wide, and the media sits at the end of the row, at least `--verity-spacing-lg` away, vertically centered against the text, with its own contents centered. The two share a row that wraps:
 
 - **The body** is at least `--verity-hero-text-min-width` wide (460 on XL and Large, 300 on Medium, 200 on Small), never wider than the Hero, and fills the rest of the row.
-- **The media** is at most `--verity-hero-media-width` wide (560 on XL, 440 on Large, 260 on Medium, 280 on Small), and never wider than the Hero. It’s a maximum, not a fixed width: media that fills its space, like an `Image`, grows to it and keeps its aspect ratio; media with its own size keeps that size. A `Reel`’s size, `--verity-reel-size`, points to `--verity-hero-media-width`, so a Reel and a photo in a Hero are always the same size. It sits at the end of the row, against the band’s padding. When the body has grown as wide as it gets, the space left over goes between the text and the media, never after the media.
-- **When both don’t fit,** the media wraps under the text, at the start, with `--verity-spacing-lg` between them. No breakpoint decides it: the wrap does.
+- **The media** is at most `--verity-hero-media-width` wide (560 on XL, 440 on Large, 260 on Medium, 280 on Small), and never wider than the Hero. Beside the text, it can give up width, down to `--verity-hero-media-min-width` (320 on Large; the same as its widest on XL, Medium, and Small), before it wraps. When there’s room, the media reaches its widest before the text gets any wider. What’s in it fills it and keeps its aspect ratio, like an `Image` or a `Reel`. A `Reel`’s size, `--verity-reel-size`, points to `--verity-hero-media-width`, so a Reel and a photo in a Hero are always the same size. It sits at the end of the row, against the band’s padding. When the body has grown as wide as it gets, the space left over goes between the text and the media, never after the media.
+- **When the text at its narrowest, the gap, and the media at its narrowest don’t fit,** the media wraps under the text, at the start, with `--verity-spacing-lg` between them, and is up to `--verity-hero-media-width` again. No breakpoint decides it: the wrap does.
 
 When the media sits beside the text, for a wide Hero in `Shell` (measured in **Layout › Shell › Home** for `default`, and the With media and With a photo stories for a band, which wrap at the same widths). A band’s padding leaves less room, so on a band the media moves beside the text at a wider screen:
 
 | Screen | Media | Beside the text, on `default` | Beside the text, on a band |
 |---|---|---|---|
 | XL (1600 and up) | 560 | Always | Always |
-| Large (960–1599) | 440 | From 1076px wide | From 1236px wide |
+| Large (960–1599) | 440, shrinking toward 320 before it wraps | Always: 440 from 1076px wide, shrinking to 324 at 960 | From 1116px wide: 440 from 1236px, shrinking to 320 at 1116 |
 | Medium (560–959) | 260 | From 672px wide | From 768px wide |
 | Small (320–559) | 280, or the Hero’s width when it’s narrower | Never: always under the text | Never: always under the text |
 
@@ -131,6 +131,7 @@ A Hero fills the width it’s given and adds no space outside itself. On `subtle
 | Between the body and the media, side by side or wrapped | `--verity-spacing-lg` |
 | The body’s narrowest width beside media | `--verity-hero-text-min-width` (460, 460, 300, 200) |
 | The media’s widest | `--verity-hero-media-width` (560, 440, 260, 280), and never wider than the Hero. `--verity-reel-size` points to it. |
+| The media’s narrowest beside the text | `--verity-hero-media-min-width` (560, 320, 260, 280): below this, it wraps |
 | Between the buttons | `--verity-spacing-xs` |
 | Corners | `--verity-border-radius-md`, always (Verity has no edge-to-edge layouts) |
 | Text | The headline in `display-default`; the intro in `body-xl` |

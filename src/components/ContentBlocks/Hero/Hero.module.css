@@ -5,12 +5,14 @@
 
    The body and the media share a row that wraps, like Figma's auto layout:
    the body takes at least hero/text-min-width and grows up to the content
-   column, the media is at most hero/media-width (a photo fills it; a Reel
-   keeps its own size), and when both don't fit the media
-   wraps under the text. No breakpoint needed. Beside the text, the media
+   column; the media is up to hero/media-width, and gives up width down to
+   hero/media-min-width before it wraps. It wraps under the text only when
+   the text's minimum, the gap, and the media's minimum don't fit. When
+   there's room, the media reaches its full width before the text grows. No
+   breakpoint needed. Beside the text, the media
    sits at the end, against the band's padding, and any space left over goes
    between the two (space-between). Wrapped, or with no media, each sits
-   alone at the start.
+   alone at the start, the media up to hero/media-width.
 
    Padding comes from the background: subtle, brand, and knockout are
    visible bands and keep padding/lg on every side. Default has no visible
@@ -131,18 +133,22 @@
    contents centered. Its own layer, under the body's, holds whatever moves
    in it.
 
-   hero/media-width is a maximum, not a fixed width. Media that fills its
-   space, like an Image, fills this width: hero/media-width, or less when
-   there's less room, never more than the band. */
+   Its width: it starts at hero/media-min-width, which is what decides the
+   wrap (the row breaks on each item's starting size), then grows, far ahead
+   of the body (1000 to 1), up to hero/media-width, never wider than the
+   band. So beside the text it's as wide as it can be, down to its minimum,
+   and only then does it wrap; wrapped, it's up to hero/media-width. What's
+   in it fills it and keeps its aspect ratio: an Image, or a Reel
+   (reel/size, at most its space). */
 .media {
   position: relative;
   z-index: 0;
   display: flex;
+  flex: 1000 1 var(--verity-hero-media-min-width);
   align-items: center;
   justify-content: center;
-  inline-size: var(--verity-hero-media-width);
   min-inline-size: 0;
-  max-inline-size: 100%;
+  max-inline-size: min(100%, var(--verity-hero-media-width));
 }
 
 /* On default, with no band to clip to, moving media swings out across the
@@ -156,14 +162,6 @@
 .default .media {
   z-index: auto;
   --media-moving-layer: -1;
-}
-
-/* Media with its own size, like a Reel (reel/size), keeps it: the media
-   hugs it, up to the same maximum, so it sits exactly where it would on
-   its own. A Reel marks itself with data-own-size. */
-.media:has(> [data-own-size]) {
-  inline-size: auto;
-  max-inline-size: min(100%, var(--verity-hero-media-width));
 }
 
 /* The headline and the intro, as one group, never wider than the content
