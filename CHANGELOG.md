@@ -4,6 +4,22 @@ Every release of Verity, newest first. The format follows [Keep a Changelog](htt
 
 Sites install Verity by tag (for example `github:erinpantz/verity-design-system#v0.3.0`), so a site only changes when it moves to a new tag on purpose.
 
+## [0.8.12] – 2026-11-13
+
+PortfolioCard grew complex: two types, two sizes, a company, a year, and a label. ProjectCard is a simpler card for the work: the project’s title, an arrow that says it’s clickable, and a thumbnail flush to the card’s edges, in one size that adapts to its width. PortfolioCard stays for now.
+
+### Added
+
+- **Tokens:** `project-card/stack-width` (960, 820, 660, 560), `text-max-width` (600, 600, 500, 420), `thumbnail/width-row` and `thumbnail/height-stacked` (400, 300, 300, 200), and `thumbnail/scale-hover` (1.05).
+- **ProjectCard,** in Content blocks: one link (through LinkProvider), named by its title, in display-sm. Under it, an arrow with an IconButton’s look that follows the card’s state, hidden from screen readers. A decorative thumbnail sits flush to the card’s edges. At or above `project-card/stack-width`, a row with the thumbnail on the right; below it, stacked, with the thumbnail on top, decided by the card’s own width. It fills the height it’s given, so cards in a Grid row match. States and motion are exactly PortfolioCard’s. Props: `href`, `heading`, `headingLevel`, and `thumbnail`.
+- **Docs:** ProjectCard’s page and stories (row and stacked at the stack width, each state, and a Grid with one to four cards). PortfolioCard’s page says ProjectCard replaces it, and it will be removed in a later breaking release.
+
+### Changed
+
+- **Tokens:** `typography/display-sm` is 56/64 on XL and Large (was 64/72); mobile is unchanged. This changes PortfolioCard’s large heading. `padding/lg` is 40 on Small (was 32), which changes Hero’s bands (and default’s top and bottom), CaseStudyHighlights’ sides, and PortfolioCard’s padding on Small.
+- **PortfolioCard:** its fill, shadow, states, and motion now come from a file shared with ProjectCard. It looks and behaves exactly as before.
+- **Tokens:** `npm run tokens` writes `project-card/stack-width` into the container widths, one per breakpoint, for ProjectCard’s container queries.
+
 ## [0.8.11] – 2026-11-13
 
 Every Verity link was a plain `<a href>`, so every click on the site reloaded the whole page, and a router like React Router never saw a page change coming, so PageLoader (v0.8.10) could never show. Links to the site’s own pages can now use the site’s router.
@@ -537,6 +553,7 @@ The first library release: everything in the Figma library except Animation, wit
 - **Theme helpers:** `themeScript`, `useTheme`, and `setTheme`, so a site applies the saved theme before the first paint.
 - **The library build:** one entry point with every component and its prop types, one stylesheet (`verity-design-system/styles.css`) with the fonts inside it, and `npm run build:watch` for working with a linked copy.
 
+[0.8.12]: https://github.com/erinpantz/verity-design-system/compare/v0.8.11...v0.8.12
 [0.8.11]: https://github.com/erinpantz/verity-design-system/compare/v0.8.10...v0.8.11
 [0.8.10]: https://github.com/erinpantz/verity-design-system/compare/v0.8.9...v0.8.10
 [0.8.9]: https://github.com/erinpantz/verity-design-system/compare/v0.8.8...v0.8.9
