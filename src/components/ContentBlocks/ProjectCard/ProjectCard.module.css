@@ -1,0 +1,155 @@
+/* A card that's one link to a project: its title and an arrow, and a
+   thumbnail flush to the card's edges. Its fill, shadow, states, and motion
+   come from linkCard.module.css, shared with PortfolioCard.
+
+   Layout follows the card's own width, not the screen's:
+   - stacked (below project-card/stack-width): the thumbnail on top, full
+     width and project-card/thumbnail/height-stacked tall; the title below.
+   - row (at or above it): the title fills the width; the thumbnail sits on
+     the right, project-card/thumbnail/width-row wide, filling the card's
+     height.
+   The stack width differs at each breakpoint, and a container query can't
+   read a custom property, so npm run tokens writes it out once per
+   breakpoint (container-widths.generated.module.css), and each @container
+   rule below sits in its breakpoint's @media rule, as in MainNav. It's all
+   CSS, so the first paint is right before JavaScript runs.
+
+   The card fills the height it's given, so cards in a Grid row are as tall
+   as the tallest; the extra height goes at the bottom of the title area. */
+
+@value medium, large, xl from '../../../styles/breakpoints.generated.module.css';
+@value projectCardStackWidthSmall, projectCardStackWidthMedium from '../../../styles/container-widths.generated.module.css';
+@value projectCardStackWidthLarge, projectCardStackWidthXL from '../../../styles/container-widths.generated.module.css';
+
+.projectCard {
+  composes: card from './linkCard.module.css';
+  --card-zoom: var(--verity-project-card-thumbnail-scale-hover);
+
+  /* The card is the container its layout follows */
+  container: project-card / inline-size;
+  display: flex;
+  flex-direction: column;
+  /* The rounded corners clip the thumbnail, which sits flush to the edges.
+     clip, not hidden, so the card never scrolls; the focus ring is an
+     outline, outside, and isn't clipped. */
+  overflow: clip;
+}
+
+/* Stacked, the default: the thumbnail's row, then the title's, which takes
+   any extra height */
+.layout {
+  display: grid;
+  flex: 1;
+  grid-template: var(--verity-project-card-thumbnail-height-stacked) 1fr / minmax(0, 1fr);
+}
+
+.thumbnail {
+  position: relative;
+  display: grid;
+  grid-area: 1 / 1;
+  /* Clips the zoom to the frame */
+  overflow: hidden;
+}
+
+/* The Skeleton and the picture fill the frame; the picture is on top */
+.thumbnail > * {
+  position: absolute;
+  inset: 0;
+}
+
+.image {
+  inline-size: 100%;
+  block-size: 100%;
+  object-fit: cover;
+}
+
+/* The title and the arrow, at the top of their area */
+.title {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  grid-area: 2 / 1;
+  gap: var(--verity-spacing-md);
+  padding: var(--verity-padding-lg);
+}
+
+/* The title, in display-sm, at most project-card/text-max-width. A real h2
+   or h3, styled here, like PortfolioCard's. */
+.heading {
+  max-inline-size: var(--verity-project-card-text-max-width);
+  margin: 0;
+  font-family: var(--verity-viewport-typography-display-sm-font-family);
+  font-size: var(--verity-viewport-typography-display-sm-font-size);
+  font-weight: var(--verity-viewport-typography-display-sm-font-weight);
+  line-height: var(--verity-viewport-typography-display-sm-line-height);
+  letter-spacing: var(--verity-viewport-typography-display-sm-letter-spacing);
+  text-transform: var(--verity-viewport-typography-display-sm-text-transform);
+}
+
+/* A row, at or above the stack width: the title fills the width, and the
+   thumbnail, on the right, fills the card's height. One rule per
+   breakpoint, each with that breakpoint's stack width. */
+
+@media not medium {
+  @container project-card (width >= projectCardStackWidthSmall) {
+    .layout {
+      grid-template: minmax(0, 1fr) / minmax(0, 1fr) var(--verity-project-card-thumbnail-width-row);
+    }
+
+    .thumbnail {
+      grid-area: 1 / 2;
+    }
+
+    .title {
+      grid-area: 1 / 1;
+    }
+  }
+}
+
+@media medium and (not large) {
+  @container project-card (width >= projectCardStackWidthMedium) {
+    .layout {
+      grid-template: minmax(0, 1fr) / minmax(0, 1fr) var(--verity-project-card-thumbnail-width-row);
+    }
+
+    .thumbnail {
+      grid-area: 1 / 2;
+    }
+
+    .title {
+      grid-area: 1 / 1;
+    }
+  }
+}
+
+@media large and (not xl) {
+  @container project-card (width >= projectCardStackWidthLarge) {
+    .layout {
+      grid-template: minmax(0, 1fr) / minmax(0, 1fr) var(--verity-project-card-thumbnail-width-row);
+    }
+
+    .thumbnail {
+      grid-area: 1 / 2;
+    }
+
+    .title {
+      grid-area: 1 / 1;
+    }
+  }
+}
+
+@media xl {
+  @container project-card (width >= projectCardStackWidthXL) {
+    .layout {
+      grid-template: minmax(0, 1fr) / minmax(0, 1fr) var(--verity-project-card-thumbnail-width-row);
+    }
+
+    .thumbnail {
+      grid-area: 1 / 2;
+    }
+
+    .title {
+      grid-area: 1 / 1;
+    }
+  }
+}

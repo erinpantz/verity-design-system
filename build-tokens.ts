@@ -16,7 +16,7 @@ const BREAKPOINTS_TS_OUTPUT = 'src/styles/breakpoints.generated.ts';
 const CONTAINER_WIDTHS_OUTPUT = 'src/styles/container-widths.generated.module.css';
 // Which tokens those are. Add a token's path here when a component's
 // @container rule needs it.
-const CONTAINER_WIDTHS = ['main-nav.short-logo-width', 'main-nav.menu-width'];
+const CONTAINER_WIDTHS = ['main-nav.short-logo-width', 'main-nav.menu-width', 'project-card.stack-width'];
 
 // Font stacks: Figma font name → CSS font-family list.
 // Figma uses each font's plain name. Fontsource registers the self-hosted

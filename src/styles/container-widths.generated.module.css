@@ -11,9 +11,13 @@
 
 @value mainNavShortLogoWidthSmall: 544px;
 @value mainNavMenuWidthSmall: 440px;
+@value projectCardStackWidthSmall: 560px;
 @value mainNavShortLogoWidthMedium: 544px;
 @value mainNavMenuWidthMedium: 440px;
+@value projectCardStackWidthMedium: 660px;
 @value mainNavShortLogoWidthLarge: 620px;
 @value mainNavMenuWidthLarge: 484px;
+@value projectCardStackWidthLarge: 820px;
 @value mainNavShortLogoWidthXL: 620px;
 @value mainNavMenuWidthXL: 484px;
+@value projectCardStackWidthXL: 960px;

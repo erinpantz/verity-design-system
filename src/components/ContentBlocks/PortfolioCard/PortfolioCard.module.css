@@ -1,18 +1,15 @@
 /* A card that's one link: the text, then the pictures, side by side, on a
-   deep brand fill (brand-active), with no border. Its layout follows its own width, not the screen's. The
-   large card: the text and the pictures each have a minimum width, and the
-   pictures wrap below the text when both don't fit. The small card: see
-   .size-sm. Every value is a token. */
+   deep brand fill (brand-active), with no border. Its fill, shadow, states,
+   and motion come from linkCard.module.css, shared with ProjectCard. Its
+   layout follows its own width, not the screen's. The large card: the text
+   and the pictures each have a minimum width, and the pictures wrap below
+   the text when both don't fit. The small card: see .size-sm. Every value is
+   a token. */
 
 .portfolioCard {
-  /* The colors and shadow for each state, set below */
-  --fill: var(--verity-color-background-brand-active);
-  --content: var(--verity-color-content-default);
-  --shadow-x: var(--verity-shadow-sm-x);
-  --shadow-y: var(--verity-shadow-sm-y);
-  --shadow-blur: var(--verity-shadow-sm-blur);
-  --shadow-spread: var(--verity-shadow-sm-spread);
-  --shadow-color: var(--verity-shadow-sm-color);
+  /* The fill, shadow, states, and motion are shared with ProjectCard */
+  composes: card from '../ProjectCard/linkCard.module.css';
+  --card-zoom: var(--verity-portfolio-card-image-scale-hover);
   /* The widest the text gets: the column for a case study, less for a
      brand gallery, so the thumbnails get the rest */
   --text-max: var(--verity-content-column-width);
@@ -22,20 +19,6 @@
   gap: var(--verity-spacing-lg);
   box-sizing: border-box;
   padding: var(--verity-padding-lg);
-  border-radius: var(--verity-border-radius-md);
-  background-color: var(--fill);
-  box-shadow: var(--shadow-x) var(--shadow-y) var(--shadow-blur) var(--shadow-spread) var(--shadow-color);
-  color: var(--content);
-  /* It's a link: no underline on its text */
-  text-decoration: none;
-  /* Colors and shadow fade quickly; the lift and growth move at the image
-     zoom's pace */
-  transition:
-    background-color var(--verity-motion-duration-fast) var(--verity-motion-easing-standard),
-    color var(--verity-motion-duration-fast) var(--verity-motion-easing-standard),
-    box-shadow var(--verity-motion-duration-fast) var(--verity-motion-easing-standard),
-    scale var(--verity-motion-duration-playful) var(--verity-motion-easing-standard),
-    translate var(--verity-motion-duration-playful) var(--verity-motion-easing-standard);
 }
 
 .brand-gallery {
@@ -178,96 +161,4 @@
 /* A gallery's three thumbnails, a little closer together */
 .size-sm .thumbnails {
   gap: var(--verity-spacing-sm);
-}
-
-/* The zoom: each picture grows inside its own frame, which clips it to the
-   frame's rounded corners. It eases in and back out. */
-.portfolioCard img {
-  transition: scale var(--verity-motion-duration-playful) var(--verity-motion-easing-standard);
-}
-
-/* States. Hover only on devices with a real pointer, so a tap doesn't leave
-   a card raised. Keyboard focus shows the same look everywhere, plus the
-   focus ring. On both, the card rises and grows a little, with a larger
-   shadow; the focus ring is an outline, so it moves and grows with it. */
-
-@media (hover: hover) {
-  .portfolioCard:hover {
-    --fill: var(--verity-color-background-brand-hover);
-    --content: var(--verity-color-content-default-hover);
-    --shadow-x: var(--verity-shadow-lg-x);
-    --shadow-y: var(--verity-shadow-lg-y);
-    --shadow-blur: var(--verity-shadow-lg-blur);
-    --shadow-spread: var(--verity-shadow-lg-spread);
-    --shadow-color: var(--verity-shadow-lg-color);
-
-    scale: var(--verity-motion-scale-hover);
-    translate: 0 calc(-1 * var(--verity-motion-lift-md));
-  }
-
-  .portfolioCard:hover img {
-    scale: var(--verity-portfolio-card-image-scale-hover);
-  }
-}
-
-.portfolioCard:focus-visible {
-  --fill: var(--verity-color-background-brand-hover);
-  --content: var(--verity-color-content-default-hover);
-  --shadow-x: var(--verity-shadow-lg-x);
-  --shadow-y: var(--verity-shadow-lg-y);
-  --shadow-blur: var(--verity-shadow-lg-blur);
-  --shadow-spread: var(--verity-shadow-lg-spread);
-  --shadow-color: var(--verity-shadow-lg-color);
-
-  scale: var(--verity-motion-scale-hover);
-  translate: 0 calc(-1 * var(--verity-motion-lift-md));
-
-  /* The shared focus ring, following the card's corners */
-  outline: var(--verity-focus-ring-width) solid var(--verity-color-border-focus);
-  outline-offset: var(--verity-focus-ring-offset);
-}
-
-.portfolioCard:focus-visible img {
-  scale: var(--verity-portfolio-card-image-scale-hover);
-}
-
-/* Pressed: back to the resting fill, darker than hover, and the card
-   settles back down, with no growth and the small shadow, so pressing reads
-   as pushing it in. The pictures stay
-   zoomed, so they don't jump back. */
-.portfolioCard:active {
-  --fill: var(--verity-color-background-brand-active);
-  --content: var(--verity-color-content-default-hover);
-  --shadow-x: var(--verity-shadow-sm-x);
-  --shadow-y: var(--verity-shadow-sm-y);
-  --shadow-blur: var(--verity-shadow-sm-blur);
-  --shadow-spread: var(--verity-shadow-sm-spread);
-  --shadow-color: var(--verity-shadow-sm-color);
-
-  scale: none;
-  translate: none;
-}
-
-.portfolioCard:active img {
-  scale: var(--verity-portfolio-card-image-scale-hover);
-}
-
-/* Reduce motion: no lift, growth, or zoom. The color and shadow fades stay,
-   since they don't move anything. */
-@media (prefers-reduced-motion: reduce) {
-  .portfolioCard,
-  .portfolioCard:hover,
-  .portfolioCard:focus-visible,
-  .portfolioCard:active {
-    scale: none;
-    translate: none;
-  }
-
-  .portfolioCard img,
-  .portfolioCard:hover img,
-  .portfolioCard:focus-visible img,
-  .portfolioCard:active img {
-    scale: none;
-    transition: none;
-  }
 }

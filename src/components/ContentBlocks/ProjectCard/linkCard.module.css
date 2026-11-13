@@ -1,0 +1,123 @@
+/* A card that's one link to a piece of work, on a deep brand fill: its
+   colors, shadow, states, and motion. Shared by ProjectCard and
+   PortfolioCard, which compose .card onto their link and lay out their own
+   contents. Each sets --card-zoom, how much its pictures grow inside their
+   frames on hover, focus, and press. Not a component: no stories or docs
+   page, and not exported. Every value is a token. */
+
+.card {
+  /* The colors and shadow for each state, set below */
+  --fill: var(--verity-color-background-brand-active);
+  --content: var(--verity-color-content-default);
+  --shadow-x: var(--verity-shadow-sm-x);
+  --shadow-y: var(--verity-shadow-sm-y);
+  --shadow-blur: var(--verity-shadow-sm-blur);
+  --shadow-spread: var(--verity-shadow-sm-spread);
+  --shadow-color: var(--verity-shadow-sm-color);
+
+  border-radius: var(--verity-border-radius-md);
+  background-color: var(--fill);
+  box-shadow: var(--shadow-x) var(--shadow-y) var(--shadow-blur) var(--shadow-spread) var(--shadow-color);
+  color: var(--content);
+  /* It's a link: no underline on its text */
+  text-decoration: none;
+  /* Colors and shadow fade quickly; the lift and growth move at the image
+     zoom's pace */
+  transition:
+    background-color var(--verity-motion-duration-fast) var(--verity-motion-easing-standard),
+    color var(--verity-motion-duration-fast) var(--verity-motion-easing-standard),
+    box-shadow var(--verity-motion-duration-fast) var(--verity-motion-easing-standard),
+    scale var(--verity-motion-duration-playful) var(--verity-motion-easing-standard),
+    translate var(--verity-motion-duration-playful) var(--verity-motion-easing-standard);
+}
+
+/* The zoom: each picture grows inside its own frame, which clips it to the
+   frame's rounded corners. It eases in and back out. */
+.card img {
+  transition: scale var(--verity-motion-duration-playful) var(--verity-motion-easing-standard);
+}
+
+/* States. Hover only on devices with a real pointer, so a tap doesn't leave
+   a card raised. Keyboard focus shows the same look everywhere, plus the
+   focus ring. On both, the card rises and grows a little, with a larger
+   shadow; the focus ring is an outline, so it moves and grows with it. */
+
+@media (hover: hover) {
+  .card:hover {
+    --fill: var(--verity-color-background-brand-hover);
+    --content: var(--verity-color-content-default-hover);
+    --shadow-x: var(--verity-shadow-lg-x);
+    --shadow-y: var(--verity-shadow-lg-y);
+    --shadow-blur: var(--verity-shadow-lg-blur);
+    --shadow-spread: var(--verity-shadow-lg-spread);
+    --shadow-color: var(--verity-shadow-lg-color);
+
+    scale: var(--verity-motion-scale-hover);
+    translate: 0 calc(-1 * var(--verity-motion-lift-md));
+  }
+
+  .card:hover img {
+    scale: var(--card-zoom);
+  }
+}
+
+.card:focus-visible {
+  --fill: var(--verity-color-background-brand-hover);
+  --content: var(--verity-color-content-default-hover);
+  --shadow-x: var(--verity-shadow-lg-x);
+  --shadow-y: var(--verity-shadow-lg-y);
+  --shadow-blur: var(--verity-shadow-lg-blur);
+  --shadow-spread: var(--verity-shadow-lg-spread);
+  --shadow-color: var(--verity-shadow-lg-color);
+
+  scale: var(--verity-motion-scale-hover);
+  translate: 0 calc(-1 * var(--verity-motion-lift-md));
+
+  /* The shared focus ring, following the card's corners */
+  outline: var(--verity-focus-ring-width) solid var(--verity-color-border-focus);
+  outline-offset: var(--verity-focus-ring-offset);
+}
+
+.card:focus-visible img {
+  scale: var(--card-zoom);
+}
+
+/* Pressed: back to the resting fill, darker than hover, and the card
+   settles back down, with no growth and the small shadow, so pressing reads
+   as pushing it in. The pictures stay zoomed, so they don't jump back. */
+.card:active {
+  --fill: var(--verity-color-background-brand-active);
+  --content: var(--verity-color-content-default-hover);
+  --shadow-x: var(--verity-shadow-sm-x);
+  --shadow-y: var(--verity-shadow-sm-y);
+  --shadow-blur: var(--verity-shadow-sm-blur);
+  --shadow-spread: var(--verity-shadow-sm-spread);
+  --shadow-color: var(--verity-shadow-sm-color);
+
+  scale: none;
+  translate: none;
+}
+
+.card:active img {
+  scale: var(--card-zoom);
+}
+
+/* Reduce motion: no lift, growth, or zoom. The color and shadow fades stay,
+   since they don't move anything. */
+@media (prefers-reduced-motion: reduce) {
+  .card,
+  .card:hover,
+  .card:focus-visible,
+  .card:active {
+    scale: none;
+    translate: none;
+  }
+
+  .card img,
+  .card:hover img,
+  .card:focus-visible img,
+  .card:active img {
+    scale: none;
+    transition: none;
+  }
+}
