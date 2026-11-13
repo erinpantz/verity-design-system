@@ -415,7 +415,7 @@
     "text-min-width": {
       "$type": "dimension",
       "$value": "300px",
-      "$description": "The narrowest a Hero’s text (Body) gets beside media: 460 on XL and Large, 300 on Medium, 200 on Small. When the text and the media don’t both fit, the media wraps under the text. On the default background (no band), the media sits beside the text on all of XL, on Large from about 1076px, and on Medium from about 672px; on a band, from about 1236px on Large and 768px on Medium.",
+      "$description": "The narrowest a Hero’s text (Body) gets beside media: 460 on XL and Large, 300 on Medium, 200 on Small. When the text and the media (at least hero/media-min-width) don’t both fit, the media wraps under the text. On the default background, the media sits beside the text on all of XL and Large and on Medium from about 672px; on a band, from about 1116px on Large and 768px on Medium.",
       "$extensions": {
         "com.figma": {
           "scopes": [
@@ -427,7 +427,19 @@
     "media-width": {
       "$type": "dimension",
       "$value": "260px",
-      "$description": "The widest a Hero’s media gets: 560 on XL, 440 on Large, 260 on Medium, 280 on Small, and never more than 100% of its space. A photo fills it (in Figma, set the Image’s width to this variable), and reel/size points to it, so a Reel is the same size. Large is 440 since Large covers laptops up to 1600 wide.",
+      "$description": "The widest a Hero’s media gets: 560 on XL, 440 on Large, 260 on Medium, 280 on Small, and never more than 100% of its space. Beside the text it can shrink to hero/media-min-width before it wraps. A photo fills it (in Figma, set the Image’s width to this variable), and reel/size points to it, so a Reel is the same size.",
+      "$extensions": {
+        "com.figma": {
+          "scopes": [
+            "WIDTH_HEIGHT"
+          ]
+        }
+      }
+    },
+    "media-min-width": {
+      "$type": "dimension",
+      "$value": "260px",
+      "$description": "The smallest a Hero’s media gets before it wraps under the text: 320 on Large; on XL, Medium, and Small it equals hero/media-width, so the size stays fixed there. Beside the text, the media shrinks from hero/media-width toward this before wrapping, so on Large it stays beside the text down to 960 (on the default background), shrinking from 440 at about 1076 to about 320 at 960.",
       "$extensions": {
         "com.figma": {
           "scopes": [
