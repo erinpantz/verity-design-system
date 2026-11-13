@@ -1,0 +1,106 @@
+import { Meta, Canvas } from '@storybook/addon-docs/blocks';
+import { VerityDocs } from '../../../foundations/VerityDocs';
+import { PropsTable } from '../../../foundations/PropsTable';
+import * as ProjectCardStories from './ProjectCard.stories';
+
+<Meta of={ProjectCardStories} />
+
+<VerityDocs>
+
+# ProjectCard
+
+A link to one project, a case study or a brand gallery, for the Portfolio and Home pages: its title, an arrow that says it’s clickable, and a thumbnail flush to the card’s edges. One card for both kinds of work, in one size that adapts to its width. It replaces `PortfolioCard`.
+
+<Canvas of={ProjectCardStories.Default} />
+
+## When to use
+
+- **On the Portfolio and Home pages,** one card per case study or brand gallery.
+- **Several together:** in a wide `Grid` with `itemWidth="xl"`, `gap="lg"`, and `fillRows`, so cards in a row are as tall as the tallest and a card alone on its row fills it.
+- **Not for a link inside a page’s text.** Use `Link`.
+- **Not for the site’s sections** (Portfolio, Profile, Playground). Use `NavCard`.
+
+## Accessibility
+
+The whole card is one link (`<a>`), named by its title (`aria-labelledby`), so a screen reader hears “Helping people take their cancer meds on time, link.” It goes through `LinkProvider`, so with a site’s router, it changes the page in the app (see **Actions › LinkProvider**).
+
+- **The title** is a real heading, `h2` by default, so people can jump between cards by heading. In the reading order it comes first; the thumbnail is placed on top or on the right by the CSS.
+- **The arrow isn’t a button.** It has the look of an `IconButton` (`md`, `forward`, background `none`) and follows the card’s state, but it’s a `<span>`, hidden from screen readers: the card is already the link, and a button inside a link would be a second control that does the same thing, which is invalid HTML and confusing to hear.
+- **The thumbnail is decorative** (`alt=""`): the title says what the work is.
+
+| Situation | What to do | Example |
+|---|---|---|
+| The heading level | `2` in a page’s grid of cards; `3` when the cards sit under a Section’s heading | `headingLevel={3}` under “Featured work” |
+| Writing the title | The project’s outcome or name, in sentence case, with no ending punctuation | “Helping people take their cancer meds on time” |
+
+## Layout
+
+The card’s own width decides its layout, not the screen’s, like `MediaText`:
+
+| Card width | Layout | Thumbnail |
+|---|---|---|
+| At or above `--verity-project-card-stack-width` (960, 820, 660, 560 on XL, Large, Medium, Small) | **Row:** the title fills the width; the thumbnail sits flush on the right | `--verity-project-card-thumbnail-width-row` wide (400, 300, 300, 200), filling the card’s height |
+| Below it | **Stacked:** the thumbnail flush on top; the title below | Full width, `--verity-project-card-thumbnail-height-stacked` tall (400, 300, 300, 200) |
+
+On Small, screens are narrower than the stack width, so the card is always stacked there.
+
+<Canvas of={ProjectCardStories.AtTheStackWidth} />
+
+<Canvas of={ProjectCardStories.BelowTheStackWidth} />
+
+- **The thumbnail covers its frame** (`object-fit: cover`), and the card’s rounded corners (`--verity-border-radius-md`) clip it. A `Skeleton` holds its frame until it loads.
+- **The card fills the height it’s given,** so cards in a Grid row are as tall as the tallest. The extra height goes at the bottom of the title area: the title and the arrow stay at the top.
+- **How the switch works:** a container query can’t read a custom property, and the stack width differs at each breakpoint, so `npm run tokens` writes it out once per breakpoint (in `container-widths.generated.module.css`), and the card’s CSS has one container query for each, inside that breakpoint’s media query, as MainNav does. It’s all CSS, so the first paint is right before JavaScript runs.
+
+<Canvas of={ProjectCardStories.InAGridFour} />
+
+## States
+
+Exactly as PortfolioCard’s; both cards share the same code.
+
+| State | What changes | Tokens |
+|---|---|---|
+| Default | The deep brand fill and a small shadow, no border | `--verity-color-background-brand-active`, `--verity-shadow-sm-*` |
+| Hover | A brighter fill and a larger shadow; the card lifts and grows; the thumbnail zooms; the arrow takes IconButton’s hover look | `--verity-color-background-brand-hover`, `--verity-shadow-lg-*`, `--verity-color-content-default-hover` |
+| Focus | The same as hover, plus the shared focus ring, on keyboard focus only | `--verity-focus-ring-width`, `--verity-color-border-focus`, `--verity-focus-ring-offset` |
+| Active | Back to the resting fill and small shadow, so it reads as a press; the thumbnail stays zoomed; the arrow takes IconButton’s active look | `--verity-color-background-brand-active`, `--verity-shadow-sm-*` |
+
+It has no disabled state: a project that isn’t ready isn’t shown.
+
+<Canvas of={ProjectCardStories.Hover} />
+
+## Motion
+
+- **Fill, text color, and shadow** fade over `--verity-motion-duration-fast` with `--verity-motion-easing-standard`.
+- **On hover and focus,** the card lifts by `--verity-motion-lift-md` and grows to `--verity-motion-scale-hover` over `--verity-motion-duration-playful`. Hover only on devices with a real pointer, so a tap doesn’t leave a card raised; keyboard focus everywhere.
+- **The thumbnail** zooms to `--verity-project-card-thumbnail-scale-hover` (1.05) inside its frame over `--verity-motion-duration-playful` with `--verity-motion-easing-standard`, and stays zoomed while pressed.
+- **With reduce motion on,** there’s no lift, grow, or zoom. The fades stay.
+
+## Space
+
+| Space | Token |
+|---|---|
+| Around the title and the arrow | `--verity-padding-lg` (80 on XL and Large, 48 on Medium, 40 on Small) |
+| Between the title and the arrow | `--verity-spacing-md` |
+| The title’s widest | `--verity-project-card-text-max-width` (600, 600, 500, 420) |
+| The thumbnail | Flush to the card’s edges: no padding |
+| Corners | `--verity-border-radius-md` |
+| Text | The title in `display-sm` (56/64 on XL and Large, 44/52 on Medium and Small) |
+
+## Props
+
+<PropsTable of={ProjectCardStories} />
+
+## In Figma
+
+| Figma | Code |
+|---|---|
+| Component `ProjectCard` | `<ProjectCard />` |
+| Property `Heading` | `heading` |
+| Property `Layout` (`row`, `stacked`) | No prop: the card’s own width decides. Figma previews both. |
+| Property `State` | No prop: the card follows the pointer and the keyboard |
+| The Image instance in `Thumbnail` | `thumbnail`, the image’s URL |
+| The IconButton instance | The arrow, drawn by ProjectCard: the look of an IconButton, not a button |
+| Not in Figma | `href` and `headingLevel`; the motion; cards in a row matching heights (in Figma, set the shorter cards’ Title frame to Fill) |
+
+</VerityDocs>
