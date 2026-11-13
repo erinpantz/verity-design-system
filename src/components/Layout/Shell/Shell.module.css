@@ -56,7 +56,7 @@
    rewrites :not(:focus-within) into a rule that always matches. */
 .skipLink {
   position: fixed;
-  z-index: 2;
+  z-index: 4;
   inset-block-start: var(--verity-spacing-xs);
   inset-inline-start: var(--verity-spacing-xs);
   translate: 0 calc(-100% - 2 * var(--verity-spacing-xs));
@@ -68,11 +68,12 @@
 
 /* ThemeToggle, fixed to the screen's bottom-right corner at every width,
    inset by spacing/md plus the safe area (a phone's rounded corners and home
-   bar). It sits above the page's content, which scrolls under it; NavOverlay
+   bar). It sits above the page's content, which scrolls under it, and above
+   PageLoader (z-index 2), so it stays usable while a page loads; NavOverlay
    is a modal dialog in the browser's top layer, so it covers the toggle. */
 .themeToggle {
   position: fixed;
-  z-index: 1;
+  z-index: 3;
   inset-block-end: calc(var(--verity-spacing-md) + env(safe-area-inset-bottom, 0px));
   inset-inline-end: calc(var(--verity-spacing-md) + env(safe-area-inset-right, 0px));
   display: flex;
@@ -85,7 +86,7 @@
    Figma, so the title sits spacing/lg below the link. A jump to a heading stops at the same place. */
 .backLink {
   position: fixed;
-  z-index: 1;
+  z-index: 3;
   inset-block-start: calc(var(--verity-spacing-md) + env(safe-area-inset-top, 0px));
   inset-inline-start: calc(var(--verity-main-padding-inline) + env(safe-area-inset-left, 0px));
   display: flex;

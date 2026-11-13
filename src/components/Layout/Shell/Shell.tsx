@@ -1,6 +1,7 @@
-import { useId, type ComponentProps, type ReactNode } from 'react';
+import { useId, useState, type ComponentProps, type ReactNode } from 'react';
 import { Button } from '../../Actions/Button';
 import { ThemeToggle } from '../../Actions/ThemeToggle';
+import { PageLoader, type PageLoaderSection } from '../../FeedbackAndStatus/PageLoader';
 import { BackLink, type BackLinkProps } from '../../Navigation/BackLink';
 import { MainNav } from '../../Navigation/MainNav';
 import styles from './Shell.module.css';
@@ -23,6 +24,18 @@ export interface ShellProps {
   mode?: 'default' | 'focused';
   /** In focused mode, where the back link goes and what it says */
   backLink?: BackLinkProps;
+  /**
+   * The section a page change is going to, while it’s going: home,
+   * portfolio, profile, or playground (a case study is portfolio). Leave it
+   * out when the change is done. PageLoader decides whether to show, and
+   * that section’s nav link swaps its icon between poses meanwhile.
+   */
+  pending?: PageLoaderSection;
+  /**
+   * Each section’s loading words, plain lines like “Shuffling the deck.”
+   * PageLoader adds the ellipsis and shuffles them.
+   */
+  loaderWords?: Partial<Record<PageLoaderSection, string[]>>;
 }
 
 // Back to the portfolio, as in Figma
@@ -41,8 +54,17 @@ export function Shell({
   hrefs,
   mode = 'default',
   backLink = DEFAULT_BACK_LINK,
+  pending,
+  loaderWords,
 }: ShellProps) {
   const mainId = useId();
+  // The section this page is in, which counts as visited: a nav page, a
+  // case study (focused mode) as Portfolio, and anything else as Home
+  const section: PageLoaderSection = current ?? (mode === 'focused' ? 'portfolio' : 'home');
+  // The section PageLoader is showing, if it is. Its nav link keeps swapping
+  // poses while the page change goes on or the loader shows, whichever is
+  // longer (a first visit's loader can outlast a fast page change).
+  const [loaderShowing, setLoaderShowing] = useState<PageLoaderSection>();
 
   return (
     <div className={styles.shell} data-mode={mode}>
@@ -58,7 +80,7 @@ export function Shell({
           <BackLink href={backLink.href} label={backLink.label} />
         </div>
       ) : (
-        <MainNav current={current} hrefs={hrefs} />
+        <MainNav current={current} hrefs={hrefs} pending={pending ?? loaderShowing} />
       )}
       {/* Fixed to the screen's corner at every width, so it's always in
           reach. In the tab order, it comes right after the nav (or the back
@@ -67,6 +89,15 @@ export function Shell({
         <ThemeToggle />
       </div>
       <div className={styles.page}>
+        {/* Right below the nav (or at the top, in focused mode): the page
+            loader covers the page from here, above the content, below the
+            nav, ThemeToggle, BackLink, and the skip link */}
+        <PageLoader
+          pending={pending}
+          current={section}
+          words={loaderWords}
+          onVisibleChange={setLoaderShowing}
+        />
         {/* tabIndex -1 lets the skip link move focus here, without adding Main to the tab order */}
         <main className={styles.main} id={mainId} tabIndex={-1}>
           {children}

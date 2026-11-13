@@ -12,6 +12,12 @@ export interface MainNavProps {
   current?: Page;
   /** Where each link goes. Any you leave out use the defaults. */
   hrefs?: Partial<Record<'home' | Page, string>>;
+  /**
+   * The section a page change is going to, while it’s going. That page’s
+   * link swaps its icon between poses, in step with PageLoader. Home’s link
+   * is the logo, which doesn’t move.
+   */
+  pending?: 'home' | Page;
 }
 
 const DEFAULT_HREFS = {
@@ -33,7 +39,7 @@ const PAGES = [
 // logo and the links, "erin" and the links, or the full logo and a menu
 // button that opens the links in NavOverlay. MainNav owns the overlay and
 // whether it's open.
-export function MainNav({ current, hrefs = {} }: MainNavProps) {
+export function MainNav({ current, hrefs = {}, pending }: MainNavProps) {
   const links = { ...DEFAULT_HREFS, ...hrefs };
   const [menuOpen, setMenuOpen] = useState(false);
   const menuButtonRef = useRef<HTMLSpanElement>(null);
@@ -56,7 +62,13 @@ export function MainNav({ current, hrefs = {} }: MainNavProps) {
     <ul className={`${styles.links} ${styles[direction]}`}>
       {PAGES.map(({ page, label }) => (
         <li key={page}>
-          <NavItem icon={page} label={label} href={links[page]} current={current === page} />
+          <NavItem
+            icon={page}
+            label={label}
+            href={links[page]}
+            current={current === page}
+            pending={pending === page}
+          />
         </li>
       ))}
     </ul>
