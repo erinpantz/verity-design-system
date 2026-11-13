@@ -22,6 +22,8 @@ The site’s main navigation, a bar across the top of the page: the logo, linkin
 
 ## Accessibility
 
+Its links, the logo and the NavItems, go through `LinkProvider`, so with a site’s router, they change the page in the app (see **Actions › LinkProvider**).
+
 MainNav renders a `<nav aria-label="Main">`, so screen readers list it as the main navigation landmark. Inside it:
 
 - **The site title** is a link home whose only content is the logo, so its name is the logo’s: “Erin Tozour.” It’s the same name whether the full logo or “erin” shows. The logo that isn’t showing is `display: none`, so screen readers skip it too and hear the name once.

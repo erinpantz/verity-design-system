@@ -1,0 +1,64 @@
+import { Meta, Canvas } from '@storybook/addon-docs/blocks';
+import { VerityDocs } from '../../../foundations/VerityDocs';
+import { PropsTable } from '../../../foundations/PropsTable';
+import * as LinkProviderStories from './LinkProvider.stories';
+
+<Meta of={LinkProviderStories} />
+
+<VerityDocs>
+
+# LinkProvider
+
+Lets a site’s router handle Verity’s links to its own pages: wrap the site in it, with the router’s link as `component`, and following a link changes the page in the app instead of reloading it.
+
+<Canvas of={LinkProviderStories.Default} />
+
+## When to use
+
+- **Once, around the whole site,** when the site has a router, like React Router. Every Verity link inside it follows the rule below.
+- **Not without a router.** Without a LinkProvider, every link is a plain `<a>`, which is right for a site that loads each page from the server.
+- **Not for one link.** To make a single link plain, give it an address the rule leaves alone; there’s no per-link switch.
+
+## Which links go through it
+
+| Link | Goes through LinkProvider? | Why |
+|---|---|---|
+| `/portfolio`, `/case-studies/care-notes?step=2`, `/` | Yes | A page on the site: starts with one `/`, no file extension |
+| `/resume.pdf` | No | A file: a router would try to show it as a page |
+| `mailto:hello@example.com`, `https://www.linkedin.com/` | No | Not a page on the site |
+| `//cdn.example.com/page` | No | Two slashes is another site |
+| Any link with `opensInNewTab`, a `target`, or `download` | No | The browser opens or saves it |
+| `#work` | No | A spot on the same page |
+
+Every Verity link renders through one internal piece, so the rule lives in one place: `NavItem`, MainNav’s logo, `BackLink`, `PortfolioCard`, `NavCard`, `Link` (and through it `LinkGroup` and `Footer`), and `Button` with `href`. Their look, states, focus, and accessible names don’t change.
+
+## Accessibility
+
+The component must render a real `<a href>`, with every prop it’s given (`className`, `aria-*`, `onClick`, and the ref), so the link works before JavaScript runs, keeps its accessible name, and can be copied, shared, and opened in a new tab. A router’s link leaves a Cmd-click, Ctrl-click, or middle click to the browser, so those still open a new tab.
+
+## With React Router
+
+```tsx
+import { Link as RouterLink } from 'react-router';
+import { LinkProvider, type LinkComponent } from 'verity-design-system';
+
+const SiteLink: LinkComponent = ({ href = '', ...props }) => <RouterLink to={href} {...props} />;
+
+<LinkProvider component={SiteLink}>
+  <App />
+</LinkProvider>
+```
+
+The site keeps the router’s own link features, like prefetching on hover. MainNav’s `current`, Shell’s `pending`, and `PageLoader` all come from props, so they follow the router’s page changes as they are.
+
+**Why a component, not a function:** a `navigate` function (as React Aria does) would leave Verity rendering its own `<a>` and calling the router on click, so the router’s link features, like prefetching, would be lost, and Verity would have to repeat the router’s rules for modifier clicks.
+
+## Props
+
+<PropsTable of={LinkProviderStories} />
+
+## In Figma
+
+Not in Figma: it’s about how links behave in code. Links look the same with or without it.
+
+</VerityDocs>

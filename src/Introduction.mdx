@@ -25,7 +25,7 @@ Components are grouped the same way as the Figma pages:
 - **Layout:** containers, stacks, and grids
 - **Text:** headings, body text, and prose
 - **Media:** images, logos, and icons
-- **Feedback and status:** placeholders while things load, and labels that show a status
+- **Feedback and status:** placeholders while things load, the page loader, and labels that show a status
 - **Content blocks:** larger sections built from the pieces above
 
 ## Principles
@@ -33,5 +33,26 @@ Components are grouped the same way as the Figma pages:
 - **Every value comes from a token.** Colors, sizes, spacing, radii, and fonts are never hard-coded.
 - **Components don’t add space outside themselves.** Parents space their children.
 - **Accessibility is built in.** Every interactive component has default, hover, focus, active, and disabled states, and each story is checked in the Accessibility panel.
+
+## Links and routing
+
+Every Verity link is a real `<a href>`: it works before JavaScript runs, and it can be copied, shared, and opened in a new tab. On its own, following one reloads the whole page. A site with a router, like React Router, wraps itself in `LinkProvider`, and Verity renders links to the site’s own pages with the router’s link instead, so the page changes in the app, faster, and the site sees the change coming (Shell’s `pending`, and `PageLoader`).
+
+**Which links go through it:** only pages on the same site, an address that starts with one `/` (not `//`), with no `target`, no `download`, and no file extension at the end of its path. Everything else stays a plain `<a>`: other sites, `mailto:` links, anything that opens in a new tab, and files like the resume PDF, which a router would try to show as a page. Without a LinkProvider, every link is a plain `<a>`.
+
+With React Router, the site adapts its `Link` in a few lines, passing `href` on as `to`:
+
+```tsx
+import { Link as RouterLink } from 'react-router';
+import { LinkProvider, type LinkComponent } from 'verity-design-system';
+
+const SiteLink: LinkComponent = ({ href = '', ...props }) => <RouterLink to={href} {...props} />;
+
+<LinkProvider component={SiteLink}>
+  <App />
+</LinkProvider>
+```
+
+The router’s link renders the `<a href>` and keeps its own features, like prefetching on hover, and it leaves a Cmd-click or middle click to the browser, so it still opens a new tab. See **Actions › LinkProvider** to try it.
 
 </VerityDocs>

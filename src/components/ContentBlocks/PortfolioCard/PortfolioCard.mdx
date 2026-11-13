@@ -22,6 +22,8 @@ A link to one piece of work, for the Portfolio and Home pages: the heading, the 
 
 ## Accessibility
 
+Its link goes through `LinkProvider`, so with a site’s router, a link to a case study on the site changes the page in the app (see **Actions › LinkProvider**).
+
 A PortfolioCard renders one `<a href>` around everything, so the whole card is one stop for the keyboard and one link for screen readers.
 
 - **Its name is the heading** (`aria-labelledby`), so a screen reader hears “Designing AI that care teams trust, link,” not everything inside the card.

@@ -21,6 +21,8 @@ A small label above a list of Links, like the footer’s Pages, Fun stuff, and C
 
 ## Accessibility
 
+Its Links go through `LinkProvider`, like every `Link` (see **Actions › LinkProvider**).
+
 A LinkGroup renders its label as text with an id, and its Links as a list (`<ul>`), one Link per item (`<li>`). The list takes its name from the label (`aria-labelledby`), so screen readers say “Pages, list, 3 items” and can skip the group as a whole.
 
 | Situation | What to do | Example |
