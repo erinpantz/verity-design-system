@@ -18,6 +18,7 @@ A placeholder that holds the place of media while it loads: a block that pulses 
 - **You usually don’t place it yourself.** `Image` shows a Skeleton until its picture loads, then removes it.
 - **For other media that loads slowly,** place it in a container with the media’s shape. It fills the container and takes its corners.
 - **Not for empty states or errors.** A Skeleton says “something is coming.” When nothing is, say so in text.
+- **For media loading in place, not for moving between pages.** Verity has two loading patterns: a Skeleton holds the place of media in a page while it loads, and `PageLoader` covers the page while moving between the site’s sections. `Shell` places PageLoader for you.
 
 ## Accessibility
 

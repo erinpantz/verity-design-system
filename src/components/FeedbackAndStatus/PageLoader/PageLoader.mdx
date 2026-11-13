@@ -1,0 +1,110 @@
+import { Meta, Canvas } from '@storybook/addon-docs/blocks';
+import { VerityDocs } from '../../../foundations/VerityDocs';
+import { PropsTable } from '../../../foundations/PropsTable';
+import * as PageLoaderStories from './PageLoader.stories';
+
+<Meta of={PageLoaderStories} />
+
+<VerityDocs>
+
+# PageLoader
+
+A loader for moving between the site’s sections, with personality: the section’s nav icon swapping between the poses visitors already know from the nav (Home’s badge, turning), over a line of playful words, like “Shuffling the deck…”
+
+<Canvas of={PageLoaderStories.Default} />
+
+## When to use
+
+- **In `Shell`, which places it for you.** Tell Shell where a page change is going with `pending`, and give it each section’s words with `loaderWords`. Shell puts PageLoader right below the nav, and keeps that section’s nav link swapping poses while it loads.
+- **Moving between the site’s sections:** Home, Portfolio, Profile, and Playground. A case study counts as Portfolio.
+- **Not for media loading in place.** An image, an animation, or a video holds its space with a `Skeleton` until it arrives. PageLoader is for the whole page, between sections.
+- **Not for anything inside a page,** like a form sending. PageLoader covers the page.
+
+<Canvas of={PageLoaderStories.InTheSite} />
+
+## When it shows
+
+It’s told which section a page change is going to (`pending`), and when the change is done (`pending` goes back to undefined). Then:
+
+| Visit | When it appears | How long it stays | Why |
+|---|---|---|---|
+| The first to a section in this tab | Right away, fading in over `--verity-page-loader-duration-fade` | At least `--verity-page-loader-duration-first-visit-minimum` (1.6s), even if the page is ready sooner | On purpose: it’s the site’s personality, shown once per section |
+| A section already visited in this tab | Only if the page isn’t ready by `--verity-page-loader-duration-delay` (400ms) | At least `--verity-page-loader-duration-minimum` (800ms) once it’s up, so it never blinks | Nobody waits for it twice. On a normal connection, it doesn’t show at all. |
+
+When the change is done, and it’s had its least time, it fades out over `--verity-page-loader-duration-fade`.
+
+- **Visits are remembered for the tab,** in `sessionStorage`, until the tab closes. Without it (a private window, or storage blocked), every visit counts as a first.
+- **The section a visitor lands on counts as visited.** Shell tells PageLoader which section the page is in (`current`): a nav page, a case study as Portfolio, and anything else as Home.
+- **A change to another section while it’s up** keeps it up, for the new section.
+
+## What it covers
+
+The page below MainNav, on `--verity-color-background-default`, with its contents centered in the space it covers. It’s fixed to the screen from where it’s placed (in Shell, right below the nav) to the bottom of the screen; once the nav has scrolled away, it covers the whole screen.
+
+| Stays above it, and usable | How |
+|---|---|
+| MainNav, and NavOverlay | The loader starts below the nav. NavOverlay is a modal dialog, in the browser’s top layer. Following a link in it closes it, as always, and the loader shows. |
+| ThemeToggle, BackLink, and the skip link | Shell lifts them above the loader |
+| In focused mode, with no nav | It covers the whole page, under BackLink and ThemeToggle |
+
+It covers everything else, the Hero’s text and a Reel’s cards included.
+
+## Motion
+
+| Section | The icon | Motion |
+|---|---|---|
+| Portfolio | Its NavIcon at `--verity-page-loader-size-icon` (96), accent colors on | Swaps between its hover and current poses |
+| Profile | The same | Swaps between its default and hover poses |
+| Playground | The same | Swaps between its default and hover poses |
+| Home | `ErinTozourBadge` at `--verity-page-loader-size-icon`, its padding growing in proportion | Full 360° turns over `--verity-page-loader-duration-turn` (700ms), on `--verity-motion-easing-playful` |
+
+- **Each move** takes the nav’s own `--verity-motion-duration-playful` on `--verity-motion-easing-playful`, the same as a hover, then the pose (or the badge) holds for `--verity-page-loader-duration-hold` (600ms). It starts moving as soon as it appears.
+- **The poses are NavIcon’s own,** set directly with its `pose` prop, so they’re defined once.
+- **The nav link swaps in step.** While a page change to a section is going, or its loader shows, that section’s NavItem swaps between the same poses, on a clock it shares with the loader. When the loader appears, the clock starts over, so the two move together. Home’s link is the logo, which doesn’t move; in the menu layout, the menu button doesn’t either.
+- **The words** sit under the icon, `--verity-spacing-sm` apart, in `body-lg` and `--verity-color-content-subtle`, centered, on one line. Each shows for `--verity-page-loader-duration-word` (1.6s), then fades out rising slightly as the next fades in rising into place, by `--verity-spacing-xs`, over `--verity-motion-duration-playful` on `--verity-motion-easing-standard`. They’re shuffled each time it opens, so different visits show different lines. With one word, it doesn’t change.
+
+## Words
+
+The site writes each section’s words, and PageLoader adds the ellipsis.
+
+| Situation | What to do | Example |
+|---|---|---|
+| Writing a section’s words | Short, playful, about the section’s icon or its content, in sentence case, with no ending punctuation | Portfolio: “Shuffling the deck,” “Framing the shots” |
+| How many | Three or four, so a slow load doesn’t repeat one too soon | Profile: “Fixing my bun,” “Tilting my head,” “Finding my glasses” |
+| None given for a section | It shows “Loading…” | |
+
+## Accessibility
+
+- **A status message** (`role="status"`, polite) says “Loading Portfolio” (or Home, Profile, Playground) once, when it appears, without interrupting.
+- **The icon and the words are hidden from screen readers** (`aria-hidden`), so the changing words aren’t read out.
+- **It isn’t focusable, and doesn’t move focus.** Focus stays where it was, like on the link that was followed.
+- **Pausing (WCAG 2.2.2).** It moves on its own, so if a page takes more than 5 seconds, the icon stops moving and the words stop changing. It stays up, still, until the page is ready.
+
+## Reduce motion
+
+With reduce motion on, there’s no first-visit rule: every visit waits for `--verity-page-loader-duration-delay` and stays at least `--verity-page-loader-duration-minimum`, so it only shows when a page is slow. It shows one still pose (Portfolio’s current pose, Profile’s and Playground’s hover pose, Home’s badge upright) and one word. The fade stays, and the nav link holds the same still pose.
+
+<Canvas of={PageLoaderStories.ReduceMotion} />
+
+## Tokens
+
+| Token | Value | What it does |
+|---|---|---|
+| `--verity-page-loader-duration-first-visit-minimum` | 1600ms | The least time it shows on a first visit |
+| `--verity-page-loader-duration-delay` | 400ms | How long a later visit waits before it shows |
+| `--verity-page-loader-duration-minimum` | 800ms | The least time it shows once it’s up, after the delay |
+| `--verity-page-loader-duration-hold` | 600ms | How long each pose, or the badge, holds |
+| `--verity-page-loader-duration-turn` | 700ms | Each turn of Home’s badge |
+| `--verity-page-loader-duration-word` | 1600ms | How long each word shows |
+| `--verity-page-loader-duration-fade` | `--verity-motion-duration-fast` (150ms) | The fade in and out |
+| `--verity-page-loader-size-icon` | 96 | The icon’s, or the badge’s, width and height |
+
+## Props
+
+<PropsTable of={PageLoaderStories} />
+
+## In Figma
+
+PageLoader isn’t in the Figma library yet. Its tokens are (`page-loader/*`), and its icons are the library’s NavIcons and ErinTozourBadge, in poses they already have.
+
+</VerityDocs>

@@ -16,6 +16,7 @@ The site’s main navigation, a bar across the top of the page: the logo, linkin
 ## When to use
 
 - **Once per page, at the top.** `Shell` places it; pass `current` and `hrefs` to Shell.
+- **While a page change is going,** `pending` names the section it’s going to, and that page’s link swaps its icon between poses, in step with `PageLoader`. Home’s link is the logo, which doesn’t move, and in the menu layout, the menu button doesn’t either. Shell sets it for you. When nothing is pending, the nav is as always.
 - **Not for links within a page or in the footer.** Use `Link`, or `LinkGroup` for a group of them. Resume isn’t in the nav: it’s in the site’s `Footer`.
 - **Not pinned to the top.** It scrolls away with the page. Don’t wrap it in a sticky container.
 

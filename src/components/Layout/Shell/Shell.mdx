@@ -73,6 +73,22 @@ In focused mode:
 
 <Canvas of={ShellStories.FocusedSmall} />
 
+## Page loader
+
+Shell places `PageLoader` right below the nav (at the top, in focused mode), and drives it from two props:
+
+| Prop | What it does |
+|---|---|
+| `pending` | The section a page change is going to, while it’s going: `home`, `portfolio`, `profile`, or `playground` (a case study is `portfolio`). Set it when someone follows a link to another section, and set it back to undefined when the new page is ready. PageLoader decides whether to show. |
+| `loaderWords` | Each section’s loading words, plain lines like “Shuffling the deck.” PageLoader adds the ellipsis and shuffles them. |
+
+- **The nav link swaps poses** while the change is going or the loader shows, whichever is longer, in step with the loader. Home’s link is the logo, which doesn’t move.
+- **The page Shell is on counts as visited:** `current`, a case study (focused mode) as Portfolio, and anything else as Home.
+- **What stays above the loader:** the nav, ThemeToggle, BackLink, and the skip link, so they stay usable while a page loads. NavOverlay is in the browser’s top layer.
+- **When nothing is pending,** the nav is exactly as it is without a loader.
+
+See **Feedback and status › PageLoader** for when it shows, its motion, and its words.
+
 ## Theme toggle
 
 Shell renders `ThemeToggle` and fixes it to the screen’s bottom-right corner, at every width. In the corner it’s in the same place on every screen, it’s always in reach while the page scrolls, and the nav holds only places to go.

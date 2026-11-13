@@ -69,6 +69,8 @@ The hover and active poses are drawn in Figma. In code, each part of a nav icon 
 
 With “reduce motion” on, poses switch at once, with no movement. The colors still fade.
 
+**While a page change to it is going** (`pending`), its icon swaps between the poses `PageLoader` shows for that section, with its accent colors on: Portfolio between hover and current, Profile and Playground between default and hover. Each move is the same playful 300ms, then a hold of `--verity-page-loader-duration-hold` (600ms), on a clock shared with PageLoader, so the two move together. It stops after 5 seconds (WCAG 2.2.2). With reduce motion on, it holds one still pose instead. Resume’s icon doesn’t move. `MainNav` sets it.
+
 The icon takes its accent colors (`--icon-accent-brand`, `--icon-accent-three`, `--icon-accent-four`, and `--icon-accent-yellow`) on hover and on the current page. The poses and accents live in one shared place, `NavIcon`, which `NavCard` uses too, so each icon moves the same way everywhere. See `Icon` for how nav icons use the accents.
 
 <Canvas of={NavItemStories.InContext} />
