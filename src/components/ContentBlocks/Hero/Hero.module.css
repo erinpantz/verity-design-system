@@ -152,16 +152,21 @@
 }
 
 /* On default, with no band to clip to, moving media swings out across the
-   page. The media isn't a layer of its own, and it tells what's in it to put
-   its moving layer behind the page (--media-moving-layer, which Reel reads):
-   behind MainNav, the content after the Hero, the Footer, ThemeToggle, and
-   BackLink, as well as the Hero's own text. Shell makes the page one layer
-   (isolation) so this stays above the page's background, and clips it at
-   the window's sides. Anything that stays put in the media, like a Reel's
-   pause button, stays above the page and can still be pressed. */
+   page. The media isn't a layer of its own, and in Shell it tells what's in
+   it to put its moving layer behind the page (--media-moving-layer, which
+   Reel reads): behind MainNav, the content after the Hero, the Footer,
+   ThemeToggle, and BackLink, as well as the Hero's own text. Only Shell can
+   offer that layer (--page-back-layer): it makes the page one layer
+   (isolation), so the moving media stays above the page's background, and
+   clips it at the window's sides. Anywhere else, the media keeps its own
+   layer, above the page's background, so it's never hidden behind it; the
+   Hero never clips it, so whatever holds the Hero should clip it at the
+   window's sides (Hero's stories do).
+   Anything that stays put in the media, like a Reel's pause button, stays
+   above the page and can still be pressed. */
 .default .media {
   z-index: auto;
-  --media-moving-layer: -1;
+  --media-moving-layer: var(--page-back-layer, 0);
 }
 
 /* The headline and the intro, as one group, never wider than the content

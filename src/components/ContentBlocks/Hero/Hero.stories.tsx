@@ -16,6 +16,16 @@ import { Hero } from './Hero';
 const meta = {
   title: 'Content blocks/Hero',
   component: Hero,
+  // Clips sideways at the frame's edges, as Shell's page column does at the
+  // window's, so a Reel's cards on default swing out freely but never make
+  // the frame scroll sideways. Story-only: the Hero itself never clips them.
+  decorators: [
+    (Story) => (
+      <div style={{ overflowX: 'clip' }}>
+        <Story />
+      </div>
+    ),
+  ],
   args: {
     heading: 'I design tools that give people their time back',
     intro: 'I’m a senior product designer. I turn messy, high-stakes work into products people trust.',

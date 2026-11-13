@@ -108,7 +108,7 @@ The media comes after the text in the reading order, and the Hero is still the p
 
 - **Nothing they pass behind is blocked.** The cards never take the pointer, so links and buttons they pass behind work as usual. What stays put, like a Reel’s pause button, stays above the page, and hovering over or focusing the Reel still holds it.
 - **The nav has no background,** so a passing card shows through behind its text, dimmed by the Reel’s scrim. That’s intended.
-- **Only in `Shell`.** Outside it, nothing keeps the cards above the page’s background or clips them at the window’s sides. See it in **Layout › Shell › Home**.
+- **Only in `Shell`.** Shell offers the layer behind the page, keeps the cards above its background, and clips them at the window’s sides. Outside it, the cards stay in the media’s own layer, above whatever is behind the Hero, and the Hero doesn’t clip them, so whatever holds the Hero needs to clip them at the window’s sides, or the page scrolls sideways (Hero’s stories do this for themselves). See it in **Layout › Shell › Home**.
 
 <Canvas of={HeroStories.WithMedia} />
 
