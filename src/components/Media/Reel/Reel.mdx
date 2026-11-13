@@ -82,6 +82,17 @@ The images sit 360° / count apart on a disc (72° for five). Its pivot is `--ve
 
 Cards more than 120° from their spot aren’t drawn, and the card nearest its spot is on top.
 
+**Each card leans.** Like slides mounted slightly askew on a reel, each card has its own resting lean: `--verity-reel-angle-rest-tilt` (6°) times a fixed factor by its place in the list, in a cycle of five: −1, +0.55, −0.8, +0.35, −0.7 (−6°, +3.3°, −4.8°, +2.1°, −4.2°; negative leans left). The sixth card leans like the first. The lean is added to the card’s turn everywhere, `d × tilt + lean`, so it rides the disc and never animates on its own; with reduce motion on, the cards keep it as they crossfade. It’s a fixed cycle, not random, so each image always has the same lean. The pause button doesn’t lean. At rest, a leaning card’s corners reach a little past the Reel’s square: about 28px at 560 for the −6° card.
+
+| Disc token | Value | What it does |
+|---|---|---|
+| `--verity-reel-radius` | 1.7 | The disc’s radius, in card widths |
+| `--verity-reel-tilt` | 0.6 | How much a card turns with the disc (1 would be rigid) |
+| `--verity-reel-angle-dip` | 10 | How far the disc turns back before a turn, in degrees |
+| `--verity-reel-angle-settle` | 3 | How far a card sinks below its spot after the overshoot, in degrees |
+| `--verity-reel-angle-rest-tilt` | 6 | The largest resting lean, in degrees; each card leans by its share in the cycle |
+| `--verity-reel-scrim-opacity` | 0.7 | How dark a card’s scrim gets away from its spot |
+
 ### The scrim
 
 Each card has a scrim over it: `--verity-color-background-default` at an opacity that follows the card’s distance from its resting spot, the same distance the motion uses. So a card away from its spot reads as further back, and never puts a bright picture behind the text it passes.

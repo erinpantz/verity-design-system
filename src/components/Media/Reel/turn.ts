@@ -119,13 +119,27 @@ export function turnAngle(
   return 0;
 }
 
+/**
+ * Each card's resting lean, as a share of reel/angle/rest-tilt, by its
+ * place in the list, in a cycle of five (card 6 leans like card 1).
+ * Negative leans left (counterclockwise). The leans alternate left and
+ * right, each by its own amount, like slides mounted slightly askew on a
+ * reel. A fixed cycle, not random, so each image always has the same lean,
+ * on every visit and every page load.
+ */
+export const LEAN_CYCLE = [-1, 0.55, -0.8, 0.35, -0.7] as const;
+
+/** A card's resting lean, in degrees: rest-tilt × its factor in the cycle */
+export const restingLean = (index: number, restTilt: number) =>
+  restTilt * LEAN_CYCLE[index % LEAN_CYCLE.length];
+
 /** Where one card sits on the disc */
 export interface CardPlace {
   /** Sideways, as a percentage of the card's width */
   x: number;
   /** Up and down, as a percentage of the card's height (negative is up) */
   y: number;
-  /** How much the card turns, in degrees */
+  /** How much the card turns, in degrees: the disc's tilt plus its lean */
   rotate: number;
   /** Stacking order: the card nearest its resting spot is on top */
   z: number;
@@ -140,7 +154,8 @@ export interface CardPlace {
  * resting spot. Cards sit 360° / count apart. A card at offset d from its
  * resting spot (positive is past it, up and out) moves along a circle whose
  * pivot is `radius` card widths to the right of the resting card's center:
- * translate(R·(1 − cos d), −R·sin d), turned d × tilt.
+ * translate(R·(1 − cos d), −R·sin d), turned d × tilt plus its resting
+ * lean, which it keeps all the way round.
  */
 export function placeCards(
   count: number,
@@ -148,6 +163,7 @@ export function placeCards(
   angle: number,
   radius: number,
   tilt: number,
+  restTilt: number,
 ): CardPlace[] {
   const step = 360 / count;
   const offsets = Array.from({ length: count }, (_, i) => {
@@ -168,7 +184,7 @@ export function placeCards(
     return {
       x: radius * (1 - Math.cos(radians)) * 100,
       y: -radius * Math.sin(radians) * 100,
-      rotate: d * tilt,
+      rotate: d * tilt + restingLean(i, restTilt),
       z: z[i],
       hidden: Math.abs(d) > 120,
       offset: d,

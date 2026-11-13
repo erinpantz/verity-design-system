@@ -2,7 +2,7 @@ import { useEffect, useRef, useState, type FocusEvent, type PointerEvent, type R
 import { IconButton } from '../../Actions/IconButton';
 import { Skeleton } from '../../FeedbackAndStatus/Skeleton';
 import { useReducedMotion } from '../Playback/useReducedMotion';
-import { bezierPeak, placeCards, restingReach, scrimLevel, turnAngle, turnLength, type Bezier } from './turn';
+import { bezierPeak, placeCards, restingLean, restingReach, scrimLevel, turnAngle, turnLength, type Bezier } from './turn';
 import styles from './Reel.module.css';
 
 /** One image in a Reel */
@@ -138,6 +138,7 @@ function ReelPlayer({ images, label = 'Examples of my design work' }: ReelProps)
         },
         // The angles in degrees, and the radius in card widths
         angles: { dip: number('--reel-angle-dip'), settle: number('--reel-angle-settle') },
+        restTilt: number('--reel-angle-rest-tilt'),
         radius: number('--reel-radius'),
         tilt: number('--reel-tilt'),
         curve,
@@ -169,26 +170,31 @@ function ReelPlayer({ images, label = 'Examples of my design work' }: ReelProps)
     // A card dims as it moves away from its spot: its scrim is clear as far
     // as a turn carries it from its spot and back (`bright`), and full by
     // half the spacing between images.
-    function drawDisc(angle: number, { radius, tilt, bright }: { radius: number; tilt: number; bright: number }) {
+    function drawDisc(
+      angle: number,
+      { radius, tilt, restTilt, bright }: { radius: number; tilt: number; restTilt: number; bright: number },
+    ) {
       const dim = 180 / count;
-      placeCards(count, (current + 1) % count, angle, radius, tilt).forEach((place, i) =>
+      placeCards(count, (current + 1) % count, angle, radius, tilt, restTilt).forEach((place, i) =>
         setCard(i, place.x, place.y, place.rotate, place.z, 1, place.hidden, scrimLevel(place.offset, bright, dim)),
       );
     }
 
     // The disc's shape, and how far a turn carries a card from its spot
     function readDisc() {
-      const { angles, radius, tilt, curve } = read();
-      return { radius, tilt, bright: restingReach(360 / count, angles, bezierPeak(curve)) };
+      const { angles, radius, tilt, restTilt, curve } = read();
+      return { radius, tilt, restTilt, bright: restingReach(360 / count, angles, bezierPeak(curve)) };
     }
 
-    // Reduce motion: every card at rest, with no scrim, the next fading in
-    // over the current
+    // Reduce motion: every card at rest, at its lean, with no scrim, the
+    // next fading in over the current
     function drawFade(progress: number) {
       const next = (current + 1) % count;
+      const { restTilt } = read();
       for (let i = 0; i < count; i++) {
-        if (i === next) setCard(i, 0, 0, 0, 2, progress, false);
-        else setCard(i, 0, 0, 0, 1, 1, i !== current);
+        const lean = restingLean(i, restTilt);
+        if (i === next) setCard(i, 0, 0, lean, 2, progress, false);
+        else setCard(i, 0, 0, lean, 1, 1, i !== current);
       }
     }
 
