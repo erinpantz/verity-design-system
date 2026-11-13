@@ -4,6 +4,17 @@ Every release of Verity, newest first. The format follows [Keep a Changelog](htt
 
 Sites install Verity by tag (for example `github:erinpantz/verity-design-system#v0.3.0`), so a site only changes when it moves to a new tag on purpose.
 
+## [0.8.7] – 2026-11-12
+
+**XL now starts at 1600, not 1280.** Most people will see the site on a laptop, 1280 to 1536 wide, and the Large design (64 margins, a slightly tighter nav and Footer) suits those widths better. XL is now for desktop monitors. The breakpoints: Small 320–559, Medium 560–959, Large 960–1599, XL 1600 and up.
+
+### Changed
+
+- **Tokens:** `viewport/min-width` for XL is 1600 (was 1280), and `viewport/max-width` for Large is 1600 (was 1280). The generated breakpoints (`breakpoints.module.css`, `breakpoints.generated.ts`, and the media queries in `styles.css`) all switch at 1600, so a screen from 1280 to 1599 wide now gets Large: 64 margins instead of 80, and Large’s nav, Footer, type, and spacing. A site that imports `xl` from `breakpoints.module.css` moves with it.
+- **Tokens:** `hero/media-width` on Large is 440 (was 320), since Large now covers screens up to 1600 wide. A Reel follows it. A wide Hero in Shell has its media beside the text on Large from 1076px on `default` (1236px on a band), and on XL at every width.
+- **Storybook:** one viewport menu for every story: Small phone (375), Medium tablet (768), Large (1200), Large laptop (1440), XL (1600), and XL monitor (1920). Shell and NavOverlay use it.
+- **Docs:** Hero, Reel, and Shell give the new ranges and widths.
+
 ## [0.8.6] – 2026-11-12
 
 Home’s Hero is now on the default background, with no band, so the Reel’s cards swing out across the page. Cards away from their spot now dim, so they read as further back and never put a bright screenshot behind the headline, and they pass behind the rest of the page instead of over it.
@@ -470,6 +481,7 @@ The first library release: everything in the Figma library except Animation, wit
 - **Theme helpers:** `themeScript`, `useTheme`, and `setTheme`, so a site applies the saved theme before the first paint.
 - **The library build:** one entry point with every component and its prop types, one stylesheet (`verity-design-system/styles.css`) with the fonts inside it, and `npm run build:watch` for working with a linked copy.
 
+[0.8.7]: https://github.com/erinpantz/verity-design-system/compare/v0.8.6...v0.8.7
 [0.8.6]: https://github.com/erinpantz/verity-design-system/compare/v0.8.5...v0.8.6
 [0.8.5]: https://github.com/erinpantz/verity-design-system/compare/v0.8.4...v0.8.5
 [0.8.4]: https://github.com/erinpantz/verity-design-system/compare/v0.8.3...v0.8.4
