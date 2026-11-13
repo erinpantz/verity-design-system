@@ -197,9 +197,13 @@
   --verity-duration-260: 260ms;
   --verity-duration-300: 300ms; /** Duration in milliseconds. */
   --verity-duration-340: 340ms;
+  --verity-duration-400: 400ms;
   --verity-duration-525: 525ms;
   --verity-duration-600: 600ms;
+  --verity-duration-700: 700ms;
+  --verity-duration-800: 800ms;
   --verity-duration-1500: 1500ms; /** Duration in milliseconds. */
+  --verity-duration-1600: 1600ms;
   --verity-duration-2000: 2000ms;
   --verity-duration-6000: 6000ms; /** Duration in milliseconds. */
   --verity-shadow-sm-color: var(--verity-color-background-transparent-50);
@@ -903,9 +907,17 @@
   --verity-reel-duration-settle: var(--verity-duration-260); /** From just below the resting spot up to rest, in milliseconds. */
   --verity-reel-duration-entrance-delay: var(--verity-duration-600); /** The entrance: the Reel opens on its last image, then this long after the page loads it turns once to the first, so a visitor scanning the page sees it move right away. Then the normal holds start. No entrance with reduce motion. */
   --verity-reel-size: var(--verity-hero-media-width); /** Width and height of a Reel card (it’s square). Points to hero/media-width, so a Reel and a photo in a Hero are always the same size: 560, 440, 260, 280. In code it’s also at most 100% of its space. */
+  --verity-page-loader-duration-first-visit-minimum: var(--verity-duration-1600); /** The first visit to each section in a tab: the page loader starts at the click (fading in over page-loader/duration/fade) and stays at least this long while the page renders behind it, even if the page is ready sooner. Always, for personality. Not with reduce motion. Code only. */
+  --verity-page-loader-duration-delay: var(--verity-duration-400); /** Visits to a section already seen in this tab (and every visit with reduce motion): the page loader appears only if the page isn’t ready by this time. Code only. */
+  --verity-page-loader-duration-minimum: var(--verity-duration-800); /** Once the page loader appears after page-loader/duration/delay, it stays at least this long, so it never blinks. Code only. */
+  --verity-page-loader-duration-hold: var(--verity-duration-600); /** How long the page loader’s nav icon holds each pose before moving to the next. The move itself is motion/duration/playful on motion/easing/playful, like the nav. Code only. */
+  --verity-page-loader-duration-turn: var(--verity-duration-700); /** Home’s page loader: each full turn of the ErinTozourBadge, on motion/easing/playful, then a hold of page-loader/duration/hold. Code only. */
+  --verity-page-loader-duration-word: var(--verity-duration-1600); /** How long each loading word shows before the next. Code only. */
+  --verity-page-loader-size-icon: var(--verity-size-96); /** Width and height of the page loader’s nav icon, or of Home’s badge. */
   --verity-main-nav-link-gap: var(--verity-spacing-sm); /** Space between the NavItems in MainNav, in a row on the page and in a column in NavOverlay. */
   --verity-main-nav-gap: var(--verity-spacing-md); /** The least space between the logo and the NavItems in MainNav. The logo’s frame fills the rest, so the links sit at the end. */
   --verity-nav-overlay-padding: var(--verity-padding-sm); /** Padding on all sides of NavOverlay. */
+  --verity-page-loader-duration-fade: var(--verity-motion-duration-fast); /** The page loader fades in and out over this. Code only. */
 }
 
 /* Small: Typography Styles */
@@ -1164,9 +1176,17 @@
     --verity-reel-duration-settle: var(--verity-duration-260); /** From just below the resting spot up to rest, in milliseconds. */
     --verity-reel-duration-entrance-delay: var(--verity-duration-600); /** The entrance: the Reel opens on its last image, then this long after the page loads it turns once to the first, so a visitor scanning the page sees it move right away. Then the normal holds start. No entrance with reduce motion. */
     --verity-reel-size: var(--verity-hero-media-width); /** Width and height of a Reel card (it’s square). Points to hero/media-width, so a Reel and a photo in a Hero are always the same size: 560, 440, 260, 280. In code it’s also at most 100% of its space. */
+    --verity-page-loader-duration-first-visit-minimum: var(--verity-duration-1600); /** The first visit to each section in a tab: the page loader starts at the click (fading in over page-loader/duration/fade) and stays at least this long while the page renders behind it, even if the page is ready sooner. Always, for personality. Not with reduce motion. Code only. */
+    --verity-page-loader-duration-delay: var(--verity-duration-400); /** Visits to a section already seen in this tab (and every visit with reduce motion): the page loader appears only if the page isn’t ready by this time. Code only. */
+    --verity-page-loader-duration-minimum: var(--verity-duration-800); /** Once the page loader appears after page-loader/duration/delay, it stays at least this long, so it never blinks. Code only. */
+    --verity-page-loader-duration-hold: var(--verity-duration-600); /** How long the page loader’s nav icon holds each pose before moving to the next. The move itself is motion/duration/playful on motion/easing/playful, like the nav. Code only. */
+    --verity-page-loader-duration-turn: var(--verity-duration-700); /** Home’s page loader: each full turn of the ErinTozourBadge, on motion/easing/playful, then a hold of page-loader/duration/hold. Code only. */
+    --verity-page-loader-duration-word: var(--verity-duration-1600); /** How long each loading word shows before the next. Code only. */
+    --verity-page-loader-size-icon: var(--verity-size-96); /** Width and height of the page loader’s nav icon, or of Home’s badge. */
     --verity-main-nav-link-gap: var(--verity-spacing-sm); /** Space between the NavItems in MainNav, in a row on the page and in a column in NavOverlay. */
     --verity-main-nav-gap: var(--verity-spacing-md); /** The least space between the logo and the NavItems in MainNav. The logo’s frame fills the rest, so the links sit at the end. */
     --verity-nav-overlay-padding: var(--verity-padding-sm); /** Padding on all sides of NavOverlay. */
+    --verity-page-loader-duration-fade: var(--verity-motion-duration-fast); /** The page loader fades in and out over this. Code only. */
   }
 
   /* Medium: Typography Styles */
@@ -1426,9 +1446,17 @@
     --verity-reel-duration-settle: var(--verity-duration-260); /** From just below the resting spot up to rest, in milliseconds. */
     --verity-reel-duration-entrance-delay: var(--verity-duration-600); /** The entrance: the Reel opens on its last image, then this long after the page loads it turns once to the first, so a visitor scanning the page sees it move right away. Then the normal holds start. No entrance with reduce motion. */
     --verity-reel-size: var(--verity-hero-media-width); /** Width and height of a Reel card (it’s square). Points to hero/media-width, so a Reel and a photo in a Hero are always the same size: 560, 440, 260, 280. In code it’s also at most 100% of its space. */
+    --verity-page-loader-duration-first-visit-minimum: var(--verity-duration-1600); /** The first visit to each section in a tab: the page loader starts at the click (fading in over page-loader/duration/fade) and stays at least this long while the page renders behind it, even if the page is ready sooner. Always, for personality. Not with reduce motion. Code only. */
+    --verity-page-loader-duration-delay: var(--verity-duration-400); /** Visits to a section already seen in this tab (and every visit with reduce motion): the page loader appears only if the page isn’t ready by this time. Code only. */
+    --verity-page-loader-duration-minimum: var(--verity-duration-800); /** Once the page loader appears after page-loader/duration/delay, it stays at least this long, so it never blinks. Code only. */
+    --verity-page-loader-duration-hold: var(--verity-duration-600); /** How long the page loader’s nav icon holds each pose before moving to the next. The move itself is motion/duration/playful on motion/easing/playful, like the nav. Code only. */
+    --verity-page-loader-duration-turn: var(--verity-duration-700); /** Home’s page loader: each full turn of the ErinTozourBadge, on motion/easing/playful, then a hold of page-loader/duration/hold. Code only. */
+    --verity-page-loader-duration-word: var(--verity-duration-1600); /** How long each loading word shows before the next. Code only. */
+    --verity-page-loader-size-icon: var(--verity-size-96); /** Width and height of the page loader’s nav icon, or of Home’s badge. */
     --verity-main-nav-link-gap: var(--verity-spacing-sm); /** Space between the NavItems in MainNav, in a row on the page and in a column in NavOverlay. */
     --verity-main-nav-gap: var(--verity-spacing-md); /** The least space between the logo and the NavItems in MainNav. The logo’s frame fills the rest, so the links sit at the end. */
     --verity-nav-overlay-padding: var(--verity-padding-sm); /** Padding on all sides of NavOverlay. */
+    --verity-page-loader-duration-fade: var(--verity-motion-duration-fast); /** The page loader fades in and out over this. Code only. */
   }
 
   /* Large: Typography Styles */
@@ -1688,8 +1716,16 @@
     --verity-reel-duration-settle: var(--verity-duration-260); /** From just below the resting spot up to rest, in milliseconds. */
     --verity-reel-duration-entrance-delay: var(--verity-duration-600); /** The entrance: the Reel opens on its last image, then this long after the page loads it turns once to the first, so a visitor scanning the page sees it move right away. Then the normal holds start. No entrance with reduce motion. */
     --verity-reel-size: var(--verity-hero-media-width); /** Width and height of a Reel card (it’s square). Points to hero/media-width, so a Reel and a photo in a Hero are always the same size: 560, 440, 260, 280. In code it’s also at most 100% of its space. */
+    --verity-page-loader-duration-first-visit-minimum: var(--verity-duration-1600); /** The first visit to each section in a tab: the page loader starts at the click (fading in over page-loader/duration/fade) and stays at least this long while the page renders behind it, even if the page is ready sooner. Always, for personality. Not with reduce motion. Code only. */
+    --verity-page-loader-duration-delay: var(--verity-duration-400); /** Visits to a section already seen in this tab (and every visit with reduce motion): the page loader appears only if the page isn’t ready by this time. Code only. */
+    --verity-page-loader-duration-minimum: var(--verity-duration-800); /** Once the page loader appears after page-loader/duration/delay, it stays at least this long, so it never blinks. Code only. */
+    --verity-page-loader-duration-hold: var(--verity-duration-600); /** How long the page loader’s nav icon holds each pose before moving to the next. The move itself is motion/duration/playful on motion/easing/playful, like the nav. Code only. */
+    --verity-page-loader-duration-turn: var(--verity-duration-700); /** Home’s page loader: each full turn of the ErinTozourBadge, on motion/easing/playful, then a hold of page-loader/duration/hold. Code only. */
+    --verity-page-loader-duration-word: var(--verity-duration-1600); /** How long each loading word shows before the next. Code only. */
+    --verity-page-loader-size-icon: var(--verity-size-96); /** Width and height of the page loader’s nav icon, or of Home’s badge. */
     --verity-main-nav-link-gap: var(--verity-spacing-sm); /** Space between the NavItems in MainNav, in a row on the page and in a column in NavOverlay. */
     --verity-main-nav-gap: var(--verity-spacing-md); /** The least space between the logo and the NavItems in MainNav. The logo’s frame fills the rest, so the links sit at the end. */
     --verity-nav-overlay-padding: var(--verity-padding-sm); /** Padding on all sides of NavOverlay. */
+    --verity-page-loader-duration-fade: var(--verity-motion-duration-fast); /** The page loader fades in and out over this. Code only. */
   }
 }

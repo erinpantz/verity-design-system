@@ -1731,6 +1731,22 @@
     "600": {
       "$type": "duration",
       "$value": "600ms"
+    },
+    "400": {
+      "$type": "duration",
+      "$value": "400ms"
+    },
+    "700": {
+      "$type": "duration",
+      "$value": "700ms"
+    },
+    "800": {
+      "$type": "duration",
+      "$value": "800ms"
+    },
+    "1600": {
+      "$type": "duration",
+      "$value": "1600ms"
     }
   }
 }

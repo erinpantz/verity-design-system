@@ -538,5 +538,58 @@
       "$value": 0.7,
       "$description": "How dark a Reel card gets away from its resting spot: the page color (color/background/default) at this opacity over the card. 0 when it’s settled, rising to 0.7 by halfway between spots, so cards read as further back on the disc and never put a bright image behind a Hero’s headline. Code only."
     }
+  },
+  "page-loader": {
+    "duration": {
+      "first-visit-minimum": {
+        "$type": "duration",
+        "$value": "{duration.1600}",
+        "$description": "The first visit to each section in a tab: the page loader starts at the click (fading in over page-loader/duration/fade) and stays at least this long while the page renders behind it, even if the page is ready sooner. Always, for personality. Not with reduce motion. Code only."
+      },
+      "delay": {
+        "$type": "duration",
+        "$value": "{duration.400}",
+        "$description": "Visits to a section already seen in this tab (and every visit with reduce motion): the page loader appears only if the page isn’t ready by this time. Code only."
+      },
+      "minimum": {
+        "$type": "duration",
+        "$value": "{duration.800}",
+        "$description": "Once the page loader appears after page-loader/duration/delay, it stays at least this long, so it never blinks. Code only."
+      },
+      "hold": {
+        "$type": "duration",
+        "$value": "{duration.600}",
+        "$description": "How long the page loader’s nav icon holds each pose before moving to the next. The move itself is motion/duration/playful on motion/easing/playful, like the nav. Code only."
+      },
+      "turn": {
+        "$type": "duration",
+        "$value": "{duration.700}",
+        "$description": "Home’s page loader: each full turn of the ErinTozourBadge, on motion/easing/playful, then a hold of page-loader/duration/hold. Code only."
+      },
+      "word": {
+        "$type": "duration",
+        "$value": "{duration.1600}",
+        "$description": "How long each loading word shows before the next. Code only."
+      },
+      "fade": {
+        "$type": "duration",
+        "$value": "{motion.duration.fast}",
+        "$description": "The page loader fades in and out over this. Code only."
+      }
+    },
+    "size": {
+      "icon": {
+        "$type": "dimension",
+        "$value": "{size.96}",
+        "$description": "Width and height of the page loader’s nav icon, or of Home’s badge.",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "WIDTH_HEIGHT"
+            ]
+          }
+        }
+      }
+    }
   }
 }
