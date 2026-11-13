@@ -104,7 +104,7 @@ With reduce motion on, nothing moves, there’s no entrance, and there’s no sc
 
 | Part | Token |
 |---|---|
-| Each card, square | `--verity-reel-size`, and never wider than its space. It points to `--verity-hero-media-width` (560 on XL, 320 on Large, 260 on Medium, 280 on Small), so a Reel is always the same size as a photo in a Hero. |
+| Each card, square | `--verity-reel-size`, and never wider than its space. It points to `--verity-hero-media-width` (560 on XL, 440 on Large, 260 on Medium, 280 on Small), so a Reel is always the same size as a photo in a Hero. |
 | Corners | `--verity-border-radius-md` |
 | The pause button, from the bottom and right edges | `--verity-spacing-xs` |
 
@@ -116,7 +116,7 @@ Before the script runs, the last image shows at rest, from the CSS alone, and th
 
 ## In a Hero
 
-The Reel goes in a Hero’s `media`. It’s the same size as a photo there: `--verity-reel-size` points to the Hero’s `--verity-hero-media-width`. It also marks itself with `data-own-size`, so the Hero’s media hugs it rather than stretching to fit it, as it does for a photo. With the two the same size, that only matters if a Reel is ever given a different size. The media sits beside the text from 1388px wide on XL, 1116px on Large, and 768px on Medium, and always under it on Small (see Hero’s docs). The Hero keeps the text above it, so the cards pass behind the text and never cover it, and a visible band clips the cards at its edges and rounded corners.
+The Reel goes in a Hero’s `media`. It’s the same size as a photo there: `--verity-reel-size` points to the Hero’s `--verity-hero-media-width`. It also marks itself with `data-own-size`, so the Hero’s media hugs it rather than stretching to fit it, as it does for a photo. With the two the same size, that only matters if a Reel is ever given a different size. It sits beside the text at every width on XL, from 1076px on Large and 672px on Medium (1236px and 768px on a band), and always under it on Small (see Hero’s docs). The Hero keeps the text above it, so the cards pass behind the text and never cover it, and a visible band clips the cards at its edges and rounded corners.
 
 <Canvas of={ReelStories.InAHero} />
 

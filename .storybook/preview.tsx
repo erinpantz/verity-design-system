@@ -26,6 +26,20 @@ const preview: Preview = {
        date: /Date$/i,
       },
     },
+    // The viewport menu: one screen per breakpoint at the width of Figma's
+    // frame for it (each breakpoint's viewport/default-width), plus the
+    // screens most people use: a laptop, on Large, and a desktop monitor, on
+    // XL. Small 320–559, Medium 560–959, Large 960–1599, XL 1600 and up.
+    viewport: {
+      options: {
+        sm: { name: 'Small, phone (375px)', styles: { width: '375px', height: '812px' }, type: 'mobile' },
+        md: { name: 'Medium, tablet (768px)', styles: { width: '768px', height: '1024px' }, type: 'tablet' },
+        lg: { name: 'Large (1200px)', styles: { width: '1200px', height: '800px' }, type: 'desktop' },
+        laptop: { name: 'Large, laptop (1440px)', styles: { width: '1440px', height: '900px' }, type: 'desktop' },
+        xl: { name: 'XL (1600px)', styles: { width: '1600px', height: '900px' }, type: 'desktop' },
+        monitor: { name: 'XL, monitor (1920px)', styles: { width: '1920px', height: '1080px' }, type: 'desktop' },
+      },
+    },
     // Docs pages follow the Theme menu too (stories use the decorator below)
     docs: {
       container: ThemedDocsContainer,

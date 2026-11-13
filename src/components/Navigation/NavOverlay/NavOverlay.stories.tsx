@@ -56,7 +56,7 @@ const meta = {
   // The overlay is for narrow screens, where MainNav shows its menu button,
   // so the stories open at a phone's width
   parameters: { layout: 'fullscreen', docs: { story: { inline: false, height: '36rem' } } },
-  globals: { viewport: { value: 'mobile2' } },
+  globals: { viewport: { value: 'sm' } },
 } satisfies Meta<typeof NavOverlay>;
 
 export default meta;

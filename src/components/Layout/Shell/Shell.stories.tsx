@@ -147,16 +147,6 @@ const meta = {
   },
   parameters: {
     layout: 'fullscreen',
-    // One viewport per breakpoint, at the width of Figma's Shell frames
-    // (each breakpoint's viewport/default-width)
-    viewport: {
-      options: {
-        sm: { name: 'Small (375px)', styles: { width: '375px', height: '812px' }, type: 'mobile' },
-        md: { name: 'Medium (768px)', styles: { width: '768px', height: '1024px' }, type: 'tablet' },
-        lg: { name: 'Large (1200px)', styles: { width: '1200px', height: '800px' }, type: 'desktop' },
-        xl: { name: 'XL (1600px)', styles: { width: '1600px', height: '900px' }, type: 'desktop' },
-      },
-    },
     // On the docs page, each example gets its own frame
     docs: { story: { inline: false, height: '40rem' } },
   },
