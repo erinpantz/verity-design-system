@@ -4,6 +4,19 @@ Every release of Verity, newest first. The format follows [Keep a Changelog](htt
 
 Sites install Verity by tag (for example `github:erinpantz/verity-design-system#v0.3.0`), so a site only changes when it moves to a new tag on purpose.
 
+## [0.8.8] – 2026-11-12
+
+On Large, Home’s Reel (440) wrapped under the headline below about 1076px, though the screen is Large down to 960. Rather than move a breakpoint for one component, a Hero’s media now gives up a little width before it wraps, so it stays beside the text across all of Large.
+
+### Added
+
+- **Tokens:** `hero/media-min-width` (560, 320, 260, 280 on XL, Large, Medium, Small). It equals `hero/media-width` except on Large (320, against 440), so only Large changes.
+
+### Changed
+
+- **Hero:** beside the text, the media is as wide as it can be, up to `hero/media-width`, and shrinks toward `hero/media-min-width` before it wraps. It wraps only when the text’s minimum, the gap, and the media’s minimum don’t fit, and when there’s room, it reaches its widest before the text grows. Wrapped, it’s up to `hero/media-width`, as before. On `default` in Shell, Home’s Reel is now beside the text across all of Large: 440 from 1076px, shrinking to 324 at 960. On a band, it’s beside the text on Large from 1116px (was 1236px). XL, Medium, and Small don’t change.
+- **Reel:** it no longer sets `data-own-size`. A Hero’s media now always has a width the Reel fills, so the Hero doesn’t need it.
+
 ## [0.8.7] – 2026-11-12
 
 **XL now starts at 1600, not 1280.** Most people will see the site on a laptop, 1280 to 1536 wide, and the Large design (64 margins, a slightly tighter nav and Footer) suits those widths better. XL is now for desktop monitors. The breakpoints: Small 320–559, Medium 560–959, Large 960–1599, XL 1600 and up.
@@ -481,6 +494,7 @@ The first library release: everything in the Figma library except Animation, wit
 - **Theme helpers:** `themeScript`, `useTheme`, and `setTheme`, so a site applies the saved theme before the first paint.
 - **The library build:** one entry point with every component and its prop types, one stylesheet (`verity-design-system/styles.css`) with the fonts inside it, and `npm run build:watch` for working with a linked copy.
 
+[0.8.8]: https://github.com/erinpantz/verity-design-system/compare/v0.8.7...v0.8.8
 [0.8.7]: https://github.com/erinpantz/verity-design-system/compare/v0.8.6...v0.8.7
 [0.8.6]: https://github.com/erinpantz/verity-design-system/compare/v0.8.5...v0.8.6
 [0.8.5]: https://github.com/erinpantz/verity-design-system/compare/v0.8.4...v0.8.5
