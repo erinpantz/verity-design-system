@@ -13,6 +13,8 @@ export { IconButton } from './components/Actions/IconButton';
 export type { IconButtonProps } from './components/Actions/IconButton';
 export { Link } from './components/Actions/Link';
 export type { LinkProps } from './components/Actions/Link';
+export { LinkProvider } from './components/Actions/LinkProvider';
+export type { LinkComponent, LinkProviderProps } from './components/Actions/LinkProvider';
 export { ThemeToggle } from './components/Actions/ThemeToggle';
 export { Tooltip } from './components/Actions/Tooltip';
 export type { TooltipProps } from './components/Actions/Tooltip';
