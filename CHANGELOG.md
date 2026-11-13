@@ -4,6 +4,23 @@ Every release of Verity, newest first. The format follows [Keep a Changelog](htt
 
 Sites install Verity by tag (for example `github:erinpantz/verity-design-system#v0.3.0`), so a site only changes when it moves to a new tag on purpose.
 
+## [0.8.10] – 2026-11-13
+
+Moving between the site’s sections now shows some personality: a loader built from motion visitors already know from the nav. It shows on purpose on the first visit to each section, and after that only when a page is actually slow, so nobody waits for it twice.
+
+### Added
+
+- **Tokens:** Core `duration/400`, `700`, `800`, and `1600`, and `page-loader/duration/first-visit-minimum` (1600), `delay` (400), `minimum` (800), `hold` (600), `turn` (700), `word` (1600), and `fade` (`motion/duration/fast`), and `page-loader/size/icon` (96), the same at every breakpoint.
+- **PageLoader,** in Feedback and status: covers the page below MainNav while moving between sections. The section’s NavIcon (at 96, accent colors on) swaps between poses it already has, Portfolio between hover and current, Profile and Playground between default and hover; Home’s ErinTozourBadge makes full turns. Under it, the site’s words for the section, shuffled, each with an ellipsis, rising in and out. The first visit to a section in a tab shows it at once, for at least 1.6s; later visits only if the page isn’t ready by 400ms, for at least 800ms. Visits are remembered in `sessionStorage`. A polite status message says “Loading Portfolio” once; the motion stops after 5 seconds. With reduce motion on, it only shows on slow page changes, with one still pose and one word. Props: `pending`, `current`, `words`, and `onVisibleChange`. Not in the Figma library yet.
+- **Shell:** `pending` (the section a page change is going to) and `loaderWords` (each section’s words). Shell places PageLoader below the nav, and lifts ThemeToggle, BackLink, and the skip link above it.
+- **MainNav:** `pending`. **NavItem:** `pending`. While a page change is going, or the loader shows, that section’s nav link swaps its icon between the loader’s poses, in step with it. Home’s link, the logo, doesn’t move.
+- **ErinTozourBadge:** `fill`, to fill its container in the same proportions.
+- **Docs:** PageLoader’s page and stories, including one where you click each section and pick how long the page change takes, with “Forget visits.” Skeleton’s docs say it’s for media loading in place, and PageLoader for moving between sections.
+
+### Changed
+
+- **Tokens:** `npm run tokens` now reads Styles Tier 2 when it writes the container widths, so a Responsive Tier 3 token can point to one (like `page-loader/duration/fade`).
+
 ## [0.8.9] – 2026-11-12
 
 Every card sitting perfectly straight felt a little stiff. Like slides mounted slightly askew on a View-Master reel, each card now leans at its own angle, and the lean rides the disc as it turns.
@@ -507,6 +524,7 @@ The first library release: everything in the Figma library except Animation, wit
 - **Theme helpers:** `themeScript`, `useTheme`, and `setTheme`, so a site applies the saved theme before the first paint.
 - **The library build:** one entry point with every component and its prop types, one stylesheet (`verity-design-system/styles.css`) with the fonts inside it, and `npm run build:watch` for working with a linked copy.
 
+[0.8.10]: https://github.com/erinpantz/verity-design-system/compare/v0.8.9...v0.8.10
 [0.8.9]: https://github.com/erinpantz/verity-design-system/compare/v0.8.8...v0.8.9
 [0.8.8]: https://github.com/erinpantz/verity-design-system/compare/v0.8.7...v0.8.8
 [0.8.7]: https://github.com/erinpantz/verity-design-system/compare/v0.8.6...v0.8.7
