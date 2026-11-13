@@ -60,6 +60,12 @@
   initial-value: 0;
 }
 
+@property --reel-angle-rest-tilt {
+  syntax: '<number>';
+  inherits: false;
+  initial-value: 0;
+}
+
 @property --reel-radius {
   syntax: '<number>';
   inherits: false;
@@ -86,6 +92,7 @@
   --reel-settle: var(--verity-reel-duration-settle);
   --reel-angle-dip: var(--verity-reel-angle-dip);
   --reel-angle-settle: var(--verity-reel-angle-settle);
+  --reel-angle-rest-tilt: var(--verity-reel-angle-rest-tilt);
   --reel-radius: var(--verity-reel-radius);
   --reel-tilt: var(--verity-reel-tilt);
 

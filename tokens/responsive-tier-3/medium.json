@@ -504,6 +504,11 @@
         "$type": "number",
         "$value": 3,
         "$description": "How far the card sinks below its spot after the overshoot, in degrees. About a third of the overshoot, like a spring winding down. Code only."
+      },
+      "rest-tilt": {
+        "$type": "number",
+        "$value": 6,
+        "$description": "How far each Reel card leans at rest, in degrees, like slides mounted slightly askew on the reel. The leans alternate left and right and vary in a fixed cycle of five: −1, +0.55, −0.8, +0.35, −0.7 times this (−6°, +3.3°, −4.8°, +2.1°, −4.2°), so each image always has the same lean. The lean rides the disc as it turns, on top of reel/tilt, and never animates on its own. With reduce motion, cards keep their lean. Code only."
       }
     },
     "tilt": {
