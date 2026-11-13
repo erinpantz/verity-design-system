@@ -4,6 +4,19 @@ Every release of Verity, newest first. The format follows [Keep a Changelog](htt
 
 Sites install Verity by tag (for example `github:erinpantz/verity-design-system#v0.3.0`), so a site only changes when it moves to a new tag on purpose.
 
+## [0.8.11] – 2026-11-13
+
+Every Verity link was a plain `<a href>`, so every click on the site reloaded the whole page, and a router like React Router never saw a page change coming, so PageLoader (v0.8.10) could never show. Links to the site’s own pages can now use the site’s router.
+
+### Added
+
+- **LinkProvider,** in Actions: takes the component Verity renders links to the site’s own pages with, like the site’s router link (`<LinkProvider component={SiteLink}>`). The component takes the same props as an `<a>`, `href` included, and must render a real `<a href>`. Only page addresses on the same site go through it: an `href` that starts with one `/`, with no `target`, no `download`, and no file extension. Other sites, `mailto:`, new tabs, and files like the resume PDF stay plain `<a>`s. Without a LinkProvider, everything is a plain `<a>`, exactly as before. Also exports the `LinkComponent` type.
+- **Docs:** a Links and routing section in the Introduction, with a React Router example, and LinkProvider’s page, with a story where Shell’s links log whether they went through it.
+
+### Changed
+
+- **Links:** NavItem, MainNav’s logo, BackLink, PortfolioCard, NavCard, Link (and through it LinkGroup and Footer), and Button with `href` render their links through LinkProvider. With no provider, their HTML is the same as before; their look, states, focus, and accessible names don’t change. NavOverlay still closes when a link in it is followed.
+
 ## [0.8.10] – 2026-11-13
 
 Moving between the site’s sections now shows some personality: a loader built from motion visitors already know from the nav. It shows on purpose on the first visit to each section, and after that only when a page is actually slow, so nobody waits for it twice.
@@ -524,6 +537,7 @@ The first library release: everything in the Figma library except Animation, wit
 - **Theme helpers:** `themeScript`, `useTheme`, and `setTheme`, so a site applies the saved theme before the first paint.
 - **The library build:** one entry point with every component and its prop types, one stylesheet (`verity-design-system/styles.css`) with the fonts inside it, and `npm run build:watch` for working with a linked copy.
 
+[0.8.11]: https://github.com/erinpantz/verity-design-system/compare/v0.8.10...v0.8.11
 [0.8.10]: https://github.com/erinpantz/verity-design-system/compare/v0.8.9...v0.8.10
 [0.8.9]: https://github.com/erinpantz/verity-design-system/compare/v0.8.8...v0.8.9
 [0.8.8]: https://github.com/erinpantz/verity-design-system/compare/v0.8.7...v0.8.8

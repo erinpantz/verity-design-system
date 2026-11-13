@@ -1,7 +1,7 @@
 {
   "name": "verity-design-system",
   "private": true,
-  "version": "0.8.10",
+  "version": "0.8.11",
   "description": "Erin Tozour's design system: React components, design tokens, and fonts",
   "type": "module",
   "exports": {
