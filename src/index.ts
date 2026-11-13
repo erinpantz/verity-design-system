@@ -39,6 +39,8 @@ export type { StatCardProps } from './components/ContentBlocks/StatCard';
 export { Badge } from './components/FeedbackAndStatus/Badge';
 export type { BadgeProps } from './components/FeedbackAndStatus/Badge';
 export { Skeleton } from './components/FeedbackAndStatus/Skeleton';
+export { PageLoader } from './components/FeedbackAndStatus/PageLoader';
+export type { PageLoaderProps, PageLoaderSection } from './components/FeedbackAndStatus/PageLoader';
 export type { SkeletonProps } from './components/FeedbackAndStatus/Skeleton';
 
 // Layout
@@ -62,6 +64,7 @@ export type { VerticalStackProps } from './components/Layout/VerticalStack';
 export { Animation } from './components/Media/Animation';
 export type { AnimationProps } from './components/Media/Animation';
 export { ErinTozourBadge } from './components/Media/ErinTozourBadge';
+export type { ErinTozourBadgeProps } from './components/Media/ErinTozourBadge';
 export { ErinTozourLogo } from './components/Media/ErinTozourLogo';
 export type { ErinTozourLogoProps } from './components/Media/ErinTozourLogo';
 export { Gallery } from './components/Media/Gallery';

@@ -15,3 +15,19 @@
   inline-size: var(--verity-icon-size-md);
   block-size: var(--verity-icon-size-md);
 }
+
+/* Filling its container: the same proportions at any size. The mark is 24
+   of the 40px badge, 60%, so the padding is 20% on every side. */
+.fill {
+  display: grid;
+  place-items: center;
+  box-sizing: border-box;
+  inline-size: 100%;
+  block-size: 100%;
+  padding: 0;
+}
+
+.fill .mark {
+  inline-size: 60%;
+  block-size: 60%;
+}

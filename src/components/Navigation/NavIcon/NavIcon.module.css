@@ -6,7 +6,12 @@
      page keeps its active pose on hover.
    - .triggerFocus: the hover pose and accent colors on keyboard focus too,
      and kept while pressed.
-   A parent can swap the brand accent by setting --nav-icon-accent-brand. */
+   A parent can swap the brand accent by setting --nav-icon-accent-brand.
+
+   Or a pose is set directly, with the pose prop (data-pose): default, hover,
+   or current, with the accent colors on, whatever the link around it is
+   doing. PageLoader and a pending NavItem use it to swap between poses. The
+   link's own poses don't apply then (:not([data-pose])). */
 
 .navIcon {
   display: flex;
@@ -17,11 +22,20 @@
 /* Accent colors. The icon's shapes fill with var(--icon-accent-…,
    currentColor), so they use currentColor until these are set. */
 .trigger:is(:hover, [aria-current='page']) .navIcon,
-.triggerFocus:is(:focus-visible, :active) .navIcon {
+.triggerFocus:is(:focus-visible, :active) .navIcon,
+.navIcon[data-pose] {
   --icon-accent-brand: var(--nav-icon-accent-brand, var(--verity-nav-icon-color-accent-brand));
   --icon-accent-three: var(--verity-nav-icon-color-accent-three);
   --icon-accent-four: var(--verity-nav-icon-color-accent-four);
   --icon-accent-yellow: var(--verity-nav-icon-color-accent-yellow);
+}
+
+/* Filling its container (PageLoader): the icon scales up with it, and its
+   strokes keep their width (vector-effect in the SVG) */
+.fill,
+.fill svg {
+  inline-size: 100%;
+  block-size: 100%;
 }
 
 /* The colors fade in and out */
@@ -44,85 +58,101 @@
 
 /* Portfolio, hover: the frame grows and the four boxes spread out and grow */
 
-.trigger:not([aria-current='page']):hover .portfolio :global(.outline),
-.triggerFocus:is(:focus-visible, :active) .portfolio :global(.outline) {
+.trigger:not([aria-current='page']):hover .portfolio:not([data-pose]) :global(.outline),
+.triggerFocus:is(:focus-visible, :active) .portfolio:not([data-pose]) :global(.outline),
+.portfolio[data-pose='hover'] :global(.outline) {
   transform: scale(1.125);
 }
 
-.trigger:not([aria-current='page']):hover .portfolio :global(.box-1),
-.triggerFocus:is(:focus-visible, :active) .portfolio :global(.box-1) {
+.trigger:not([aria-current='page']):hover .portfolio:not([data-pose]) :global(.box-1),
+.triggerFocus:is(:focus-visible, :active) .portfolio:not([data-pose]) :global(.box-1),
+.portfolio[data-pose='hover'] :global(.box-1) {
   transform: translate(-1.5px, -1.5px) scale(2);
 }
 
-.trigger:not([aria-current='page']):hover .portfolio :global(.box-2),
-.triggerFocus:is(:focus-visible, :active) .portfolio :global(.box-2) {
+.trigger:not([aria-current='page']):hover .portfolio:not([data-pose]) :global(.box-2),
+.triggerFocus:is(:focus-visible, :active) .portfolio:not([data-pose]) :global(.box-2),
+.portfolio[data-pose='hover'] :global(.box-2) {
   transform: translate(1.5px, -1.5px) scale(2);
 }
 
-.trigger:not([aria-current='page']):hover .portfolio :global(.box-3),
-.triggerFocus:is(:focus-visible, :active) .portfolio :global(.box-3) {
+.trigger:not([aria-current='page']):hover .portfolio:not([data-pose]) :global(.box-3),
+.triggerFocus:is(:focus-visible, :active) .portfolio:not([data-pose]) :global(.box-3),
+.portfolio[data-pose='hover'] :global(.box-3) {
   transform: translate(-1.5px, 1.5px) scale(2);
 }
 
-.trigger:not([aria-current='page']):hover .portfolio :global(.box-4),
-.triggerFocus:is(:focus-visible, :active) .portfolio :global(.box-4) {
+.trigger:not([aria-current='page']):hover .portfolio:not([data-pose]) :global(.box-4),
+.triggerFocus:is(:focus-visible, :active) .portfolio:not([data-pose]) :global(.box-4),
+.portfolio[data-pose='hover'] :global(.box-4) {
   transform: translate(1.5px, 1.5px) scale(2);
 }
 
 /* Portfolio, current: the frame stays grown, and the boxes settle closer in */
 
-.trigger[aria-current='page'] .portfolio :global(.outline) {
+.trigger[aria-current='page'] .portfolio:not([data-pose]) :global(.outline),
+.portfolio[data-pose='current'] :global(.outline) {
   transform: scale(1.125);
 }
 
-.trigger[aria-current='page'] .portfolio :global(.box-1) {
+.trigger[aria-current='page'] .portfolio:not([data-pose]) :global(.box-1),
+.portfolio[data-pose='current'] :global(.box-1) {
   transform: translate(-0.5px, -0.5px) scale(1.333);
 }
 
-.trigger[aria-current='page'] .portfolio :global(.box-2) {
+.trigger[aria-current='page'] .portfolio:not([data-pose]) :global(.box-2),
+.portfolio[data-pose='current'] :global(.box-2) {
   transform: translate(0.5px, -0.5px) scale(1.333);
 }
 
-.trigger[aria-current='page'] .portfolio :global(.box-3) {
+.trigger[aria-current='page'] .portfolio:not([data-pose]) :global(.box-3),
+.portfolio[data-pose='current'] :global(.box-3) {
   transform: translate(-0.5px, 0.5px) scale(1.333);
 }
 
-.trigger[aria-current='page'] .portfolio :global(.box-4) {
+.trigger[aria-current='page'] .portfolio:not([data-pose]) :global(.box-4),
+.portfolio[data-pose='current'] :global(.box-4) {
   transform: translate(0.5px, 0.5px) scale(1.333);
 }
 
 /* Playground, hover: the seesaw tips, and the boxes ride it. Current is
    level, the default pose. */
 
-.trigger:not([aria-current='page']):hover .playground :global(.plank),
-.triggerFocus:is(:focus-visible, :active) .playground :global(.plank) {
+.trigger:not([aria-current='page']):hover .playground:not([data-pose]) :global(.plank),
+.triggerFocus:is(:focus-visible, :active) .playground:not([data-pose]) :global(.plank),
+.playground[data-pose='hover'] :global(.plank) {
   transform: rotate(8deg);
 }
 
-.trigger:not([aria-current='page']):hover .playground :global(.box-1),
-.triggerFocus:is(:focus-visible, :active) .playground :global(.box-1) {
+.trigger:not([aria-current='page']):hover .playground:not([data-pose]) :global(.box-1),
+.triggerFocus:is(:focus-visible, :active) .playground:not([data-pose]) :global(.box-1),
+.playground[data-pose='hover'] :global(.box-1) {
   transform: translate(0.79px, -1px) rotate(8deg);
 }
 
-.trigger:not([aria-current='page']):hover .playground :global(.box-2),
-.triggerFocus:is(:focus-visible, :active) .playground :global(.box-2) {
+.trigger:not([aria-current='page']):hover .playground:not([data-pose]) :global(.box-2),
+.triggerFocus:is(:focus-visible, :active) .playground:not([data-pose]) :global(.box-2),
+.playground[data-pose='hover'] :global(.box-2) {
   transform: translate(-0.24px, -0.37px) rotate(8deg) scale(1.402);
 }
 
 /* Profile, hover: the head tilts. Current is upright, the default pose. */
 
-.trigger:not([aria-current='page']):hover .profile :global(.glasses),
-.triggerFocus:is(:focus-visible, :active) .profile :global(.glasses) {
+.trigger:not([aria-current='page']):hover .profile:not([data-pose]) :global(.glasses),
+.triggerFocus:is(:focus-visible, :active) .profile:not([data-pose]) :global(.glasses),
+.profile[data-pose='hover'] :global(.glasses) {
   transform: translate(-0.18px, -0.02px) rotate(6.2deg);
 }
 
-.trigger:not([aria-current='page']):hover .profile :global(.bangs),
-.triggerFocus:is(:focus-visible, :active) .profile :global(.bangs) {
+.trigger:not([aria-current='page']):hover .profile:not([data-pose]) :global(.bangs),
+.triggerFocus:is(:focus-visible, :active) .profile:not([data-pose]) :global(.bangs),
+.profile[data-pose='hover'] :global(.bangs) {
   transform: translate(1.23px, 0.03px) rotate(6.2deg);
 }
 
-.trigger:not([aria-current='page']):hover .profile :global(.bun),
-.triggerFocus:is(:focus-visible, :active) .profile :global(.bun) {
+.trigger:not([aria-current='page']):hover .profile:not([data-pose]) :global(.bun),
+.triggerFocus:is(:focus-visible, :active) .profile:not([data-pose]) :global(.bun),
+.profile[data-pose='hover'] :global(.bun) {
   transform: translate(5.31px, 1.31px) rotate(6.2deg);
 }
 

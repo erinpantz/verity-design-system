@@ -1,0 +1,128 @@
+/* The page loader: a layer on the page's background, fixed to the screen,
+   from where it's placed (in Shell, right below MainNav) to the bottom of
+   the screen. PageLoader.tsx measures that top (--top) when it appears; once
+   the nav has scrolled away, it's the whole screen. Its contents are centered
+   in it.
+
+   It sits above the page, its Hero text and Reel included (z-index 2), and
+   below what stays usable: Shell lifts ThemeToggle and BackLink (3) and the
+   skip link (4) above it, and MainNav is above where it starts. NavOverlay is
+   in the browser's top layer, above everything. */
+
+/* Where it starts: out of the flow, so it takes no space and adds no gap
+   in a stack (Shell's page column), but still sits where it's placed */
+.anchor {
+  position: absolute;
+  block-size: 0;
+}
+
+.loader {
+  position: fixed;
+  inset: var(--top, 0px) 0 0;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  background: var(--verity-color-background-default);
+  /* Hidden: faded out, then not drawn, so it takes no clicks */
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    opacity var(--verity-page-loader-duration-fade) var(--verity-motion-easing-standard),
+    visibility 0s linear var(--verity-page-loader-duration-fade);
+}
+
+.loader[data-visible] {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity var(--verity-page-loader-duration-fade) var(--verity-motion-easing-standard);
+}
+
+/* The icon, then the words, centered */
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--verity-spacing-sm);
+}
+
+.icon {
+  display: flex;
+  inline-size: var(--verity-page-loader-size-icon);
+  block-size: var(--verity-page-loader-size-icon);
+}
+
+/* Home's badge: full turns, one per tick (PageLoader.tsx sets --turns) */
+.badge {
+  display: flex;
+  inline-size: 100%;
+  block-size: 100%;
+  rotate: calc(var(--turns, 0) * 1turn);
+  transition: rotate var(--verity-page-loader-duration-turn) var(--verity-motion-easing-playful);
+}
+
+/* The words: the leaving one and the coming one share a cell, so the line
+   stays put. Each on one line, centered. */
+.words {
+  display: grid;
+  justify-items: center;
+  color: var(--verity-color-content-subtle);
+  font-family: var(--verity-viewport-typography-body-lg-font-family);
+  font-size: var(--verity-viewport-typography-body-lg-font-size);
+  font-weight: var(--verity-viewport-typography-body-lg-font-weight);
+  line-height: var(--verity-viewport-typography-body-lg-line-height);
+  letter-spacing: var(--verity-viewport-typography-body-lg-letter-spacing);
+  text-align: center;
+}
+
+.word {
+  grid-area: 1 / 1;
+  white-space: nowrap;
+}
+
+/* The next word fades in, rising into place; the last one fades out,
+   rising slightly */
+.wordIn {
+  animation: word-in var(--verity-motion-duration-playful) var(--verity-motion-easing-standard) both;
+}
+
+.wordOut {
+  animation: word-out var(--verity-motion-duration-playful) var(--verity-motion-easing-standard) both;
+}
+
+@keyframes word-in {
+  from {
+    opacity: 0;
+    translate: 0 var(--verity-spacing-xs);
+  }
+}
+
+@keyframes word-out {
+  to {
+    opacity: 0;
+    translate: 0 calc(-1 * var(--verity-spacing-xs));
+  }
+}
+
+/* The status message: read by screen readers, not shown */
+.status {
+  position: absolute;
+  inline-size: 1px;
+  block-size: 1px;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* With reduce motion on: no movement. The badge doesn't turn (it's never
+   given a turn), and the words don't change; the fade stays. */
+@media (prefers-reduced-motion: reduce) {
+  .badge {
+    transition: none;
+  }
+
+  .wordIn,
+  .wordOut {
+    animation: none;
+  }
+}
