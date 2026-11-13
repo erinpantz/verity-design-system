@@ -1,6 +1,7 @@
 import { useId, type ReactNode } from 'react';
 import { Tooltip } from '../Tooltip';
 import styles from './Link.module.css';
+import { LinkAnchor } from '../LinkProvider/LinkProvider';
 
 export interface LinkProps {
   /** The link text. Say where the link goes, not “click here.” */
@@ -41,13 +42,13 @@ export function Link({ children, href, color = 'default', disabled = false, tool
     // No href, so it goes nowhere and Enter does nothing. role="link" and
     // tabIndex keep it in the tab order, so keyboard users can reach it and
     // hear that it's disabled, and its tooltip shows on focus.
-    <a {...common} role="link" aria-disabled="true" tabIndex={0}>
+    <LinkAnchor {...common} role="link" aria-disabled="true" tabIndex={0}>
       {children}
-    </a>
+    </LinkAnchor>
   ) : (
     // A new tab gets rel="noopener noreferrer", so the page it opens can't
     // control this one, and hidden text, so screen reader users know (WCAG G201)
-    <a
+    <LinkAnchor
       {...common}
       href={href}
       target={opensInNewTab ? '_blank' : undefined}
@@ -55,7 +56,7 @@ export function Link({ children, href, color = 'default', disabled = false, tool
     >
       {children}
       {opensInNewTab && <span className={styles.newTab}> (opens in a new tab)</span>}
-    </a>
+    </LinkAnchor>
   );
 
   if (!tooltip) return link;

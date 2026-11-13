@@ -4,6 +4,7 @@ import { ErinTozourLogo } from '../../Media/ErinTozourLogo';
 import { NavItem } from '../NavItem';
 import { NavOverlay } from '../NavOverlay';
 import styles from './MainNav.module.css';
+import { LinkAnchor } from '../../Actions/LinkProvider/LinkProvider';
 
 type Page = 'portfolio' | 'profile' | 'playground';
 
@@ -82,14 +83,14 @@ export function MainNav({ current, hrefs = {}, pending }: MainNavProps) {
             link, and CSS shows one: the hidden one is display: none, so
             screen readers hear only the shown one's name, “Erin Tozour.” */}
         <div className={styles.siteTitle}>
-          <a className={styles.homeLink} href={links.home}>
+          <LinkAnchor className={styles.homeLink} href={links.home}>
             <span className={styles.fullLogo}>
               <ErinTozourLogo />
             </span>
             <span className={styles.firstLogo}>
               <ErinTozourLogo name="first" />
             </span>
-          </a>
+          </LinkAnchor>
         </div>
         {pageLinks('row')}
         <span className={styles.menuButton} ref={menuButtonRef}>

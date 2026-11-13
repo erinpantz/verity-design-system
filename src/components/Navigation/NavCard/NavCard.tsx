@@ -1,5 +1,6 @@
 import { NavIcon, navIconTrigger, navIconTriggerFocus } from '../NavIcon';
 import styles from './NavCard.module.css';
+import { LinkAnchor } from '../../Actions/LinkProvider/LinkProvider';
 
 export interface NavCardProps {
   /** Which page it goes to, shown by its nav icon */
@@ -22,12 +23,12 @@ export interface NavCardProps {
 // NavIcon).
 export function NavCard({ page, label, href, tilt = 'none' }: NavCardProps) {
   return (
-    <a
+    <LinkAnchor
       className={`${styles.navCard} ${styles[`tilt-${tilt}`]} ${navIconTrigger} ${navIconTriggerFocus}`}
       href={href}
     >
       <NavIcon page={page} />
       <span className={styles.label}>{label}</span>
-    </a>
+    </LinkAnchor>
   );
 }

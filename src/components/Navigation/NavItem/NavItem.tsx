@@ -3,6 +3,7 @@ import { Icon } from '../../Media/Icon';
 import { NavIcon, navIconTrigger } from '../NavIcon';
 import { LOADING_POSES, STILL_POSE, usePoseTicks } from '../NavIcon/poseClock';
 import styles from './NavItem.module.css';
+import { LinkAnchor } from '../../Actions/LinkProvider/LinkProvider';
 
 export interface NavItemProps {
   /** Which page it goes to, shown by its icon */
@@ -32,13 +33,13 @@ export function NavItem({ icon, label, href, current = false, pending = false }:
   const poses = LOADING_POSES[section];
   const pose = !pending ? undefined : reducedMotion ? STILL_POSE[section] : poses[ticks % poses.length];
   return (
-    <a
+    <LinkAnchor
       className={`${styles.navItem} ${navIconTrigger}`}
       href={href}
       aria-current={current ? 'page' : undefined}
     >
       {icon === 'resume' ? <Icon name="resume" /> : <NavIcon page={icon} pose={pose} />}
       <span className={styles.label}>{label}</span>
-    </a>
+    </LinkAnchor>
   );
 }

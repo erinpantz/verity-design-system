@@ -2,6 +2,7 @@ import { useId } from 'react';
 import { Button } from '../../Actions/Button';
 import { Image } from '../../Media/Image';
 import styles from './PortfolioCard.module.css';
+import { LinkAnchor } from '../../Actions/LinkProvider/LinkProvider';
 
 export interface PortfolioCardProps {
   /** What the card links to: a case study, or a brand’s gallery */
@@ -56,7 +57,7 @@ export function PortfolioCard({
   const detailsId = useId();
   const Heading = `h${headingLevel}` as const;
   return (
-    <a
+    <LinkAnchor
       className={`${styles.portfolioCard} ${styles[type]} ${styles[`size-${size}`]}`}
       href={href}
       aria-labelledby={headingId}
@@ -93,6 +94,6 @@ export function PortfolioCard({
           ))}
         </div>
       )}
-    </a>
+    </LinkAnchor>
   );
 }

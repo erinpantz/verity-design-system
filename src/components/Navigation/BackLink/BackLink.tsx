@@ -1,5 +1,6 @@
 import { Icon } from '../../Media/Icon';
 import styles from './BackLink.module.css';
+import { LinkAnchor } from '../../Actions/LinkProvider/LinkProvider';
 
 export interface BackLinkProps {
   /** Where it goes: the page someone came from, like the portfolio */
@@ -15,11 +16,11 @@ export interface BackLinkProps {
 // it can't slide out from under the pointer.
 export function BackLink({ href, label }: BackLinkProps) {
   return (
-    <a className={styles.backLink} href={href}>
+    <LinkAnchor className={styles.backLink} href={href}>
       <span className={styles.surface}>
         <Icon name="back" size="sm" />
         {label}
       </span>
-    </a>
+    </LinkAnchor>
   );
 }

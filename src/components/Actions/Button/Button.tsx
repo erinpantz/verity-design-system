@@ -2,6 +2,7 @@ import type { MouseEventHandler, ReactNode } from 'react';
 import type { IconName } from '../../../icons/icons.generated';
 import { Icon } from '../../Media/Icon';
 import styles from './Button.module.css';
+import { LinkAnchor } from '../LinkProvider/LinkProvider';
 
 // Each variant has its own colors, so color is typed together with variant:
 // primary takes default or brand, and secondary takes default or knockout.
@@ -99,7 +100,7 @@ export function Button({
     // A new tab gets rel="noopener noreferrer", so the page it opens can't
     // control this one, and hidden text, so screen reader users know (WCAG G201)
     return (
-      <a
+      <LinkAnchor
         className={classes.join(' ')}
         href={href}
         target={opensInNewTab ? '_blank' : undefined}
@@ -107,7 +108,7 @@ export function Button({
       >
         {content}
         {opensInNewTab && <span className={styles.newTab}> (opens in a new tab)</span>}
-      </a>
+      </LinkAnchor>
     );
   }
   return (
