@@ -1,7 +1,7 @@
 import { MARK } from '../ErinTozourLogo/logoGlyphs';
 import styles from './ErinTozourBadge.module.css';
 
-// The “e” mark, the logo's own first letter, on a round brand-colored badge.
+// The mark, an E, on a round brand-colored badge.
 // It's decorative, so it's hidden from screen readers: where it's used, like
 // NavOverlay, it keeps the brand in view and says nothing new.
 export interface ErinTozourBadgeProps {

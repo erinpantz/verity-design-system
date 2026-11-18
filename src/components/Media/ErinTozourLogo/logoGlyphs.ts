@@ -1,40 +1,36 @@
-// The logo's shapes, read once from Figma's export (brand/, never edited by
-// hand), and the crops of it that ErinTozourLogo and ErinTozourBadge draw. The
-// SVG is loaded as text with Vite's ?raw import. If more logos arrive, Erin
-// will decide whether they get a build step like the icons.
-import logo from '../../../../brand/erin-tozour-logo.svg?raw';
+// The shapes ErinTozourLogo and ErinTozourBadge draw, read from Figma's
+// exports (brand/, never edited by hand): one file each for the full name,
+// the first name, and the mark. Each is loaded as text with Vite's ?raw
+// import; only its viewBox and its <path> elements are kept. That leaves out
+// the content-credentials <metadata> block at the end of each file and, in
+// the full logo, the clip-path wrapper (a rectangle the size of the frame,
+// which clips nothing). If more logos arrive, Erin will decide whether they
+// get a build step like the icons.
+import fullFile from '../../../../brand/erin-tozour-logo.svg?raw';
+import firstFile from '../../../../brand/erin-tozour-logo-first.svg?raw';
+import markFile from '../../../../brand/erin-tozour-mark.svg?raw';
 
 export interface Glyphs {
   viewBox: string;
   markup: string;
 }
 
-// One <path> per shape, left to right: e, r, the i's stem, the i's dot, n,
-// then "tozour"
-const paths = logo.match(/<path\b[^>]*\/>/g) ?? [];
-const height = /\bviewBox="0 0 [\d.]+ ([\d.]+)"/.exec(logo)?.[1] ?? '84';
+function glyphs(svg: string): Glyphs {
+  return {
+    viewBox: /<svg\b[^>]*\bviewBox="([^"]+)"/.exec(svg)?.[1] ?? '',
+    markup: (svg.match(/<path\b[^>]*\/>/g) ?? []).join(''),
+  };
+}
 
-/** The whole name, “erin tozour” */
-export const FULL: Glyphs = {
-  viewBox: /\bviewBox="([^"]+)"/.exec(logo)?.[1] ?? '',
-  markup: paths.join(''),
-};
-
-/**
- * Only “erin”: the first five shapes, cropped at the n's right edge (195.27,
- * read from the n's path). The height stays the logo's, so at the same height
- * the letters are the same size and in the same place as in the full logo.
- */
-export const FIRST: Glyphs = {
-  viewBox: `0 0 195.27 ${height}`,
-  markup: paths.slice(0, 5).join(''),
-};
+/** The whole name, “Erin Tozour” */
+export const FULL = glyphs(fullFile);
 
 /**
- * The “e” mark: the first shape, cropped to a square around it (the e spans
- * x 0 to 54.76 and y 28 to 82), so it centers in a square icon.
+ * Only “Erin”. Its file is exported from the same frame height, with the
+ * letters in the same place, so at the same height they match the full
+ * logo’s exactly.
  */
-export const MARK: Glyphs = {
-  viewBox: '0 27.62 54.76 54.76',
-  markup: paths[0] ?? '',
-};
+export const FIRST = glyphs(firstFile);
+
+/** The mark: an E, in a square, so it centers in a square icon */
+export const MARK = glyphs(markFile);

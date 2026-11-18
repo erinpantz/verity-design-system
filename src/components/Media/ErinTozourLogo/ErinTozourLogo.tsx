@@ -3,8 +3,8 @@ import styles from './ErinTozourLogo.module.css';
 
 export interface ErinTozourLogoProps {
   /**
-   * How much of the name it draws: the full name, “erin tozour,” or only the
-   * first name, “erin,” for narrow spaces. The letters match exactly at the
+   * How much of the name it draws: the full name, “Erin Tozour,” or only the
+   * first name, “Erin,” for narrow spaces. The letters match exactly at the
    * same height. Screen readers hear “Erin Tozour” either way.
    */
   name?: 'full' | 'first';
