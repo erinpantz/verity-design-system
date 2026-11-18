@@ -19,6 +19,19 @@ html {
   color-scheme: dark;
 }
 
+/* Thinner text on macOS. Verity's backgrounds are dark, and macOS's default
+   text smoothing draws light text on a dark background heavier than it is,
+   so Plus Jakarta Sans 400 looks thicker than in Figma. Grayscale smoothing
+   draws it as designed. On the root element, so every page, Storybook, and
+   everything that inherits gets it. It only affects macOS browsers (Chrome,
+   Safari, Edge, and Firefox), and every weight renders slightly thinner; no
+   weights change. A light theme should revisit it: on light backgrounds,
+   the default smoothing is usually fine. */
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
 /* No default page margin: browsers add 8px around body, which would shift
    every page in and make wide content narrower than in Figma. Shell owns the
    page's edges. */
