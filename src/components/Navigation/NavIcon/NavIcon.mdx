@@ -1,0 +1,91 @@
+import { Meta, Canvas } from '@storybook/addon-docs/blocks';
+import { VerityDocs } from '../../../foundations/VerityDocs';
+import { PropsTable } from '../../../foundations/PropsTable';
+import * as NavIconStories from './NavIcon.stories';
+
+<Meta of={NavIconStories} />
+
+<VerityDocs>
+
+# NavIcon
+
+One of the site’s nav icons (Portfolio, Playground, or Profile), on its own, in its own colors and a pose you choose. It’s the same icon `NavItem`, `NavCard`, and `PageLoader` show, so its poses and colors are defined in one place.
+
+<Canvas of={NavIconStories.Default} />
+
+## When to use
+
+- **To show a page’s nav icon as a picture, in one fixed pose.** For example, the Profile icon in its hover pose, tilted with its accent colors on, as a picture of Erin on a card.
+- **Not for a link to a page.** Use `NavItem` in the nav, or `NavCard` on Home. They put the icon inside the link and give it the hover and current poses as the link changes state.
+- **Not for a page that’s loading.** `PageLoader` already shows the icon and swaps its poses.
+- **Not for other icons.** Use `Icon`: NavIcon only draws the three nav icons.
+
+## Accessibility
+
+NavIcon renders a `<span>` around the icon’s `<svg>`. It’s decorative: the SVG is hidden from screen readers (`aria-hidden`), and NavIcon has no prop to give it a name.
+
+| Situation | What to do | Example |
+|---|---|---|
+| The icon sits next to text that names the page or the person | Nothing: the text already says it | A card titled “Profile” with the Profile icon |
+| The icon is the only thing that says what something is | Put the words in visible text next to it, or in the label of the link or button around it | A link with only the icon gets `aria-label="Profile"` |
+
+## Page
+
+| `page` | The icon |
+|---|---|
+| `portfolio` | A frame with four boxes |
+| `playground` | A seesaw with two boxes |
+| `profile` | Erin: glasses, bangs, and a bun |
+
+## Pose
+
+Without `pose`, the icon is at rest, in `--verity-nav-icon-color-default`, with no accent colors: how it looks in the nav before you hover it. With `pose`, its accent colors come on and it holds that pose.
+
+| `pose` | Portfolio | Playground | Profile |
+|---|---|---|---|
+| Left out | At rest, one color | At rest, one color | At rest, one color |
+| `default` | At rest, accents on | At rest, accents on | Upright, accents on |
+| `hover` | The frame grows and the boxes spread out | The seesaw tips | The head tilts |
+| `current` | The frame grows and the boxes settle closer in | Level, the same as `default` | Upright, the same as `default` |
+
+<Canvas of={NavIconStories.Portfolio} />
+
+<Canvas of={NavIconStories.Playground} />
+
+<Canvas of={NavIconStories.Profile} />
+
+If `pose` changes while the icon is showing, it moves to the new pose with the nav’s playful timing (`--verity-motion-duration-playful`, `--verity-motion-easing-playful`), and the colors fade (`--verity-motion-duration-fast`). With reduce motion on, it switches pose at once. A fixed pose doesn’t move.
+
+## Size
+
+| `fill` | Size | Use for |
+|---|---|---|
+| `false` | The default. `--verity-icon-size-md` (24) | An icon at the size it is in the nav |
+| `true` | Fills its container | A larger picture. The container sets the size, with a size token. |
+
+With `fill`, the container needs a width. The icon stays square and centers itself in the container, so if the container is wider than it is tall, the icon is as tall as the container. Without a width, it fills the whole row. The strokes keep their width at every size, as in every icon.
+
+<Canvas of={NavIconStories.Fill} />
+
+NavIcon is a block (`display: flex`), not inline, so it doesn’t sit inside a line of text.
+
+## Color
+
+The icon draws in `--verity-nav-icon-color-default`, and its accents in `--verity-nav-icon-color-accent-brand`, `-accent-three`, `-accent-four`, and `-accent-yellow`. They’re chosen for the nav, which sits on `--verity-color-background-default`, so use NavIcon on that background. Each theme sets its own.
+
+- **On a light background** (`--verity-color-background-knockout`), the default color is invisible: both are brand 100.
+- **On a brand fill** (`--verity-color-background-brand`), the brand accent nearly matches the fill. `NavCard` has its own brand accent for this, `--verity-nav-card-icon-color-accent-brand`.
+
+## Props
+
+<PropsTable of={NavIconStories} />
+
+## In Figma
+
+| Figma | Code |
+|---|---|
+| Component `icon/nav/portfolio`, `icon/nav/playground`, `icon/nav/profile` | `page` |
+| Nav icon variants `State=default`, `State=hover`, and `State=active` | `pose`: `default`, `hover`, and `current` |
+| Not in Figma | `fill`. In Figma, resize the instance. |
+
+</VerityDocs>
