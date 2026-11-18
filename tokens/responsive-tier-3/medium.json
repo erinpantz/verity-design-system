@@ -648,5 +648,14 @@
         }
       }
     }
+  },
+  "erin-tozour-logo": {
+    "duration": {
+      "color-step": {
+        "$type": "duration",
+        "$value": "{duration.180}",
+        "$description": "While the ErinTozourLogo’s link is hovered or focused, each letter shows each accent color for this long, then switches to the next, with no blend. Code only."
+      }
+    }
   }
 }

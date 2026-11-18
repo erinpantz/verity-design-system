@@ -1748,6 +1748,10 @@
     "1600": {
       "$type": "duration",
       "$value": "1600ms"
+    },
+    "180": {
+      "$type": "duration",
+      "$value": "180ms"
     }
   }
 }

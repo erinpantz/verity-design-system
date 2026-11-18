@@ -194,6 +194,7 @@
   --verity-size-64: 64px;
   --verity-size-96: 96px;
   --verity-duration-150: 150ms; /** Duration in milliseconds. */
+  --verity-duration-180: 180ms;
   --verity-duration-260: 260ms;
   --verity-duration-300: 300ms; /** Duration in milliseconds. */
   --verity-duration-340: 340ms;
@@ -919,6 +920,7 @@
   --verity-page-loader-duration-turn: var(--verity-duration-700); /** Home’s page loader: each full turn of the ErinTozourBadge, on motion/easing/playful, then a hold of page-loader/duration/hold. Code only. */
   --verity-page-loader-duration-word: var(--verity-duration-1600); /** How long each loading word shows before the next. Code only. */
   --verity-page-loader-size-icon: var(--verity-size-96); /** Width and height of the page loader’s nav icon, or of Home’s badge. */
+  --verity-erin-tozour-logo-duration-color-step: var(--verity-duration-180); /** While the ErinTozourLogo’s link is hovered or focused, each letter shows each accent color for this long, then switches to the next, with no blend. Code only. */
   --verity-main-nav-link-gap: var(--verity-spacing-sm); /** Space between the NavItems in MainNav, in a row on the page and in a column in NavOverlay. */
   --verity-main-nav-gap: var(--verity-spacing-md); /** The least space between the logo and the NavItems in MainNav. The logo’s frame fills the rest, so the links sit at the end. */
   --verity-nav-overlay-padding: var(--verity-padding-sm); /** Padding on all sides of NavOverlay. */
@@ -1193,6 +1195,7 @@
     --verity-page-loader-duration-turn: var(--verity-duration-700); /** Home’s page loader: each full turn of the ErinTozourBadge, on motion/easing/playful, then a hold of page-loader/duration/hold. Code only. */
     --verity-page-loader-duration-word: var(--verity-duration-1600); /** How long each loading word shows before the next. Code only. */
     --verity-page-loader-size-icon: var(--verity-size-96); /** Width and height of the page loader’s nav icon, or of Home’s badge. */
+    --verity-erin-tozour-logo-duration-color-step: var(--verity-duration-180); /** While the ErinTozourLogo’s link is hovered or focused, each letter shows each accent color for this long, then switches to the next, with no blend. Code only. */
     --verity-main-nav-link-gap: var(--verity-spacing-sm); /** Space between the NavItems in MainNav, in a row on the page and in a column in NavOverlay. */
     --verity-main-nav-gap: var(--verity-spacing-md); /** The least space between the logo and the NavItems in MainNav. The logo’s frame fills the rest, so the links sit at the end. */
     --verity-nav-overlay-padding: var(--verity-padding-sm); /** Padding on all sides of NavOverlay. */
@@ -1468,6 +1471,7 @@
     --verity-page-loader-duration-turn: var(--verity-duration-700); /** Home’s page loader: each full turn of the ErinTozourBadge, on motion/easing/playful, then a hold of page-loader/duration/hold. Code only. */
     --verity-page-loader-duration-word: var(--verity-duration-1600); /** How long each loading word shows before the next. Code only. */
     --verity-page-loader-size-icon: var(--verity-size-96); /** Width and height of the page loader’s nav icon, or of Home’s badge. */
+    --verity-erin-tozour-logo-duration-color-step: var(--verity-duration-180); /** While the ErinTozourLogo’s link is hovered or focused, each letter shows each accent color for this long, then switches to the next, with no blend. Code only. */
     --verity-main-nav-link-gap: var(--verity-spacing-sm); /** Space between the NavItems in MainNav, in a row on the page and in a column in NavOverlay. */
     --verity-main-nav-gap: var(--verity-spacing-md); /** The least space between the logo and the NavItems in MainNav. The logo’s frame fills the rest, so the links sit at the end. */
     --verity-nav-overlay-padding: var(--verity-padding-sm); /** Padding on all sides of NavOverlay. */
@@ -1743,6 +1747,7 @@
     --verity-page-loader-duration-turn: var(--verity-duration-700); /** Home’s page loader: each full turn of the ErinTozourBadge, on motion/easing/playful, then a hold of page-loader/duration/hold. Code only. */
     --verity-page-loader-duration-word: var(--verity-duration-1600); /** How long each loading word shows before the next. Code only. */
     --verity-page-loader-size-icon: var(--verity-size-96); /** Width and height of the page loader’s nav icon, or of Home’s badge. */
+    --verity-erin-tozour-logo-duration-color-step: var(--verity-duration-180); /** While the ErinTozourLogo’s link is hovered or focused, each letter shows each accent color for this long, then switches to the next, with no blend. Code only. */
     --verity-main-nav-link-gap: var(--verity-spacing-sm); /** Space between the NavItems in MainNav, in a row on the page and in a column in NavOverlay. */
     --verity-main-nav-gap: var(--verity-spacing-md); /** The least space between the logo and the NavItems in MainNav. The logo’s frame fills the rest, so the links sit at the end. */
     --verity-nav-overlay-padding: var(--verity-padding-sm); /** Padding on all sides of NavOverlay. */
