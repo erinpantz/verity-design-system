@@ -4,6 +4,15 @@ Every release of Verity, newest first. The format follows [Keep a Changelog](htt
 
 Sites install Verity by tag (for example `github:erinpantz/verity-design-system#v0.3.0`), so a site only changes when it moves to a new tag on purpose.
 
+## [0.9.8] – 2026-11-18
+
+Fixes a flash in the logo’s color cycle: with the pointer resting near the logo’s edge, tiny movements in and out flickered the letters between colors and white.
+
+### Fixed
+
+- **MainNav:** the home link’s hover and tap area reaches `--verity-spacing-xs` past the logo on every side (16px on XL and Large, 8px on Medium and Small), with an invisible layer, so a pointer near the logo’s edge still counts as hovering, and a click there goes home. The link’s size, its focus ring, and the nav’s layout don’t change, and the area never reaches the links or the menu button.
+- **ErinTozourLogo:** when hover or focus ends, the wave keeps running for `--verity-motion-duration-fast` before the letters fade back, so a pointer that slips off and comes back within that time changes nothing visible. A real exit fades as before, 150ms later. With reduce motion on, the colors wait the same time. Docs for both are updated. No props change.
+
 ## [0.9.7] – 2026-11-18
 
 The Erin Tozour logo lights up in a wave of the accent colors while its link is hovered or focused.
@@ -642,6 +651,7 @@ The first library release: everything in the Figma library except Animation, wit
 - **Theme helpers:** `themeScript`, `useTheme`, and `setTheme`, so a site applies the saved theme before the first paint.
 - **The library build:** one entry point with every component and its prop types, one stylesheet (`verity-design-system/styles.css`) with the fonts inside it, and `npm run build:watch` for working with a linked copy.
 
+[0.9.8]: https://github.com/erinpantz/verity-design-system/compare/v0.9.7...v0.9.8
 [0.9.7]: https://github.com/erinpantz/verity-design-system/compare/v0.9.6...v0.9.7
 [0.9.6]: https://github.com/erinpantz/verity-design-system/compare/v0.9.5...v0.9.6
 [0.9.5]: https://github.com/erinpantz/verity-design-system/compare/v0.9.4...v0.9.5
