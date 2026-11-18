@@ -4,6 +4,15 @@ Every release of Verity, newest first. The format follows [Keep a Changelog](htt
 
 Sites install Verity by tag (for example `github:erinpantz/verity-design-system#v0.3.0`), so a site only changes when it moves to a new tag on purpose.
 
+## [0.9.6] – 2026-11-18
+
+NavIcon gets a mirrored hover pose, so Erin’s site can tip the Profile icon one way and then the other.
+
+### Added
+
+- **NavIcon:** a new pose, `hover-mirrored`: the hover pose tipped the other way. For Profile, every part turns −6.2° instead of 6.2°, and the sideways part of each move flips, so the bun slides left instead of right. Only Profile has a mirrored version so far; Portfolio and Playground show their usual hover pose for it. Moving between any two poses takes the same playful timing, and reduce motion still switches at once. The other poses, NavItem, NavCard, MainNav, and PageLoader don’t change.
+- **Docs:** NavIcon’s stories show `hover-mirrored` for every icon, and its docs page describes the pose and its fallback.
+
 ## [0.9.5] – 2026-11-18
 
 MainNav stays at the top of the screen as the page scrolls, so the way to the other pages never disappears on a long page. This reverses the earlier choice to let the nav scroll away.
@@ -623,6 +632,7 @@ The first library release: everything in the Figma library except Animation, wit
 - **Theme helpers:** `themeScript`, `useTheme`, and `setTheme`, so a site applies the saved theme before the first paint.
 - **The library build:** one entry point with every component and its prop types, one stylesheet (`verity-design-system/styles.css`) with the fonts inside it, and `npm run build:watch` for working with a linked copy.
 
+[0.9.6]: https://github.com/erinpantz/verity-design-system/compare/v0.9.5...v0.9.6
 [0.9.5]: https://github.com/erinpantz/verity-design-system/compare/v0.9.4...v0.9.5
 [0.9.4]: https://github.com/erinpantz/verity-design-system/compare/v0.9.3...v0.9.4
 [0.9.3]: https://github.com/erinpantz/verity-design-system/compare/v0.9.2...v0.9.3
