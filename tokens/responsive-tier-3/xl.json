@@ -657,5 +657,31 @@
         "$description": "While the ErinTozourLogo’s link is hovered or focused, each letter shows each accent color for this long, then switches to the next, with no blend. Code only."
       }
     }
+  },
+  "experience-item": {
+    "credentials-max-width": {
+      "$type": "dimension",
+      "$value": "600px",
+      "$description": "The widest an ExperienceItem’s credentials (title, dates, and description) get, so the description keeps a readable line length (600px). In a row, the company takes the rest.",
+      "$extensions": {
+        "com.figma": {
+          "scopes": [
+            "WIDTH_HEIGHT"
+          ]
+        }
+      }
+    },
+    "stack-width": {
+      "$type": "dimension",
+      "$value": "800px",
+      "$description": "Below this width, an ExperienceItem stacks its credentials under the company; at or above it, they sit side by side (800px). Measured on the item itself, not the screen, like media-text/stack-width. In Figma, pick Layout to match the item’s width.",
+      "$extensions": {
+        "com.figma": {
+          "scopes": [
+            "WIDTH_HEIGHT"
+          ]
+        }
+      }
+    }
   }
 }

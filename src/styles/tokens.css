@@ -894,6 +894,8 @@
   --verity-project-card-thumbnail-height-stacked: 200px; /** In a stacked ProjectCard, the thumbnail’s height (400, 300, 300, 200). It sits flush on top and fills the card’s width. */
   --verity-project-card-text-max-width: 420px; /** The widest a ProjectCard’s title gets (600, 600, 500, 420), so it keeps a readable line length; the frame around it fills the card. */
   --verity-project-card-stack-width: 560px; /** Below this width, a ProjectCard stacks its thumbnail above its title; at or above it, they sit in a row, the thumbnail on the right (960, 820, 660, 560). Measured on the card itself, not the screen, like media-text/stack-width. In Figma, pick Layout to match the card’s width. */
+  --verity-experience-item-credentials-max-width: 600px; /** The widest an ExperienceItem’s credentials (title, dates, and description) get, so the description keeps a readable line length (600px). In a row, the company takes the rest. */
+  --verity-experience-item-stack-width: 800px; /** Below this width, an ExperienceItem stacks its credentials under the company; at or above it, they sit side by side (800px). Measured on the item itself, not the screen, like media-text/stack-width. In Figma, pick Layout to match the item’s width. */
   --verity-main-nav-logo-offset: var(--verity-spacing-8); /** Bottom padding under the MainNav logo. Lifts the logo so its lowercase letters line up with the NavItem labels beside it. */
   --verity-main-nav-logo-height: var(--verity-size-24); /** Height of the Erin Tozour logo in MainNav: 32 on XL and Large, 24 on Medium and Small. Its width follows, so the logo keeps its proportions. */
   --verity-nav-item-padding: var(--verity-spacing-8); /** Padding on all sides of a NavItem (its tap area). */
@@ -1169,6 +1171,8 @@
     --verity-project-card-thumbnail-height-stacked: 300px; /** In a stacked ProjectCard, the thumbnail’s height (400, 300, 300, 200). It sits flush on top and fills the card’s width. */
     --verity-project-card-text-max-width: 500px; /** The widest a ProjectCard’s title gets (600, 600, 500, 420), so it keeps a readable line length; the frame around it fills the card. */
     --verity-project-card-stack-width: 660px; /** Below this width, a ProjectCard stacks its thumbnail above its title; at or above it, they sit in a row, the thumbnail on the right (960, 820, 660, 560). Measured on the card itself, not the screen, like media-text/stack-width. In Figma, pick Layout to match the card’s width. */
+    --verity-experience-item-credentials-max-width: 600px; /** The widest an ExperienceItem’s credentials (title, dates, and description) get, so the description keeps a readable line length (600px). In a row, the company takes the rest. */
+    --verity-experience-item-stack-width: 800px; /** Below this width, an ExperienceItem stacks its credentials under the company; at or above it, they sit side by side (800px). Measured on the item itself, not the screen, like media-text/stack-width. In Figma, pick Layout to match the item’s width. */
     --verity-main-nav-logo-offset: var(--verity-spacing-8); /** Bottom padding under the MainNav logo. Lifts the logo so its lowercase letters line up with the NavItem labels beside it. */
     --verity-main-nav-logo-height: var(--verity-size-24); /** Height of the Erin Tozour logo in MainNav: 32 on XL and Large, 24 on Medium and Small. Its width follows, so the logo keeps its proportions. */
     --verity-nav-item-padding: var(--verity-spacing-8); /** Padding on all sides of a NavItem (its tap area). */
@@ -1445,6 +1449,8 @@
     --verity-project-card-thumbnail-height-stacked: 300px; /** In a stacked ProjectCard, the thumbnail’s height (400, 300, 300, 200). It sits flush on top and fills the card’s width. */
     --verity-project-card-text-max-width: 600px; /** The widest a ProjectCard’s title gets (600, 600, 500, 420), so it keeps a readable line length; the frame around it fills the card. */
     --verity-project-card-stack-width: 820px; /** Below this width, a ProjectCard stacks its thumbnail above its title; at or above it, they sit in a row, the thumbnail on the right (960, 820, 660, 560). Measured on the card itself, not the screen, like media-text/stack-width. In Figma, pick Layout to match the card’s width. */
+    --verity-experience-item-credentials-max-width: 600px; /** The widest an ExperienceItem’s credentials (title, dates, and description) get, so the description keeps a readable line length (600px). In a row, the company takes the rest. */
+    --verity-experience-item-stack-width: 800px; /** Below this width, an ExperienceItem stacks its credentials under the company; at or above it, they sit side by side (800px). Measured on the item itself, not the screen, like media-text/stack-width. In Figma, pick Layout to match the item’s width. */
     --verity-main-nav-logo-offset: var(--verity-spacing-16); /** Bottom padding under the MainNav logo. Lifts the logo so its lowercase letters line up with the NavItem labels beside it. */
     --verity-main-nav-logo-height: var(--verity-size-32); /** Height of the Erin Tozour logo in MainNav: 32 on XL and Large, 24 on Medium and Small. Its width follows, so the logo keeps its proportions. */
     --verity-nav-item-padding: var(--verity-spacing-8); /** Padding on all sides of a NavItem (its tap area). */
@@ -1721,6 +1727,8 @@
     --verity-project-card-thumbnail-height-stacked: 400px; /** In a stacked ProjectCard, the thumbnail’s height (400, 300, 300, 200). It sits flush on top and fills the card’s width. */
     --verity-project-card-text-max-width: 600px; /** The widest a ProjectCard’s title gets (600, 600, 500, 420), so it keeps a readable line length; the frame around it fills the card. */
     --verity-project-card-stack-width: 960px; /** Below this width, a ProjectCard stacks its thumbnail above its title; at or above it, they sit in a row, the thumbnail on the right (960, 820, 660, 560). Measured on the card itself, not the screen, like media-text/stack-width. In Figma, pick Layout to match the card’s width. */
+    --verity-experience-item-credentials-max-width: 600px; /** The widest an ExperienceItem’s credentials (title, dates, and description) get, so the description keeps a readable line length (600px). In a row, the company takes the rest. */
+    --verity-experience-item-stack-width: 800px; /** Below this width, an ExperienceItem stacks its credentials under the company; at or above it, they sit side by side (800px). Measured on the item itself, not the screen, like media-text/stack-width. In Figma, pick Layout to match the item’s width. */
     --verity-main-nav-logo-offset: var(--verity-spacing-16); /** Bottom padding under the MainNav logo. Lifts the logo so its lowercase letters line up with the NavItem labels beside it. */
     --verity-main-nav-logo-height: var(--verity-size-32); /** Height of the Erin Tozour logo in MainNav: 32 on XL and Large, 24 on Medium and Small. Its width follows, so the logo keeps its proportions. */
     --verity-nav-item-padding: var(--verity-spacing-8); /** Padding on all sides of a NavItem (its tap area). */
