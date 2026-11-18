@@ -4,6 +4,15 @@ Every release of Verity, newest first. The format follows [Keep a Changelog](htt
 
 Sites install Verity by tag (for example `github:erinpantz/verity-design-system#v0.3.0`), so a site only changes when it moves to a new tag on purpose.
 
+## [0.9.4] – 2026-11-18
+
+A new Media component, LayeredImage, for Erin’s Profile photo: a picture built from layers that move at different depths with the pointer.
+
+### Added
+
+- **LayeredImage:** layers stacked in a frame with an aspect ratio, each placed and sized in percent of the frame, with a `depth`. As a mouse or trackpad moves over it, each layer moves depth × max offset (40px at a 560px frame, scaled with the frame) × the pointer’s position, easing toward it at the same speed at any frame rate, and the frame tilts up to 4° toward the pointer (`tilt`, on by default). It stays at rest on touch and with reduce motion on, uses transforms only, and stops its loop at rest. It’s one image for screen readers, named by `alt`; the layers are decorative. A layer can have rounded corners (`radius`, from the border radius tokens) and be drawn in one Verity color (`color`). Exported with its prop types `LayeredImageProps` and `LayeredImageLayer`.
+- **Docs:** LayeredImage has a docs page and stories under **Media › LayeredImage**: shapes in Verity’s colors, shapes on a photo, without tilt, and with reduce motion on. The page covers when to use it, its motion values, accessibility, and how Shell keeps its overflow from scrolling the page sideways.
+
 ## [0.9.3] – 2026-11-18
 
 ProjectCard’s arrow is now a character in Imperfecto, so it reads as part of the title, and “résumé” is written with its accents.
@@ -605,6 +614,7 @@ The first library release: everything in the Figma library except Animation, wit
 - **Theme helpers:** `themeScript`, `useTheme`, and `setTheme`, so a site applies the saved theme before the first paint.
 - **The library build:** one entry point with every component and its prop types, one stylesheet (`verity-design-system/styles.css`) with the fonts inside it, and `npm run build:watch` for working with a linked copy.
 
+[0.9.4]: https://github.com/erinpantz/verity-design-system/compare/v0.9.3...v0.9.4
 [0.9.3]: https://github.com/erinpantz/verity-design-system/compare/v0.9.2...v0.9.3
 [0.9.2]: https://github.com/erinpantz/verity-design-system/compare/v0.9.1...v0.9.2
 [0.9.1]: https://github.com/erinpantz/verity-design-system/compare/v0.9.0...v0.9.1
