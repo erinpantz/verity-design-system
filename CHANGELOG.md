@@ -4,6 +4,29 @@ Every release of Verity, newest first. The format follows [Keep a Changelog](htt
 
 Sites install Verity by tag (for example `github:erinpantz/verity-design-system#v0.3.0`), so a site only changes when it moves to a new tag on purpose.
 
+## [0.9.0] – 2026-11-18
+
+Erin designed her own typeface, Imperfecto, in Glyphs. It’s made for large type, so it replaces Schibsted Grotesk in display, headings, and blockquotes. Titles move to Plus Jakarta Sans, which reads better at their smaller sizes.
+
+### Breaking
+
+- **Tokens:** `typography/font-family/schibsted-grotesk` is renamed `typography/font-family/imperfecto`, so `--verity-typography-font-family-schibsted-grotesk` is now `--verity-typography-font-family-imperfecto`. Nothing in Verity used the old name directly; a site that did needs the new one.
+
+### Added
+
+- **Imperfecto,** self-hosted (`src/fonts/imperfecto/`), in one weight: Bold (700). The library build copies it into `dist/fonts/` and writes its `@font-face` rule into `dist/styles.css`, beside the Fontsource fonts. Its font stack falls back to Plus Jakarta Sans, so the characters Imperfecto doesn’t have yet (the em dash, ampersand, parentheses, and a few symbols) use Verity’s other typeface, not a system font.
+
+### Changed
+
+- **Tokens:** display (default and sm, desktop and mobile), the headings, and blockquote use Imperfecto. Display’s weight is 700 (was 800) and blockquote’s is 700 (was 600). Display and the headings have no letter-spacing (display was −1.5, and −1 for display-sm on mobile; the headings were +0.5), which suits Imperfecto’s own spacing. This changes Hero’s and CaseStudyHeader’s headlines, PortfolioCard’s large heading, ProjectCard’s heading, StatCard’s value, Quote, Heading, and Prose’s headings and blockquotes.
+- **Tokens:** `title/lg`, `title/default`, and `title/sm` (and `title-lg-mobile`) use Plus Jakarta Sans (were Schibsted Grotesk). This changes PortfolioCard’s small heading.
+- **Tokens:** `color/border/subtle` is brand neutral 700 (was 500) in both themes. No component uses it yet.
+- **Text in Imperfecto** never has a bolder weight or an italic faked by the browser (`font-synthesis: none`), since Imperfecto has only Bold. A `<strong>` or `<em>` inside a heading or a quote looks the same as the text around it.
+
+### Removed
+
+- **Schibsted Grotesk** (`@fontsource-variable/schibsted-grotesk`): its files are no longer in `dist/fonts/` or `dist/styles.css`.
+
 ## [0.8.12] – 2026-11-13
 
 PortfolioCard grew complex: two types, two sizes, a company, a year, and a label. ProjectCard is a simpler card for the work: the project’s title, an arrow that says it’s clickable, and a thumbnail flush to the card’s edges, in one size that adapts to its width. PortfolioCard stays for now.
@@ -553,6 +576,7 @@ The first library release: everything in the Figma library except Animation, wit
 - **Theme helpers:** `themeScript`, `useTheme`, and `setTheme`, so a site applies the saved theme before the first paint.
 - **The library build:** one entry point with every component and its prop types, one stylesheet (`verity-design-system/styles.css`) with the fonts inside it, and `npm run build:watch` for working with a linked copy.
 
+[0.9.0]: https://github.com/erinpantz/verity-design-system/compare/v0.8.12...v0.9.0
 [0.8.12]: https://github.com/erinpantz/verity-design-system/compare/v0.8.11...v0.8.12
 [0.8.11]: https://github.com/erinpantz/verity-design-system/compare/v0.8.10...v0.8.11
 [0.8.10]: https://github.com/erinpantz/verity-design-system/compare/v0.8.9...v0.8.10
