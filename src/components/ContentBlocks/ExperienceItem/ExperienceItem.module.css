@@ -1,0 +1,160 @@
+/* One role in a list of experience: a top border, padding/md above and
+   below, no side padding and no background, so a list of them reads as
+   rows divided by lines.
+
+   Layout follows the item's own width, not the screen's:
+   - stacked (below experience-item/stack-width): the credentials under the
+     company, spacing/sm apart.
+   - row (at or above it): the company fills the left, and the credentials
+     sit on the right, at their max width, at least spacing/lg away.
+   The credentials are never wider than experience-item/credentials-max-width.
+   A container query can't read a custom property, so npm run tokens writes
+   the stack width out once per breakpoint (container-widths.generated.module.css),
+   and each @container rule sits in its breakpoint's @media rule, as in
+   ProjectCard. It's all CSS, so the first paint is right before JavaScript
+   runs. */
+
+@value medium, large, xl from '../../../styles/breakpoints.generated.module.css';
+@value experienceItemStackWidthSmall, experienceItemStackWidthMedium from '../../../styles/container-widths.generated.module.css';
+@value experienceItemStackWidthLarge, experienceItemStackWidthXL from '../../../styles/container-widths.generated.module.css';
+
+/* The item is the container its layout follows */
+.experienceItem {
+  container: experience-item / inline-size;
+  padding-block: var(--verity-padding-md);
+  border-block-start: var(--verity-border-width-sm) solid var(--verity-color-border-subtle);
+}
+
+/* Stacked, the default */
+.layout {
+  display: flex;
+  flex-direction: column;
+  gap: var(--verity-spacing-sm);
+}
+
+.company {
+  min-inline-size: 0;
+}
+
+/* The title and dates, then the description */
+.credentials {
+  display: flex;
+  flex-direction: column;
+  gap: var(--verity-spacing-xs);
+  max-inline-size: var(--verity-experience-item-credentials-max-width);
+}
+
+.role {
+  display: flex;
+  flex-direction: column;
+  gap: var(--verity-spacing-xxs);
+}
+
+.title,
+.dates,
+.description {
+  margin: 0;
+}
+
+.title {
+  color: var(--verity-color-content-default);
+  font-family: var(--verity-viewport-typography-title-default-font-family);
+  font-size: var(--verity-viewport-typography-title-default-font-size);
+  font-weight: var(--verity-viewport-typography-title-default-font-weight);
+  line-height: var(--verity-viewport-typography-title-default-line-height);
+  letter-spacing: var(--verity-viewport-typography-title-default-letter-spacing);
+  text-transform: var(--verity-viewport-typography-title-default-text-transform);
+}
+
+.dates {
+  color: var(--verity-color-content-subtle);
+  font-family: var(--verity-viewport-typography-meta-default-font-family);
+  font-size: var(--verity-viewport-typography-meta-default-font-size);
+  font-weight: var(--verity-viewport-typography-meta-default-font-weight);
+  line-height: var(--verity-viewport-typography-meta-default-line-height);
+  letter-spacing: var(--verity-viewport-typography-meta-default-letter-spacing);
+  text-transform: var(--verity-viewport-typography-meta-default-text-transform);
+}
+
+.description {
+  color: var(--verity-color-content-subtle);
+  font-family: var(--verity-viewport-typography-body-lg-font-family);
+  font-size: var(--verity-viewport-typography-body-lg-font-size);
+  font-weight: var(--verity-viewport-typography-body-lg-font-weight);
+  line-height: var(--verity-viewport-typography-body-lg-line-height);
+  letter-spacing: var(--verity-viewport-typography-body-lg-letter-spacing);
+  text-transform: var(--verity-viewport-typography-body-lg-text-transform);
+}
+
+/* A row, at or above the stack width: the company takes what the
+   credentials leave, and the credentials keep their max width as long as
+   there's room. One rule per breakpoint, each with that breakpoint's stack
+   width. */
+
+@media not medium {
+  @container experience-item (width >= experienceItemStackWidthSmall) {
+    .layout {
+      flex-direction: row;
+      gap: var(--verity-spacing-lg);
+    }
+
+    .company {
+      flex: 1 1 0;
+    }
+
+    .credentials {
+      flex: 0 1 var(--verity-experience-item-credentials-max-width);
+    }
+  }
+}
+
+@media medium and (not large) {
+  @container experience-item (width >= experienceItemStackWidthMedium) {
+    .layout {
+      flex-direction: row;
+      gap: var(--verity-spacing-lg);
+    }
+
+    .company {
+      flex: 1 1 0;
+    }
+
+    .credentials {
+      flex: 0 1 var(--verity-experience-item-credentials-max-width);
+    }
+  }
+}
+
+@media large and (not xl) {
+  @container experience-item (width >= experienceItemStackWidthLarge) {
+    .layout {
+      flex-direction: row;
+      gap: var(--verity-spacing-lg);
+    }
+
+    .company {
+      flex: 1 1 0;
+    }
+
+    .credentials {
+      flex: 0 1 var(--verity-experience-item-credentials-max-width);
+    }
+  }
+}
+
+@media xl {
+  @container experience-item (width >= experienceItemStackWidthXL) {
+    .layout {
+      flex-direction: row;
+      gap: var(--verity-spacing-lg);
+    }
+
+    .company {
+      flex: 1 1 0;
+    }
+
+    .credentials {
+      flex: 0 1 var(--verity-experience-item-credentials-max-width);
+    }
+  }
+}

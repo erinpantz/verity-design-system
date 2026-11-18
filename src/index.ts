@@ -24,6 +24,8 @@ export { CaseStudyHeader } from './components/ContentBlocks/CaseStudyHeader';
 export type { CaseStudyHeaderProps, CaseStudyFact } from './components/ContentBlocks/CaseStudyHeader';
 export { CaseStudyHighlights } from './components/ContentBlocks/CaseStudyHighlights';
 export type { CaseStudyHighlightsProps } from './components/ContentBlocks/CaseStudyHighlights';
+export { ExperienceItem } from './components/ContentBlocks/ExperienceItem';
+export type { ExperienceItemProps } from './components/ContentBlocks/ExperienceItem';
 export { Hero } from './components/ContentBlocks/Hero';
 export type { HeroProps, HeroAction } from './components/ContentBlocks/Hero';
 export { MediaText } from './components/ContentBlocks/MediaText';

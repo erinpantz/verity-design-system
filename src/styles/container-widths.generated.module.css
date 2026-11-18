@@ -12,12 +12,16 @@
 @value mainNavShortLogoWidthSmall: 544px;
 @value mainNavMenuWidthSmall: 440px;
 @value projectCardStackWidthSmall: 560px;
+@value experienceItemStackWidthSmall: 800px;
 @value mainNavShortLogoWidthMedium: 544px;
 @value mainNavMenuWidthMedium: 440px;
 @value projectCardStackWidthMedium: 660px;
+@value experienceItemStackWidthMedium: 800px;
 @value mainNavShortLogoWidthLarge: 620px;
 @value mainNavMenuWidthLarge: 484px;
 @value projectCardStackWidthLarge: 820px;
+@value experienceItemStackWidthLarge: 800px;
 @value mainNavShortLogoWidthXL: 620px;
 @value mainNavMenuWidthXL: 484px;
 @value projectCardStackWidthXL: 960px;
+@value experienceItemStackWidthXL: 800px;
