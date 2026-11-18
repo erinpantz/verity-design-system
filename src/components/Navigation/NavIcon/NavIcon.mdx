@@ -45,7 +45,8 @@ Without `pose`, the icon is at rest, in `--verity-nav-icon-color-default`, with 
 |---|---|---|---|
 | Left out | At rest, one color | At rest, one color | At rest, one color |
 | `default` | At rest, accents on | At rest, accents on | Upright, accents on |
-| `hover` | The frame grows and the boxes spread out | The seesaw tips | The head tilts |
+| `hover` | The frame grows and the boxes spread out | The seesaw tips | The head tilts to the right, the bun sliding right |
+| `hover-mirrored` | The same as `hover` | The same as `hover` | The head tilts to the left, the bun sliding left: the hover pose, mirrored |
 | `current` | The frame grows and the boxes settle closer in | Level, the same as `default` | Upright, the same as `default` |
 
 <Canvas of={NavIconStories.Portfolio} />
@@ -53,6 +54,8 @@ Without `pose`, the icon is at rest, in `--verity-nav-icon-color-default`, with 
 <Canvas of={NavIconStories.Playground} />
 
 <Canvas of={NavIconStories.Profile} />
+
+**Only Profile has a mirrored hover pose so far.** For Portfolio and Playground, `hover-mirrored` shows their usual hover pose, so it’s safe to use with any page. Use it to make a still icon come alive: for example, a Profile icon that rests in `hover` and every few seconds tips over to `hover-mirrored` and back. The site switches the poses; NavIcon only draws them.
 
 If `pose` changes while the icon is showing, it moves to the new pose with the nav’s playful timing (`--verity-motion-duration-playful`, `--verity-motion-easing-playful`), and the colors fade (`--verity-motion-duration-fast`). With reduce motion on, it switches pose at once. A fixed pose doesn’t move.
 
@@ -86,6 +89,6 @@ The icon draws in `--verity-nav-icon-color-default`, and its accents in `--verit
 |---|---|
 | Component `icon/nav/portfolio`, `icon/nav/playground`, `icon/nav/profile` | `page` |
 | Nav icon variants `State=default`, `State=hover`, and `State=active` | `pose`: `default`, `hover`, and `current` |
-| Not in Figma | `fill`. In Figma, resize the instance. |
+| Not in Figma | `pose`: `hover-mirrored`, and `fill`. In Figma, resize the instance instead of `fill`. |
 
 </VerityDocs>

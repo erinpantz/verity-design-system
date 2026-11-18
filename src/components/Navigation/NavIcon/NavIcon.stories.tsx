@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import { NavIcon, type NavIconPose, type NavIconProps } from './NavIcon';
 
 const PAGES: NavIconProps['page'][] = ['portfolio', 'playground', 'profile'];
-const POSES: NavIconPose[] = ['default', 'hover', 'current'];
+const POSES: NavIconPose[] = ['default', 'hover', 'hover-mirrored', 'current'];
 
 const meta = {
   title: 'Navigation/NavIcon',
@@ -52,7 +52,8 @@ function Poses({ page }: { page: NavIconProps['page'] }) {
 // No pose: the icon in its own color, at rest, without its accents
 export const Default: Story = {};
 
-// Each pose set with the pose prop, accent colors on
+// Each pose set with the pose prop, accent colors on. Only Profile has a
+// mirrored hover pose; Portfolio and Playground show their usual hover pose.
 export const Portfolio: Story = {
   render: () => <Poses page="portfolio" />,
 };
