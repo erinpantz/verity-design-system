@@ -23,6 +23,9 @@ const config: StorybookConfig = {
     // or keyboard, so every state has its own story
     "storybook-addon-pseudo-states",
   ],
+  // Files served as they are, at the site's root: the favicons
+  // (manager-head.html links them). Storybook only; not in the package.
+  "staticDirs": ["./static"],
   "framework": "@storybook/react-vite",
   "core": {
     "disableTelemetry": true
