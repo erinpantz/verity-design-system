@@ -106,6 +106,13 @@ export const Typography: StoryObj = {
       title="Typography"
       intro="Every type token, from font primitives to complete text styles, with each style shown at every breakpoint."
     >
+      {/* Why text renders thinner on a Mac (global.css) */}
+      <p className={styles.note}>
+        On macOS, text is drawn with grayscale smoothing (-webkit-font-smoothing: antialiased in global.css): Verity’s
+        backgrounds are dark, and the default smoothing draws light text on dark heavier than it is, so it would look
+        bolder than in Figma. Every weight renders slightly thinner on a Mac; nothing changes elsewhere. A light theme
+        should revisit this: on light backgrounds, the default smoothing is usually fine.
+      </p>
       <TokenTiers page="typography" options={options} order={groupOrder()} />
     </FoundationPage>
   ),

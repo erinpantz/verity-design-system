@@ -63,6 +63,10 @@ Imperfecto has one weight, Bold (700), so every style that uses it is 700. Text 
 
 Imperfecto's spacing and kerning are built into the font, so its text styles have no letter-spacing (`letter-spacing/0`). If something looks too tight or too loose, fix it in the font rather than with letter-spacing, so every size and every page gets the fix at once.
 
+## Rendering
+
+On a Mac, Verity draws text with grayscale smoothing (`-webkit-font-smoothing: antialiased`, in `global.css`). Verity’s backgrounds are dark, and macOS’s default smoothing draws light letters on dark heavier than they are, so Imperfecto would look bolder on the site than in Glyphs or Figma. With grayscale smoothing, it looks as drawn. When judging a change to the font, look at it on the site, where that smoothing applies.
+
 ## Characters
 
 <Specimen size={40} lineHeight={1.4}>ABCDEFGHIJKLM<br />NOPQRSTUVWXYZ</Specimen>
