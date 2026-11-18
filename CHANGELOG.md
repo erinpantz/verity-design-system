@@ -4,6 +4,19 @@ Every release of Verity, newest first. The format follows [Keep a Changelog](htt
 
 Sites install Verity by tag (for example `github:erinpantz/verity-design-system#v0.3.0`), so a site only changes when it moves to a new tag on purpose.
 
+## [0.9.9] – 2026-11-18
+
+Hero’s intro can have more than one paragraph, and wraps its lines more evenly.
+
+### Added
+
+- **Hero:** `intro` takes a string, as before, or a list of strings, one paragraph each. Each paragraph is a `<p>` in `body-xl`, `--verity-viewport-typography-body-xl-space-before` apart (as a gap). A string renders exactly as before, and the space around the intro doesn’t change.
+
+### Changed
+
+- **Hero:** the intro wraps with `text-wrap: pretty`, so the browser avoids a lone short word on the last line and spreads the breaks more evenly. It only moves line breaks; browsers without it wrap as before.
+- **Docs:** Hero’s page has an Intro section, with stories of a two-paragraph intro on its own and beside a photo, and says how two paragraphs look in Figma: one text layer with a paragraph break and `body/xl`’s paragraph spacing.
+
 ## [0.9.8] – 2026-11-18
 
 Fixes a flash in the logo’s color cycle: with the pointer resting near the logo’s edge, tiny movements in and out flickered the letters between colors and white.
@@ -651,6 +664,7 @@ The first library release: everything in the Figma library except Animation, wit
 - **Theme helpers:** `themeScript`, `useTheme`, and `setTheme`, so a site applies the saved theme before the first paint.
 - **The library build:** one entry point with every component and its prop types, one stylesheet (`verity-design-system/styles.css`) with the fonts inside it, and `npm run build:watch` for working with a linked copy.
 
+[0.9.9]: https://github.com/erinpantz/verity-design-system/compare/v0.9.8...v0.9.9
 [0.9.8]: https://github.com/erinpantz/verity-design-system/compare/v0.9.7...v0.9.8
 [0.9.7]: https://github.com/erinpantz/verity-design-system/compare/v0.9.6...v0.9.7
 [0.9.6]: https://github.com/erinpantz/verity-design-system/compare/v0.9.5...v0.9.6
