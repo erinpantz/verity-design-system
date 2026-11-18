@@ -25,7 +25,7 @@ A link to one project, a case study or a brand gallery, for the Portfolio and Ho
 The whole card is one link (`<a>`), named by its title (`aria-labelledby`), so a screen reader hears “Helping people take their cancer meds on time, link.” It goes through `LinkProvider`, so with a site’s router, it changes the page in the app (see **Actions › LinkProvider**).
 
 - **The title** is a real heading, `h2` by default, so people can jump between cards by heading. In the reading order it comes first; the thumbnail is placed on top or on the right by the CSS.
-- **The arrow isn’t a button.** It has the look of an `IconButton` (`md`, `forward`, background `none`) and follows the card’s state, but it’s a `<span>`, hidden from screen readers: the card is already the link, and a button inside a link would be a second control that does the same thing, which is invalid HTML and confusing to hear.
+- **The arrow is decorative.** It’s the → character in a `<span>`, hidden from screen readers (`aria-hidden`): the card is already the link, named by its title, so “right arrow” would only add noise.
 - **The thumbnail is decorative** (`alt=""`): the title says what the work is.
 
 | Situation | What to do | Example |
@@ -61,11 +61,21 @@ Exactly as PortfolioCard’s; both cards share the same code.
 | State | What changes | Tokens |
 |---|---|---|
 | Default | The deep brand fill and a small shadow, no border | `--verity-color-background-brand-active`, `--verity-shadow-sm-*` |
-| Hover | A brighter fill and a larger shadow; the card lifts and grows; the thumbnail zooms; the arrow takes IconButton’s hover look | `--verity-color-background-brand-hover`, `--verity-shadow-lg-*`, `--verity-color-content-default-hover` |
+| Hover | A brighter fill and a larger shadow; the card lifts and grows; the thumbnail zooms; the title takes the hover text color, and the arrow stays in the default one | `--verity-color-background-brand-hover`, `--verity-shadow-lg-*`, `--verity-color-content-default-hover` |
 | Focus | The same as hover, plus the shared focus ring, on keyboard focus only | `--verity-focus-ring-width`, `--verity-color-border-focus`, `--verity-focus-ring-offset` |
-| Active | Back to the resting fill and small shadow, so it reads as a press; the thumbnail stays zoomed; the arrow takes IconButton’s active look | `--verity-color-background-brand-active`, `--verity-shadow-sm-*` |
+| Active | Back to the resting fill and small shadow, so it reads as a press; the thumbnail stays zoomed; the title keeps the hover text color, and the arrow stays in the default one | `--verity-color-background-brand-active`, `--verity-shadow-sm-*`, `--verity-color-content-default-hover` |
 
 It has no disabled state: a project that isn’t ready isn’t shown.
+
+## Arrow
+
+The arrow says the card is clickable. It’s the → character in Imperfecto, in the `heading-2` text style, so it reads as part of the title rather than as a button.
+
+| What | Token |
+|---|---|
+| Text style | `heading-2` (`--verity-viewport-typography-heading-2-*`), which changes size by breakpoint |
+| Color | `--verity-color-content-default` in every state. The title changes to `--verity-color-content-default-hover` on hover, focus, and press; the arrow doesn’t. |
+| Below the title | `--verity-spacing-md` |
 
 <Canvas of={ProjectCardStories.Hover} />
 
@@ -85,7 +95,7 @@ It has no disabled state: a project that isn’t ready isn’t shown.
 | The title’s widest | `--verity-project-card-text-max-width` (600, 600, 500, 420) |
 | The thumbnail | Flush to the card’s edges: no padding |
 | Corners | `--verity-border-radius-md` |
-| Text | The title in `display-sm` (56/64 on XL and Large, 44/52 on Medium and Small) |
+| Text | The title in `display-sm` (56/64 on XL and Large, 44/52 on Medium and Small); the arrow in `heading-2` |
 
 ## Props
 
@@ -100,7 +110,7 @@ It has no disabled state: a project that isn’t ready isn’t shown.
 | Property `Layout` (`row`, `stacked`) | No prop: the card’s own width decides. Figma previews both. |
 | Property `State` | No prop: the card follows the pointer and the keyboard |
 | The Image instance in `Thumbnail` | `thumbnail`, the image’s URL |
-| The IconButton instance | The arrow, drawn by ProjectCard: the look of an IconButton, not a button |
+| The `Arrow` text layer, “→”, in `heading-2` | The arrow, a `<span>` with the → character in the `heading-2` text style |
 | Not in Figma | `href` and `headingLevel`; the motion; cards in a row matching heights (in Figma, set the shorter cards’ Title frame to Fill) |
 
 </VerityDocs>

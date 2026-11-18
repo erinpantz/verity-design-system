@@ -88,6 +88,22 @@
   text-transform: var(--verity-viewport-typography-display-sm-text-transform);
 }
 
+/* The arrow: the → character in the heading-2 text style, which changes
+   size by breakpoint. Imperfecto has the character, so it never falls back
+   to Plus Jakarta Sans. As in Figma, it stays content/default in every
+   state, while the title takes the card's hover color. */
+.arrow {
+  color: var(--verity-color-content-default);
+  font-family: var(--verity-viewport-typography-heading-2-font-family);
+  font-size: var(--verity-viewport-typography-heading-2-font-size);
+  font-weight: var(--verity-viewport-typography-heading-2-font-weight);
+  /* Imperfecto has only Bold: never fake another weight or italic */
+  font-synthesis: none;
+  line-height: var(--verity-viewport-typography-heading-2-line-height);
+  letter-spacing: var(--verity-viewport-typography-heading-2-letter-spacing);
+  text-transform: var(--verity-viewport-typography-heading-2-text-transform);
+}
+
 /* A row, at or above the stack width: the title fills the width, and the
    thumbnail, on the right, fills the card's height. One rule per
    breakpoint, each with that breakpoint's stack width. */

@@ -1,5 +1,4 @@
 import { useEffect, useId, useRef, useState } from 'react';
-import { IconButton } from '../../Actions/IconButton';
 import { LinkAnchor } from '../../Actions/LinkProvider/LinkProvider';
 import { Skeleton } from '../../FeedbackAndStatus/Skeleton';
 import styles from './ProjectCard.module.css';
@@ -19,9 +18,9 @@ type Status = 'loading' | 'loaded' | 'error';
 
 // A link to one project: the whole card is one <a>, named by its title, so a
 // screen reader hears “Helping people take their cancer meds on time, link.”
-// Inside: the title, an arrow that says it's clickable (the look of an
-// IconButton, not a button: the card is already the link), and a thumbnail
-// flush to the card's edges. The card's own width decides its layout: a row,
+// Inside: the title, an arrow that says it's clickable (the → character, in
+// the heading-2 text style, so it reads as part of the title), and a
+// thumbnail flush to the card's edges. The card's own width decides its layout: a row,
 // with the thumbnail on the right, at or above project-card/stack-width, and
 // stacked, with the thumbnail on top, below it (ProjectCard.module.css).
 export function ProjectCard({ href, heading, headingLevel = 2, thumbnail }: ProjectCardProps) {
@@ -46,9 +45,11 @@ export function ProjectCard({ href, heading, headingLevel = 2, thumbnail }: Proj
           <Heading className={styles.heading} id={headingId}>
             {heading}
           </Heading>
-          {/* Looks like an IconButton and follows the card's state, but
-              it's a span, hidden from screen readers: the card is the link */}
-          <IconButton as="span" icon="forward" label="" size="md" />
+          {/* Hidden from screen readers: the card is already the link,
+              named by its title */}
+          <span className={styles.arrow} aria-hidden="true">
+            →
+          </span>
         </div>
         <div className={styles.thumbnail}>
           {status !== 'loaded' && <Skeleton showShine={status === 'loading'} />}
