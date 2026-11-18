@@ -4,6 +4,16 @@ Every release of Verity, newest first. The format follows [Keep a Changelog](htt
 
 Sites install Verity by tag (for example `github:erinpantz/verity-design-system#v0.3.0`), so a site only changes when it moves to a new tag on purpose.
 
+## [0.9.1] – 2026-11-18
+
+Erin redrew her logos in her own typeface, Imperfecto. “Erin Tozour” is capitalized, its i is one shape, and the marks are new: an E for Erin Tozour, and the i’s slanted dot for Verity.
+
+### Changed
+
+- **ErinTozourLogo and ErinTozourBadge** draw the new logos, each from its own file exported from Figma: `brand/erin-tozour-logo.svg` (“Erin Tozour”), `brand/erin-tozour-logo-first.svg` (“Erin”), and `brand/erin-tozour-mark.svg` (the E). They no longer count and crop shapes from the full logo. Their props and their accessible name, “Erin Tozour,” are unchanged. The full logo is wider at the same height: in MainNav, about 235px at 32px tall (was 212) and 176px at 24px (was 159).
+- **Storybook:** its interface shows the new Verity logo, `brand/verity-logo.svg`, recolored for each theme as before. `brand/verity-mark.svg` is added; nothing uses it yet.
+- **Docs:** ErinTozourLogo’s and ErinTozourBadge’s pages describe the new logos and their three files. ErinTozourBadge’s page lists its `fill` prop. MainNav’s and Shell’s pages write the first name “Erin.”
+
 ## [0.9.0] – 2026-11-18
 
 Erin designed her own typeface, Imperfecto, in Glyphs. It’s made for large type, so it replaces Schibsted Grotesk in display, headings, and blockquotes. Titles move to Plus Jakarta Sans, which reads better at their smaller sizes.
@@ -576,6 +586,7 @@ The first library release: everything in the Figma library except Animation, wit
 - **Theme helpers:** `themeScript`, `useTheme`, and `setTheme`, so a site applies the saved theme before the first paint.
 - **The library build:** one entry point with every component and its prop types, one stylesheet (`verity-design-system/styles.css`) with the fonts inside it, and `npm run build:watch` for working with a linked copy.
 
+[0.9.1]: https://github.com/erinpantz/verity-design-system/compare/v0.9.0...v0.9.1
 [0.9.0]: https://github.com/erinpantz/verity-design-system/compare/v0.8.12...v0.9.0
 [0.8.12]: https://github.com/erinpantz/verity-design-system/compare/v0.8.11...v0.8.12
 [0.8.11]: https://github.com/erinpantz/verity-design-system/compare/v0.8.10...v0.8.11
