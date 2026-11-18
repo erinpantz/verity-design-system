@@ -61,8 +61,8 @@ The logo is the one place on every page that’s Erin’s own, and the accent co
 | The colors | The six content accents in order, which follow the theme (in Blue: yellow, red, violet, green, orange, pink) | `--verity-color-content-accent-one` to `-six` |
 | The wave | At each step, each letter shows the next accent, and each letter is one color behind the letter before it, so the colors travel to the right. Every letter switches at the same moment, with no blend. | `--verity-erin-tozour-logo-duration-color-step` (180ms) per step |
 | Starting | Every letter takes its color at once, on hover (devices with a real pointer) or keyboard focus, and the wave runs as long as either lasts. Each hover picks the wave up where the last one left off. | — |
-| Ending | The letters fade back to the logo’s color | `--verity-motion-duration-fast` |
-| Reduce motion is on | The letters take their colors, and they don’t move | — |
+| Ending | The wave keeps running for a moment, then the letters fade back to the logo’s color. If the pointer comes back during that wait, nothing visible happens: the wave just keeps going, so a pointer slipping off the edge doesn’t make it flicker. | `--verity-motion-duration-fast` to wait, then `--verity-motion-duration-fast` to fade |
+| Reduce motion is on | The letters take their colors, and they don’t move. They wait the same time before going back. | — |
 
 <Canvas of={ErinTozourLogoStories.InALinkHovered} />
 

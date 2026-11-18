@@ -32,18 +32,31 @@
    --logo-accent-amount. (Registered properties like these are global, so
    their names start with logo-.)
    At rest the amount is 0%, so the logo looks exactly as it always has, and
-   the cycle is paused, so it costs nothing. On hover or focus the amount
-   jumps to 100% (no transition), so every letter takes its color at once,
-   and the cycle runs. When it ends, the cycle pauses where it is and the
-   amount fades back to 0% over motion/duration/fast. (A transition can't
-   start from a color an animation was showing, which is why the colors go
-   through custom properties.) With reduce motion on, the cycle never runs:
-   the letters take their colors, and they don't move. */
+   the cycle is paused (--logo-play), so it costs nothing. On hover or focus
+   the amount jumps to 100% and the cycle runs, both at once (no
+   transition), so every letter takes its color right away.
+
+   When the hover or focus ends, the wave keeps running for
+   motion/duration/fast before the letters fade back to the logo's color
+   over motion/duration/fast, and the cycle pauses once they have. So if
+   the pointer slips off the edge and comes back within that wait, nothing
+   visible happens: the wave just keeps going. (A transition can't start
+   from a color an animation was showing, which is why the colors go
+   through custom properties; and pausing can't wait on its own, so it
+   goes through --logo-play, which switches after the wait and the fade.)
+   With reduce motion on, the cycle never runs: the letters take their
+   colors and don't move, and they wait the same time before going back. */
 
 @property --logo-accent {
   syntax: '<color>';
   inherits: false;
   initial-value: transparent;
+}
+
+@property --logo-play {
+  syntax: 'running | paused';
+  inherits: false;
+  initial-value: paused;
 }
 
 @property --logo-accent-amount {
@@ -87,26 +100,30 @@
   animation-timing-function: step-end;
   animation-delay: calc((var(--letter, 0) - 60.5) * var(--verity-erin-tozour-logo-duration-color-step));
   animation-iteration-count: infinite;
-  animation-play-state: paused;
-  transition: --logo-accent-amount var(--verity-motion-duration-fast) var(--verity-motion-easing-standard);
+  animation-play-state: var(--logo-play);
+  /* Leaving: wait, fade, then pause */
+  transition:
+    --logo-accent-amount var(--verity-motion-duration-fast) var(--verity-motion-easing-standard)
+      var(--verity-motion-duration-fast),
+    --logo-play 0s linear calc(2 * var(--verity-motion-duration-fast)) allow-discrete;
 }
 
 @media (hover: hover) {
   .trigger:hover .logo path {
     --logo-accent-amount: 100%;
-    animation-play-state: running;
+    --logo-play: running;
     transition: none;
   }
 }
 
 .trigger:focus-visible .logo path {
   --logo-accent-amount: 100%;
-  animation-play-state: running;
+  --logo-play: running;
   transition: none;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .trigger:is(:hover, :focus-visible) .logo path {
+  .logo path {
     animation-play-state: paused;
   }
 }

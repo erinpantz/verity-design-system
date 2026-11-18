@@ -73,7 +73,7 @@ It’s all CSS, so the first paint is right before JavaScript runs. MainNav is a
 
 ## Logo
 
-The site title, the logo linking home, lights up on hover and keyboard focus: its letters cycle through the theme’s accent colors in a wave from left to right, every 180ms (`--verity-erin-tozour-logo-duration-color-step`), and fade back over `--verity-motion-duration-fast` when the pointer leaves or focus moves on. With reduce motion on, the colors appear and don’t move. It works in every layout, with the full logo or “Erin.” See **Media › ErinTozourLogo**, Color cycle.
+The site title, the logo linking home, lights up on hover and keyboard focus: its letters cycle through the theme’s accent colors in a wave from left to right, every 180ms (`--verity-erin-tozour-logo-duration-color-step`), and when the pointer leaves or focus moves on, they wait `--verity-motion-duration-fast`, then fade back over the same time, so a pointer slipping off the edge for a moment doesn’t make them flicker. With reduce motion on, the colors appear and don’t move. It works in every layout, with the full logo or “Erin.” See **Media › ErinTozourLogo**, Color cycle.
 
 **Its hover area is larger than the logo:** an invisible layer `--verity-spacing-xs` past the link on every side (16px on XL and Large, 8px on Medium and Small), so a pointer resting near the logo’s edge still counts as hovering and the colors don’t flicker. Clicking or tapping there goes home too. The link’s size in the layout and its focus ring, which fits the logo, don’t change, and the area never reaches the links or the menu button: the closest they come is 17px, in the short layout on Small.
 
