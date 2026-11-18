@@ -4,6 +4,15 @@ Every release of Verity, newest first. The format follows [Keep a Changelog](htt
 
 Sites install Verity by tag (for example `github:erinpantz/verity-design-system#v0.3.0`), so a site only changes when it moves to a new tag on purpose.
 
+## [0.9.5] – 2026-11-18
+
+MainNav stays at the top of the screen as the page scrolls, so the way to the other pages never disappears on a long page. This reverses the earlier choice to let the nav scroll away.
+
+### Changed
+
+- **Shell:** in default mode, MainNav sticks to the top of the screen at every width and in every layout (`position: sticky`, so it works before JavaScript runs), on a solid `--verity-color-background-default`, without changing size. Once the page has scrolled away from the top, a divider (`--verity-color-border-divider` at `--verity-border-width-sm`) fades in along its bottom edge, at once with reduce motion on; without JavaScript, the nav still sticks, without the divider. The nav sits above the page’s content, a Hero’s Reel and a LayeredImage’s shapes included, and above PageLoader, so it stays usable while a page loads. Shell measures the nav’s height and sets the page’s `scroll-padding-top` to it, so links to headings, the skip link’s target, and focused elements land below the nav (WCAG 2.4.11). Focused mode doesn’t change. **PageLoader** starts at the stuck nav’s bottom edge once the page has scrolled. No props change.
+- **Docs:** Shell’s page has a new Nav section (what sticks, the divider, and why) and a Long page story. MainNav’s and PageLoader’s pages describe the nav staying at the top.
+
 ## [0.9.4] – 2026-11-18
 
 A new Media component, LayeredImage, for Erin’s Profile photo: a picture built from layers that move at different depths with the pointer.
@@ -614,6 +623,7 @@ The first library release: everything in the Figma library except Animation, wit
 - **Theme helpers:** `themeScript`, `useTheme`, and `setTheme`, so a site applies the saved theme before the first paint.
 - **The library build:** one entry point with every component and its prop types, one stylesheet (`verity-design-system/styles.css`) with the fonts inside it, and `npm run build:watch` for working with a linked copy.
 
+[0.9.5]: https://github.com/erinpantz/verity-design-system/compare/v0.9.4...v0.9.5
 [0.9.4]: https://github.com/erinpantz/verity-design-system/compare/v0.9.3...v0.9.4
 [0.9.3]: https://github.com/erinpantz/verity-design-system/compare/v0.9.2...v0.9.3
 [0.9.2]: https://github.com/erinpantz/verity-design-system/compare/v0.9.1...v0.9.2
