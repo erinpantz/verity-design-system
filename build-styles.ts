@@ -1,7 +1,9 @@
 // Finishes the library's styles after each Vite build (and each rebuild in
 // watch mode), so the site gets one real stylesheet and its fonts:
 //
-// 1. Copies the font files named in src/styles/fonts.css into dist/fonts/.
+// 1. Copies the font files named in src/styles/fonts.css into dist/fonts/:
+//    those of the Fontsource packages it imports, and those of its own
+//    @font-face rules (Imperfecto, in src/fonts/).
 // 2. Writes dist/styles.css: the fonts' @font-face rules (pointing to
 //    ./fonts/…), then Vite's CSS (the tokens, the base rules, and every
 //    component's CSS Modules).
@@ -20,21 +22,35 @@ const FONTS = 'src/styles/fonts.css';
 const BREAKPOINTS = 'src/styles/breakpoints.generated.module.css';
 const require = createRequire(import.meta.url);
 
-// The @font-face rules for every font fonts.css imports, with each font file
-// copied into fontsDir and its url() pointing there
+// The @font-face rules for every font in fonts.css, with each font file
+// copied into fontsDir and its url() pointing there: first the rules of the
+// Fontsource packages it imports, then its own @font-face rules
 function fontFaces(fontsDir: string) {
-  const imports = [...fs.readFileSync(FONTS, 'utf8').matchAll(/@import\s+'([^']+)'/g)].map((m) => m[1]);
+  const source = fs.readFileSync(FONTS, 'utf8');
   fs.mkdirSync(fontsDir, { recursive: true });
-  return imports
-    .map((specifier) => {
-      const cssFile = require.resolve(specifier);
-      const css = fs.readFileSync(cssFile, 'utf8');
-      return css.replace(/url\((['"]?)\.\/files\/([^'")]+)\1\)/g, (_, _quote, file: string) => {
-        fs.copyFileSync(path.join(path.dirname(cssFile), 'files', file), path.join(fontsDir, file));
-        return `url(./fonts/${file})`;
-      });
-    })
-    .join('\n');
+
+  // Copies one font file into fontsDir and returns its new url()
+  const copied = (file: string) => {
+    fs.copyFileSync(file, path.join(fontsDir, path.basename(file)));
+    return `url(./fonts/${path.basename(file)})`;
+  };
+
+  const imported = [...source.matchAll(/@import\s+'([^']+)'/g)].map((m) => {
+    const cssFile = require.resolve(m[1]);
+    const css = fs.readFileSync(cssFile, 'utf8');
+    return css.replace(/url\((['"]?)\.\/files\/([^'")]+)\1\)/g, (_, _quote, file: string) =>
+      copied(path.join(path.dirname(cssFile), 'files', file)),
+    );
+  });
+
+  // Local rules: their url()s are relative to fonts.css
+  const local = [...source.matchAll(/@font-face\s*\{[^}]*\}/g)].map((m) =>
+    m[0].replace(/url\((['"]?)([^'")]+)\1\)/g, (_, _quote, file: string) =>
+      copied(path.resolve(path.dirname(FONTS), file)),
+    ),
+  );
+
+  return [...imported, ...local].join('\n');
 }
 
 export function verityStyles(): Plugin {

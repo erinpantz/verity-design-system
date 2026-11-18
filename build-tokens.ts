@@ -21,11 +21,14 @@ const CONTAINER_WIDTHS = ['main-nav.short-logo-width', 'main-nav.menu-width', 'p
 // Font stacks: Figma font name → CSS font-family list.
 // Figma uses each font's plain name. Fontsource registers the self-hosted
 // variable fonts with "Variable" added, so the stack lists that first, then a
-// locally installed copy, then a system font as a last resort.
+// locally installed copy, then a system font as a last resort. Imperfecto is
+// self-hosted in src/fonts/ under its plain name (src/styles/fonts.css).
 // When a font changes in Figma, add or update its line here.
 const FONT_STACKS: Record<string, string> = {
   'Plus Jakarta Sans': "'Plus Jakarta Sans Variable', 'Plus Jakarta Sans', sans-serif",
-  'Schibsted Grotesk': "'Schibsted Grotesk Variable', 'Schibsted Grotesk', sans-serif",
+  // Imperfecto has no em dash, ampersand, or parentheses yet: those fall back
+  // to Plus Jakarta Sans, Verity's other typeface, not a system font
+  'Imperfecto': "'Imperfecto', 'Plus Jakarta Sans Variable', 'Plus Jakarta Sans', sans-serif",
   // Fontsource has no variable version of IBM Plex Mono, so there's no "Variable" name to list first
   'IBM Plex Mono': "'IBM Plex Mono', ui-monospace, monospace",
 };

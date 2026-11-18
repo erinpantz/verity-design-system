@@ -1,10 +1,20 @@
-/* Verity's fonts, self-hosted with Fontsource (decisions log, Oct 27). Font
-   stacks are set in build-tokens.ts.
+/* Verity's fonts, all self-hosted. Font stacks are set in build-tokens.ts.
+   - Imperfecto, Erin's own typeface, for large type (display, headings, and
+     blockquotes). One weight, Bold (700). Its file is in src/fonts/.
+   - Plus Jakarta Sans for everything else, and IBM Plex Mono for code, from
+     Fontsource (decisions log, Oct 27).
 
    Storybook imports this file. The library build reads it too: it copies the
    font files into dist/fonts/ and writes their @font-face rules at the top of
    dist/styles.css, so the fonts ship inside Verity (see build-styles.ts). */
 
 @import '@fontsource-variable/plus-jakarta-sans';
-@import '@fontsource-variable/schibsted-grotesk';
 @import '@fontsource/ibm-plex-mono/400.css';
+
+@font-face {
+  font-family: 'Imperfecto';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('../fonts/imperfecto/Imperfecto-Bold.woff2') format('woff2');
+}
