@@ -141,7 +141,7 @@
       },
       "font-family": {
         "$type": "fontFamily",
-        "$value": "{typography.font-family.schibsted-grotesk}"
+        "$value": "{typography.font-family.plus-jakarta-sans}"
       },
       "text-transform": {
         "$type": "string",
@@ -203,7 +203,7 @@
       },
       "font-family": {
         "$type": "fontFamily",
-        "$value": "{typography.font-family.schibsted-grotesk}"
+        "$value": "{typography.font-family.plus-jakarta-sans}"
       },
       "font-size": {
         "$type": "dimension",
@@ -225,7 +225,7 @@
     "display-default-mobile": {
       "font-weight": {
         "$type": "fontWeight",
-        "$value": "{typography.font-weight.800}",
+        "$value": "{typography.font-weight.700}",
         "$extensions": {
           "com.figma": {
             "scopes": [
@@ -241,7 +241,7 @@
       },
       "font-family": {
         "$type": "fontFamily",
-        "$value": "{typography.font-family.schibsted-grotesk}"
+        "$value": "{typography.font-family.imperfecto}"
       },
       "text-transform": {
         "$type": "string",
@@ -265,7 +265,7 @@
       },
       "letter-spacing": {
         "$type": "dimension",
-        "$value": "{typography.letter-spacing.minus-1-half}",
+        "$value": "{typography.letter-spacing.0}",
         "$extensions": {
           "com.figma": {
             "scopes": [
@@ -351,7 +351,7 @@
       },
       "font-family": {
         "$type": "fontFamily",
-        "$value": "{typography.font-family.schibsted-grotesk}"
+        "$value": "{typography.font-family.plus-jakarta-sans}"
       },
       "line-height": {
         "$type": "dimension",
@@ -405,7 +405,7 @@
       },
       "font-family": {
         "$type": "fontFamily",
-        "$value": "{typography.font-family.schibsted-grotesk}"
+        "$value": "{typography.font-family.plus-jakarta-sans}"
       },
       "text-transform": {
         "$type": "string",
@@ -447,7 +447,7 @@
     "heading-3-mobile": {
       "letter-spacing": {
         "$type": "dimension",
-        "$value": "{typography.letter-spacing.half}",
+        "$value": "{typography.letter-spacing.0}",
         "$extensions": {
           "com.figma": {
             "scopes": [
@@ -499,7 +499,7 @@
       },
       "font-family": {
         "$type": "fontFamily",
-        "$value": "{typography.font-family.schibsted-grotesk}"
+        "$value": "{typography.font-family.imperfecto}"
       },
       "font-weight": {
         "$type": "fontWeight",
@@ -557,7 +557,7 @@
       },
       "font-weight": {
         "$type": "fontWeight",
-        "$value": "{typography.font-weight.800}",
+        "$value": "{typography.font-weight.700}",
         "$extensions": {
           "com.figma": {
             "scopes": [
@@ -573,11 +573,11 @@
       },
       "font-family": {
         "$type": "fontFamily",
-        "$value": "{typography.font-family.schibsted-grotesk}"
+        "$value": "{typography.font-family.imperfecto}"
       },
       "letter-spacing": {
         "$type": "dimension",
-        "$value": "{typography.letter-spacing.minus-1-half}",
+        "$value": "{typography.letter-spacing.0}",
         "$extensions": {
           "com.figma": {
             "scopes": [
@@ -627,7 +627,7 @@
       },
       "letter-spacing": {
         "$type": "dimension",
-        "$value": "{typography.letter-spacing.half}",
+        "$value": "{typography.letter-spacing.0}",
         "$extensions": {
           "com.figma": {
             "scopes": [
@@ -663,7 +663,7 @@
       },
       "font-family": {
         "$type": "fontFamily",
-        "$value": "{typography.font-family.schibsted-grotesk}"
+        "$value": "{typography.font-family.imperfecto}"
       }
     },
     "heading-2-mobile": {
@@ -689,7 +689,7 @@
       },
       "font-family": {
         "$type": "fontFamily",
-        "$value": "{typography.font-family.schibsted-grotesk}"
+        "$value": "{typography.font-family.imperfecto}"
       },
       "font-size": {
         "$type": "dimension",
@@ -725,7 +725,7 @@
       },
       "letter-spacing": {
         "$type": "dimension",
-        "$value": "{typography.letter-spacing.half}",
+        "$value": "{typography.letter-spacing.0}",
         "$extensions": {
           "com.figma": {
             "scopes": [
@@ -821,7 +821,7 @@
       },
       "letter-spacing": {
         "$type": "dimension",
-        "$value": "{typography.letter-spacing.half}",
+        "$value": "{typography.letter-spacing.0}",
         "$extensions": {
           "com.figma": {
             "scopes": [
@@ -853,7 +853,7 @@
       },
       "font-family": {
         "$type": "fontFamily",
-        "$value": "{typography.font-family.schibsted-grotesk}"
+        "$value": "{typography.font-family.imperfecto}"
       },
       "font-weight": {
         "$type": "fontWeight",
@@ -1039,7 +1039,7 @@
     "heading-1-mobile": {
       "letter-spacing": {
         "$type": "dimension",
-        "$value": "{typography.letter-spacing.half}",
+        "$value": "{typography.letter-spacing.0}",
         "$extensions": {
           "com.figma": {
             "scopes": [
@@ -1107,13 +1107,13 @@
       },
       "font-family": {
         "$type": "fontFamily",
-        "$value": "{typography.font-family.schibsted-grotesk}"
+        "$value": "{typography.font-family.imperfecto}"
       }
     },
     "display-sm": {
       "font-weight": {
         "$type": "fontWeight",
-        "$value": "{typography.font-weight.800}",
+        "$value": "{typography.font-weight.700}",
         "$extensions": {
           "com.figma": {
             "scopes": [
@@ -1145,7 +1145,7 @@
       },
       "letter-spacing": {
         "$type": "dimension",
-        "$value": "{typography.letter-spacing.minus-1-half}",
+        "$value": "{typography.letter-spacing.0}",
         "$extensions": {
           "com.figma": {
             "scopes": [
@@ -1165,7 +1165,7 @@
       },
       "font-family": {
         "$type": "fontFamily",
-        "$value": "{typography.font-family.schibsted-grotesk}"
+        "$value": "{typography.font-family.imperfecto}"
       },
       "line-height": {
         "$type": "dimension",
@@ -1219,11 +1219,11 @@
       },
       "font-family": {
         "$type": "fontFamily",
-        "$value": "{typography.font-family.schibsted-grotesk}"
+        "$value": "{typography.font-family.imperfecto}"
       },
       "letter-spacing": {
         "$type": "dimension",
-        "$value": "{typography.letter-spacing.half}",
+        "$value": "{typography.letter-spacing.0}",
         "$extensions": {
           "com.figma": {
             "scopes": [
@@ -1339,7 +1339,7 @@
       },
       "letter-spacing": {
         "$type": "dimension",
-        "$value": "{typography.letter-spacing.minus-1}",
+        "$value": "{typography.letter-spacing.0}",
         "$extensions": {
           "com.figma": {
             "scopes": [
@@ -1371,11 +1371,11 @@
       },
       "font-family": {
         "$type": "fontFamily",
-        "$value": "{typography.font-family.schibsted-grotesk}"
+        "$value": "{typography.font-family.imperfecto}"
       },
       "font-weight": {
         "$type": "fontWeight",
-        "$value": "{typography.font-weight.800}",
+        "$value": "{typography.font-weight.700}",
         "$extensions": {
           "com.figma": {
             "scopes": [
@@ -1705,11 +1705,11 @@
     "blockquote": {
       "font-family": {
         "$type": "fontFamily",
-        "$value": "{typography.font-family.schibsted-grotesk}"
+        "$value": "{typography.font-family.imperfecto}"
       },
       "font-weight": {
         "$type": "fontWeight",
-        "$value": "{typography.font-weight.600}",
+        "$value": "{typography.font-weight.700}",
         "$extensions": {
           "com.figma": {
             "scopes": [
@@ -1779,11 +1779,11 @@
     "blockquote-mobile": {
       "font-family": {
         "$type": "fontFamily",
-        "$value": "{typography.font-family.schibsted-grotesk}"
+        "$value": "{typography.font-family.imperfecto}"
       },
       "font-weight": {
         "$type": "fontWeight",
-        "$value": "{typography.font-weight.600}",
+        "$value": "{typography.font-weight.700}",
         "$extensions": {
           "com.figma": {
             "scopes": [

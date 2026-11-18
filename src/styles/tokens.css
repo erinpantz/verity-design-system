@@ -151,7 +151,7 @@
   --verity-typography-font-weight-700: 700;
   --verity-typography-font-weight-800: 800;
   --verity-typography-font-family-plus-jakarta-sans: 'Plus Jakarta Sans Variable', 'Plus Jakarta Sans', sans-serif;
-  --verity-typography-font-family-schibsted-grotesk: 'Schibsted Grotesk Variable', 'Schibsted Grotesk', sans-serif;
+  --verity-typography-font-family-imperfecto: 'Imperfecto', 'Plus Jakarta Sans Variable', 'Plus Jakarta Sans', sans-serif; /** Imperfecto, Erin’s own typeface (Bold only), for display, headings, and blockquotes: large type. */
   --verity-typography-font-family-ibm-plex-mono: 'IBM Plex Mono', ui-monospace, monospace;
   --verity-spacing-0: 0px;
   --verity-spacing-4: 4px;
@@ -303,53 +303,53 @@
   --verity-typography-title-sm-line-height: var(--verity-typography-line-height-32);
   --verity-typography-title-sm-font-size: var(--verity-typography-font-size-24);
   --verity-typography-title-sm-font-weight: var(--verity-typography-font-weight-700);
-  --verity-typography-title-sm-font-family: var(--verity-typography-font-family-schibsted-grotesk);
+  --verity-typography-title-sm-font-family: var(--verity-typography-font-family-plus-jakarta-sans);
   --verity-typography-title-sm-text-transform: var(--verity-typography-text-transform-none);
   --verity-typography-title-default-text-transform: var(--verity-typography-text-transform-none);
   --verity-typography-title-default-line-height: var(--verity-typography-line-height-36);
   --verity-typography-title-default-font-weight: var(--verity-typography-font-weight-700);
   --verity-typography-title-default-letter-spacing: var(--verity-typography-letter-spacing-minus-half);
-  --verity-typography-title-default-font-family: var(--verity-typography-font-family-schibsted-grotesk);
+  --verity-typography-title-default-font-family: var(--verity-typography-font-family-plus-jakarta-sans);
   --verity-typography-title-default-font-size: var(--verity-typography-font-size-28);
-  --verity-typography-display-default-mobile-font-weight: var(--verity-typography-font-weight-800);
-  --verity-typography-display-default-mobile-font-family: var(--verity-typography-font-family-schibsted-grotesk);
+  --verity-typography-display-default-mobile-font-weight: var(--verity-typography-font-weight-700);
+  --verity-typography-display-default-mobile-font-family: var(--verity-typography-font-family-imperfecto);
   --verity-typography-display-default-mobile-font-size: var(--verity-typography-font-size-44);
-  --verity-typography-display-default-mobile-letter-spacing: var(--verity-typography-letter-spacing-minus-1-half);
+  --verity-typography-display-default-mobile-letter-spacing: var(--verity-typography-letter-spacing-0);
   --verity-typography-display-default-mobile-line-height: var(--verity-typography-line-height-52);
   --verity-typography-title-lg-mobile-letter-spacing: var(--verity-typography-letter-spacing-minus-half);
   --verity-typography-title-lg-mobile-font-size: var(--verity-typography-font-size-28);
   --verity-typography-title-lg-mobile-font-weight: var(--verity-typography-font-weight-700);
-  --verity-typography-title-lg-mobile-font-family: var(--verity-typography-font-family-schibsted-grotesk);
+  --verity-typography-title-lg-mobile-font-family: var(--verity-typography-font-family-plus-jakarta-sans);
   --verity-typography-title-lg-mobile-line-height: var(--verity-typography-line-height-36);
   --verity-typography-title-lg-font-size: var(--verity-typography-font-size-32);
   --verity-typography-title-lg-font-weight: var(--verity-typography-font-weight-700);
-  --verity-typography-title-lg-font-family: var(--verity-typography-font-family-schibsted-grotesk);
+  --verity-typography-title-lg-font-family: var(--verity-typography-font-family-plus-jakarta-sans);
   --verity-typography-title-lg-text-transform: var(--verity-typography-text-transform-none);
   --verity-typography-title-lg-line-height: var(--verity-typography-line-height-40);
   --verity-typography-title-lg-letter-spacing: var(--verity-typography-letter-spacing-minus-half);
-  --verity-typography-heading-3-mobile-letter-spacing: var(--verity-typography-letter-spacing-half);
+  --verity-typography-heading-3-mobile-letter-spacing: var(--verity-typography-letter-spacing-0);
   --verity-typography-heading-3-mobile-font-size: var(--verity-typography-font-size-28);
   --verity-typography-heading-3-mobile-line-height: var(--verity-typography-line-height-36);
-  --verity-typography-heading-3-mobile-font-family: var(--verity-typography-font-family-schibsted-grotesk);
+  --verity-typography-heading-3-mobile-font-family: var(--verity-typography-font-family-imperfecto);
   --verity-typography-heading-3-mobile-font-weight: var(--verity-typography-font-weight-700);
   --verity-typography-display-default-line-height: var(--verity-typography-line-height-88);
   --verity-typography-display-default-text-transform: var(--verity-typography-text-transform-none);
   --verity-typography-display-default-font-size: var(--verity-typography-font-size-80);
-  --verity-typography-display-default-font-weight: var(--verity-typography-font-weight-800);
-  --verity-typography-display-default-font-family: var(--verity-typography-font-family-schibsted-grotesk);
-  --verity-typography-display-default-letter-spacing: var(--verity-typography-letter-spacing-minus-1-half);
+  --verity-typography-display-default-font-weight: var(--verity-typography-font-weight-700);
+  --verity-typography-display-default-font-family: var(--verity-typography-font-family-imperfecto);
+  --verity-typography-display-default-letter-spacing: var(--verity-typography-letter-spacing-0);
   --verity-typography-heading-3-line-height: var(--verity-typography-line-height-40);
   --verity-typography-heading-3-font-size: var(--verity-typography-font-size-32);
-  --verity-typography-heading-3-letter-spacing: var(--verity-typography-letter-spacing-half);
+  --verity-typography-heading-3-letter-spacing: var(--verity-typography-letter-spacing-0);
   --verity-typography-heading-3-text-transform: var(--verity-typography-text-transform-none);
   --verity-typography-heading-3-font-weight: var(--verity-typography-font-weight-700);
-  --verity-typography-heading-3-font-family: var(--verity-typography-font-family-schibsted-grotesk);
+  --verity-typography-heading-3-font-family: var(--verity-typography-font-family-imperfecto);
   --verity-typography-heading-2-mobile-text-transform: var(--verity-typography-text-transform-none);
   --verity-typography-heading-2-mobile-line-height: var(--verity-typography-line-height-40);
-  --verity-typography-heading-2-mobile-font-family: var(--verity-typography-font-family-schibsted-grotesk);
+  --verity-typography-heading-2-mobile-font-family: var(--verity-typography-font-family-imperfecto);
   --verity-typography-heading-2-mobile-font-size: var(--verity-typography-font-size-32);
   --verity-typography-heading-2-mobile-font-weight: var(--verity-typography-font-weight-700);
-  --verity-typography-heading-2-mobile-letter-spacing: var(--verity-typography-letter-spacing-half);
+  --verity-typography-heading-2-mobile-letter-spacing: var(--verity-typography-letter-spacing-0);
   --verity-typography-meta-default-font-size: var(--verity-typography-font-size-14);
   --verity-typography-meta-default-letter-spacing: var(--verity-typography-letter-spacing-2);
   --verity-typography-meta-default-text-transform: var(--verity-typography-text-transform-uppercase);
@@ -357,9 +357,9 @@
   --verity-typography-meta-default-line-height: var(--verity-typography-line-height-20);
   --verity-typography-meta-default-font-weight: var(--verity-typography-font-weight-700);
   --verity-typography-heading-2-text-transform: var(--verity-typography-text-transform-none);
-  --verity-typography-heading-2-letter-spacing: var(--verity-typography-letter-spacing-half);
+  --verity-typography-heading-2-letter-spacing: var(--verity-typography-letter-spacing-0);
   --verity-typography-heading-2-font-size: var(--verity-typography-font-size-40);
-  --verity-typography-heading-2-font-family: var(--verity-typography-font-family-schibsted-grotesk);
+  --verity-typography-heading-2-font-family: var(--verity-typography-font-family-imperfecto);
   --verity-typography-heading-2-font-weight: var(--verity-typography-font-weight-700);
   --verity-typography-heading-2-line-height: var(--verity-typography-line-height-48);
   --verity-typography-label-sm-font-size: var(--verity-typography-font-size-14);
@@ -374,22 +374,22 @@
   --verity-typography-body-sm-font-weight: var(--verity-typography-font-weight-400);
   --verity-typography-body-sm-letter-spacing: var(--verity-typography-letter-spacing-0);
   --verity-typography-body-sm-font-family: var(--verity-typography-font-family-plus-jakarta-sans);
-  --verity-typography-heading-1-mobile-letter-spacing: var(--verity-typography-letter-spacing-half);
+  --verity-typography-heading-1-mobile-letter-spacing: var(--verity-typography-letter-spacing-0);
   --verity-typography-heading-1-mobile-text-transform: var(--verity-typography-text-transform-none);
   --verity-typography-heading-1-mobile-line-height: var(--verity-typography-line-height-48);
   --verity-typography-heading-1-mobile-font-weight: var(--verity-typography-font-weight-700);
   --verity-typography-heading-1-mobile-font-size: var(--verity-typography-font-size-40);
-  --verity-typography-heading-1-mobile-font-family: var(--verity-typography-font-family-schibsted-grotesk);
-  --verity-typography-display-sm-font-weight: var(--verity-typography-font-weight-800);
+  --verity-typography-heading-1-mobile-font-family: var(--verity-typography-font-family-imperfecto);
+  --verity-typography-display-sm-font-weight: var(--verity-typography-font-weight-700);
   --verity-typography-display-sm-font-size: var(--verity-typography-font-size-56);
-  --verity-typography-display-sm-letter-spacing: var(--verity-typography-letter-spacing-minus-1-half);
+  --verity-typography-display-sm-letter-spacing: var(--verity-typography-letter-spacing-0);
   --verity-typography-display-sm-text-transform: var(--verity-typography-text-transform-none);
-  --verity-typography-display-sm-font-family: var(--verity-typography-font-family-schibsted-grotesk);
+  --verity-typography-display-sm-font-family: var(--verity-typography-font-family-imperfecto);
   --verity-typography-display-sm-line-height: var(--verity-typography-line-height-64);
   --verity-typography-heading-1-line-height: var(--verity-typography-line-height-56);
   --verity-typography-heading-1-font-weight: var(--verity-typography-font-weight-700);
-  --verity-typography-heading-1-font-family: var(--verity-typography-font-family-schibsted-grotesk);
-  --verity-typography-heading-1-letter-spacing: var(--verity-typography-letter-spacing-half);
+  --verity-typography-heading-1-font-family: var(--verity-typography-font-family-imperfecto);
+  --verity-typography-heading-1-letter-spacing: var(--verity-typography-letter-spacing-0);
   --verity-typography-heading-1-font-size: var(--verity-typography-font-size-48);
   --verity-typography-heading-1-text-transform: var(--verity-typography-text-transform-none);
   --verity-typography-body-lg-letter-spacing: var(--verity-typography-letter-spacing-0);
@@ -398,10 +398,10 @@
   --verity-typography-body-lg-line-height: var(--verity-typography-line-height-32);
   --verity-typography-body-lg-font-weight: var(--verity-typography-font-weight-400);
   --verity-typography-body-lg-text-transform: var(--verity-typography-text-transform-none);
-  --verity-typography-display-sm-mobile-letter-spacing: var(--verity-typography-letter-spacing-minus-1);
+  --verity-typography-display-sm-mobile-letter-spacing: var(--verity-typography-letter-spacing-0);
   --verity-typography-display-sm-mobile-font-size: var(--verity-typography-font-size-44);
-  --verity-typography-display-sm-mobile-font-family: var(--verity-typography-font-family-schibsted-grotesk);
-  --verity-typography-display-sm-mobile-font-weight: var(--verity-typography-font-weight-800);
+  --verity-typography-display-sm-mobile-font-family: var(--verity-typography-font-family-imperfecto);
+  --verity-typography-display-sm-mobile-font-weight: var(--verity-typography-font-weight-700);
   --verity-typography-display-sm-mobile-line-height: var(--verity-typography-line-height-52);
   --verity-typography-meta-sm-letter-spacing: var(--verity-typography-letter-spacing-2);
   --verity-typography-meta-sm-line-height: var(--verity-typography-line-height-16);
@@ -427,14 +427,14 @@
   --verity-typography-body-xl-line-height: var(--verity-typography-line-height-40);
   --verity-typography-body-xl-letter-spacing: var(--verity-typography-letter-spacing-0);
   --verity-typography-body-xl-text-transform: var(--verity-typography-text-transform-none);
-  --verity-typography-blockquote-font-family: var(--verity-typography-font-family-schibsted-grotesk);
-  --verity-typography-blockquote-font-weight: var(--verity-typography-font-weight-600);
+  --verity-typography-blockquote-font-family: var(--verity-typography-font-family-imperfecto);
+  --verity-typography-blockquote-font-weight: var(--verity-typography-font-weight-700);
   --verity-typography-blockquote-font-size: var(--verity-typography-font-size-32);
   --verity-typography-blockquote-line-height: var(--verity-typography-line-height-40);
   --verity-typography-blockquote-letter-spacing: var(--verity-typography-letter-spacing-0);
   --verity-typography-blockquote-text-transform: var(--verity-typography-text-transform-none);
-  --verity-typography-blockquote-mobile-font-family: var(--verity-typography-font-family-schibsted-grotesk);
-  --verity-typography-blockquote-mobile-font-weight: var(--verity-typography-font-weight-600);
+  --verity-typography-blockquote-mobile-font-family: var(--verity-typography-font-family-imperfecto);
+  --verity-typography-blockquote-mobile-font-weight: var(--verity-typography-font-weight-700);
   --verity-typography-blockquote-mobile-font-size: var(--verity-typography-font-size-20);
   --verity-typography-blockquote-mobile-line-height: var(--verity-typography-line-height-32);
   --verity-typography-blockquote-mobile-letter-spacing: var(--verity-typography-letter-spacing-0);
@@ -552,7 +552,7 @@
   --verity-color-border-focus: var(--verity-color-brand-blue-400); /** Focus ring on the default (dark) background. */
   --verity-color-border-focus-brand: var(--verity-color-brand-blue-100); /** Focus ring on a brand background. */
   --verity-color-border-focus-knockout: var(--verity-color-brand-blue-700); /** Focus ring on a knockout (light) background. */
-  --verity-color-border-subtle: var(--verity-color-brand-neutral-500);
+  --verity-color-border-subtle: var(--verity-color-brand-neutral-700);
   --verity-color-border-divider: var(--verity-color-brand-blue-800); /** Decorative lines that separate groups, such as the line above Resume in MainNav. Low contrast on purpose: a divider that only groups items needn’t meet 3:1. Use color/border/subtle for borders that show a control’s edge. */
   --verity-color-border-brand-active: var(--verity-color-brand-blue-700);
   --verity-color-border-accent-one-hover: var(--verity-color-brand-yellow-100);
@@ -720,7 +720,7 @@
   --verity-color-border-focus: var(--verity-color-brand-red-400); /** Focus ring on the default (dark) background. */
   --verity-color-border-focus-brand: var(--verity-color-brand-red-100); /** Focus ring on a brand background. */
   --verity-color-border-focus-knockout: var(--verity-color-brand-red-600); /** Focus ring on a knockout (light) background. */
-  --verity-color-border-subtle: var(--verity-color-brand-neutral-500);
+  --verity-color-border-subtle: var(--verity-color-brand-neutral-700);
   --verity-color-border-divider: var(--verity-color-brand-red-800); /** Decorative lines that separate groups, such as the line above Resume in MainNav. Low contrast on purpose: a divider that only groups items needn’t meet 3:1. Use color/border/subtle for borders that show a control’s edge. */
   --verity-color-border-brand-active: var(--verity-color-brand-red-600);
   --verity-color-border-accent-one-hover: var(--verity-color-brand-yellow-100);
@@ -940,7 +940,7 @@
   --verity-viewport-typography-body-sm-font-weight: var(--verity-typography-body-sm-font-weight);
   --verity-viewport-typography-body-sm-space-before: var(--verity-padding-sm);
   --verity-viewport-typography-display-sm-font-weight: var(--verity-typography-display-sm-mobile-font-weight);
-  --verity-viewport-typography-display-sm-font-family: var(--verity-typography-display-default-mobile-font-family);
+  --verity-viewport-typography-display-sm-font-family: var(--verity-typography-display-sm-mobile-font-family);
   --verity-viewport-typography-display-sm-line-height: var(--verity-typography-display-sm-mobile-line-height);
   --verity-viewport-typography-display-sm-font-size: var(--verity-typography-display-sm-mobile-font-size);
   --verity-viewport-typography-display-sm-letter-spacing: var(--verity-typography-display-sm-mobile-letter-spacing);
@@ -987,7 +987,7 @@
   --verity-viewport-typography-title-sm-letter-spacing: var(--verity-typography-title-sm-letter-spacing);
   --verity-viewport-typography-title-sm-line-height: var(--verity-typography-title-sm-line-height);
   --verity-viewport-typography-title-sm-font-weight: var(--verity-typography-title-sm-font-weight);
-  --verity-viewport-typography-title-sm-font-family: var(--verity-typography-display-default-mobile-font-family);
+  --verity-viewport-typography-title-sm-font-family: var(--verity-typography-title-sm-font-family);
   --verity-viewport-typography-title-sm-font-size: var(--verity-typography-title-sm-font-size);
   --verity-viewport-typography-title-sm-space-before: var(--verity-padding-md);
   --verity-viewport-typography-title-default-text-transform: var(--verity-typography-title-default-text-transform);
@@ -995,7 +995,7 @@
   --verity-viewport-typography-title-default-font-weight: var(--verity-typography-title-default-font-weight);
   --verity-viewport-typography-title-default-font-size: var(--verity-typography-title-default-font-size);
   --verity-viewport-typography-title-default-letter-spacing: var(--verity-typography-title-default-letter-spacing);
-  --verity-viewport-typography-title-default-font-family: var(--verity-typography-display-default-mobile-font-family);
+  --verity-viewport-typography-title-default-font-family: var(--verity-typography-title-default-font-family);
   --verity-viewport-typography-title-default-space-before: var(--verity-padding-md);
   --verity-viewport-typography-meta-default-font-weight: var(--verity-typography-meta-default-font-weight);
   --verity-viewport-typography-meta-default-font-family: var(--verity-typography-meta-default-font-family);
@@ -1011,7 +1011,7 @@
   --verity-viewport-typography-heading-3-space-before: var(--verity-spacing-lg);
   --verity-viewport-typography-title-lg-line-height: var(--verity-typography-title-lg-mobile-line-height);
   --verity-viewport-typography-title-lg-font-weight: var(--verity-typography-title-lg-mobile-font-weight);
-  --verity-viewport-typography-title-lg-font-family: var(--verity-typography-display-default-mobile-font-family);
+  --verity-viewport-typography-title-lg-font-family: var(--verity-typography-title-lg-mobile-font-family);
   --verity-viewport-typography-title-lg-letter-spacing: var(--verity-typography-title-lg-mobile-letter-spacing);
   --verity-viewport-typography-title-lg-font-size: var(--verity-typography-title-lg-mobile-font-size);
   --verity-viewport-typography-title-lg-space-before: var(--verity-padding-md);
@@ -1214,7 +1214,7 @@
     --verity-viewport-typography-body-sm-font-weight: var(--verity-typography-body-sm-font-weight);
     --verity-viewport-typography-body-sm-space-before: var(--verity-padding-sm);
     --verity-viewport-typography-display-sm-font-weight: var(--verity-typography-display-sm-mobile-font-weight);
-    --verity-viewport-typography-display-sm-font-family: var(--verity-typography-display-default-mobile-font-family);
+    --verity-viewport-typography-display-sm-font-family: var(--verity-typography-display-sm-mobile-font-family);
     --verity-viewport-typography-display-sm-line-height: var(--verity-typography-display-sm-mobile-line-height);
     --verity-viewport-typography-display-sm-font-size: var(--verity-typography-display-sm-mobile-font-size);
     --verity-viewport-typography-display-sm-letter-spacing: var(--verity-typography-display-sm-mobile-letter-spacing);
@@ -1261,7 +1261,7 @@
     --verity-viewport-typography-title-sm-letter-spacing: var(--verity-typography-title-sm-letter-spacing);
     --verity-viewport-typography-title-sm-line-height: var(--verity-typography-title-sm-line-height);
     --verity-viewport-typography-title-sm-font-weight: var(--verity-typography-title-sm-font-weight);
-    --verity-viewport-typography-title-sm-font-family: var(--verity-typography-display-default-mobile-font-family);
+    --verity-viewport-typography-title-sm-font-family: var(--verity-typography-title-sm-font-family);
     --verity-viewport-typography-title-sm-font-size: var(--verity-typography-title-sm-font-size);
     --verity-viewport-typography-title-sm-space-before: var(--verity-padding-md);
     --verity-viewport-typography-title-default-text-transform: var(--verity-typography-title-default-text-transform);
@@ -1269,7 +1269,7 @@
     --verity-viewport-typography-title-default-font-weight: var(--verity-typography-title-default-font-weight);
     --verity-viewport-typography-title-default-font-size: var(--verity-typography-title-default-font-size);
     --verity-viewport-typography-title-default-letter-spacing: var(--verity-typography-title-default-letter-spacing);
-    --verity-viewport-typography-title-default-font-family: var(--verity-typography-display-default-mobile-font-family);
+    --verity-viewport-typography-title-default-font-family: var(--verity-typography-title-default-font-family);
     --verity-viewport-typography-title-default-space-before: var(--verity-padding-md);
     --verity-viewport-typography-meta-default-font-weight: var(--verity-typography-meta-default-font-weight);
     --verity-viewport-typography-meta-default-font-family: var(--verity-typography-meta-default-font-family);
@@ -1285,7 +1285,7 @@
     --verity-viewport-typography-heading-3-space-before: var(--verity-spacing-lg);
     --verity-viewport-typography-title-lg-line-height: var(--verity-typography-title-lg-mobile-line-height);
     --verity-viewport-typography-title-lg-font-weight: var(--verity-typography-title-lg-mobile-font-weight);
-    --verity-viewport-typography-title-lg-font-family: var(--verity-typography-display-default-mobile-font-family);
+    --verity-viewport-typography-title-lg-font-family: var(--verity-typography-title-lg-mobile-font-family);
     --verity-viewport-typography-title-lg-letter-spacing: var(--verity-typography-title-lg-mobile-letter-spacing);
     --verity-viewport-typography-title-lg-font-size: var(--verity-typography-title-lg-mobile-font-size);
     --verity-viewport-typography-title-lg-space-before: var(--verity-padding-md);
@@ -1489,7 +1489,7 @@
     --verity-viewport-typography-body-sm-font-weight: var(--verity-typography-body-sm-font-weight);
     --verity-viewport-typography-body-sm-space-before: var(--verity-padding-sm);
     --verity-viewport-typography-display-sm-font-weight: var(--verity-typography-display-sm-font-weight);
-    --verity-viewport-typography-display-sm-font-family: var(--verity-typography-display-default-font-family);
+    --verity-viewport-typography-display-sm-font-family: var(--verity-typography-display-sm-font-family);
     --verity-viewport-typography-display-sm-text-transform: var(--verity-typography-display-sm-text-transform);
     --verity-viewport-typography-display-sm-line-height: var(--verity-typography-display-sm-line-height);
     --verity-viewport-typography-display-sm-font-size: var(--verity-typography-display-sm-font-size);
@@ -1538,7 +1538,7 @@
     --verity-viewport-typography-title-sm-letter-spacing: var(--verity-typography-title-sm-letter-spacing);
     --verity-viewport-typography-title-sm-line-height: var(--verity-typography-title-sm-line-height);
     --verity-viewport-typography-title-sm-font-weight: var(--verity-typography-title-sm-font-weight);
-    --verity-viewport-typography-title-sm-font-family: var(--verity-typography-display-default-font-family);
+    --verity-viewport-typography-title-sm-font-family: var(--verity-typography-title-sm-font-family);
     --verity-viewport-typography-title-sm-font-size: var(--verity-typography-title-sm-font-size);
     --verity-viewport-typography-title-sm-space-before: var(--verity-padding-md);
     --verity-viewport-typography-title-default-text-transform: var(--verity-typography-title-default-text-transform);
@@ -1546,7 +1546,7 @@
     --verity-viewport-typography-title-default-font-weight: var(--verity-typography-title-default-font-weight);
     --verity-viewport-typography-title-default-font-size: var(--verity-typography-title-default-font-size);
     --verity-viewport-typography-title-default-letter-spacing: var(--verity-typography-title-default-letter-spacing);
-    --verity-viewport-typography-title-default-font-family: var(--verity-typography-display-default-font-family);
+    --verity-viewport-typography-title-default-font-family: var(--verity-typography-title-default-font-family);
     --verity-viewport-typography-title-default-space-before: var(--verity-padding-md);
     --verity-viewport-typography-meta-default-font-weight: var(--verity-typography-meta-default-font-weight);
     --verity-viewport-typography-meta-default-font-family: var(--verity-typography-meta-default-font-family);
@@ -1563,7 +1563,7 @@
     --verity-viewport-typography-heading-3-space-before: var(--verity-spacing-lg);
     --verity-viewport-typography-title-lg-line-height: var(--verity-typography-title-lg-line-height);
     --verity-viewport-typography-title-lg-font-weight: var(--verity-typography-title-lg-font-weight);
-    --verity-viewport-typography-title-lg-font-family: var(--verity-typography-display-default-font-family);
+    --verity-viewport-typography-title-lg-font-family: var(--verity-typography-title-lg-font-family);
     --verity-viewport-typography-title-lg-letter-spacing: var(--verity-typography-title-lg-letter-spacing);
     --verity-viewport-typography-title-lg-font-size: var(--verity-typography-title-lg-font-size);
     --verity-viewport-typography-title-lg-text-transform: var(--verity-typography-title-lg-text-transform);
@@ -1576,7 +1576,7 @@
     --verity-viewport-typography-heading-2-font-weight: var(--verity-typography-heading-2-font-weight);
     --verity-viewport-typography-heading-2-space-before: var(--verity-spacing-lg);
     --verity-viewport-typography-heading-1-text-transform: var(--verity-typography-heading-1-text-transform);
-    --verity-viewport-typography-heading-1-font-family: var(--verity-typography-display-default-font-family);
+    --verity-viewport-typography-heading-1-font-family: var(--verity-typography-heading-1-font-family);
     --verity-viewport-typography-heading-1-line-height: var(--verity-typography-heading-1-line-height);
     --verity-viewport-typography-heading-1-letter-spacing: var(--verity-typography-heading-1-letter-spacing);
     --verity-viewport-typography-heading-1-font-weight: var(--verity-typography-heading-1-font-weight);

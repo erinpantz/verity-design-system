@@ -98,7 +98,7 @@
         },
         "font-family": {
           "$type": "fontFamily",
-          "$value": "{typography.display-default-mobile.font-family}"
+          "$value": "{typography.display-sm-mobile.font-family}"
         },
         "text-transform": {
           "$type": "string",
@@ -680,7 +680,7 @@
         },
         "font-family": {
           "$type": "fontFamily",
-          "$value": "{typography.display-default-mobile.font-family}"
+          "$value": "{typography.title-sm.font-family}"
         },
         "font-size": {
           "$type": "dimension",
@@ -774,7 +774,7 @@
         },
         "font-family": {
           "$type": "fontFamily",
-          "$value": "{typography.display-default-mobile.font-family}"
+          "$value": "{typography.title-default.font-family}"
         },
         "space-before": {
           "$type": "dimension",
@@ -972,7 +972,7 @@
         },
         "font-family": {
           "$type": "fontFamily",
-          "$value": "{typography.display-default-mobile.font-family}"
+          "$value": "{typography.title-lg-mobile.font-family}"
         },
         "letter-spacing": {
           "$type": "dimension",

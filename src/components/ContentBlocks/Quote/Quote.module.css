@@ -17,6 +17,8 @@
   font-family: var(--verity-viewport-typography-blockquote-font-family);
   font-size: var(--verity-viewport-typography-blockquote-font-size);
   font-weight: var(--verity-viewport-typography-blockquote-font-weight);
+  /* Imperfecto has only Bold: never fake another weight or italic */
+  font-synthesis: none;
   line-height: var(--verity-viewport-typography-blockquote-line-height);
   letter-spacing: var(--verity-viewport-typography-blockquote-letter-spacing);
   text-transform: var(--verity-viewport-typography-blockquote-text-transform);

@@ -21,6 +21,8 @@
   font-family: var(--verity-viewport-typography-heading-1-font-family);
   font-size: var(--verity-viewport-typography-heading-1-font-size);
   font-weight: var(--verity-viewport-typography-heading-1-font-weight);
+  /* Imperfecto has only Bold: never fake another weight or italic */
+  font-synthesis: none;
   line-height: var(--verity-viewport-typography-heading-1-line-height);
   letter-spacing: var(--verity-viewport-typography-heading-1-letter-spacing);
   text-transform: var(--verity-viewport-typography-heading-1-text-transform);
@@ -31,6 +33,8 @@
   font-family: var(--verity-viewport-typography-heading-2-font-family);
   font-size: var(--verity-viewport-typography-heading-2-font-size);
   font-weight: var(--verity-viewport-typography-heading-2-font-weight);
+  /* Imperfecto has only Bold: never fake another weight or italic */
+  font-synthesis: none;
   line-height: var(--verity-viewport-typography-heading-2-line-height);
   letter-spacing: var(--verity-viewport-typography-heading-2-letter-spacing);
   text-transform: var(--verity-viewport-typography-heading-2-text-transform);
@@ -41,6 +45,8 @@
   font-family: var(--verity-viewport-typography-heading-3-font-family);
   font-size: var(--verity-viewport-typography-heading-3-font-size);
   font-weight: var(--verity-viewport-typography-heading-3-font-weight);
+  /* Imperfecto has only Bold: never fake another weight or italic */
+  font-synthesis: none;
   line-height: var(--verity-viewport-typography-heading-3-line-height);
   letter-spacing: var(--verity-viewport-typography-heading-3-letter-spacing);
   text-transform: var(--verity-viewport-typography-heading-3-text-transform);
@@ -71,6 +77,8 @@
   font-family: var(--verity-viewport-typography-blockquote-font-family);
   font-size: var(--verity-viewport-typography-blockquote-font-size);
   font-weight: var(--verity-viewport-typography-blockquote-font-weight);
+  /* Imperfecto has only Bold: never fake another weight or italic */
+  font-synthesis: none;
   line-height: var(--verity-viewport-typography-blockquote-line-height);
   letter-spacing: var(--verity-viewport-typography-blockquote-letter-spacing);
   text-transform: var(--verity-viewport-typography-blockquote-text-transform);

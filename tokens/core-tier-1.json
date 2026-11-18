@@ -1119,9 +1119,10 @@
         "$type": "string",
         "$value": "Plus Jakarta Sans"
       },
-      "schibsted-grotesk": {
+      "imperfecto": {
         "$type": "string",
-        "$value": "Schibsted Grotesk"
+        "$value": "Imperfecto",
+        "$description": "Imperfecto, Erin’s own typeface (Bold only), for display, headings, and blockquotes: large type."
       },
       "ibm-plex-mono": {
         "$type": "string",
