@@ -1,0 +1,110 @@
+import { Meta, Canvas } from '@storybook/addon-docs/blocks';
+import { VerityDocs } from '../../../foundations/VerityDocs';
+import { PropsTable } from '../../../foundations/PropsTable';
+import * as LayeredImageStories from './LayeredImage.stories';
+
+<Meta of={LayeredImageStories} />
+
+<VerityDocs>
+
+# LayeredImage
+
+A picture built from layers, such as a photo with drawn shapes in front of it, that move at different depths as the pointer moves over it. The shapes feel like they sit in front of the photo, which brings the picture to life without asking anyone to do anything.
+
+<Canvas of={LayeredImageStories.Default} />
+
+## When to use
+
+- **For layered art whose layers are meant to read as separate,** like a photo with drawn shapes on top (Profile), or an illustration made of pieces (Playground).
+- **Not for a single photo or illustration.** Use `Image`: there’s nothing to move apart.
+- **Not for something people click or read.** The motion is decoration: nothing in it is a link, a button, or text.
+- **Not for motion that tells a story.** Use `Animation` or `Video`.
+
+## Accessibility
+
+LayeredImage renders one `<div>` that’s one image for screen readers (`role="img"`), named by `alt`. Each layer is an `<img>` with `alt=""`, hidden from screen readers, so a screen reader hears one picture, not five.
+
+- **It isn’t focusable or interactive.** It doesn’t respond to the keyboard: the motion only follows a pointer, and nothing is missed without it.
+- **The motion only follows a mouse or trackpad** (`(hover: hover) and (pointer: fine)`). On touch, it stays at rest, so scrolling past it never sets it moving.
+- **With reduce motion on, it stays at rest,** even under the pointer, and stops at once if reduce motion is turned on while it moves.
+- **Nothing moves on its own.** It only moves while the pointer is over it, and eases back to rest when the pointer leaves.
+
+| Situation | What to do | Example |
+|---|---|---|
+| The picture adds something the text doesn’t say | Describe the whole picture in `alt`, not each layer | “Erin, with red glasses and a squiggle drawn over the photo” |
+| The text next to it already says it all | `alt=""`: the whole picture is hidden from screen readers | A decorative picture beside a heading that names it |
+
+## Layers
+
+`layers` is a list, bottom first. Each layer is an image file, placed and sized in percent of the frame, as in Figma, so the whole picture scales with the frame.
+
+| Field | What it does |
+|---|---|
+| `src` | The image file: a photo, or a drawing (SVG or PNG) |
+| `x`, `y` | Its left and top edges, in percent of the frame’s width and height |
+| `width` | Its width, in percent of the frame’s width. Its height follows from the file’s own shape. |
+| `depth` | How far it moves, and which way. `0` (the default) stays still. `1` moves the max offset with the pointer, `−1` against it. Bigger numbers feel closer. |
+| `radius` | Rounded corners: `none`, `xs`, `sm`, `md`, or `lg`, from `--verity-border-radius-*`. Usually only on the bottom layer. |
+| `color` | Draws the layer in one Verity color: a color token’s custom property, such as `"--verity-color-accent-red"`. The file’s shape is used and its own colors are ignored, so it’s for single-color drawings. Leave it out to show the file’s own colors. |
+
+**Placing layers past the edges is fine.** Layers aren’t clipped to the frame, so a shape can stick out at rest and move further out with the pointer.
+
+<Canvas of={LayeredImageStories.OnAPhoto} />
+
+## Aspect ratio
+
+| `aspectRatio` | Use for |
+|---|---|
+| `1:1` | The default. A portrait or a square illustration, like Profile’s photo |
+| `4:3`, `3:2`, `16:9` | Wider art. The same shapes as `Image`. |
+
+The frame fills its container’s width and keeps the ratio, so the space is reserved before the files load.
+
+## Motion
+
+| What | How | Value |
+|---|---|---|
+| Max offset | How far a layer with depth 1 moves with the pointer at the frame’s edge. It scales with the frame: a smaller frame moves less. A layer moves depth × max offset × the pointer’s position, from −1 to 1 across the frame on each axis. | 40px at a 560px frame (`--max-offset`) |
+| Following | The layers ease toward the pointer, and back to rest when it leaves, the same way. Each 60th of a second they cover a tenth of the distance left, worked out from the real time between frames, so it feels the same on a 120 Hz screen. | 0.1 per 60 fps frame (`FOLLOW_PER_FRAME`) |
+| Tilt | With `tilt` (on by default), the whole picture also tips in 3D, the side the pointer is on tipping away, as if pressed. At rest, it’s flat. | Up to 4° on each axis (`--tilt-angle`) |
+| Perspective | How deep the tilt looks: larger is flatter | 1200px (`--perspective`) |
+
+<Canvas of={LayeredImageStories.WithoutTilt} />
+
+- **Transforms only.** The motion moves layers with `translate` and tilts with `transform`, so the page never lays itself out again while it moves. The loop stops as soon as everything is at rest, and starts again when the pointer moves.
+- **The values aren’t tokens yet.** They’re the first motion distances and angles in Verity, so they’re named in the component (`LayeredImage.module.css` and `LayeredImage.tsx`). If another component needs the same motion, they become tokens.
+
+<Canvas of={LayeredImageStories.ReduceMotion} />
+
+## Overflow
+
+Layers can move past the frame’s edges: a layer with depth 2 moves up to twice the max offset, 80px at a 560px frame. The frame doesn’t clip them.
+
+- **In a Shell, the page never scrolls sideways.** Shell’s page column clips anything past the window’s sides (`overflow-x: clip`), as it does for a Hero’s Reel. A layer that moves past the window’s edge is cut off there, at the edge of the screen.
+- **Outside a Shell,** an ancestor needs `overflow-x: clip`, or a layer near the window’s edge makes the page scroll sideways while it’s moved out.
+
+## Space
+
+| Space | Token |
+|---|---|
+| The frame | Its container’s full width, at its aspect ratio |
+| Corners | The layer’s `radius`, from `--verity-border-radius-*` |
+
+It adds no space outside itself, and layers that move past its edges don’t push anything around them.
+
+## Props
+
+<PropsTable of={LayeredImageStories} />
+
+## In Figma
+
+| Figma | Code |
+|---|---|
+| A frame of layered images | `<LayeredImage />` |
+| The frame’s shape | `aspectRatio` |
+| Each layer’s X, Y, and width, divided by the frame’s width or height | A layer’s `x`, `y`, and `width`, in percent |
+| A layer’s corner radius, bound to `border/radius/*` | A layer’s `radius` |
+| A single-color layer’s fill, bound to a color variable | A layer’s `color` |
+| Not in Figma | `depth`, `tilt`, and the motion, which are code only. LayeredImage isn’t a Figma component yet. |
+
+</VerityDocs>
