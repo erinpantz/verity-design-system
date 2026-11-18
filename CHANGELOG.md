@@ -4,6 +4,15 @@ Every release of Verity, newest first. The format follows [Keep a Changelog](htt
 
 Sites install Verity by tag (for example `github:erinpantz/verity-design-system#v0.3.0`), so a site only changes when it moves to a new tag on purpose.
 
+## [0.9.11] – 2026-11-18
+
+Text renders thinner on macOS, closer to Figma.
+
+### Changed
+
+- **Global styles:** the root element sets `-webkit-font-smoothing: antialiased` and `-moz-osx-font-smoothing: grayscale`. Verity’s backgrounds are dark, and macOS’s default smoothing drew light text on dark heavier than it is, so Plus Jakarta Sans 400 looked thicker than in Figma. It only affects macOS browsers; every weight renders slightly thinner, and no tokens or weights change.
+- **Docs:** the Typography page and the Imperfecto page explain the smoothing and why, so a future light theme revisits it.
+
 ## [0.9.10] – 2026-11-18
 
 A new Content blocks component, ExperienceItem, for the list of roles on Erin’s Profile.
@@ -674,6 +683,7 @@ The first library release: everything in the Figma library except Animation, wit
 - **Theme helpers:** `themeScript`, `useTheme`, and `setTheme`, so a site applies the saved theme before the first paint.
 - **The library build:** one entry point with every component and its prop types, one stylesheet (`verity-design-system/styles.css`) with the fonts inside it, and `npm run build:watch` for working with a linked copy.
 
+[0.9.11]: https://github.com/erinpantz/verity-design-system/compare/v0.9.10...v0.9.11
 [0.9.10]: https://github.com/erinpantz/verity-design-system/compare/v0.9.9...v0.9.10
 [0.9.9]: https://github.com/erinpantz/verity-design-system/compare/v0.9.8...v0.9.9
 [0.9.8]: https://github.com/erinpantz/verity-design-system/compare/v0.9.7...v0.9.8
