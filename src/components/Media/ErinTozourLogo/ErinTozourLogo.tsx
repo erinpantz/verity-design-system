@@ -12,7 +12,10 @@ export interface ErinTozourLogoProps {
 
 // Erin Tozour's name, drawn. It's one color (currentColor), so it takes the
 // text color around it. It fills its container's width unless the owner sets
-// its height; its width follows, so it keeps its proportions.
+// its height; its width follows, so it keeps its proportions. Inside a link
+// with the trigger class (logoTrigger.ts), its letters cycle through the
+// accent colors while the link is hovered or focused (see
+// ErinTozourLogo.module.css).
 export function ErinTozourLogo({ name = 'full' }: ErinTozourLogoProps) {
   const { viewBox, markup } = name === 'first' ? FIRST : FULL;
   return (

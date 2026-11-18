@@ -8,3 +8,105 @@
   block-size: 100%;
   max-inline-size: 100%;
 }
+
+/* The color cycle. While the link around the logo is hovered (devices with
+   a real pointer) or has keyboard focus, its letters cycle through the six
+   content accents, which follow the theme, in a wave from left to right.
+   The link opts in with the trigger class (erinTozourLogoTrigger, in
+   logoTrigger.ts), as MainNav's home link does; anywhere else, the logo
+   stays one color.
+
+   The wave: at step t, letter i (its --letter, from logoGlyphs.ts, in
+   reading order) shows accent (t − i) mod 6, so neighbors are one color
+   apart and the colors travel to the right. Each letter runs the same
+   six-step cycle, erin-tozour-logo/duration/color-step per color, with a
+   hard switch (step-end). Each starts partway through, by a negative delay
+   of (60.5 − i) steps: 60 is any multiple of 6 larger than the number of
+   letters, so the delay is always negative, and all the letters switch at
+   the same moments. The half step puts each letter in the middle of a
+   color, not on the edge between two, where rounding could tip it either
+   way.
+
+   How it starts and ends: the cycle sets each letter's --logo-accent, and
+   the letter's fill mixes --logo-accent into the logo's own color by
+   --logo-accent-amount. (Registered properties like these are global, so
+   their names start with logo-.)
+   At rest the amount is 0%, so the logo looks exactly as it always has, and
+   the cycle is paused, so it costs nothing. On hover or focus the amount
+   jumps to 100% (no transition), so every letter takes its color at once,
+   and the cycle runs. When it ends, the cycle pauses where it is and the
+   amount fades back to 0% over motion/duration/fast. (A transition can't
+   start from a color an animation was showing, which is why the colors go
+   through custom properties.) With reduce motion on, the cycle never runs:
+   the letters take their colors, and they don't move. */
+
+@property --logo-accent {
+  syntax: '<color>';
+  inherits: false;
+  initial-value: transparent;
+}
+
+@property --logo-accent-amount {
+  syntax: '<percentage>';
+  inherits: false;
+  initial-value: 0%;
+}
+
+@keyframes accent-wave {
+  0% {
+    --logo-accent: var(--verity-color-content-accent-one);
+  }
+
+  16.6667% {
+    --logo-accent: var(--verity-color-content-accent-two);
+  }
+
+  33.3333% {
+    --logo-accent: var(--verity-color-content-accent-three);
+  }
+
+  50% {
+    --logo-accent: var(--verity-color-content-accent-four);
+  }
+
+  66.6667% {
+    --logo-accent: var(--verity-color-content-accent-five);
+  }
+
+  83.3333% {
+    --logo-accent: var(--verity-color-content-accent-six);
+  }
+}
+
+/* Longhands, so the keyframes' name stands on its own (CSS Modules renames
+   it to keep it unique) */
+.logo path {
+  fill: color-mix(in srgb, var(--logo-accent) var(--logo-accent-amount), currentColor);
+  animation-name: accent-wave;
+  animation-duration: calc(6 * var(--verity-erin-tozour-logo-duration-color-step));
+  animation-timing-function: step-end;
+  animation-delay: calc((var(--letter, 0) - 60.5) * var(--verity-erin-tozour-logo-duration-color-step));
+  animation-iteration-count: infinite;
+  animation-play-state: paused;
+  transition: --logo-accent-amount var(--verity-motion-duration-fast) var(--verity-motion-easing-standard);
+}
+
+@media (hover: hover) {
+  .trigger:hover .logo path {
+    --logo-accent-amount: 100%;
+    animation-play-state: running;
+    transition: none;
+  }
+}
+
+.trigger:focus-visible .logo path {
+  --logo-accent-amount: 100%;
+  animation-play-state: running;
+  transition: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .trigger:is(:hover, :focus-visible) .logo path {
+    animation-play-state: paused;
+  }
+}

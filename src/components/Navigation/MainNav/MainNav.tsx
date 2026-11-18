@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { IconButton } from '../../Actions/IconButton';
 import { ErinTozourLogo } from '../../Media/ErinTozourLogo';
+import { erinTozourLogoTrigger } from '../../Media/ErinTozourLogo/logoTrigger';
 import { NavItem } from '../NavItem';
 import { NavOverlay } from '../NavOverlay';
 import styles from './MainNav.module.css';
@@ -82,9 +83,11 @@ export function MainNav({ current, hrefs = {}, pending }: MainNavProps) {
         {/* The site title fills the rest of the row, so the links sit at the
             end. The link inside it hugs the logo. Both logos are in the
             link, and CSS shows one: the hidden one is display: none, so
-            screen readers hear only the shown one's name, “Erin Tozour.” */}
+            screen readers hear only the shown one's name, “Erin Tozour.”
+            While the link is hovered or focused, the logo's letters cycle
+            through the accent colors (erinTozourLogoTrigger). */}
         <div className={styles.siteTitle}>
-          <LinkAnchor className={styles.homeLink} href={links.home}>
+          <LinkAnchor className={`${styles.homeLink} ${erinTozourLogoTrigger}`} href={links.home}>
             <span className={styles.fullLogo}>
               <ErinTozourLogo />
             </span>
