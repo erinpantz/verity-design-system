@@ -114,6 +114,10 @@
   line-height: var(--verity-viewport-typography-body-xl-line-height);
   letter-spacing: var(--verity-viewport-typography-body-xl-letter-spacing);
   text-transform: var(--verity-viewport-typography-body-xl-text-transform);
+  /* Even line breaks: the browser avoids a lone short word on the last line
+     and spreads the breaks more evenly. It only moves where lines break;
+     browsers without it wrap as before. */
+  text-wrap: pretty;
 }
 
 /* An intro of several paragraphs: body/xl's own paragraph space between
