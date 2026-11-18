@@ -1,4 +1,4 @@
-import { useId, useState, type ComponentProps, type ReactNode } from 'react';
+import { useEffect, useId, useRef, useState, type ComponentProps, type ReactNode } from 'react';
 import { Button } from '../../Actions/Button';
 import { ThemeToggle } from '../../Actions/ThemeToggle';
 import { PageLoader, type PageLoaderSection } from '../../FeedbackAndStatus/PageLoader';
@@ -41,8 +41,9 @@ export interface ShellProps {
 // Back to the portfolio, as in Figma
 const DEFAULT_BACK_LINK: BackLinkProps = { href: '/', label: 'Portfolio' };
 
-// The page frame, in one column: a skip link, MainNav across the top, then the
-// page column with Main and the Footer. ThemeToggle floats in the
+// The page frame, in one column: a skip link, MainNav across the top, kept
+// at the top of the screen as the page scrolls, then the page column with
+// Main and the Footer. ThemeToggle floats in the
 // bottom-right corner. In focused mode, a BackLink floats in the top-left
 // corner instead of the nav, for reading one piece of work without the site
 // around it. MainNav picks its own layout and owns its menu, so Shell only
@@ -65,22 +66,58 @@ export function Shell({
   // poses while the page change goes on or the loader shows, whichever is
   // longer (a first visit's loader can outlast a fast page change).
   const [loaderShowing, setLoaderShowing] = useState<PageLoaderSection>();
+  const hasNav = mode !== 'focused';
+  const topRef = useRef<HTMLDivElement>(null);
+  const navRef = useRef<HTMLDivElement>(null);
+  // Whether the page has scrolled away from the top, for the nav's divider
+  const [scrolled, setScrolled] = useState(false);
+
+  // The nav sticks with CSS alone. These add what CSS can't know:
+  useEffect(() => {
+    const top = topRef.current;
+    const nav = navRef.current;
+    if (!hasNav || !top || !nav) return;
+    // Scrolled: the marker at the very top of the page has left the screen
+    const scrolling = new IntersectionObserver(([entry]) => setScrolled(!entry.isIntersecting));
+    scrolling.observe(top);
+    // The nav's height, which changes with its layout and the breakpoint,
+    // for the page's scroll padding (Shell.module.css), so whatever is
+    // scrolled to or focused lands below the nav, not under it, and for
+    // where PageLoader starts
+    const root = document.documentElement;
+    const sizing = new ResizeObserver(([entry]) => {
+      const height = entry.borderBoxSize[0]?.blockSize ?? nav.getBoundingClientRect().height;
+      root.style.setProperty('--shell-nav-height', `${height}px`);
+    });
+    sizing.observe(nav);
+    return () => {
+      scrolling.disconnect();
+      sizing.disconnect();
+      root.style.removeProperty('--shell-nav-height');
+    };
+  }, [hasNav]);
 
   return (
     <div className={styles.shell} data-mode={mode}>
+      {/* A 1px marker at the very top of the page: once it has scrolled off
+          the screen, the nav shows its divider */}
+      {hasNav && <div className={styles.topMarker} ref={topRef} aria-hidden />}
       {/* First in the tab order, and shown only on keyboard focus. It jumps
           past the nav and moves focus to Main (WCAG 2.4.1). */}
       <div className={styles.skipLink}>
         <Button href={`#${mainId}`}>Skip to content</Button>
       </div>
-      {mode === 'focused' ? (
+      {!hasNav ? (
         // Fixed to the top-left corner, in place of the nav. In the tab
         // order: the back link, then ThemeToggle, then Main.
         <div className={styles.backLink}>
           <BackLink href={backLink.href} label={backLink.label} />
         </div>
       ) : (
-        <MainNav current={current} hrefs={hrefs} pending={pending ?? loaderShowing} />
+        // Sticks to the top of the screen, above the page's content
+        <div className={styles.nav} ref={navRef} data-scrolled={scrolled || undefined}>
+          <MainNav current={current} hrefs={hrefs} pending={pending ?? loaderShowing} />
+        </div>
       )}
       {/* Fixed to the screen's corner at every width, so it's always in
           reach. In the tab order, it comes right after the nav (or the back
@@ -90,8 +127,9 @@ export function Shell({
       </div>
       <div className={styles.page}>
         {/* Right below the nav (or at the top, in focused mode): the page
-            loader covers the page from here, above the content, below the
-            nav, ThemeToggle, BackLink, and the skip link */}
+            loader covers the page from here, or from the nav's bottom edge
+            once the page has scrolled, above the content, below the nav,
+            ThemeToggle, BackLink, and the skip link */}
         <PageLoader
           pending={pending}
           current={section}

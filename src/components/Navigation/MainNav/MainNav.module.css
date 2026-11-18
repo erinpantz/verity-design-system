@@ -1,6 +1,8 @@
 /* The site's main navigation: a bar across the top of the page, the site
-   title (the logo, linking home), then the links at the end. It scrolls away
-   with the page.
+   title (the logo, linking home), then the links at the end. In Shell, it
+   stays at the top of the screen as the page scrolls: Shell makes it sticky
+   and gives it a background and a divider, so MainNav itself doesn't
+   change.
 
    Its own width picks one of three layouts, measured inside its side padding
    (the container's content box), not the screen:

@@ -98,7 +98,8 @@ export function PageLoader({ pending, current, words = {}, onVisibleChange }: Pa
   useEffect(() => {
     const open = (section: Section) => {
       // Cover from where it's placed (right below the nav) to the bottom of
-      // the screen, or the whole screen once the nav has scrolled away
+      // the screen. Once that has scrolled off the top, the CSS starts it
+      // at the nav's bottom edge, or the top of the screen without a nav.
       const top = anchorRef.current?.getBoundingClientRect().top ?? 0;
       layerRef.current?.style.setProperty('--top', `${Math.max(0, top)}px`);
       const lines = latest.current.words[section]?.filter(Boolean) ?? [];

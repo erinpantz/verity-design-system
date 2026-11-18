@@ -1,13 +1,15 @@
 /* The page loader: a layer on the page's background, fixed to the screen,
    from where it's placed (in Shell, right below MainNav) to the bottom of
-   the screen. PageLoader.tsx measures that top (--top) when it appears; once
-   the nav has scrolled away, it's the whole screen. Its contents are centered
-   in it.
+   the screen. PageLoader.tsx measures that top (--top) when it appears. In
+   Shell, the nav stays at the top of the screen, so once the page has
+   scrolled, the loader starts at the nav's bottom edge instead
+   (--shell-nav-height, which Shell measures; 0 outside Shell and in focused
+   mode, where there's no nav). Its contents are centered in it.
 
    It sits above the page, its Hero text and Reel included (z-index 2), and
-   below what stays usable: Shell lifts ThemeToggle and BackLink (3) and the
-   skip link (4) above it, and MainNav is above where it starts. NavOverlay is
-   in the browser's top layer, above everything. */
+   below what stays usable: Shell lifts the nav, ThemeToggle, and BackLink
+   (3) and the skip link (4) above it. NavOverlay is in the browser's top
+   layer, above everything. */
 
 /* Where it starts: out of the flow, so it takes no space and adds no gap
    in a stack (Shell's page column), but still sits where it's placed */
@@ -18,7 +20,7 @@
 
 .loader {
   position: fixed;
-  inset: var(--top, 0px) 0 0;
+  inset: max(var(--top, 0px), var(--shell-nav-height, 0px)) 0 0;
   z-index: 2;
   display: grid;
   place-items: center;

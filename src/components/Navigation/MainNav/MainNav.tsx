@@ -35,11 +35,12 @@ const PAGES = [
 ] as const;
 
 // The site's main navigation, a bar across the top of the page: the logo,
-// linking home, then a NavItem per page. Its own width picks its layout, in
-// CSS (see MainNav.module.css), so it's right before JavaScript runs: the full
-// logo and the links, "erin" and the links, or the full logo and a menu
-// button that opens the links in NavOverlay. MainNav owns the overlay and
-// whether it's open.
+// linking home, then a NavItem per page. In Shell, it stays at the top of
+// the screen as the page scrolls (Shell makes it sticky). Its own width
+// picks its layout, in CSS (see MainNav.module.css), so it's right before
+// JavaScript runs: the full logo and the links, "Erin" and the links, or the
+// full logo and a menu button that opens the links in NavOverlay. MainNav
+// owns the overlay and whether it's open.
 export function MainNav({ current, hrefs = {}, pending }: MainNavProps) {
   const links = { ...DEFAULT_HREFS, ...hrefs };
   const [menuOpen, setMenuOpen] = useState(false);
