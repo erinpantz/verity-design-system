@@ -86,7 +86,7 @@ export const InContext: StoryObj = {
     <VerticalStack gap="xs" align="start">
       <IconButton icon="dock-to-left" label="Expand navigation" />
       <IconButton icon="email" label="Email me" />
-      <IconButton icon="resume" label="Download resume" />
+      <IconButton icon="resume" label="Download résumé" />
     </VerticalStack>
   ),
 };

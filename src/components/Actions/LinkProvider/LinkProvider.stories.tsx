@@ -114,7 +114,7 @@ function Site() {
                   <LinkGroup label="Pages">
                     <Link href="/portfolio">Portfolio</Link>
                     <Link href="/profile">Profile</Link>
-                    <Link href="/resume.pdf">Resume</Link>
+                    <Link href="/resume.pdf">Résumé</Link>
                   </LinkGroup>
                   <LinkGroup label="Connect">
                     <Link href="mailto:hello@example.com">Email</Link>
@@ -150,7 +150,7 @@ function Site() {
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: 'var(--verity-spacing-md)' }}>
               <Button href="/profile">Meet Erin</Button>
               <Button variant="secondary" href="/resume.pdf">
-                Resume (PDF)
+                Résumé (PDF)
               </Button>
             </div>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(16rem, 1fr))', gap: 'var(--verity-spacing-md)' }}>

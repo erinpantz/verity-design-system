@@ -24,5 +24,5 @@ export const Default: Story = {};
 
 export const WithLabel: Story = {
   name: 'With label',
-  args: { name: 'resume', label: 'Resume' },
+  args: { name: 'resume', label: 'Résumé' },
 };

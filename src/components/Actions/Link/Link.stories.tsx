@@ -110,7 +110,7 @@ export const InContext: Story = {
         <Link href="#about">About</Link>
       </li>
       <li>
-        <Link href="#resume">Resume</Link>
+        <Link href="#resume">Résumé</Link>
       </li>
     </HorizontalStack>
   ),

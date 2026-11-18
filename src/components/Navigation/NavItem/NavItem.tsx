@@ -10,20 +10,20 @@ export interface NavItemProps {
   icon: 'portfolio' | 'playground' | 'profile' | 'resume';
   /** The page’s name, like “Portfolio.” It’s the link’s text, always shown. */
   label: string;
-  /** Where the link goes. For Resume, the PDF’s URL: it opens in the browser. */
+  /** Where the link goes. For Résumé, the PDF’s URL: it opens in the browser. */
   href: string;
   /** Whether this is the page someone is on. Screen readers hear “current page.” */
   current?: boolean;
   /**
    * Whether a page change to this page is going on. Its icon swaps between
-   * the same poses as PageLoader’s, in step with it. Resume’s icon doesn’t.
+   * the same poses as PageLoader’s, in step with it. Résumé’s icon doesn’t.
    */
   pending?: boolean;
 }
 
 // A link to one of the site's pages: its icon, then its name. On hover and on
 // the current page, a nav icon takes its accent colors and moves to a pose;
-// the poses are shared with NavCard, in NavIcon. Resume's icon doesn't move.
+// the poses are shared with NavCard, in NavIcon. Résumé's icon doesn't move.
 // While a page change to it is going on (pending), its icon swaps between
 // PageLoader's poses, on the clock it shares with PageLoader.
 export function NavItem({ icon, label, href, current = false, pending = false }: NavItemProps) {

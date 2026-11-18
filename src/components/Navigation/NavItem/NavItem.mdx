@@ -16,7 +16,7 @@ A link to one of the site’s pages, with its icon and name, always shown. It hu
 ## When to use
 
 - **For the site’s main pages** (Portfolio, Profile, and Playground) in `MainNav`, in a row, and in `NavOverlay`, in a column. The parent sets the space between them.
-- **For Resume, with the `resume` icon,** where it sits with the pages. The site’s nav doesn’t include it; it’s in the Footer.
+- **For Résumé, with the `resume` icon,** where it sits with the pages. The site’s nav doesn’t include it; it’s in the Footer.
 - **Not for links in text or in the footer.** Use `Link`, which is sized and styled for reading.
 - **Not for actions,** like opening the menu. Use `IconButton`, which is a button.
 
@@ -29,7 +29,7 @@ A NavItem renders a link (`<a>`) with its `label` as the link’s text, always v
 | Situation | What to do | Example |
 |---|---|---|
 | It’s the page someone is on | Set `current`. The link gets `aria-current="page"`, so screen readers say “current page.” | Portfolio, on the portfolio page |
-| It links to the resume | Link to the PDF. It opens in the browser; there’s no `download` attribute, so nothing is saved without asking. | `href="/erin-tozour-resume.pdf"` |
+| It links to the résumé | Link to the PDF. It opens in the browser; there’s no `download` attribute, so nothing is saved without asking. | `href="/erin-tozour-resume.pdf"` |
 
 Keyboard: Tab reaches each NavItem, and Enter follows the link.
 
@@ -71,7 +71,7 @@ The hover and active poses are drawn in Figma. In code, each part of a nav icon 
 
 With “reduce motion” on, poses switch at once, with no movement. The colors still fade.
 
-**While a page change to it is going** (`pending`), its icon swaps between the poses `PageLoader` shows for that section, with its accent colors on: Portfolio between hover and current, Profile and Playground between default and hover. Each move is the same playful 300ms, then a hold of `--verity-page-loader-duration-hold` (600ms), on a clock shared with PageLoader, so the two move together. It stops after 5 seconds (WCAG 2.2.2). With reduce motion on, it holds one still pose instead. Resume’s icon doesn’t move. `MainNav` sets it.
+**While a page change to it is going** (`pending`), its icon swaps between the poses `PageLoader` shows for that section, with its accent colors on: Portfolio between hover and current, Profile and Playground between default and hover. Each move is the same playful 300ms, then a hold of `--verity-page-loader-duration-hold` (600ms), on a clock shared with PageLoader, so the two move together. It stops after 5 seconds (WCAG 2.2.2). With reduce motion on, it holds one still pose instead. Résumé’s icon doesn’t move. `MainNav` sets it.
 
 The icon takes its accent colors (`--icon-accent-brand`, `--icon-accent-three`, `--icon-accent-four`, and `--icon-accent-yellow`) on hover and on the current page. The poses and accents live in one shared place, `NavIcon`, which `NavCard` uses too, so each icon moves the same way everywhere. See `Icon` for how nav icons use the accents.
 

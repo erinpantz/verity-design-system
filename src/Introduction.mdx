@@ -38,7 +38,7 @@ Components are grouped the same way as the Figma pages:
 
 Every Verity link is a real `<a href>`: it works before JavaScript runs, and it can be copied, shared, and opened in a new tab. On its own, following one reloads the whole page. A site with a router, like React Router, wraps itself in `LinkProvider`, and Verity renders links to the site’s own pages with the router’s link instead, so the page changes in the app, faster, and the site sees the change coming (Shell’s `pending`, and `PageLoader`).
 
-**Which links go through it:** only pages on the same site, an address that starts with one `/` (not `//`), with no `target`, no `download`, and no file extension at the end of its path. Everything else stays a plain `<a>`: other sites, `mailto:` links, anything that opens in a new tab, and files like the resume PDF, which a router would try to show as a page. Without a LinkProvider, every link is a plain `<a>`.
+**Which links go through it:** only pages on the same site, an address that starts with one `/` (not `//`), with no `target`, no `download`, and no file extension at the end of its path. Everything else stays a plain `<a>`: other sites, `mailto:` links, anything that opens in a new tab, and files like the résumé PDF, which a router would try to show as a page. Without a LinkProvider, every link is a plain `<a>`.
 
 With React Router, the site adapts its `Link` in a few lines, passing `href` on as `to`:
 

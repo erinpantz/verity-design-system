@@ -52,7 +52,7 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {};
 
 export const Secondary: Story = {
-  args: { variant: 'secondary', children: 'Download resume' },
+  args: { variant: 'secondary', children: 'Download résumé' },
 };
 
 export const PrimaryBrand: Story = {
@@ -63,7 +63,7 @@ export const PrimaryBrand: Story = {
 
 export const SecondaryKnockout: Story = {
   name: 'Secondary knockout',
-  args: { variant: 'secondary', color: 'knockout', children: 'Download resume' },
+  args: { variant: 'secondary', color: 'knockout', children: 'Download résumé' },
   decorators: [onBackground('knockout')],
 };
 
@@ -85,7 +85,7 @@ export const WithIcons: StoryObj = {
     <HorizontalStack gap="sm" wrap>
       <Button startIcon="email">Email me</Button>
       <Button variant="secondary" startIcon="resume">
-        Download resume
+        Download résumé
       </Button>
       <Button size="sm" variant="secondary" endIcon="email">
         Email me
@@ -99,7 +99,7 @@ export const Disabled: StoryObj = {
     <HorizontalStack gap="sm" wrap>
       <Button disabled>Book a call</Button>
       <Button variant="secondary" disabled>
-        Download resume
+        Download résumé
       </Button>
     </HorizontalStack>
   ),
@@ -129,7 +129,7 @@ export const InContext: StoryObj = {
       <HorizontalStack gap="sm" wrap>
         <Button size="lg">Book a call</Button>
         <Button size="lg" variant="secondary" startIcon="resume">
-          Download resume
+          Download résumé
         </Button>
       </HorizontalStack>
     </VerticalStack>

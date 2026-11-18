@@ -53,6 +53,6 @@
   outline-offset: var(--verity-focus-ring-offset);
 }
 
-/* The nav icons' colors and poses (not Resume's) are in NavIcon, shared
+/* The nav icons' colors and poses (not Résumé's) are in NavIcon, shared
    with NavCard. This link is their trigger: hover pose on hover, active pose
    on the current page, and no move on focus. */

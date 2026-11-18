@@ -35,7 +35,8 @@ export const Profile: Story = {
 
 // Links to the PDF, which opens in the browser
 export const Resume: Story = {
-  args: { icon: 'resume', label: 'Resume', href: '#resume.pdf' },
+  name: 'Résumé',
+  args: { icon: 'resume', label: 'Résumé', href: '#resume.pdf' },
 };
 
 export const Current: Story = {
