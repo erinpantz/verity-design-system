@@ -1,0 +1,101 @@
+import { Meta, Canvas } from '@storybook/addon-docs/blocks';
+import { VerityDocs } from '../../../foundations/VerityDocs';
+import { PropsTable } from '../../../foundations/PropsTable';
+import * as ExperienceItemStories from './ExperienceItem.stories';
+
+<Meta of={ExperienceItemStories} />
+
+<VerityDocs>
+
+# ExperienceItem
+
+One role in a list of experience: the company on the left, and its credentials on the right, the title, the dates, and a sentence about the role. Rows divided by lines, which stack when they’re narrow.
+
+<Canvas of={ExperienceItemStories.Row} />
+
+## When to use
+
+- **On Profile, for the roles you’ve had,** newest first, in a list under a Section’s heading.
+- **Not for a project.** Use `ProjectCard`, which links to the work.
+- **Not for one-line facts,** like a role or a year on a case study. Use `MetaItem`, or the facts in `CaseStudyHeader`.
+
+## Accessibility
+
+An ExperienceItem renders a `<div>`: the company is a real heading, and the credentials are paragraphs. It isn’t a list item by itself, so a page makes the list.
+
+- **Put each one in an `<li>`,** inside a `VerticalStack as="ul" gap="none"`, the way a page wraps ProjectCards. A screen reader then hears “list, 3 items,” and can move between the roles.
+- **The company is a heading** (`Heading`), `h3` by default, so it sits under the Section’s `h2` in the page’s outline, and people can jump from role to role by heading.
+- **Nothing in it is interactive,** so there’s nothing to focus.
+
+| Situation | What to do | Example |
+|---|---|---|
+| The list sits under a Section’s heading | Leave `headingLevel` at 3 | Section “Experience,” then each company as an `h3` |
+| The list is the page’s top level, with no Section heading above it | `headingLevel={2}` | Rarely: a page that’s only a list of roles |
+| Writing the dates | Month and year, with an en dash and spaces between them. The text style shows them in capitals; type them in sentence case. | “Jan 2024 – Sep 2026” |
+| Writing the description | One sentence, in the first person, about what you did and what came of it | “I redesigned account setup, which cut the time to a first payment in half.” |
+
+<Canvas of={ExperienceItemStories.InASection} />
+
+## Layout
+
+The item’s own width decides its layout, not the screen’s, like `ProjectCard`:
+
+| Item width | Layout |
+|---|---|
+| At or above `--verity-experience-item-stack-width` (800) | **Row:** the company on the left, taking what the credentials leave; the credentials on the right, `--verity-experience-item-credentials-max-width` (600) wide while there’s room; at least `--verity-spacing-lg` between them |
+| Below it | **Stacked:** the credentials under the company, `--verity-spacing-sm` apart |
+
+The credentials are never wider than 600, so the description keeps a readable line length, stacked or not. A long company name wraps within its side of the row.
+
+<Canvas of={ExperienceItemStories.Stacked} />
+
+<Canvas of={ExperienceItemStories.LongCompanyName} />
+
+- **In a column Section** (880 wide), it’s a row on XL and Large, with the company in 232 of it, and stacked on Medium and Small.
+- **In a wide Section,** the company gets the extra width.
+- **How the switch works:** a container query can’t read a custom property, so `npm run tokens` writes the stack width out once per breakpoint (in `container-widths.generated.module.css`), and the item’s CSS has one container query for each, inside that breakpoint’s media query. It’s all CSS, so the first paint is right before JavaScript runs.
+
+<Canvas of={ExperienceItemStories.InAWideSection} />
+
+## Text
+
+| Part | Text style | Color |
+|---|---|---|
+| The company | `heading-3` (from `Heading`) | `--verity-color-content-default` |
+| The title | `title-default` | `--verity-color-content-default` |
+| The dates | `meta-default` | `--verity-color-content-subtle` |
+| The description | `body-lg` | `--verity-color-content-subtle` |
+
+## Space
+
+| Space | Token |
+|---|---|
+| Above and below the row | `--verity-padding-md` |
+| At the sides | None: the row lines up with the content around it |
+| The line along its top | `--verity-border-width-sm` in `--verity-color-border-subtle` |
+| Between the company and the credentials, in a row | At least `--verity-spacing-lg` |
+| Between the company and the credentials, stacked | `--verity-spacing-sm` |
+| Between the title and the dates | `--verity-spacing-xxs` |
+| Between the dates and the description | `--verity-spacing-xs` |
+| The credentials’ widest | `--verity-experience-item-credentials-max-width` (600) |
+
+It has no background and adds no space outside itself: the list puts the rows together with no gap, so the top lines divide them.
+
+## Props
+
+<PropsTable of={ExperienceItemStories} />
+
+## In Figma
+
+| Figma | Code |
+|---|---|
+| Component `ExperienceItem`, on the Content blocks page | `<ExperienceItem />` |
+| The exposed `Company` heading | `company`, and `headingLevel` for its level |
+| Property `Title` | `title` |
+| Property `Dates` | `dates` |
+| Property `Description` | `description` |
+| Property `Layout` (`row`, `stacked`) | No prop: the item’s own width decides. Figma previews both. |
+| A row’s widths | Figma sets the company and the credentials both to Fill, so they share the row equally, up to 600 each. Code gives the credentials their full 600 first, and the company the rest. |
+| Not in Figma | The list around the items (`VerticalStack as="ul"`, each item in an `<li>`) |
+
+</VerityDocs>
