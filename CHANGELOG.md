@@ -4,6 +4,16 @@ Every release of Verity, newest first. The format follows [Keep a Changelog](htt
 
 Sites install Verity by tag (for example `github:erinpantz/verity-design-system#v0.3.0`), so a site only changes when it moves to a new tag on purpose.
 
+## [0.9.7] – 2026-11-18
+
+The Erin Tozour logo lights up in a wave of the accent colors while its link is hovered or focused.
+
+### Added
+
+- **Tokens:** Core `duration/180`, and `erin-tozour-logo/duration/color-step` (`--verity-erin-tozour-logo-duration-color-step`), which points to it: 180ms, code only.
+- **ErinTozourLogo:** inside a link that opts in, as MainNav’s home link does, the letters cycle through the six content accents (`--verity-color-content-accent-one` to `-six`, which follow the theme) while the link is hovered or has keyboard focus: a wave from left to right, every letter switching at the same moment, one step per `--verity-erin-tozour-logo-duration-color-step`, with no blend. Every letter takes its color at once, and fades back over `--verity-motion-duration-fast` when the hover or focus ends. With reduce motion on, the colors appear but don’t move. It’s all CSS. Each letter is numbered in reading order in `logoGlyphs.ts`. Anywhere else, the logo stays one color, and its size, accessible name, and look at rest don’t change. No props change.
+- **Docs:** ErinTozourLogo’s page has a Color cycle section and stories with the logo in a link, held in its hover state. MainNav’s page describes the logo’s hover.
+
 ## [0.9.6] – 2026-11-18
 
 NavIcon gets a mirrored hover pose, so Erin’s site can tip the Profile icon one way and then the other.
@@ -632,6 +642,7 @@ The first library release: everything in the Figma library except Animation, wit
 - **Theme helpers:** `themeScript`, `useTheme`, and `setTheme`, so a site applies the saved theme before the first paint.
 - **The library build:** one entry point with every component and its prop types, one stylesheet (`verity-design-system/styles.css`) with the fonts inside it, and `npm run build:watch` for working with a linked copy.
 
+[0.9.7]: https://github.com/erinpantz/verity-design-system/compare/v0.9.6...v0.9.7
 [0.9.6]: https://github.com/erinpantz/verity-design-system/compare/v0.9.5...v0.9.6
 [0.9.5]: https://github.com/erinpantz/verity-design-system/compare/v0.9.4...v0.9.5
 [0.9.4]: https://github.com/erinpantz/verity-design-system/compare/v0.9.3...v0.9.4
