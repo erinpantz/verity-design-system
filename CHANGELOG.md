@@ -4,6 +4,15 @@ Every release of Verity, newest first. The format follows [Keep a Changelog](htt
 
 Sites install Verity by tag (for example `github:erinpantz/verity-design-system#v0.3.0`), so a site only changes when it moves to a new tag on purpose.
 
+## [0.9.2] – 2026-11-18
+
+Erin’s site shows the Profile nav icon as a picture of her, in its hover pose, on its Portfolio intro card. NavIcon, where the nav icons’ poses live, is now exported, so the site uses it instead of copying the colors and the tilt.
+
+### Added
+
+- **NavIcon** is exported, with its prop types `NavIconProps` and `NavIconPose`. It shows one of the nav icons (Portfolio, Playground, or Profile) on its own, in a fixed pose. Its props are unchanged: `page`, `pose`, and `fill`. It’s decorative, hidden from screen readers. Inside a link, `NavItem` and `NavCard` are still the way to get the hover and current poses.
+- **Docs:** NavIcon has a docs page and stories under **Navigation › NavIcon**: each page’s icon in each pose, and one filling a larger box. The page says when to use NavIcon on its own and when to use NavItem or NavCard, and that its colors are made for `--verity-color-background-default`.
+
 ## [0.9.1] – 2026-11-18
 
 Erin redrew her logos in her own typeface, Imperfecto. “Erin Tozour” is capitalized, its i is one shape, and the marks are new: an E for Erin Tozour, and the i’s slanted dot for Verity.
@@ -586,6 +595,7 @@ The first library release: everything in the Figma library except Animation, wit
 - **Theme helpers:** `themeScript`, `useTheme`, and `setTheme`, so a site applies the saved theme before the first paint.
 - **The library build:** one entry point with every component and its prop types, one stylesheet (`verity-design-system/styles.css`) with the fonts inside it, and `npm run build:watch` for working with a linked copy.
 
+[0.9.2]: https://github.com/erinpantz/verity-design-system/compare/v0.9.1...v0.9.2
 [0.9.1]: https://github.com/erinpantz/verity-design-system/compare/v0.9.0...v0.9.1
 [0.9.0]: https://github.com/erinpantz/verity-design-system/compare/v0.8.12...v0.9.0
 [0.8.12]: https://github.com/erinpantz/verity-design-system/compare/v0.8.11...v0.8.12
