@@ -26,7 +26,7 @@ Its links, the logo and the NavItems, go through `LinkProvider`, so with a site�
 
 MainNav renders a `<nav aria-label="Main">`, so screen readers list it as the main navigation landmark. Inside it:
 
-- **The site title** is a link home whose only content is the logo, so its name is the logo’s: “Erin Tozour.” It’s the same name whether the full logo or “erin” shows. The logo that isn’t showing is `display: none`, so screen readers skip it too and hear the name once.
+- **The site title** is a link home whose only content is the logo, so its name is the logo’s: “Erin Tozour.” It’s the same name whether the full logo or “Erin” shows. The logo that isn’t showing is `display: none`, so screen readers skip it too and hear the name once.
 - **The pages** are a list (`<ul>`) of three `NavItem` links, so screen readers say how many there are. The current page has `aria-current="page"`.
 - **In the menu layout,** the links in the bar are `display: none`, hidden from screen readers as well as from sight, and the menu button shows. It’s an `IconButton` named “Open menu,” and tells screen readers that it opens a dialog (`aria-haspopup="dialog"`) and whether it’s open (`aria-expanded`). In the other layouts, the menu button is `display: none`.
 
@@ -37,7 +37,7 @@ MainNav’s own width picks one of three layouts, not the screen’s width. It m
 | Content width | Layout | Logo | At the end |
 |---|---|---|---|
 | At least `--verity-main-nav-short-logo-width` | `full` | The full logo | The links |
-| Under that, but at least `--verity-main-nav-menu-width` | `short` | “erin” (`ErinTozourLogo name="first"`) | The links |
+| Under that, but at least `--verity-main-nav-menu-width` | `short` | “Erin” (`ErinTozourLogo name="first"`) | The links |
 | Under `--verity-main-nav-menu-width` | `menu` | The full logo | The menu button, which opens the links in `NavOverlay` |
 
 <Canvas of={MainNavStories.Short} />
@@ -51,7 +51,7 @@ Each is the space the layout above it needs, rounded up: the logo, `--verity-mai
 | Token | XL and Large | Medium and Small | Made of |
 |---|---|---|---|
 | `--verity-main-nav-short-logo-width` | 620 | 544 | The full logo, the gap, and the links: 212 + 32 + 374, or 159 + 24 + 358 |
-| `--verity-main-nav-menu-width` | 484 | 440 | “erin,” the gap, and the links: 75 + 32 + 374, or 56 + 24 + 358 |
+| `--verity-main-nav-menu-width` | 484 | 440 | “Erin,” the gap, and the links: 75 + 32 + 374, or 56 + 24 + 358 |
 
 ### On screens
 

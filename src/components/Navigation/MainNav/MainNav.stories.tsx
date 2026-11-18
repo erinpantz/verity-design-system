@@ -37,7 +37,7 @@ const box =
 // full: the full logo and the links. The frame's whole width.
 export const Full: Story = {};
 
-// short: the logo shows only “erin.” The widest short nav: 1px narrower than
+// short: the logo shows only “Erin.” The widest short nav: 1px narrower than
 // main-nav/short-logo-width.
 export const Short: Story = {
   decorators: [box('var(--verity-main-nav-short-logo-width) - 1px')],

@@ -9,7 +9,7 @@ import * as ErinTozourLogoStories from './ErinTozourLogo.stories';
 
 # ErinTozourLogo
 
-Erin Tozour’s name, drawn as a logo. It’s the site title in `MainNav`, in full or as just “erin” where space is short.
+Erin Tozour’s name, drawn as a logo. It’s the site title in `MainNav`, in full or as just “Erin” where space is short. It’s set in Imperfecto, Erin’s own typeface.
 
 <Canvas of={ErinTozourLogoStories.Default} />
 
@@ -18,7 +18,7 @@ Erin Tozour’s name, drawn as a logo. It’s the site title in `MainNav`, in fu
 - **As the site title,** linking to the home page, as MainNav does.
 - **Anywhere the site signs its name,** like the footer.
 - **The first name (`name="first"`) where the full name doesn’t fit,** like MainNav’s short layout. Where both fit, use the full name.
-- **Not as a small square mark,** like a badge or an avatar. Use ErinTozourBadge, the “e” on a round brand-colored badge.
+- **Not as a small square mark,** like a badge or an avatar. Use ErinTozourBadge, the E on a round brand-colored badge.
 - **Not for the Verity design system.** Verity has its own logo, in `brand/verity-logo.svg`.
 - **Not as a heading.** The page’s heading is text, so it can be searched, translated, and resized.
 
@@ -35,10 +35,10 @@ The logo renders an `<svg>` with `role="img"` and `aria-label="Erin Tozour"`, so
 
 | `name` | Draws | Width at 32px tall | Use for |
 |---|---|---|---|
-| `full` (default) | “erin tozour” | About 210px | Wherever it fits |
-| `first` | “erin” | About 75px | Narrow spaces, where the full name would crowd what’s beside it |
+| `full` (default) | “Erin Tozour” | About 235px | Wherever it fits |
+| `first` | “Erin” | About 78px | Narrow spaces, where the full name would crowd what’s beside it |
 
-The first-name version uses the full logo’s own shapes, cropped after the n, so at the same height the letters are the same size and sit in the same place. Switching between the two only cuts off or brings back “tozour.”
+The first-name version has its own file, exported from Figma with the same height and with “Erin” in the same place as in the full logo, so at the same height the letters are the same size and sit in the same place. Switching between the two only cuts off or brings back “Tozour.”
 
 <Canvas of={ErinTozourLogoStories.Compared} />
 
@@ -61,8 +61,8 @@ The logo is one color, `currentColor`, so it takes the text color of wherever it
 | Figma | Code |
 |---|---|
 | Component `ErinTozourLogo`, on the Branding page | `<ErinTozourLogo />` |
-| The logo cropped to “erin,” as in MainNav’s `Layout=short` | `<ErinTozourLogo name="first" />` |
+| “Erin” only, as in MainNav’s `Layout=short` | `<ErinTozourLogo name="first" />` |
 | Its fill, `color/content/default` | `currentColor`: the text color around it |
-| The exported file | `brand/erin-tozour-logo.svg`, never edited by hand. The “erin” crop is made in code, in `logoGlyphs.ts`, from the same file. |
+| The exported files | `brand/erin-tozour-logo.svg` (“Erin Tozour”) and `brand/erin-tozour-logo-first.svg` (“Erin”), exported from the Branding page and never edited by hand. `logoGlyphs.ts` reads each file’s `viewBox` and shapes; ErinTozourBadge’s mark is the third file, `brand/erin-tozour-mark.svg`. |
 
 </VerityDocs>

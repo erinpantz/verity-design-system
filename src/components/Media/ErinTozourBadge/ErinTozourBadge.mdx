@@ -8,7 +8,7 @@ import * as ErinTozourBadgeStories from './ErinTozourBadge.stories';
 
 # ErinTozourBadge
 
-The “e” mark, the logo’s first letter, on a round brand-colored badge. It keeps the brand in view where the logo isn’t shown, like NavOverlay, which covers the page and its logo.
+The mark, an E in Imperfecto, Erin’s own typeface, on a round brand-colored badge. It keeps the brand in view where the logo isn’t shown, like NavOverlay, which covers the page and its logo.
 
 <Canvas of={ErinTozourBadgeStories.Default} />
 
@@ -45,13 +45,13 @@ The mark is `--verity-color-content-default` on `--verity-color-background-brand
 
 ## Props
 
-ErinTozourBadge has no props: its mark, size, and colors are fixed.
+ErinTozourBadge’s mark and colors are fixed. Its one prop, `fill`, makes it fill its container (see Size).
 
 ## In Figma
 
 | Figma | Code |
 |---|---|
 | Component `ErinTozourBadge`, on the Branding page | `<ErinTozourBadge />` |
-| Its `ErinTozourMark` instance, the “e” | The logo file’s first shape, `brand/erin-tozour-logo.svg`, cropped to a square in `ErinTozourLogo/logoGlyphs.ts` |
+| Its `ErinTozourMark` instance, the E | `brand/erin-tozour-mark.svg`, exported from the Branding page and never edited by hand, read by `ErinTozourLogo/logoGlyphs.ts`. The full logo and “Erin” are the other two files there, `brand/erin-tozour-logo.svg` and `brand/erin-tozour-logo-first.svg`. |
 
 </VerityDocs>

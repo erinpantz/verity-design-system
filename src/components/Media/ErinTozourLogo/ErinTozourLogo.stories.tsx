@@ -25,14 +25,14 @@ export const Default: Story = {
   decorators: [navHeight],
 };
 
-// Only “erin,” for narrow spaces, like MainNav's short layout
+// Only “Erin,” for narrow spaces, like MainNav's short layout
 export const FirstName: Story = {
   name: 'First name',
   args: { name: 'first' },
   decorators: [navHeight],
 };
 
-// The two at the same height, one above the other: the letters of “erin” line up exactly
+// The two at the same height, one above the other: the letters of “Erin” line up exactly
 export const Compared: Story = {
   render: () => (
     <div style={{ display: 'grid', gap: 'var(--verity-spacing-sm)', justifyItems: 'start' }}>

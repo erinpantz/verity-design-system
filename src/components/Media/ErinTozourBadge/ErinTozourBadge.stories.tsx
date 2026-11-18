@@ -10,5 +10,5 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-// It has no props: the mark, its size, and its colors are fixed
+// The mark and its colors are fixed; fill only changes its size
 export const Default: Story = {};
