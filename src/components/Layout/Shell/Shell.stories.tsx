@@ -10,12 +10,17 @@ import reel5 from '../../../foundations/sample-images/reel-5.png';
 import { CaseStudyHeader } from '../../ContentBlocks/CaseStudyHeader';
 import { Hero } from '../../ContentBlocks/Hero';
 import { Gallery } from '../../Media/Gallery';
+import { LayeredImage } from '../../Media/LayeredImage';
+import type { LayeredImageProps } from '../../Media/LayeredImage';
+import LayeredImageStories from '../../Media/LayeredImage/LayeredImage.stories';
 import { Image } from '../../Media/Image';
 import { MediaBlock } from '../../Media/MediaBlock';
 import { Reel } from '../../Media/Reel';
 import { Prose } from '../../Text/Prose';
 import { UnorderedList, UnorderedListItem } from '../../Text/UnorderedList';
 import { Container } from '../Container';
+import { Grid } from '../Grid';
+import { TextBlock } from '../../Text/TextBlock';
 import { Footer } from '../Footer';
 import type { FooterProps } from '../Footer/Footer';
 import FooterStories from '../Footer/Footer.stories';
@@ -66,8 +71,8 @@ const page = (
           exported from Figma, and the docs live in Storybook.
         </p>
         <p>
-          The nav runs across the top of the page and scrolls away with it. On a phone, the links move into a menu,
-          one tap away.
+          The nav runs across the top of the page and stays there as the page scrolls. On a phone, the links move
+          into a menu, one tap away.
         </p>
       </Prose>
     </Section>
@@ -133,6 +138,82 @@ const caseStudy = (
   </>
 );
 
+// A long page, as Main, to see the nav stay at the top: a Hero with a Reel
+// and a LayeredImage, which both pass under the nav as the page scrolls, and
+// links to headings further down, which land below the nav, not under it
+const layered = LayeredImageStories.args as LayeredImageProps;
+const paragraph = (
+  <p>
+    Each decision becomes a token, a component, or a rule, so the next screen is faster. I talk to the people who use a
+    product before I change it, and again after, and a design is done when it’s in people’s hands and we know whether
+    it worked. <a href="#the-system">Read about the system</a>.
+  </p>
+);
+const longPage = (
+  <>
+    <Container>
+      <Hero
+        width="wide"
+        heading="Product designer with a creative toolkit"
+        intro="I’m a senior product designer. I turn messy, high-stakes work into products people trust."
+        media={<Reel images={[{ src: reel1 }, { src: reel2 }, { src: reel3 }, { src: reel4 }, { src: reel5 }]} />}
+      />
+    </Container>
+    <Section heading="On this page">
+      <Prose>
+        <ul>
+          <li>
+            <a href="#how-i-work">How I work</a>
+          </li>
+          <li>
+            <a href="#the-system">The system</a>
+          </li>
+          <li>
+            <a href="#what-s-next">What’s next</a>
+          </li>
+        </ul>
+      </Prose>
+    </Section>
+    <Section heading="Hello">
+      <Grid itemWidth="lg" gap="lg">
+        <LayeredImage {...layered} />
+        <TextBlock heading="A picture in layers">
+          Move the pointer over it, then scroll: its shapes pass under the nav, like the rest of the page.
+        </TextBlock>
+      </Grid>
+    </Section>
+    <Section heading="Selected work">
+      <Gallery>
+        <MediaBlock caption="Setup, before: step 2 asked for a bank login with no explanation.">
+          <Image src={screenshot} alt="The setup screen, on step 2 of 5: Connect your bank" />
+        </MediaBlock>
+        <MediaBlock caption="Early sketches of the new flow.">
+          <Image src={shapes} alt="Overlapping circles in blue, yellow, and green" />
+        </MediaBlock>
+        <MediaBlock caption="Field research with small-business owners in Ohio.">
+          <Image src={landscape} alt="Hills at dusk, with the sun setting behind them" />
+        </MediaBlock>
+      </Gallery>
+    </Section>
+    <Container>
+      <Prose>
+        <h2 id="how-i-work">How I work</h2>
+        {paragraph}
+        {paragraph}
+        {paragraph}
+        <h2 id="the-system">The system</h2>
+        {paragraph}
+        {paragraph}
+        {paragraph}
+        <h2 id="what-s-next">What’s next</h2>
+        {paragraph}
+        {paragraph}
+        {paragraph}
+      </Prose>
+    </Container>
+  </>
+);
+
 const meta = {
   title: 'Layout/Shell',
   component: Shell,
@@ -156,7 +237,7 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-// The nav across the top: the full logo and the links. It scrolls away with the page.
+// The nav across the top: the full logo and the links. It stays at the top as the page scrolls.
 export const XL: Story = {
   globals: { viewport: { value: 'xl' } },
 };
@@ -213,5 +294,17 @@ export const FocusedSmall: Story = {
 // Resize to see it at any width: nothing scrolls sideways.
 export const Home: Story = {
   args: { children: home, current: undefined },
+  globals: { viewport: { value: 'xl' } },
+};
+
+// A long page: scroll it, and the nav stays at the top, with a divider
+// along its bottom edge once you've scrolled. The Reel's cards and the
+// LayeredImage's shapes pass under it. The links under “On this page” jump
+// to headings that land just below the nav, and tabbing down the page never
+// puts the focused link under it. Try it at every width: the menu layout
+// sticks too, and its menu opens over everything.
+export const LongPage: Story = {
+  name: 'Long page',
+  args: { children: longPage, current: undefined },
   globals: { viewport: { value: 'xl' } },
 };

@@ -35,7 +35,7 @@ The skip link works the same in both modes: it moves focus to Main.
 
 ## Width
 
-Shell is one column at every width: MainNav, then Main, then the Footer. The nav isn’t pinned; it scrolls away with the page. Shell has no breakpoints of its own: MainNav picks its layout from its own width.
+Shell is one column at every width: MainNav, then Main, then the Footer. The nav stays at the top of the screen as the page scrolls (see Nav, below). Shell has no breakpoints of its own: MainNav picks its layout from its own width.
 
 | Screen | Nav |
 |---|---|
@@ -45,9 +45,24 @@ Shell is one column at every width: MainNav, then Main, then the Footer. The nav
 
 See **Navigation › MainNav** for how it decides.
 
-The page is one layer, over Shell’s background. Moving media that a default `Hero` puts behind the page, like a Reel’s cards, passes behind the nav, Main, the Footer, ThemeToggle, and BackLink, and stays in sight above the background. The page column clips sideways only, so a card swinging past the window’s edge never makes the page scroll sideways, and cards can still rise toward the nav (see **Content blocks › Hero**, Media).
+The page is one layer, over Shell’s background. Moving media that a default `Hero` puts behind the page, like a Reel’s cards, passes behind Main, the Footer, ThemeToggle, and BackLink, and stays in sight above the background. The page column clips sideways only, so a card swinging past the window’s edge never makes the page scroll sideways, and cards can still rise toward the nav, passing under it (see **Content blocks › Hero**, Media).
 
 <Canvas of={ShellStories.Home} />
+
+## Nav
+
+In default mode, the nav stays at the top of the screen as the page scrolls, at every width and in every layout. **Why:** on a long page, people scroll past the nav and forget it’s there, and the way to the other pages disappears with it. The nav is short, so keeping it costs little room. Case studies, in focused mode, have no nav, and don’t change.
+
+| What | How |
+|---|---|
+| Sticking | `position: sticky` at the top, in CSS, so it sticks before JavaScript runs. It keeps its size: it only stops moving. |
+| Background | `--verity-color-background-default`, solid, so the page passes cleanly underneath |
+| Divider | Once the page has scrolled away from the top, a line along its bottom edge: `--verity-color-border-divider` at `--verity-border-width-sm`, drawn inside the nav, so its size doesn’t change. It fades in and out over `--verity-motion-duration-fast`, and appears at once with reduce motion on. At the top of the page, the nav looks exactly as it does in place. |
+| How Shell knows you’ve scrolled | A 1px marker at the very top of the page. When it leaves the screen, the page is scrolled (an `IntersectionObserver`). Without JavaScript, the nav still sticks, without the divider. |
+| Layer | Above the page’s content, including moving media behind the page (a Reel’s cards in a default Hero) and a `LayeredImage`’s shapes, which pass under it. Above PageLoader, so it stays visible and usable while a page loads. Below the skip link. NavOverlay opens over everything, from the stuck nav too. |
+| Nothing hides under it | Shell measures the nav’s height, which changes with its layout and the breakpoint, and sets the page’s `scroll-padding-top` to it. A link to a heading, the skip link’s target, and anything that gets keyboard focus land below the nav, not under it (WCAG 2.4.11, Focus Not Obscured). |
+
+<Canvas of={ShellStories.LongPage} />
 
 ## Mode
 
@@ -75,7 +90,7 @@ In focused mode:
 
 ## Page loader
 
-Shell places `PageLoader` right below the nav (at the top, in focused mode), and drives it from two props:
+Shell places `PageLoader` right below the nav (at the top, in focused mode), and drives it from two props. Once the page has scrolled, the loader starts at the stuck nav’s bottom edge.
 
 | Prop | What it does |
 |---|---|
