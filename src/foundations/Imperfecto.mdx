@@ -1,0 +1,105 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import { VerityDocs } from './VerityDocs';
+
+<Meta title="Foundations/Imperfecto" />
+
+export const imperfecto = { fontFamily: 'var(--verity-typography-font-family-imperfecto)', fontWeight: 700 };
+export const Specimen = ({ size = 64, lineHeight = 1.1, children }) => (
+  <p style={{ ...imperfecto, fontSize: size, lineHeight, margin: '24px 0' }}>{children}</p>
+);
+
+<VerityDocs>
+
+# Imperfecto
+
+Imperfecto is my own typeface. I designed it for large type, so Verity uses it wherever text is meant to be the loudest thing on the page: display text, headings, and blockquotes. My logos are drawn in it too, so the site's headings and its name share one voice.
+
+<Specimen size={96}>Imperfecto</Specimen>
+<Specimen size={48} lineHeight={1.2}>Every decision made once, and kept true everywhere.</Specimen>
+
+## Why I made it
+
+### Type matters
+
+As a visual designer, I know how important a typeface is to any design, from marketing to product. So much of a design’s look, feel, and usability depends on its type. It’s also a key part of a brand: type appears in almost every brand asset, from the website to the apps to print. A unique, recognizable typeface lets my portfolio and my design system express a brand I can own.
+
+### Why by hand
+
+I’ve been learning so much, and enjoying using AI to speed up my process. As I adapt the way I design to new tools and workflows, I keep thinking about where AI fits in design, and where the traditional craft of making things yourself comes in.
+
+When I first started making a typeface, I worked on it with Claude. I quickly understood what a deep, detailed craft type design is. Claude can help with some steps, but it can’t draw the letters, shape the look and feel I’m after, or make the subtle decisions that make a typeface sing. I loved that part of the craft still needs a human touch. I loved drawing, spacing, and kerning the letters. And I love going back to Claude to help me put the typeface to work across my system.
+
+### Why “Imperfecto”
+
+I truly enjoyed the process, but I don’t want to Dunning–Kruger myself into thinking I’m a type designer. A few tutorials, some videos, and learning Glyphs do not a type designer make. I’m a self-taught designer, though, so I won’t let that hold me back. Rather than reaching for perfection, I’m reaching for output: I want to make things and iterate on them. I also want to show respect to the designers who are true experts in this craft.
+
+So the name does two things:
+1. It tells my design peers that I know this isn’t a perfect typeface.
+2. It reminds me that it’s a forever work in progress.
+
+I’ll enjoy making Imperfecto a little more perfect in my spare time, whenever the itch for hands-on design is gnawing at me.
+
+## How it started
+
+Imperfecto grew out of my logo. The “Erin Tozour” and Verity logos were drawn as one family, so their letters became the starting point for a full alphabet. While I started in Figma, I quickly transitioned to using Glyphs to properly draw my letters. Once it was on my site, I could see what to adjust at real sizes, and I keep refining it there.
+
+## Where Verity uses it
+
+| Text style | Typeface | Why |
+|---|---|---|
+| `display/*` | Imperfecto | The largest text on a page, such as Hero and CaseStudyHeader headlines. |
+| `heading-1` to `heading-3` | Imperfecto | Headings carry the page's structure, and they're large enough for its details to show. |
+| `blockquote` | Imperfecto | A pulled-out quote is meant to stand apart from the text around it. |
+| `title/*` | Plus Jakarta Sans | Titles are smaller (card titles, list leads). Imperfecto is drawn for large sizes, and Jakarta reads better small. |
+| Body, labels, and the rest | Plus Jakarta Sans | Text meant for reading. |
+
+Use Imperfecto through the text styles above, never by setting the font family on something directly. Its token is `typography/font-family/imperfecto` (`--verity-typography-font-family-imperfecto`).
+
+## One weight
+
+Imperfecto has one weight, Bold (700), so every style that uses it is 700. Text in Imperfecto never gets a bolder weight or an italic faked by the browser (`font-synthesis: none`). A `<strong>` or `<em>` inside a heading or a quote looks the same as the text around it, so a heading shouldn't rely on either for emphasis.
+
+## Spacing
+
+Imperfecto's spacing and kerning are built into the font, so its text styles have no letter-spacing (`letter-spacing/0`). If something looks too tight or too loose, fix it in the font rather than with letter-spacing, so every size and every page gets the fix at once.
+
+## Characters
+
+<Specimen size={40} lineHeight={1.4}>ABCDEFGHIJKLM<br />NOPQRSTUVWXYZ</Specimen>
+<Specimen size={40} lineHeight={1.4}>abcdefghijklm<br />nopqrstuvwxyz</Specimen>
+<Specimen size={40} lineHeight={1.4}>0123456789 %</Specimen>
+<Specimen size={40} lineHeight={1.4}>. , : ; ! ? ’ ‘ “ ” … – - + / {'\\'} ← → ↔ É é</Specimen>
+
+The numbers are proportional, each as wide as its shape (the 1 is narrower than the 0), which suits headings and single stats. Numbers that need to line up in a column belong in Plus Jakarta Sans.
+
+### What falls back to Plus Jakarta Sans
+
+Imperfecto doesn't have every character yet: the em dash, ampersand, parentheses, straight double quotes, and symbols such as @, #, $, and *, along with accented letters other than é. Its font stack lists Plus Jakarta Sans second, so a missing character shows in Verity's other typeface instead of a system font:
+
+<Specimen size={48} lineHeight={1.2}>Research — design (and build) & ship</Specimen>
+
+The dash, the parentheses, and the ampersand above are Jakarta. My writing style already uses “and” rather than “&,” so the gap rarely shows; when a heading needs one of these characters, add it to the font.
+
+## Metrics
+
+| Measure | Units (of 1,000) |
+|---|---|
+| Cap height | 700 |
+| x-height | 500 |
+| Ascender | 800 |
+| Descender | −200 |
+
+The ascender and descender decide how much room each line of text takes. Changing them moves text on every page that uses Imperfecto, so they change only on purpose, never as part of a small tweak.
+
+## Updating the font
+
+The font lives in Verity at `src/fonts/imperfecto/Imperfecto-Bold.woff2`, and the build copies it into the package with its `@font-face` rule.
+
+1. Export from Glyphs as WOFF2, keeping the family name “Imperfecto” and the Bold style, so the `@font-face` rule and the tokens still match.
+2. Replace the file in Verity.
+3. Preview it on the site with `npm run verity:local` before releasing.
+4. Release a patch: the text looks different, but no tokens or props change.
+
+Collect a round of adjustments into one release rather than releasing each tweak.
+
+</VerityDocs>
