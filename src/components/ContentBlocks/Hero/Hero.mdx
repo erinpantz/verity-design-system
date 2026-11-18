@@ -52,6 +52,23 @@ Use `default` on most pages, as on Home with its Reel, `subtle` for a quieter ba
 
 <Canvas of={HeroStories.Brand} />
 
+## Intro
+
+The intro is plain text in `body-xl`, so its style stays the Hero’s. It’s one paragraph, a string, or several, a list of strings, one per paragraph.
+
+| `intro` | Renders | Use for |
+|---|---|---|
+| A string | One `<p>` | A sentence or two, as on most pages |
+| A list of strings | One `<p>` per paragraph, `--verity-viewport-typography-body-xl-space-before` apart (the space Prose puts between `body-xl` paragraphs) | An intro with more than one idea, such as what you’re working on and why |
+
+Keep it short either way: a Hero introduces the page, and the page says the rest. Two paragraphs is plenty.
+
+**Line breaks:** the intro wraps with `text-wrap: pretty`, so the browser avoids a lone short word on the last line and spreads the breaks more evenly. It only changes where lines break, never the text or its size; browsers without it wrap as before.
+
+<Canvas of={HeroStories.TwoParagraphIntro} />
+
+<Canvas of={HeroStories.TwoParagraphIntroWithAPhoto} />
+
 ## Width
 
 | `width` | The band | Use for |
@@ -127,6 +144,7 @@ A Hero fills the width it’s given and adds no space outside itself. On `subtle
 | Inside, on `subtle`, `knockout`, and `brand` | `--verity-padding-lg` on every side |
 | Inside, on `default` | `--verity-padding-lg` on the top and bottom; `--verity-padding-none` on the sides |
 | Between the headline and the intro, inside the text group | `--verity-spacing-sm` |
+| Between the intro’s paragraphs | `--verity-viewport-typography-body-xl-space-before` |
 | Between the text group and the actions | `--verity-spacing-lg` |
 | Between the body and the media, side by side or wrapped | `--verity-spacing-lg` |
 | The body’s narrowest width beside media | `--verity-hero-text-min-width` (460, 460, 300, 200) |
@@ -150,7 +168,7 @@ A Hero fills the width it’s given and adds no space outside itself. On `subtle
 | Property `Background` | `background`. `default` is the default in both. |
 | Property `Border radius` (one option, `md`) | No prop: always `md`. Figma keeps the property because it can’t delete a variant property. |
 | Property `Heading` | `heading` |
-| Property `Intro` | `intro` |
+| Property `Intro` | `intro`. Figma’s intro is one text layer: two paragraphs there are one layer with a paragraph break and `body/xl`’s paragraph spacing. In code, they’re a list of two strings. |
 | Property `Show actions` | Not a prop: set `primaryAction` to show the actions, or leave it out for none |
 | Property `Primary action` (an exposed Button) | `primaryAction`: its label and where it goes. Hero sets the Button’s variant, size, and color. |
 | Property `Secondary action` (an exposed Button) | `secondaryAction` |

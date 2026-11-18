@@ -162,6 +162,35 @@ export const WithAPhoto: Story = {
   decorators: [inContainer],
 };
 
+// An intro of two paragraphs: a list of strings, one per paragraph, with
+// body/xl's paragraph space between them
+const twoParagraphs = [
+  'I’m a senior product designer, learning to design and build with AI. I direct the code behind my own design system and this site, and I review every change.',
+  'I still spend time on craft. I drew my own typeface by hand, because some decisions only come from doing the work yourself.',
+];
+
+export const TwoParagraphIntro: Story = {
+  name: 'Two-paragraph intro',
+  args: { intro: twoParagraphs },
+  argTypes: { intro: { control: 'object' } },
+};
+
+// Two paragraphs beside a photo, as on Profile
+export const TwoParagraphIntroWithAPhoto: Story = {
+  name: 'Two-paragraph intro, with a photo',
+  args: {
+    background: 'subtle',
+    width: 'wide',
+    intro: twoParagraphs,
+    primaryAction: undefined,
+    secondaryAction: undefined,
+    media: <Image src={landscape} alt="" aspectRatio="1:1" loading="eager" />,
+  },
+  argTypes: { intro: { control: 'object' }, media: { control: false } },
+  parameters: { layout: 'fullscreen' },
+  decorators: [inContainer],
+};
+
 // The top of a home page: a Hero, then the first Section, with Main's gap
 // between them
 export const InContext: StoryObj = {
