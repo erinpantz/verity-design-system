@@ -77,6 +77,8 @@ export { Icon } from './components/Media/Icon';
 export type { IconProps } from './components/Media/Icon';
 export { Image } from './components/Media/Image';
 export type { ImageProps } from './components/Media/Image';
+export { LayeredImage } from './components/Media/LayeredImage';
+export type { LayeredImageLayer, LayeredImageProps } from './components/Media/LayeredImage';
 export { MediaBlock } from './components/Media/MediaBlock';
 export type { MediaBlockProps } from './components/Media/MediaBlock';
 export { Reel } from './components/Media/Reel';

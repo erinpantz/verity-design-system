@@ -1,0 +1,121 @@
+/* A picture built from layers that move at different depths with the
+   pointer. LayeredImage.tsx writes the pointer's eased position to
+   --pointer-x and --pointer-y on the frame, from −1 to 1 on each axis (0, at
+   rest, when they're not set); everything here turns them into transforms,
+   so the motion never changes the layout.
+
+   The frame fills its container's width and keeps its aspect ratio. It
+   doesn't clip: the layers move past its edges. Inside a Shell, the page
+   column clips sideways, so that never makes the page scroll sideways. */
+
+.frame {
+  /* The motion, tuned in Erin's prototype. Verity has no tokens for motion
+     distances and angles yet, so they're named here.
+     - Max offset: how far a layer with depth 1 moves when the pointer is at
+       the frame's edge. 40px at a 560px frame, scaled with the frame's
+       width (100cqw is the frame's width), so a smaller frame moves less.
+     - Tilt: the most the frame turns on each axis, toward the pointer.
+     - Perspective: how deep the tilt looks; larger is flatter. */
+  --max-offset: calc(100cqw * 40 / 560);
+  --tilt-angle: 4deg;
+  --perspective: 1200px;
+
+  /* The frame is the container --max-offset measures */
+  container-type: inline-size;
+  position: relative;
+  inline-size: 100%;
+}
+
+/* The layers' stage, the size of the frame. With tilt, it turns toward the
+   pointer: the side the pointer is on tips away. The frame itself doesn't
+   move, so the area that follows the pointer stays put. */
+.stage {
+  position: absolute;
+  inset: 0;
+  /* Only the frame takes the pointer, so a layer that has moved past the
+     frame's edge doesn't count as being over it */
+  pointer-events: none;
+}
+
+/* Only while moving: at rest, no 3D transform, so the picture stays sharp.
+   It's back to flat by the time data-moving goes away, so nothing jumps. */
+.tilt[data-moving] .stage {
+  transform: perspective(var(--perspective)) rotateX(calc(var(--pointer-y, 0) * -1 * var(--tilt-angle)))
+    rotateY(calc(var(--pointer-x, 0) * var(--tilt-angle)));
+}
+
+/* Each layer, placed in percent of the frame, as in Figma. It moves by
+   depth × max offset × the pointer's position on each axis. */
+.layer {
+  position: absolute;
+  top: var(--y);
+  left: var(--x);
+  display: block;
+  overflow: hidden;
+  inline-size: var(--width);
+  translate: calc(var(--depth) * var(--max-offset) * var(--pointer-x, 0))
+    calc(var(--depth) * var(--max-offset) * var(--pointer-y, 0));
+}
+
+/* While it's moving, the browser gets each layer ready to move on its own */
+.frame[data-moving] :is(.stage, .layer) {
+  will-change: transform, translate;
+}
+
+.image {
+  display: block;
+  inline-size: 100%;
+  block-size: auto;
+  user-select: none;
+}
+
+/* Drawn in one color: the file's shape, filled with the layer's color. The
+   img stays, invisible, to give the layer its height. */
+.colored {
+  background-color: var(--color);
+  mask: var(--mask) center / 100% 100% no-repeat;
+}
+
+.colored .image {
+  opacity: 0;
+}
+
+/* Rounded corners, from the border radius tokens */
+
+.radius-none {
+  border-radius: var(--verity-border-radius-none);
+}
+
+.radius-xs {
+  border-radius: var(--verity-border-radius-xs);
+}
+
+.radius-sm {
+  border-radius: var(--verity-border-radius-sm);
+}
+
+.radius-md {
+  border-radius: var(--verity-border-radius-md);
+}
+
+.radius-lg {
+  border-radius: var(--verity-border-radius-lg);
+}
+
+/* Aspect ratio */
+
+.ratio-16-9 {
+  aspect-ratio: 16 / 9;
+}
+
+.ratio-3-2 {
+  aspect-ratio: 3 / 2;
+}
+
+.ratio-4-3 {
+  aspect-ratio: 4 / 3;
+}
+
+.ratio-1-1 {
+  aspect-ratio: 1 / 1;
+}
