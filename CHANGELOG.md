@@ -4,6 +4,16 @@ Every release of Verity, newest first. The format follows [Keep a Changelog](htt
 
 Sites install Verity by tag (for example `github:erinpantz/verity-design-system#v0.3.0`), so a site only changes when it moves to a new tag on purpose.
 
+## [0.9.3] – 2026-11-18
+
+ProjectCard’s arrow is now a character in Imperfecto, so it reads as part of the title, and “résumé” is written with its accents.
+
+### Changed
+
+- **ProjectCard:** the arrow is the → character in the `heading-2` text style (`--verity-viewport-typography-heading-2-*`), so it changes size by breakpoint, instead of a drawn icon in an IconButton’s circle. It’s a `<span>`, hidden from screen readers as before. It stays `--verity-color-content-default` in every state, as in Figma, while the title takes `--verity-color-content-default-hover`. Its props are unchanged.
+- **Writing style:** a new Spelling section: write “résumé” with both accents in any text people read. Code names, file names, and URLs stay plain (`resume`, `erin-tozour-resume.pdf`). Docs pages, story text, story names (NavItem’s Résumé story), and comments now spell it “résumé.” The `resume` icon name and prop values are unchanged.
+- **Storybook:** its browser tab shows the Verity favicon, the Verity mark in white on brand blue, instead of Storybook’s own. It’s Storybook only, not in the package.
+
 ## [0.9.2] – 2026-11-18
 
 Erin’s site shows the Profile nav icon as a picture of her, in its hover pose, on its Portfolio intro card. NavIcon, where the nav icons’ poses live, is now exported, so the site uses it instead of copying the colors and the tilt.
@@ -595,6 +605,7 @@ The first library release: everything in the Figma library except Animation, wit
 - **Theme helpers:** `themeScript`, `useTheme`, and `setTheme`, so a site applies the saved theme before the first paint.
 - **The library build:** one entry point with every component and its prop types, one stylesheet (`verity-design-system/styles.css`) with the fonts inside it, and `npm run build:watch` for working with a linked copy.
 
+[0.9.3]: https://github.com/erinpantz/verity-design-system/compare/v0.9.2...v0.9.3
 [0.9.2]: https://github.com/erinpantz/verity-design-system/compare/v0.9.1...v0.9.2
 [0.9.1]: https://github.com/erinpantz/verity-design-system/compare/v0.9.0...v0.9.1
 [0.9.0]: https://github.com/erinpantz/verity-design-system/compare/v0.8.12...v0.9.0
