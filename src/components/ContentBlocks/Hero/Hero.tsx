@@ -19,8 +19,12 @@ export interface HeroProps {
   background?: 'default' | 'subtle' | 'knockout' | 'brand';
   /** The headline. It’s the page’s <h1>, so a page has one Hero at most. */
   heading: string;
-  /** A sentence or two below the headline */
-  intro: string;
+  /**
+   * A sentence or two below the headline: one paragraph as a string, or
+   * several as a list of strings, one per paragraph. Plain text, so the
+   * Hero keeps its text style.
+   */
+  intro: string | string[];
   /** The main action. Leave it out for no actions at all, as on Home. */
   primaryAction?: HeroAction;
   /** A second, less important action, next to the main one. Leave it out for one button. */
@@ -67,12 +71,25 @@ export function Hero({
   media,
 }: HeroProps) {
   const colors = BUTTON_COLORS[background];
+  // One paragraph renders as it always has; a list, one paragraph each
+  const paragraphs = typeof intro === 'string' ? [intro] : intro;
   return (
     <header className={`${styles.hero} ${styles[background]}`} data-width={width}>
       <div className={styles.body}>
         <div className={styles.text}>
           <h1 className={styles.heading}>{heading}</h1>
-          <p className={styles.intro}>{intro}</p>
+          {paragraphs.length === 1 ? (
+            <p className={styles.intro}>{paragraphs[0]}</p>
+          ) : (
+            // Several paragraphs, body/xl's paragraph space apart
+            <div className={styles.introParagraphs}>
+              {paragraphs.map((paragraph, i) => (
+                <p key={i} className={styles.intro}>
+                  {paragraph}
+                </p>
+              ))}
+            </div>
+          )}
         </div>
         {/* No main action, no actions group: the body ends after the text */}
         {primaryAction && (

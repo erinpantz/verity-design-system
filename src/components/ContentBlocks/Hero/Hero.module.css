@@ -116,6 +116,14 @@
   text-transform: var(--verity-viewport-typography-body-xl-text-transform);
 }
 
+/* An intro of several paragraphs: body/xl's own paragraph space between
+   them, as a gap (the same space Prose puts between body/xl paragraphs) */
+.introParagraphs {
+  display: flex;
+  flex-direction: column;
+  gap: var(--verity-viewport-typography-body-xl-space-before);
+}
+
 /* The headline, intro, and actions (Figma's Body): at least the text min
    width, never wider than the band or the content column, and filling the
    rest of the row. Drawn above the media. */
