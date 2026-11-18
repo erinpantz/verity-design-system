@@ -4,6 +4,16 @@ Every release of Verity, newest first. The format follows [Keep a Changelog](htt
 
 Sites install Verity by tag (for example `github:erinpantz/verity-design-system#v0.3.0`), so a site only changes when it moves to a new tag on purpose.
 
+## [0.9.10] – 2026-11-18
+
+A new Content blocks component, ExperienceItem, for the list of roles on Erin’s Profile.
+
+### Added
+
+- **Tokens:** `experience-item/credentials-max-width` (600) and `experience-item/stack-width` (800). The stack width is added to the container widths `npm run tokens` writes out (`CONTAINER_WIDTHS` in `build-tokens.ts`).
+- **ExperienceItem:** one role in a list of experience: the company, a `Heading` at `headingLevel` (3 by default), and its credentials: the title (`title-default`), the dates (`meta-default`, subtle), and a description (`body-lg`, subtle), at most `--verity-experience-item-credentials-max-width` wide. A top border in `--verity-color-border-subtle`, `--verity-padding-md` above and below, no background. Its own width decides its layout: a row at or above `--verity-experience-item-stack-width`, stacked below it. The root is a `<div>`; a page puts each item in an `<li>` of a `VerticalStack as="ul" gap="none"`. Exported with `ExperienceItemProps`.
+- **Docs:** ExperienceItem has a docs page and stories under **Content blocks › ExperienceItem**: one item in a row, stacked, and with a long company name, and a list of three in a column and a wide Section.
+
 ## [0.9.9] – 2026-11-18
 
 Hero’s intro can have more than one paragraph, and wraps its lines more evenly.
@@ -664,6 +674,7 @@ The first library release: everything in the Figma library except Animation, wit
 - **Theme helpers:** `themeScript`, `useTheme`, and `setTheme`, so a site applies the saved theme before the first paint.
 - **The library build:** one entry point with every component and its prop types, one stylesheet (`verity-design-system/styles.css`) with the fonts inside it, and `npm run build:watch` for working with a linked copy.
 
+[0.9.10]: https://github.com/erinpantz/verity-design-system/compare/v0.9.9...v0.9.10
 [0.9.9]: https://github.com/erinpantz/verity-design-system/compare/v0.9.8...v0.9.9
 [0.9.8]: https://github.com/erinpantz/verity-design-system/compare/v0.9.7...v0.9.8
 [0.9.7]: https://github.com/erinpantz/verity-design-system/compare/v0.9.6...v0.9.7
