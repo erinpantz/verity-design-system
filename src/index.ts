@@ -97,6 +97,8 @@ export { NavCard } from './components/Navigation/NavCard';
 export type { NavCardProps } from './components/Navigation/NavCard';
 export { NavCardGroup } from './components/Navigation/NavCardGroup';
 export type { NavCardGroupProps } from './components/Navigation/NavCardGroup';
+export { NavIcon } from './components/Navigation/NavIcon';
+export type { NavIconProps, NavIconPose } from './components/Navigation/NavIcon';
 export { NavItem } from './components/Navigation/NavItem';
 export type { NavItemProps } from './components/Navigation/NavItem';
 export { NavOverlay } from './components/Navigation/NavOverlay';

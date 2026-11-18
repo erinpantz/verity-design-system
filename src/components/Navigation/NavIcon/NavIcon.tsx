@@ -16,11 +16,16 @@ export interface NavIconProps {
   fill?: boolean;
 }
 
-// One of the site's nav icons, in its own color. Shared by NavItem, NavCard,
-// and PageLoader, so each icon's poses live in one place:
+// One of the site's nav icons, in its own color. Inside Verity, NavItem,
+// NavCard, and PageLoader share it, so each icon's poses live in one place:
 // NavIcon.module.css. The link around it opts in to the poses with the
-// trigger classes in navIconTriggers.ts, or a pose is set directly. Not
-// exported from the library.
+// trigger classes in navIconTriggers.ts, or a pose is set directly.
+//
+// Outside Verity, it shows a nav icon on its own, in a fixed pose: for
+// example, the Profile icon in its hover pose as a picture on a card. Inside a
+// link, use NavItem or NavCard instead: they give it the hover and current
+// poses. It's decorative, hidden from screen readers, because the text next
+// to it says what it is.
 export function NavIcon({ page, pose, fill = false }: NavIconProps) {
   return (
     <span className={`${styles.navIcon} ${styles[page]} ${fill ? styles.fill : ''}`} data-pose={pose}>
