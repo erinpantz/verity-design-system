@@ -52,6 +52,30 @@ The logo is one color, `currentColor`, so it takes the text color of wherever it
 
 <Canvas of={ErinTozourLogoStories.InBrandColor} />
 
+## Color cycle
+
+The logo is the one place on every page that’s Erin’s own, and the accent colors are the brand’s personality, so on hover the name lights up in a wave of them. **While the link around it is hovered or has keyboard focus,** its letters cycle through the six content accents, a wave that travels from left to right along the name.
+
+| What | How | Tokens |
+|---|---|---|
+| The colors | The six content accents in order, which follow the theme (in Blue: yellow, red, violet, green, orange, pink) | `--verity-color-content-accent-one` to `-six` |
+| The wave | At each step, each letter shows the next accent, and each letter is one color behind the letter before it, so the colors travel to the right. Every letter switches at the same moment, with no blend. | `--verity-erin-tozour-logo-duration-color-step` (180ms) per step |
+| Starting | Every letter takes its color at once, on hover (devices with a real pointer) or keyboard focus, and the wave runs as long as either lasts. Each hover picks the wave up where the last one left off. | — |
+| Ending | The letters fade back to the logo’s color | `--verity-motion-duration-fast` |
+| Reduce motion is on | The letters take their colors, and they don’t move | — |
+
+<Canvas of={ErinTozourLogoStories.InALinkHovered} />
+
+<Canvas of={ErinTozourLogoStories.FirstNameInALinkHovered} />
+
+- **Only inside a link that asks for it.** The link puts the trigger class (`erinTozourLogoTrigger`, from `logoTrigger.ts`) on itself, as `MainNav`’s home link does, like NavIcon’s poses follow their link. Anywhere else, the logo stays one color. The class isn’t exported from the library: MainNav is the one place the site shows the logo in a link.
+- **It’s all CSS.** Each letter is numbered in reading order in `logoGlyphs.ts` (the exported files don’t list the letters in that order), and runs the same six-step cycle, started a step later than the letter before it. At rest the cycle is paused and adds no color, so the logo looks exactly as it always has.
+- **Nothing else changes:** its size, its accessible name, “Erin Tozour,” and how it looks at rest.
+
+Hover or tab to the logo here:
+
+<Canvas of={ErinTozourLogoStories.InALink} />
+
 ## Props
 
 <PropsTable of={ErinTozourLogoStories} />
@@ -63,6 +87,7 @@ The logo is one color, `currentColor`, so it takes the text color of wherever it
 | Component `ErinTozourLogo`, on the Branding page | `<ErinTozourLogo />` |
 | “Erin” only, as in MainNav’s `Layout=short` | `<ErinTozourLogo name="first" />` |
 | Its fill, `color/content/default` | `currentColor`: the text color around it |
+| Not in Figma | The color cycle on hover and focus, which is code only |
 | The exported files | `brand/erin-tozour-logo.svg` (“Erin Tozour”) and `brand/erin-tozour-logo-first.svg` (“Erin”), exported from the Branding page and never edited by hand. `logoGlyphs.ts` reads each file’s `viewBox` and shapes; ErinTozourBadge’s mark is the third file, `brand/erin-tozour-mark.svg`. |
 
 </VerityDocs>

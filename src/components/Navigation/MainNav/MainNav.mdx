@@ -71,6 +71,10 @@ The width is measured on the nav, not the screen, so the nav picks the right lay
 
 It’s all CSS, so the first paint is right before JavaScript runs. MainNav is a container (`container: main-nav / inline-size`), and `@container` rules switch the layout. A container query can’t read a CSS custom property, so `npm run tokens` writes the two widths for each breakpoint into `src/styles/container-widths.generated.module.css`, and each `@container` rule sits inside its breakpoint’s `@media` rule. The tokens stay the only source: change them in Figma, export, and run `npm run tokens`.
 
+## Logo
+
+The site title, the logo linking home, lights up on hover and keyboard focus: its letters cycle through the theme’s accent colors in a wave from left to right, every 180ms (`--verity-erin-tozour-logo-duration-color-step`), and fade back over `--verity-motion-duration-fast` when the pointer leaves or focus moves on. With reduce motion on, the colors appear and don’t move. It works in every layout, with the full logo or “Erin.” See **Media › ErinTozourLogo**, Color cycle.
+
 ## Space
 
 | Space | Token |

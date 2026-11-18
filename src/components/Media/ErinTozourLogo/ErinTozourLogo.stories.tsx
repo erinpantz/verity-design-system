@@ -1,5 +1,6 @@
 import type { Decorator, Meta, StoryObj } from '@storybook/react-vite';
 import { ErinTozourLogo } from './ErinTozourLogo';
+import { erinTozourLogoTrigger } from './logoTrigger';
 
 const meta = {
   title: 'Media/ErinTozourLogo',
@@ -56,4 +57,42 @@ export const InBrandColor: Story = {
       </div>
     ),
   ],
+};
+
+// In a link that opts in to the color cycle, as MainNav's home link does
+// (story layout only: a plain link at the nav's logo height). Hover it or
+// tab to it: the letters cycle through the theme's accents in a wave, left
+// to right, and fade back when the pointer leaves or focus moves on.
+const inALink: Decorator = (Story) => (
+  <a
+    href="#home"
+    className={erinTozourLogoTrigger}
+    style={{
+      display: 'inline-flex',
+      blockSize: 'var(--verity-main-nav-logo-height)',
+      color: 'var(--verity-color-content-default)',
+    }}
+  >
+    <Story />
+  </a>
+);
+
+export const InALink: Story = {
+  name: 'In a link',
+  decorators: [inALink],
+};
+
+// The same link, held in its hover state with the pseudo-states addon, so
+// the wave runs without a pointer
+export const InALinkHovered: Story = {
+  name: 'In a link, hovered',
+  decorators: [inALink],
+  globals: { pseudo: { hover: true } },
+};
+
+export const FirstNameInALinkHovered: Story = {
+  name: 'First name in a link, hovered',
+  args: { name: 'first' },
+  decorators: [inALink],
+  globals: { pseudo: { hover: true } },
 };
