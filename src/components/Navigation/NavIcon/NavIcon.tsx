@@ -1,8 +1,13 @@
 import { Icon } from '../../Media/Icon';
 import styles from './NavIcon.module.css';
 
-/** A nav icon's poses: default (at rest), hover, and current (the current page) */
-export type NavIconPose = 'default' | 'hover' | 'current';
+/**
+ * A nav icon's poses: default (at rest), hover, current (the current page),
+ * and hover-mirrored, the hover pose tipped the other way. Only Profile has a
+ * mirrored version so far; Portfolio and Playground show their usual hover
+ * pose for hover-mirrored.
+ */
+export type NavIconPose = 'default' | 'hover' | 'hover-mirrored' | 'current';
 
 export interface NavIconProps {
   /** Which page’s icon */
