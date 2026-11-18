@@ -51,11 +51,22 @@
   padding-block-end: var(--verity-main-nav-logo-offset);
 }
 
-/* The link hugs the logo, so only the logo goes home and the focus ring fits it */
+/* The link hugs the logo, so the focus ring fits it */
 .homeLink {
+  position: relative;
   display: flex;
   border-radius: var(--verity-border-radius-sm);
   color: var(--verity-color-content-default);
+}
+
+/* An invisible layer spacing/xs bigger than the link on every side, so a
+   pointer resting near the logo's edge still counts as hovering it (and the
+   logo's color cycle doesn't flicker), and a click or tap there goes home.
+   It doesn't change the link's size in the layout or its focus ring. */
+.homeLink::before {
+  position: absolute;
+  inset: calc(-1 * var(--verity-spacing-xs));
+  content: '';
 }
 
 .homeLink:focus-visible {
