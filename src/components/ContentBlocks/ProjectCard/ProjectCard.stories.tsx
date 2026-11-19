@@ -8,7 +8,9 @@ import { Container } from '../../Layout/Container';
 import { Grid } from '../../Layout/Grid';
 import { ProjectCard } from './ProjectCard';
 
-// Sample work, standing in for the site's case studies and galleries
+// Sample work, standing in for the site's case studies and galleries. The
+// thumbnails include light pictures (the screenshot, the chart) and a dark
+// one (the landscape), so the arrow in the corner can be checked over both.
 const PROJECTS = [
   { href: '#medication', heading: 'Helping people take their cancer meds on time', thumbnail: screenshot },
   { href: '#care-notes', heading: 'Saving admin time and improving care quality', thumbnail: landscape },
