@@ -18,7 +18,7 @@ A square button with only an icon, for actions people recognize at a glance, lik
 - **For a familiar action in a tight space,** like collapsing the navigation or a toolbar of small actions.
 - **When the icon alone is clear** to most people. The tooltip helps, but people on touch screens never see it.
 - **Not when there’s room for a label.** Use `Button` with `startIcon`, which is clearer for everyone.
-- **Not to go to another page.** Use `Link`, or a nav item in the navigation.
+- **To go to another page only where an icon says it plainly,** like a LinkedIn profile beside the Footer’s button. Set `href`. Otherwise use `Link`, or a nav item in the navigation.
 
 ## Accessibility
 
@@ -29,6 +29,7 @@ An IconButton renders a `<button type="button">` inside a `Tooltip`. The button 
 | Writing the label | Say what the button does, not what the icon looks like. Start with a verb. | “Collapse navigation,” not “Sidebar icon” |
 | The action toggles | Change the label to the action it will do next, and set `expanded` to whether the thing it controls is showing. | “Collapse navigation,” then “Expand navigation” |
 | It opens a dialog | Set `hasPopup="dialog"`, and `expanded` while the dialog is open. Return focus to the button when the dialog closes, through `ref`. | MainNav’s “Open menu” on Small |
+| It goes to another page | Set `href`: it renders a link (`<a>`), named by its label the same way. For a page on another site, also set `opensInNewTab`, and screen readers hear “opens in a new tab” after the label. | The Footer’s “LinkedIn” |
 | It can’t be used yet | Use `disabled`. Keyboard users skip disabled buttons, so say on the page why. | A download that isn’t ready |
 
 The tooltip appears on hover and on keyboard focus, stays while the pointer is over it, and Escape hides it, as **Actions › Tooltip** describes. It opens beside the button by default. For a button in a corner, where that would spill past the edge, use `tooltipPlacement="top-end"`, as Animation does.
@@ -73,6 +74,12 @@ The scrim is the button’s base layer. Hover and pressed add the same fills as 
 
 <Canvas of={IconButtonStories.Disabled} />
 
+## As a link
+
+With `href`, an IconButton renders a link (`<a>`) with the same look, sizes, backgrounds, states, tooltip, and focus ring, through `LinkProvider` like every Verity link. `disabled`, `onClick`, `expanded`, `hasPopup`, and `ref` don’t apply. With `opensInNewTab`, it opens in a new tab with `rel="noopener noreferrer"`, and its name gets “(opens in a new tab)”, as on `Button`.
+
+<Canvas of={IconButtonStories.AsALink} />
+
 ## Inside a button or link
 
 A button can’t hold another one. When something that’s already a button or link needs an IconButton’s look, like the play button on a `VideoEmbed`’s poster, use `as="span"`. It renders a plain `<span>` with the look, hidden from screen readers, with no tooltip, focus, role, or click of its own, so the button around it stays the one thing to press and carries the name. `label`, `tooltipPlacement`, `disabled`, `onClick`, `expanded`, `hasPopup`, and `ref` don’t apply.
@@ -99,6 +106,6 @@ The icon uses `--verity-color-content-default`, and the corners use `--verity-bo
 | Property `State` | Hover, focus, and active come from the browser. `State=disabled` → `disabled`. |
 | Property `Show tooltip` | Figma-only, for mockups. In code, the tooltip always shows on hover and focus. |
 | Layer `Focus ring` | Not a layer: an outline on keyboard focus |
-| Not in Figma | `onClick`, `expanded`, `hasPopup`, `tooltipPlacement`, and `ref` |
+| Not in Figma | `onClick`, `expanded`, `hasPopup`, `tooltipPlacement`, `href`, `opensInNewTab`, and `ref` |
 
 </VerityDocs>

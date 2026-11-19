@@ -17,7 +17,7 @@ The site’s main navigation, a bar across the top of the page: the logo, linkin
 
 - **Once per page, at the top.** `Shell` places it; pass `current` and `hrefs` to Shell.
 - **While a page change is going,** `pending` names the section it’s going to, and that page’s link swaps its icon between poses, in step with `PageLoader`. Home’s link is the logo, which doesn’t move, and in the menu layout, the menu button doesn’t either. Shell sets it for you. When nothing is pending, the nav is as always.
-- **Not for links within a page or in the footer.** Use `Link`, or `LinkGroup` for a group of them. Résumé isn’t in the nav: it’s in the site’s `Footer`.
+- **Not for links within a page or in the footer.** Use `Link`, or `LinkGroup` for a group of them.
 - **Let Shell keep it at the top.** Shell makes it sticky, gives it a solid background, and adds a divider along its bottom edge once the page has scrolled. Don’t wrap it in a sticky container of your own: Shell also makes sure nothing scrolled to or focused hides under it (see **Layout › Shell**, Nav).
 
 ## Accessibility

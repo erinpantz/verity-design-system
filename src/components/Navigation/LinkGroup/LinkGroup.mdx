@@ -9,13 +9,15 @@ import * as LinkGroupStories from './LinkGroup.stories';
 
 # LinkGroup
 
-A small label above a list of Links, like the footer’s Pages, Fun stuff, and Connect groups.
+A small label above a list of Links under a name, like “Connect.”
+
+**Nothing in Verity uses it now.** It was made for the footer’s groups of links, which the Footer dropped in 0.10.0. It stays in the library for any list of links that needs a name.
 
 <Canvas of={LinkGroupStories.Default} />
 
 ## When to use
 
-- **For a short list of related links under a name,** like a footer group.
+- **For a short list of related links under a name,** like a group of profiles under “Connect."
 - **Not for the site’s main pages.** Use `NavItem` in `MainNav`.
 - **Not for links in running text.** Put a `Link` in the sentence, or use `UnorderedList` for a list with more to say about each item.
 

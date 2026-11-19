@@ -34,6 +34,13 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {};
 
+// With href, a link that looks the same: here, a profile on another site,
+// opening in a new tab
+export const AsALink: Story = {
+  name: 'As a link',
+  args: { icon: 'linkedin', label: 'LinkedIn', href: 'https://www.linkedin.com/in/erintozour/', opensInNewTab: true },
+};
+
 // Every size, largest first
 export const Sizes: StoryObj = {
   render: () => (

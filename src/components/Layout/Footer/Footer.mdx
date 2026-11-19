@@ -9,7 +9,7 @@ import * as FooterStories from './Footer.stories';
 
 # Footer
 
-The site’s footer: a deep brand-colored block with an invitation to get in touch, the site’s links in groups, and the copyright line.
+The site’s footer: a deep brand-colored block with an invitation to get in touch, an optional aside beside it for anything else, and the copyright line.
 
 <Canvas of={FooterStories.Default} />
 
@@ -22,31 +22,70 @@ The site’s footer: a deep brand-colored block with an invitation to get in tou
 
 Its links go through `LinkProvider`: with a site’s router, links to the site’s pages change the page in the app, and the résumé, email, and other sites stay plain links (see **Actions › LinkProvider**).
 
+**No page links.** The Footer used to hold the site’s links in groups. With the nav fixed to the top of every page, they repeated what’s always on screen, so they’re gone (since 0.10.0). Put anything the nav doesn’t cover in the aside.
+
 A Footer renders a `<footer>`. Outside `<main>`, it’s the page’s footer landmark (`contentinfo`), so screen readers can jump to it.
 
 | Part | What it renders | What to do |
 |---|---|---|
 | Call to action heading | A level 3 `Heading` | Keep it short and inviting, like “Let’s work together” |
-| Call to action button | A `Button` with `href`: a link that looks like a button | Start the label with a verb: “Book a call.” For a booking page on another site, set `opensInNewTab`. |
-| Link groups | A `LinkGroup` for each, each a named list | Name each group in a word or two, like “Connect.” A disabled link says why in its tooltip, like “Coming soon.” |
+| Call to action button | A `Button` with `href`: a link that looks like a button | Start the label with a verb: “Book a meeting.” For a booking page on another site, set `opensInNewTab`. |
+| Second action (optional) | An `IconButton` with `href`: a link that looks like an IconButton, named by its label, which is also its tooltip | Name the place it goes, like “LinkedIn.” With `opensInNewTab`, screen readers hear “LinkedIn (opens in a new tab).” |
+| Aside (optional) | A `<div>` holding what you pass | Text with a `Link` in it, say. Its text takes the footer’s text style. A decorative mark, like `VerityMark`, is hidden from screen readers, so the text beside it does the talking. |
 | Copyright | A paragraph: `© {year} {name}` | Pass only the name. The year comes from today’s date, so it never goes stale. |
 
 ## Width
 
 The Footer is wide: it spans the page up to `--verity-content-wide-width` (1824), like a wide image, so it reads as the page’s closing band rather than one more block in the column. On Large and smaller, that’s the page’s full width inside the margins.
 
-The call to action and the link groups sit side by side on Large and XL, and stack on Medium and Small. The minimum widths change by breakpoint to make that happen, and the row only wraps when both parts can’t fit at their minimums. That depends on the Footer’s own width, not the screen’s.
+The call to action and the aside sit side by side on Large and XL, top-aligned, and stack on Medium and Small, where the link groups used to. The minimum widths change by breakpoint to make that happen, and the row only wraps when both parts can’t fit. That depends on the Footer’s own width, not the screen’s.
 
-| Part | Narrowest: XL and Large / Medium / Small | Widest |
+| Part | XL and Large / Medium / Small | Widest |
 |---|---|---|
-| Call to action | `--verity-footer-call-to-action-min-width` (300 / 320 / 240) | `--verity-footer-call-to-action-max-width` (400), so its text keeps a comfortable line length |
-| Link groups | `--verity-footer-links-min-width` (432 / 480 / 240). On Large and XL, about enough for all three groups on one row | As wide as the groups on one row: the groups stay together instead of spreading out |
+| Call to action | At least `--verity-footer-call-to-action-min-width` (300 / 320 / 240) | Its contents stop at `--verity-footer-call-to-action-max-width` (400), so its text keeps a comfortable line length |
+| Aside | `--verity-footer-links-min-width` (432 / 480 / 240), but never narrower than `--verity-footer-call-to-action-max-width` (400): 432 / 480 / the full width on a phone | The same: it doesn’t grow |
 
-On a screen narrower than a minimum, each part is the full width instead.
+On a screen narrower than a part’s width, that part is the full width instead.
 
-Side by side, the call to action sits at the start and the link groups at the end: the call to action takes the extra space (its text still stops at its max), so a wide Footer stays balanced. Each link group keeps its own width, and the groups stay together, `--verity-spacing-md` apart; when they can’t fit, they wrap. Stacked, both start at the left.
+Side by side, the call to action sits at the start and the aside at the end: the call to action takes the extra space (its text still stops at its max), so the aside ends at the Footer’s edge. Stacked, both start at the left. On a phone, the aside is as wide as the call to action, so the two line up.
 
-**Why the links stay together:** spread across a wide Footer, the groups ended up about 180 px apart and read as three separate things.
+**Why the aside uses the links’ token:** it takes the link groups’ place and wraps where they did. The token’s name still says “links” (see In Figma).
+
+<Canvas of={FooterStories.WithoutAside} />
+
+<Canvas of={FooterStories.WithoutSecondaryAction} />
+
+<Canvas of={FooterStories.CallToActionOnly} />
+
+## Second action
+
+`callToAction.secondaryAction` adds an `IconButton` right after the button, for a second, smaller way to get in touch, like LinkedIn. It’s the same size as the button (`md`: 40 on Large and XL, 44 on Medium and Small), `--verity-spacing-xs` after it.
+
+It uses IconButton’s `none` background: no fill, the icon in `--verity-color-content-default`, and a see-through fill on hover and press. Next to the filled primary button, it reads as the quieter of the two, the way a secondary button would. Its focus ring is `--verity-color-border-focus`, like the button’s.
+
+| Field | What it is |
+|---|---|
+| `icon` | Which icon, like `linkedin` |
+| `label` | Its name for screen readers and its tooltip, like “LinkedIn” |
+| `href` | Where it goes |
+| `opensInNewTab` | For a page on another site, like a profile |
+
+## Aside
+
+`aside` is anything else, on the right: a line about the site, say, with a link in it. Its text takes the footer’s text style, `body-default` in `--verity-color-content-default`, and its links the footer’s link colors (see Color). What it holds stacks `--verity-spacing-sm` apart, as in the call to action, with no margins of its own, so a mark above a paragraph needs no layout.
+
+```tsx
+<Footer
+  aside={
+    <>
+      <VerityMark />
+      <p>This site is built with <Link href="/verity">Verity</Link>, my design system.</p>
+    </>
+  }
+/>
+```
+
+Keep it to a sentence or two: it’s beside the call to action, not a second one.
 
 ## Color
 
@@ -65,10 +104,11 @@ The block’s background is `--verity-color-background-subtle`: brand 800 in eac
 | Space | Token |
 |---|---|
 | Inside the block, around its content | `--verity-padding-md` |
-| Between the call to action and links, and the copyright | `--verity-spacing-lg` |
-| Between the call to action and the links, side by side or stacked | `--verity-spacing-lg` |
-| Inside the call to action: heading, text, button | `--verity-spacing-sm` |
-| Between link groups: across, and between rows | `--verity-spacing-md` |
+| Between the call to action and aside, and the copyright | `--verity-spacing-lg` |
+| Between the call to action and the aside, side by side or stacked | `--verity-spacing-lg` |
+| Inside the call to action: heading, text, actions | `--verity-spacing-sm` |
+| Between the button and the second action | `--verity-spacing-xs` |
+| Between the things in the aside | `--verity-spacing-sm` |
 | Outside the footer | None. Whatever holds it, like Shell, sets the space above it. |
 
 The corners are `--verity-border-radius-md`.
@@ -84,6 +124,8 @@ The corners are `--verity-border-radius-md`.
 | Component `Footer` | `<Footer />` |
 | Property `Copyright` | `copyrightName`. The `© {year}` part is added for you, with this year. |
 | The call to action’s heading, text, and button | `callToAction`: `heading`, `text`, `buttonLabel`, `href`, and `opensInNewTab` |
-| The LinkGroup instances | `linkGroups`: the LinkGroups, with their Links |
+| The IconButton after the button | `callToAction.secondaryAction` (not checked against Figma yet) |
+| The right side | `aside` (not checked against Figma yet). Figma’s LinkGroup instances there are gone from code. |
+| Variable `footer/links/min-width` | The aside’s width. Its name still says “links”: renaming it to `footer/aside/min-width` in Figma, then exporting, would match what it does now. |
 
 </VerityDocs>
