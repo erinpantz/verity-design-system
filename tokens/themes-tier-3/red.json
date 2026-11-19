@@ -307,6 +307,18 @@
             ]
           }
         }
+      },
+      "border": {
+        "$type": "color",
+        "$value": "{color.border.subtle}",
+        "$description": "Edge of the ThemeToggle button, so it stands out from the page without lightening the background behind the star (which would pull the star under 3:1).",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "STROKE_COLOR"
+            ]
+          }
+        }
       }
     },
     "glow": {

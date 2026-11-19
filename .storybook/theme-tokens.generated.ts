@@ -624,6 +624,7 @@ export const THEME_TOKENS = {
     "skeleton.color.shine": "#0b00e4",
     "theme-toggle.color.current": "#356bff",
     "theme-toggle.color.next": "#eb0106",
+    "theme-toggle.color.border": "#1c3da8",
     "theme-toggle.glow.current": "#356bff80",
     "theme-toggle.glow.next": "#eb010680",
     "nav-card.icon.color.accent-brand": "#95b6ff"
@@ -1247,6 +1248,7 @@ export const THEME_TOKENS = {
     "skeleton.color.shine": "#970102",
     "theme-toggle.color.current": "#eb0106",
     "theme-toggle.color.next": "#356bff",
+    "theme-toggle.color.border": "#793028",
     "theme-toggle.glow.current": "#eb010680",
     "theme-toggle.glow.next": "#356bff80",
     "nav-card.icon.color.accent-brand": "#ff9c8d"

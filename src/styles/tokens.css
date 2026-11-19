@@ -648,6 +648,7 @@
   --verity-link-color-content-disabled: var(--verity-color-content-disabled); /** Link that can’t be followed yet, such as a “coming soon” page. Not underlined. */
   --verity-link-brand-color-content-disabled: var(--verity-color-content-disabled); /** Disabled link on a brand background. */
   --verity-nav-icon-color-accent-yellow: var(--verity-color-accent-yellow);
+  --verity-theme-toggle-color-border: var(--verity-color-border-subtle); /** Edge of the ThemeToggle button, so it stands out from the page without lightening the background behind the star (which would pull the star under 3:1). */
   --verity-button-primary-brand-color-background-default: var(--verity-color-background-accent-one);
   --verity-button-primary-brand-color-background-active: var(--verity-color-background-accent-one);
 }
@@ -815,6 +816,7 @@
   --verity-link-color-content-disabled: var(--verity-color-content-disabled); /** Link that can’t be followed yet, such as a “coming soon” page. Not underlined. */
   --verity-link-brand-color-content-disabled: var(--verity-color-content-disabled); /** Disabled link on a brand background. */
   --verity-nav-icon-color-accent-yellow: var(--verity-color-accent-yellow);
+  --verity-theme-toggle-color-border: var(--verity-color-border-subtle); /** Edge of the ThemeToggle button, so it stands out from the page without lightening the background behind the star (which would pull the star under 3:1). */
   --verity-button-primary-brand-color-background-default: var(--verity-color-background-accent-one);
   --verity-button-primary-brand-color-background-active: var(--verity-color-background-accent-one);
 }
