@@ -62,9 +62,6 @@
      behind the page, stays in sight */
   --background: transparent;
   --content: var(--verity-color-content-default);
-  /* The intro in the headline's color: on the page's own background, the
-     size difference already sets them apart, and subtle looked faded */
-  --intro: var(--verity-color-content-default);
   --background-focus-ring: var(--verity-color-border-focus);
 }
 
@@ -72,7 +69,6 @@
   --padding: var(--verity-padding-lg);
   --background: var(--verity-color-background-subtle);
   --content: var(--verity-color-content-default);
-  --intro: var(--verity-color-content-subtle);
   --background-focus-ring: var(--verity-color-border-focus);
 }
 
@@ -80,7 +76,6 @@
   --padding: var(--verity-padding-lg);
   --background: var(--verity-color-background-knockout);
   --content: var(--verity-color-content-knockout);
-  --intro: var(--verity-color-content-knockout);
   --background-focus-ring: var(--verity-color-border-focus-knockout);
 }
 
@@ -88,7 +83,6 @@
   --padding: var(--verity-padding-lg);
   --background: var(--verity-color-background-brand);
   --content: var(--verity-color-content-default);
-  --intro: var(--verity-color-content-subtle);
   --background-focus-ring: var(--verity-color-border-focus-brand);
 }
 
@@ -108,9 +102,9 @@
 
 .intro {
   margin: 0;
-  /* Quieter than the headline on subtle and brand; default and knockout use
-     the headline's color */
-  color: var(--intro);
+  /* No color of its own: the intro takes the Hero's text color, the same as
+     the headline, on every background. The size difference (display against
+     body-xl) sets them apart. */
   font-family: var(--verity-viewport-typography-body-xl-font-family);
   font-size: var(--verity-viewport-typography-body-xl-font-size);
   font-weight: var(--verity-viewport-typography-body-xl-font-weight);
