@@ -4,6 +4,29 @@ Every release of Verity, newest first. The format follows [Keep a Changelog](htt
 
 Sites install Verity by tag (for example `github:erinpantz/verity-design-system#v0.3.0`), so a site only changes when it moves to a new tag on purpose.
 
+## [0.11.0] – 2026-11-19
+
+A new Footer made of cards, with two new components, IconTile and ActionCard. **Breaking:** Footer’s `callToAction` (with its `secondaryAction`) and `aside` props are gone; `cards` replaces them.
+
+### Removed
+
+- **Breaking — Footer:** `callToAction` (and its `secondaryAction`) and `aside`. The new `cards` prop replaces them. To upgrade, delete both from your Footer and pass `cards`: an `ActionCard` for each thing you want a visitor to do, each with `headingLevel={2}`. Your old call to action becomes a card whose actions are its Button and IconButton; the aside becomes a card of its own.
+
+### Added
+
+- **Icons:** `hand` (a stroke icon), `verity` (filled: the slanted dot from the Verity mark), and `music` (filled), on the 24 grid, in `currentColor`.
+- **IconTile:** a new component under Media, an icon on a small colored tile, beside a heading. `icon`, and `color` (`accent-one` to `accent-six`) for its `--verity-color-background-accent-*` fill. The icon is `--verity-icon-size-lg` in `--verity-color-content-brand`, with `--verity-padding-xxs` around it and `--verity-border-radius-sm` corners, so it’s 48 square. It’s decorative, so the whole tile is hidden from screen readers.
+- **ActionCard:** a new component under Content blocks, a card that offers something to do: a heading with an IconTile, a sentence or two (`body`, which can hold a `Link`), and its buttons (`actions`). `heading`, `headingLevel` (2 or 3, default 3), `icon`, `iconColor`, `body`, and `actions`. On `--verity-color-background-subtle`, with `--verity-padding-md` and `--verity-border-radius-md`. It fills the height it’s given, with the buttons at the bottom, so in a Grid row they line up across cards. The card isn’t a link; its buttons are.
+- **ActionCard:** its body text is at most `--verity-action-card-text-max-width` (600) wide, so a card that wraps onto a row of its own and stretches across it keeps a readable line length. The header and the actions still span the card, so the tile stays in the top-right corner.
+- **Button:** `tooltip`, a short hint on hover and keyboard focus. A disabled Button with a tooltip uses `aria-disabled` instead of `disabled`, so it stays in the tab order: keyboard users can reach it, see “Coming soon,” and screen readers hear the label, then the hint. Pressing it does nothing. The Footer’s Verity card needs it.
+- **Tokens:** `action-card/text-max-width`, a Responsive Tier 3 width, 600 at every breakpoint.
+- **Footer:** `cards`, ActionCards in a Grid (`itemWidth="lg"`, `fillRows`) at the Footer’s full wide width: three across on wide screens, one per row on phones, and in between two, with a card alone on the last row taking the full width. The copyright line follows, `--verity-spacing-md` below.
+
+### Changed
+
+- **Footer:** no fill, padding, or rounded corners of its own: the cards carry the surface. Its link color overrides moved to ActionCard, whose fill they were for. The tokens `footer/call-to-action/min-width`, `footer/call-to-action/max-width`, and `footer/links/min-width` are no longer used.
+- **Docs:** the Footer’s page and stories show Erin’s three cards (Let’s chat, Verity with its button disabled and “Coming soon,” and Music). VerityMark’s and LinkGroup’s pages say nothing in the Footer uses them now. Shell, ThemeToggle, Link, LinkProvider, and NavItem no longer describe the old Footer.
+
 ## [0.10.2] – 2026-11-19
 
 An edge on ThemeToggle, so the button stands out from the page.
@@ -771,6 +794,7 @@ The first library release: everything in the Figma library except Animation, wit
 - **Theme helpers:** `themeScript`, `useTheme`, and `setTheme`, so a site applies the saved theme before the first paint.
 - **The library build:** one entry point with every component and its prop types, one stylesheet (`verity-design-system/styles.css`) with the fonts inside it, and `npm run build:watch` for working with a linked copy.
 
+[0.11.0]: https://github.com/erinpantz/verity-design-system/compare/v0.10.2...v0.11.0
 [0.10.2]: https://github.com/erinpantz/verity-design-system/compare/v0.10.1...v0.10.2
 [0.10.1]: https://github.com/erinpantz/verity-design-system/compare/v0.10.0...v0.10.1
 [0.10.0]: https://github.com/erinpantz/verity-design-system/compare/v0.9.16...v0.10.0
