@@ -1,6 +1,10 @@
 # Verity
 
-Verity is Erin Tozour’s personal design system. It powers her portfolio site and documents itself in Storybook.
+Verity is my design system, built in Figma and React with AI as a collaborator, and the system behind [erintozour.com](https://erintozour.com).
+
+**See it in Storybook: [verity.erintozour.com](https://verity.erintozour.com)**
+
+This code is shared to read and learn from. Imperfecto, the typeface in `src/fonts/imperfecto/`, is my own and isn’t licensed for reuse.
 
 The design source of truth is the [Verity Library in Figma](https://www.figma.com/design/3Da0PcmwQjC19SKRduBuQD/Verity-Design-System). This repo turns that library into React components, styled with CSS Modules and design tokens.
 
@@ -16,10 +20,10 @@ Verity is a React library. A project gets its components, tokens, and fonts from
 
 ### Install
 
-Install a tagged version from GitHub. React 19 is a peer dependency: the project brings its own copy, and Verity uses it.
+Install a tagged version from GitHub (the latest is on the [Releases](https://github.com/erinpantz/verity-design-system/releases) page). React 19 is a peer dependency: the project brings its own copy, and Verity uses it.
 
 ```sh
-npm install github:erinpantz/verity-design-system#v0.1.0 react react-dom
+npm install github:erinpantz/verity-design-system#v0.11.1 react react-dom
 ```
 
 npm builds the library while it installs (the `prepare` script), so nothing else needs to run. To update, change the tag and install again.
@@ -88,7 +92,7 @@ While both are changing, the site can use this folder directly instead of a GitH
 1. **Link it.** In the site: `npm install ../verity-design-system` (the path to this folder). npm adds a link to the folder instead of a copy.
 2. **Use one React.** The linked folder has its own React for Storybook, and two copies of React break components. In the site’s `vite.config.ts`, add `resolve: { dedupe: ['react', 'react-dom'] }`.
 3. **Run two terminals.** In Verity: `npm run build:watch`, which rebuilds `dist/` on every save. In the site: its dev server (`npm run dev`), which reloads when `dist/` changes.
-4. **Switch back** to a tagged version before deploying the site: `npm install github:erinpantz/verity-design-system#v0.3.0` (the latest tag).
+4. **Switch back** to a tagged version before deploying the site: `npm install github:erinpantz/verity-design-system#v0.11.1` (or the latest tag).
 
 ### Releasing a version
 
