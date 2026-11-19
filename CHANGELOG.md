@@ -4,6 +4,15 @@ Every release of Verity, newest first. The format follows [Keep a Changelog](htt
 
 Sites install Verity by tag (for example `github:erinpantz/verity-design-system#v0.3.0`), so a site only changes when it moves to a new tag on purpose.
 
+## [0.9.12] – 2026-11-18
+
+Hero’s intro reads better on the default background.
+
+### Changed
+
+- **Hero:** on the `default` background, the intro is `--verity-color-content-default`, the headline’s color, instead of `--verity-color-content-subtle`, which looked faded next to the headline; the size difference already sets them apart. `subtle` and `brand` keep the subtle intro, and `knockout` the knockout one. No props change.
+- **Docs:** Hero’s colors-by-background table and the note about the intro’s color say so.
+
 ## [0.9.11] – 2026-11-18
 
 Text renders thinner on macOS, closer to Figma.
@@ -683,6 +692,7 @@ The first library release: everything in the Figma library except Animation, wit
 - **Theme helpers:** `themeScript`, `useTheme`, and `setTheme`, so a site applies the saved theme before the first paint.
 - **The library build:** one entry point with every component and its prop types, one stylesheet (`verity-design-system/styles.css`) with the fonts inside it, and `npm run build:watch` for working with a linked copy.
 
+[0.9.12]: https://github.com/erinpantz/verity-design-system/compare/v0.9.11...v0.9.12
 [0.9.11]: https://github.com/erinpantz/verity-design-system/compare/v0.9.10...v0.9.11
 [0.9.10]: https://github.com/erinpantz/verity-design-system/compare/v0.9.9...v0.9.10
 [0.9.9]: https://github.com/erinpantz/verity-design-system/compare/v0.9.8...v0.9.9
