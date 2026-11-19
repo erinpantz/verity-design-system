@@ -85,6 +85,8 @@ export { MediaBlock } from './components/Media/MediaBlock';
 export type { MediaBlockProps } from './components/Media/MediaBlock';
 export { Reel } from './components/Media/Reel';
 export type { ReelImage, ReelProps } from './components/Media/Reel';
+export { VerityMark } from './components/Media/VerityMark';
+export type { VerityMarkProps } from './components/Media/VerityMark';
 export { Video } from './components/Media/Video';
 export type { VideoProps } from './components/Media/Video';
 export { VideoEmbed } from './components/Media/VideoEmbed';

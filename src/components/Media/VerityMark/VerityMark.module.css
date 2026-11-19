@@ -1,0 +1,22 @@
+/* The mark is one color: its path uses currentColor, so it takes the text
+   color around it. It's wider than it's tall, so the icon size tokens set
+   its height, and its width follows from its viewBox. */
+
+.mark {
+  display: inline-block;
+  flex-shrink: 0;
+  inline-size: auto;
+  vertical-align: middle;
+}
+
+.sm {
+  block-size: var(--verity-icon-size-sm);
+}
+
+.md {
+  block-size: var(--verity-icon-size-md);
+}
+
+.lg {
+  block-size: var(--verity-icon-size-lg);
+}

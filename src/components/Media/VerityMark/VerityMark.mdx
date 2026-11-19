@@ -1,0 +1,61 @@
+import { Meta, Canvas } from '@storybook/addon-docs/blocks';
+import { VerityDocs } from '../../../foundations/VerityDocs';
+import { PropsTable } from '../../../foundations/PropsTable';
+import * as VerityMarkStories from './VerityMark.stories';
+
+<Meta of={VerityMarkStories} />
+
+<VerityDocs>
+
+# VerityMark
+
+The mark of Verity, this design system: the slanted dot of its i. It sits beside text about Verity, like the line in a footer that says the site is built with it.
+
+<Canvas of={VerityMarkStories.Default} />
+
+## When to use
+
+- **Beside text that names Verity,** as a small sign of the system, like a footer line about how the site is built.
+- **Not for Erin’s own brand.** Use `ErinTozourLogo`, or `ErinTozourBadge` where there’s only room for a square.
+- **Not as an icon for an action.** Use `Icon`, or `IconButton` for something to press.
+
+## Accessibility
+
+The mark is an `<svg>` with `aria-hidden="true"`, so screen readers skip it, and it can’t take focus. It’s decorative: the text beside it says “Verity.”
+
+| Situation | What to do | Example |
+|---|---|---|
+| The mark sits beside text that names Verity | Nothing: the text says it | “Built with Verity, my design system” |
+| The mark would be the only sign of Verity | Add text that names it. The mark has no name of its own. | A footer line, not the mark alone |
+| Something should happen when it’s pressed | Don’t make the mark a link. Link the text beside it. | “Built with [Verity]” |
+
+## Size
+
+The mark is wider than it’s tall, so `size` sets its height from the icon size tokens, and its width follows.
+
+| `size` | Height | Value | Width |
+|---|---|---|---|
+| `sm` | `--verity-icon-size-sm` | 20px | About 26px |
+| `md` (default) | `--verity-icon-size-md` | 24px | About 31px |
+| `lg` | `--verity-icon-size-lg` | 32px | About 41px |
+
+Use the size of the icons near it: `md` beside body text, `sm` beside small text.
+
+<Canvas of={VerityMarkStories.Sizes} />
+
+## Color
+
+The mark is one color, `currentColor`, so it takes the text color around it and follows the theme. To change it, set `color` on its container.
+
+## Props
+
+<PropsTable of={VerityMarkStories} />
+
+## In Figma
+
+| Figma | Code |
+|---|---|
+| The Verity mark | `brand/verity-mark.svg`, exported from Figma and never edited by hand, read the way `ErinTozourLogo` reads its files: only the viewBox and the paths, without the content-credentials block |
+| Its frame (67 × 52) | The SVG’s viewBox, so the space around the mark comes with it |
+
+</VerityDocs>
