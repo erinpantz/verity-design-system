@@ -9,7 +9,7 @@ import * as ExperienceItemStories from './ExperienceItem.stories';
 
 # ExperienceItem
 
-One role in a list of experience: the company on the left, and its credentials on the right, the title, the dates, and a sentence about the role. Rows divided by lines, which stack when they’re narrow.
+One role in a list of experience: the company on the left, and its credentials on the right, the title, the dates, and a sentence or two about the role. Rows divided by lines, which stack when they’re narrow.
 
 <Canvas of={ExperienceItemStories.Row} />
 
@@ -33,6 +33,9 @@ An ExperienceItem renders a `<div>`: the company is a real heading, and the cred
 | The list is the page’s top level, with no Section heading above it | `headingLevel={2}` | Rarely: a page that’s only a list of roles |
 | Writing the dates | Month and year, with an en dash and spaces between them. The text style shows them in capitals; type them in sentence case. | “Jan 2024 – Sep 2026” |
 | Writing the description | One sentence, in the first person, about what you did and what came of it | “I redesigned account setup, which cut the time to a first payment in half.” |
+| The description has two ideas, such as what you did, then how it turned out | A list of strings, one per paragraph. Two paragraphs is plenty: it’s a row in a list, not a case study. | What you did, then the result and how the role ended |
+
+<Canvas of={ExperienceItemStories.TwoParagraphDescription} />
 
 <Canvas of={ExperienceItemStories.InASection} />
 
@@ -66,6 +69,8 @@ The credentials are never wider than 600, so the description keeps a readable li
 | The dates | `meta-default` | `--verity-color-content-subtle` |
 | The description | `body-lg` | `--verity-color-content-subtle` |
 
+The description is plain text: one paragraph, a string, or several, a list of strings, one per paragraph. Each paragraph is its own `<p>`, and its lines break evenly (`text-wrap: pretty`), so a last line isn’t left with one short word.
+
 ## Space
 
 | Space | Token |
@@ -77,6 +82,7 @@ The credentials are never wider than 600, so the description keeps a readable li
 | Between the company and the credentials, stacked | `--verity-spacing-sm` |
 | Between the title and the dates | `--verity-spacing-xxs` |
 | Between the dates and the description | `--verity-spacing-xs` |
+| Between the description’s paragraphs | `--verity-viewport-typography-body-lg-space-before` (the space Prose puts between `body-lg` paragraphs) |
 | The credentials’ widest | `--verity-experience-item-credentials-max-width` (600) |
 
 It has no background and adds no space outside itself: the list puts the rows together with no gap, so the top lines divide them.
@@ -93,7 +99,7 @@ It has no background and adds no space outside itself: the list puts the rows to
 | The exposed `Company` heading | `company`, and `headingLevel` for its level |
 | Property `Title` | `title` |
 | Property `Dates` | `dates` |
-| Property `Description` | `description` |
+| Property `Description` | `description`. Figma’s description is one text property, so two paragraphs there are one layer with a paragraph break. In code, they’re a list of two strings. |
 | Property `Layout` (`row`, `stacked`) | No prop: the item’s own width decides. Figma previews both. |
 | A row’s widths | Figma sets the company and the credentials both to Fill, so they share the row equally, up to 600 each. Code gives the credentials their full 600 first, and the company the rest. |
 | Not in Figma | The list around the items (`VerticalStack as="ul"`, each item in an `<li>`) |

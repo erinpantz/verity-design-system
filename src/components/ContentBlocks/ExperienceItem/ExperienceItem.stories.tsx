@@ -64,6 +64,20 @@ export const LongCompanyName: Story = {
   args: { company: 'The Northwind Regional Health and Care Partnership' },
 };
 
+// A description of two paragraphs: a list of strings, one per paragraph,
+// with body/lg's paragraph space between them. Narrow the window below the
+// stack width to see it stacked.
+export const TwoParagraphDescription: Story = {
+  name: 'Two-paragraph description',
+  args: {
+    description: [
+      'I designed the booking and check-in flows for a chain of clinics, from research with front-desk staff to shipped work.',
+      'Check-in time fell by a third in the first year. The company was acquired in 2016, and the product folded into the new owner’s.',
+    ],
+  },
+  argTypes: { description: { control: 'object' } },
+};
+
 // How a page uses it: a list (each item an <li>) in a VerticalStack with no
 // gap, under a Section's h2, so each company is an h3. The top borders
 // divide the rows.
