@@ -4,6 +4,19 @@ Every release of Verity, newest first. The format follows [Keep a Changelog](htt
 
 Sites install Verity by tag (for example `github:erinpantz/verity-design-system#v0.3.0`), so a site only changes when it moves to a new tag on purpose.
 
+## [0.9.14] – 2026-11-18
+
+ExperienceItem’s description can have more than one paragraph.
+
+### Added
+
+- **ExperienceItem:** `description` takes a string, as before, or a list of strings, one per paragraph, the same as Hero’s `intro`. Each paragraph is its own `<p>` in `body-lg`, `--verity-color-content-subtle`, with `--verity-viewport-typography-body-lg-space-before` between them. A string renders as it always has.
+- **Docs:** ExperienceItem’s page covers description paragraphs: when to use two, the space between them, and how Figma’s single text layer maps to a list of strings. A new story, Two-paragraph description, shows one.
+
+### Changed
+
+- **ExperienceItem:** the description’s lines break evenly (`text-wrap: pretty`), as Hero’s intro does, so a last line isn’t left with one short word. Only where lines break changes.
+
 ## [0.9.13] – 2026-11-18
 
 Hero’s intro uses the headline’s color on every background.
@@ -701,6 +714,7 @@ The first library release: everything in the Figma library except Animation, wit
 - **Theme helpers:** `themeScript`, `useTheme`, and `setTheme`, so a site applies the saved theme before the first paint.
 - **The library build:** one entry point with every component and its prop types, one stylesheet (`verity-design-system/styles.css`) with the fonts inside it, and `npm run build:watch` for working with a linked copy.
 
+[0.9.14]: https://github.com/erinpantz/verity-design-system/compare/v0.9.13...v0.9.14
 [0.9.13]: https://github.com/erinpantz/verity-design-system/compare/v0.9.12...v0.9.13
 [0.9.12]: https://github.com/erinpantz/verity-design-system/compare/v0.9.11...v0.9.12
 [0.9.11]: https://github.com/erinpantz/verity-design-system/compare/v0.9.10...v0.9.11
