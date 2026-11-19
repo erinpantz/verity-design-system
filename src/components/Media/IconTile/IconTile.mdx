@@ -1,0 +1,71 @@
+import { Meta, Canvas } from '@storybook/addon-docs/blocks';
+import { VerityDocs } from '../../../foundations/VerityDocs';
+import { PropsTable } from '../../../foundations/PropsTable';
+import * as IconTileStories from './IconTile.stories';
+
+<Meta of={IconTileStories} />
+
+<VerityDocs>
+
+# IconTile
+
+An icon on a small colored tile, beside a heading, to mark what a block is about, as in `ActionCard`.
+
+<Canvas of={IconTileStories.Default} />
+
+## When to use
+
+- **Beside a heading, to give a block a quick visual cue,** like the three cards in the Footer.
+- **Not on its own, or as the only way to say something.** It’s hidden from screen readers, so the heading next to it has to say the same thing.
+- **Not for an icon in a line of text or a control.** Use `Icon`, or `IconButton` for an action.
+
+## Accessibility
+
+An IconTile renders a `<span>` with `aria-hidden="true"`, icon and all. It’s decorative: the heading beside it already says what the block is about, so a screen reader reads the heading and skips the tile.
+
+| Situation | What to do | Example |
+|---|---|---|
+| Next to a heading that names the same thing | Use it as it is | The hand beside “Let’s chat” |
+| The icon would mean something the text doesn’t say | Put that meaning in the text instead | — |
+
+Since it’s hidden, the icon needs no contrast minimum against its tile (WCAG 1.4.11 covers only graphics needed to understand the page).
+
+## Color
+
+| `color` | Token | Blue theme | Red theme |
+|---|---|---|---|
+| `accent-one` | `--verity-color-background-accent-one` | Yellow | Yellow |
+| `accent-two` | `--verity-color-background-accent-two` | Red | Blue |
+| `accent-three` | `--verity-color-background-accent-three` | Violet | Green |
+| `accent-four` | `--verity-color-background-accent-four` | Green | Orange |
+| `accent-five` | `--verity-color-background-accent-five` | Orange | Violet |
+| `accent-six` | `--verity-color-background-accent-six` | Pink | Pink |
+
+The accents are positional, so each maps to a different hue in each theme. The icon is always `--verity-color-content-brand`, the theme’s deep brand color.
+
+<Canvas of={IconTileStories.Colors} />
+
+## Size and space
+
+| What | Token | Value |
+|---|---|---|
+| The icon | `--verity-icon-size-lg` | 32 |
+| Around the icon | `--verity-padding-xxs` | 8, so the tile is 48 square |
+| Corners | `--verity-border-radius-sm` | 8 |
+
+It has one size and adds no space outside itself: whatever holds it sets the gap to the heading.
+
+## Props
+
+<PropsTable of={IconTileStories} />
+
+## In Figma
+
+| Figma | Code |
+|---|---|
+| Component `IconTile`, on the Media page | `<IconTile />` |
+| Property `Color` | `color` |
+| The exposed `Icon` instance’s icon | `icon` |
+| A filled icon’s fill, set to `color/content/brand` by hand | Nothing to set: every icon takes the tile’s color |
+
+</VerityDocs>

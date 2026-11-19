@@ -77,6 +77,8 @@ export { Gallery } from './components/Media/Gallery';
 export type { GalleryProps } from './components/Media/Gallery';
 export { Icon } from './components/Media/Icon';
 export type { IconProps } from './components/Media/Icon';
+export { IconTile } from './components/Media/IconTile';
+export type { IconTileProps } from './components/Media/IconTile';
 export { Image } from './components/Media/Image';
 export type { ImageProps } from './components/Media/Image';
 export { LayeredImage } from './components/Media/LayeredImage';

@@ -1,0 +1,41 @@
+/* An icon on a small colored tile: icon/size/lg (32) with padding/xxs (8)
+   around it, so the tile is 48 square, with border/radius/sm corners. The
+   icon is color/content/brand on one of the six accent backgrounds. It's
+   decorative (hidden from screen readers), so the icon needs no contrast
+   minimum. */
+
+.iconTile {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  padding: var(--verity-padding-xxs);
+  border-radius: var(--verity-border-radius-sm);
+  background-color: var(--background);
+  /* The icon uses currentColor */
+  color: var(--verity-color-content-brand);
+}
+
+.accent-one {
+  --background: var(--verity-color-background-accent-one);
+}
+
+.accent-two {
+  --background: var(--verity-color-background-accent-two);
+}
+
+.accent-three {
+  --background: var(--verity-color-background-accent-three);
+}
+
+.accent-four {
+  --background: var(--verity-color-background-accent-four);
+}
+
+.accent-five {
+  --background: var(--verity-color-background-accent-five);
+}
+
+.accent-six {
+  --background: var(--verity-color-background-accent-six);
+}
