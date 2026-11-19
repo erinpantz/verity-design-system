@@ -4,6 +4,23 @@ Every release of Verity, newest first. The format follows [Keep a Changelog](htt
 
 Sites install Verity by tag (for example `github:erinpantz/verity-design-system#v0.3.0`), so a site only changes when it moves to a new tag on purpose.
 
+## [0.10.0] – 2026-11-19
+
+A simpler Footer: no link groups, a second action, and an aside. **Breaking:** Footer’s `linkGroups` prop is gone.
+
+### Removed
+
+- **Breaking — Footer:** `linkGroups` and the layout that held them. With the nav fixed to the top of every page, the footer’s page links repeated what’s always on screen. What replaces them: `callToAction.secondaryAction`, for a second way to get in touch, like LinkedIn, and `aside`, for anything else on the right. To upgrade, delete `linkGroups` from your Footer, and move what you still need into those two. LinkGroup stays in the library, though nothing in Verity uses it now.
+
+### Added
+
+- **Icons:** `linkedin`, the LinkedIn “in” logo, one color, from LinkedIn’s brand assets.
+- **VerityMark:** a new component under Media, the Verity mark (the slanted dot of its i) from `brand/verity-mark.svg`, in `currentColor`, hidden from screen readers. `size` (`sm`, `md`, `lg`) sets its height from the icon size tokens.
+- **Footer:** `callToAction.secondaryAction` (`icon`, `label`, `href`, `opensInNewTab`), an IconButton right after the button, the same size, `--verity-spacing-xs` after it, with IconButton’s `none` background. Its label is its name and its tooltip.
+- **Footer:** `aside`, anything else, on the right where the link groups were: top-aligned with the call to action, `--verity-footer-links-min-width` wide (never narrower than the call to action’s text, so it’s the full width on a phone), and wrapping below it as the links did. Its text takes the footer’s text style and link colors, and what it holds stacks `--verity-spacing-sm` apart.
+- **IconButton:** `href` and `opensInNewTab`, so it can be a link (`<a>`) with the same look, as Button can. With `opensInNewTab`, its name ends with “(opens in a new tab).” The Footer’s second action needs it.
+- **Docs:** Footer’s page covers the second action and the aside, with stories for a footer with and without each. IconButton’s page has a new section, As a link, with a story. VerityMark has its own page. LinkGroup’s page says nothing in Verity uses it now.
+
 ## [0.9.16] – 2026-11-18
 
 Hero’s intro can hold links.
@@ -733,6 +750,7 @@ The first library release: everything in the Figma library except Animation, wit
 - **Theme helpers:** `themeScript`, `useTheme`, and `setTheme`, so a site applies the saved theme before the first paint.
 - **The library build:** one entry point with every component and its prop types, one stylesheet (`verity-design-system/styles.css`) with the fonts inside it, and `npm run build:watch` for working with a linked copy.
 
+[0.10.0]: https://github.com/erinpantz/verity-design-system/compare/v0.9.16...v0.10.0
 [0.9.16]: https://github.com/erinpantz/verity-design-system/compare/v0.9.15...v0.9.16
 [0.9.15]: https://github.com/erinpantz/verity-design-system/compare/v0.9.14...v0.9.15
 [0.9.14]: https://github.com/erinpantz/verity-design-system/compare/v0.9.13...v0.9.14
