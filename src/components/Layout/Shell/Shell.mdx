@@ -114,7 +114,7 @@ Shell renders `ThemeToggle` and fixes it to the screen’s bottom-right corner, 
 | Layer | Above the page’s content, which scrolls under it. Below anything modal: `NavOverlay` is a modal dialog, in the browser’s top layer, so it covers the toggle while the menu is open. |
 | Surface | A scrim, so it stays readable over whatever scrolls under it (see **Actions › ThemeToggle**) |
 
-At the end of a page, it sits at the Footer’s bottom-right corner, over the Footer’s band but not over any of its links, at every breakpoint.
+At the end of a page, it sits at the Footer’s bottom-right corner, in the copyright’s row, below the cards, so it never covers one, at every breakpoint.
 
 <Canvas of={ShellStories.Medium} />
 

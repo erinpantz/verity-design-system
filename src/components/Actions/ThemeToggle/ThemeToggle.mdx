@@ -44,7 +44,7 @@ In the tab order, it comes right after the nav and before Main, since Shell plac
 | Surface | Always on a scrim, so it stays readable over whatever scrolls under it, like `IconButton` with `background="scrim"` | `--verity-color-background-scrim` |
 | Edge | A thin border on every state, inside the button, so it stays 40 square. The scrim alone is only about 1.1:1 against the page, so without it the button disappears and the star seems to float. A lighter fill would stand out too, but it would pull the star under the 3:1 it needs and stop the scrim keeping it readable over images; the edge changes nothing behind the star. | `--verity-border-width-sm`, `--verity-theme-toggle-color-border` |
 
-At the end of a page, it sits at the Footer’s bottom-right corner and doesn’t cover any of the Footer’s links.
+At the end of a page, it sits at the Footer’s bottom-right corner, in the copyright’s row, below the cards, so it doesn’t cover any of them.
 
 <Canvas of={ThemeToggleStories.InContext} />
 

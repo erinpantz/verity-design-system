@@ -9,13 +9,15 @@ import * as VerityMarkStories from './VerityMark.stories';
 
 # VerityMark
 
-The mark of Verity, this design system: the slanted dot of its i. It sits beside text about Verity, like the line in a footer that says the site is built with it.
+The mark of Verity, this design system: the slanted dot of its i. It sits beside text about Verity, like a line that says the site is built with it.
 
 <Canvas of={VerityMarkStories.Default} />
 
+**Nothing in the Footer uses it now.** It was made for the Footer’s aside, which the Footer dropped in 0.11.0 for cards; the Verity card uses the `verity` icon on an `IconTile` instead. It stays in the library for any text about Verity.
+
 ## When to use
 
-- **Beside text that names Verity,** as a small sign of the system, like a footer line about how the site is built.
+- **Beside text that names Verity,** as a small sign of the system, like a line about how the site is built.
 - **Not for Erin’s own brand.** Use `ErinTozourLogo`, or `ErinTozourBadge` where there’s only room for a square.
 - **Not as an icon for an action.** Use `Icon`, or `IconButton` for something to press.
 

@@ -50,7 +50,7 @@ Choose the color by the background the link sits on.
 
 <Canvas of={LinkStories.Knockout} />
 
-**A parent surface can set its link colors.** When a surface’s fill doesn’t suit any of these, it sets `--background-link`, `--background-link-visited`, `--background-link-hover`, and `--background-link-active`, and every Link inside uses them instead, with nothing passed in. `Footer` does this (see **Layout › Footer**), and so does `Hero`, for links in its intro (see **Content blocks › Hero**). Disabled links keep their own color. A surface can also set `--background-focus-ring`, and Link uses it for its focus ring, as Button does; Hero sets it on each background.
+**A parent surface can set its link colors.** When a surface’s fill doesn’t suit any of these, it sets `--background-link`, `--background-link-visited`, `--background-link-hover`, and `--background-link-active`, and every Link inside uses them instead, with nothing passed in. `ActionCard` does this, for a link in its body (see **Content blocks › ActionCard**), and so does `Hero`, for links in its intro (see **Content blocks › Hero**). Disabled links keep their own color. A surface can also set `--background-focus-ring`, and Link uses it for its focus ring, as Button does; Hero sets it on each background.
 
 ## States
 

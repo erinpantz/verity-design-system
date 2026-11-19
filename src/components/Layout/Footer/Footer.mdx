@@ -9,109 +9,64 @@ import * as FooterStories from './Footer.stories';
 
 # Footer
 
-The site’s footer: a deep brand-colored block with an invitation to get in touch, an optional aside beside it for anything else, and the copyright line.
+The site’s footer: a row of cards for the things you most want a visitor to do, then the copyright line.
 
 <Canvas of={FooterStories.Default} />
 
 ## When to use
 
 - **Once per page, at the end,** after the page’s content. `Shell` puts it there.
+- **With a few `ActionCard`s,** usually three, given the same weight: on Erin’s site, Let’s chat, Verity, and Music.
 - **Not for the end of a section or an article.** Use `Divider` and a `Section` there.
+- **Not for the site’s page links.** The nav is fixed to the top of every page, so links to the pages would repeat it.
 
 ## Accessibility
 
-Its links go through `LinkProvider`: with a site’s router, links to the site’s pages change the page in the app, and the résumé, email, and other sites stay plain links (see **Actions › LinkProvider**).
+A Footer renders a `<footer>`. Outside `<main>`, it’s the page’s footer landmark (`contentinfo`), so screen readers can jump to it. Its links and buttons go through `LinkProvider`: with a site’s router, links to the site’s pages change the page in the app, and other sites stay plain links (see **Actions › LinkProvider**).
 
-**No page links.** The Footer used to hold the site’s links in groups. With the nav fixed to the top of every page, they repeated what’s always on screen, so they’re gone (since 0.10.0). Put anything the nav doesn’t cover in the aside.
-
-A Footer renders a `<footer>`. Outside `<main>`, it’s the page’s footer landmark (`contentinfo`), so screen readers can jump to it.
+For each card, a screen reader reads the heading, then the body, then the buttons. The IconTile is decorative and hidden, so it isn’t read.
 
 | Part | What it renders | What to do |
 |---|---|---|
-| Call to action heading | A level 3 `Heading` | Keep it short and inviting, like “Let’s work together” |
-| Call to action button | A `Button` with `href`: a link that looks like a button | Start the label with a verb: “Book a meeting.” For a booking page on another site, set `opensInNewTab`. |
-| Second action (optional) | An `IconButton` with `href`: a link that looks like an IconButton, named by its label, which is also its tooltip | Name the place it goes, like “LinkedIn.” With `opensInNewTab`, screen readers hear “LinkedIn (opens in a new tab).” |
-| Aside (optional) | A `<div>` holding what you pass | Text with a `Link` in it, say. Its text takes the footer’s text style. A decorative mark, like `VerityMark`, is hidden from screen readers, so the text beside it does the talking. |
+| Each card | An `ActionCard` you pass in `cards` | Set `headingLevel={2}`: the Footer has no heading of its own, so the cards’ headings are its top level. |
+| A card’s buttons | A `Button`, and optionally `IconButton`s | Start each label with a verb: “Book a call.” For a page on another site, set `opensInNewTab`. |
+| A card that isn’t ready yet | A disabled `Button` with `tooltip` | “Check it out,” disabled, with “Coming soon.” It stays in the tab order, so keyboard users can reach it and hear why. |
 | Copyright | A paragraph: `© {year} {name}` | Pass only the name. The year comes from today’s date, so it never goes stale. |
 
-## Width
+## Layout
 
-The Footer is wide: it spans the page up to `--verity-content-wide-width` (1824), like a wide image, so it reads as the page’s closing band rather than one more block in the column. On Large and smaller, that’s the page’s full width inside the margins.
+The Footer is wide: it spans the page up to `--verity-content-wide-width` (1824), like a wide image, so it reads as the page’s closing band rather than one more block in the column.
 
-The call to action and the aside sit side by side on Large and XL, top-aligned, and stack on Medium and Small, where the link groups used to. The minimum widths change by breakpoint to make that happen, and the row only wraps when both parts can’t fit. That depends on the Footer’s own width, not the screen’s.
+The cards share a `Grid` with `itemWidth="lg"` and `fillRows`, so they wrap by the Footer’s own width, not the screen’s:
 
-| Part | XL and Large / Medium / Small | Widest |
-|---|---|---|
-| Call to action | At least `--verity-footer-call-to-action-min-width` (300 / 320 / 240) | Its contents stop at `--verity-footer-call-to-action-max-width` (400), so its text keeps a comfortable line length |
-| Aside | `--verity-footer-links-min-width` (432 / 480 / 240), but never narrower than `--verity-footer-call-to-action-max-width` (400): 432 / 480 / the full width on a phone | The same: it doesn’t grow |
-
-On a screen narrower than a part’s width, that part is the full width instead.
-
-Side by side, the call to action sits at the start and the aside at the end: the call to action takes the extra space (its text still stops at its max), so the aside ends at the Footer’s edge. Stacked, both start at the left. On a phone, the aside is as wide as the call to action, so the two line up.
-
-**Why the aside uses the links’ token:** it takes the link groups’ place and wraps where they did. The token’s name still says “links” (see In Figma).
-
-<Canvas of={FooterStories.WithoutAside} />
-
-<Canvas of={FooterStories.WithoutSecondaryAction} />
-
-<Canvas of={FooterStories.CallToActionOnly} />
-
-## Second action
-
-`callToAction.secondaryAction` adds an `IconButton` right after the button, for a second, smaller way to get in touch, like LinkedIn. It’s the same size as the button (`md`: 40 on Large and XL, 44 on Medium and Small), `--verity-spacing-xs` after it.
-
-It uses IconButton’s `none` background: no fill, the icon in `--verity-color-content-default`, and a see-through fill on hover and press. Next to the filled primary button, it reads as the quieter of the two, the way a secondary button would. Its focus ring is `--verity-color-border-focus`, like the button’s.
-
-| Field | What it is |
+| Footer width | The cards |
 |---|---|
-| `icon` | Which icon, like `linkedin` |
-| `label` | Its name for screen readers and its tooltip, like “LinkedIn” |
-| `href` | Where it goes |
-| `opensInNewTab` | For a page on another site, like a profile |
+| Room for three at `--verity-grid-item-min-width-lg` (400 on XL and Large, 300 on Medium and Small) | Three across, equal widths |
+| Room for two | Two across, then the third alone on the next row, at the full width |
+| Less than two | One per row |
 
-## Aside
+In Shell, that’s three across at 1920; two plus one at 1280 and 768; and one per row at 375.
 
-`aside` is anything else, on the right: a line about the site, say, with a link in it. Its text takes the footer’s text style, `body-default` in `--verity-color-content-default`, and its links the footer’s link colors (see Color). What it holds stacks `--verity-spacing-sm` apart, as in the call to action, with no margins of its own, so a mark above a paragraph needs no layout.
+In a row, every card is as tall as the tallest, and each card’s buttons sit at its bottom, so they line up across the row (see **Content blocks › ActionCard**).
 
-```tsx
-<Footer
-  aside={
-    <>
-      <VerityMark />
-      <p>This site is built with <Link href="/verity">Verity</Link>, my design system.</p>
-    </>
-  }
-/>
-```
-
-Keep it to a sentence or two: it’s beside the call to action, not a second one.
+<Canvas of={FooterStories.TwoCards} />
 
 ## Color
 
-The block’s background is `--verity-color-background-subtle`: brand 800 in each theme, one step lighter than the page, so the Footer stands apart from the page’s content without a divider, and follows the theme. Its text uses the usual content colors.
+The Footer has no fill, padding, or rounded corners of its own: the cards carry the surface, `--verity-color-background-subtle`, and the page shows between them. A `Link` in a card’s body takes the body text colors, which ActionCard sets for its fill.
 
-**The links use the body text colors.** On this fill, the usual link color is below 4.5:1 (4.47:1 in Blue, 4.11:1 in Red). So the Footer tells the Links inside it to use `--verity-color-content-default` at rest and when visited, and `--verity-color-content-default-hover` on hover and press: 11.6:1 and up. The underline still marks them as links. Disabled links keep their own color. The site passes nothing: the Footer sets the colors (see **Actions › Link**).
-
-| Link state | Token |
-|---|---|
-| Default and visited | `--verity-color-content-default` |
-| Hover and active | `--verity-color-content-default-hover` |
-| Disabled | `--verity-link-color-content-disabled` |
+The copyright is `meta-default` in `--verity-color-content-subtle`.
 
 ## Space
 
 | Space | Token |
 |---|---|
-| Inside the block, around its content | `--verity-padding-md` |
-| Between the call to action and aside, and the copyright | `--verity-spacing-lg` |
-| Between the call to action and the aside, side by side or stacked | `--verity-spacing-lg` |
-| Inside the call to action: heading, text, actions | `--verity-spacing-sm` |
-| Between the button and the second action | `--verity-spacing-xs` |
-| Between the things in the aside | `--verity-spacing-sm` |
+| Between cards, and between rows | `--verity-spacing-md` (the Grid’s `md` gap) |
+| Between the cards and the copyright | `--verity-spacing-md` |
+| Inside each card | `--verity-padding-md` (ActionCard’s) |
 | Outside the footer | None. Whatever holds it, like Shell, sets the space above it. |
 
-The corners are `--verity-border-radius-md`.
+At the end of a page, Shell’s ThemeToggle sits in the copyright’s row, at the right, below the cards, so it never covers one.
 
 ## Props
 
@@ -121,11 +76,12 @@ The corners are `--verity-border-radius-md`.
 
 | Figma | Code |
 |---|---|
-| Component `Footer` | `<Footer />` |
+| Component `Footer`, on the Layout page | `<Footer />` |
+| The `Cards` Grid (`Item width=lg`, `Fill rows=true`, `Width=wide`) and its ActionCards | `cards`: pass the ActionCards. The Footer makes the Grid. |
 | Property `Copyright` | `copyrightName`. The `© {year}` part is added for you, with this year. |
-| The call to action’s heading, text, and button | `callToAction`: `heading`, `text`, `buttonLabel`, `href`, and `opensInNewTab` |
-| The IconButton after the button | `callToAction.secondaryAction` (not checked against Figma yet) |
-| The right side | `aside` (not checked against Figma yet). Figma’s LinkGroup instances there are gone from code. |
-| Variable `footer/links/min-width` | The aside’s width. Its name still says “links”: renaming it to `footer/aside/min-width` in Figma, then exporting, would match what it does now. |
+| Property `Width` (`constrained` only) | Nothing: Figma requires a variant property, and it does nothing |
+| The cards’ headings, Level 3 in Figma | `headingLevel={2}` in code, as Figma’s description says |
+| Verity’s “Check it out” | Disabled in code, with the tooltip “Coming soon,” until Verity’s Storybook is public. Figma shows it enabled. |
+| Variables `footer/call-to-action/min-width`, `footer/call-to-action/max-width`, and `footer/links/min-width` | Unused since 0.11.0: the old Footer’s layout |
 
 </VerityDocs>
