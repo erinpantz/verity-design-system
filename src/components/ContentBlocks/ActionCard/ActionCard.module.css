@@ -6,7 +6,10 @@
    It fills the height it's given: in a Grid row, cards are as tall as the
    tallest. The heading and body (Figma's Content) take the extra height, so
    the actions sit at the bottom and line up across the row, with at least
-   spacing/sm above them. It adds no space outside itself, and doesn't clip,
+   spacing/sm above them. The body text stops at action-card/text-max-width
+   (600), so a card stretched across a row keeps a readable line length;
+   the header and the actions still span the card, so the tile stays at the
+   top-right corner. It adds no space outside itself, and doesn't clip,
    so a button's hover lift and shadow show in full. */
 
 .card {
@@ -49,6 +52,8 @@
 }
 
 .body {
+  /* At most 600 wide (Figma's Text frame), however wide the card gets */
+  max-inline-size: var(--verity-action-card-text-max-width);
   margin: 0;
   color: var(--verity-color-content-default);
   font-family: var(--verity-viewport-typography-body-default-font-family);

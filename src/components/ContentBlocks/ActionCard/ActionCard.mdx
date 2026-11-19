@@ -41,10 +41,12 @@ Top to bottom, `--verity-spacing-sm` apart:
 | Part | What it is |
 |---|---|
 | Header | The heading, filling the width, then the IconTile at the end, centered on each other, `--verity-spacing-sm` apart. A long heading wraps beside the tile. |
-| Body | One paragraph |
+| Body | One paragraph, at most `--verity-action-card-text-max-width` (600) wide |
 | Actions | A `HorizontalStack` with `gap="xs"`: a Button, then any IconButtons, all `md` |
 
 **It fills the height it’s given, with the actions at the bottom.** In a Grid row, every card is as tall as the tallest, and the heading and body take the extra height, so the buttons line up across the row. There’s always at least `--verity-spacing-sm` above them.
+
+**The body text stops at 600.** When a card wraps onto a row of its own and stretches across it, its body keeps a readable line length, about 65 to 70 characters, the same measure as ProjectCard’s text and ExperienceItem’s credentials. The header and the actions still span the card, so the tile stays in the top-right corner.
 
 <Canvas of={ActionCardStories.InAGrid} />
 
@@ -74,6 +76,7 @@ It doesn’t clip what’s inside it, so a button’s hover lift and shadow show
 | Between actions | `--verity-spacing-xs` |
 | The heading | `heading-3` or `heading-2`, from `headingLevel` |
 | The body | `body-default` |
+| The body’s widest | `--verity-action-card-text-max-width` (600) |
 
 It has no width of its own: it fills what it’s given. It adds no space outside itself.
 
@@ -89,6 +92,7 @@ It has no width of its own: it fills what it’s given. It adds no space outside
 | The exposed `Heading`: its text and `Level` | `heading` and `headingLevel` |
 | The exposed `IconTile`: its `Color` and icon | `iconColor` and `icon` |
 | Property `Body` | `body`. In code it can hold a `Link`. |
+| Frame `Text`, around the body, with its max width | Not a frame in code: the body’s paragraph has the max width itself |
 | Slot `Actions` | `actions` |
 | Frame `Content`, around the header and body | Not a prop: it’s the part that takes the extra height, so the actions sit at the bottom. Figma can’t show that: in a Grid row, Figma’s cards hug their content, so their buttons don’t line up. |
 | The heading in the Footer’s cards | Figma’s are Level 3; in code, the Footer’s cards use `headingLevel={2}`, as the Footer’s description says |

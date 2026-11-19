@@ -85,7 +85,9 @@ export const WithALink: Story = {
 
 // Three in a Grid, with bodies of different lengths: each card is as tall as
 // the tallest in its row, and the buttons line up along the bottom. Narrow
-// the window to see them wrap.
+// the window to see them wrap: then Music sits alone on the last row,
+// stretched across it, and its body text stops at 600 while its tile stays
+// at the right edge.
 export const InAGrid: StoryObj = {
   name: 'In a Grid',
   render: () => (
@@ -108,7 +110,7 @@ export const InAGrid: StoryObj = {
         heading="Music"
         icon="music"
         iconColor="accent-three"
-        body="Music keeps me going. I love to keep up with new artists and share my favorites with others."
+        body="Music keeps me going. I love to keep up with new artists and share my favorites with others: the albums I play on repeat, the songs I can’t stop humming, and the shows I’ve been lucky enough to see."
         actions={<Button href="#music">Take a listen</Button>}
       />
     </Grid>
