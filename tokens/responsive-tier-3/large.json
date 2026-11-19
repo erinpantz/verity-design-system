@@ -683,5 +683,19 @@
         }
       }
     }
+  },
+  "action-card": {
+    "text-max-width": {
+      "$type": "dimension",
+      "$value": "600px",
+      "$description": "The widest an ActionCard’s body text gets (600px), about 65 to 70 characters a line, so a card that stretches across a Grid row keeps a readable line length. The same measure as project-card/text-max-width and experience-item/credentials-max-width.",
+      "$extensions": {
+        "com.figma": {
+          "scopes": [
+            "WIDTH_HEIGHT"
+          ]
+        }
+      }
+    }
   }
 }
