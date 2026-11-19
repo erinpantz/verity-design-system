@@ -105,6 +105,14 @@ export const Disabled: StoryObj = {
   ),
 };
 
+// Disabled with a hint: it stays in the tab order, so keyboard users can
+// reach it, see the tooltip, and hear “Coming soon” after the label.
+// Pressing it does nothing.
+export const DisabledWithATooltip: Story = {
+  name: 'Disabled with a tooltip',
+  args: { children: 'Check it out', disabled: true, tooltip: 'Coming soon' },
+};
+
 // Goes to another page, so it's a link that looks like a button
 export const AsLink: Story = {
   name: 'As link',

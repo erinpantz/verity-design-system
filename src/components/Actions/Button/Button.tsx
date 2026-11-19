@@ -1,9 +1,10 @@
-import type { MouseEventHandler, ReactNode } from 'react';
+import { useId, type MouseEventHandler, type ReactNode } from 'react';
 import type { IconName } from '../../../icons/icons.generated';
 import { Icon } from '../../Media/Icon';
 import styles from './Button.module.css';
 import lift from './lift.module.css';
 import { LinkAnchor } from '../LinkProvider/LinkProvider';
+import { Tooltip } from '../Tooltip';
 
 // Each variant has its own colors, so color is typed together with variant:
 // primary takes default or brand, and secondary takes default or knockout.
@@ -39,6 +40,13 @@ export type ButtonProps = VariantAndColor & {
   type?: 'button' | 'submit' | 'reset';
   /** Whether the button can’t be used right now */
   disabled?: boolean;
+  /**
+   * A short hint shown on hover and keyboard focus, usually “Coming soon” on
+   * a disabled button. A disabled button with a tooltip stays in the tab
+   * order, so keyboard users can reach it and hear why it’s disabled.
+   * Screen readers hear the label, then the hint.
+   */
+  tooltip?: string;
   /** What happens when someone presses the button */
   onClick?: MouseEventHandler<HTMLButtonElement>;
   /**
@@ -78,8 +86,11 @@ export function Button({
   onClick,
   href,
   opensInNewTab = false,
+  tooltip,
   as,
 }: ButtonProps) {
+  const tooltipId = useId();
+  const describedBy = tooltip ? tooltipId : undefined;
   const classes = [styles.button, styles[variant], styles[`${variant}-${color}`], styles[size]];
   const content = (
     <>
@@ -99,13 +110,15 @@ export function Button({
 
   // Going somewhere is a link, so screen readers say “link” and it works
   // like one (open in a new tab, copy the address)
+  let button: ReactNode;
   if (href) {
     // A new tab gets rel="noopener noreferrer", so the page it opens can't
     // control this one, and hidden text, so screen reader users know (WCAG G201)
-    return (
+    button = (
       <LinkAnchor
         className={classes.join(' ')}
         href={href}
+        aria-describedby={describedBy}
         target={opensInNewTab ? '_blank' : undefined}
         rel={opensInNewTab ? 'noopener noreferrer' : undefined}
       >
@@ -113,10 +126,33 @@ export function Button({
         {opensInNewTab && <span className={styles.newTab}> (opens in a new tab)</span>}
       </LinkAnchor>
     );
+  } else if (disabled && tooltip) {
+    // Disabled, with a hint: aria-disabled instead of disabled, so it stays
+    // in the tab order and its tooltip shows on focus too. It has no click,
+    // so pressing it does nothing; it looks and reads as disabled.
+    button = (
+      <button className={classes.join(' ')} type={type} aria-disabled="true" aria-describedby={describedBy}>
+        {content}
+      </button>
+    );
+  } else {
+    button = (
+      <button
+        className={classes.join(' ')}
+        type={type}
+        disabled={disabled}
+        onClick={onClick}
+        aria-describedby={describedBy}
+      >
+        {content}
+      </button>
+    );
   }
+
+  if (!tooltip) return button;
   return (
-    <button className={classes.join(' ')} type={type} disabled={disabled} onClick={onClick}>
-      {content}
-    </button>
+    <Tooltip text={tooltip} id={tooltipId}>
+      {button}
+    </Tooltip>
   );
 }

@@ -35,9 +35,10 @@
 }
 
 /* Hover: only on devices with a real pointer, so a tap doesn't leave a
-   button raised. Never while disabled. */
+   button raised. Never while disabled, whether with the disabled attribute
+   or with aria-disabled (a disabled Button with a tooltip). */
 @media (hover: hover) {
-  .lift:hover:not(:disabled),
+  .lift:hover:not(:disabled, [aria-disabled='true']),
   .area:hover .surface {
     translate: 0 calc(-1 * var(--verity-motion-lift-sm));
     scale: var(--verity-motion-scale-hover);
@@ -49,7 +50,7 @@
      covers where the button rested. It's part of the button, so the pointer
      over it still counts as over the button. Transparent, and only there
      while hovered, so it never takes space from what's around it. */
-  .lift:hover:not(:disabled)::after {
+  .lift:hover:not(:disabled, [aria-disabled='true'])::after {
     position: absolute;
     inset: 0;
     inset-block-end: calc(-1 * var(--verity-motion-lift-sm));
@@ -59,7 +60,7 @@
 
 /* Keyboard focus: the same lift, on every device. The focus ring is an
    outline, so it moves and grows with the button. */
-.lift:focus-visible,
+.lift:focus-visible:not([aria-disabled='true']),
 .area:focus-visible .surface {
   translate: 0 calc(-1 * var(--verity-motion-lift-sm));
   scale: var(--verity-motion-scale-hover);
@@ -69,7 +70,7 @@
 
 /* Pressed: it settles back down, with no growth and no shadow, so pressing
    reads as pushing it in, as on the cards */
-.lift:active:not(:disabled),
+.lift:active:not(:disabled, [aria-disabled='true']),
 .area:active .surface {
   translate: none;
   scale: none;
@@ -79,9 +80,9 @@
 /* Reduce motion: no lift or growth. The shadow still fades in, since it
    doesn't move anything. The same selectors as above, so this wins. */
 @media (prefers-reduced-motion: reduce) {
-  .lift:hover:not(:disabled),
+  .lift:hover:not(:disabled, [aria-disabled='true']),
   .area:hover .surface,
-  .lift:focus-visible,
+  .lift:focus-visible:not([aria-disabled='true']),
   .area:focus-visible .surface {
     translate: none;
     scale: none;

@@ -152,7 +152,8 @@
   --content: var(--content-active);
 }
 
-.primary:disabled {
+.primary:disabled,
+.primary[aria-disabled='true'] {
   --background: var(--bg-disabled);
   --content: var(--content-disabled);
 }
@@ -167,12 +168,14 @@
   --content: var(--content-active);
 }
 
-.secondary:disabled {
+.secondary:disabled,
+.secondary[aria-disabled='true'] {
   --border: var(--border-disabled);
   --content: var(--content-disabled);
 }
 
-.button:disabled {
+.button:disabled,
+.button[aria-disabled='true'] {
   cursor: default;
 }
 
