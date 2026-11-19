@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { useEffect, useRef, useState, type ComponentProps, type MouseEvent } from 'react';
+import { ActionCard } from '../../ContentBlocks/ActionCard';
 import { PortfolioCard } from '../../ContentBlocks/PortfolioCard';
 import type { PageLoaderSection } from '../../FeedbackAndStatus/PageLoader';
 import { Footer } from '../../Layout/Footer';
@@ -8,6 +9,7 @@ import { Shell } from '../../Layout/Shell';
 import { NavCard } from '../../Navigation/NavCard';
 import { Prose } from '../../Text/Prose';
 import { Button } from '../Button';
+import { IconButton } from '../IconButton';
 import { Link } from '../Link';
 import { LinkProvider, type LinkComponent } from './LinkProvider';
 
@@ -101,25 +103,39 @@ function Site() {
           hrefs={{ home: '/', portfolio: '/portfolio', profile: '/profile', playground: '/playground' }}
           footer={
             <Footer
-              callToAction={{
-                heading: 'Let’s work together',
-                text: 'Have a project in mind? Book a 30-minute call.',
-                buttonLabel: 'Book a call',
-                href: 'https://calendly.com/example/30min',
-                opensInNewTab: true,
-                secondaryAction: {
-                  icon: 'linkedin',
-                  label: 'LinkedIn',
-                  href: 'https://www.linkedin.com/',
-                  opensInNewTab: true,
-                },
-              }}
-              aside={
-                <p>
-                  See my <Link href="/profile">profile</Link>, or download my{' '}
-                  <Link href="/resume.pdf">résumé</Link>. Email me at{' '}
-                  <Link href="mailto:hello@example.com">hello@example.com</Link>.
-                </p>
+              // A link to another site (Book a call, LinkedIn) stays a plain
+              // link; a site page (the Music page, the profile) goes through
+              // LinkProvider
+              cards={
+                <>
+                  <ActionCard
+                    heading="Let’s work together"
+                    headingLevel={2}
+                    icon="hand"
+                    iconColor="accent-one"
+                    body={
+                      <>
+                        Have a project in mind? See my <Link href="/profile">profile</Link>, or book a 30-minute call.
+                      </>
+                    }
+                    actions={
+                      <>
+                        <Button href="https://calendly.com/example/30min" opensInNewTab>
+                          Book a call
+                        </Button>
+                        <IconButton icon="linkedin" label="LinkedIn" href="https://www.linkedin.com/" opensInNewTab />
+                      </>
+                    }
+                  />
+                  <ActionCard
+                    heading="Music"
+                    headingLevel={2}
+                    icon="music"
+                    iconColor="accent-three"
+                    body="The albums I keep coming back to."
+                    actions={<Button href="/profile/music">Take a listen</Button>}
+                  />
+                </>
               }
               copyrightName="Erin Tozour"
             />
