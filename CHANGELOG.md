@@ -4,6 +4,19 @@ Every release of Verity, newest first. The format follows [Keep a Changelog](htt
 
 Sites install Verity by tag (for example `github:erinpantz/verity-design-system#v0.3.0`), so a site only changes when it moves to a new tag on purpose.
 
+## [0.11.3] – 2026-11-19
+
+ProjectCard’s arrow moves onto the thumbnail, so it’s on screen as soon as any of the card is, and the title gets a smaller size of its own, so cards are shorter.
+
+### Added
+
+- **Tokens:** `project-card/title/font-family`, `font-weight`, `font-size`, `line-height`, and `letter-spacing`, ProjectCard’s own title tokens. They point to `heading-1` on XL and Large (48/56) and `heading-1-mobile` on Medium and Small (40/48), so `heading-1` keeps meaning the page title. `npm run tokens` now reads Typography Tier 2 when it writes the container widths, since a Tier 3 token can point to a typography token.
+
+### Changed
+
+- **ProjectCard:** the arrow is now in the thumbnail’s top-right corner, inset `--verity-spacing-xs`: `IconButton` with `as="span"`, `background="scrim"`, size `md`, and the `forward` icon, above the picture and still while it zooms. It takes the hover fill while the card is hovered or focused and the pressed fill while it’s pressed, and stays hidden from screen readers; the card is still one link named by its title. The → under the title is gone. The title uses the new `project-card/title/*` tokens instead of `display-sm`, so long titles take a line fewer and cards are about 150 shorter on XL and Large and 130 on Medium and Small. Its props are unchanged.
+- **ProjectCard docs:** the Arrow, States, Space, and In Figma sections describe the new arrow and the title’s tokens.
+
 ## [0.11.2] – 2026-11-19
 
 Focus lands on the new page after a page change, including from the phone menu.
@@ -814,6 +827,7 @@ The first library release: everything in the Figma library except Animation, wit
 - **Theme helpers:** `themeScript`, `useTheme`, and `setTheme`, so a site applies the saved theme before the first paint.
 - **The library build:** one entry point with every component and its prop types, one stylesheet (`verity-design-system/styles.css`) with the fonts inside it, and `npm run build:watch` for working with a linked copy.
 
+[0.11.3]: https://github.com/erinpantz/verity-design-system/compare/v0.11.2...v0.11.3
 [0.11.2]: https://github.com/erinpantz/verity-design-system/compare/v0.11.1...v0.11.2
 [0.11.1]: https://github.com/erinpantz/verity-design-system/compare/v0.11.0...v0.11.1
 [0.11.0]: https://github.com/erinpantz/verity-design-system/compare/v0.10.2...v0.11.0
