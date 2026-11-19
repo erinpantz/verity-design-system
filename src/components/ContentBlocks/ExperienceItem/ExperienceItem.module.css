@@ -84,6 +84,19 @@
   line-height: var(--verity-viewport-typography-body-lg-line-height);
   letter-spacing: var(--verity-viewport-typography-body-lg-letter-spacing);
   text-transform: var(--verity-viewport-typography-body-lg-text-transform);
+  /* Even line breaks: the browser avoids a lone short word on the last line
+     and spreads the breaks more evenly. It only moves where lines break;
+     browsers without it wrap as before. */
+  text-wrap: pretty;
+}
+
+/* A description of several paragraphs: body/lg's own paragraph space
+   between them, as a gap (the same space Prose puts between body/lg
+   paragraphs) */
+.descriptionParagraphs {
+  display: flex;
+  flex-direction: column;
+  gap: var(--verity-viewport-typography-body-lg-space-before);
 }
 
 /* A row, at or above the stack width: the company takes what the
