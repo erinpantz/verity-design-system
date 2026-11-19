@@ -1,0 +1,96 @@
+import { Meta, Canvas } from '@storybook/addon-docs/blocks';
+import { VerityDocs } from '../../../foundations/VerityDocs';
+import { PropsTable } from '../../../foundations/PropsTable';
+import * as ActionCardStories from './ActionCard.stories';
+
+<Meta of={ActionCardStories} />
+
+<VerityDocs>
+
+# ActionCard
+
+A card that offers something to do: a heading with an `IconTile`, a sentence or two, and its buttons. Unlike `ProjectCard` and `PortfolioCard`, the card itself isn’t a link; its buttons are.
+
+<Canvas of={ActionCardStories.Default} />
+
+## When to use
+
+- **For a few things you’d like a visitor to do, given the same weight,** side by side in a Grid, like the three cards in the Footer.
+- **When the card needs more than one action,** like Book a call and LinkedIn. A card that’s one link can hold only one.
+- **Not for a piece of work.** Use `ProjectCard` or `PortfolioCard`, where the whole card is the link.
+- **Not for a number or a fact.** Use `StatCard`.
+
+## Accessibility
+
+An ActionCard renders a `<div>`: a real heading, a paragraph, then its buttons. Screen readers read the heading, the body, then each button, in that order. The `IconTile` is decorative and hidden, so it isn’t read.
+
+| Situation | What to do | Example |
+|---|---|---|
+| The cards sit under a Section’s `h2` | Leave `headingLevel` at 3 | A Section “Get in touch,” then a card per way to reach you |
+| The cards are the top level of their part of the page | `headingLevel={2}` | The Footer, which has no heading of its own |
+| Writing the heading | A word or two that names what’s on offer. The IconTile shows the same thing, so the heading carries the meaning. | “Let’s chat” |
+| Writing the body | One or two sentences, in the first person, saying why someone might want it | “Music keeps me going. I love to keep up with new artists and share my favorites with others.” |
+| Labeling the buttons | A verb that says what happens, as for any Button | “Book a call,” “Take a listen” |
+
+The card itself takes no focus: Tab goes straight to its buttons.
+
+## Layout
+
+Top to bottom, `--verity-spacing-sm` apart:
+
+| Part | What it is |
+|---|---|
+| Header | The heading, filling the width, then the IconTile at the end, centered on each other, `--verity-spacing-sm` apart. A long heading wraps beside the tile. |
+| Body | One paragraph |
+| Actions | A `HorizontalStack` with `gap="xs"`: a Button, then any IconButtons, all `md` |
+
+**It fills the height it’s given, with the actions at the bottom.** In a Grid row, every card is as tall as the tallest, and the heading and body take the extra height, so the buttons line up across the row. There’s always at least `--verity-spacing-sm` above them.
+
+<Canvas of={ActionCardStories.InAGrid} />
+
+<Canvas of={ActionCardStories.WithAnIconButton} />
+
+It doesn’t clip what’s inside it, so a button’s hover lift and shadow show in full.
+
+## Color
+
+| Part | Token |
+|---|---|
+| The card | `--verity-color-background-subtle` |
+| The heading and the body | `--verity-color-content-default` |
+| A Link in the body | The body text colors (`--verity-color-content-default`, and `--verity-color-content-default-hover` on hover and press). The usual link color is below 4.5:1 on this fill; the underline still marks it as a link. |
+| The buttons | Their own default colors |
+
+<Canvas of={ActionCardStories.WithALink} />
+
+## Size and space
+
+| What | Token |
+|---|---|
+| Padding | `--verity-padding-md` |
+| Corners | `--verity-border-radius-md` |
+| Between the header, the body, and the actions | `--verity-spacing-sm` (at least, above the actions) |
+| Between the heading and the tile | `--verity-spacing-sm` |
+| Between actions | `--verity-spacing-xs` |
+| The heading | `heading-3` or `heading-2`, from `headingLevel` |
+| The body | `body-default` |
+
+It has no width of its own: it fills what it’s given. It adds no space outside itself.
+
+## Props
+
+<PropsTable of={ActionCardStories} />
+
+## In Figma
+
+| Figma | Code |
+|---|---|
+| Component `ActionCard`, on the Content blocks page | `<ActionCard />` |
+| The exposed `Heading`: its text and `Level` | `heading` and `headingLevel` |
+| The exposed `IconTile`: its `Color` and icon | `iconColor` and `icon` |
+| Property `Body` | `body`. In code it can hold a `Link`. |
+| Slot `Actions` | `actions` |
+| Frame `Content`, around the header and body | Not a prop: it’s the part that takes the extra height, so the actions sit at the bottom. Figma can’t show that: in a Grid row, Figma’s cards hug their content, so their buttons don’t line up. |
+| The heading in the Footer’s cards | Figma’s are Level 3; in code, the Footer’s cards use `headingLevel={2}`, as the Footer’s description says |
+
+</VerityDocs>

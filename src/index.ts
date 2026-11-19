@@ -20,6 +20,8 @@ export { Tooltip } from './components/Actions/Tooltip';
 export type { TooltipProps } from './components/Actions/Tooltip';
 
 // Content blocks
+export { ActionCard } from './components/ContentBlocks/ActionCard';
+export type { ActionCardProps } from './components/ContentBlocks/ActionCard';
 export { CaseStudyHeader } from './components/ContentBlocks/CaseStudyHeader';
 export type { CaseStudyHeaderProps, CaseStudyFact } from './components/ContentBlocks/CaseStudyHeader';
 export { CaseStudyHighlights } from './components/ContentBlocks/CaseStudyHighlights';

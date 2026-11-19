@@ -7,7 +7,7 @@
    Hero sets --background-focus-ring for its buttons: --background-link,
    --background-link-visited, --background-link-hover, and
    --background-link-active. Link uses them when they're set, and its own
-   colors otherwise. Footer does this. Disabled keeps Link's own color.
+   colors otherwise. ActionCard does this. Disabled keeps Link's own color.
    Hero does it too, and also sets --background-focus-ring, the same focus
    ring color its buttons use, which Link uses for its ring when it's set,
    as Button does. */
