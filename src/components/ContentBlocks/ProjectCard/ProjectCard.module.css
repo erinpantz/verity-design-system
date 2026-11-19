@@ -1,6 +1,7 @@
-/* A card that's one link to a project: its title and an arrow, and a
-   thumbnail flush to the card's edges. Its fill, shadow, states, and motion
-   come from linkCard.module.css, shared with PortfolioCard.
+/* A card that's one link to a project: its title, and a thumbnail flush to
+   the card's edges with an arrow in its top-right corner. Its fill, shadow,
+   states, and motion come from linkCard.module.css, shared with
+   PortfolioCard.
 
    Layout follows the card's own width, not the screen's:
    - stacked (below project-card/stack-width): the thumbnail on top, full
@@ -57,51 +58,47 @@
   inset: 0;
 }
 
+/* The arrow, above both, in the frame's top-right corner, inset spacing/xs
+   from the top and right. Only the picture zooms (linkCard.module.css), so
+   the arrow stays still, and the inset keeps it clear of the card's rounded
+   corner, so it isn't clipped. Its states come from IconButton's
+   parent-following styles: the hover fill while the card is hovered or has
+   keyboard focus, the pressed fill while it's pressed. It has no lift,
+   growth, or shadow of its own: the card already lifts. Its icon stays
+   content/default on the scrim in every state, so it reads over light and
+   dark pictures. */
+.thumbnail > .arrow {
+  display: flex;
+  inset: var(--verity-spacing-xs) var(--verity-spacing-xs) auto auto;
+}
+
 .image {
   inline-size: 100%;
   block-size: 100%;
   object-fit: cover;
 }
 
-/* The title and the arrow, at the top of their area */
+/* The title's area: only the heading, at the top */
 .title {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
   grid-area: 2 / 1;
-  gap: var(--verity-spacing-md);
   padding: var(--verity-padding-lg);
 }
 
-/* The title, in display-sm, at most project-card/text-max-width. A real h2
-   or h3, styled here, like PortfolioCard's. */
+/* The title, at most project-card/text-max-width, in ProjectCard's own
+   title tokens: heading-1's size (heading-1-mobile on Medium and Small).
+   Its own tokens, not heading-1's, because it's an h2 or h3: heading-1
+   keeps meaning the page title. A real heading, styled here, like
+   PortfolioCard's. It takes the card's hover color. */
 .heading {
   max-inline-size: var(--verity-project-card-text-max-width);
   margin: 0;
-  font-family: var(--verity-viewport-typography-display-sm-font-family);
-  font-size: var(--verity-viewport-typography-display-sm-font-size);
-  font-weight: var(--verity-viewport-typography-display-sm-font-weight);
+  font-family: var(--verity-project-card-title-font-family);
+  font-size: var(--verity-project-card-title-font-size);
+  font-weight: var(--verity-project-card-title-font-weight);
   /* Imperfecto has only Bold: never fake another weight or italic */
   font-synthesis: none;
-  line-height: var(--verity-viewport-typography-display-sm-line-height);
-  letter-spacing: var(--verity-viewport-typography-display-sm-letter-spacing);
-  text-transform: var(--verity-viewport-typography-display-sm-text-transform);
-}
-
-/* The arrow: the → character in the heading-2 text style, which changes
-   size by breakpoint. Imperfecto has the character, so it never falls back
-   to Plus Jakarta Sans. As in Figma, it stays content/default in every
-   state, while the title takes the card's hover color. */
-.arrow {
-  color: var(--verity-color-content-default);
-  font-family: var(--verity-viewport-typography-heading-2-font-family);
-  font-size: var(--verity-viewport-typography-heading-2-font-size);
-  font-weight: var(--verity-viewport-typography-heading-2-font-weight);
-  /* Imperfecto has only Bold: never fake another weight or italic */
-  font-synthesis: none;
-  line-height: var(--verity-viewport-typography-heading-2-line-height);
-  letter-spacing: var(--verity-viewport-typography-heading-2-letter-spacing);
-  text-transform: var(--verity-viewport-typography-heading-2-text-transform);
+  line-height: var(--verity-project-card-title-line-height);
+  letter-spacing: var(--verity-project-card-title-letter-spacing);
 }
 
 /* A row, at or above the stack width: the title fills the width, and the

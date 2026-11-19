@@ -1,4 +1,5 @@
 import { useEffect, useId, useRef, useState } from 'react';
+import { IconButton } from '../../Actions/IconButton';
 import { LinkAnchor } from '../../Actions/LinkProvider/LinkProvider';
 import { Skeleton } from '../../FeedbackAndStatus/Skeleton';
 import styles from './ProjectCard.module.css';
@@ -18,9 +19,11 @@ type Status = 'loading' | 'loaded' | 'error';
 
 // A link to one project: the whole card is one <a>, named by its title, so a
 // screen reader hears “Helping people take their cancer meds on time, link.”
-// Inside: the title, an arrow that says it's clickable (the → character, in
-// the heading-2 text style, so it reads as part of the title), and a
-// thumbnail flush to the card's edges. The card's own width decides its layout: a row,
+// Inside: the title, and a thumbnail flush to the card's edges, with an arrow
+// in its top-right corner that says the card is clickable. The thumbnail's
+// corner shows as soon as any of the card does, in both layouts, so the arrow
+// is on screen even when the title is below the fold. The card's own width
+// decides its layout: a row,
 // with the thumbnail on the right, at or above project-card/stack-width, and
 // stacked, with the thumbnail on top, below it (ProjectCard.module.css).
 export function ProjectCard({ href, heading, headingLevel = 2, thumbnail }: ProjectCardProps) {
@@ -45,11 +48,6 @@ export function ProjectCard({ href, heading, headingLevel = 2, thumbnail }: Proj
           <Heading className={styles.heading} id={headingId}>
             {heading}
           </Heading>
-          {/* Hidden from screen readers: the card is already the link,
-              named by its title */}
-          <span className={styles.arrow} aria-hidden="true">
-            →
-          </span>
         </div>
         <div className={styles.thumbnail}>
           {status !== 'loaded' && <Skeleton showShine={status === 'loading'} />}
@@ -63,6 +61,14 @@ export function ProjectCard({ href, heading, headingLevel = 2, thumbnail }: Proj
             onLoad={() => setResult({ src: thumbnail, status: 'loaded' })}
             onError={() => setResult({ src: thumbnail, status: 'error' })}
           />
+          {/* The arrow: IconButton's look, following the card's hover,
+              focus, and press. Last, so it's above the picture and the
+              Skeleton. as="span" hides it from screen readers and gives it
+              no tooltip or focus stop: the card is the one link, named by
+              its title. Its label is never shown or read. */}
+          <span className={styles.arrow}>
+            <IconButton as="span" icon="forward" label="Open" size="md" background="scrim" />
+          </span>
         </div>
       </div>
     </LinkAnchor>
