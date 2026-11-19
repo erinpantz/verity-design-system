@@ -27,7 +27,7 @@ NavOverlay is a modal `<dialog>` named “Menu.” It behaves like any dialog:
 | It opens | Focus moves to the back button, “Close menu.” The page behind it can’t be reached with Tab or a screen reader until it closes. |
 | Someone presses Tab | Focus moves through the back button and the links, and stays in the menu |
 | Someone presses the back button or Escape | It slides out, and focus returns to the menu button that opened it |
-| Someone follows one of its links | It closes, so it isn’t still open when the site shows the new page |
+| Someone follows one of its links | It closes, so it isn’t still open when the site shows the new page. It slides out, and focus goes to the new page’s heading, its first `h1` (`focusPageStart`, see **Layout › Shell**), as after any page change. A screen reader announces the new page, like “Profile, heading level 1,” not the menu button. With a modifier key (opening the page in a new tab), focus returns to the menu button instead. |
 | The nav widens past its menu layout | It closes, because the links are back in the bar. Focus moves to the logo link, since the menu button is gone. MainNav detects this from its own layout, not the screen’s breakpoint. |
 
 The badge is decorative and hidden from screen readers. The menu button says whether the overlay is open (`aria-expanded`) and that it opens a dialog (`aria-haspopup="dialog"`).
