@@ -4,6 +4,16 @@ Every release of Verity, newest first. The format follows [Keep a Changelog](htt
 
 Sites install Verity by tag (for example `github:erinpantz/verity-design-system#v0.3.0`), so a site only changes when it moves to a new tag on purpose.
 
+## [0.9.16] – 2026-11-18
+
+Hero’s intro can hold links.
+
+### Added
+
+- **Hero:** each paragraph of `intro` can be inline content, not only a string: text with a `Link`, `<em>`, or `<strong>` in it. A list still means paragraphs, and the Hero still renders each `<p>`, so a paragraph can’t hold blocks. A `Link` in the intro takes `body-xl` from the text around it, and the link colors and focus ring for the Hero’s background, with no `color` passed. A string, or a list of strings, renders as before.
+- **Link:** uses `--background-focus-ring` for its focus ring when a surface sets it, as Button does. Only Hero sets it, so no other Link changes.
+- **Docs:** Hero’s page covers links in the intro (the link colors on each background, their contrast, and that a paragraph is inline only), with a new story, Intro with links. Link’s page says Hero sets its colors and focus ring, as Footer sets its colors.
+
 ## [0.9.15] – 2026-11-18
 
 More space between ExperienceItem rows.
@@ -723,6 +733,7 @@ The first library release: everything in the Figma library except Animation, wit
 - **Theme helpers:** `themeScript`, `useTheme`, and `setTheme`, so a site applies the saved theme before the first paint.
 - **The library build:** one entry point with every component and its prop types, one stylesheet (`verity-design-system/styles.css`) with the fonts inside it, and `npm run build:watch` for working with a linked copy.
 
+[0.9.16]: https://github.com/erinpantz/verity-design-system/compare/v0.9.15...v0.9.16
 [0.9.15]: https://github.com/erinpantz/verity-design-system/compare/v0.9.14...v0.9.15
 [0.9.14]: https://github.com/erinpantz/verity-design-system/compare/v0.9.13...v0.9.14
 [0.9.13]: https://github.com/erinpantz/verity-design-system/compare/v0.9.12...v0.9.13
