@@ -4,6 +4,14 @@ Every release of Verity, newest first. The format follows [Keep a Changelog](htt
 
 Sites install Verity by tag (for example `github:erinpantz/verity-design-system#v0.3.0`), so a site only changes when it moves to a new tag on purpose.
 
+## [0.11.1] – 2026-11-19
+
+Grid gets an xl gap.
+
+### Added
+
+- **Grid:** `gap="xl"`, `--verity-spacing-xl` (56 on XL and Large, 40 on Medium and Small) between items and between rows, the same space Section puts between blocks, for cards with a lot of padding, like ActionCard. Its docs page explains when to use it, with a new story, and the `gap` control lists it.
+
 ## [0.11.0] – 2026-11-19
 
 A new Footer made of cards, with two new components, IconTile and ActionCard. **Breaking:** Footer’s `callToAction` (with its `secondaryAction`) and `aside` props are gone; `cards` replaces them.
@@ -794,6 +802,7 @@ The first library release: everything in the Figma library except Animation, wit
 - **Theme helpers:** `themeScript`, `useTheme`, and `setTheme`, so a site applies the saved theme before the first paint.
 - **The library build:** one entry point with every component and its prop types, one stylesheet (`verity-design-system/styles.css`) with the fonts inside it, and `npm run build:watch` for working with a linked copy.
 
+[0.11.1]: https://github.com/erinpantz/verity-design-system/compare/v0.11.0...v0.11.1
 [0.11.0]: https://github.com/erinpantz/verity-design-system/compare/v0.10.2...v0.11.0
 [0.10.2]: https://github.com/erinpantz/verity-design-system/compare/v0.10.1...v0.10.2
 [0.10.1]: https://github.com/erinpantz/verity-design-system/compare/v0.10.0...v0.10.1
