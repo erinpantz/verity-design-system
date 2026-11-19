@@ -62,7 +62,9 @@
      behind the page, stays in sight */
   --background: transparent;
   --content: var(--verity-color-content-default);
-  --intro: var(--verity-color-content-subtle);
+  /* The intro in the headline's color: on the page's own background, the
+     size difference already sets them apart, and subtle looked faded */
+  --intro: var(--verity-color-content-default);
   --background-focus-ring: var(--verity-color-border-focus);
 }
 
@@ -106,7 +108,8 @@
 
 .intro {
   margin: 0;
-  /* Quieter than the headline on default and brand; knockout keeps one color */
+  /* Quieter than the headline on subtle and brand; default and knockout use
+     the headline's color */
   color: var(--intro);
   font-family: var(--verity-viewport-typography-body-xl-font-family);
   font-size: var(--verity-viewport-typography-body-xl-font-size);
