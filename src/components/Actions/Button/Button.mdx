@@ -82,18 +82,34 @@ Use `startIcon` for an icon before the label and `endIcon` for one after it, suc
 | State | Primary | Secondary | Tokens |
 |---|---|---|---|
 | Default | Filled | Outlined | `…-default` |
-| Hover | A lighter fill and label | A lighter border and label | `…-hover` |
-| Focus | A focus ring outside the button, following its corners. Keyboard focus only. | The same | `--verity-focus-ring-width`, `--verity-focus-ring-offset`, and the focus color for its `color` |
-| Active | The active fill and label while pressed | The active border and label | `…-active` |
-| Disabled | The disabled fill and label | The disabled border and label | `…-disabled` |
+| Hover | A lighter fill and label, and the lift (see Motion) | A lighter border and label, and the lift | `…-hover` |
+| Focus | A focus ring outside the button, following its corners, and the lift. Keyboard focus only. | The same | `--verity-focus-ring-width`, `--verity-focus-ring-offset`, and the focus color for its `color` |
+| Active | The active fill and label while pressed. It settles back down, with no growth or shadow, so pressing reads as pushing it in. | The active border and label, settled | `…-active` |
+| Disabled | The disabled fill and label, and no lift | The disabled border and label, and no lift | `…-disabled` |
 
 <Canvas of={ButtonStories.Disabled} />
+
+## Motion
+
+On hover and keyboard focus, a button rises, grows a little, and casts a shadow, like the cards, so every button on the site answers the pointer the same way. Button, IconButton, and BackLink share one rule for it (`Button/lift.module.css`), so they can’t drift apart. Each keeps its own colors.
+
+| What | How | Tokens |
+|---|---|---|
+| The lift | Up by `--verity-motion-lift-sm` (4) on hover and focus, and back down on mouse out, blur, or press. Not `lift-md`: 8 is a fifth of a 40px button’s height. | `--verity-motion-duration-playful`, `--verity-motion-easing-standard` |
+| The growth | To `--verity-motion-scale-hover` (2%) with the lift. It shows most on wide buttons. | The same |
+| The shadow | `shadow-md` on hover and focus only, never at rest, fading in. Not `shadow-lg`, which is sized for the cards. | `--verity-shadow-md-*`, `--verity-motion-duration-fast`, `--verity-motion-easing-standard` |
+| The colors | Switch at once, as before | — |
+| Reduce motion is on | No lift or growth; the shadow still fades in, since it doesn’t move anything | — |
+
+- **Hover only with a real pointer** (`hover: hover`), so a tap doesn’t leave a button raised. Keyboard focus lifts it on every device, and the focus ring moves and grows with it.
+- **The hit area stays put.** While a button is raised, an invisible layer covers the space it rose from, so a pointer at its bottom edge stays over it, and the hover doesn’t flicker on and off.
+- **Not on the `as="span"` look**: the link or card around it already lifts.
 
 ## Inside a link or button
 
 A link or button can’t hold another one. When something that’s already a link needs a button’s look, like the label on a `PortfolioCard`, use `as="span"`. It renders a plain `<span>` with the button’s look and no focus, role, or click of its own, so the link around it stays the one thing to press. `type`, `disabled`, `onClick`, `href`, and `opensInNewTab` don’t apply.
 
-It follows the link or button around it: its hover look while that’s hovered (devices with a real pointer) or has keyboard focus, and its active look while it’s pressed. It never shows a focus ring: the parent has it.
+It follows the link or button around it: its hover look while that’s hovered (devices with a real pointer) or has keyboard focus, and its active look while it’s pressed. It never shows a focus ring and never lifts on its own: the parent has the ring, and a card around it lifts.
 
 ## Props
 

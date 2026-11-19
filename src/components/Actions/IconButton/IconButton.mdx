@@ -67,12 +67,26 @@ The scrim is the button’s base layer. Hover and pressed add the same fills as 
 | State | What changes | Tokens |
 |---|---|---|
 | Default | The icon, with no fill, or on the scrim | `--verity-color-content-default`, `--verity-color-background-scrim` |
-| Hover | A light fill behind the icon, on top of any scrim, and the tooltip | `--verity-color-background-transparent-medium` |
-| Focus | A focus ring outside the button, following its corners, and the tooltip. Keyboard focus only. | `--verity-focus-ring-width`, `--verity-focus-ring-offset`, `--verity-color-border-focus` |
-| Active | A stronger fill while pressed, on top of any scrim | `--verity-color-background-transparent-strong` |
-| Disabled | A dimmed icon and no hover or pressed fill. A scrim stays. The tooltip still shows on hover. | `--verity-color-content-disabled` |
+| Hover | A light fill behind the icon, on top of any scrim, the lift (see Motion), and the tooltip | `--verity-color-background-transparent-medium` |
+| Focus | A focus ring outside the button, following its corners, the lift, and the tooltip. Keyboard focus only. | `--verity-focus-ring-width`, `--verity-focus-ring-offset`, `--verity-color-border-focus` |
+| Active | A stronger fill while pressed, on top of any scrim. It settles back down, with no growth or shadow. | `--verity-color-background-transparent-strong` |
+| Disabled | A dimmed icon, no hover or pressed fill, and no lift. A scrim stays. The tooltip still shows on hover. | `--verity-color-content-disabled` |
 
 <Canvas of={IconButtonStories.Disabled} />
+
+## Motion
+
+On hover and keyboard focus, an IconButton lifts, grows a little, and casts a shadow, the same as `Button` and `BackLink`: one rule, in `Button/lift.module.css`. See **Actions › Button** for the tokens and why.
+
+| What | How | Tokens |
+|---|---|---|
+| The lift | Up by `--verity-motion-lift-sm` (4), and back down on mouse out, blur, or press | `--verity-motion-duration-playful`, `--verity-motion-easing-standard` |
+| The growth | To `--verity-motion-scale-hover` (2%). On a 40px button that’s under a pixel, so it barely shows; it’s there so every button moves the same way. | The same |
+| The shadow | `shadow-md` on hover and focus only, never at rest | `--verity-shadow-md-*`, `--verity-motion-duration-fast` |
+| The fills | Switch at once, as before | — |
+| Reduce motion is on | No lift or growth; the shadow still fades in | — |
+
+Hover lifts it only on devices with a real pointer. The tooltip stays where it is: it’s placed against the button’s resting spot, not the lifted one. While it’s raised, an invisible layer covers the space it rose from, so the hover doesn’t flicker at its bottom edge. The `as="span"` look doesn’t lift on its own.
 
 ## As a link
 
