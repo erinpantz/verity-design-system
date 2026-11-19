@@ -4,6 +4,15 @@ Every release of Verity, newest first. The format follows [Keep a Changelog](htt
 
 Sites install Verity by tag (for example `github:erinpantz/verity-design-system#v0.3.0`), so a site only changes when it moves to a new tag on purpose.
 
+## [0.10.1] – 2026-11-19
+
+Buttons lift and grow on hover, like the cards. No prop changes.
+
+### Changed
+
+- **Button, IconButton, and BackLink:** on hover and keyboard focus, they rise by `--verity-motion-lift-sm`, grow to `--verity-motion-scale-hover`, and take `shadow-md`; pressed, they settle back down with no growth or shadow; disabled, none of it. No shadow at rest. The shadow fades over `--verity-motion-duration-fast`, and the lift and growth move over `--verity-motion-duration-playful`, both with the standard easing; each button’s colors are unchanged. Hover lifts only with a real pointer, and with reduce motion on there’s no movement, only the shadow. While raised, Button and IconButton keep their resting hit area, so the hover doesn’t flicker at the bottom edge. One shared rule (`Button/lift.module.css`) keeps the three in step. Not on the `as="span"` look or ThemeToggle. BackLink, which lifted with no shadow, now grows and takes the shadow on hover and focus too.
+- **Docs:** Button, IconButton, and BackLink describe the lift in their States sections, and Button and IconButton have a new Motion section.
+
 ## [0.10.0] – 2026-11-19
 
 A simpler Footer: no link groups, a second action, and an aside. **Breaking:** Footer’s `linkGroups` prop is gone.
@@ -750,6 +759,7 @@ The first library release: everything in the Figma library except Animation, wit
 - **Theme helpers:** `themeScript`, `useTheme`, and `setTheme`, so a site applies the saved theme before the first paint.
 - **The library build:** one entry point with every component and its prop types, one stylesheet (`verity-design-system/styles.css`) with the fonts inside it, and `npm run build:watch` for working with a linked copy.
 
+[0.10.1]: https://github.com/erinpantz/verity-design-system/compare/v0.10.0...v0.10.1
 [0.10.0]: https://github.com/erinpantz/verity-design-system/compare/v0.9.16...v0.10.0
 [0.9.16]: https://github.com/erinpantz/verity-design-system/compare/v0.9.15...v0.9.16
 [0.9.15]: https://github.com/erinpantz/verity-design-system/compare/v0.9.14...v0.9.15
