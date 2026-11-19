@@ -62,3 +62,7 @@
 .gap-lg {
   gap: var(--verity-spacing-lg);
 }
+
+.gap-xl {
+  gap: var(--verity-spacing-xl);
+}

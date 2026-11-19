@@ -8,9 +8,11 @@ export interface GridProps {
   itemWidth?: 'sm' | 'md' | 'lg' | 'xl';
   /**
    * The space between items and between rows: md for cards, lg for items
-   * made of text with no box around them, like quotes
+   * made of text with no box around them, like quotes, and xl for cards
+   * with a lot of padding, like ActionCard: the space Section puts between
+   * blocks
    */
-  gap?: 'md' | 'lg';
+  gap?: 'md' | 'lg' | 'xl';
   /**
    * How wide it can get in a Section or Container: column (the default), or
    * wide to break out to the full width. Inside another component, it fills

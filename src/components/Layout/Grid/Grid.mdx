@@ -67,10 +67,15 @@ The space between items and between rows, the same at every item width.
 |---|---|---|---|
 | `md` | `--verity-spacing-md` | 24–32 | The default: cards and other items with a background or border |
 | `lg` | `--verity-spacing-lg` | 32–48 | Items made of text with no box around them, like `Quote`s |
+| `xl` | `--verity-spacing-xl` | 40–56 | Cards with a lot of padding, like `ActionCard`: the same space `Section` puts between blocks |
 
 **Why quotes get more space:** a card’s background or border shows where it ends, so `md` is enough between cards. Quotes are text on the page’s background, so at `md` the end of one quote runs into the start of the next. `lg` gives each quote room to read as its own.
 
 <Canvas of={GridStories.GapLg} />
+
+**Why roomy cards can take more:** a card with a lot of padding has more space inside it than `md` leaves between cards, so the cards can read as one block. `xl` makes the space between them at least as wide as the space inside, the same space `Section` puts between blocks.
+
+<Canvas of={GridStories.GapXl} />
 
 ## Width
 

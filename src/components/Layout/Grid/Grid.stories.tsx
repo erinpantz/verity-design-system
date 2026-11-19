@@ -1,5 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { Placeholder } from '../../../foundations/Placeholder';
+import { Button } from '../../Actions/Button';
+import { ActionCard } from '../../ContentBlocks/ActionCard';
 import { Quote } from '../../ContentBlocks/Quote';
 import { Container } from '../Container';
 import { VerticalStack } from '../VerticalStack';
@@ -22,7 +24,7 @@ const meta = {
   argTypes: {
     width: { control: 'inline-radio', options: ['column', 'wide'] },
     itemWidth: { control: 'inline-radio', options: ['sm', 'md', 'lg', 'xl'] },
-    gap: { control: 'inline-radio', options: ['md', 'lg'] },
+    gap: { control: 'inline-radio', options: ['md', 'lg', 'xl'] },
     fillRows: { control: 'boolean' },
     // A list needs <li> items, so it's chosen in code, not here
     as: { control: false },
@@ -63,6 +65,22 @@ export const GapLg: Story = {
       <Quote key="1" quote="I finally understood why the app asked for my bank details." name="Participant 3" title="Usability test, round 2" />,
       <Quote key="2" quote="Setup took me five minutes instead of twenty." name="Participant 7" title="Usability test, round 2" />,
       <Quote key="3" quote="I didn’t have to call support once." name="Participant 9" title="Usability test, round 2" />,
+    ],
+  },
+};
+
+// Cards with a lot of padding: the space Section puts between blocks, so
+// the gap reads as wide as the space inside each card
+export const GapXl: Story = {
+  name: 'Gap xl, for roomy cards',
+  args: {
+    gap: 'xl',
+    itemWidth: 'lg',
+    fillRows: true,
+    children: [
+      <ActionCard key="1" heading="Let’s chat" icon="hand" iconColor="accent-one" body="I’m looking for my next design role and would love to chat." actions={<Button href="#book">Book a call</Button>} />,
+      <ActionCard key="2" heading="Verity" icon="verity" iconColor="accent-two" body="This site is built with Verity, my design system." actions={<Button href="#verity">Check it out</Button>} />,
+      <ActionCard key="3" heading="Music" icon="music" iconColor="accent-three" body="Music keeps me going." actions={<Button href="#music">Take a listen</Button>} />,
     ],
   },
 };
