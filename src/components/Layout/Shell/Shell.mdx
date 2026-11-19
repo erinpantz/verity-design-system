@@ -27,11 +27,32 @@ The page frame, in one column: the site’s nav across the top, then the page co
 | Nav | `MainNav`’s `<nav>` | The navigation landmark. Not in focused mode. |
 | Back link | `BackLink`, an `<a href>` | Focused mode only, in place of the nav. In the tab order: the back link, then the theme toggle, then Main. |
 | Theme toggle | `ThemeToggle`, a `<button>` | Right after the nav and before Main in the tab order, so it’s reached early on every page without being part of the navigation |
-| Main | `<main>` | The main landmark, with the page’s content. It can take focus from the skip link (`tabIndex={-1}`), but it isn’t in the tab order. |
+| Main | `<main>` | The main landmark, with the page’s content. It can take focus from the skip link (`tabIndex={-1}`), but it isn’t in the tab order. After a page change, focus goes to its `h1` (see below). |
 | Footer | The `Footer`’s `<footer>` | The footer landmark (`contentinfo`) |
 | Menu | `NavOverlay`, inside MainNav | The links, as a dialog, when the nav is too narrow for them. MainNav opens it; Shell sets nothing up. Not in focused mode. |
 
 The skip link works the same in both modes: it moves focus to Main.
+
+### After a page change
+
+When the site changes the page in the app, without a reload, the browser leaves focus where it was: on the link that was followed, or nowhere. So the site moves it to the new page with `focusPageStart()`, from Verity:
+
+- **It focuses the page’s heading,** the first `h1` in Main, so a screen reader announces the new page by name. VoiceOver reads “Portfolio, heading level 1,” not “main.” The heading isn’t a control, so it gets `tabindex="-1"` (reachable by code, not by Tab) and no focus ring.
+- **With no `h1`, it focuses Main,** where the skip link sends focus.
+- **It doesn’t scroll.** The site’s router decides that: the top for a new page, where you were for Back and Forward.
+- **The next Tab** goes to the first link or button after the heading.
+
+Call it after every page change except the first load, in the site’s root:
+
+```tsx
+import { focusPageStart } from 'verity-design-system';
+
+useEffect(() => {
+  if (key !== firstKey.current) focusPageStart();
+}, [key]);
+```
+
+`NavOverlay` calls it too, when it closes because one of its links was followed. While the menu is open, the page behind it can’t take focus, so the site’s call can come too early to work; and as a modal dialog closes, the browser sends focus back to the menu button. So whichever runs last, focus ends on the new page’s heading.
 
 ## Width
 

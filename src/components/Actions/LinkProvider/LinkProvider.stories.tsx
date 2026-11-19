@@ -5,7 +5,7 @@ import { PortfolioCard } from '../../ContentBlocks/PortfolioCard';
 import type { PageLoaderSection } from '../../FeedbackAndStatus/PageLoader';
 import { Footer } from '../../Layout/Footer';
 import { Section } from '../../Layout/Section';
-import { Shell } from '../../Layout/Shell';
+import { focusPageStart, Shell } from '../../Layout/Shell';
 import { NavCard } from '../../Navigation/NavCard';
 import { Prose } from '../../Text/Prose';
 import { Button } from '../Button';
@@ -79,6 +79,9 @@ function Site() {
       timer.current = window.setTimeout(() => {
         setCurrent(section);
         setPending(undefined);
+        // What the site does after a page change: focus the new page's
+        // heading (see Shell's docs)
+        requestAnimationFrame(() => focusPageStart());
       }, 300);
     };
     window.addEventListener('story-route', onRoute);

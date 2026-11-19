@@ -65,6 +65,7 @@ export { Section } from './components/Layout/Section';
 export type { SectionProps } from './components/Layout/Section';
 export { Shell } from './components/Layout/Shell';
 export type { ShellProps } from './components/Layout/Shell';
+export { focusPageStart } from './components/Layout/Shell';
 export { VerticalStack } from './components/Layout/VerticalStack';
 export type { VerticalStackProps } from './components/Layout/VerticalStack';
 

@@ -101,9 +101,12 @@
   padding-block-start: var(--verity-main-padding-top);
 }
 
-/* Main gets focus only from the skip link, as a starting point for Tab, so
-   it doesn't need a ring of its own */
-.main:focus {
+/* Main gets focus only from the skip link, or after a page change when the
+   page has no h1, as a starting point for Tab, so it doesn't need a ring of
+   its own. Nor does the page's heading, which focusPageStart focuses after a
+   page change: it isn't a control. */
+.main:focus,
+.main h1[tabindex='-1']:focus {
   outline: none;
 }
 
