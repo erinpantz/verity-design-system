@@ -4,6 +4,18 @@ Every release of Verity, newest first. The format follows [Keep a Changelog](htt
 
 Sites install Verity by tag (for example `github:erinpantz/verity-design-system#v0.3.0`), so a site only changes when it moves to a new tag on purpose.
 
+## [0.10.2] – 2026-11-19
+
+An edge on ThemeToggle, so the button stands out from the page.
+
+### Added
+
+- **Tokens:** `theme-toggle/color/border`, a Themes Tier 3 color that points to `color/border/subtle` in both themes.
+
+### Changed
+
+- **ThemeToggle:** a `--verity-border-width-sm` border in `--verity-theme-toggle-color-border`, on every state. The scrim alone is only about 1.1:1 against the page, so the button disappeared and the star seemed to float; the edge is about 1.9:1. A lighter fill would have pulled the star under 3:1, so nothing behind the star changes. The border is inside the button, as in Figma: it stays `control/size/md` square, with the star centered, and the focus ring stays outside it. Its docs page describes the edge.
+
 ## [0.10.1] – 2026-11-19
 
 Buttons lift and grow on hover, like the cards. No prop changes.
@@ -759,6 +771,7 @@ The first library release: everything in the Figma library except Animation, wit
 - **Theme helpers:** `themeScript`, `useTheme`, and `setTheme`, so a site applies the saved theme before the first paint.
 - **The library build:** one entry point with every component and its prop types, one stylesheet (`verity-design-system/styles.css`) with the fonts inside it, and `npm run build:watch` for working with a linked copy.
 
+[0.10.2]: https://github.com/erinpantz/verity-design-system/compare/v0.10.1...v0.10.2
 [0.10.1]: https://github.com/erinpantz/verity-design-system/compare/v0.10.0...v0.10.1
 [0.10.0]: https://github.com/erinpantz/verity-design-system/compare/v0.9.16...v0.10.0
 [0.9.16]: https://github.com/erinpantz/verity-design-system/compare/v0.9.15...v0.9.16
