@@ -21,7 +21,7 @@
 /* The item is the container its layout follows */
 .experienceItem {
   container: experience-item / inline-size;
-  padding-block: var(--verity-padding-md);
+  padding-block: var(--verity-padding-lg);
   border-block-start: var(--verity-border-width-sm) solid var(--verity-color-border-subtle);
 }
 
