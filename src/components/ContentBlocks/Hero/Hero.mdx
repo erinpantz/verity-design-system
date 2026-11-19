@@ -37,12 +37,12 @@ Every focus ring follows the background, not the button, so it keeps a 3:1 contr
 
 | `background` | Fill | Headline | Intro | Primary button | Secondary button | Focus ring |
 |---|---|---|---|---|---|---|
-| `default` | None: the page shows through, which is `--verity-color-background-default` in `Shell`. Moving media passes behind the page (see Media). | `--verity-color-content-default` | `--verity-color-content-subtle` | `default` | `default` | `--verity-color-border-focus` |
+| `default` | None: the page shows through, which is `--verity-color-background-default` in `Shell`. Moving media passes behind the page (see Media). | `--verity-color-content-default` | `--verity-color-content-default` | `default` | `default` | `--verity-color-border-focus` |
 | `subtle` | `--verity-color-background-subtle` | `--verity-color-content-default` | `--verity-color-content-subtle` | `default` | `default` | `--verity-color-border-focus` |
 | `knockout` | `--verity-color-background-knockout` | `--verity-color-content-knockout` | `--verity-color-content-knockout` | `default` | `knockout` | `--verity-color-border-focus-knockout` |
 | `brand` | `--verity-color-background-brand` | `--verity-color-content-default` | `--verity-color-content-subtle` | `brand` | `default` | `--verity-color-border-focus-brand` |
 
-The intro is quieter than the headline on `default`, `subtle`, and `brand`; on `knockout` both use the knockout text color. The intro is `body-xl` (28 on Large and XL, 24 on Medium and Small), large text at every size, so it needs 3:1: subtle on the Red brand band is about 3.05:1, the closest pair. Button has no brand secondary, so on `brand` the secondary button is `default`. On `subtle`, the primary button’s fill (brand 700) is close to the band’s color (brand 800), so the button’s edge is faint; its label still passes.
+The intro is quieter than the headline only on `subtle` and `brand`. On `default` it uses the headline’s color: on the page’s own background, the size difference (`display-default` against `body-xl`) already sets them apart, and subtle looked faded. On `knockout` both use the knockout text color. The intro is `body-xl` (28 on Large and XL, 24 on Medium and Small), large text at every size, so it needs 3:1: subtle on the Red brand band is about 3.05:1, the closest pair. Button has no brand secondary, so on `brand` the secondary button is `default`. On `subtle`, the primary button’s fill (brand 700) is close to the band’s color (brand 800), so the button’s edge is faint; its label still passes.
 
 Use `default` on most pages, as on Home with its Reel, `subtle` for a quieter band, and `knockout` or `brand` to make a page’s opening stand out.
 
