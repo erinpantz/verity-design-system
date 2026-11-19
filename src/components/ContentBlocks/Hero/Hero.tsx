@@ -20,11 +20,14 @@ export interface HeroProps {
   /** The headline. It’s the page’s <h1>, so a page has one Hero at most. */
   heading: string;
   /**
-   * A sentence or two below the headline: one paragraph as a string, or
-   * several as a list of strings, one per paragraph. Plain text, so the
-   * Hero keeps its text style.
+   * A sentence or two below the headline: one paragraph, or several as a
+   * list, one per paragraph. A paragraph is text, or inline content: text
+   * with a Link, <em>, or <strong> in it. Inline only: the Hero renders each
+   * paragraph's <p> itself, so a paragraph can't hold blocks (paragraphs,
+   * lists, or headings). It takes the intro's text style, and a Link in it
+   * takes the link colors for the Hero's background, with no color passed.
    */
-  intro: string | string[];
+  intro: ReactNode | ReactNode[];
   /** The main action. Leave it out for no actions at all, as on Home. */
   primaryAction?: HeroAction;
   /** A second, less important action, next to the main one. Leave it out for one button. */
@@ -72,7 +75,7 @@ export function Hero({
 }: HeroProps) {
   const colors = BUTTON_COLORS[background];
   // One paragraph renders as it always has; a list, one paragraph each
-  const paragraphs = typeof intro === 'string' ? [intro] : intro;
+  const paragraphs = Array.isArray(intro) ? intro : [intro];
   return (
     <header className={`${styles.hero} ${styles[background]}`} data-width={width}>
       <div className={styles.body}>

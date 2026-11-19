@@ -53,9 +53,10 @@
   isolation: isolate;
 }
 
-/* Each background sets the padding, the text color, and the focus ring
-   color for the buttons on it (see Button.module.css), since some buttons'
-   own colors don't match the band */
+/* Each background sets the padding, the text color, the focus ring color
+   for the buttons and links on it (see Button.module.css and
+   Link.module.css), since some buttons' own colors don't match the band, and
+   the link colors for a Link in the intro, so it needs no color of its own */
 .default {
   --padding: var(--verity-padding-lg) var(--verity-padding-none);
   /* No band: the page shows through, so moving media behind the Hero, and
@@ -63,6 +64,10 @@
   --background: transparent;
   --content: var(--verity-color-content-default);
   --background-focus-ring: var(--verity-color-border-focus);
+  --background-link: var(--verity-link-color-content-default);
+  --background-link-visited: var(--verity-link-color-content-visited);
+  --background-link-hover: var(--verity-link-color-content-hover);
+  --background-link-active: var(--verity-link-color-content-active);
 }
 
 .subtle {
@@ -70,6 +75,10 @@
   --background: var(--verity-color-background-subtle);
   --content: var(--verity-color-content-default);
   --background-focus-ring: var(--verity-color-border-focus);
+  --background-link: var(--verity-link-color-content-default);
+  --background-link-visited: var(--verity-link-color-content-visited);
+  --background-link-hover: var(--verity-link-color-content-hover);
+  --background-link-active: var(--verity-link-color-content-active);
 }
 
 .knockout {
@@ -77,6 +86,10 @@
   --background: var(--verity-color-background-knockout);
   --content: var(--verity-color-content-knockout);
   --background-focus-ring: var(--verity-color-border-focus-knockout);
+  --background-link: var(--verity-link-knockout-color-content-default);
+  --background-link-visited: var(--verity-link-knockout-color-content-visited);
+  --background-link-hover: var(--verity-link-knockout-color-content-hover);
+  --background-link-active: var(--verity-link-knockout-color-content-active);
 }
 
 .brand {
@@ -84,6 +97,10 @@
   --background: var(--verity-color-background-brand);
   --content: var(--verity-color-content-default);
   --background-focus-ring: var(--verity-color-border-focus-brand);
+  --background-link: var(--verity-link-brand-color-content-default);
+  --background-link-visited: var(--verity-link-brand-color-content-visited);
+  --background-link-hover: var(--verity-link-brand-color-content-hover);
+  --background-link-active: var(--verity-link-brand-color-content-active);
 }
 
 /* The display-default text style: larger than heading-1, for the page's
