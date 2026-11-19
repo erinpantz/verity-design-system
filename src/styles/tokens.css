@@ -930,6 +930,11 @@
   --verity-main-nav-gap: var(--verity-spacing-md); /** The least space between the logo and the NavItems in MainNav. The logo’s frame fills the rest, so the links sit at the end. */
   --verity-nav-overlay-padding: var(--verity-padding-sm); /** Padding on all sides of NavOverlay. */
   --verity-page-loader-duration-fade: var(--verity-motion-duration-fast); /** The page loader fades in and out over this. Code only. */
+  --verity-project-card-title-font-family: var(--verity-typography-heading-1-mobile-font-family); /** ProjectCard’s title font family, from heading-1 (heading-1-mobile on Medium and Small). */
+  --verity-project-card-title-font-weight: var(--verity-typography-heading-1-mobile-font-weight); /** ProjectCard’s title font weight, from heading-1 (heading-1-mobile on Medium and Small). */
+  --verity-project-card-title-font-size: var(--verity-typography-heading-1-mobile-font-size); /** ProjectCard’s title size: heading-1’s size (48 on XL and Large, 40 on Medium and Small). Its own token because the title is an h2: heading-1 keeps meaning the page title. */
+  --verity-project-card-title-line-height: var(--verity-typography-heading-1-mobile-line-height); /** ProjectCard’s title line height, from heading-1 (heading-1-mobile on Medium and Small). */
+  --verity-project-card-title-letter-spacing: var(--verity-typography-heading-1-mobile-letter-spacing); /** ProjectCard’s title letter spacing, from heading-1 (heading-1-mobile on Medium and Small). */
 }
 
 /* Small: Typography Styles */
@@ -1208,6 +1213,11 @@
     --verity-main-nav-gap: var(--verity-spacing-md); /** The least space between the logo and the NavItems in MainNav. The logo’s frame fills the rest, so the links sit at the end. */
     --verity-nav-overlay-padding: var(--verity-padding-sm); /** Padding on all sides of NavOverlay. */
     --verity-page-loader-duration-fade: var(--verity-motion-duration-fast); /** The page loader fades in and out over this. Code only. */
+    --verity-project-card-title-font-family: var(--verity-typography-heading-1-mobile-font-family); /** ProjectCard’s title font family, from heading-1 (heading-1-mobile on Medium and Small). */
+    --verity-project-card-title-font-weight: var(--verity-typography-heading-1-mobile-font-weight); /** ProjectCard’s title font weight, from heading-1 (heading-1-mobile on Medium and Small). */
+    --verity-project-card-title-font-size: var(--verity-typography-heading-1-mobile-font-size); /** ProjectCard’s title size: heading-1’s size (48 on XL and Large, 40 on Medium and Small). Its own token because the title is an h2: heading-1 keeps meaning the page title. */
+    --verity-project-card-title-line-height: var(--verity-typography-heading-1-mobile-line-height); /** ProjectCard’s title line height, from heading-1 (heading-1-mobile on Medium and Small). */
+    --verity-project-card-title-letter-spacing: var(--verity-typography-heading-1-mobile-letter-spacing); /** ProjectCard’s title letter spacing, from heading-1 (heading-1-mobile on Medium and Small). */
   }
 
   /* Medium: Typography Styles */
@@ -1487,6 +1497,11 @@
     --verity-main-nav-gap: var(--verity-spacing-md); /** The least space between the logo and the NavItems in MainNav. The logo’s frame fills the rest, so the links sit at the end. */
     --verity-nav-overlay-padding: var(--verity-padding-sm); /** Padding on all sides of NavOverlay. */
     --verity-page-loader-duration-fade: var(--verity-motion-duration-fast); /** The page loader fades in and out over this. Code only. */
+    --verity-project-card-title-font-family: var(--verity-typography-heading-1-font-family); /** ProjectCard’s title font family, from heading-1 (heading-1-mobile on Medium and Small). */
+    --verity-project-card-title-font-weight: var(--verity-typography-heading-1-font-weight); /** ProjectCard’s title font weight, from heading-1 (heading-1-mobile on Medium and Small). */
+    --verity-project-card-title-font-size: var(--verity-typography-heading-1-font-size); /** ProjectCard’s title size: heading-1’s size (48 on XL and Large, 40 on Medium and Small). Its own token because the title is an h2: heading-1 keeps meaning the page title. */
+    --verity-project-card-title-line-height: var(--verity-typography-heading-1-line-height); /** ProjectCard’s title line height, from heading-1 (heading-1-mobile on Medium and Small). */
+    --verity-project-card-title-letter-spacing: var(--verity-typography-heading-1-letter-spacing); /** ProjectCard’s title letter spacing, from heading-1 (heading-1-mobile on Medium and Small). */
   }
 
   /* Large: Typography Styles */
@@ -1766,5 +1781,10 @@
     --verity-main-nav-gap: var(--verity-spacing-md); /** The least space between the logo and the NavItems in MainNav. The logo’s frame fills the rest, so the links sit at the end. */
     --verity-nav-overlay-padding: var(--verity-padding-sm); /** Padding on all sides of NavOverlay. */
     --verity-page-loader-duration-fade: var(--verity-motion-duration-fast); /** The page loader fades in and out over this. Code only. */
+    --verity-project-card-title-font-family: var(--verity-typography-heading-1-font-family); /** ProjectCard’s title font family, from heading-1 (heading-1-mobile on Medium and Small). */
+    --verity-project-card-title-font-weight: var(--verity-typography-heading-1-font-weight); /** ProjectCard’s title font weight, from heading-1 (heading-1-mobile on Medium and Small). */
+    --verity-project-card-title-font-size: var(--verity-typography-heading-1-font-size); /** ProjectCard’s title size: heading-1’s size (48 on XL and Large, 40 on Medium and Small). Its own token because the title is an h2: heading-1 keeps meaning the page title. */
+    --verity-project-card-title-line-height: var(--verity-typography-heading-1-line-height); /** ProjectCard’s title line height, from heading-1 (heading-1-mobile on Medium and Small). */
+    --verity-project-card-title-letter-spacing: var(--verity-typography-heading-1-letter-spacing); /** ProjectCard’s title letter spacing, from heading-1 (heading-1-mobile on Medium and Small). */
   }
 }

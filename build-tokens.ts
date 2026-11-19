@@ -261,11 +261,14 @@ for (const [breakpoint, name] of [
   ['large', 'Large'],
   ['xl', 'XL'],
 ] as const) {
-  // Styles Tier 2 too: a Responsive Tier 3 token can point to one of its
-  // tokens (page-loader/duration/fade points to motion/duration/fast)
+  // Styles Tier 2 and Typography Tier 2 too: a Responsive Tier 3 token can
+  // point to one of their tokens (page-loader/duration/fade points to
+  // motion/duration/fast, project-card/title/font-size to
+  // typography/heading-1/font-size)
   const values = await resolvedValues([
     'core-tier-1.json',
     'styles-tier-2.json',
+    'typography-tier-2.json',
     `responsive-tier-1/${breakpoint}.json`,
     `responsive-tier-2/${breakpoint}.json`,
     `responsive-tier-3/${breakpoint}.json`,

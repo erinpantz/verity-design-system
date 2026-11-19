@@ -647,6 +647,68 @@
           ]
         }
       }
+    },
+    "title": {
+      "font-family": {
+        "$type": "fontFamily",
+        "$value": "{typography.heading-1-mobile.font-family}",
+        "$description": "ProjectCard’s title font family, from heading-1 (heading-1-mobile on Medium and Small).",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "FONT_FAMILY"
+            ]
+          }
+        }
+      },
+      "font-weight": {
+        "$type": "fontWeight",
+        "$value": "{typography.heading-1-mobile.font-weight}",
+        "$description": "ProjectCard’s title font weight, from heading-1 (heading-1-mobile on Medium and Small).",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "FONT_WEIGHT"
+            ]
+          }
+        }
+      },
+      "font-size": {
+        "$type": "dimension",
+        "$value": "{typography.heading-1-mobile.font-size}",
+        "$description": "ProjectCard’s title size: heading-1’s size (48 on XL and Large, 40 on Medium and Small). Its own token because the title is an h2: heading-1 keeps meaning the page title.",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "FONT_SIZE"
+            ]
+          }
+        }
+      },
+      "line-height": {
+        "$type": "dimension",
+        "$value": "{typography.heading-1-mobile.line-height}",
+        "$description": "ProjectCard’s title line height, from heading-1 (heading-1-mobile on Medium and Small).",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "LINE_HEIGHT"
+            ]
+          }
+        }
+      },
+      "letter-spacing": {
+        "$type": "dimension",
+        "$value": "{typography.heading-1-mobile.letter-spacing}",
+        "$description": "ProjectCard’s title letter spacing, from heading-1 (heading-1-mobile on Medium and Small).",
+        "$extensions": {
+          "com.figma": {
+            "scopes": [
+              "LETTER_SPACING"
+            ]
+          }
+        }
+      }
     }
   },
   "erin-tozour-logo": {
