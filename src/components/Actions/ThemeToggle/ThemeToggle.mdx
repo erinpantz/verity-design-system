@@ -42,6 +42,7 @@ In the tab order, it comes right after the nav and before Main, since Shell plac
 | Distance from the bottom and right edges | `--verity-spacing-md`, plus the screen’s safe area (`env(safe-area-inset-bottom)` and `env(safe-area-inset-right)`), so it clears a phone’s rounded corners and home bar | `--verity-spacing-md` (24–32) |
 | Layer | Above the page’s content, which scrolls under it. Below anything modal: `NavOverlay` covers it while the menu is open. | — |
 | Surface | Always on a scrim, so it stays readable over whatever scrolls under it, like `IconButton` with `background="scrim"` | `--verity-color-background-scrim` |
+| Edge | A thin border on every state, inside the button, so it stays 40 square. The scrim alone is only about 1.1:1 against the page, so without it the button disappears and the star seems to float. A lighter fill would stand out too, but it would pull the star under the 3:1 it needs and stop the scrim keeping it readable over images; the edge changes nothing behind the star. | `--verity-border-width-sm`, `--verity-theme-toggle-color-border` |
 
 At the end of a page, it sits at the Footer’s bottom-right corner and doesn’t cover any of the Footer’s links.
 
@@ -63,11 +64,11 @@ Only the star turns: the button’s fill and focus ring stay still.
 
 ## States
 
-Size, fills, and focus ring match IconButton md with `background="scrim"`. Hover and press add a fill on top of the scrim, so the scrim always stays under it.
+Size, fills, and focus ring match IconButton md with `background="scrim"`, plus its edge, which stays the same in every state. Hover and press add a fill on top of the scrim, so the scrim always stays under it. The focus ring is outside the edge.
 
 | State | What changes | Tokens |
 |---|---|---|
-| Default | The scrim, and the star in the current theme’s brand color, with a soft glow | `--verity-color-background-scrim`, `--verity-theme-toggle-color-current`, `--verity-theme-toggle-glow-current`, `--verity-theme-toggle-glow-blur` (12) |
+| Default | The scrim with its edge, and the star in the current theme’s brand color, with a soft glow | `--verity-color-background-scrim`, `--verity-theme-toggle-color-border`, `--verity-theme-toggle-color-current`, `--verity-theme-toggle-glow-current`, `--verity-theme-toggle-glow-blur` (12) |
 | Hover | A light fill over the scrim, the next theme’s colors, the spin, and the tooltip. Devices with a real pointer only. | `--verity-color-background-transparent-medium`, `--verity-theme-toggle-color-next`, `--verity-theme-toggle-glow-next` |
 | Focus | A focus ring outside the button, following its corners, the next theme’s colors, the spin, and the tooltip. Keyboard focus only. | `--verity-focus-ring-width`, `--verity-focus-ring-offset`, `--verity-color-border-focus` |
 | Active | A stronger fill over the scrim, and the next theme’s colors, while pressed | `--verity-color-background-transparent-strong` |

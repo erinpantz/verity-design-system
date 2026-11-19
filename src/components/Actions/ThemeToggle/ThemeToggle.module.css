@@ -1,8 +1,14 @@
 /* An icon-only button with a glowing star, floating in the page's corner.
    Size, fills, and focus ring match IconButton md with background="scrim":
-   the scrim keeps it readable over whatever scrolls under it. The star shows the current theme's brand color at rest and
-   previews the other theme's on hover, focus, and press. The rotation is in
-   ThemeToggle.tsx. */
+   the scrim keeps it readable over whatever scrolls under it. The scrim is
+   only about 1.1:1 against the page, so a border/width/sm edge in
+   theme-toggle/color/border, on every state, sets the button apart from the
+   page without lightening what's behind the star (a lighter fill would pull
+   the star under 3:1). The edge is inside the button, as in Figma, so it
+   stays control/size/md square with the star centered; the focus ring is an
+   outline, outside it. The star shows the current theme's brand color at
+   rest and previews the other theme's on hover, focus, and press. The
+   rotation is in ThemeToggle.tsx. */
 
 .themeToggle {
   /* The star's color and glow, changed by each state below */
@@ -18,7 +24,8 @@
   block-size: var(--verity-control-size-md);
   margin: 0;
   padding: 0;
-  border: none;
+  /* Inside the button: border-box keeps it control/size/md square */
+  border: var(--verity-border-width-sm) solid var(--verity-theme-toggle-color-border);
   border-radius: var(--verity-border-radius-md);
   background-color: var(--verity-color-background-scrim);
   cursor: pointer;
