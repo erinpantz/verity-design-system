@@ -11,6 +11,7 @@ import { Image } from '../../Media/Image';
 import { Reel } from '../../Media/Reel';
 import { StatCard } from '../StatCard';
 import { Grid } from '../../Layout/Grid';
+import { Link } from '../../Actions/Link';
 import { Hero } from './Hero';
 
 const meta = {
@@ -189,6 +190,29 @@ export const TwoParagraphIntroWithAPhoto: Story = {
   argTypes: { intro: { control: 'object' }, media: { control: false } },
   parameters: { layout: 'fullscreen' },
   decorators: [inContainer],
+};
+
+// Links in an intro of two paragraphs. Each paragraph is inline content:
+// text with a Link in it. The Link takes the intro's text style, and the
+// link colors and focus ring for the Hero's background, with no color
+// passed. Switch the background control to see each one.
+export const IntroWithLinks: Story = {
+  name: 'Intro with links',
+  args: {
+    intro: [
+      <>
+        I’m a senior product designer, learning to design and build with AI. I still spend time on craft: I drew{' '}
+        <Link href="#typeface">my own typeface</Link> by hand.
+      </>,
+      <>
+        When I’m not designing, I’m listening. Here are <Link href="#albums">my favorite albums</Link>, with a note
+        on each.
+      </>,
+    ],
+    primaryAction: undefined,
+    secondaryAction: undefined,
+  },
+  argTypes: { intro: { control: false } },
 };
 
 // The top of a home page: a Hero, then the first Section, with Main's gap
