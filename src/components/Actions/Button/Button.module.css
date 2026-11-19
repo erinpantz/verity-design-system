@@ -1,5 +1,7 @@
 /* A button: an optional icon, the label, and an optional icon, in one line.
-   Colors come from custom properties set by each variant and color below. */
+   Colors come from custom properties set by each variant and color below.
+   The lift on hover and focus, which IconButton and BackLink share, is in
+   lift.module.css. */
 
 .button {
   display: inline-flex;

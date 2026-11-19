@@ -1,5 +1,7 @@
 /* A square button with an icon and no visible label. Its background is
-   either nothing or a scrim; hover and press add a fill on top of it. */
+   either nothing or a scrim; hover and press add a fill on top of it. The
+   lift on hover and focus, shared with Button and BackLink, is in
+   Button/lift.module.css. */
 
 .iconButton {
   display: inline-flex;

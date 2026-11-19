@@ -1,0 +1,89 @@
+/* The lift every button shares: on hover and keyboard focus it rises, grows
+   a little, and casts a shadow, like the cards in linkCard.module.css, so
+   the site's interactions feel like one family. Shared by Button,
+   IconButton, and BackLink, so they can't drift apart. It's only movement
+   and a shadow: each button keeps its own colors and states. Not a
+   component: no stories or docs page, and not exported. Every value is a
+   token.
+
+   Two ways to use it:
+   - .lift, on a button that moves itself (Button, IconButton). While it's
+     raised, an invisible layer covers the space it rose from, so the pointer
+     can't slip off its bottom edge, end the hover, and make it flicker.
+   - .area on a still link, and .surface on the part inside it that moves
+     (BackLink). The still link is the hit area, so it needs no cover.
+
+   Never on the as="span" look (followsParent, like PortfolioCard's label):
+   the card around it already lifts.
+
+   The sizes: lift/sm, not lift/md, since 8px is a fifth of a 40px
+   control's height; shadow/md, not shadow/lg, which is sized for the cards.
+   At rest there's no shadow. */
+
+.lift,
+.surface {
+  /* The shadow fades quickly; the lift and growth move at the cards' pace */
+  transition:
+    box-shadow var(--verity-motion-duration-fast) var(--verity-motion-easing-standard),
+    scale var(--verity-motion-duration-playful) var(--verity-motion-easing-standard),
+    translate var(--verity-motion-duration-playful) var(--verity-motion-easing-standard);
+}
+
+/* The cover is placed against the button */
+.lift {
+  position: relative;
+}
+
+/* Hover: only on devices with a real pointer, so a tap doesn't leave a
+   button raised. Never while disabled. */
+@media (hover: hover) {
+  .lift:hover:not(:disabled),
+  .area:hover .surface {
+    translate: 0 calc(-1 * var(--verity-motion-lift-sm));
+    scale: var(--verity-motion-scale-hover);
+    box-shadow: var(--verity-shadow-md-x) var(--verity-shadow-md-y) var(--verity-shadow-md-blur)
+      var(--verity-shadow-md-spread) var(--verity-shadow-md-color);
+  }
+
+  /* The cover: the button's own box, reaching down by the lift, so it still
+     covers where the button rested. It's part of the button, so the pointer
+     over it still counts as over the button. Transparent, and only there
+     while hovered, so it never takes space from what's around it. */
+  .lift:hover:not(:disabled)::after {
+    position: absolute;
+    inset: 0;
+    inset-block-end: calc(-1 * var(--verity-motion-lift-sm));
+    content: '';
+  }
+}
+
+/* Keyboard focus: the same lift, on every device. The focus ring is an
+   outline, so it moves and grows with the button. */
+.lift:focus-visible,
+.area:focus-visible .surface {
+  translate: 0 calc(-1 * var(--verity-motion-lift-sm));
+  scale: var(--verity-motion-scale-hover);
+  box-shadow: var(--verity-shadow-md-x) var(--verity-shadow-md-y) var(--verity-shadow-md-blur)
+    var(--verity-shadow-md-spread) var(--verity-shadow-md-color);
+}
+
+/* Pressed: it settles back down, with no growth and no shadow, so pressing
+   reads as pushing it in, as on the cards */
+.lift:active:not(:disabled),
+.area:active .surface {
+  translate: none;
+  scale: none;
+  box-shadow: none;
+}
+
+/* Reduce motion: no lift or growth. The shadow still fades in, since it
+   doesn't move anything. The same selectors as above, so this wins. */
+@media (prefers-reduced-motion: reduce) {
+  .lift:hover:not(:disabled),
+  .area:hover .surface,
+  .lift:focus-visible,
+  .area:focus-visible .surface {
+    translate: none;
+    scale: none;
+  }
+}

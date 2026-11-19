@@ -2,6 +2,7 @@ import type { MouseEventHandler, ReactNode } from 'react';
 import type { IconName } from '../../../icons/icons.generated';
 import { Icon } from '../../Media/Icon';
 import styles from './Button.module.css';
+import lift from './lift.module.css';
 import { LinkAnchor } from '../LinkProvider/LinkProvider';
 
 // Each variant has its own colors, so color is typed together with variant:
@@ -93,6 +94,8 @@ export function Button({
   if (as === 'span') {
     return <span className={[...classes, styles.followsParent].join(' ')}>{content}</span>;
   }
+  // A real button or link lifts on hover and focus (see lift.module.css)
+  classes.push(lift.lift);
 
   // Going somewhere is a link, so screen readers say “link” and it works
   // like one (open in a new tab, copy the address)

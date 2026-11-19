@@ -3,6 +3,7 @@ import type { IconName } from '../../../icons/icons.generated';
 import { Icon } from '../../Media/Icon';
 import { Tooltip } from '../Tooltip';
 import styles from './IconButton.module.css';
+import lift from '../Button/lift.module.css';
 import { LinkAnchor } from '../LinkProvider/LinkProvider';
 
 export interface IconButtonProps {
@@ -96,6 +97,9 @@ export function IconButton({
       </span>
     );
   }
+  // A real button or link lifts on hover and focus, like Button (see
+  // Button/lift.module.css)
+  const classes = `${styles.iconButton} ${styles[size]} ${styles[background]} ${lift.lift}`;
   // Going somewhere is a link, so screen readers say “link” and it works
   // like one. Its name is the tooltip, plus hidden text for a new tab, which
   // gets rel="noopener noreferrer", as on Button, so the page it opens can't
@@ -104,7 +108,7 @@ export function IconButton({
     return (
       <Tooltip text={label} id={tooltipId} placement={tooltipPlacement}>
         <LinkAnchor
-          className={`${styles.iconButton} ${styles[size]} ${styles[background]}`}
+          className={classes}
           href={href}
           target={opensInNewTab ? '_blank' : undefined}
           rel={opensInNewTab ? 'noopener noreferrer' : undefined}
@@ -123,7 +127,7 @@ export function IconButton({
   return (
     <Tooltip text={label} id={tooltipId} placement={tooltipPlacement}>
       <button
-        className={`${styles.iconButton} ${styles[size]} ${styles[background]}`}
+        className={classes}
         type="button"
         aria-labelledby={tooltipId}
         aria-expanded={expanded}

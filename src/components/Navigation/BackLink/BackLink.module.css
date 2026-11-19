@@ -1,14 +1,16 @@
 /* A link that looks like a small button: the back arrow, then the label, on a
    scrim. The link itself is the hit area and never moves. The surface inside
    it is what you see: the scrim, the press fill, and the focus ring. On
-   hover and focus the surface lifts, with no shadow and no change of fill:
-   on something this small, a blurred shadow looks fuzzy, and on the
-   brand-colored page a hover fill over the scrim came out almost the page's
-   color, so the surface vanished. The lift alone shows it responds. The hit
-   area staying still means the pointer can't slip off the edge as it rises,
-   end the hover, and make it flicker. */
+   hover and focus the surface lifts, grows a little, and casts shadow/md,
+   the lift every button shares (Button/lift.module.css). At rest it has no
+   shadow: on something this small, a blurred shadow at rest looks fuzzy. It
+   never gets a hover fill: on the brand-colored page a fill over the scrim
+   came out almost the page's color, so the surface vanished. The hit area
+   staying still means the pointer can't slip off the edge as it rises, end
+   the hover, and make it flicker. */
 
 .backLink {
+  composes: area from '../../Actions/Button/lift.module.css';
   display: inline-flex;
   flex-shrink: 0;
   border-radius: var(--verity-border-radius-md);
@@ -18,6 +20,7 @@
 }
 
 .surface {
+  composes: surface from '../../Actions/Button/lift.module.css';
   display: inline-flex;
   align-items: center;
   gap: var(--verity-control-gap);
@@ -33,49 +36,26 @@
   letter-spacing: var(--verity-viewport-typography-label-default-letter-spacing);
   text-transform: var(--verity-viewport-typography-label-default-text-transform);
   white-space: nowrap;
-  /* The lift moves at PortfolioCard's pace; the fills switch at once */
-  transition: translate var(--verity-motion-duration-playful) var(--verity-motion-easing-standard);
 }
 
-/* Hover and focus: the surface lifts, on the scrim alone, the same as at
-   rest. Hover only on devices with a real pointer, so a tap doesn't leave it
-   raised. */
-@media (hover: hover) {
-  .backLink:hover .surface {
-    translate: 0 calc(-1 * var(--verity-motion-lift-sm));
-  }
-}
-
-/* Keyboard focus: the hover lift, plus the shared focus ring. The
-   ring is on the surface, not the link, so it moves with it. */
+/* Keyboard focus: the shared focus ring, on the surface, not the link, so
+   it moves with it. The lift itself is in lift.module.css. */
 .backLink:focus-visible {
   outline: none;
 }
 
 .backLink:focus-visible .surface {
-  translate: 0 calc(-1 * var(--verity-motion-lift-sm));
   outline: var(--verity-focus-ring-width) solid var(--verity-color-border-focus);
   outline-offset: var(--verity-focus-ring-offset);
 }
 
-/* Pressed: it settles back down, so pressing reads as pushing it in, and a
-   fill on top of the scrim, as an image layer over the background color, like
+/* Pressed: it settles back down (lift.module.css), and a fill on top of
+   the scrim, as an image layer over the background color, like
    IconButton's background="scrim": a gradient from a color to itself is a
    solid layer of that color. */
 .backLink:active .surface {
-  translate: none;
   background-image: linear-gradient(
     var(--verity-color-background-transparent-strong),
     var(--verity-color-background-transparent-strong)
   );
-}
-
-/* Reduce motion: no lift. The press fill still shows, since it doesn't move
-   anything. */
-@media (prefers-reduced-motion: reduce) {
-  .backLink:hover .surface,
-  .backLink:focus-visible .surface,
-  .backLink:active .surface {
-    translate: none;
-  }
 }
