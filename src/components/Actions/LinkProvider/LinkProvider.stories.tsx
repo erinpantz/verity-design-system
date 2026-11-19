@@ -6,7 +6,6 @@ import { Footer } from '../../Layout/Footer';
 import { Section } from '../../Layout/Section';
 import { Shell } from '../../Layout/Shell';
 import { NavCard } from '../../Navigation/NavCard';
-import { LinkGroup } from '../../Navigation/LinkGroup';
 import { Prose } from '../../Text/Prose';
 import { Button } from '../Button';
 import { Link } from '../Link';
@@ -108,21 +107,19 @@ function Site() {
                 buttonLabel: 'Book a call',
                 href: 'https://calendly.com/example/30min',
                 opensInNewTab: true,
+                secondaryAction: {
+                  icon: 'linkedin',
+                  label: 'LinkedIn',
+                  href: 'https://www.linkedin.com/',
+                  opensInNewTab: true,
+                },
               }}
-              linkGroups={
-                <>
-                  <LinkGroup label="Pages">
-                    <Link href="/portfolio">Portfolio</Link>
-                    <Link href="/profile">Profile</Link>
-                    <Link href="/resume.pdf">Résumé</Link>
-                  </LinkGroup>
-                  <LinkGroup label="Connect">
-                    <Link href="mailto:hello@example.com">Email</Link>
-                    <Link href="https://www.linkedin.com/" opensInNewTab>
-                      LinkedIn
-                    </Link>
-                  </LinkGroup>
-                </>
+              aside={
+                <p>
+                  See my <Link href="/profile">profile</Link>, or download my{' '}
+                  <Link href="/resume.pdf">résumé</Link>. Email me at{' '}
+                  <Link href="mailto:hello@example.com">hello@example.com</Link>.
+                </p>
               }
               copyrightName="Erin Tozour"
             />

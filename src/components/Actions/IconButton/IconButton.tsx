@@ -3,6 +3,7 @@ import type { IconName } from '../../../icons/icons.generated';
 import { Icon } from '../../Media/Icon';
 import { Tooltip } from '../Tooltip';
 import styles from './IconButton.module.css';
+import { LinkAnchor } from '../LinkProvider/LinkProvider';
 
 export interface IconButtonProps {
   /** Which icon, by its Figma name without “icon/” */
@@ -36,6 +37,19 @@ export interface IconButtonProps {
   tooltipPlacement?: 'end' | 'top' | 'top-end';
   /** For a button that opens a dialog, like a full-screen menu */
   hasPopup?: 'dialog';
+  /**
+   * Where it goes, for a button that goes to another page, like a profile on
+   * another site. It then renders a link (<a>) that looks like an
+   * IconButton, and disabled, onClick, expanded, hasPopup, and ref don’t
+   * apply.
+   */
+  href?: string;
+  /**
+   * Whether the link opens in a new tab, for a page on another site that
+   * people come back from. Only with href. Screen readers hear “opens in a
+   * new tab” after the label.
+   */
+  opensInNewTab?: boolean;
   /** A reference to the button, so focus can return to it */
   ref?: Ref<HTMLButtonElement>;
   /**
@@ -52,7 +66,7 @@ const ICON_SIZE = { xl: 'lg', lg: 'lg', md: 'md', sm: 'sm' } as const;
 
 // A square button with only an icon. Its label shows in a tooltip on hover
 // and focus, and the button takes its name from that tooltip, so screen
-// readers hear the label once.
+// readers hear the label once. With href, it's a link that looks the same.
 export function IconButton({
   icon,
   label,
@@ -63,10 +77,13 @@ export function IconButton({
   expanded,
   hasPopup,
   tooltipPlacement = 'end',
+  href,
+  opensInNewTab = false,
   ref,
   as,
 }: IconButtonProps) {
   const tooltipId = useId();
+  const newTabId = useId();
   // The look only, inside a parent that's the real button or link; it
   // follows that parent's state (see .followsParent in the CSS)
   if (as === 'span') {
@@ -77,6 +94,30 @@ export function IconButton({
       >
         <Icon name={icon} size={ICON_SIZE[size]} />
       </span>
+    );
+  }
+  // Going somewhere is a link, so screen readers say “link” and it works
+  // like one. Its name is the tooltip, plus hidden text for a new tab, which
+  // gets rel="noopener noreferrer", as on Button, so the page it opens can't
+  // control this one (WCAG G201).
+  if (href) {
+    return (
+      <Tooltip text={label} id={tooltipId} placement={tooltipPlacement}>
+        <LinkAnchor
+          className={`${styles.iconButton} ${styles[size]} ${styles[background]}`}
+          href={href}
+          target={opensInNewTab ? '_blank' : undefined}
+          rel={opensInNewTab ? 'noopener noreferrer' : undefined}
+          aria-labelledby={opensInNewTab ? `${tooltipId} ${newTabId}` : tooltipId}
+        >
+          <Icon name={icon} size={ICON_SIZE[size]} />
+          {opensInNewTab && (
+            <span id={newTabId} className={styles.newTab}>
+              (opens in a new tab)
+            </span>
+          )}
+        </LinkAnchor>
+      </Tooltip>
     );
   }
   return (

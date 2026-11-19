@@ -1,5 +1,5 @@
-/* The footer: a brand-colored block holding the call to action beside the
-   link groups, then the copyright line. Its fill (background/subtle, one step
+/* The footer: a brand-colored block holding the call to action beside an
+   optional aside, then the copyright line. Its fill (background/subtle, one step
    lighter than the page) sets it apart from the page's content, so it needs
    no divider. It's wide (data-width="wide"),
    so Container lets it span the page up to content/wide-width, like a wide
@@ -22,8 +22,8 @@
   --background-link-active: var(--verity-color-content-default-hover);
 }
 
-/* The call to action and the link groups sit side by side. The call to action
-   takes the extra space, so the links end at the Footer's edge. They wrap
+/* The call to action and the aside sit side by side, top-aligned. The call
+   to action takes the extra space, so the aside ends at the Footer's edge. They wrap
    onto two rows when there isn't room for both at their minimum widths; then
    each starts at the left. On a screen narrower than a minimum, each one is
    the full width instead. */
@@ -34,7 +34,7 @@
 }
 
 /* The heading, the sentence, then the button. It starts at its min and takes
-   all the space the links don't need, which pushes them to the end. Its
+   all the space the aside doesn't need, which pushes it to the end. Its
    contents stop at its max, which keeps the text to a comfortable line
    length (in Figma, a Content frame inside it does that). Starting at the min
    means the row only wraps when both parts can't fit at their minimums:
@@ -65,21 +65,44 @@
   text-transform: var(--verity-viewport-typography-body-default-text-transform);
 }
 
-/* The link groups stay together, packed at their own widths with
-   spacing/md between them. The area is as wide as the groups on one row, so
-   the last one ends at the Footer's edge, and never narrower than
-   footer/links/min-width, which decides when the row wraps. Sized by its
-   content rather than by the token, so text that renders a little wider than
-   in Figma still fits on one row. It shrinks, and the groups wrap, only when
-   the line is narrower. On a screen narrower than the min, it's the full
-   width instead. */
-.linkGroups {
+/* The button, then the optional IconButton, the same size, spacing/xs apart */
+.actions {
   display: flex;
-  flex: 0 1 auto;
-  min-inline-size: min(100%, var(--verity-footer-links-min-width));
-  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--verity-spacing-xs);
+}
+
+/* Anything else, on the right, where the link groups were. It's as wide as
+   footer/links/min-width, the width they wrapped at, so the row wraps where
+   it did, but never narrower than the call to action's text
+   (footer/call-to-action/max-width), so on a phone, where the links' width
+   is small, it lines up with the call to action above it. On a screen
+   narrower than that, it's the full width. Its text takes the footer's text
+   style (body-default), and what it holds stacks spacing/sm apart, as in
+   the call to action, with no margins of its own. */
+.aside {
+  --aside-width: max(
+    var(--verity-footer-links-min-width),
+    min(100%, var(--verity-footer-call-to-action-max-width))
+  );
+
+  display: flex;
+  flex: 0 1 var(--aside-width);
+  flex-direction: column;
   align-items: flex-start;
-  gap: var(--verity-spacing-md);
+  min-inline-size: min(100%, var(--aside-width));
+  gap: var(--verity-spacing-sm);
+  color: var(--verity-color-content-default);
+  font-family: var(--verity-viewport-typography-body-default-font-family);
+  font-size: var(--verity-viewport-typography-body-default-font-size);
+  font-weight: var(--verity-viewport-typography-body-default-font-weight);
+  line-height: var(--verity-viewport-typography-body-default-line-height);
+  letter-spacing: var(--verity-viewport-typography-body-default-letter-spacing);
+  text-transform: var(--verity-viewport-typography-body-default-text-transform);
+}
+
+.aside > :where(p) {
+  margin: 0;
 }
 
 .copyright {

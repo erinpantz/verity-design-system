@@ -14,6 +14,8 @@
   border: none;
   border-radius: var(--verity-border-radius-md);
   color: var(--verity-color-content-default);
+  /* As a link (href), no underline */
+  text-decoration: none;
   cursor: pointer;
 }
 
@@ -110,4 +112,15 @@
 .iconButton.followsParent {
   outline: none;
   cursor: inherit;
+}
+
+/* “(opens in a new tab)” for screen readers, on a link: in its name, but not
+   shown */
+.newTab {
+  position: absolute;
+  overflow: hidden;
+  inline-size: 1px;
+  block-size: 1px;
+  clip-path: inset(50%);
+  white-space: nowrap;
 }
