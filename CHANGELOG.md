@@ -4,6 +4,18 @@ Every release of Verity, newest first. The format follows [Keep a Changelog](htt
 
 Sites install Verity by tag (for example `github:erinpantz/verity-design-system#v0.3.0`), so a site only changes when it moves to a new tag on purpose.
 
+## [0.11.2] – 2026-11-19
+
+Focus lands on the new page after a page change, including from the phone menu.
+
+### Added
+
+- **Shell:** `focusPageStart()`, which moves focus to the page’s heading, the first `h1` in Main, after a page change in the app, so a screen reader announces the new page by name (VoiceOver: “Profile, heading level 1”), not “main.” The heading gets `tabindex="-1"` and no focus ring, since it isn’t a control. With no `h1`, focus goes to Main. It doesn’t scroll. A site calls it after each page change except the first load, in place of focusing `<main>`; Shell’s docs show how.
+
+### Fixed
+
+- **NavOverlay:** after following one of its links, focus no longer lands back on the menu button. While the menu was open, the page behind it couldn’t take focus, so the site’s move to the new page came too early, and as the dialog closed, focus went back to the menu button. Now NavOverlay sends focus to the new page’s heading with `focusPageStart()`. Closed with the back button, Escape, or a link with a modifier key, focus still returns to the menu button. Its docs say so.
+
 ## [0.11.1] – 2026-11-19
 
 Grid gets an xl gap.
@@ -802,6 +814,7 @@ The first library release: everything in the Figma library except Animation, wit
 - **Theme helpers:** `themeScript`, `useTheme`, and `setTheme`, so a site applies the saved theme before the first paint.
 - **The library build:** one entry point with every component and its prop types, one stylesheet (`verity-design-system/styles.css`) with the fonts inside it, and `npm run build:watch` for working with a linked copy.
 
+[0.11.2]: https://github.com/erinpantz/verity-design-system/compare/v0.11.1...v0.11.2
 [0.11.1]: https://github.com/erinpantz/verity-design-system/compare/v0.11.0...v0.11.1
 [0.11.0]: https://github.com/erinpantz/verity-design-system/compare/v0.10.2...v0.11.0
 [0.10.2]: https://github.com/erinpantz/verity-design-system/compare/v0.10.1...v0.10.2
