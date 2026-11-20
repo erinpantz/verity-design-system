@@ -31,6 +31,7 @@ A Button renders a `<button>` with `type="button"` by default, so it never submi
 | Writing the label | Start with a verb that says what happens. Keep it short, since it stays on one line. | “Book a call,” not “Click here” |
 | It sends a form | Use `type="submit"`. | “Send message” |
 | It goes to another page | Use `href`. It renders a link (`<a>`) that looks like a button, so screen readers say “link” and people can open it in a new tab. | “Book a call” to Calendly |
+| It downloads a file | Add `download`, with `href` to the file. The browser saves it instead of opening it, which matters most in a web app on a phone’s Home Screen, where an opened PDF has no way back. `download` alone keeps the file’s name; `download="Erin-Tozour-resume.pdf"` names the saved file. Start the label with “Download” and use the `download` icon, so people know what happens. It stays a plain `<a>`, never a router’s link. Not with `opensInNewTab`: that’s a type error. | “Download PDF” |
 | It goes to another site people come back from | Add `opensInNewTab`. It opens the page in a new tab with `rel="noopener noreferrer"`, so that page can’t control this one, and screen readers hear “opens in a new tab” after the label. Use it only for pages on other sites, like a booking page. | “Book a meeting” to Calendly |
 | It can’t be used yet | Use `disabled`. Keyboard users skip disabled buttons, so say on the page why it’s disabled. | “Send message” before the form is filled in |
 | It isn’t ready yet, and a hint says why | Use `disabled` with `tooltip`. It stays in the tab order (`aria-disabled` instead of `disabled`), so keyboard users can reach it and see the hint, and screen readers hear the label, then the hint. Pressing it does nothing. Like a disabled `Link` with a tooltip. | “Check it out,” with “Coming soon” |
@@ -56,6 +57,26 @@ The focus ring sits on the background, not on the button. When a band chooses Bu
 <Canvas of={ButtonStories.PrimaryBrand} />
 
 <Canvas of={ButtonStories.SecondaryKnockout} />
+
+## Background
+
+For a button that floats over pictures or scrolling content, like the action in Shell’s focused mode, `background="scrim"` puts a dark see-through fill under it, so its label stays readable over whatever’s behind. It’s BackLink’s look, and the same prop and values as IconButton’s.
+
+| `background` | What’s behind the label | Tokens |
+|---|---|---|
+| `none` | The default: nothing, as above | — |
+| `scrim` | The scrim, and no visible border. Secondary default only: `background` is typed with `variant` and `color`, so scrim on any other pair is a type error, and it’s ignored if it gets through. | `--verity-color-background-scrim` |
+
+On a scrim, the label and icon keep secondary default’s colors in every state (`--verity-button-secondary-color-content-*`). Size, padding, gap, corners, and label are Button’s own; at `md` they match BackLink.
+
+| State | On a scrim | Tokens |
+|---|---|---|
+| Default | The scrim, with no shadow | `--verity-color-background-scrim` |
+| Hover and focus | The lift with `shadow-md` (see Motion), and the hover label. No hover fill, like BackLink: on a brand-colored page, a fill over the scrim comes out almost the page’s color. Focus adds the focus ring. | `--verity-shadow-md-*`, `--verity-button-secondary-color-content-hover` |
+| Active | A stronger fill on top of the scrim, settled back down | `--verity-color-background-transparent-strong` |
+| Disabled | The scrim, with the disabled label | `--verity-button-secondary-color-content-disabled` |
+
+<Canvas of={ButtonStories.OnAScrim} />
 
 ## Size
 
@@ -110,9 +131,13 @@ On hover and keyboard focus, a button rises, grows a little, and casts a shadow,
 
 ## Inside a link or button
 
-A link or button can’t hold another one. When something that’s already a link needs a button’s look, like the label on a `PortfolioCard`, use `as="span"`. It renders a plain `<span>` with the button’s look and no focus, role, or click of its own, so the link around it stays the one thing to press. `type`, `disabled`, `onClick`, `href`, and `opensInNewTab` don’t apply.
+A link or button can’t hold another one. When something that’s already a link needs a button’s look, like the label on a `PortfolioCard`, use `as="span"`. It renders a plain `<span>` with the button’s look and no focus, role, or click of its own, so the link around it stays the one thing to press. `type`, `disabled`, `onClick`, `href`, `opensInNewTab`, and `download` don’t apply.
 
 It follows the link or button around it: its hover look while that’s hovered (devices with a real pointer) or has keyboard focus, and its active look while it’s pressed. It never shows a focus ring and never lifts on its own: the parent has the ring, and a card around it lifts.
+
+## Downloading a file
+
+<Canvas of={ButtonStories.DownloadsAFile} />
 
 ## Props
 
@@ -128,9 +153,10 @@ It follows the link or button around it: its hover look while that’s hovered (
 | Property `Size` | `size`. `md` is the default in both. |
 | Property `Color` | `color`, typed so only the pairs above are allowed |
 | Property `State` | Hover, focus, and active come from the browser. `State=disabled` → `disabled`. |
+| Property `Background` (`none`, `scrim`), on `Variant=secondary, Color=default` only | `background` |
 | Properties `Show start icon` and the start icon | `startIcon`: the icon’s name, or leave it out |
 | Properties `Show end icon` and the end icon | `endIcon`: the icon’s name, or leave it out |
 | Layer `Focus ring` | Not a layer: an outline on keyboard focus |
-| Not in Figma | `type`, `disabled`, `onClick`, `href`, and `opensInNewTab` |
+| Not in Figma | `type`, `disabled`, `onClick`, `href`, `opensInNewTab`, and `download` |
 
 </VerityDocs>

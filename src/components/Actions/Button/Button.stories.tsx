@@ -1,6 +1,10 @@
 import type { Decorator, Meta, StoryObj } from '@storybook/react-vite';
+import landscape from '../../../foundations/sample-images/landscape.jpg';
+import shapes from '../../../foundations/sample-images/shapes.jpg';
 import { ICON_NAMES } from '../../../icons/icons.generated';
+import { Grid } from '../../Layout/Grid';
 import { HorizontalStack } from '../../Layout/HorizontalStack';
+import { Image } from '../../Media/Image';
 import { VerticalStack } from '../../Layout/VerticalStack';
 import { TextBlock } from '../../Text/TextBlock';
 import { Button } from './Button';
@@ -42,6 +46,8 @@ const meta = {
     onClick: { control: false },
     href: { control: 'text' },
     opensInNewTab: { control: 'boolean' },
+    download: { control: 'boolean' },
+    background: { control: 'inline-radio', options: ['none', 'scrim'] },
   },
 } satisfies Meta<typeof Button>;
 
@@ -124,6 +130,42 @@ export const AsLink: Story = {
 export const OpensInNewTab: Story = {
   name: 'Opens in new tab',
   args: { href: 'https://calendly.com/erin-hurff/30min', opensInNewTab: true },
+};
+
+// Saves the file instead of opening it. With the download icon, the label
+// says so too.
+export const DownloadsAFile: Story = {
+  name: 'Downloads a file',
+  args: { variant: 'secondary', href: landscape, download: 'landscape.jpg', startIcon: 'download', children: 'Download image' },
+};
+
+// background="scrim", secondary default only: floating in the top-right
+// corner of a dark picture and a light one, as in Shell's focused mode, and
+// on the page. Story-only placement, with tokens.
+const scrimButton = (
+  <Button variant="secondary" background="scrim" startIcon="download" href={landscape} download="landscape.jpg">
+    Download PDF
+  </Button>
+);
+const overImage = (src: string) => (
+  <div style={{ position: 'relative' }}>
+    <Image src={src} alt="" aspectRatio="3:2" />
+    <div style={{ position: 'absolute', insetBlockStart: 'var(--verity-spacing-xs)', insetInlineEnd: 'var(--verity-spacing-xs)' }}>
+      {scrimButton}
+    </div>
+  </div>
+);
+export const OnAScrim: StoryObj = {
+  name: 'On a scrim',
+  render: () => (
+    <VerticalStack gap="md" align="stretch">
+      <Grid itemWidth="lg">
+        {overImage(landscape)}
+        {overImage(shapes)}
+      </Grid>
+      <div>{scrimButton}</div>
+    </VerticalStack>
+  ),
 };
 
 // A call to action under a short pitch: the main action, then a quieter one

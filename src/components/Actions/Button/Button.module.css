@@ -140,6 +140,31 @@
   --focus: var(--verity-color-border-focus-knockout);
 }
 
+/* background="scrim", secondary default only: BackLink's look. A scrim
+   under the label and no visible border (it stays, transparent, so the size
+   doesn't change). The label and icon keep secondary default's colors in
+   every state. No hover fill, like BackLink: on a brand-colored page a fill
+   over the scrim comes out almost the page's color. On hover and focus it
+   lifts with shadow/md (lift.module.css); at rest, no shadow. After the
+   colors above, so it wins. */
+.scrim {
+  --background: var(--verity-color-background-scrim);
+  --border-default: transparent;
+  --border-hover: transparent;
+  --border-active: transparent;
+  --border-disabled: transparent;
+}
+
+/* Pressed: a stronger fill on top of the scrim, as an image layer over the
+   background color, like BackLink and IconButton */
+.scrim:active:not(:disabled, [aria-disabled='true']),
+:is(a, button):active .followsParent.scrim {
+  background-image: linear-gradient(
+    var(--verity-color-background-transparent-strong),
+    var(--verity-color-background-transparent-strong)
+  );
+}
+
 /* States */
 
 .primary:hover {

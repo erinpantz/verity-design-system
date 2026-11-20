@@ -8,6 +8,8 @@ import { Tooltip } from '../Tooltip';
 
 // Each variant has its own colors, so color is typed together with variant:
 // primary takes default or brand, and secondary takes default or knockout.
+// Only secondary default comes on a scrim, as in Figma, so background is
+// typed with them too: scrim on any other variant or color is a type error.
 type VariantAndColor =
   | {
       /** Primary for the main action, secondary for the others */
@@ -17,6 +19,7 @@ type VariantAndColor =
        * background, or brand for a brand-colored band.
        */
       color?: 'default' | 'brand';
+      background?: 'none';
     }
   | {
       variant: 'secondary';
@@ -24,10 +27,43 @@ type VariantAndColor =
        * The background the button sits on. Secondary: default for the site’s
        * background, or knockout for a light band.
        */
-      color?: 'default' | 'knockout';
+      color?: 'default';
+      /**
+       * What’s behind the label: none, or scrim, a dark see-through fill for
+       * a button that floats over images or scrolling content, like Shell’s
+       * focused-mode action. Secondary default only.
+       */
+      background?: 'none' | 'scrim';
+    }
+  | {
+      variant: 'secondary';
+      color?: 'knockout';
+      background?: 'none';
     };
 
-export type ButtonProps = VariantAndColor & {
+// A link either opens in a new tab or downloads its file, never both
+type LinkBehavior =
+  | {
+      /**
+       * Whether the link opens in a new tab, for a page on another site that
+       * people come back from, like a booking page. Only with href. Screen
+       * readers hear “opens in a new tab” after the label.
+       */
+      opensInNewTab?: boolean;
+      download?: never;
+    }
+  | {
+      opensInNewTab?: false;
+      /**
+       * For a link to a file, like a PDF: the browser saves it instead of
+       * opening it. true keeps the file’s own name; a string names the saved
+       * file. Only with href, and not with opensInNewTab.
+       */
+      download?: boolean | string;
+    };
+
+export type ButtonProps = VariantAndColor &
+  LinkBehavior & {
   /** The label: a verb that says what happens, like “Book a call” */
   children: ReactNode;
   /** Height, side padding, label, and icon size, from the control size tokens */
@@ -56,12 +92,6 @@ export type ButtonProps = VariantAndColor & {
    */
   href?: string;
   /**
-   * Whether the link opens in a new tab, for a page on another site that
-   * people come back from, like a booking page. Only with href. Screen
-   * readers hear “opens in a new tab” after the label.
-   */
-  opensInNewTab?: boolean;
-  /**
    * span: the button’s look inside another link or button, such as a card’s
    * label, which can’t be a second link. It renders a plain <span> with no
    * focus or click of its own, and shows its hover and active looks when the
@@ -86,12 +116,16 @@ export function Button({
   onClick,
   href,
   opensInNewTab = false,
+  download,
+  background = 'none',
   tooltip,
   as,
 }: ButtonProps) {
   const tooltipId = useId();
   const describedBy = tooltip ? tooltipId : undefined;
   const classes = [styles.button, styles[variant], styles[`${variant}-${color}`], styles[size]];
+  // Scrim only on secondary default; anywhere else it's ignored
+  if (background === 'scrim' && variant === 'secondary' && color === 'default') classes.push(styles.scrim);
   const content = (
     <>
       {startIcon && <Icon name={startIcon} size={ICON_SIZE[size]} />}
@@ -121,6 +155,9 @@ export function Button({
         aria-describedby={describedBy}
         target={opensInNewTab ? '_blank' : undefined}
         rel={opensInNewTab ? 'noopener noreferrer' : undefined}
+        // Saves the file instead of opening it. It also keeps the link a
+        // plain <a>, never a router's link (see LinkProvider).
+        download={opensInNewTab ? undefined : download}
       >
         {content}
         {opensInNewTab && <span className={styles.newTab}> (opens in a new tab)</span>}
