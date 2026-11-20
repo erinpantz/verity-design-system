@@ -4,6 +4,14 @@ Every release of Verity, newest first. The format follows [Keep a Changelog](htt
 
 Sites install Verity by tag (for example `github:erinpantz/verity-design-system#v0.3.0`), so a site only changes when it moves to a new tag on purpose.
 
+## [0.11.4] – 2026-11-19
+
+Storybook’s Introduction is written for visitors.
+
+### Changed
+
+- **Introduction:** it now opens for the people who’ll arrive from the site, like hiring managers and designers: what Verity is, why Erin built it (with a link to the case study, How I built my design system with AI), and how to explore it, through the Guidelines, the Foundations, and each component’s Docs page, the Theme menu, and the Accessibility panel. The setup sections follow under a new For developers heading, each one level down, unchanged.
+
 ## [0.11.3] – 2026-11-19
 
 ProjectCard’s arrow moves onto the thumbnail, so it’s on screen as soon as any of the card is, and the title gets a smaller size of its own, so cards are shorter.
@@ -827,6 +835,7 @@ The first library release: everything in the Figma library except Animation, wit
 - **Theme helpers:** `themeScript`, `useTheme`, and `setTheme`, so a site applies the saved theme before the first paint.
 - **The library build:** one entry point with every component and its prop types, one stylesheet (`verity-design-system/styles.css`) with the fonts inside it, and `npm run build:watch` for working with a linked copy.
 
+[0.11.4]: https://github.com/erinpantz/verity-design-system/compare/v0.11.3...v0.11.4
 [0.11.3]: https://github.com/erinpantz/verity-design-system/compare/v0.11.2...v0.11.3
 [0.11.2]: https://github.com/erinpantz/verity-design-system/compare/v0.11.1...v0.11.2
 [0.11.1]: https://github.com/erinpantz/verity-design-system/compare/v0.11.0...v0.11.1
