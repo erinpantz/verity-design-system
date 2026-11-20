@@ -42,6 +42,30 @@
   aspect-ratio: 1 / 1;
 }
 
+/* Portrait, for a page of paper like a résumé */
+.ratio-3-4 {
+  aspect-ratio: 3 / 4;
+}
+
+/* Shadow: on the frame, so it follows the rounded corners. The frame's
+   overflow clips what's inside it, not its own shadow. The same tokens as
+   Figma's shadow effect styles. */
+
+.shadow-sm {
+  box-shadow: var(--verity-shadow-sm-x) var(--verity-shadow-sm-y) var(--verity-shadow-sm-blur)
+    var(--verity-shadow-sm-spread) var(--verity-shadow-sm-color);
+}
+
+.shadow-md {
+  box-shadow: var(--verity-shadow-md-x) var(--verity-shadow-md-y) var(--verity-shadow-md-blur)
+    var(--verity-shadow-md-spread) var(--verity-shadow-md-color);
+}
+
+.shadow-lg {
+  box-shadow: var(--verity-shadow-lg-x) var(--verity-shadow-lg-y) var(--verity-shadow-lg-blur)
+    var(--verity-shadow-lg-spread) var(--verity-shadow-lg-color);
+}
+
 /* Fit: cover crops the picture to fill the shape; contain shows all of it */
 
 .cover {

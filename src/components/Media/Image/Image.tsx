@@ -10,8 +10,11 @@ export interface ImageProps {
    * ("") when the image is decorative and the text around it says it all.
    */
   alt: string;
-  /** The image’s shape. It fills its container’s width and keeps this ratio. */
-  aspectRatio?: '16:9' | '3:2' | '4:3' | '1:1';
+  /**
+   * The image’s shape. It fills its container’s width and keeps this ratio.
+   * 3:4 is portrait, for a page of paper like a résumé.
+   */
+  aspectRatio?: '16:9' | '3:2' | '4:3' | '1:1' | '3:4';
   /**
    * How the picture fills the shape: cover crops it to fill, contain shows
    * all of it, with space around it if its shape is different
@@ -22,10 +25,21 @@ export interface ImageProps {
    * screen; eager loads it right away, for an image at the top of the page
    */
   loading?: 'lazy' | 'eager';
+  /**
+   * A shadow around the image’s rounded box, from the shadow tokens, to lift
+   * it off the page, like a sheet of paper. None by default.
+   */
+  shadow?: 'sm' | 'md' | 'lg';
 }
 
 // Class names for each ratio, since a colon can't be part of one
-const RATIO = { '16:9': 'ratio-16-9', '3:2': 'ratio-3-2', '4:3': 'ratio-4-3', '1:1': 'ratio-1-1' } as const;
+const RATIO = {
+  '16:9': 'ratio-16-9',
+  '3:2': 'ratio-3-2',
+  '4:3': 'ratio-4-3',
+  '1:1': 'ratio-1-1',
+  '3:4': 'ratio-3-4',
+} as const;
 
 type Status = 'loading' | 'loaded' | 'error';
 
@@ -35,6 +49,7 @@ export function Image({
   aspectRatio = '16:9',
   fit = 'cover',
   loading = 'lazy',
+  shadow,
 }: ImageProps) {
   // What happened to which file, so a new src starts over at loading
   const [result, setResult] = useState<{ src: string; status: Status } | null>(null);
@@ -49,6 +64,7 @@ export function Image({
   }, [src]);
 
   const frameClasses = [styles.frame, styles[RATIO[aspectRatio]]];
+  if (shadow) frameClasses.push(styles[`shadow-${shadow}`]);
   return (
     <div className={frameClasses.join(' ')}>
       {/* Under the picture until it loads. If it fails, the base color stays, with no shine. */}

@@ -41,10 +41,13 @@ The image fills its container’s width, and its height comes from the ratio. Th
 | `3:2` | A little taller | Photos |
 | `4:3` | Taller again | Screenshot boards and slides |
 | `1:1` | Square | Portraits, details, and grids of thumbnails |
+| `3:4` | Portrait: taller than wide, Verity’s only one | A page of paper, like the résumé |
 
 Pick the ratio closest to the picture’s own shape, so little is cropped. If nothing can be cut, like a slide with text near its edges, use `fit="contain"`.
 
 <Canvas of={ImageStories.AspectRatio3x2} />
+
+<Canvas of={ImageStories.AspectRatio3x4} />
 
 ## Fit
 
@@ -69,6 +72,21 @@ Images are always rounded, with `--verity-border-radius-md`. There’s no prop f
 
 Animation follows the same rule.
 
+## Shadow
+
+No shadow by default. `shadow` adds one around the image’s rounded box, so it follows the corners, to lift the image off the page, like a sheet of paper on the résumé page.
+
+| `shadow` | Tokens |
+|---|---|
+| Left out | None: the default |
+| `sm` | `--verity-shadow-sm-*` |
+| `md` | `--verity-shadow-md-*` |
+| `lg` | `--verity-shadow-lg-*` |
+
+They’re the same tokens as Figma’s `shadow/*` effect styles.
+
+<Canvas of={ImageStories.Shadow} />
+
 ## Loading
 
 Images load lazily by default: the browser waits until an image is close to the screen, so the page opens faster. For an image at the very top of a page, use `loading="eager"`, so it appears right away.
@@ -87,6 +105,7 @@ Until the picture arrives, a `Skeleton` fills its shape, with the same ratio and
 |---|---|
 | Component `Image` | `<Image />` |
 | Property `Aspect ratio` | `aspectRatio`. `16:9` is the default in both. |
+| A `shadow/sm`, `shadow/md`, or `shadow/lg` effect style on the instance (no variant) | `shadow`: `sm`, `md`, or `lg` |
 | Property `Border radius` (one option, `md`) | No prop: always `md`. Figma keeps the property because it can’t delete a variant property. |
 | The image fill’s scale mode: Fill or Fit | `fit`: Fill → `cover`, Fit → `contain` |
 | The image itself | `src` |
