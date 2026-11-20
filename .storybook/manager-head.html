@@ -1,6 +1,18 @@
 <!-- Storybook's favicon: the Verity mark, white on brand blue, from the
      Verity Library's Branding page (Favicons – Verity). The SVG first; the
      32 px PNG for browsers that don't use SVG favicons. The files are in
-     .storybook/static/. -->
+     .storybook/static/.
+     Everywhere but the live Storybook (verity.erintozour.com), the script
+     below swaps in the red icons (verity/favicon-local: the same mark on
+     brand red, favicon-local.svg and favicon-local-32.png), so a local tab,
+     or a Vercel preview, is easy to tell apart from the live site. -->
 <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
 <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32.png" />
+<script>
+  if (location.hostname !== 'verity.erintozour.com') {
+    document.querySelectorAll('link[rel="icon"]').forEach(function (link) {
+      // ./favicon.svg → ./favicon-local.svg, ./favicon-32.png → ./favicon-local-32.png
+      link.setAttribute('href', link.getAttribute('href').replace('favicon', 'favicon-local'));
+    });
+  }
+</script>
