@@ -4,6 +4,14 @@ Every release of Verity, newest first. The format follows [Keep a Changelog](htt
 
 Sites install Verity by tag (for example `github:erinpantz/verity-design-system#v0.3.0`), so a site only changes when it moves to a new tag on purpose.
 
+## [0.11.6] – 2026-11-20
+
+Button’s `onClick` works on links too.
+
+### Changed
+
+- **Button:** with `href`, `onClick` now runs on the link, before it’s followed, as on BackLink, so a handler can call `event.preventDefault()` and handle the click itself, like the résumé page’s Download opening the share sheet in a Home Screen web app. It used to be dropped. Its type covers both elements (`MouseEventHandler<HTMLButtonElement | HTMLAnchorElement>`), and handlers written for a `<button>` still type-check. A link Button without `onClick` works exactly as before. Its docs page has a short example.
+
 ## [0.11.5] – 2026-11-20
 
 What the site’s new résumé page needs: a Download action floating in focused mode’s top-right corner, opposite a BackLink that now says “Back” and can go back in the history.
@@ -852,6 +860,7 @@ The first library release: everything in the Figma library except Animation, wit
 - **Theme helpers:** `themeScript`, `useTheme`, and `setTheme`, so a site applies the saved theme before the first paint.
 - **The library build:** one entry point with every component and its prop types, one stylesheet (`verity-design-system/styles.css`) with the fonts inside it, and `npm run build:watch` for working with a linked copy.
 
+[0.11.6]: https://github.com/erinpantz/verity-design-system/compare/v0.11.5...v0.11.6
 [0.11.5]: https://github.com/erinpantz/verity-design-system/compare/v0.11.4...v0.11.5
 [0.11.4]: https://github.com/erinpantz/verity-design-system/compare/v0.11.3...v0.11.4
 [0.11.3]: https://github.com/erinpantz/verity-design-system/compare/v0.11.2...v0.11.3
