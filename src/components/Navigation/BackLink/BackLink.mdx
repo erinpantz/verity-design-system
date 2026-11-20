@@ -32,10 +32,9 @@ A BackLink renders an `<a href>`, so it works like any link: Enter follows it, a
 | Choosing the href | The page above this one, like the portfolio. It’s where the link goes for visitors who arrived from outside the site, like a search or a shared link, before JavaScript loads, and when it’s opened in a new tab. | `href="/"` |
 | Going back in the history | Pass `onClick`. When the previous page is on the site, the site calls `event.preventDefault()` and goes back; otherwise it does nothing, and the link follows `href`. Leave modified clicks (Cmd, Ctrl, Shift, the middle button) to the browser, so they still open `href` in a new tab. Verity has no router, so the site decides. | See below |
 
-With React Router, the site’s first page has the location key `"default"`, so any other key means the visitor came from a page on the site:
+With React Router, check `window.history.state.idx`: React Router’s position in the history for this visit, `0` on the first page. Above `0`, the visitor came from a page on the site. Don’t check whether the location’s key is `"default"`: with React Router’s scroll restoration, the first page gets a key too. That’s React Router’s own field, so a site with another router uses that router’s equivalent.
 
 ```tsx
-const location = useLocation();
 const navigate = useNavigate();
 
 <BackLink
@@ -43,7 +42,9 @@ const navigate = useNavigate();
   label="Back"
   onClick={(event) => {
     const modified = event.metaKey || event.ctrlKey || event.shiftKey || event.altKey || event.button !== 0;
-    if (modified || location.key === 'default') return; // follow href
+    // React Router's history position: 0 on the first page of a visit
+    const cameFromSite = (window.history.state?.idx ?? 0) > 0;
+    if (modified || !cameFromSite) return; // follow href
     event.preventDefault();
     navigate(-1);
   }}
