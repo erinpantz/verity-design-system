@@ -83,12 +83,16 @@ export type ButtonProps = VariantAndColor &
    * Screen readers hear the label, then the hint.
    */
   tooltip?: string;
-  /** What happens when someone presses the button */
-  onClick?: MouseEventHandler<HTMLButtonElement>;
+  /**
+   * What happens when someone presses the button. With href, it runs on the
+   * link before it’s followed, and can call event.preventDefault() to handle
+   * the click itself instead.
+   */
+  onClick?: MouseEventHandler<HTMLButtonElement | HTMLAnchorElement>;
   /**
    * Where it goes, for a button that goes to another page, like “Book a
-   * call.” It then renders a link (<a>) that looks like a button, and
-   * type, disabled, and onClick don’t apply.
+   * call.” It then renders a link (<a>) that looks like a button, and type
+   * and disabled don’t apply.
    */
   href?: string;
   /**
@@ -162,6 +166,8 @@ export function Button({
         // Saves the file instead of opening it. It also keeps the link a
         // plain <a>, never a router's link (see LinkProvider).
         download={opensInNewTab ? undefined : download}
+        // Runs before the link is followed, like BackLink's
+        onClick={onClick}
       >
         {content}
         {opensInNewTab && <span className={styles.newTab}> (opens in a new tab)</span>}

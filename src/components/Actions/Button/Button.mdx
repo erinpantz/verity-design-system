@@ -139,6 +139,29 @@ It follows the link or button around it: its hover look while that’s hovered (
 
 <Canvas of={ButtonStories.DownloadsAFile} />
 
+## Handling a click on a link
+
+With `href`, `onClick` still runs, on the link, before it’s followed, as on BackLink. Call `event.preventDefault()` to handle the click yourself instead; otherwise the link is followed as usual. `type` and `disabled` don’t apply to a link.
+
+```tsx
+<Button
+  variant="secondary"
+  background="scrim"
+  startIcon="download"
+  href="/resume.pdf"
+  download
+  onClick={(event) => {
+    if (!canShare) return; // follow the link: save the file
+    event.preventDefault();
+    shareResume();
+  }}
+>
+  Download
+</Button>
+```
+
+Keep `href` on the link even when `onClick` usually handles the click, so it still works before JavaScript loads and opens in a new tab.
+
 ## Props
 
 <PropsTable of={ButtonStories} />
