@@ -4,6 +4,23 @@ Every release of Verity, newest first. The format follows [Keep a Changelog](htt
 
 Sites install Verity by tag (for example `github:erinpantz/verity-design-system#v0.3.0`), so a site only changes when it moves to a new tag on purpose.
 
+## [0.11.5] – 2026-11-20
+
+What the site’s new résumé page needs: a Download action floating in focused mode’s top-right corner, opposite a BackLink that now says “Back” and can go back in the history.
+
+### Added
+
+- **Icons:** `icon/download`, an arrow down onto a tray, a stroke icon like `icon/back`.
+- **Button:** `background="scrim"`, BackLink’s look (the scrim, no visible border, the press fill, and the lift with `shadow-md` on hover and focus), for a button that floats over pictures or scrolling content. Secondary default only, as in Figma: scrim on any other variant or color is a type error. And `download`, with `href`: the browser saves the file instead of opening it, so a visitor in a Home Screen web app isn’t stuck in an opened PDF. Not with `opensInNewTab`. Its docs page has a Background section and the download option, with stories over a picture and on the page.
+- **Button on a scrim, matching BackLink:** the label and icon are `--verity-color-content-default` (white) in every state except disabled, which keeps secondary’s disabled color, and at `md` the icon is `--verity-icon-size-sm` (20). Other sizes keep Button’s own icon size. Figma’s scrim variants match.
+- **Shell:** `action`, an optional element in focused mode’s top-right corner, the back link’s mirror image: the same insets and safe area, fixed as the page scrolls, and right after the back link in the tab order. Its docs page and stories show it with a “Download” Button on a scrim.
+- **BackLink:** `onClick`, passed to its link, and through Shell’s `backLink`, so a site can go back in its history instead when the previous page is on the site. It stays a real link to `href`, the page above, for visitors who arrived from outside, before JavaScript loads, and in a new tab. Its docs page shows how, with React Router.
+- **Image:** `shadow` (`sm`, `md`, or `lg`, from the shadow tokens), around its rounded box, none by default. And `aspectRatio="3:4"`, Verity’s first portrait ratio, for a page of paper like the résumé. Its docs page and stories show both.
+
+### Changed
+
+- **BackLink and Shell:** “Back” is the label in every example, and Shell’s default back link says “Back” instead of “Portfolio.” Its docs no longer say a back link goes to the page above: a click returns to the previous page when the site handles it.
+
 ## [0.11.4] – 2026-11-19
 
 Storybook’s Introduction is written for visitors.
@@ -835,6 +852,7 @@ The first library release: everything in the Figma library except Animation, wit
 - **Theme helpers:** `themeScript`, `useTheme`, and `setTheme`, so a site applies the saved theme before the first paint.
 - **The library build:** one entry point with every component and its prop types, one stylesheet (`verity-design-system/styles.css`) with the fonts inside it, and `npm run build:watch` for working with a linked copy.
 
+[0.11.5]: https://github.com/erinpantz/verity-design-system/compare/v0.11.4...v0.11.5
 [0.11.4]: https://github.com/erinpantz/verity-design-system/compare/v0.11.3...v0.11.4
 [0.11.3]: https://github.com/erinpantz/verity-design-system/compare/v0.11.2...v0.11.3
 [0.11.2]: https://github.com/erinpantz/verity-design-system/compare/v0.11.1...v0.11.2
