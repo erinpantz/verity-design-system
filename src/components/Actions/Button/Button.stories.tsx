@@ -144,7 +144,7 @@ export const DownloadsAFile: Story = {
 // on the page. Story-only placement, with tokens.
 const scrimButton = (
   <Button variant="secondary" background="scrim" startIcon="download" href={landscape} download="landscape.jpg">
-    Download PDF
+    Download
   </Button>
 );
 const overImage = (src: string) => (
