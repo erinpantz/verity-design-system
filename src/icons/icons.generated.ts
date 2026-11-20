@@ -11,6 +11,10 @@ export const ICONS = {
     viewBox: "0 0 24 24",
     markup: "<path d=\"M9 4V20M20 20H4V4H20V20Z\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-miterlimit=\"10\" stroke-linecap=\"round\" stroke-linejoin=\"round\" vector-effect=\"non-scaling-stroke\"/>",
   },
+  "download": {
+    viewBox: "0 0 24 24",
+    markup: "<path d=\"M12 4V15M17 10L12 15L7 10M5 15V20H19V15\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-miterlimit=\"10\" stroke-linecap=\"round\" stroke-linejoin=\"round\" vector-effect=\"non-scaling-stroke\"/>",
+  },
   "email": {
     viewBox: "0 0 24 24",
     markup: "<path d=\"M4 6L12 13L20 6M3 19V5H21V19H3Z\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-miterlimit=\"10\" stroke-linecap=\"round\" stroke-linejoin=\"round\" vector-effect=\"non-scaling-stroke\"/>",
