@@ -67,12 +67,12 @@ For a button that floats over pictures or scrolling content, like the action in 
 | `none` | The default: nothing, as above | — |
 | `scrim` | The scrim, and no visible border. Secondary default only: `background` is typed with `variant` and `color`, so scrim on any other pair is a type error, and it’s ignored if it gets through. | `--verity-color-background-scrim` |
 
-On a scrim, the label and icon keep secondary default’s colors in every state (`--verity-button-secondary-color-content-*`). Size, padding, gap, corners, and label are Button’s own; at `md` they match BackLink.
+On a scrim, the label and icon match BackLink’s: `--verity-color-content-default` in every state except disabled, which keeps secondary’s disabled color. At `md`, the icon is `--verity-icon-size-sm` (20), like BackLink’s; other sizes keep Button’s own icon size. Size, padding, gap, corners, and label style are Button’s own; at `md` they match BackLink.
 
 | State | On a scrim | Tokens |
 |---|---|---|
-| Default | The scrim, with no shadow | `--verity-color-background-scrim` |
-| Hover and focus | The lift with `shadow-md` (see Motion), and the hover label. No hover fill, like BackLink: on a brand-colored page, a fill over the scrim comes out almost the page’s color. Focus adds the focus ring. | `--verity-shadow-md-*`, `--verity-button-secondary-color-content-hover` |
+| Default | The scrim, with no shadow, and the label and icon in the default content color | `--verity-color-background-scrim`, `--verity-color-content-default` |
+| Hover and focus | The lift with `shadow-md` (see Motion). The label stays `--verity-color-content-default`. No hover fill, like BackLink: on a brand-colored page, a fill over the scrim comes out almost the page’s color. Focus adds the focus ring. | `--verity-shadow-md-*`, `--verity-color-content-default` |
 | Active | A stronger fill on top of the scrim, settled back down | `--verity-color-background-transparent-strong` |
 | Disabled | The scrim, with the disabled label | `--verity-button-secondary-color-content-disabled` |
 

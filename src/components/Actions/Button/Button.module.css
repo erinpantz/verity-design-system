@@ -142,13 +142,17 @@
 
 /* background="scrim", secondary default only: BackLink's look. A scrim
    under the label and no visible border (it stays, transparent, so the size
-   doesn't change). The label and icon keep secondary default's colors in
-   every state. No hover fill, like BackLink: on a brand-colored page a fill
+   doesn't change). The label and icon are content/default in every state,
+   like BackLink's, except disabled, which keeps secondary's disabled color.
+   At md, the icon is sm, like BackLink's (Button.tsx). No hover fill, like BackLink: on a brand-colored page a fill
    over the scrim comes out almost the page's color. On hover and focus it
    lifts with shadow/md (lift.module.css); at rest, no shadow. After the
    colors above, so it wins. */
 .scrim {
   --background: var(--verity-color-background-scrim);
+  --content-default: var(--verity-color-content-default);
+  --content-hover: var(--verity-color-content-default);
+  --content-active: var(--verity-color-content-default);
   --border-default: transparent;
   --border-hover: transparent;
   --border-active: transparent;

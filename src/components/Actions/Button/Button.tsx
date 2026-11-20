@@ -125,12 +125,16 @@ export function Button({
   const describedBy = tooltip ? tooltipId : undefined;
   const classes = [styles.button, styles[variant], styles[`${variant}-${color}`], styles[size]];
   // Scrim only on secondary default; anywhere else it's ignored
-  if (background === 'scrim' && variant === 'secondary' && color === 'default') classes.push(styles.scrim);
+  const scrim = background === 'scrim' && variant === 'secondary' && color === 'default';
+  if (scrim) classes.push(styles.scrim);
+  // On a scrim at md, the icon is sm (20), like BackLink's; other sizes keep
+  // their own
+  const iconSize = scrim && size === 'md' ? 'sm' : ICON_SIZE[size];
   const content = (
     <>
-      {startIcon && <Icon name={startIcon} size={ICON_SIZE[size]} />}
+      {startIcon && <Icon name={startIcon} size={iconSize} />}
       {children}
-      {endIcon && <Icon name={endIcon} size={ICON_SIZE[size]} />}
+      {endIcon && <Icon name={endIcon} size={iconSize} />}
     </>
   );
 
