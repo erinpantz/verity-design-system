@@ -9,14 +9,14 @@ import * as BackLinkStories from './BackLink.stories';
 
 # BackLink
 
-A link back to the page above this one, with a back arrow, on a scrim. In Shell’s focused mode, it floats in the top-left corner in place of the nav.
+A link back, with a back arrow, on a scrim: “Back.” A click returns to the previous page when the site handles it, and otherwise goes to the page above this one. In Shell’s focused mode, it floats in the top-left corner in place of the nav.
 
 <Canvas of={BackLinkStories.Default} />
 
 ## When to use
 
 - **In Shell’s focused mode,** where Shell places it for you: set `mode="focused"` and `backLink` on Shell. See **Layout › Shell**.
-- **To go back one level,** like from a case study to the portfolio. Name the page it goes to.
+- **To go back,** like from a case study, the résumé, or a Playground project to wherever the visitor came from. Visitors reach these pages from more than one place, and expect Back to return there.
 - **Not for links within a page or in running text.** Use `Link`.
 - **Not for an action that changes the page.** Use `Button` or `IconButton`: a BackLink always goes somewhere.
 
@@ -28,8 +28,29 @@ A BackLink renders an `<a href>`, so it works like any link: Enter follows it, a
 
 | Situation | What to do | Example |
 |---|---|---|
-| Writing the label | Name the page it goes to, in a word or two, sentence case. Don’t add “Back to”: the arrow shows the direction, and the name stays short. | “Portfolio” |
-| Choosing the href | The page above this one, not the browser’s history, so it works for someone who arrived from a search or a shared link | `href="/"` |
+| Writing the label | “Back.” It’s true wherever the link goes, and it’s short, so it fits beside an action on any phone. | “Back” |
+| Choosing the href | The page above this one, like the portfolio. It’s where the link goes for visitors who arrived from outside the site, like a search or a shared link, before JavaScript loads, and when it’s opened in a new tab. | `href="/"` |
+| Going back in the history | Pass `onClick`. When the previous page is on the site, the site calls `event.preventDefault()` and goes back; otherwise it does nothing, and the link follows `href`. Leave modified clicks (Cmd, Ctrl, Shift, the middle button) to the browser, so they still open `href` in a new tab. Verity has no router, so the site decides. | See below |
+
+With React Router, the site’s first page has the location key `"default"`, so any other key means the visitor came from a page on the site:
+
+```tsx
+const location = useLocation();
+const navigate = useNavigate();
+
+<BackLink
+  href="/"
+  label="Back"
+  onClick={(event) => {
+    const modified = event.metaKey || event.ctrlKey || event.shiftKey || event.altKey || event.button !== 0;
+    if (modified || location.key === 'default') return; // follow href
+    event.preventDefault();
+    navigate(-1);
+  }}
+/>
+```
+
+In Shell’s focused mode, pass the same `onClick` in `backLink`, and Shell passes it to the BackLink.
 
 ## States
 
@@ -91,6 +112,6 @@ The label stays readable on the scrim even over a white picture: about 17:1 over
 | Property `State` | Hover, focus, and active come from the browser. There’s no disabled state. |
 | The label text | `label` |
 | Layer `Focus ring` | Not a layer: an outline on keyboard focus, following the link’s md corners |
-| Not in Figma | `href` |
+| Not in Figma | `href` and `onClick` |
 
 </VerityDocs>

@@ -22,7 +22,11 @@ export interface ShellProps {
    * one piece of work, with a link back instead of the nav
    */
   mode?: 'default' | 'focused';
-  /** In focused mode, where the back link goes and what it says */
+  /**
+   * In focused mode, the back link: its href (the page above this one),
+   * its label, and an optional onClick, passed through to BackLink, so the
+   * site can go back in its history instead
+   */
   backLink?: BackLinkProps;
   /**
    * In focused mode, an action in the top-right corner, opposite the back
@@ -44,8 +48,8 @@ export interface ShellProps {
   loaderWords?: Partial<Record<PageLoaderSection, string[]>>;
 }
 
-// Back to the portfolio, as in Figma
-const DEFAULT_BACK_LINK: BackLinkProps = { href: '/', label: 'Portfolio' };
+// “Back,” to the portfolio unless the site goes back in its history
+const DEFAULT_BACK_LINK: BackLinkProps = { href: '/', label: 'Back' };
 
 // The page frame, in one column: a skip link, MainNav across the top, kept
 // at the top of the screen as the page scrolls, then the page column with
@@ -121,7 +125,7 @@ export function Shell({
         // order: the back link, the action, then ThemeToggle, then Main.
         <>
           <div className={styles.backLink}>
-            <BackLink href={backLink.href} label={backLink.label} />
+            <BackLink {...backLink} />
           </div>
           {action && <div className={styles.action}>{action}</div>}
         </>

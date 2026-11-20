@@ -6,10 +6,11 @@ import { BackLink } from './BackLink';
 const meta = {
   title: 'Navigation/BackLink',
   component: BackLink,
-  args: { href: '#portfolio', label: 'Portfolio' },
+  args: { href: '#portfolio', label: 'Back' },
   argTypes: {
     href: { control: 'text' },
     label: { control: 'text' },
+    onClick: { control: false },
   },
 } satisfies Meta<typeof BackLink>;
 

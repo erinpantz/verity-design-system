@@ -263,7 +263,7 @@ export const Small: Story = {
 const focused = {
   mode: 'focused' as const,
   children: caseStudy,
-  backLink: { href: '#portfolio', label: 'Portfolio' },
+  backLink: { href: '#portfolio', label: 'Back' },
 };
 
 export const FocusedXL: Story = {

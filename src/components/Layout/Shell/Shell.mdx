@@ -16,7 +16,7 @@ The page frame, in one column: the site’s nav across the top, then the page co
 ## When to use
 
 - **Once per page, around everything,** with the page’s content as Main and the site’s `Footer`.
-- **In focused mode for a case study,** with `mode="focused"` and a `backLink` to the page it came from. See **Mode**.
+- **In focused mode for a case study,** with `mode="focused"` and a `backLink`. See **Mode**.
 - **Not inside another layout.** It sets the whole page, from the skip link to the footer.
 
 ## Accessibility
@@ -95,14 +95,14 @@ In default mode, the nav stays at the top of the screen as the page scrolls, at 
 | `default` | The site’s nav, MainNav, across the top | Pages people move between: the portfolio, the playground, the profile |
 | `focused` | No nav. A `BackLink` floats in the top-left corner, an optional action in the top-right, and ThemeToggle stays in the bottom-right. | One piece of work read from start to end, like a case study |
 
-**Why focused mode:** a case study is long, and people read it start to end. With the nav gone, the page gets the whole width at every breakpoint and nothing beside it competes with the work. The way out stays in one place: the back link, always in reach in the corner, names the page it goes back to.
+**Why focused mode:** a case study is long, and people read it start to end. With the nav gone, the page gets the whole width at every breakpoint and nothing beside it competes with the work. The way out stays in one place: the back link, “Back,” always in reach in the corner.
 
 In focused mode:
 
 | What | How |
 |---|---|
 | The back link’s position | Fixed to the top-left corner: `--verity-spacing-md` from the top and `--verity-main-padding-inline` from the left, the page’s own side margin, so it lines up with the page’s content. Plus the safe area (`env(safe-area-inset-top)` and `env(safe-area-inset-left)`). |
-| Where it goes | `backLink`: its `href` and `label`. It’s `{ href: '/', label: 'Portfolio' }` unless you set it. |
+| Where it goes | `backLink`: its `href`, `label`, and `onClick`, passed through to BackLink. It’s `{ href: '/', label: 'Back' }` unless you set it. The site can pass an `onClick` that goes back in its history when the previous page is on the site (see **Navigation › BackLink**). |
 | An action | `action`, optional: one element, normally a `Button` with `variant="secondary"` and `background="scrim"`, like “Download” with the `download` icon on the résumé page. It’s the back link’s mirror image: fixed to the top-right corner, `--verity-spacing-md` from the top and `--verity-main-padding-inline` from the right, plus the safe area (`env(safe-area-inset-top)` and `env(safe-area-inset-right)`), on the same layer, so it stays put as the page scrolls. Leave it out for none. Default mode ignores it. |
 | The space above Main | `--verity-main-padding-top-focused` (72) plus `--verity-spacing-lg`, as in Figma: the first clears the back link (its inset plus its height), and the second is the usual space above the first section. So the title starts 120 down on XL and Large, `--verity-spacing-lg` below the link. A link that jumps to a heading stops at the same place. |
 | Layer | Like the theme toggle: above the page’s content, which scrolls under it |
@@ -176,7 +176,7 @@ Shell owns the page’s side margins, so nothing inside Main needs its own. Cont
 | The Footer instance | `footer`: the site’s `<Footer />` |
 | Property `Breakpoint` | Not a prop: a preview of each width. In code, the screen width decides, and MainNav picks its layout from its own width. |
 | Property `Mode` | `mode`. `default` is the default in both. |
-| The BackLink instance (focused) | Made by Shell. `backLink` sets where it goes and what it says. |
+| The BackLink instance (focused) | Made by Shell. `backLink` sets its `href`, `label`, and `onClick`. |
 | Property `Show action`, with its Button (focused) | `action`: pass the Button. Figma shows “Download PDF” with `icon/download`; the site says “Download.” |
 | The MainNav instance | Made by Shell. `current` and `hrefs` pass through to MainNav, which picks its own `Layout`. |
 | The ThemeToggle instance, in the bottom-right corner | Made by Shell, with nothing to set |
