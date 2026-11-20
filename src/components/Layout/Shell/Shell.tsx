@@ -25,6 +25,12 @@ export interface ShellProps {
   /** In focused mode, where the back link goes and what it says */
   backLink?: BackLinkProps;
   /**
+   * In focused mode, an action in the top-right corner, opposite the back
+   * link, like a Button with background="scrim" that downloads the page’s
+   * PDF. Leave it out for none. Default mode ignores it.
+   */
+  action?: ReactNode;
+  /**
    * The section a page change is going to, while it’s going: home,
    * portfolio, profile, or playground (a case study is portfolio). Leave it
    * out when the change is done. PageLoader decides whether to show, and
@@ -46,7 +52,8 @@ const DEFAULT_BACK_LINK: BackLinkProps = { href: '/', label: 'Portfolio' };
 // Main and the Footer. ThemeToggle floats in the
 // bottom-right corner. In focused mode, a BackLink floats in the top-left
 // corner instead of the nav, for reading one piece of work without the site
-// around it. MainNav picks its own layout and owns its menu, so Shell only
+// around it, with an optional action mirroring it in the top-right corner.
+// MainNav picks its own layout and owns its menu, so Shell only
 // places it.
 export function Shell({
   children,
@@ -55,6 +62,7 @@ export function Shell({
   hrefs,
   mode = 'default',
   backLink = DEFAULT_BACK_LINK,
+  action,
   pending,
   loaderWords,
 }: ShellProps) {
@@ -108,11 +116,15 @@ export function Shell({
         <Button href={`#${mainId}`}>Skip to content</Button>
       </div>
       {!hasNav ? (
-        // Fixed to the top-left corner, in place of the nav. In the tab
-        // order: the back link, then ThemeToggle, then Main.
-        <div className={styles.backLink}>
-          <BackLink href={backLink.href} label={backLink.label} />
-        </div>
+        // Fixed to the top-left corner, in place of the nav, and the action,
+        // if there is one, mirroring it in the top-right corner. In the tab
+        // order: the back link, the action, then ThemeToggle, then Main.
+        <>
+          <div className={styles.backLink}>
+            <BackLink href={backLink.href} label={backLink.label} />
+          </div>
+          {action && <div className={styles.action}>{action}</div>}
+        </>
       ) : (
         // Sticks to the top of the screen, above the page's content
         <div className={styles.nav} ref={navRef} data-scrolled={scrolled || undefined}>
@@ -121,7 +133,7 @@ export function Shell({
       )}
       {/* Fixed to the screen's corner at every width, so it's always in
           reach. In the tab order, it comes right after the nav (or the back
-          link) and before Main. */}
+          link and the action) and before Main. */}
       <div className={styles.themeToggle}>
         <ThemeToggle />
       </div>

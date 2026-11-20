@@ -152,6 +152,18 @@
   display: flex;
 }
 
+/* Focused mode's action: the back link's mirror image in the top-right
+   corner. The same inset from the top, and the same inset from the right
+   as the back link's from the left, each with the screen's safe area. Fixed
+   too, so it stays put as the page scrolls, and on the same layer. */
+.action {
+  position: fixed;
+  z-index: 3;
+  inset-block-start: calc(var(--verity-spacing-md) + env(safe-area-inset-top, 0px));
+  inset-inline-end: calc(var(--verity-main-padding-inline) + env(safe-area-inset-right, 0px));
+  display: flex;
+}
+
 .shell[data-mode='focused'] .main {
   padding-block-start: calc(var(--verity-main-padding-top-focused) + var(--verity-spacing-lg));
 }

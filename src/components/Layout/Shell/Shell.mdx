@@ -25,7 +25,8 @@ The page frame, in one column: the site’s nav across the top, then the page co
 |---|---|---|
 | Skip link | “Skip to content,” a primary `Button` link | First in the tab order. It’s off screen until it has keyboard focus, then shows at the top start corner. It moves focus to Main, so the next Tab goes to the first link in the page’s content (WCAG 2.4.1). |
 | Nav | `MainNav`’s `<nav>` | The navigation landmark. Not in focused mode. |
-| Back link | `BackLink`, an `<a href>` | Focused mode only, in place of the nav. In the tab order: the back link, then the theme toggle, then Main. |
+| Back link | `BackLink`, an `<a href>` | Focused mode only, in place of the nav. In the tab order: the back link, the action if there is one, then the theme toggle, then Main. |
+| Action | Whatever you pass in `action`, usually a `Button` | Focused mode only, optional, in the top-right corner. In the tab order right after the back link. Give it a label that says what happens, like “Download.” |
 | Theme toggle | `ThemeToggle`, a `<button>` | Right after the nav and before Main in the tab order, so it’s reached early on every page without being part of the navigation |
 | Main | `<main>` | The main landmark, with the page’s content. It can take focus from the skip link (`tabIndex={-1}`), but it isn’t in the tab order. After a page change, focus goes to its `h1` (see below). |
 | Footer | The `Footer`’s `<footer>` | The footer landmark (`contentinfo`) |
@@ -92,7 +93,7 @@ In default mode, the nav stays at the top of the screen as the page scrolls, at 
 | `mode` | What it shows | Use for |
 |---|---|---|
 | `default` | The site’s nav, MainNav, across the top | Pages people move between: the portfolio, the playground, the profile |
-| `focused` | No nav. A `BackLink` floats in the top-left corner, and ThemeToggle stays in the bottom-right. | One piece of work read from start to end, like a case study |
+| `focused` | No nav. A `BackLink` floats in the top-left corner, an optional action in the top-right, and ThemeToggle stays in the bottom-right. | One piece of work read from start to end, like a case study |
 
 **Why focused mode:** a case study is long, and people read it start to end. With the nav gone, the page gets the whole width at every breakpoint and nothing beside it competes with the work. The way out stays in one place: the back link, always in reach in the corner, names the page it goes back to.
 
@@ -102,12 +103,17 @@ In focused mode:
 |---|---|
 | The back link’s position | Fixed to the top-left corner: `--verity-spacing-md` from the top and `--verity-main-padding-inline` from the left, the page’s own side margin, so it lines up with the page’s content. Plus the safe area (`env(safe-area-inset-top)` and `env(safe-area-inset-left)`). |
 | Where it goes | `backLink`: its `href` and `label`. It’s `{ href: '/', label: 'Portfolio' }` unless you set it. |
+| An action | `action`, optional: one element, normally a `Button` with `variant="secondary"` and `background="scrim"`, like “Download” with the `download` icon on the résumé page. It’s the back link’s mirror image: fixed to the top-right corner, `--verity-spacing-md` from the top and `--verity-main-padding-inline` from the right, plus the safe area (`env(safe-area-inset-top)` and `env(safe-area-inset-right)`), on the same layer, so it stays put as the page scrolls. Leave it out for none. Default mode ignores it. |
 | The space above Main | `--verity-main-padding-top-focused` (72) plus `--verity-spacing-lg`, as in Figma: the first clears the back link (its inset plus its height), and the second is the usual space above the first section. So the title starts 120 down on XL and Large, `--verity-spacing-lg` below the link. A link that jumps to a heading stops at the same place. |
 | Layer | Like the theme toggle: above the page’s content, which scrolls under it |
 
 <Canvas of={ShellStories.FocusedLarge} />
 
 <Canvas of={ShellStories.FocusedSmall} />
+
+<Canvas of={ShellStories.FocusedWithAnActionXL} />
+
+<Canvas of={ShellStories.FocusedWithAnActionSmall} />
 
 ## Page loader
 
@@ -153,6 +159,7 @@ Each story opens in a viewport at the width of Figma’s Shell frame for its bre
 | The page’s sides, around Main and the Footer | `--verity-main-padding-inline` (24–80) |
 | The theme toggle, from the screen’s bottom and right edges | `--verity-spacing-md`, plus the safe area |
 | The back link, from the screen’s top and left edges (focused mode) | `--verity-spacing-md` and `--verity-main-padding-inline`, plus the safe area |
+| The action, from the screen’s top and right edges (focused mode) | The same: `--verity-spacing-md` and `--verity-main-padding-inline`, plus the safe area |
 
 Shell owns the page’s side margins, so nothing inside Main needs its own. Containers and Sections center their content in the same column inside them, and the Footer spans the wide width, up to `--verity-content-wide-width`.
 
@@ -170,6 +177,7 @@ Shell owns the page’s side margins, so nothing inside Main needs its own. Cont
 | Property `Breakpoint` | Not a prop: a preview of each width. In code, the screen width decides, and MainNav picks its layout from its own width. |
 | Property `Mode` | `mode`. `default` is the default in both. |
 | The BackLink instance (focused) | Made by Shell. `backLink` sets where it goes and what it says. |
+| Property `Show action`, with its Button (focused) | `action`: pass the Button. Figma shows “Download PDF” with `icon/download`; the site says “Download.” |
 | The MainNav instance | Made by Shell. `current` and `hrefs` pass through to MainNav, which picks its own `Layout`. |
 | The ThemeToggle instance, in the bottom-right corner | Made by Shell, with nothing to set |
 | Not in Figma | The skip link, and `current`, `hrefs`, and `backLink` |

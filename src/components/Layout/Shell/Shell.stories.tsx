@@ -16,6 +16,7 @@ import LayeredImageStories from '../../Media/LayeredImage/LayeredImage.stories';
 import { Image } from '../../Media/Image';
 import { MediaBlock } from '../../Media/MediaBlock';
 import { Reel } from '../../Media/Reel';
+import { Button } from '../../Actions/Button';
 import { Prose } from '../../Text/Prose';
 import { UnorderedList, UnorderedListItem } from '../../Text/UnorderedList';
 import { Container } from '../Container';
@@ -225,6 +226,7 @@ const meta = {
     hrefs: { control: false },
     mode: { control: 'inline-radio', options: ['default', 'focused'] },
     backLink: { control: 'object' },
+    action: { control: false },
   },
   parameters: {
     layout: 'fullscreen',
@@ -285,6 +287,30 @@ export const FocusedMedium: Story = {
 export const FocusedSmall: Story = {
   name: 'Focused, Small',
   args: focused,
+  globals: { viewport: { value: 'sm' } },
+};
+
+// Focused mode with an action in the top-right corner, opposite the back
+// link: a Button on a scrim, “Download,” that saves the page's PDF, as on the site's
+// résumé page. Like the back link, it stays put as the page scrolls.
+const withAction = {
+  ...focused,
+  action: (
+    <Button variant="secondary" background="scrim" startIcon="download" href={screenshot} download="resume.png">
+      Download
+    </Button>
+  ),
+};
+
+export const FocusedWithAnActionXL: Story = {
+  name: 'Focused with an action, XL',
+  args: withAction,
+  globals: { viewport: { value: 'xl' } },
+};
+
+export const FocusedWithAnActionSmall: Story = {
+  name: 'Focused with an action, Small',
+  args: withAction,
   globals: { viewport: { value: 'sm' } },
 };
 
