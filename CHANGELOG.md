@@ -4,6 +4,15 @@ Every release of Verity, newest first. The format follows [Keep a Changelog](htt
 
 Sites install Verity by tag (for example `github:erinpantz/verity-design-system#v0.3.0`), so a site only changes when it moves to a new tag on purpose.
 
+## [0.11.7] – 2026-11-25
+
+ExperienceItem’s description can link to proof of a role’s work.
+
+### Added
+
+- **ExperienceItem:** `description` takes the same content as Hero’s `intro`: one paragraph, or several as a list, and a paragraph can hold inline content, text with a `Link`, `<em>`, or `<strong>` in it. Links take the description’s `body-lg` and keep Link’s own colors, underline, and focus ring. Whether a link opens in a new tab is up to each `Link` (`opensInNewTab`), not ExperienceItem. Descriptions written as a string or a list of strings work exactly as before. Its docs page covers the content model and the contrast in both themes, with a “With links” story.
+- **`Paragraphs`:** the type of Hero’s `intro` and ExperienceItem’s `description`, exported so a site can type its own content with it. Both components render it the same way, with one shared helper, so they can’t drift apart. Hero looks exactly as before.
+
 ## [0.11.6] – 2026-11-20
 
 Button’s `onClick` works on links too.
@@ -860,6 +869,7 @@ The first library release: everything in the Figma library except Animation, wit
 - **Theme helpers:** `themeScript`, `useTheme`, and `setTheme`, so a site applies the saved theme before the first paint.
 - **The library build:** one entry point with every component and its prop types, one stylesheet (`verity-design-system/styles.css`) with the fonts inside it, and `npm run build:watch` for working with a linked copy.
 
+[0.11.7]: https://github.com/erinpantz/verity-design-system/compare/v0.11.6...v0.11.7
 [0.11.6]: https://github.com/erinpantz/verity-design-system/compare/v0.11.5...v0.11.6
 [0.11.5]: https://github.com/erinpantz/verity-design-system/compare/v0.11.4...v0.11.5
 [0.11.4]: https://github.com/erinpantz/verity-design-system/compare/v0.11.3...v0.11.4
