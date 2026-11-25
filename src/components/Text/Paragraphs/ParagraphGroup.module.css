@@ -1,0 +1,46 @@
+/* Paragraphs in one text style (see ParagraphGroup.tsx). Each text style sets
+   the font for its paragraphs and the space between them, as a gap: the same
+   space Prose puts between paragraphs in that style. No color: the component
+   using it sets that. */
+
+.paragraph {
+  margin: 0;
+  font-family: var(--font-family);
+  font-size: var(--font-size);
+  font-weight: var(--font-weight);
+  line-height: var(--line-height);
+  letter-spacing: var(--letter-spacing);
+  text-transform: var(--text-transform);
+  /* Even line breaks: the browser avoids a lone short word on the last line
+     and spreads the breaks more evenly. It only moves where lines break;
+     browsers without it wrap as before. */
+  text-wrap: pretty;
+}
+
+.group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-between);
+}
+
+/* Text styles */
+
+.body-lg {
+  --font-family: var(--verity-viewport-typography-body-lg-font-family);
+  --font-size: var(--verity-viewport-typography-body-lg-font-size);
+  --font-weight: var(--verity-viewport-typography-body-lg-font-weight);
+  --line-height: var(--verity-viewport-typography-body-lg-line-height);
+  --letter-spacing: var(--verity-viewport-typography-body-lg-letter-spacing);
+  --text-transform: var(--verity-viewport-typography-body-lg-text-transform);
+  --space-between: var(--verity-viewport-typography-body-lg-space-before);
+}
+
+.body-xl {
+  --font-family: var(--verity-viewport-typography-body-xl-font-family);
+  --font-size: var(--verity-viewport-typography-body-xl-font-size);
+  --font-weight: var(--verity-viewport-typography-body-xl-font-weight);
+  --line-height: var(--verity-viewport-typography-body-xl-line-height);
+  --letter-spacing: var(--verity-viewport-typography-body-xl-letter-spacing);
+  --text-transform: var(--verity-viewport-typography-body-xl-text-transform);
+  --space-between: var(--verity-viewport-typography-body-xl-space-before);
+}

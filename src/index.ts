@@ -120,6 +120,8 @@ export { Heading } from './components/Text/Heading';
 export type { HeadingProps } from './components/Text/Heading';
 export { MetaItem } from './components/Text/MetaItem';
 export type { MetaItemProps } from './components/Text/MetaItem';
+// The content of Hero's intro and ExperienceItem's description
+export type { Paragraphs } from './components/Text/Paragraphs/paragraphs';
 export { Prose } from './components/Text/Prose';
 export type { ProseProps } from './components/Text/Prose';
 export { TextBlock } from './components/Text/TextBlock';

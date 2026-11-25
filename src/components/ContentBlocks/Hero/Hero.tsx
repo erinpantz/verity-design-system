@@ -1,5 +1,7 @@
 import type { ReactNode } from 'react';
 import { Button } from '../../Actions/Button';
+import { ParagraphGroup } from '../../Text/Paragraphs/ParagraphGroup';
+import type { Paragraphs } from '../../Text/Paragraphs/paragraphs';
 import styles from './Hero.module.css';
 
 /** An action in the Hero: a button that goes to another page */
@@ -27,7 +29,7 @@ export interface HeroProps {
    * lists, or headings). It takes the intro's text style, and a Link in it
    * takes the link colors for the Hero's background, with no color passed.
    */
-  intro: ReactNode | ReactNode[];
+  intro: Paragraphs;
   /** The main action. Leave it out for no actions at all, as on Home. */
   primaryAction?: HeroAction;
   /** A second, less important action, next to the main one. Leave it out for one button. */
@@ -74,25 +76,12 @@ export function Hero({
   media,
 }: HeroProps) {
   const colors = BUTTON_COLORS[background];
-  // One paragraph renders as it always has; a list, one paragraph each
-  const paragraphs = Array.isArray(intro) ? intro : [intro];
   return (
     <header className={`${styles.hero} ${styles[background]}`} data-width={width}>
       <div className={styles.body}>
         <div className={styles.text}>
           <h1 className={styles.heading}>{heading}</h1>
-          {paragraphs.length === 1 ? (
-            <p className={styles.intro}>{paragraphs[0]}</p>
-          ) : (
-            // Several paragraphs, body/xl's paragraph space apart
-            <div className={styles.introParagraphs}>
-              {paragraphs.map((paragraph, i) => (
-                <p key={i} className={styles.intro}>
-                  {paragraph}
-                </p>
-              ))}
-            </div>
-          )}
+          <ParagraphGroup content={intro} textStyle="body-xl" />
         </div>
         {/* No main action, no actions group: the body ends after the text */}
         {primaryAction && (
