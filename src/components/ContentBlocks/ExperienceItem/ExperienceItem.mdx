@@ -17,6 +17,7 @@ One role in a list of experience: the company on the left, and its credentials o
 
 - **On Profile, for the roles you’ve had,** newest first, in a list under a Section’s heading.
 - **Not for a project.** Use `ProjectCard`, which links to the work.
+- **To link to proof of a role’s work,** like an awards list or a blog post, put a `Link` in the description. The link text says where it goes, such as “three design awards in 2025,” never “here” or “this.”
 - **Not for one-line facts,** like a role or a year on a case study. Use `MetaItem`, or the facts in `CaseStudyHeader`.
 
 ## Accessibility
@@ -25,7 +26,7 @@ An ExperienceItem renders a `<div>`: the company is a real heading, and the cred
 
 - **Put each one in an `<li>`,** inside a `VerticalStack as="ul" gap="none"`, the way a page wraps ProjectCards. A screen reader then hears “list, 3 items,” and can move between the roles.
 - **The company is a heading** (`Heading`), `h3` by default, so it sits under the Section’s `h2` in the page’s outline, and people can jump from role to role by heading.
-- **Nothing in it is interactive,** so there’s nothing to focus.
+- **Links in the description are the only thing to focus.** Each one is a `Link`, with its underline and focus ring (see Text).
 
 | Situation | What to do | Example |
 |---|---|---|
@@ -34,8 +35,11 @@ An ExperienceItem renders a `<div>`: the company is a real heading, and the cred
 | Writing the dates | Month and year, with an en dash and spaces between them. The text style shows them in capitals; type them in sentence case. | “Jan 2024 – Sep 2026” |
 | Writing the description | One sentence, in the first person, about what you did and what came of it | “I redesigned account setup, which cut the time to a first payment in half.” |
 | The description has two ideas, such as what you did, then how it turned out | A list of strings, one per paragraph. Two paragraphs is plenty: it’s a row in a list, not a case study. | What you did, then the result and how the role ended |
+| Linking to proof of the work | Link the words that name what it goes to. Pass no `color`. For a page on another site, add `opensInNewTab` to that `Link`. | “Our patient app won [three design awards in 2025].” |
 
 <Canvas of={ExperienceItemStories.TwoParagraphDescription} />
+
+<Canvas of={ExperienceItemStories.WithLinks} />
 
 <Canvas of={ExperienceItemStories.InASection} />
 
@@ -68,8 +72,45 @@ The credentials are never wider than 600, so the description keeps a readable li
 | The title | `title-default` | `--verity-color-content-default` |
 | The dates | `meta-default` | `--verity-color-content-subtle` |
 | The description | `body-lg` | `--verity-color-content-subtle` |
+| Links in the description | `body-lg` (from the text around them), underlined | `--verity-link-color-content-*` |
 
-The description is plain text: one paragraph, a string, or several, a list of strings, one per paragraph. Each paragraph is its own `<p>`, and its lines break evenly (`text-wrap: pretty`), so a last line isn’t left with one short word.
+### The description
+
+The description is one paragraph, or several as a list, one per paragraph: the same content as `Hero`’s intro (its type is `Paragraphs`, which both use). A paragraph is text, or inline content: text with a `Link`, `<em>`, or `<strong>` in it.
+
+| `description` | Renders | Use for |
+|---|---|---|
+| A string | One `<p>` | A sentence or two, as for most roles |
+| A list of strings | One `<p>` per paragraph | A role with two ideas, such as what you did, then how it turned out |
+| Inline content, or a list of it | The same: one `<p>`, or one per paragraph | A role that links to proof of its work |
+
+**Inline only.** ExperienceItem renders each paragraph’s `<p>` itself, so a paragraph can’t hold blocks: no paragraphs, lists, or headings inside. For a second paragraph, add an item to the list. A paragraph that mixes text and a `Link` goes in `<>…</>`, so it’s one paragraph, not a list:
+
+```tsx
+<ExperienceItem
+  company="Northwind Health"
+  title="Head of Design"
+  dates="Jan 2024 – Sep 2026"
+  description={[
+    'I led product and marketing design, and grew the design team from two to six.',
+    <>
+      Our patient app won{' '}
+      <Link href="https://…" opensInNewTab>
+        three design awards in 2025
+      </Link>
+      .
+    </>,
+  ]}
+/>
+```
+
+**Links take the description’s style.** A `Link` takes its font from the text around it, so it’s `body-lg` too, and it keeps its own colors and focus ring, so pass no `color`. A link to another site stays a plain `<a>` (`LinkProvider` only routes the site’s own pages).
+
+**Opening in a new tab is up to each link.** ExperienceItem never decides it: give a `Link` to another site Link’s own `opensInNewTab`. Link then adds `rel="noopener noreferrer"`, so the page it opens can’t control this one, and hidden text, so screen readers hear “opens in a new tab” after the link text.
+
+**Contrast.** The description is `body-lg`, normal-size text, so a link needs 4.5:1 against the page. The default link color has 5.9:1 on the page in Blue and 5.2:1 in Red; its hover and active color, 8.6:1 and 8.7:1. Against the description’s own color, a link is only 2.0:1 in Blue and 2.2:1 in Red, so the underline is what sets it apart, not color (WCAG 1.4.1). The focus ring, `--verity-color-border-focus`, is 2 wide, 2 away from the text, with 5.9:1 against the page in Blue and 5.2:1 in Red.
+
+**Line breaks:** each paragraph’s lines break evenly (`text-wrap: pretty`), so a last line isn’t left with one short word.
 
 ## Space
 
@@ -99,7 +140,7 @@ It has no background and adds no space outside itself: the list puts the rows to
 | The exposed `Company` heading | `company`, and `headingLevel` for its level |
 | Property `Title` | `title` |
 | Property `Dates` | `dates` |
-| Property `Description` | `description`. Figma’s description is one text property, so two paragraphs there are one layer with a paragraph break. In code, they’re a list of two strings. |
+| Property `Description` | `description`. Figma’s description is one text property, so two paragraphs there are one layer with a paragraph break. In code, they’re a list of two strings. In code, a paragraph can also hold a `Link`, `<em>`, or `<strong>`. |
 | Property `Layout` (`row`, `stacked`) | No prop: the item’s own width decides. Figma previews both. |
 | A row’s widths | Figma sets the company and the credentials both to Fill, so they share the row equally, up to 600 each. Code gives the credentials their full 600 first, and the company the rest. |
 | Not in Figma | The list around the items (`VerticalStack as="ul"`, each item in an `<li>`) |

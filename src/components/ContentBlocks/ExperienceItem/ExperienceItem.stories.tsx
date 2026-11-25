@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
+import { Link } from '../../Actions/Link';
 import { Section } from '../../Layout/Section';
 import { VerticalStack } from '../../Layout/VerticalStack';
 import { ExperienceItem, type ExperienceItemProps } from './ExperienceItem';
@@ -76,6 +77,35 @@ export const TwoParagraphDescription: Story = {
     ],
   },
   argTypes: { description: { control: 'object' } },
+};
+
+// A description that links to proof of the work: an awards list and a blog
+// post, on other sites, so they're plain links. Each one opens in a new tab
+// with Link's own opensInNewTab: the site decides per link, not
+// ExperienceItem.
+// The second paragraph mixes text and Links, so it's wrapped in <>…</> to
+// make it one paragraph. Each link's text says where it goes.
+export const WithLinks: Story = {
+  name: 'With links',
+  args: {
+    description: [
+      'I led product and marketing design, from research to shipped work, and grew the design team from two to six.',
+      <>
+        Our patient app won{' '}
+        <Link href="https://awards.northwindhealth.example/2025" opensInNewTab>
+          three design awards in 2025
+        </Link>
+        ,
+        and I wrote about{' '}
+        <Link href="https://blog.northwindhealth.example/rebuilding-booking" opensInNewTab>
+          how we rebuilt booking with front-desk staff
+        </Link>
+        .
+      </>,
+    ],
+  },
+  // Links can't be edited in the controls panel
+  argTypes: { description: { control: false } },
 };
 
 // How a page uses it: a list (each item an <li>) in a VerticalStack with no

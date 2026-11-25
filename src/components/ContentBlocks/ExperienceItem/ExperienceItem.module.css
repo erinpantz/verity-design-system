@@ -51,8 +51,7 @@
 }
 
 .title,
-.dates,
-.description {
+.dates {
   margin: 0;
 }
 
@@ -76,27 +75,11 @@
   text-transform: var(--verity-viewport-typography-meta-default-text-transform);
 }
 
+/* The description is a ParagraphGroup in body/lg (Text/Paragraphs), which
+   sets its font and the space between its paragraphs. This sets its color.
+   A Link in it keeps its own link colors and underline. */
 .description {
   color: var(--verity-color-content-subtle);
-  font-family: var(--verity-viewport-typography-body-lg-font-family);
-  font-size: var(--verity-viewport-typography-body-lg-font-size);
-  font-weight: var(--verity-viewport-typography-body-lg-font-weight);
-  line-height: var(--verity-viewport-typography-body-lg-line-height);
-  letter-spacing: var(--verity-viewport-typography-body-lg-letter-spacing);
-  text-transform: var(--verity-viewport-typography-body-lg-text-transform);
-  /* Even line breaks: the browser avoids a lone short word on the last line
-     and spreads the breaks more evenly. It only moves where lines break;
-     browsers without it wrap as before. */
-  text-wrap: pretty;
-}
-
-/* A description of several paragraphs: body/lg's own paragraph space
-   between them, as a gap (the same space Prose puts between body/lg
-   paragraphs) */
-.descriptionParagraphs {
-  display: flex;
-  flex-direction: column;
-  gap: var(--verity-viewport-typography-body-lg-space-before);
 }
 
 /* A row, at or above the stack width: the company takes what the
